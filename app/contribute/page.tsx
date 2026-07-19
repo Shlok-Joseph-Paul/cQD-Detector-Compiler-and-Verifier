@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { SiteShell } from "@/components/SiteShell";
 
@@ -119,21 +120,58 @@ export default function ContributePage() {
           </section>
         </article>
 
-        <aside className="callout" aria-label="Contribution workflow">
-          <strong>Contributions use public GitHub issues.</strong>
-          <p>
-            This first version does not submit a private web form or send email.
-            Please avoid including confidential, personal, or unpublished
-            information in an issue.
-          </p>
-          <a
-            className="primary-button"
-            href={newIssueUrl}
-            target="_blank"
-            rel="noreferrer"
+        <aside
+          className="contribute-sidebar"
+          aria-label="Contribution workflow and project curator"
+        >
+          <section className="callout contribution-callout">
+            <strong>Contributions use public GitHub issues.</strong>
+            <p>
+              This first version does not submit a private web form or send
+              email. Please avoid including confidential, personal, or
+              unpublished information in an issue.
+            </p>
+            <a
+              className="primary-button"
+              href={newIssueUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open a contribution issue
+            </a>
+          </section>
+
+          <section
+            className="curator-card"
+            aria-labelledby="curator-card-heading"
           >
-            Open a contribution issue
-          </a>
+            <Image
+              className="curator-card__portrait"
+              src="/shlok-ir.jpg"
+              alt="Infrared portrait of Shlok Joseph Paul wearing sunglasses"
+              width={377}
+              height={214}
+              sizes="(max-width: 900px) 100vw, 300px"
+            />
+            <div className="curator-card__body">
+              <p className="section-kicker">Project curator</p>
+              <h2 id="curator-card-heading">Shlok Joseph Paul</h2>
+              <p className="curator-card__bio">
+                Shlok is an infrared-detector researcher and the curator of the
+                CQD Photodiode Atlas. He created the project to make published
+                detector performance easier to compare while keeping measurement
+                methods and source evidence visible.
+              </p>
+              <a
+                className="curator-card__link"
+                href="https://github.com/Shlok-Joseph-Paul"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub profile <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </section>
         </aside>
       </div>
     </SiteShell>

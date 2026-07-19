@@ -1763,6 +1763,78 @@ select {
   margin: 0;
 }
 
+.contribute-sidebar {
+  display: grid;
+  gap: 14px;
+}
+
+.contribute-sidebar .contribution-callout {
+  margin: 0;
+}
+
+.curator-card {
+  overflow: hidden;
+  border: 1px solid var(--line-dark);
+  background: var(--surface);
+  box-shadow: 0 14px 36px rgb(20 40 34 / 7%);
+}
+
+.curator-card__portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 377 / 214;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-deep);
+  object-fit: cover;
+}
+
+.curator-card__body {
+  padding: 18px 20px 20px;
+}
+
+.prose-page .curator-card .section-kicker {
+  margin: 0 0 7px;
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.prose-page .curator-card h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.prose-page .curator-card__bio {
+  margin: 12px 0 14px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.prose-page a.curator-card__link {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.prose-page a.curator-card__link:hover {
+  color: var(--teal-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .reading-list-card {
   padding: 22px;
   border: 1px solid var(--line-dark);

@@ -1,9 +1,10 @@
 import generatedAtlas from "../../data/generated/atlas.json";
 import type { AtlasData } from "./types.ts";
-import { assertValidAtlasEntities } from "./validation.ts";
 
-// The JSON is generated before build; retain a runtime guard against hand edits.
-assertValidAtlasEntities(generatedAtlas);
+// `pnpm run check-data` validates the source CSVs and proves this generated file
+// is current before every production build. Avoid repeating clock-sensitive
+// curation checks during Worker module initialization, where deployment
+// sandboxes may intentionally expose an epoch clock.
 
 export const atlasData = generatedAtlas as AtlasData;
 export const atlasRecords = atlasData.records;

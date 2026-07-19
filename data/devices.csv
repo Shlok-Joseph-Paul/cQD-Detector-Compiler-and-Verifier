@@ -1,0 +1,4 @@
+device_id,paper_id,material_family,material_composition,device_architecture,device_stack,active_area_cm2,device_notes
+demo-device-a,demo-paper-001,Demo CQD-A,Synthetic CQD-A (demonstration only),Synthetic vertical photodiode,Synthetic contact / demo CQD-A / synthetic contact,0.01,Demonstration data—not a literature record
+demo-device-b,demo-paper-001,Demo CQD-B,Synthetic CQD-B (demonstration only),Synthetic inverted photodiode,Synthetic contact / demo CQD-B / synthetic contact,0.02,Demonstration data—not a literature record
+demo-device-c,demo-paper-001,Demo CQD-C,Synthetic CQD-C (demonstration only),Synthetic planar photodiode,Synthetic contact / demo CQD-C / synthetic contact,0.015,Demonstration data—not a literature record

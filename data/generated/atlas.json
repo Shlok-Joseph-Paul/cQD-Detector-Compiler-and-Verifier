@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-19T00:00:00.000Z",
+  "papers": [
+    {
+      "paper_id": "demo-paper-001",
+      "title": "Demonstration data—not a literature record: synthetic interface examples",
+      "authors": [
+        "Demonstration data—not a literature record"
+      ],
+      "first_author": "Demonstration dataset",
+      "journal": null,
+      "publication_year": 2026,
+      "doi": null,
+      "publication_url": null,
+      "publication_type": "demonstration",
+      "peer_reviewed": false,
+      "notes": "Demonstration data—not a literature record. Remove this row when curated literature records are added."
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "demo-device-a",
+      "paper_id": "demo-paper-001",
+      "material_family": "Demo CQD-A",
+      "material_composition": "Synthetic CQD-A (demonstration only)",
+      "device_architecture": "Synthetic vertical photodiode",
+      "device_stack": "Synthetic contact / demo CQD-A / synthetic contact",
+      "active_area_cm2": 0.01,
+      "device_notes": "Demonstration data—not a literature record"
+    },
+    {
+      "device_id": "demo-device-b",
+      "paper_id": "demo-paper-001",
+      "material_family": "Demo CQD-B",
+      "material_composition": "Synthetic CQD-B (demonstration only)",
+      "device_architecture": "Synthetic inverted photodiode",
+      "device_stack": "Synthetic contact / demo CQD-B / synthetic contact",
+      "active_area_cm2": 0.02,
+      "device_notes": "Demonstration data—not a literature record"
+    },
+    {
+      "device_id": "demo-device-c",
+      "paper_id": "demo-paper-001",
+      "material_family": "Demo CQD-C",
+      "material_composition": "Synthetic CQD-C (demonstration only)",
+      "device_architecture": "Synthetic planar photodiode",
+      "device_stack": "Synthetic contact / demo CQD-C / synthetic contact",
+      "active_area_cm2": 0.015,
+      "device_notes": "Demonstration data—not a literature record"
+    }
+  ],
+  "measurements": [
+    {
+      "measurement_id": "demo-measurement-001",
+      "device_id": "demo-device-a",
+      "wavelength_nm": 620,
+      "detectivity_jones": 30000000000,
+      "responsivity_a_w": 0.42,
+      "eqe_percent": 84,
+      "temperature_k": 295,
+      "bias_v": 0,
+      "measurement_frequency_hz": 100,
+      "response_time_s": 0.00001,
+      "bandwidth_hz": 35000,
+      "noise_method": "measured_noise",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Synthetic demonstration table row 1",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Demonstration data—not a literature record",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "demo-measurement-002",
+      "device_id": "demo-device-b",
+      "wavelength_nm": 1050,
+      "detectivity_jones": 800000000000,
+      "responsivity_a_w": 0.68,
+      "eqe_percent": 80,
+      "temperature_k": 295,
+      "bias_v": -0.5,
+      "measurement_frequency_hz": 1000,
+      "response_time_s": 0.0001,
+      "bandwidth_hz": 5000,
+      "noise_method": "measured_noise",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Synthetic demonstration table row 2",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Demonstration data—not a literature record",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "demo-measurement-003",
+      "device_id": "demo-device-c",
+      "wavelength_nm": 1550,
+      "detectivity_jones": 20000000000,
+      "responsivity_a_w": 0.55,
+      "eqe_percent": 44,
+      "temperature_k": 295,
+      "bias_v": -1,
+      "measurement_frequency_hz": 100,
+      "response_time_s": 0.001,
+      "bandwidth_hz": 350,
+      "noise_method": "shot_noise_approximation",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Synthetic demonstration table row 3",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "shot_noise_approximation"
+      ],
+      "amber_explanation": "Interpret with caution: detectivity was calculated using a shot-noise approximation rather than a measured total-noise spectrum.",
+      "curator_notes": "Demonstration data—not a literature record",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "demo-measurement-004",
+      "device_id": "demo-device-b",
+      "wavelength_nm": 2100,
+      "detectivity_jones": 5000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": 220,
+      "bias_v": -0.2,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": 120,
+      "noise_method": "measured_noise",
+      "detectivity_extraction_method": "graphically_extracted",
+      "source_location": "Synthetic demonstration chart marker",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "missing_measurement_frequency",
+        "estimated_from_graph"
+      ],
+      "amber_explanation": "Interpret with caution: this synthetic value illustrates a graphically estimated record with no reported measurement frequency.",
+      "curator_notes": "Demonstration data—not a literature record",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    }
+  ],
+  "records": [
+    {
+      "paper": {
+        "paper_id": "demo-paper-001",
+        "title": "Demonstration data—not a literature record: synthetic interface examples",
+        "authors": [
+          "Demonstration data—not a literature record"
+        ],
+        "first_author": "Demonstration dataset",
+        "journal": null,
+        "publication_year": 2026,
+        "doi": null,
+        "publication_url": null,
+        "publication_type": "demonstration",
+        "peer_reviewed": false,
+        "notes": "Demonstration data—not a literature record. Remove this row when curated literature records are added."
+      },
+      "device": {
+        "device_id": "demo-device-a",
+        "paper_id": "demo-paper-001",
+        "material_family": "Demo CQD-A",
+        "material_composition": "Synthetic CQD-A (demonstration only)",
+        "device_architecture": "Synthetic vertical photodiode",
+        "device_stack": "Synthetic contact / demo CQD-A / synthetic contact",
+        "active_area_cm2": 0.01,
+        "device_notes": "Demonstration data—not a literature record"
+      },
+      "measurement": {
+        "measurement_id": "demo-measurement-001",
+        "device_id": "demo-device-a",
+        "wavelength_nm": 620,
+        "detectivity_jones": 30000000000,
+        "responsivity_a_w": 0.42,
+        "eqe_percent": 84,
+        "temperature_k": 295,
+        "bias_v": 0,
+        "measurement_frequency_hz": 100,
+        "response_time_s": 0.00001,
+        "bandwidth_hz": 35000,
+        "noise_method": "measured_noise",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Synthetic demonstration table row 1",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Demonstration data—not a literature record",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "demo-paper-001",
+        "title": "Demonstration data—not a literature record: synthetic interface examples",
+        "authors": [
+          "Demonstration data—not a literature record"
+        ],
+        "first_author": "Demonstration dataset",
+        "journal": null,
+        "publication_year": 2026,
+        "doi": null,
+        "publication_url": null,
+        "publication_type": "demonstration",
+        "peer_reviewed": false,
+        "notes": "Demonstration data—not a literature record. Remove this row when curated literature records are added."
+      },
+      "device": {
+        "device_id": "demo-device-b",
+        "paper_id": "demo-paper-001",
+        "material_family": "Demo CQD-B",
+        "material_composition": "Synthetic CQD-B (demonstration only)",
+        "device_architecture": "Synthetic inverted photodiode",
+        "device_stack": "Synthetic contact / demo CQD-B / synthetic contact",
+        "active_area_cm2": 0.02,
+        "device_notes": "Demonstration data—not a literature record"
+      },
+      "measurement": {
+        "measurement_id": "demo-measurement-002",
+        "device_id": "demo-device-b",
+        "wavelength_nm": 1050,
+        "detectivity_jones": 800000000000,
+        "responsivity_a_w": 0.68,
+        "eqe_percent": 80,
+        "temperature_k": 295,
+        "bias_v": -0.5,
+        "measurement_frequency_hz": 1000,
+        "response_time_s": 0.0001,
+        "bandwidth_hz": 5000,
+        "noise_method": "measured_noise",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Synthetic demonstration table row 2",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Demonstration data—not a literature record",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "demo-paper-001",
+        "title": "Demonstration data—not a literature record: synthetic interface examples",
+        "authors": [
+          "Demonstration data—not a literature record"
+        ],
+        "first_author": "Demonstration dataset",
+        "journal": null,
+        "publication_year": 2026,
+        "doi": null,
+        "publication_url": null,
+        "publication_type": "demonstration",
+        "peer_reviewed": false,
+        "notes": "Demonstration data—not a literature record. Remove this row when curated literature records are added."
+      },
+      "device": {
+        "device_id": "demo-device-c",
+        "paper_id": "demo-paper-001",
+        "material_family": "Demo CQD-C",
+        "material_composition": "Synthetic CQD-C (demonstration only)",
+        "device_architecture": "Synthetic planar photodiode",
+        "device_stack": "Synthetic contact / demo CQD-C / synthetic contact",
+        "active_area_cm2": 0.015,
+        "device_notes": "Demonstration data—not a literature record"
+      },
+      "measurement": {
+        "measurement_id": "demo-measurement-003",
+        "device_id": "demo-device-c",
+        "wavelength_nm": 1550,
+        "detectivity_jones": 20000000000,
+        "responsivity_a_w": 0.55,
+        "eqe_percent": 44,
+        "temperature_k": 295,
+        "bias_v": -1,
+        "measurement_frequency_hz": 100,
+        "response_time_s": 0.001,
+        "bandwidth_hz": 350,
+        "noise_method": "shot_noise_approximation",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Synthetic demonstration table row 3",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "shot_noise_approximation"
+        ],
+        "amber_explanation": "Interpret with caution: detectivity was calculated using a shot-noise approximation rather than a measured total-noise spectrum.",
+        "curator_notes": "Demonstration data—not a literature record",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "demo-paper-001",
+        "title": "Demonstration data—not a literature record: synthetic interface examples",
+        "authors": [
+          "Demonstration data—not a literature record"
+        ],
+        "first_author": "Demonstration dataset",
+        "journal": null,
+        "publication_year": 2026,
+        "doi": null,
+        "publication_url": null,
+        "publication_type": "demonstration",
+        "peer_reviewed": false,
+        "notes": "Demonstration data—not a literature record. Remove this row when curated literature records are added."
+      },
+      "device": {
+        "device_id": "demo-device-b",
+        "paper_id": "demo-paper-001",
+        "material_family": "Demo CQD-B",
+        "material_composition": "Synthetic CQD-B (demonstration only)",
+        "device_architecture": "Synthetic inverted photodiode",
+        "device_stack": "Synthetic contact / demo CQD-B / synthetic contact",
+        "active_area_cm2": 0.02,
+        "device_notes": "Demonstration data—not a literature record"
+      },
+      "measurement": {
+        "measurement_id": "demo-measurement-004",
+        "device_id": "demo-device-b",
+        "wavelength_nm": 2100,
+        "detectivity_jones": 5000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": 220,
+        "bias_v": -0.2,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": 120,
+        "noise_method": "measured_noise",
+        "detectivity_extraction_method": "graphically_extracted",
+        "source_location": "Synthetic demonstration chart marker",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "missing_measurement_frequency",
+          "estimated_from_graph"
+        ],
+        "amber_explanation": "Interpret with caution: this synthetic value illustrates a graphically estimated record with no reported measurement frequency.",
+        "curator_notes": "Demonstration data—not a literature record",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    }
+  ]
+}

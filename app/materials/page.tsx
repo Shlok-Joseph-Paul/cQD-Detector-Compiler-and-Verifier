@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { MaterialLabel } from "@/components/atlas";
-import { DemoBanner } from "@/components/DemoBanner";
 import { SiteShell } from "@/components/SiteShell";
 import { formatScientific } from "@/lib/atlas/format";
 import { materialColor, summarizeMaterials } from "@/lib/atlas/materials";
@@ -32,7 +31,6 @@ export default function MaterialsPage() {
             without changing the interface.
           </p>
         </div>
-        <DemoBanner />
       </section>
 
       <section

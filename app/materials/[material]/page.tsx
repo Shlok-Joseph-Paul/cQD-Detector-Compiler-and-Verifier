@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AtlasExplorer, MaterialLabel } from "@/components/atlas";
-import { DemoBanner } from "@/components/DemoBanner";
 import { SiteShell } from "@/components/SiteShell";
 import { formatScientific } from "@/lib/atlas/format";
 import { summarizeMaterials } from "@/lib/atlas/materials";
@@ -62,7 +61,6 @@ export default async function MaterialDetailPage({ params }: PageProps) {
             is {formatScientific(summary.highestDetectivityJones)} Jones.
           </p>
         </div>
-        <DemoBanner />
       </section>
 
       <section className="page-shell atlas-section material-atlas-section">

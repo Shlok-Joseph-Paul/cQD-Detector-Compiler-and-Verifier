@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "CQD Photodiode Atlas",
       images: [
         {
-          url: new URL("/og.png", origin).toString(),
+          url: new URL("/og-v2.png", origin).toString(),
           width: 1200,
           height: 630,
           alt: "CQD Photodiode Atlas detectivity versus wavelength data map",
@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "CQD Photodiode Atlas",
       description:
         "A curated map of reported colloidal quantum-dot photodiode performance.",
-      images: [new URL("/og.png", origin).toString()],
+      images: [new URL("/og-v2.png", origin).toString()],
     },
     icons: {
       icon: "/favicon.png",

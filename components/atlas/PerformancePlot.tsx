@@ -129,7 +129,9 @@ async function downloadPlotPng(container: HTMLDivElement | null) {
 
 export interface PerformancePlotProps {
   records: readonly AtlasRecord[];
+  activeMaterial?: string;
   selectedMeasurementId?: string;
+  onMaterialFilter?: (material: string) => void;
   onSelect: (record: AtlasRecord) => void;
 }
 
@@ -354,7 +356,9 @@ function MarkerLegend() {
 
 export function PerformancePlot({
   records,
+  activeMaterial = "all",
   selectedMeasurementId,
+  onMaterialFilter,
   onSelect,
 }: PerformancePlotProps) {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -435,8 +439,8 @@ export function PerformancePlot({
     >
       <div className="performance-plot__heading">
         <div>
-          <p className="section-kicker">Performance map</p>
-          <h2 id="performance-plot-title">Detectivity landscape</h2>
+          <p className="section-kicker">Curated dataset</p>
+          <h2 id="performance-plot-title">Detectivity across wavelength</h2>
           <p>Specific detectivity versus operating wavelength</p>
         </div>
         <div className="performance-plot__actions">
@@ -481,15 +485,31 @@ export function PerformancePlot({
               className="plot-legend__materials"
               aria-label="Material colors"
             >
-              {materials.map((material) => (
-                <span key={material}>
-                  <i
-                    aria-hidden="true"
-                    style={{ backgroundColor: materialColor(material) }}
-                  />
-                  <MaterialLabel value={material} />
-                </span>
-              ))}
+              {materials.map((material) => {
+                const active = activeMaterial === material;
+                return onMaterialFilter ? (
+                  <button
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => onMaterialFilter(active ? "all" : material)}
+                    key={material}
+                  >
+                    <i
+                      aria-hidden="true"
+                      style={{ backgroundColor: materialColor(material) }}
+                    />
+                    <MaterialLabel value={material} />
+                  </button>
+                ) : (
+                  <span key={material}>
+                    <i
+                      aria-hidden="true"
+                      style={{ backgroundColor: materialColor(material) }}
+                    />
+                    <MaterialLabel value={material} />
+                  </span>
+                );
+              })}
             </div>
           </div>
           <div className="plot-legend__group">

@@ -49,6 +49,8 @@ export function AtlasExplorer({
   );
   const selectRecord = (record: AtlasRecord) =>
     setSelectedMeasurementId(record.measurement.measurementId);
+  const filterByMaterial = (material: string) =>
+    setFilters({ ...filters, material });
 
   return (
     <div className={`atlas-explorer atlas-explorer--${mode}`}>
@@ -78,7 +80,13 @@ export function AtlasExplorer({
       >
         <PerformancePlot
           records={filtered}
+          activeMaterial={filters.material}
           selectedMeasurementId={selectedMeasurementId}
+          onMaterialFilter={
+            lockedMaterial
+              ? undefined
+              : (material) => filterByMaterial(material)
+          }
           onSelect={selectRecord}
         />
 

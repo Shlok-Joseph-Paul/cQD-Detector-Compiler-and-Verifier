@@ -228,13 +228,6 @@ export default function MethodologyPage() {
               reported value is clearly anomalous. An amber flag is never shown
               without an explanation.
             </p>
-            <p>
-              The bundled synthetic records use green and amber solely to
-              exercise this interface and its validation rules. Those fixture
-              flags do not classify a publication or make a scientific claim;
-              demonstration rows must be removed before literature data is
-              curated.
-            </p>
           </section>
 
           <section aria-labelledby="missing-heading">

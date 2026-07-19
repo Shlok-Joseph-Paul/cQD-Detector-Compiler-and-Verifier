@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 
 import { atlasRecordsToCsv } from "@/lib/atlas/csv";
 import {
@@ -95,6 +95,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
     key: "detectivity",
     direction: "desc",
   });
+  const [expandedMeasurementId, setExpandedMeasurementId] = useState<string>();
   const sorted = useMemo(
     () => sortAtlasRecords(records, sort),
     [records, sort],
@@ -111,10 +112,11 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
       <div className="measurement-table-section__heading">
         <div>
           <p className="section-kicker">Curated records</p>
-          <h2 id="measurement-table-title">Measurement table</h2>
+          <h2 id="measurement-table-title">Measurement index</h2>
           <p>
             {records.length} filtered{" "}
-            {records.length === 1 ? "record" : "records"}
+            {records.length === 1 ? "record" : "records"}; expand a row for
+            device and provenance details.
           </p>
         </div>
         <button
@@ -130,10 +132,10 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
       <div
         className="measurement-table__scroll"
         role="region"
-        aria-label="Scrollable measurement table"
+        aria-label="Measurement table"
         tabIndex={0}
       >
-        <table className="measurement-table">
+        <table className="measurement-table measurement-table--compact">
           <caption className="sr-only">
             CQD photodiode measurements matching the current filters
           </caption>
@@ -147,8 +149,6 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                   onSort={sortBy}
                 />
               </th>
-              <th scope="col">CQD composition</th>
-              <th scope="col">Device architecture</th>
               <th scope="col" aria-sort={ariaSort(sort, "wavelength")}>
                 <SortButton
                   label="Wavelength"
@@ -167,18 +167,14 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
               </th>
               <th scope="col">Noise method</th>
               <th scope="col">Temperature</th>
-              <th scope="col">Bias</th>
-              <th scope="col">Response time</th>
               <th scope="col" aria-sort={ariaSort(sort, "year")}>
                 <SortButton
-                  label="Year"
+                  label="Paper"
                   sortKey="year"
                   sort={sort}
                   onSort={sortBy}
                 />
               </th>
-              <th scope="col">Flag and reasons</th>
-              <th scope="col">Paper</th>
             </tr>
           </thead>
           <tbody>
@@ -187,64 +183,112 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                 const detailHref = `/measurements/${encodeURIComponent(
                   measurement.measurementId,
                 )}`;
+                const expanded =
+                  expandedMeasurementId === measurement.measurementId;
+                const detailsId = `${measurement.measurementId}-details`;
                 return (
-                  <tr key={measurement.measurementId}>
-                    <th scope="row">
-                      <MaterialLabel value={device.materialFamily} />
-                    </th>
-                    <td>{device.materialComposition || NOT_REPORTED}</td>
-                    <td>{device.deviceArchitecture || NOT_REPORTED}</td>
-                    <td data-label="Wavelength">
-                      {formatWithUnit(measurement.wavelengthNm, "nm", {
-                        maximumFractionDigits: 2,
-                      })}
-                    </td>
-                    <td
-                      data-label="Detectivity"
-                      className="measurement-table__dstar"
-                    >
-                      {formatScientific(measurement.detectivityJones)} Jones
-                    </td>
-                    <td data-label="Noise method">
-                      <span>{formatNoiseMethod(measurement.noiseMethod)}</span>
-                      <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
-                    </td>
-                    <td data-label="Temperature">
-                      {formatWithUnit(measurement.temperatureK, "K", {
-                        maximumFractionDigits: 2,
-                      })}
-                    </td>
-                    <td data-label="Bias">
-                      {formatWithUnit(measurement.biasV, "V", {
-                        maximumFractionDigits: 4,
-                      })}
-                    </td>
-                    <td data-label="Response time">
-                      {measurement.responseTimeS === null
-                        ? NOT_REPORTED
-                        : `${formatScientific(measurement.responseTimeS)} s`}
-                    </td>
-                    <td data-label="Publication year">
-                      {paper.publicationYear}
-                    </td>
-                    <td data-label="Flag and reasons">
-                      <FlagBadge flag={measurement.flag} />
-                      <AmberReasons measurement={measurement} compact />
-                    </td>
-                    <td data-label="Paper" className="measurement-table__paper">
-                      <span>{paper.title}</span>
-                      <small>
-                        {paper.firstAuthor || NOT_REPORTED},{" "}
-                        {paper.publicationYear}
-                      </small>
-                      <Link href={detailHref}>View record</Link>
-                    </td>
-                  </tr>
+                  <Fragment key={measurement.measurementId}>
+                    <tr className={expanded ? "is-expanded" : undefined}>
+                      <th scope="row">
+                        <button
+                          className="measurement-table__expand"
+                          type="button"
+                          aria-expanded={expanded}
+                          aria-controls={detailsId}
+                          onClick={() =>
+                            setExpandedMeasurementId(
+                              expanded ? undefined : measurement.measurementId,
+                            )
+                          }
+                        >
+                          <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+                          <MaterialLabel value={device.materialFamily} />
+                        </button>
+                      </th>
+                      <td data-label="Wavelength">
+                        {formatWithUnit(measurement.wavelengthNm, "nm", {
+                          maximumFractionDigits: 2,
+                        })}
+                      </td>
+                      <td
+                        data-label="Detectivity"
+                        className="measurement-table__dstar"
+                      >
+                        {formatScientific(measurement.detectivityJones)} Jones
+                      </td>
+                      <td data-label="Noise method">
+                        {formatNoiseMethod(measurement.noiseMethod)}
+                      </td>
+                      <td data-label="Temperature">
+                        {formatWithUnit(measurement.temperatureK, "K", {
+                          maximumFractionDigits: 2,
+                        })}
+                      </td>
+                      <td
+                        data-label="Paper"
+                        className="measurement-table__paper"
+                      >
+                        <span>{paper.title}</span>
+                        <small>
+                          {paper.firstAuthor || NOT_REPORTED},{" "}
+                          {paper.publicationYear}
+                        </small>
+                      </td>
+                    </tr>
+                    {expanded ? (
+                      <tr className="measurement-table__details-row">
+                        <td colSpan={6} id={detailsId}>
+                          <div className="measurement-table__details-grid">
+                            <div>
+                              <span>CQD composition</span>
+                              <strong>
+                                {device.materialComposition || NOT_REPORTED}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Device architecture</span>
+                              <strong>
+                                {device.deviceArchitecture || NOT_REPORTED}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Bias</span>
+                              <strong>
+                                {formatWithUnit(measurement.biasV, "V", {
+                                  maximumFractionDigits: 4,
+                                })}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Response time</span>
+                              <strong>
+                                {measurement.responseTimeS === null
+                                  ? NOT_REPORTED
+                                  : `${formatScientific(measurement.responseTimeS)} s`}
+                              </strong>
+                            </div>
+                          </div>
+                          <div className="measurement-table__details-actions">
+                            <div>
+                              <FlagBadge flag={measurement.flag} />
+                              <ShotNoiseBadge
+                                noiseMethod={measurement.noiseMethod}
+                              />
+                            </div>
+                            <AmberReasons measurement={measurement} compact />
+                            <Link href={detailHref}>
+                              View complete record →
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : null}
+                  </Fragment>
                 );
               })
             ) : (
               <tr>
-                <td colSpan={12} className="measurement-table__empty">
+                <td colSpan={6} className="measurement-table__empty">
                   No measurements match the current filters. Adjust or reset the
                   filters to restore records.
                 </td>

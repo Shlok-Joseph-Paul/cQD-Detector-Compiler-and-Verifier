@@ -110,6 +110,10 @@ select {
   color: var(--teal);
   font-family: var(--font-serif);
   font-size: 13px;
+  font-weight: 500;
+}
+
+.performance-plot__heading h2 {
   font-weight: 700;
 }
 
@@ -869,7 +873,7 @@ select {
   margin: 0;
   font-family: var(--font-serif);
   font-size: 31px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1;
 }
@@ -1141,8 +1145,8 @@ select {
 
 .plot-marker {
   display: inline-block;
-  width: 9px;
-  height: 9px;
+  width: 11px;
+  height: 11px;
   border: 1px solid #52615c;
   background: #52615c;
 }

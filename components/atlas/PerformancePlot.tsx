@@ -226,7 +226,7 @@ function AtlasPoint({
         <circle
           cx={point.cx}
           cy={point.cy}
-          r="10"
+          r="11"
           fill="none"
           stroke={stroke}
           strokeWidth="1.5"
@@ -235,19 +235,19 @@ function AtlasPoint({
       ) : null}
       {isShotNoise ? (
         <path
-          d={`M ${point.cx} ${point.cy - 6} L ${point.cx + 6} ${point.cy} L ${
+          d={`M ${point.cx} ${point.cy - 7} L ${point.cx + 7} ${point.cy} L ${
             point.cx
-          } ${point.cy + 6} L ${point.cx - 6} ${point.cy} Z`}
+          } ${point.cy + 7} L ${point.cx - 7} ${point.cy} Z`}
           {...common}
         />
       ) : isMeasuredNoise ? (
-        <circle cx={point.cx} cy={point.cy} r="5.5" {...common} />
+        <circle cx={point.cx} cy={point.cy} r="6.5" {...common} />
       ) : (
         <rect
-          x={point.cx - 5}
-          y={point.cy - 5}
-          width="10"
-          height="10"
+          x={point.cx - 6}
+          y={point.cy - 6}
+          width="12"
+          height="12"
           rx="1"
           {...common}
         />
@@ -519,11 +519,11 @@ export function PerformancePlot({
               tickFormatter={(value: number) => value.toLocaleString("en-US")}
               tickLine={false}
               name="Wavelength"
-              unit=" nm"
               label={{
                 value: "Measurement wavelength (nm)",
                 position: "insideBottom",
                 offset: -18,
+                fontWeight: 700,
               }}
             />
             <YAxis
@@ -537,12 +537,12 @@ export function PerformancePlot({
               tickLine={false}
               width={82}
               name="Specific detectivity"
-              unit=" Jones"
               label={{
                 value: "Specific detectivity, D* (Jones)",
                 angle: -90,
                 position: "insideLeft",
                 offset: 6,
+                fontWeight: 700,
               }}
             />
             <Tooltip

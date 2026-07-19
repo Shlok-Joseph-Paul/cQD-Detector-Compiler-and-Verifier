@@ -185,10 +185,18 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                 )}`;
                 const expanded =
                   expandedMeasurementId === measurement.measurementId;
+                const amber = measurement.flag === "amber";
                 const detailsId = `${measurement.measurementId}-details`;
                 return (
                   <Fragment key={measurement.measurementId}>
-                    <tr className={expanded ? "is-expanded" : undefined}>
+                    <tr
+                      className={[
+                        expanded ? "is-expanded" : "",
+                        amber ? "is-amber" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                    >
                       <th scope="row">
                         <button
                           className="measurement-table__expand"
@@ -236,7 +244,11 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                       </td>
                     </tr>
                     {expanded ? (
-                      <tr className="measurement-table__details-row">
+                      <tr
+                        className={`measurement-table__details-row${
+                          amber ? " is-amber" : ""
+                        }`}
+                      >
                         <td colSpan={6} id={detailsId}>
                           <div className="measurement-table__details-grid">
                             <div>

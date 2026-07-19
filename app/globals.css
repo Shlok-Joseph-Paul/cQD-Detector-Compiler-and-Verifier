@@ -2294,6 +2294,19 @@ select {
   background: #f0f5f2;
 }
 
+.measurement-table--compact tbody tr.is-amber {
+  background: #fff8e6;
+}
+
+.measurement-table--compact tbody tr.is-amber:hover,
+.measurement-table--compact tbody tr.is-amber.is-expanded {
+  background: #fff2cf;
+}
+
+.measurement-table--compact tbody tr.is-amber > :first-child {
+  box-shadow: inset 3px 0 0 #d6a33a;
+}
+
 .measurement-table__expand {
   display: inline-flex;
   align-items: center;
@@ -2326,6 +2339,10 @@ select {
 .measurement-table__details-row > td {
   padding: 0 !important;
   background: #f7f8f4;
+}
+
+.measurement-table__details-row.is-amber > td {
+  background: #fff8e6;
 }
 
 .measurement-table__details-grid {

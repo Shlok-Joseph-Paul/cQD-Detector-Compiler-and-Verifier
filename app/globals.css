@@ -1732,6 +1732,115 @@ select {
   top: 110px;
 }
 
+.methodology-sidebar {
+  display: grid;
+  gap: 14px;
+}
+
+.methodology-sidebar__note {
+  margin: 0;
+}
+
+.reading-list-card {
+  padding: 22px;
+  border: 1px solid var(--line-dark);
+  border-top: 3px solid var(--teal);
+  background: var(--surface);
+  box-shadow: 0 14px 36px rgb(20 40 34 / 7%);
+}
+
+.reading-list-card .section-kicker {
+  margin-bottom: 8px;
+}
+
+.reading-list-card h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-serif);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.reading-list-card__intro {
+  margin: 13px 0 0;
+  color: var(--ink-soft);
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+}
+
+.measurement-reading-list {
+  display: grid;
+  gap: 0;
+  margin: 19px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: recommended-reading;
+}
+
+.measurement-reading-list li {
+  position: relative;
+  margin: 0;
+  padding: 15px 0 15px 34px;
+  border-top: 1px solid var(--line);
+  counter-increment: recommended-reading;
+}
+
+.measurement-reading-list li::before {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border: 1px solid var(--sage);
+  border-radius: 50%;
+  color: var(--teal);
+  content: counter(recommended-reading, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.measurement-reading-list a {
+  display: grid;
+  gap: 5px;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.measurement-reading-list a:hover strong {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.measurement-reading-list strong {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.measurement-reading-list span {
+  color: var(--teal);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.045em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.measurement-reading-list p {
+  margin: 7px 0 0;
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
 .prose-lede {
   color: var(--ink-soft);
   font-family: var(--font-serif);

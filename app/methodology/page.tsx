@@ -6,7 +6,7 @@ import { SiteShell } from "@/components/SiteShell";
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "Scope, record structure, noise classifications, and curation policy for the CQD Photodiode Atlas.",
+    "Scope, record structure, noise classifications, recommended measurement literature, and curation policy for the CQD Photodiode Atlas.",
 };
 
 const includedRecords = [
@@ -277,13 +277,105 @@ export default function MethodologyPage() {
           </section>
         </article>
 
-        <aside className="callout" aria-label="Interpretation note">
-          <strong>Published does not mean independently verified.</strong>
-          <p>
-            The atlas reports values and methods as described by their sources.
-            Inclusion is not an endorsement of a result, and the atlas does not
-            reproduce the experiment or independently certify its accuracy.
-          </p>
+        <aside
+          className="methodology-sidebar"
+          aria-label="Methodology notes and recommended reading"
+        >
+          <section className="callout methodology-sidebar__note">
+            <strong>Published does not mean independently verified.</strong>
+            <p>
+              The atlas reports values and methods as described by their
+              sources. Inclusion is not an endorsement of a result, and the
+              atlas does not reproduce the experiment or independently certify
+              its accuracy.
+            </p>
+          </section>
+
+          <section
+            className="reading-list-card"
+            aria-labelledby="measurement-reading-heading"
+          >
+            <p className="section-kicker">For experimentalists</p>
+            <h2 id="measurement-reading-heading">
+              Learn to measure photodetectors well
+            </h2>
+            <p className="reading-list-card__intro">
+              These papers are useful starting points for planning,
+              interpreting, and reporting photodetector measurements.
+            </p>
+            <ol className="measurement-reading-list">
+              <li>
+                <a
+                  href="https://doi.org/10.1038/s41566-018-0288-z"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <strong>
+                    Accurate characterization of next-generation thin-film
+                    photodetectors
+                  </strong>
+                  <span>Fang et al. · Nature Photonics · 2019</span>
+                </a>
+                <p>
+                  A concise introduction to noise spectra, response linearity,
+                  NEP, and common D* overestimation errors.
+                </p>
+              </li>
+              <li>
+                <a
+                  href="https://doi.org/10.24425/bpasts.2022.140534"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <strong>
+                    Review of photodetectors characterization methods
+                  </strong>
+                  <span>
+                    Bielecki et al. · Bulletin of the Polish Academy of Sciences
+                    · 2022
+                  </span>
+                </a>
+                <p>
+                  A broad reference for detector parameters, measurement
+                  systems, and metrological definitions.
+                </p>
+              </li>
+              <li>
+                <a
+                  href="https://doi.org/10.1021/acsphotonics.2c01672"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <strong>
+                    Commentary on the Record-Breaking Performance of
+                    Low-Dimensional Solid Photodetectors
+                  </strong>
+                  <span>Rogalski · ACS Photonics · 2023</span>
+                </a>
+                <p>
+                  Context for signal-fluctuation and BLIP limits when evaluating
+                  exceptional detectivity claims.
+                </p>
+              </li>
+              <li>
+                <a
+                  href="https://doi.org/10.1038/s41566-025-01759-1"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <strong>
+                    Guidelines for accurate evaluation of photodetectors based
+                    on emerging semiconductor technologies
+                  </strong>
+                  <span>Pecunia et al. · Nature Photonics · 2025</span>
+                </a>
+                <p>
+                  A community consensus statement on characterization,
+                  reporting, and application-aware benchmarking.
+                </p>
+              </li>
+            </ol>
+          </section>
         </aside>
       </div>
     </SiteShell>

@@ -83,7 +83,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 1);
-  assert.equal(atlas.measurements.length, 4);
+  assert.equal(atlas.measurements.length, 12);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.ok(
     atlas.records.every(
@@ -91,9 +91,13 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
         source.publication_type === "journal_article" && source.peer_reviewed,
     ),
   );
-  assert.ok(
-    atlas.records.every(({ measurement: point }) => point.flag === "green"),
+  const amberRecords = atlas.records.filter(
+    ({ measurement: point }) => point.flag === "amber",
   );
+  assert.equal(amberRecords.length, 1);
+  assert.deepEqual(amberRecords[0]?.measurement.amber_reasons, [
+    "shot_noise_approximation",
+  ]);
 });
 
 test("CSV parser handles BOMs, quoted commas, escaped quotes, CRLF, and multiline fields", () => {

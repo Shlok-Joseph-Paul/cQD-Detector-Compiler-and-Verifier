@@ -22,6 +22,7 @@ export const NOISE_INSTRUMENTS = [
   "oscilloscope_fft",
   "transient_current_fft",
   "dedicated_noise_analyzer",
+  "source_measure_unit",
   "other",
   "not_reported",
   "not_applicable",
@@ -49,6 +50,8 @@ export type Flag = (typeof FLAGS)[number];
  */
 export const AMBER_REASONS = [
   "shot_noise_approximation",
+  "lock_in_only_noise_measurement",
+  "source_measure_unit_noise_measurement",
   "above_blip_limit",
 ] as const;
 export type AmberReason = (typeof AMBER_REASONS)[number];
@@ -121,7 +124,7 @@ export interface JoinedMeasurement {
 }
 
 export interface AtlasData extends AtlasEntities {
-  schema_version: 2;
+  schema_version: 3;
   /** Human-facing release identifier for reproducible exports and citations. */
   dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */

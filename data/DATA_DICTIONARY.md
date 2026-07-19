@@ -105,6 +105,10 @@ ranges.
   acquisition hardware is not identified.
 - `dedicated_noise_analyzer`: dedicated low-frequency or semiconductor-noise
   analyzer.
+- `source_measure_unit`: an SMU or parameter analyzer used to acquire the noise
+  signal, including as part of a chain with a dedicated noise analyzer. Do not
+  use this classification when the unit only supplies bias, records J–V data,
+  or measures responsivity/EQE.
 - `other`: a reported acquisition method outside the controlled classes;
   explain it in `noise_instrument_details`.
 - `not_reported`: noise is reported or implied, but the supplied source does
@@ -114,22 +118,30 @@ ranges.
 
 `not_reported` and `not_applicable` cannot be combined with another instrument.
 Every shot-noise-approximation record must use `not_applicable`. A missing or
-unreported instrument does not change the green/amber flag.
+unreported instrument does not change the green/amber flag. A lock-in counts
+only when it acquired noise; lock-ins used only for EQE, responsivity, or other
+optical characterization are excluded from `noise_instruments`.
 
 ### Amber reason keys
 
-| Key                        | When to use                                                                                |
-| -------------------------- | ------------------------------------------------------------------------------------------ |
-| `shot_noise_approximation` | Shot-noise approximation was used.                                                         |
-| `above_blip_limit`         | Reported D* appears substantially above a plausible BLIP limit and warrants manual review. |
+| Key                                     | When to use                                                                                |
+| --------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `shot_noise_approximation`              | Shot-noise approximation was used.                                                         |
+| `lock_in_only_noise_measurement`        | A lock-in amplifier was the sole noise-acquisition class.                                  |
+| `source_measure_unit_noise_measurement` | An SMU or parameter analyzer acquired the noise signal.                                    |
+| `above_blip_limit`                      | Reported D* appears substantially above a plausible BLIP limit and warrants manual review. |
 
 The validator automatically requires `shot_noise_approximation` when that noise
-method is selected. `above_blip_limit` is a curator-applied judgment; the atlas
-does not attempt an automatic BLIP calculation. Missing area, temperature,
-bias, frequency, source location, graphical extraction, calculated values,
-preprint status, or incomplete conditions do not independently trigger amber.
-A green record contains no amber reason or explanation. Green is a curation
-status—not an endorsement or independent reproduction of the result.
+method is selected, `lock_in_only_noise_measurement` when `lock_in_amplifier` is
+the only noise instrument, and `source_measure_unit_noise_measurement` whenever
+`source_measure_unit` acquired noise. A mixed FFT-plus-lock-in workflow does not
+trigger the lock-in-only reason. `above_blip_limit` is a curator-applied
+judgment; the atlas does not attempt an automatic BLIP calculation. Missing
+area, temperature, bias, frequency, source location, graphical extraction,
+calculated values, preprint status, or incomplete conditions do not
+independently trigger amber. A green record contains no amber reason or
+explanation. Green is a curation status—not an endorsement or independent
+reproduction of the result.
 
 ## Validation and generation
 

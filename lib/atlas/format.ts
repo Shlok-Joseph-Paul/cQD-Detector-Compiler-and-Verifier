@@ -36,6 +36,7 @@ export const NOISE_INSTRUMENT_LABELS: Record<NoiseInstrument, string> = {
   oscilloscope_fft: "Oscilloscope FFT",
   transient_current_fft: "Transient-current FFT",
   dedicated_noise_analyzer: "Dedicated noise analyzer",
+  source_measure_unit: "Source measure unit",
   other: "Other instrument",
   not_reported: "Not reported",
   not_applicable: "Not applicable",
@@ -57,6 +58,10 @@ export const BIAS_LABELS: Record<BiasCondition, string> = {
 export const AMBER_REASON_LABELS: Record<string, string> = {
   shot_noise_approximation:
     "Detectivity was calculated using a shot-noise approximation rather than a measured total-noise spectrum.",
+  lock_in_only_noise_measurement:
+    "Noise was acquired using only a lock-in amplifier; interpret comparisons with full-spectrum noise measurements with caution.",
+  source_measure_unit_noise_measurement:
+    "Noise was acquired using a source measure unit or parameter analyzer rather than a dedicated noise-measurement instrument.",
   above_blip_limit:
     "The reported detectivity appears substantially above a plausible BLIP limit and warrants manual review.",
 };

@@ -48,6 +48,16 @@ export const AMBER_REASON_DETAILS: Record<AmberReason, AmberReasonDetail> = {
     explanation:
       "Detectivity was calculated using a shot-noise approximation rather than a measured total-noise spectrum.",
   },
+  lock_in_only_noise_measurement: {
+    label: "Lock-in-only noise measurement",
+    explanation:
+      "Noise was acquired using only a lock-in amplifier, which warrants caution when comparing the reported detectivity with full-spectrum noise measurements.",
+  },
+  source_measure_unit_noise_measurement: {
+    label: "Source-measure-unit noise measurement",
+    explanation:
+      "Noise was acquired using a source measure unit or parameter analyzer rather than a dedicated noise-measurement instrument.",
+  },
   above_blip_limit: {
     label: "Potentially above the BLIP limit",
     explanation:

@@ -272,7 +272,7 @@ test("filtered CSV is one measurement per row and safely escapes text", () => {
   assert.match(lines[0], /source_location,curator_status/);
   assert.match(lines[0], /authors,first_author,journal/);
   assert.match(lines[0], /dataset_version$/);
-  assert.match(lines[1], /,1\.1\.0$/);
+  assert.match(lines[1], /,1\.2\.0$/);
   assert.match(lines[1], /measurement-1/);
   assert.match(lines[1], /1\.2e\+?12/);
   assert.match(lines[1], /Ada Researcher\|Sam Scientist/);

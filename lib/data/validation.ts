@@ -68,9 +68,20 @@ export function deriveRequiredAmberReasons(
   measurement: Measurement,
 ): AmberReason[] {
   const reasons: AmberReason[] = [];
+  const instruments = Array.isArray(measurement.noise_instruments)
+    ? measurement.noise_instruments
+    : [];
 
   if (measurement.noise_method === "shot_noise_approximation") {
     reasons.push("shot_noise_approximation");
+  }
+
+  if (instruments.length === 1 && instruments[0] === "lock_in_amplifier") {
+    reasons.push("lock_in_only_noise_measurement");
+  }
+
+  if (instruments.includes("source_measure_unit")) {
+    reasons.push("source_measure_unit_noise_measurement");
   }
 
   return uniqueReasons(reasons);

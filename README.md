@@ -61,12 +61,13 @@ the measurement—not a paper, a champion value selected by the atlas, or an
 average across devices.
 
 Only green and amber public flags are used. Amber does **not** mean a result is
-incorrect. It is reserved for a shot-noise approximation or a reported D* that
-a curator judges to be substantially above a plausible BLIP limit. The latter
-check is applied only when the comparison is straightforward; the atlas does
-not calculate BLIP limits automatically. Missing conditions remain visible as
-“Not reported” but do not change the flag. Every amber record must contain at
-least one machine-readable reason and a human-readable explanation.
+incorrect. It is required for a shot-noise approximation, a lock-in amplifier
+used as the sole noise-acquisition method, or noise acquired by a source measure
+unit. A curator may also apply amber when reported D* is substantially above a
+plausible BLIP limit. That comparison is made only when straightforward; the
+atlas does not calculate BLIP limits automatically. Missing conditions remain
+visible as “Not reported” but do not change the flag. Every amber record must
+contain at least one machine-readable reason and a human-readable explanation.
 
 The atlas reproduces published claims as documented. It does not independently
 repeat experiments, endorse reported values, calculate theoretical limits, or
@@ -163,9 +164,12 @@ a guessed value as a substitute for missing information.
    source page/figure/table/supporting-information location, operating
    conditions, and curator notes. Preserve the source units in notes when a
    conversion is needed.
-7. **Apply flags.** A shot-noise approximation is always amber. A clearly
+7. **Apply flags.** Shot-noise approximations, lock-in-only noise acquisition,
+   and source-measure-unit noise acquisition are always amber. A clearly
    anomalous value above a plausible BLIP limit may be marked amber after
-   curator review. Other missing or incomplete fields do not affect the flag.
+   curator review. A lock-in used only for EQE or responsivity does not count as
+   a noise instrument. Other missing or incomplete fields do not affect the
+   flag.
 8. **Validate and inspect.** Run `pnpm run validate-data`, review the generated
    diff in `data/generated/atlas.json`, then run `pnpm test` and
    `pnpm run build`.

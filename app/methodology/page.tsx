@@ -28,11 +28,15 @@ const greenCriteria = [
   "The value clearly belongs to a CQD photodiode.",
   "Detectivity and wavelength are explicitly identifiable.",
   "The value does not use a shot-noise approximation.",
+  "A lock-in amplifier was not the sole noise-acquisition method.",
+  "A source measure unit was not used to acquire the noise signal.",
   "The reported detectivity does not appear substantially above a plausible BLIP limit.",
 ];
 
 const amberReasons = [
   "Detectivity uses a shot-noise approximation.",
+  "A lock-in amplifier was the sole noise-acquisition method.",
+  "A source measure unit or parameter analyzer acquired the noise signal.",
   "The reported detectivity appears substantially above a plausible background-limited infrared photodetection (BLIP) limit and warrants manual review.",
 ];
 
@@ -174,6 +178,16 @@ export default function MethodologyPage() {
               instrument-chain details when the source reports them.
             </p>
             <p>
+              A lock-in amplifier is classified here only when the publication
+              explicitly uses it to acquire noise or a noise spectrum. A lock-in
+              used solely for responsivity, EQE, or photocurrent measurements is
+              not reported as a noise instrument. Likewise, a source measure
+              unit is classified only when the source explicitly includes it in
+              the noise-acquisition chain, even alongside a dedicated noise
+              analyzer—not when it merely supplies bias, records J–V data, or
+              measures responsivity/EQE.
+            </p>
+            <p>
               Some publications combine acquisition methods across frequency
               ranges; those records retain every reported method. If measured
               noise is shown but the supplied article does not identify the
@@ -241,11 +255,13 @@ export default function MethodologyPage() {
 
             <p>
               Every amber record carries at least one machine-readable reason
-              and a human-readable explanation. Shot-noise-approximation records
-              are always amber. A potential BLIP-limit concern is applied by a
-              curator only when the comparison is straightforward and the
-              reported value is clearly anomalous. An amber flag is never shown
-              without an explanation.
+              and a human-readable explanation. Shot-noise approximations,
+              lock-in-only noise measurements, and source-measure-unit noise
+              measurements are always amber. Mixed FFT-plus-lock-in acquisition
+              does not trigger the lock-in-only rule. A potential BLIP-limit
+              concern is applied by a curator only when the comparison is
+              straightforward and the reported value is clearly anomalous. An
+              amber flag is never shown without an explanation.
             </p>
           </section>
 

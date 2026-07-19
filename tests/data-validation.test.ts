@@ -86,7 +86,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     readFile(new URL("measurements.csv", dataDirectory), "utf8"),
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
-  assert.equal(atlas.schema_version, 2);
+  assert.equal(atlas.schema_version, 3);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
   assert.equal(atlas.measurements.length, 41);
   assert.equal(atlas.records.length, atlas.measurements.length);
@@ -99,11 +99,26 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 3);
-  assert.ok(
-    amberRecords.every(({ measurement }) =>
+  assert.equal(amberRecords.length, 7);
+  assert.equal(
+    amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
-    ),
+    ).length,
+    3,
+  );
+  assert.equal(
+    amberRecords.filter(({ measurement }) =>
+      measurement.amber_reasons.includes("lock_in_only_noise_measurement"),
+    ).length,
+    3,
+  );
+  assert.equal(
+    amberRecords.filter(({ measurement }) =>
+      measurement.amber_reasons.includes(
+        "source_measure_unit_noise_measurement",
+      ),
+    ).length,
+    1,
   );
 });
 
@@ -194,6 +209,33 @@ test("noise-instrument classifications remain consistent with the noise method",
         code === "measured_noise_instrument_mismatch",
     ),
   );
+});
+
+test("automatic amber rules distinguish lock-in-only and SMU noise acquisition", () => {
+  const lockInOnly = applyAutomaticAmberRules({
+    ...measurement,
+    noise_instruments: ["lock_in_amplifier"],
+  });
+  assert.equal(lockInOnly.flag, "amber");
+  assert.deepEqual(lockInOnly.amber_reasons, [
+    "lock_in_only_noise_measurement",
+  ]);
+
+  const mixedAcquisition = applyAutomaticAmberRules({
+    ...measurement,
+    noise_instruments: ["transient_current_fft", "lock_in_amplifier"],
+  });
+  assert.equal(mixedAcquisition.flag, "green");
+  assert.deepEqual(mixedAcquisition.amber_reasons, []);
+
+  const sourceMeasureUnit = applyAutomaticAmberRules({
+    ...measurement,
+    noise_instruments: ["dedicated_noise_analyzer", "source_measure_unit"],
+  });
+  assert.equal(sourceMeasureUnit.flag, "amber");
+  assert.deepEqual(sourceMeasureUnit.amber_reasons, [
+    "source_measure_unit_noise_measurement",
+  ]);
 });
 
 test("shot-noise records are automatically amber and strict validation catches stale green input", () => {

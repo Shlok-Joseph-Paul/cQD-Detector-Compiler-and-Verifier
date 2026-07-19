@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "dataset_version": "1.1.0",
+  "schema_version": 3,
+  "dataset_version": "1.2.0",
   "generated_at": "2026-07-19T00:00:00.000Z",
   "papers": [
     {
@@ -969,9 +969,11 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4, Figure 2c; pp. 6-7 methods",
       "curator_status": "reviewed",
-      "flag": "green",
-      "amber_reasons": [],
-      "amber_explanation": null,
+      "flag": "amber",
+      "amber_reasons": [
+        "lock_in_only_noise_measurement"
+      ],
+      "amber_explanation": "Noise was acquired using only an SRS SR865A lock-in amplifier, which warrants caution when comparing the reported detectivity with full-spectrum noise measurements.",
       "curator_notes": "Detectivity is reported at 10 V/µm with stabilized noise above 1 kHz; no applied voltage or single exact measurement frequency is provided.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
@@ -997,9 +999,11 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
       "curator_status": "reviewed",
-      "flag": "green",
-      "amber_reasons": [],
-      "amber_explanation": null,
+      "flag": "amber",
+      "amber_reasons": [
+        "lock_in_only_noise_measurement"
+      ],
+      "amber_explanation": "Noise was acquired using only an SRS SR850 lock-in amplifier, which warrants caution when comparing the reported detectivity with full-spectrum noise measurements.",
       "curator_notes": "Measured room-temperature D* under reverse bias; numerical temperature and exact D* frequency are not stated.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
@@ -1025,9 +1029,11 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
       "curator_status": "reviewed",
-      "flag": "green",
-      "amber_reasons": [],
-      "amber_explanation": null,
+      "flag": "amber",
+      "amber_reasons": [
+        "lock_in_only_noise_measurement"
+      ],
+      "amber_explanation": "Noise was acquired using only an SRS SR850 lock-in amplifier, which warrants caution when comparing the reported detectivity with full-spectrum noise measurements.",
       "curator_notes": "Measured room-temperature D* in the self-powered state; numerical temperature and exact D* frequency are not stated.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
@@ -1951,16 +1957,19 @@
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
       "noise_instruments": [
-        "dedicated_noise_analyzer"
+        "dedicated_noise_analyzer",
+        "source_measure_unit"
       ],
       "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer with a Keysight B1500 parameter analyzer.",
       "noise_instrument_source": "PDF p. 7, Experimental section",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
-      "amber_reasons": [],
-      "amber_explanation": null,
+      "flag": "amber",
+      "amber_reasons": [
+        "source_measure_unit_noise_measurement"
+      ],
+      "amber_explanation": "The reported noise-acquisition chain includes a Keysight B1500 parameter analyzer, so the result is flagged for caution even though it is paired with a dedicated noise analyzer.",
       "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
@@ -2263,9 +2272,11 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4, Figure 2c; pp. 6-7 methods",
         "curator_status": "reviewed",
-        "flag": "green",
-        "amber_reasons": [],
-        "amber_explanation": null,
+        "flag": "amber",
+        "amber_reasons": [
+          "lock_in_only_noise_measurement"
+        ],
+        "amber_explanation": "Noise was acquired using only an SRS SR865A lock-in amplifier, which warrants caution when comparing the reported detectivity with full-spectrum noise measurements.",
         "curator_notes": "Detectivity is reported at 10 V/µm with stabilized noise above 1 kHz; no applied voltage or single exact measurement frequency is provided.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
@@ -2333,9 +2344,11 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
         "curator_status": "reviewed",
-        "flag": "green",
-        "amber_reasons": [],
-        "amber_explanation": null,
+        "flag": "amber",
+        "amber_reasons": [
+          "lock_in_only_noise_measurement"
+        ],
+        "amber_explanation": "Noise was acquired using only an SRS SR850 lock-in amplifier, which warrants caution when comparing the reported detectivity with full-spectrum noise measurements.",
         "curator_notes": "Measured room-temperature D* under reverse bias; numerical temperature and exact D* frequency are not stated.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
@@ -2403,9 +2416,11 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
         "curator_status": "reviewed",
-        "flag": "green",
-        "amber_reasons": [],
-        "amber_explanation": null,
+        "flag": "amber",
+        "amber_reasons": [
+          "lock_in_only_noise_measurement"
+        ],
+        "amber_explanation": "Noise was acquired using only an SRS SR850 lock-in amplifier, which warrants caution when comparing the reported detectivity with full-spectrum noise measurements.",
         "curator_notes": "Measured room-temperature D* in the self-powered state; numerical temperature and exact D* frequency are not stated.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
@@ -4480,16 +4495,19 @@
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
         "noise_instruments": [
-          "dedicated_noise_analyzer"
+          "dedicated_noise_analyzer",
+          "source_measure_unit"
         ],
         "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer with a Keysight B1500 parameter analyzer.",
         "noise_instrument_source": "PDF p. 7, Experimental section",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
-        "amber_reasons": [],
-        "amber_explanation": null,
+        "flag": "amber",
+        "amber_reasons": [
+          "source_measure_unit_noise_measurement"
+        ],
+        "amber_explanation": "The reported noise-acquisition chain includes a Keysight B1500 parameter analyzer, so the result is flagged for caution even though it is paired with a dedicated noise analyzer.",
         "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"

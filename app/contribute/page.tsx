@@ -162,14 +162,35 @@ export default function ContributePage() {
                 detector performance easier to compare while keeping measurement
                 methods and source evidence visible.
               </p>
-              <a
-                className="curator-card__link"
-                href="https://github.com/Shlok-Joseph-Paul"
-                target="_blank"
-                rel="noreferrer"
+              <div
+                className="curator-card__links"
+                aria-label="Research profiles"
               >
-                GitHub profile <span aria-hidden="true">↗</span>
-              </a>
+                <a
+                  className="curator-card__link"
+                  href="https://scholar.google.com/citations?user=aXkkDCoAAAAJ&hl=en"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Scholar <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  className="curator-card__link"
+                  href="https://orcid.org/0000-0001-8038-5497"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  ORCID <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  className="curator-card__link"
+                  href="https://github.com/Shlok-Joseph-Paul"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
           </section>
         </aside>

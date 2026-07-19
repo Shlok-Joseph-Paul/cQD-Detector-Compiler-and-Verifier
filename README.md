@@ -22,8 +22,7 @@ the filtered records can be downloaded as CSV.
 
 The atlas includes experimental, solution-processed CQD photodiodes with a
 reported specific detectivity in Jones and an identifiable measurement
-wavelength. Peer-reviewed papers are supported; preprints may be included when
-they are clearly labeled and assigned an amber flag.
+wavelength. Peer-reviewed papers and clearly labeled preprints are supported.
 
 The atlas excludes:
 
@@ -59,14 +58,13 @@ A paper may therefore produce several points on the atlas. The central unit is
 the measurement—not a paper, a champion value selected by the atlas, or an
 average across devices.
 
-Only green and amber public flags are used. Green records have completed human
-review, use experimentally measured noise, contain the essential operating
-context, and trace to a directly reported value. Amber does **not** mean a
-result is incorrect. It identifies a documented comparability issue, such as a
-shot-noise estimate, calculated or unclear noise, missing conditions,
-graphically extracted data, pending review, a champion-device qualification, or
-a preprint. Every amber record must contain at least one machine-readable reason
-and a human-readable explanation.
+Only green and amber public flags are used. Amber does **not** mean a result is
+incorrect. It is reserved for a shot-noise approximation or a reported D* that
+a curator judges to be substantially above a plausible BLIP limit. The latter
+check is applied only when the comparison is straightforward; the atlas does
+not calculate BLIP limits automatically. Missing conditions remain visible as
+“Not reported” but do not change the flag. Every amber record must contain at
+least one machine-readable reason and a human-readable explanation.
 
 The atlas reproduces published claims as documented. It does not independently
 repeat experiments, endorse reported values, calculate theoretical limits, or
@@ -162,9 +160,9 @@ a guessed value as a substitute for missing information.
    detectivity extraction method, source page/figure/table/supporting-information
    location, operating conditions, and curator notes. Preserve the source units
    in notes when a conversion is needed.
-7. **Apply flags.** A shot-noise approximation is always amber. Add every
-   applicable amber reason using the data dictionary's encoding and write a
-   concise explanation. A green row must satisfy all green criteria.
+7. **Apply flags.** A shot-noise approximation is always amber. A clearly
+   anomalous value above a plausible BLIP limit may be marked amber after
+   curator review. Other missing or incomplete fields do not affect the flag.
 8. **Validate and inspect.** Run `pnpm run validate-data`, review the generated
    diff in `data/generated/atlas.json`, then run `pnpm test` and
    `pnpm run build`.
@@ -179,7 +177,7 @@ other checks, it rejects:
 - non-positive detectivity or wavelength;
 - implausible publication years;
 - values outside a controlled vocabulary;
-- green records that do not satisfy every green criterion;
+- green shot-noise records;
 - shot-noise records not marked amber; and
 - amber records without at least one reason and an explanation.
 

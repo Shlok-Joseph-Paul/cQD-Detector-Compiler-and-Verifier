@@ -41,36 +41,8 @@ export const BIAS_LABELS: Record<BiasCondition, string> = {
 export const AMBER_REASON_LABELS: Record<string, string> = {
   shot_noise_approximation:
     "Detectivity was calculated using a shot-noise approximation rather than a measured total-noise spectrum.",
-  calculated_noise: "Noise was calculated rather than directly measured.",
-  calculated_shot_and_thermal_noise:
-    "Shot and thermal noise were calculated rather than directly measured.",
-  unclear_noise_method: "The reported noise methodology is unclear.",
-  noise_method_unspecified: "The reported noise methodology is unspecified.",
-  missing_measurement_frequency: "Measurement frequency was not reported.",
-  measurement_frequency_missing: "Measurement frequency was not reported.",
-  missing_bias: "Applied bias was not reported.",
-  bias_missing: "Applied bias was not reported.",
-  missing_temperature: "Operating temperature was not reported.",
-  temperature_missing: "Operating temperature was not reported.",
-  missing_device_area: "Active device area was not reported.",
-  device_area_missing: "Active device area was not reported.",
-  missing_active_area: "Active device area was not reported.",
-  missing_source_location:
-    "The page, figure, table, or supporting-information location was not recorded.",
-  graphically_extracted: "The value was estimated from a published graph.",
-  estimated_from_graph: "The value was estimated from a published graph.",
-  calculated_from_reported_values:
-    "Detectivity was calculated from reported values rather than stated directly.",
-  detectivity_extraction_unspecified:
-    "How the detectivity value was obtained is not specified.",
-  pending_human_review: "The record has not yet received full human review.",
-  not_fully_reviewed: "The record has not yet received full human review.",
-  champion_device:
-    "The value represents a champion device, which may affect comparability.",
-  incomplete_conditions: "Important measurement conditions are incomplete.",
-  incomplete_measurement_conditions:
-    "Important measurement conditions are incomplete or unclear.",
-  preprint: "The source is a preprint and has not completed peer review.",
+  above_blip_limit:
+    "The reported detectivity appears substantially above a plausible BLIP limit and warrants manual review.",
 };
 
 function superscript(value: number): string {

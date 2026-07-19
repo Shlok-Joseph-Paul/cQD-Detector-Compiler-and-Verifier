@@ -100,7 +100,7 @@ const shotNoiseRecord: AtlasRecord = {
     measurementFrequencyHz: null,
     noiseMethod: "shot_noise_approximation",
     flag: "amber",
-    amberReasons: ["shot_noise_approximation", "missing_measurement_frequency"],
+    amberReasons: ["shot_noise_approximation"],
     amberExplanation: "Demonstration caution explanation.",
   },
 };

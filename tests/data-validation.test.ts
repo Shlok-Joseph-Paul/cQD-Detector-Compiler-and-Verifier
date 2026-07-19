@@ -87,11 +87,12 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.ok(
     atlas.records.every(
-      ({ paper: source, device: parent, measurement: point }) =>
-        [source.title, parent.device_notes, point.curator_notes].some((value) =>
-          value?.includes("Demonstration data—not a literature record"),
-        ),
+      ({ paper: source }) =>
+        source.publication_type === "journal_article" && source.peer_reviewed,
     ),
+  );
+  assert.ok(
+    atlas.records.every(({ measurement: point }) => point.flag === "green"),
   );
 });
 
@@ -132,20 +133,17 @@ test("schema validation rejects non-positive values and implausible years", () =
   );
 });
 
-test("green records must satisfy all documented operating criteria", () => {
+test("missing operating conditions do not make a reviewed record amber", () => {
   const result = validateAtlasEntities(
-    entities({ bias_v: null, measurement_frequency_hz: null }),
+    entities({
+      bias_v: null,
+      measurement_frequency_hz: null,
+      temperature_k: null,
+      source_location: null,
+      detectivity_extraction_method: "graphically_extracted",
+    }),
   );
-  assert.equal(result.valid, false);
-  assert.ok(
-    result.issues.some(
-      ({ field, code, message }) =>
-        field === "flag" &&
-        code === "green_requirements" &&
-        message.includes("missing_bias") &&
-        message.includes("missing_measurement_frequency"),
-    ),
-  );
+  assert.equal(result.valid, true);
 });
 
 test("shot-noise records are automatically amber and strict validation catches stale green input", () => {
@@ -153,7 +151,7 @@ test("shot-noise records are automatically amber and strict validation catches s
     ...measurement,
     noise_method: "shot_noise_approximation" as const,
   };
-  const normalized = applyAutomaticAmberRules(shotNoise, device, paper);
+  const normalized = applyAutomaticAmberRules(shotNoise);
   assert.equal(normalized.flag, "amber");
   assert.deepEqual(normalized.amber_reasons, ["shot_noise_approximation"]);
   assert.match(normalized.amber_explanation ?? "", /shot-noise approximation/i);
@@ -194,6 +192,18 @@ test("amber records require both machine-readable reasons and human-readable con
         field === "amber_explanation" && code === "amber_explanation_required",
     ),
   );
+});
+
+test("a curator can mark a clearly anomalous BLIP comparison amber", () => {
+  const result = validateAtlasEntities(
+    entities({
+      flag: "amber",
+      amber_reasons: ["above_blip_limit"],
+      amber_explanation:
+        "Reported detectivity appears substantially above a plausible BLIP limit.",
+    }),
+  );
+  assert.equal(result.valid, true);
 });
 
 test("foreign keys and duplicate measurement identifiers are rejected", () => {

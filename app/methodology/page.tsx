@@ -27,20 +27,13 @@ const greenCriteria = [
   "A human curator has reviewed the record.",
   "The value clearly belongs to a CQD photodiode.",
   "Detectivity and wavelength are explicitly identifiable.",
-  "The noise method uses experimentally measured noise.",
-  "Essential operating information is sufficiently documented.",
-  "The value is directly reported in text, a table, or a clearly labeled figure.",
+  "The value does not use a shot-noise approximation.",
+  "The reported detectivity does not appear substantially above a plausible BLIP limit.",
 ];
 
 const amberReasons = [
-  "Detectivity uses a shot-noise approximation or another calculated-noise model.",
-  "The noise methodology is unclear.",
-  "Detectivity was calculated from reported fields rather than stated directly.",
-  "Measurement frequency, bias, temperature, device area, or other important conditions are missing.",
-  "The value was estimated from a graph rather than read from an explicit number.",
-  "The record has not yet received full human review.",
-  "The value is identified as a champion-device result that warrants additional context.",
-  "The source is a preprint.",
+  "Detectivity uses a shot-noise approximation.",
+  "The reported detectivity appears substantially above a plausible background-limited infrared photodetection (BLIP) limit and warrants manual review.",
 ];
 
 export default function MethodologyPage() {
@@ -230,7 +223,9 @@ export default function MethodologyPage() {
             <p>
               Every amber record carries at least one machine-readable reason
               and a human-readable explanation. Shot-noise-approximation records
-              and preprints are always amber. An amber flag is never shown
+              are always amber. A potential BLIP-limit concern is applied by a
+              curator only when the comparison is straightforward and the
+              reported value is clearly anomalous. An amber flag is never shown
               without an explanation.
             </p>
             <p>
@@ -250,22 +245,24 @@ export default function MethodologyPage() {
               Information absent from the publication is stored as a null value
               and displayed as <q>Not reported</q>. It is never converted to
               zero, guessed from an unrelated condition, or silently backfilled.
-              Missing essential conditions—such as bias, temperature, frequency,
-              or area—trigger an amber reason.
+              Missing conditions—such as bias, temperature, frequency, or
+              area—do not by themselves trigger an amber flag.
             </p>
             <p>
-              A value read from a plot is labeled as graphically extracted and
-              is amber. Its record identifies the source figure, page, table, or
+              A value read from a plot is labeled as graphically extracted. Its
+              record identifies the source figure, page, table, or
               supporting-information location when available. Digitization adds
               uncertainty from plot resolution, axis scaling, and marker width;
               the displayed precision should not be read as greater than the
-              source supports.
+              source supports, but graphical extraction alone does not trigger
+              an amber flag.
             </p>
             <p>
               If a curator derives D<sup>*</sup> from other reported fields, the
               result is labeled as calculated from reported values, retains the
-              calculation provenance, and is amber. It is not presented as a
-              number directly stated by the publication.
+              calculation provenance, and is not presented as a number directly
+              stated by the publication. This provenance alone does not trigger
+              an amber flag.
             </p>
           </section>
 

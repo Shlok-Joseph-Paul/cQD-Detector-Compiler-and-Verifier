@@ -37,20 +37,7 @@ export type Flag = (typeof FLAGS)[number];
  */
 export const AMBER_REASONS = [
   "shot_noise_approximation",
-  "calculated_noise",
-  "noise_method_unspecified",
-  "missing_measurement_frequency",
-  "missing_bias",
-  "missing_temperature",
-  "missing_active_area",
-  "missing_source_location",
-  "estimated_from_graph",
-  "calculated_from_reported_values",
-  "detectivity_extraction_unspecified",
-  "pending_human_review",
-  "champion_device",
-  "incomplete_measurement_conditions",
-  "preprint",
+  "above_blip_limit",
 ] as const;
 export type AmberReason = (typeof AMBER_REASONS)[number];
 

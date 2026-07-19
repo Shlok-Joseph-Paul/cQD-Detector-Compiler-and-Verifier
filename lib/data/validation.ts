@@ -9,9 +9,7 @@ import {
   type AmberReason,
   type AtlasEntities,
   type CsvSourceRows,
-  type Device,
   type Measurement,
-  type Paper,
   type ValidationIssue,
   type ValidationResult,
 } from "./types.ts";
@@ -64,52 +62,15 @@ function isAmberReason(value: unknown): value is AmberReason {
   );
 }
 
-/** Reasons that follow mechanically from the record and cannot be waived. */
+/** Amber reasons that follow mechanically from the record and cannot be waived. */
 export function deriveRequiredAmberReasons(
   measurement: Measurement,
-  device?: Device,
-  paper?: Paper,
 ): AmberReason[] {
   const reasons: AmberReason[] = [];
 
   if (measurement.noise_method === "shot_noise_approximation") {
     reasons.push("shot_noise_approximation");
-  } else if (measurement.noise_method === "calculated_shot_and_thermal_noise") {
-    reasons.push("calculated_noise");
-  } else if (measurement.noise_method === "unspecified") {
-    reasons.push("noise_method_unspecified");
   }
-
-  if (measurement.measurement_frequency_hz == null) {
-    reasons.push("missing_measurement_frequency");
-  }
-  if (measurement.bias_v == null) reasons.push("missing_bias");
-  if (measurement.temperature_k == null) reasons.push("missing_temperature");
-  if (device && device.active_area_cm2 == null) {
-    reasons.push("missing_active_area");
-  }
-  if (
-    typeof measurement.source_location !== "string" ||
-    !measurement.source_location.trim()
-  ) {
-    reasons.push("missing_source_location");
-  }
-
-  if (measurement.detectivity_extraction_method === "graphically_extracted") {
-    reasons.push("estimated_from_graph");
-  } else if (
-    measurement.detectivity_extraction_method ===
-    "calculated_from_reported_values"
-  ) {
-    reasons.push("calculated_from_reported_values");
-  } else if (measurement.detectivity_extraction_method === "unspecified") {
-    reasons.push("detectivity_extraction_unspecified");
-  }
-
-  if (measurement.curator_status === "pending_review") {
-    reasons.push("pending_human_review");
-  }
-  if (paper?.publication_type === "preprint") reasons.push("preprint");
 
   return uniqueReasons(reasons);
 }
@@ -121,14 +82,8 @@ export function deriveRequiredAmberReasons(
  */
 export function applyAutomaticAmberRules(
   measurement: Measurement,
-  device?: Device,
-  paper?: Paper,
 ): Measurement {
-  const requiredReasons = deriveRequiredAmberReasons(
-    measurement,
-    device,
-    paper,
-  );
+  const requiredReasons = deriveRequiredAmberReasons(measurement);
   if (requiredReasons.length === 0) return { ...measurement };
 
   const amber_reasons = uniqueReasons([
@@ -664,14 +619,8 @@ export function validateAtlasEntities(
       continue;
     }
 
-    const paper =
-      device && typeof device.paper_id === "string"
-        ? papersById.get(device.paper_id)
-        : undefined;
     const requiredReasons = deriveRequiredAmberReasons(
       measurement as unknown as Measurement,
-      device as unknown as Device | undefined,
-      paper as unknown as Paper | undefined,
     );
     const flag = measurement.flag;
     const reasons = Array.isArray(measurement.amber_reasons)

@@ -80,39 +80,26 @@ record”**. Delete all `demo-*` rows before adding the first literature record.
   spectrum.
 - `shot_noise_approximation`: shot-noise approximation; always amber and must
   include `shot_noise_approximation` in `amber_reasons`.
-- `calculated_shot_and_thermal_noise`: calculated shot and thermal terms; always
-  amber with `calculated_noise`.
+- `calculated_shot_and_thermal_noise`: calculated shot and thermal terms;
+  preserved as methodology metadata but not automatically amber.
 - `nep_from_minimum_detectable_power`: NEP obtained from a minimum detectable
   optical power measurement.
-- `unspecified`: method cannot be established; always amber with
-  `noise_method_unspecified`.
+- `unspecified`: method cannot be established.
 
 ### Amber reason keys
 
-| Key                                  | When to use                                          |
-| ------------------------------------ | ---------------------------------------------------- |
-| `shot_noise_approximation`           | Shot-noise approximation was used.                   |
-| `calculated_noise`                   | Noise was calculated rather than directly measured.  |
-| `noise_method_unspecified`           | Noise methodology is unclear.                        |
-| `missing_measurement_frequency`      | Measurement frequency is absent.                     |
-| `missing_bias`                       | Bias is absent.                                      |
-| `missing_temperature`                | Temperature is absent.                               |
-| `missing_active_area`                | Parent device area is absent.                        |
-| `missing_source_location`            | Page/figure/table/SI location is absent.             |
-| `estimated_from_graph`               | Detectivity was estimated from a graph.              |
-| `calculated_from_reported_values`    | Curator calculated detectivity from reported values. |
-| `detectivity_extraction_unspecified` | Extraction method is unclear.                        |
-| `pending_human_review`               | Full human review is incomplete.                     |
-| `champion_device`                    | Source identifies the result as a champion device.   |
-| `incomplete_measurement_conditions`  | Other important conditions are incomplete.           |
-| `preprint`                           | Parent source is a preprint.                         |
+| Key                        | When to use                                                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------ |
+| `shot_noise_approximation` | Shot-noise approximation was used.                                                         |
+| `above_blip_limit`         | Reported D* appears substantially above a plausible BLIP limit and warrants manual review. |
 
-The validator automatically derives all non-negotiable reasons and rejects a
-row when one is missing. A green record must be fully reviewed, directly
-reported, have an eligible measured-noise/NEP method, include frequency, bias,
-temperature, active area and source location, and contain no amber reason or
-explanation. A green value is a documentation/comparability designation—not an
-endorsement or independent reproduction of the result.
+The validator automatically requires `shot_noise_approximation` when that noise
+method is selected. `above_blip_limit` is a curator-applied judgment; the atlas
+does not attempt an automatic BLIP calculation. Missing area, temperature,
+bias, frequency, source location, graphical extraction, calculated values,
+preprint status, or incomplete conditions do not independently trigger amber.
+A green record contains no amber reason or explanation. Green is a curation
+status—not an endorsement or independent reproduction of the result.
 
 ## Validation and generation
 

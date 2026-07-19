@@ -933,6 +933,7 @@ select {
 }
 
 .performance-plot__chart {
+  position: relative;
   width: 100%;
   min-height: 560px;
   padding: 0 13px 5px 0;
@@ -951,11 +952,33 @@ select {
   font-size: 12px;
 }
 
+.performance-plot__chart .recharts-cartesian-axis-tick-value {
+  font-weight: 700;
+}
+
+.performance-plot__chart .performance-plot__axis-label {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.performance-plot__region-labels {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  right: 55px;
+  left: 98px;
+  height: 20px;
+  pointer-events: none;
+}
+
 .performance-plot__region-label {
+  position: absolute;
+  color: #7b8883;
   fill: #7b8883 !important;
   font-size: 10px !important;
   font-weight: 750;
   letter-spacing: 0.12em;
+  text-align: center;
 }
 
 .atlas-point {

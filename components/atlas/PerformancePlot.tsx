@@ -96,7 +96,7 @@ async function downloadPlotPng(container: HTMLDivElement | null) {
 
   const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
   style.textContent =
-    ".recharts-text{fill:#52615c;font-family:Arial,sans-serif;font-size:12px}.performance-plot__region-label{fill:#7b8883;font-size:10px;font-weight:700;letter-spacing:1px}.notable-point-label{fill:#263c35;font-size:10px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}";
+    ".recharts-text{fill:#52615c;font-family:Arial,sans-serif;font-size:12px}.recharts-cartesian-axis-tick-value{font-weight:700}.performance-plot__axis-label{font-size:15px;font-weight:700}.notable-point-label{fill:#263c35;font-size:10px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}";
   clone.insertBefore(style, clone.firstChild);
 
   const serialized = new XMLSerializer().serializeToString(clone);
@@ -135,6 +135,7 @@ export interface PerformancePlotProps {
 
 function plotDomain(records: readonly AtlasRecord[]): {
   x: [number, number];
+  xTicks: number[];
   y: [number, number];
   yTicks: number[];
 } {
@@ -146,6 +147,17 @@ function plotDomain(records: readonly AtlasRecord[]): {
   const xMax = Math.max(...wavelengths);
   const xPadding =
     xMin === xMax ? Math.max(Math.abs(xMin) * 0.08, 25) : (xMax - xMin) * 0.05;
+  const paddedXMin = Math.max(0, xMin - xPadding);
+  const paddedXMax = xMax + xPadding;
+  const rawXStep = (paddedXMax - paddedXMin) / 8;
+  const xSteps = [25, 50, 100, 200, 250, 500, 1000, 2000, 5000];
+  const xStep = xSteps.find((step) => step >= rawXStep) ?? 10000;
+  const roundedXMin = Math.max(0, Math.floor(paddedXMin / xStep) * xStep);
+  const roundedXMax = Math.ceil(paddedXMax / xStep) * xStep;
+  const xTicks: number[] = [];
+  for (let value = roundedXMin; value <= roundedXMax; value += xStep) {
+    xTicks.push(value);
+  }
   const minExponent = Math.floor(Math.log10(Math.min(...detectivities)));
   let maxExponent = Math.ceil(Math.log10(Math.max(...detectivities)));
   if (maxExponent === minExponent) maxExponent += 1;
@@ -161,7 +173,8 @@ function plotDomain(records: readonly AtlasRecord[]): {
   if (yTicks.at(-1) !== 10 ** maxExponent) yTicks.push(10 ** maxExponent);
 
   return {
-    x: [Math.max(0, xMin - xPadding), xMax + xPadding],
+    x: [roundedXMin, roundedXMax],
+    xTicks,
     y: [10 ** minExponent, 10 ** maxExponent],
     yTicks,
   };
@@ -492,6 +505,25 @@ export function PerformancePlot({
         role="group"
         aria-label={`Scatter plot of ${validRecords.length} measurements by wavelength and specific detectivity. Use Tab to focus points.`}
       >
+        <div className="performance-plot__region-labels" aria-hidden="true">
+          {WAVELENGTH_REGIONS.map((region) => {
+            const start = Math.max(region.start, domain.x[0]);
+            const end = Math.min(region.end, domain.x[1]);
+            if (end < start) return null;
+            return (
+              <span
+                key={region.label}
+                className="performance-plot__region-label"
+                style={{
+                  left: `${((start - domain.x[0]) / (domain.x[1] - domain.x[0])) * 100}%`,
+                  width: `${((end - start) / (domain.x[1] - domain.x[0])) * 100}%`,
+                }}
+              >
+                {region.label}
+              </span>
+            );
+          })}
+        </div>
         <ResponsiveContainer width="100%" height={560} minWidth={280}>
           <ScatterChart margin={{ top: 34, right: 42, bottom: 36, left: 16 }}>
             {WAVELENGTH_REGIONS.map((region) =>
@@ -503,11 +535,6 @@ export function PerformancePlot({
                   fill={region.fill}
                   fillOpacity={0.72}
                   strokeOpacity={0}
-                  label={{
-                    value: region.label,
-                    position: "insideTop",
-                    className: "performance-plot__region-label",
-                  }}
                 />
               ) : null,
             )}
@@ -516,13 +543,17 @@ export function PerformancePlot({
               type="number"
               dataKey="wavelength"
               domain={domain.x}
+              ticks={domain.xTicks}
               tickFormatter={(value: number) => value.toLocaleString("en-US")}
+              tick={{ fontWeight: 700 }}
               tickLine={false}
               name="Wavelength"
               label={{
                 value: "Measurement wavelength (nm)",
                 position: "insideBottom",
                 offset: -18,
+                className: "performance-plot__axis-label",
+                fontSize: 15,
                 fontWeight: 700,
               }}
             />
@@ -534,6 +565,7 @@ export function PerformancePlot({
               ticks={domain.yTicks}
               allowDataOverflow
               tickFormatter={decadeLabel}
+              tick={{ fontWeight: 700 }}
               tickLine={false}
               width={82}
               name="Specific detectivity"
@@ -542,6 +574,8 @@ export function PerformancePlot({
                 angle: -90,
                 position: "insideLeft",
                 offset: 6,
+                className: "performance-plot__axis-label",
+                fontSize: 15,
                 fontWeight: 700,
               }}
             />

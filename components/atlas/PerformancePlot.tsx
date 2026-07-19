@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef, useState } from "react";
 import {
   CartesianGrid,
+  ReferenceArea,
   ResponsiveContainer,
   Scatter,
   ScatterChart,
@@ -12,9 +14,9 @@ import {
   type TooltipContentProps,
 } from "recharts";
 
+import { atlasRecordsToCsv } from "@/lib/atlas/csv";
 import {
   formatAmberReason,
-  formatCompactScientific,
   formatNoiseMethod,
   formatScientific,
   formatWithUnit,
@@ -30,6 +32,99 @@ interface PlotDatum {
   detectivity: number;
   fill: string;
   record: AtlasRecord;
+}
+
+const SUPERSCRIPT_DIGITS: Record<string, string> = {
+  "-": "⁻",
+  "0": "⁰",
+  "1": "¹",
+  "2": "²",
+  "3": "³",
+  "4": "⁴",
+  "5": "⁵",
+  "6": "⁶",
+  "7": "⁷",
+  "8": "⁸",
+  "9": "⁹",
+};
+
+const WAVELENGTH_REGIONS = [
+  { label: "NIR", start: 700, end: 1000, fill: "#eef6f8" },
+  { label: "SWIR", start: 1000, end: 2500, fill: "#f5f2fa" },
+  { label: "MWIR", start: 3000, end: 5000, fill: "#faf4ea" },
+] as const;
+
+function decadeLabel(value: number): string {
+  const exponent = Math.round(Math.log10(value));
+  const superscript = String(exponent)
+    .split("")
+    .map((digit) => SUPERSCRIPT_DIGITS[digit] ?? digit)
+    .join("");
+  return `10${superscript}`;
+}
+
+function downloadCsv(records: readonly AtlasRecord[]): void {
+  const blob = new Blob([atlasRecordsToCsv(records)], {
+    type: "text/csv;charset=utf-8",
+  });
+  const href = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = href;
+  anchor.download = "cqd-detectivity-map-filtered.csv";
+  anchor.click();
+  URL.revokeObjectURL(href);
+}
+
+async function downloadPlotPng(container: HTMLDivElement | null) {
+  const source = container?.querySelector("svg");
+  if (!source) return;
+  const clone = source.cloneNode(true) as SVGSVGElement;
+  clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  const width = source.viewBox.baseVal.width || source.clientWidth;
+  const height = source.viewBox.baseVal.height || source.clientHeight;
+  clone.setAttribute("width", String(width));
+  clone.setAttribute("height", String(height));
+
+  const background = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "rect",
+  );
+  background.setAttribute("width", "100%");
+  background.setAttribute("height", "100%");
+  background.setAttribute("fill", "#ffffff");
+  clone.insertBefore(background, clone.firstChild);
+
+  const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+  style.textContent =
+    ".recharts-text{fill:#52615c;font-family:Arial,sans-serif;font-size:12px}.performance-plot__region-label{fill:#7b8883;font-size:10px;font-weight:700;letter-spacing:1px}.notable-point-label{fill:#263c35;font-size:10px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}";
+  clone.insertBefore(style, clone.firstChild);
+
+  const serialized = new XMLSerializer().serializeToString(clone);
+  const url = URL.createObjectURL(
+    new Blob([serialized], { type: "image/svg+xml;charset=utf-8" }),
+  );
+  const image = new Image();
+  image.onload = () => {
+    const scale = 2;
+    const canvas = document.createElement("canvas");
+    canvas.width = width * scale;
+    canvas.height = height * scale;
+    const context = canvas.getContext("2d");
+    if (!context) return;
+    context.scale(scale, scale);
+    context.drawImage(image, 0, 0, width, height);
+    URL.revokeObjectURL(url);
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      const href = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = href;
+      anchor.download = "cqd-detectivity-performance-map.png";
+      anchor.click();
+      URL.revokeObjectURL(href);
+    }, "image/png");
+  };
+  image.src = url;
 }
 
 export interface PerformancePlotProps {
@@ -80,10 +175,12 @@ function datumFromPoint(point: ScatterPointItem): PlotDatum | undefined {
 function AtlasPoint({
   point,
   selectedMeasurementId,
+  showLabel,
   onSelect,
 }: {
   point: ScatterPointItem;
   selectedMeasurementId?: string;
+  showLabel: boolean;
   onSelect: (record: AtlasRecord) => void;
 }) {
   const datum = datumFromPoint(point);
@@ -92,7 +189,7 @@ function AtlasPoint({
   const selected = measurement.measurementId === selectedMeasurementId;
   const isShotNoise = measurement.noiseMethod === "shot_noise_approximation";
   const isMeasuredNoise = measurement.noiseMethod === "measured_noise";
-  const stroke = measurement.flag === "green" ? "#17633f" : "#a95d00";
+  const stroke = measurement.flag === "amber" ? "#b45309" : "#ffffff";
   const accessibleLabel = `${device.materialFamily}, ${formatWithUnit(
     measurement.wavelengthNm,
     "nanometers",
@@ -103,7 +200,7 @@ function AtlasPoint({
   const common = {
     fill: datum.fill,
     stroke,
-    strokeWidth: selected ? 4 : 2.5,
+    strokeWidth: selected ? 3.5 : measurement.flag === "amber" ? 3 : 1.75,
     strokeDasharray: measurement.flag === "amber" ? "3 2" : undefined,
     vectorEffect: "non-scaling-stroke" as const,
   };
@@ -155,6 +252,16 @@ function AtlasPoint({
           {...common}
         />
       )}
+      {showLabel ? (
+        <text
+          className="notable-point-label"
+          x={point.cx + 9}
+          y={point.cy - 9}
+          aria-hidden="true"
+        >
+          {paper.firstAuthor || "Unknown"} {paper.publicationYear}
+        </text>
+      ) : null}
     </g>
   );
 }
@@ -171,23 +278,14 @@ function AtlasTooltip({ active, payload }: TooltipContentProps) {
         <MaterialLabel value={device.materialFamily} /> ·{" "}
         {paper.publicationYear}
       </p>
-      <strong>{paper.title}</strong>
+      <div className="atlas-tooltip__headline">
+        <strong>{formatScientific(measurement.detectivityJones)} Jones</strong>
+        <span>{formatWithUnit(measurement.wavelengthNm, "nm")}</span>
+      </div>
       <dl>
         <div>
           <dt>First author</dt>
           <dd>{paper.firstAuthor || NOT_REPORTED}</dd>
-        </div>
-        <div>
-          <dt>Architecture</dt>
-          <dd>{device.deviceArchitecture || NOT_REPORTED}</dd>
-        </div>
-        <div>
-          <dt>Wavelength</dt>
-          <dd>{formatWithUnit(measurement.wavelengthNm, "nm")}</dd>
-        </div>
-        <div>
-          <dt>D*</dt>
-          <dd>{formatScientific(measurement.detectivityJones)} Jones</dd>
         </div>
         <div>
           <dt>Bias</dt>
@@ -211,7 +309,10 @@ function AtlasTooltip({ active, payload }: TooltipContentProps) {
           {measurement.amberReasons.map(formatAmberReason).join(" ")}
         </p>
       ) : null}
-      <small>Click the point for links and full context.</small>
+      <p className="atlas-tooltip__paper">{paper.title}</p>
+      <small>
+        Select for device architecture, provenance, and full context.
+      </small>
     </div>
   );
 }
@@ -231,8 +332,9 @@ function MarkerLegend() {
         <i className="plot-marker plot-marker--square" aria-hidden="true" />
         Other / unspecified noise
       </span>
-      <span className="plot-legend__flag plot-legend__flag--green">Green</span>
-      <span className="plot-legend__flag plot-legend__flag--amber">Amber</span>
+      <span className="plot-legend__flag plot-legend__flag--amber">
+        Amber outline = flagged
+      </span>
     </div>
   );
 }
@@ -242,6 +344,8 @@ export function PerformancePlot({
   selectedMeasurementId,
   onSelect,
 }: PerformancePlotProps) {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [showNotableLabels, setShowNotableLabels] = useState(false);
   const validRecords = records.filter(
     (record) =>
       Number.isFinite(record.measurement.wavelengthNm) &&
@@ -273,11 +377,39 @@ export function PerformancePlot({
   const materials = [
     ...new Set(validRecords.map((record) => record.device.materialFamily)),
   ].sort((left, right) => left.localeCompare(right));
+  const paperCount = new Set(validRecords.map((record) => record.paper.paperId))
+    .size;
+  const flaggedCount = validRecords.filter(
+    (record) => record.measurement.flag === "amber",
+  ).length;
+  const notableMeasurementIds = new Set<string>();
+  for (const material of materials) {
+    const candidates = validRecords.filter(
+      (record) => record.device.materialFamily === material,
+    );
+    const highest = candidates.reduce((best, record) =>
+      record.measurement.detectivityJones > best.measurement.detectivityJones
+        ? record
+        : best,
+    );
+    notableMeasurementIds.add(highest.measurement.measurementId);
+  }
+  for (const record of validRecords) {
+    if (record.measurement.flag === "amber") {
+      notableMeasurementIds.add(record.measurement.measurementId);
+    }
+  }
 
   const renderPoint = (point: ScatterPointItem) => (
     <AtlasPoint
       point={point}
       selectedMeasurementId={selectedMeasurementId}
+      showLabel={
+        showNotableLabels &&
+        notableMeasurementIds.has(
+          datumFromPoint(point)?.record.measurement.measurementId ?? "",
+        )
+      }
       onSelect={onSelect}
     />
   );
@@ -290,20 +422,96 @@ export function PerformancePlot({
     >
       <div className="performance-plot__heading">
         <div>
-          <p className="section-kicker">Detectivity landscape</p>
-          <h2 id="performance-plot-title">Performance map</h2>
+          <p className="section-kicker">Performance map</p>
+          <h2 id="performance-plot-title">Detectivity landscape</h2>
+          <p>Specific detectivity versus operating wavelength</p>
         </div>
-        <p>One point per reported measurement · logarithmic D* axis</p>
+        <div className="performance-plot__actions">
+          <button
+            type="button"
+            aria-pressed={showNotableLabels}
+            onClick={() => setShowNotableLabels((shown) => !shown)}
+          >
+            {showNotableLabels ? "Hide" : "Label"} notable points
+          </button>
+          <button type="button" onClick={() => downloadCsv(validRecords)}>
+            Export CSV
+          </button>
+          <button
+            type="button"
+            onClick={() => void downloadPlotPng(chartRef.current)}
+          >
+            Export PNG
+          </button>
+        </div>
+      </div>
+
+      <div className="performance-plot__meta">
+        <div className="performance-plot__summary" aria-label="Plot summary">
+          <span>
+            <strong>{validRecords.length}</strong> measurements
+          </span>
+          <span>
+            <strong>{paperCount}</strong> papers
+          </span>
+          <span>
+            <strong>{materials.length}</strong> material classes
+          </span>
+          <span className={flaggedCount ? "has-flags" : undefined}>
+            <strong>{flaggedCount}</strong> flagged
+          </span>
+        </div>
+        <div className="plot-legend">
+          <div className="plot-legend__group">
+            <span className="plot-legend__title">Material</span>
+            <div
+              className="plot-legend__materials"
+              aria-label="Material colors"
+            >
+              {materials.map((material) => (
+                <span key={material}>
+                  <i
+                    aria-hidden="true"
+                    style={{ backgroundColor: materialColor(material) }}
+                  />
+                  <MaterialLabel value={material} />
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="plot-legend__group">
+            <span className="plot-legend__title">Noise method</span>
+            <MarkerLegend />
+          </div>
+        </div>
       </div>
 
       <div
+        ref={chartRef}
         className="performance-plot__chart"
         role="group"
         aria-label={`Scatter plot of ${validRecords.length} measurements by wavelength and specific detectivity. Use Tab to focus points.`}
       >
-        <ResponsiveContainer width="100%" height={460} minWidth={280}>
-          <ScatterChart margin={{ top: 20, right: 24, bottom: 28, left: 10 }}>
-            <CartesianGrid strokeDasharray="2 4" vertical={false} />
+        <ResponsiveContainer width="100%" height={560} minWidth={280}>
+          <ScatterChart margin={{ top: 34, right: 42, bottom: 36, left: 16 }}>
+            {WAVELENGTH_REGIONS.map((region) =>
+              region.end >= domain.x[0] && region.start <= domain.x[1] ? (
+                <ReferenceArea
+                  key={region.label}
+                  x1={Math.max(region.start, domain.x[0])}
+                  x2={Math.min(region.end, domain.x[1])}
+                  fill={region.fill}
+                  fillOpacity={0.72}
+                  strokeOpacity={0}
+                  label={{
+                    value: region.label,
+                    position: "insideTop",
+                    className: "performance-plot__region-label",
+                  }}
+                />
+              ) : null,
+            )}
+            <CartesianGrid strokeDasharray="1 0" vertical={false} />
             <XAxis
               type="number"
               dataKey="wavelength"
@@ -325,9 +533,9 @@ export function PerformancePlot({
               domain={domain.y}
               ticks={domain.yTicks}
               allowDataOverflow
-              tickFormatter={(value: number) => formatCompactScientific(value)}
+              tickFormatter={decadeLabel}
               tickLine={false}
-              width={76}
+              width={82}
               name="Specific detectivity"
               unit=" Jones"
               label={{
@@ -350,21 +558,6 @@ export function PerformancePlot({
             />
           </ScatterChart>
         </ResponsiveContainer>
-      </div>
-
-      <div className="plot-legend">
-        <div className="plot-legend__materials" aria-label="Material colors">
-          {materials.map((material) => (
-            <span key={material}>
-              <i
-                aria-hidden="true"
-                style={{ backgroundColor: materialColor(material) }}
-              />
-              <MaterialLabel value={material} />
-            </span>
-          ))}
-        </div>
-        <MarkerLegend />
       </div>
     </section>
   );

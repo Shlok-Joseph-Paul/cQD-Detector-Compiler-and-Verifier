@@ -71,22 +71,28 @@ export function AtlasExplorer({
         onReset={resetFilters}
       />
 
-      <PerformancePlot
-        records={filtered}
-        selectedMeasurementId={selectedMeasurementId}
-        onSelect={selectRecord}
-      />
+      <div
+        className={`atlas-explorer__visual${
+          selectedRecord ? " atlas-explorer__visual--selected" : ""
+        }`}
+      >
+        <PerformancePlot
+          records={filtered}
+          selectedMeasurementId={selectedMeasurementId}
+          onSelect={selectRecord}
+        />
 
-      {selectedRecord ? (
-        <aside className="atlas-explorer__selection" aria-live="polite">
-          <MeasurementDetails
-            record={selectedRecord}
-            variant="summary"
-            showDetailLink
-            onClose={() => setSelectedMeasurementId(undefined)}
-          />
-        </aside>
-      ) : null}
+        {selectedRecord ? (
+          <aside className="atlas-explorer__selection" aria-live="polite">
+            <MeasurementDetails
+              record={selectedRecord}
+              variant="summary"
+              showDetailLink
+              onClose={() => setSelectedMeasurementId(undefined)}
+            />
+          </aside>
+        ) : null}
+      </div>
 
       <MeasurementTable records={filtered} />
     </div>

@@ -842,6 +842,12 @@ select {
   background: var(--surface);
 }
 
+.performance-plot {
+  border-color: #dfe5e2;
+  background: #fff;
+  box-shadow: 0 18px 48px rgb(31 53 45 / 7%);
+}
+
 .performance-plot__heading,
 .measurement-table-section__heading {
   display: flex;
@@ -850,6 +856,12 @@ select {
   gap: 28px;
   padding: 24px 26px 20px;
   border-bottom: 1px solid var(--line);
+}
+
+.performance-plot__heading {
+  align-items: center;
+  padding: 25px 28px 21px;
+  border-bottom: 0;
 }
 
 .performance-plot__heading h2,
@@ -869,6 +881,44 @@ select {
   font-size: 11px;
 }
 
+.performance-plot__heading > div:first-child > p:last-child {
+  margin: 7px 0 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.performance-plot__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.performance-plot__actions button {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid #cdd7d2;
+  border-radius: 3px;
+  background: #fff;
+  color: #31443d;
+  cursor: pointer;
+  font: 700 10px/1 var(--font-sans);
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.performance-plot__actions button:hover,
+.performance-plot__actions button[aria-pressed="true"] {
+  border-color: var(--teal);
+  background: #f0f7f5;
+  color: var(--teal);
+}
+
+.performance-plot__actions button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
 .section-kicker {
   margin: 0 0 7px;
   color: var(--teal);
@@ -880,19 +930,28 @@ select {
 
 .performance-plot__chart {
   width: 100%;
-  min-height: 460px;
-  padding: 14px 12px 8px 0;
+  min-height: 560px;
+  padding: 0 13px 5px 0;
   overflow: hidden;
+  background: #fff;
 }
 
 .performance-plot__chart .recharts-cartesian-grid line {
-  stroke: #d7ddd8;
+  stroke: #d6ddda;
+  stroke-width: 1;
 }
 
 .performance-plot__chart .recharts-text {
-  fill: #65746f;
+  fill: #52615c;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
+}
+
+.performance-plot__region-label {
+  fill: #7b8883 !important;
+  font-size: 10px !important;
+  font-weight: 750;
+  letter-spacing: 0.12em;
 }
 
 .atlas-point {
@@ -904,23 +963,48 @@ select {
   filter: drop-shadow(0 0 3px #0b6657);
 }
 
+.notable-point-label {
+  fill: #263c35;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 750;
+  paint-order: stroke;
+  pointer-events: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+
 .atlas-tooltip {
   width: min(320px, calc(100vw - 40px));
   padding: 15px;
   border: 1px solid var(--line-dark);
   background: rgb(255 254 250 / 98%);
-  box-shadow: 0 14px 34px rgb(20 40 34 / 14%);
+  border-radius: 4px;
+  box-shadow: 0 18px 42px rgb(20 40 34 / 16%);
   color: var(--ink);
   font-size: 11px;
 }
 
-.atlas-tooltip > strong {
-  display: block;
-  margin: 4px 0 10px;
+.atlas-tooltip__headline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 7px 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.atlas-tooltip__headline strong {
   font-family: var(--font-serif);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.25;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.atlas-tooltip__headline span {
+  color: var(--ink-soft);
+  font-weight: 750;
 }
 
 .atlas-tooltip__material {
@@ -962,15 +1046,74 @@ select {
   color: #724606;
 }
 
+.atlas-tooltip__paper {
+  margin: 11px 0 5px;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
 .atlas-tooltip small {
   color: var(--ink-soft);
 }
 
+.performance-plot__meta {
+  margin: 0 28px;
+  border-top: 1px solid #e4e9e6;
+  border-bottom: 1px solid #e4e9e6;
+}
+
+.performance-plot__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0ee;
+}
+
+.performance-plot__summary span {
+  padding: 0 14px;
+  border-left: 1px solid #dfe5e2;
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
+.performance-plot__summary span:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.performance-plot__summary strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.performance-plot__summary .has-flags strong {
+  color: #a85b00;
+}
+
 .plot-legend {
   display: grid;
-  gap: 12px;
-  padding: 16px 26px 22px;
-  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr);
+  gap: 20px 32px;
+  padding: 13px 0 14px;
+}
+
+.plot-legend__group {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.plot-legend__title {
+  flex: 0 0 auto;
+  padding-top: 2px;
+  color: #52615c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .plot-legend__materials,
@@ -990,17 +1133,18 @@ select {
 }
 
 .plot-legend__materials i {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
 }
 
 .plot-marker {
   display: inline-block;
   width: 9px;
   height: 9px;
-  border: 1px solid var(--ink-soft);
-  background: var(--ink-soft);
+  border: 1px solid #52615c;
+  background: #52615c;
 }
 
 .plot-marker--circle {
@@ -1020,12 +1164,8 @@ select {
   border: 1px solid;
 }
 
-.plot-legend__flag--green {
-  border-color: #8eb9a3;
-  color: var(--green) !important;
-}
-
 .plot-legend__flag--amber {
+  border-radius: 2px;
   border-color: #d1b16e;
   color: var(--amber) !important;
 }
@@ -1047,8 +1187,24 @@ select {
   color: var(--ink-soft);
 }
 
+.atlas-explorer__visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.atlas-explorer__visual--selected {
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 350px);
+}
+
 .atlas-explorer__selection {
+  min-width: 0;
   margin-top: 20px;
+}
+
+.atlas-explorer__selection .measurement-details {
+  position: sticky;
+  top: 18px;
 }
 
 .measurement-details {
@@ -1810,6 +1966,18 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .atlas-explorer__visual--selected {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .atlas-explorer__selection .measurement-details {
+    position: static;
+  }
+
+  .plot-legend {
+    grid-template-columns: 1fr;
+  }
+
   .atlas-filters__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1935,14 +2103,33 @@ select {
   }
 
   .performance-plot__heading,
-  .measurement-table-section__heading,
-  .plot-legend {
+  .measurement-table-section__heading {
     padding-right: 16px;
     padding-left: 16px;
   }
 
+  .performance-plot__actions {
+    justify-content: flex-start;
+  }
+
+  .performance-plot__meta {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .performance-plot__summary span {
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+
+  .plot-legend__group {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
   .performance-plot__chart {
-    min-height: 410px;
+    min-height: 480px;
     margin-left: -9px;
   }
 

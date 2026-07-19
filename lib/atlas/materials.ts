@@ -2,26 +2,28 @@ import { isMeasuredNoiseMethod } from "../data/constants.ts";
 import type { AtlasRecord } from "./types";
 
 const KNOWN_MATERIAL_COLORS: Record<string, string> = {
-  PbS: "#245b78",
-  PbSe: "#80542f",
-  HgTe: "#6b4c8a",
-  HgSe: "#32736d",
-  "Ag₂Se": "#9a6d16",
-  Ag2Se: "#9a6d16",
-  InAs: "#a24b57",
-  InSb: "#596d2f",
+  PbS: "#0072b2",
+  PbSe: "#8c564b",
+  HgTe: "#7a3e9d",
+  HgSe: "#56b4e9",
+  "Ag₂Se": "#e69f00",
+  Ag2Se: "#e69f00",
+  "Ag₂Te": "#009e73",
+  Ag2Te: "#009e73",
+  InAs: "#d55e00",
+  InSb: "#cc79a7",
   "Perovskite CQDs": "#4f689f",
   "Other CQDs": "#59636e",
 };
 
 const FALLBACK_PALETTE = [
-  "#245b78",
-  "#80542f",
-  "#6b4c8a",
-  "#32736d",
-  "#9a6d16",
-  "#a24b57",
-  "#596d2f",
+  "#0072b2",
+  "#e69f00",
+  "#009e73",
+  "#7a3e9d",
+  "#d55e00",
+  "#56b4e9",
+  "#cc79a7",
   "#4f689f",
   "#59636e",
 ];

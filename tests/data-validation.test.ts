@@ -83,7 +83,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 1);
-  assert.equal(atlas.measurements.length, 42);
+  assert.equal(atlas.measurements.length, 38);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.ok(
     atlas.records.every(

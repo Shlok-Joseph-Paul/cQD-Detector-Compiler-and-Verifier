@@ -6,5 +6,6 @@ export * from "./filter.ts";
 export * from "./format.ts";
 export * from "./generated.ts";
 export * from "./parse.ts";
+export * from "./releases.ts";
 export * from "./types.ts";
 export * from "./validation.ts";

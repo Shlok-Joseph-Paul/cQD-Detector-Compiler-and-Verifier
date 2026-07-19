@@ -16,6 +16,7 @@ import type {
   AtlasSortKey,
   AtlasSortState,
 } from "@/lib/atlas/types";
+import { DATASET_VERSION } from "@/lib/data";
 
 import { AmberReasons, FlagBadge, ShotNoiseBadge } from "./AtlasBadges";
 import { MaterialLabel } from "./MaterialLabel";
@@ -83,7 +84,7 @@ function downloadCsv(records: readonly AtlasRecord[]): void {
   const href = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = href;
-  anchor.download = "cqd-photodiode-atlas-filtered.csv";
+  anchor.download = `cqd-photodiode-atlas-v${DATASET_VERSION}-filtered.csv`;
   document.body.append(anchor);
   anchor.click();
   anchor.remove();
@@ -236,7 +237,12 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                         data-label="Paper"
                         className="measurement-table__paper"
                       >
-                        <span>{paper.title}</span>
+                        <Link
+                          className="measurement-table__paper-title"
+                          href={`/papers/${encodeURIComponent(paper.paperId)}`}
+                        >
+                          {paper.title}
+                        </Link>
                         <small>
                           {paper.firstAuthor || NOT_REPORTED},{" "}
                           {paper.publicationYear}

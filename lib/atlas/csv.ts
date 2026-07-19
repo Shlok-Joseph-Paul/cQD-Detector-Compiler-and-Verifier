@@ -1,4 +1,5 @@
 import { ATLAS_EXPORT_COLUMNS } from "../data/export.ts";
+import { DATASET_VERSION } from "../data/releases.ts";
 import type { AtlasRecord } from "./types";
 
 function csvCell(value: string | number | null): string {
@@ -52,6 +53,7 @@ function csvRow(record: AtlasRecord): Array<string | number | null> {
     record.paper.publicationUrl,
     record.paper.publicationType,
     record.paper.peerReviewed ? "true" : "false",
+    DATASET_VERSION,
   ];
 }
 

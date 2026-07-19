@@ -81,7 +81,9 @@ export function MeasurementDetails({
             {paper.publicationYear}
           </p>
           <SemanticHeading level={resolvedHeadingLevel}>
-            {paper.title}
+            <Link href={`/papers/${encodeURIComponent(paper.paperId)}`}>
+              {paper.title}
+            </Link>
           </SemanticHeading>
           <div className="measurement-details__badges">
             <FlagBadge flag={measurement.flag} />
@@ -256,6 +258,9 @@ export function MeasurementDetails({
       ) : null}
 
       <footer className="measurement-details__actions">
+        <Link href={`/papers/${encodeURIComponent(paper.paperId)}`}>
+          View paper record
+        </Link>
         {showDetailLink ? (
           <Link href={measurementUrl}>View full record</Link>
         ) : null}

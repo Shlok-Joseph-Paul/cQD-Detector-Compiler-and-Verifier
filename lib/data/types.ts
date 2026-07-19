@@ -107,6 +107,8 @@ export interface JoinedMeasurement {
 
 export interface AtlasData extends AtlasEntities {
   schema_version: 1;
+  /** Human-facing release identifier for reproducible exports and citations. */
+  dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */
   generated_at: string;
   records: JoinedMeasurement[];

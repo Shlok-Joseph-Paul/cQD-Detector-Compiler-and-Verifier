@@ -1,4 +1,5 @@
 import { serializeCsv } from "./csv.ts";
+import { DATASET_VERSION } from "./releases.ts";
 import type { JoinedMeasurement } from "./types.ts";
 
 export const ATLAS_EXPORT_COLUMNS = [
@@ -38,6 +39,7 @@ export const ATLAS_EXPORT_COLUMNS = [
   "publication_url",
   "publication_type",
   "peer_reviewed",
+  "dataset_version",
 ] as const;
 
 export function exportJoinedMeasurementsCsv(
@@ -82,6 +84,7 @@ export function exportJoinedMeasurementsCsv(
       paper.publication_url,
       paper.publication_type,
       paper.peer_reviewed,
+      DATASET_VERSION,
     ]),
   );
 }

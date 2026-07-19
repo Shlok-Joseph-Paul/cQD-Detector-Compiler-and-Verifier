@@ -1,4 +1,5 @@
 import { parseAtlasCsvTexts } from "./parse.ts";
+import { DATASET_VERSION } from "./releases.ts";
 import type {
   AtlasData,
   AtlasEntities,
@@ -47,6 +48,7 @@ export function buildAtlasData(entities: AtlasEntities): AtlasData {
   assertValidAtlasEntities(entities);
   return {
     schema_version: 1,
+    dataset_version: DATASET_VERSION,
     generated_at: deterministicGeneratedAt(entities.measurements),
     papers: entities.papers,
     devices: entities.devices,

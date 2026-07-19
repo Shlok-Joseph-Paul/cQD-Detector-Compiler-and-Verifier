@@ -15,6 +15,7 @@ import {
 } from "recharts";
 
 import { atlasRecordsToCsv } from "@/lib/atlas/csv";
+import { maxDetectivityPerPaper } from "@/lib/atlas/coverage";
 import {
   formatAmberReason,
   formatNoiseMethod,
@@ -24,6 +25,7 @@ import {
 } from "@/lib/atlas/format";
 import { materialColor } from "@/lib/atlas/materials";
 import type { AtlasRecord } from "@/lib/atlas/types";
+import { DATASET_VERSION } from "@/lib/data";
 
 import { MaterialLabel } from "./MaterialLabel";
 
@@ -70,7 +72,7 @@ function downloadCsv(records: readonly AtlasRecord[]): void {
   const href = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = href;
-  anchor.download = "cqd-detectivity-map-filtered.csv";
+  anchor.download = `cqd-photodiode-atlas-v${DATASET_VERSION}-map.csv`;
   anchor.click();
   URL.revokeObjectURL(href);
 }
@@ -363,6 +365,7 @@ export function PerformancePlot({
 }: PerformancePlotProps) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [showNotableLabels, setShowNotableLabels] = useState(false);
+  const [showPaperMaximums, setShowPaperMaximums] = useState(false);
   const validRecords = records.filter(
     (record) =>
       Number.isFinite(record.measurement.wavelengthNm) &&
@@ -384,24 +387,28 @@ export function PerformancePlot({
     );
   }
 
-  const domain = plotDomain(validRecords);
-  const data: PlotDatum[] = validRecords.map((record) => ({
+  const plottedRecords = showPaperMaximums
+    ? maxDetectivityPerPaper(validRecords)
+    : validRecords;
+  const domain = plotDomain(plottedRecords);
+  const data: PlotDatum[] = plottedRecords.map((record) => ({
     wavelength: record.measurement.wavelengthNm,
     detectivity: record.measurement.detectivityJones,
     fill: materialColor(record.device.materialFamily),
     record,
   }));
   const materials = [
-    ...new Set(validRecords.map((record) => record.device.materialFamily)),
+    ...new Set(plottedRecords.map((record) => record.device.materialFamily)),
   ].sort((left, right) => left.localeCompare(right));
-  const paperCount = new Set(validRecords.map((record) => record.paper.paperId))
-    .size;
-  const flaggedCount = validRecords.filter(
+  const paperCount = new Set(
+    plottedRecords.map((record) => record.paper.paperId),
+  ).size;
+  const flaggedCount = plottedRecords.filter(
     (record) => record.measurement.flag === "amber",
   ).length;
   const notableMeasurementIds = new Set<string>();
   for (const material of materials) {
-    const candidates = validRecords.filter(
+    const candidates = plottedRecords.filter(
       (record) => record.device.materialFamily === material,
     );
     const highest = candidates.reduce((best, record) =>
@@ -411,7 +418,7 @@ export function PerformancePlot({
     );
     notableMeasurementIds.add(highest.measurement.measurementId);
   }
-  for (const record of validRecords) {
+  for (const record of plottedRecords) {
     if (record.measurement.flag === "amber") {
       notableMeasurementIds.add(record.measurement.measurementId);
     }
@@ -446,12 +453,20 @@ export function PerformancePlot({
         <div className="performance-plot__actions">
           <button
             type="button"
+            aria-pressed={showPaperMaximums}
+            onClick={() => setShowPaperMaximums((shown) => !shown)}
+            title="Show only the highest detectivity measurement remaining for each paper"
+          >
+            {showPaperMaximums ? "Show all points" : "Maximum D* per paper"}
+          </button>
+          <button
+            type="button"
             aria-pressed={showNotableLabels}
             onClick={() => setShowNotableLabels((shown) => !shown)}
           >
             {showNotableLabels ? "Hide" : "Label"} notable points
           </button>
-          <button type="button" onClick={() => downloadCsv(validRecords)}>
+          <button type="button" onClick={() => downloadCsv(plottedRecords)}>
             Export CSV
           </button>
           <button
@@ -466,7 +481,8 @@ export function PerformancePlot({
       <div className="performance-plot__meta">
         <div className="performance-plot__summary" aria-label="Plot summary">
           <span>
-            <strong>{validRecords.length}</strong> measurements
+            <strong>{plottedRecords.length}</strong>{" "}
+            {showPaperMaximums ? "paper maxima" : "measurements"}
           </span>
           <span>
             <strong>{paperCount}</strong> papers
@@ -523,7 +539,9 @@ export function PerformancePlot({
         ref={chartRef}
         className="performance-plot__chart"
         role="group"
-        aria-label={`Scatter plot of ${validRecords.length} measurements by wavelength and specific detectivity. Use Tab to focus points.`}
+        aria-label={`Scatter plot of ${plottedRecords.length} ${
+          showPaperMaximums ? "paper maxima" : "measurements"
+        } by wavelength and specific detectivity. Use Tab to focus points.`}
       >
         <div className="performance-plot__region-labels" aria-hidden="true">
           {WAVELENGTH_REGIONS.map((region) => {

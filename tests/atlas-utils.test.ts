@@ -3,6 +3,10 @@ import test from "node:test";
 
 import { atlasRecordsToCsv } from "../lib/atlas/csv.ts";
 import {
+  maxDetectivityPerPaper,
+  reportingCoverage,
+} from "../lib/atlas/coverage.ts";
+import {
   DEFAULT_ATLAS_FILTERS,
   biasCondition,
   filterAtlasRecords,
@@ -257,11 +261,44 @@ test("filtered CSV is one measurement per row and safely escapes text", () => {
   assert.match(lines[0], /responsivity_a_w,eqe_percent/);
   assert.match(lines[0], /source_location,curator_status/);
   assert.match(lines[0], /authors,first_author,journal/);
+  assert.match(lines[0], /dataset_version$/);
+  assert.match(lines[1], /,1\.0\.0$/);
   assert.match(lines[1], /measurement-1/);
   assert.match(lines[1], /1\.2e\+?12/);
   assert.match(lines[1], /Ada Researcher\|Sam Scientist/);
   assert.match(lines[1], /Demonstration only/);
   assert.match(lines[1], /"A measured-noise paper, with ""quoted"" text"/);
+});
+
+test("paper maxima retain exactly the highest-D* record per paper", () => {
+  const higherMeasurement: AtlasRecord = {
+    ...measuredRecord,
+    measurement: {
+      ...measuredRecord.measurement,
+      measurementId: "measurement-3",
+      detectivityJones: 2.4e12,
+    },
+  };
+  assert.deepEqual(
+    maxDetectivityPerPaper([
+      measuredRecord,
+      shotNoiseRecord,
+      higherMeasurement,
+    ]).map((record) => record.measurement.measurementId),
+    ["measurement-3", "measurement-2"],
+  );
+});
+
+test("reporting coverage counts nulls without treating zero as missing", () => {
+  const coverage = reportingCoverage(records);
+  assert.deepEqual(
+    coverage.find((field) => field.label === "Applied bias"),
+    { label: "Applied bias", reported: 2, total: 2, percent: 100 },
+  );
+  assert.deepEqual(
+    coverage.find((field) => field.label === "Temperature"),
+    { label: "Temperature", reported: 2, total: 2, percent: 100 },
+  );
 });
 
 test("material summaries count unique papers and noise-method shares", () => {

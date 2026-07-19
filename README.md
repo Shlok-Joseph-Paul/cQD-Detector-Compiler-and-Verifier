@@ -7,8 +7,9 @@ measurement methods.
 The atlas plots **one point per reported measurement**, with wavelength on the
 x-axis and specific detectivity, D<sup>*</sup>, on a logarithmic y-axis. The same
 records appear in a searchable, sortable table and on measurement-detail and
-material-summary pages. Filters stay synchronized across the map and table, and
-the filtered records can be downloaded as CSV.
+paper-, measurement-, and material-summary pages. Filters stay synchronized
+across the map and table, and the filtered records can be downloaded as a
+versioned CSV.
 
 > **Demonstration-data warning:** the initial repository may contain a small
 > synthetic dataset solely to exercise the interface. Every such row is labeled
@@ -190,7 +191,16 @@ The main atlas supports search and filters for material, wavelength, year,
 temperature category, bias condition, noise method, flag, and publication type.
 Filter state is represented in the URL where practical so a view can be shared.
 The plot and table consume the same filtered record set. CSV export includes
-that current set rather than silently exporting the full dataset.
+that current set rather than silently exporting the full dataset. The plot can
+also be reduced to the single highest-D* measurement from each filtered paper,
+while leaving the full table available below.
+
+Dedicated paper pages group every curated device and measurement back under its
+original publication. The Coverage page reports material representation,
+publication years, noise methods, and metadata completeness directly from the
+current dataset. Dataset releases use a human-facing semantic version separate
+from the schema version; every CSV export includes `dataset_version`, and the
+Releases page records the public changelog and citation guidance.
 
 Unavailable optional values are displayed as **Not reported**, never as zero.
 Shot-noise-derived values receive a prominent badge. Each amber result exposes

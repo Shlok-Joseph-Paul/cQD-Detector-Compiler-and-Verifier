@@ -1,7 +1,7 @@
 import { AtlasExplorer } from "@/components/atlas";
 import { SiteShell } from "@/components/SiteShell";
 import { normalizeJoinedMeasurement } from "@/lib/atlas/types";
-import { atlasData } from "@/lib/data";
+import { atlasData, DATASET_VERSION } from "@/lib/data";
 
 export default function Home() {
   const records = atlasData.records.map(normalizeJoinedMeasurement);
@@ -83,8 +83,8 @@ export default function Home() {
           </div>
         </div>
         <p className="page-shell atlas-hero__updated">
-          Curator reviewed · Last updated {formattedUpdate} · Paper → device →
-          measurement provenance
+          Dataset v{DATASET_VERSION} · Curator reviewed · Last updated{" "}
+          {formattedUpdate} · Paper → device → measurement provenance
         </p>
       </section>
 

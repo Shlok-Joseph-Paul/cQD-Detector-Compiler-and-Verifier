@@ -3,7 +3,9 @@ import Link from "next/link";
 const navigation = [
   { href: "/", label: "Atlas" },
   { href: "/materials", label: "Materials" },
+  { href: "/coverage", label: "Coverage" },
   { href: "/methodology", label: "Methodology" },
+  { href: "/releases", label: "Releases" },
   { href: "/contribute", label: "Contribute" },
 ];
 
@@ -53,7 +55,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </p>
         </div>
         <div className="footer-links">
+          <Link href="/coverage">Dataset coverage</Link>
           <Link href="/methodology">Methodology</Link>
+          <Link href="/releases">Dataset releases</Link>
           <Link href="/contribute">Suggest a record</Link>
           <a
             href="https://github.com/Shlok-Joseph-Paul/cQD-Detector-Compiler-and-Verifier"

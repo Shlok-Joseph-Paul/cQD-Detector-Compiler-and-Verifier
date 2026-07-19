@@ -14,6 +14,7 @@ import {
   DataValidationError,
   validateAtlasEntities,
 } from "../lib/data/validation.ts";
+import { DATASET_VERSION } from "../lib/data/releases.ts";
 
 const paper: Paper = {
   paper_id: "paper-1",
@@ -83,6 +84,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 1);
+  assert.equal(atlas.dataset_version, DATASET_VERSION);
   assert.equal(atlas.measurements.length, 41);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.ok(

@@ -6,12 +6,25 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.0.0";
+export const DATASET_VERSION = "1.1.0";
 export const DATASET_RELEASE_DATE = "2026-07-19";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "Noise-instrument audit",
+    summary:
+      "Adds evidence-backed acquisition-instrument classifications for every curated detectivity measurement.",
+    changes: [
+      "Reprocessed all 23 source papers for noise-measurement instrumentation.",
+      "Distinguished spectrum analyzers, lock-in amplifiers, FFT methods, and dedicated noise analyzers.",
+      "Preserved mixed acquisition chains used across different frequency ranges.",
+      "Marked instruments as not reported or not applicable without changing amber status.",
+    ],
+  },
+  {
+    version: "1.0.0",
     date: DATASET_RELEASE_DATE,
     title: "First curated literature release",
     summary:

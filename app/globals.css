@@ -879,10 +879,18 @@ select {
 }
 
 .performance-plot__heading > p,
-.measurement-table-section__heading > div > p:last-child {
+.measurement-table-section__heading > div > p:not(.section-kicker) {
   margin: 0;
   color: var(--ink-soft);
   font-size: 11px;
+}
+
+.measurement-table-section__heading
+  > div
+  > .measurement-table-section__audit-note {
+  max-width: 68ch;
+  margin-top: 7px;
+  color: var(--ink-soft);
 }
 
 .performance-plot__heading > div:first-child > p:last-child {
@@ -2296,7 +2304,7 @@ select {
 }
 
 .measurement-table--compact {
-  min-width: 900px;
+  min-width: 1080px;
 }
 
 .measurement-table--compact th,
@@ -2646,6 +2654,13 @@ select {
 
 .paper-measurements .shot-badge {
   margin-top: 7px;
+}
+
+.paper-measurements__instrument {
+  display: block;
+  margin-top: 5px;
+  color: var(--ink-soft);
+  font-size: 10px;
 }
 
 .paper-device__notes {

@@ -64,6 +64,9 @@ record”**. Delete all `demo-*` rows before adding the first literature record.
 | `response_time_s`               | positive number     | no          | Response time in seconds.                                                                          |
 | `bandwidth_hz`                  | positive number     | no          | Bandwidth in hertz.                                                                                |
 | `noise_method`                  | enum                | yes         | Controlled noise classification listed below.                                                      |
+| `noise_instruments`             | pipe-separated enum | yes         | Instrument class or classes used to acquire noise; controlled vocabulary below.                    |
+| `noise_instrument_details`      | text                | no          | Reported model and acquisition-chain details; never inferred from an unrelated measurement.        |
+| `noise_instrument_source`       | text                | no          | Page, figure, section, or supporting-information location for the instrument evidence.             |
 | `detectivity_extraction_method` | enum                | yes         | `directly_reported`, `calculated_from_reported_values`, `graphically_extracted`, or `unspecified`. |
 | `source_location`               | text                | no          | Page, figure, table, or supporting-information location.                                           |
 | `curator_status`                | enum                | yes         | `reviewed` or `pending_review`.                                                                    |
@@ -85,6 +88,33 @@ record”**. Delete all `demo-*` rows before adding the first literature record.
 - `nep_from_minimum_detectable_power`: NEP obtained from a minimum detectable
   optical power measurement.
 - `unspecified`: method cannot be established.
+
+### Noise instruments
+
+`noise_instruments` describes how the noise signal used for D* was acquired,
+not the instrument used to measure EQE, bandwidth, or transient response. Use
+multiple pipe-separated values when a paper combines methods across frequency
+ranges.
+
+- `spectrum_analyzer`: spectrum, signal, dynamic-signal, or FFT spectrum
+  analyzer.
+- `lock_in_amplifier`: lock-in amplifier operating in a noise-measurement mode.
+- `oscilloscope_fft`: noise time traces recorded by an oscilloscope and
+  transformed by FFT.
+- `transient_current_fft`: current transients transformed by FFT when the
+  acquisition hardware is not identified.
+- `dedicated_noise_analyzer`: dedicated low-frequency or semiconductor-noise
+  analyzer.
+- `other`: a reported acquisition method outside the controlled classes;
+  explain it in `noise_instrument_details`.
+- `not_reported`: noise is reported or implied, but the supplied source does
+  not identify its acquisition instrument.
+- `not_applicable`: D* uses a modeled noise approximation rather than measured
+  total noise.
+
+`not_reported` and `not_applicable` cannot be combined with another instrument.
+Every shot-noise-approximation record must use `not_applicable`. A missing or
+unreported instrument does not change the green/amber flag.
 
 ### Amber reason keys
 

@@ -64,6 +64,9 @@ const measuredRecord: AtlasRecord = {
     responseTimeS: null,
     bandwidthHz: null,
     noiseMethod: "measured_noise",
+    noiseInstruments: ["spectrum_analyzer"],
+    noiseInstrumentDetails: "Test spectrum analyzer.",
+    noiseInstrumentSource: "Test methods",
     detectivityExtractionMethod: "directly_reported",
     sourceLocation: "Demonstration only",
     curatorStatus: "reviewed",
@@ -103,6 +106,9 @@ const shotNoiseRecord: AtlasRecord = {
     biasV: -1,
     measurementFrequencyHz: null,
     noiseMethod: "shot_noise_approximation",
+    noiseInstruments: ["not_applicable"],
+    noiseInstrumentDetails: "Shot-noise approximation.",
+    noiseInstrumentSource: "Test methods",
     flag: "amber",
     amberReasons: ["shot_noise_approximation"],
     amberExplanation: "Demonstration caution explanation.",
@@ -259,10 +265,14 @@ test("filtered CSV is one measurement per row and safely escapes text", () => {
   assert.match(lines[0], /^measurement_id,paper_id,device_id/);
   assert.match(lines[0], /device_stack,active_area_cm2/);
   assert.match(lines[0], /responsivity_a_w,eqe_percent/);
+  assert.match(
+    lines[0],
+    /noise_instruments,noise_instrument_details,noise_instrument_source/,
+  );
   assert.match(lines[0], /source_location,curator_status/);
   assert.match(lines[0], /authors,first_author,journal/);
   assert.match(lines[0], /dataset_version$/);
-  assert.match(lines[1], /,1\.0\.0$/);
+  assert.match(lines[1], /,1\.1\.0$/);
   assert.match(lines[1], /measurement-1/);
   assert.match(lines[1], /1\.2e\+?12/);
   assert.match(lines[1], /Ada Researcher\|Sam Scientist/);

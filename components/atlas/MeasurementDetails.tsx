@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import {
   formatAuthors,
   formatNoiseMethod,
+  formatNoiseInstruments,
   formatNumber,
   formatScientific,
   formatWithUnit,
@@ -145,6 +146,9 @@ export function MeasurementDetails({
         <Detail label="Noise method">
           {formatNoiseMethod(measurement.noiseMethod)}
         </Detail>
+        <Detail label="Noise instrument">
+          {formatNoiseInstruments(measurement.noiseInstruments)}
+        </Detail>
         <Detail label="First author">
           {paper.firstAuthor || NOT_REPORTED}
         </Detail>
@@ -188,6 +192,12 @@ export function MeasurementDetails({
               {formatWithUnit(measurement.measurementFrequencyHz, "Hz", {
                 maximumSignificantDigits: 5,
               })}
+            </Detail>
+            <Detail label="Noise instrument chain">
+              {optionalText(measurement.noiseInstrumentDetails)}
+            </Detail>
+            <Detail label="Instrument evidence">
+              {optionalText(measurement.noiseInstrumentSource)}
             </Detail>
             <Detail label="Detectivity extraction">
               {optionalText(measurement.detectivityExtractionMethod)}

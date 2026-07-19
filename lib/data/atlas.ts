@@ -47,7 +47,7 @@ function deterministicGeneratedAt(
 export function buildAtlasData(entities: AtlasEntities): AtlasData {
   assertValidAtlasEntities(entities);
   return {
-    schema_version: 1,
+    schema_version: 2,
     dataset_version: DATASET_VERSION,
     generated_at: deterministicGeneratedAt(entities.measurements),
     papers: entities.papers,

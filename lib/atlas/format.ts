@@ -1,4 +1,9 @@
-import type { BiasCondition, NoiseMethod, TemperatureCategory } from "./types";
+import type {
+  BiasCondition,
+  NoiseInstrument,
+  NoiseMethod,
+  TemperatureCategory,
+} from "./types";
 
 export const NOT_REPORTED = "Not reported";
 
@@ -23,6 +28,17 @@ export const NOISE_METHOD_LABELS: Record<NoiseMethod, string> = {
   calculated_shot_and_thermal_noise: "Calculated shot and thermal noise",
   nep_from_minimum_detectable_power: "NEP from minimum detectable power",
   unspecified: "Unspecified",
+};
+
+export const NOISE_INSTRUMENT_LABELS: Record<NoiseInstrument, string> = {
+  spectrum_analyzer: "Spectrum analyzer",
+  lock_in_amplifier: "Lock-in amplifier",
+  oscilloscope_fft: "Oscilloscope FFT",
+  transient_current_fft: "Transient-current FFT",
+  dedicated_noise_analyzer: "Dedicated noise analyzer",
+  other: "Other instrument",
+  not_reported: "Not reported",
+  not_applicable: "Not applicable",
 };
 
 export const TEMPERATURE_LABELS: Record<TemperatureCategory, string> = {
@@ -97,6 +113,19 @@ export function formatWithUnit(
 
 export function formatNoiseMethod(method: NoiseMethod): string {
   return NOISE_METHOD_LABELS[method] ?? humanizeCode(method);
+}
+
+export function formatNoiseInstruments(
+  instruments: readonly NoiseInstrument[],
+): string {
+  return instruments.length
+    ? instruments
+        .map(
+          (instrument) =>
+            NOISE_INSTRUMENT_LABELS[instrument] ?? humanizeCode(instrument),
+        )
+        .join(" + ")
+    : NOT_REPORTED;
 }
 
 export function humanizeCode(code: string): string {

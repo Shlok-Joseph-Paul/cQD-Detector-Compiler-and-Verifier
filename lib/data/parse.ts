@@ -4,6 +4,7 @@ import {
   CURATOR_STATUSES,
   DETECTIVITY_EXTRACTION_METHODS,
   FLAGS,
+  NOISE_INSTRUMENTS,
   NOISE_METHODS,
   PUBLICATION_TYPES,
   type AmberReason,
@@ -12,6 +13,7 @@ import {
   type CsvTexts,
   type Device,
   type Measurement,
+  type NoiseInstrument,
   type Paper,
   type ValidationIssue,
 } from "./types.ts";
@@ -54,6 +56,9 @@ export const MEASUREMENT_CSV_COLUMNS = [
   "response_time_s",
   "bandwidth_hz",
   "noise_method",
+  "noise_instruments",
+  "noise_instrument_details",
+  "noise_instrument_source",
   "detectivity_extraction_method",
   "source_location",
   "curator_status",
@@ -470,6 +475,12 @@ function parseMeasurements(source: string): ParsedEntity<Measurement> {
       response_time_s: read.nullableNumber("response_time_s"),
       bandwidth_hz: read.nullableNumber("bandwidth_hz"),
       noise_method: read.oneOf("noise_method", NOISE_METHODS),
+      noise_instruments: read.list(
+        "noise_instruments",
+        NOISE_INSTRUMENTS,
+      ) as NoiseInstrument[],
+      noise_instrument_details: read.nullableString("noise_instrument_details"),
+      noise_instrument_source: read.nullableString("noise_instrument_source"),
       detectivity_extraction_method: read.oneOf(
         "detectivity_extraction_method",
         DETECTIVITY_EXTRACTION_METHODS,

@@ -54,6 +54,9 @@ const measurement: Measurement = {
   response_time_s: null,
   bandwidth_hz: null,
   noise_method: "measured_noise",
+  noise_instruments: ["spectrum_analyzer"],
+  noise_instrument_details: "Test spectrum analyzer.",
+  noise_instrument_source: "Table 1",
   detectivity_extraction_method: "directly_reported",
   source_location: "Table 1",
   curator_status: "reviewed",
@@ -83,7 +86,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     readFile(new URL("measurements.csv", dataDirectory), "utf8"),
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
-  assert.equal(atlas.schema_version, 1);
+  assert.equal(atlas.schema_version, 2);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
   assert.equal(atlas.measurements.length, 41);
   assert.equal(atlas.records.length, atlas.measurements.length);
@@ -154,10 +157,51 @@ test("missing operating conditions do not make a reviewed record amber", () => {
   assert.equal(result.valid, true);
 });
 
+test("a missing instrument citation does not make measured-noise data amber", () => {
+  const result = validateAtlasEntities(
+    entities({
+      noise_instruments: ["not_reported"],
+      noise_instrument_details:
+        "Measured noise is reported, but the acquisition instrument is not identified.",
+      noise_instrument_source: "Figure 4",
+    }),
+  );
+  assert.equal(result.valid, true);
+});
+
+test("noise-instrument classifications remain consistent with the noise method", () => {
+  const shotNoiseWithAnalyzer = validateAtlasEntities(
+    entities({
+      noise_method: "shot_noise_approximation",
+      noise_instruments: ["spectrum_analyzer"],
+    }),
+  );
+  assert.ok(
+    shotNoiseWithAnalyzer.issues.some(
+      ({ field, code }) =>
+        field === "noise_instruments" &&
+        code === "shot_noise_instrument_mismatch",
+    ),
+  );
+
+  const measuredNoiseWithoutMeasurement = validateAtlasEntities(
+    entities({ noise_instruments: ["not_applicable"] }),
+  );
+  assert.ok(
+    measuredNoiseWithoutMeasurement.issues.some(
+      ({ field, code }) =>
+        field === "noise_instruments" &&
+        code === "measured_noise_instrument_mismatch",
+    ),
+  );
+});
+
 test("shot-noise records are automatically amber and strict validation catches stale green input", () => {
-  const shotNoise = {
+  const shotNoise: Measurement = {
     ...measurement,
-    noise_method: "shot_noise_approximation" as const,
+    noise_method: "shot_noise_approximation",
+    noise_instruments: ["not_applicable"],
+    noise_instrument_details: "Shot-noise approximation.",
   };
   const normalized = applyAutomaticAmberRules(shotNoise);
   assert.equal(normalized.flag, "amber");
@@ -234,7 +278,7 @@ test("CSV conversion errors identify both the physical row and field", () => {
   const devices =
     "device_id,paper_id,material_family,material_composition,device_architecture,device_stack,active_area_cm2,device_notes\n";
   const measurements =
-    "measurement_id,device_id,wavelength_nm,detectivity_jones,responsivity_a_w,eqe_percent,temperature_k,bias_v,measurement_frequency_hz,response_time_s,bandwidth_hz,noise_method,detectivity_extraction_method,source_location,curator_status,flag,amber_reasons,amber_explanation,curator_notes,date_added,date_updated\n";
+    "measurement_id,device_id,wavelength_nm,detectivity_jones,responsivity_a_w,eqe_percent,temperature_k,bias_v,measurement_frequency_hz,response_time_s,bandwidth_hz,noise_method,noise_instruments,noise_instrument_details,noise_instrument_source,detectivity_extraction_method,source_location,curator_status,flag,amber_reasons,amber_explanation,curator_notes,date_added,date_updated\n";
 
   assert.throws(
     () => buildAtlasFromCsvTexts({ papers, devices, measurements }),

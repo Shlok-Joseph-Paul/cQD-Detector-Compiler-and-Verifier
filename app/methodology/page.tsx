@@ -164,6 +164,25 @@ export default function MethodologyPage() {
               </div>
             </dl>
 
+            <h3>Noise acquisition instruments</h3>
+            <p>
+              The atlas separately records how an experimental noise signal was
+              acquired. Controlled instrument classes include spectrum or signal
+              analyzers, lock-in amplifiers operating in noise mode,
+              oscilloscope or transient-current FFT methods, and dedicated noise
+              analyzers. A preamplifier and model number are retained in the
+              instrument-chain details when the source reports them.
+            </p>
+            <p>
+              Some publications combine acquisition methods across frequency
+              ranges; those records retain every reported method. If measured
+              noise is shown but the supplied article does not identify the
+              instrument, the field remains <q>Not reported</q>. For a modeled
+              shot-noise approximation, the instrument field is marked
+              <q>Not applicable</q>. Neither status independently changes the
+              green or amber flag.
+            </p>
+
             <h3>Why shot-noise estimates are marked separately</h3>
             <p>
               In a common approximation, the shot-noise current spectral density

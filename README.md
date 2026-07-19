@@ -53,7 +53,8 @@ Paper 1 ──► many Devices 1 ──► many Measurements
 - **Device** holds CQD material, composition, architecture, stack, and active
   area.
 - **Measurement** holds one D<sup>*</sup> value, wavelength, operating
-  conditions, noise method, provenance, and curation status.
+  conditions, noise method, acquisition instrument chain, provenance, and
+  curation status.
 
 A paper may therefore produce several points on the atlas. The central unit is
 the measurement—not a paper, a champion value selected by the atlas, or an
@@ -158,9 +159,10 @@ a guessed value as a substitute for missing information.
    distinct reported wavelengths, biases, temperatures, frequencies, devices,
    or noise methods.
 6. **Capture method and provenance.** Record the controlled `noise_method`,
-   detectivity extraction method, source page/figure/table/supporting-information
-   location, operating conditions, and curator notes. Preserve the source units
-   in notes when a conversion is needed.
+   noise-instrument classification and evidence, detectivity extraction method,
+   source page/figure/table/supporting-information location, operating
+   conditions, and curator notes. Preserve the source units in notes when a
+   conversion is needed.
 7. **Apply flags.** A shot-noise approximation is always amber. A clearly
    anomalous value above a plausible BLIP limit may be marked amber after
    curator review. Other missing or incomplete fields do not affect the flag.
@@ -194,6 +196,11 @@ The plot and table consume the same filtered record set. CSV export includes
 that current set rather than silently exporting the full dataset. The plot can
 also be reduced to the single highest-D* measurement from each filtered paper,
 while leaving the full table available below.
+
+The table reports the noise-acquisition instrument class for each measurement.
+Expanding a row reveals the reported instrument chain and the exact source
+location used during the focused audit. A missing instrument citation remains
+visible as **Not reported** and does not independently trigger an amber flag.
 
 Dedicated paper pages group every curated device and measurement back under its
 original publication. The Coverage page reports material representation,

@@ -4,6 +4,7 @@ import {
   CURATOR_STATUSES,
   DETECTIVITY_EXTRACTION_METHODS,
   FLAGS,
+  NOISE_INSTRUMENTS,
   NOISE_METHODS,
   PUBLICATION_TYPES,
   type AmberReason,
@@ -364,6 +365,70 @@ function validateMeasurement(
     positive: true,
   });
   validateEnum(measurement.noise_method, "noise_method", NOISE_METHODS, add);
+  if (
+    !Array.isArray(measurement.noise_instruments) ||
+    measurement.noise_instruments.length === 0
+  ) {
+    add(
+      "noise_instruments",
+      "required",
+      "Provide at least one noise-instrument classification.",
+      measurement.noise_instruments,
+    );
+  } else {
+    const instruments = measurement.noise_instruments;
+    for (const instrument of instruments) {
+      validateEnum(instrument, "noise_instruments", NOISE_INSTRUMENTS, add);
+    }
+    if (new Set(instruments).size !== instruments.length) {
+      add(
+        "noise_instruments",
+        "duplicate_instrument",
+        "Noise instruments must not contain duplicates.",
+      );
+    }
+    if (
+      instruments.length > 1 &&
+      (instruments.includes("not_reported") ||
+        instruments.includes("not_applicable"))
+    ) {
+      add(
+        "noise_instruments",
+        "exclusive_instrument_status",
+        "Not reported and not applicable cannot be combined with an instrument.",
+      );
+    }
+    if (
+      measurement.noise_method === "shot_noise_approximation" &&
+      (instruments.length !== 1 || instruments[0] !== "not_applicable")
+    ) {
+      add(
+        "noise_instruments",
+        "shot_noise_instrument_mismatch",
+        "Shot-noise approximations must use not_applicable because total noise was not measured.",
+      );
+    }
+    if (
+      measurement.noise_method === "measured_noise" &&
+      instruments.includes("not_applicable")
+    ) {
+      add(
+        "noise_instruments",
+        "measured_noise_instrument_mismatch",
+        "Measured-noise records cannot use not_applicable.",
+      );
+    }
+  }
+  validateNullableString(
+    measurement.noise_instrument_details,
+    "noise_instrument_details",
+    add,
+  );
+  validateNullableString(
+    measurement.noise_instrument_source,
+    "noise_instrument_source",
+    add,
+  );
   validateEnum(
     measurement.detectivity_extraction_method,
     "detectivity_extraction_method",

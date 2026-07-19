@@ -1,6 +1,7 @@
 import type {
   BiasCondition as CanonicalBiasCondition,
   JoinedMeasurement,
+  NoiseInstrument as CanonicalNoiseInstrument,
   TemperatureCategory as CanonicalTemperatureCategory,
 } from "@/lib/data/types";
 
@@ -13,6 +14,7 @@ export const NOISE_METHODS = [
 ] as const;
 
 export type NoiseMethod = (typeof NOISE_METHODS)[number];
+export type NoiseInstrument = CanonicalNoiseInstrument;
 export type PublicFlag = "green" | "amber";
 export type TemperatureCategory = CanonicalTemperatureCategory;
 export type BiasCondition = CanonicalBiasCondition;
@@ -56,6 +58,9 @@ export interface AtlasMeasurement {
   responseTimeS: number | null;
   bandwidthHz: number | null;
   noiseMethod: NoiseMethod;
+  noiseInstruments: NoiseInstrument[];
+  noiseInstrumentDetails: string | null;
+  noiseInstrumentSource: string | null;
   detectivityExtractionMethod: string | null;
   sourceLocation: string | null;
   curatorStatus: string;
@@ -278,6 +283,18 @@ export function normalizeJoinedMeasurement(
       ]),
       bandwidthHz: nullableNumber(measurement, ["bandwidth_hz", "bandwidthHz"]),
       noiseMethod: noiseMethodValue(measurement),
+      noiseInstruments: listValue(measurement, [
+        "noise_instruments",
+        "noiseInstruments",
+      ]) as NoiseInstrument[],
+      noiseInstrumentDetails: nullableText(measurement, [
+        "noise_instrument_details",
+        "noiseInstrumentDetails",
+      ]),
+      noiseInstrumentSource: nullableText(measurement, [
+        "noise_instrument_source",
+        "noiseInstrumentSource",
+      ]),
       detectivityExtractionMethod: nullableText(measurement, [
         "detectivity_extraction_method",
         "detectivityExtractionMethod",

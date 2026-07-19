@@ -16,6 +16,18 @@ export const NOISE_METHODS = [
 ] as const;
 export type NoiseMethod = (typeof NOISE_METHODS)[number];
 
+export const NOISE_INSTRUMENTS = [
+  "spectrum_analyzer",
+  "lock_in_amplifier",
+  "oscilloscope_fft",
+  "transient_current_fft",
+  "dedicated_noise_analyzer",
+  "other",
+  "not_reported",
+  "not_applicable",
+] as const;
+export type NoiseInstrument = (typeof NOISE_INSTRUMENTS)[number];
+
 export const DETECTIVITY_EXTRACTION_METHODS = [
   "directly_reported",
   "calculated_from_reported_values",
@@ -79,6 +91,9 @@ export interface Measurement {
   response_time_s: number | null;
   bandwidth_hz: number | null;
   noise_method: NoiseMethod;
+  noise_instruments: NoiseInstrument[];
+  noise_instrument_details: string | null;
+  noise_instrument_source: string | null;
   detectivity_extraction_method: DetectivityExtractionMethod;
   source_location: string | null;
   curator_status: CuratorStatus;
@@ -106,7 +121,7 @@ export interface JoinedMeasurement {
 }
 
 export interface AtlasData extends AtlasEntities {
-  schema_version: 1;
+  schema_version: 2;
   /** Human-facing release identifier for reproducible exports and citations. */
   dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */

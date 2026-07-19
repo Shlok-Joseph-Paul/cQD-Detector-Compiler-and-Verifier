@@ -7,6 +7,7 @@ import { SiteShell } from "@/components/SiteShell";
 import {
   formatAuthors,
   formatNoiseMethod,
+  formatNoiseInstruments,
   formatScientific,
   formatWithUnit,
   humanizeCode,
@@ -243,6 +244,11 @@ export default async function PaperPage({ params }: PageProps) {
                           </td>
                           <td>
                             {formatNoiseMethod(record.measurement.noiseMethod)}
+                            <small className="paper-measurements__instrument">
+                              {formatNoiseInstruments(
+                                record.measurement.noiseInstruments,
+                              )}
+                            </small>
                             <ShotNoiseBadge
                               noiseMethod={record.measurement.noiseMethod}
                             />

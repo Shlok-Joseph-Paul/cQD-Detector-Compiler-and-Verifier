@@ -6,6 +6,7 @@ import { Fragment, useMemo, useState } from "react";
 import { atlasRecordsToCsv } from "@/lib/atlas/csv";
 import {
   formatNoiseMethod,
+  formatNoiseInstruments,
   formatScientific,
   formatWithUnit,
   NOT_REPORTED,
@@ -119,6 +120,11 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
             {records.length === 1 ? "record" : "records"}; expand a row for
             device and provenance details.
           </p>
+          <p className="measurement-table-section__audit-note">
+            Noise instrument fields were source-reprocessed for dataset v
+            {DATASET_VERSION}; expand a row to inspect the instrument chain and
+            evidence location.
+          </p>
         </div>
         <button
           className="csv-download"
@@ -167,6 +173,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                 />
               </th>
               <th scope="col">Noise method</th>
+              <th scope="col">Noise instrument</th>
               <th scope="col">Temperature</th>
               <th scope="col" aria-sort={ariaSort(sort, "year")}>
                 <SortButton
@@ -228,6 +235,9 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                       <td data-label="Noise method">
                         {formatNoiseMethod(measurement.noiseMethod)}
                       </td>
+                      <td data-label="Noise instrument">
+                        {formatNoiseInstruments(measurement.noiseInstruments)}
+                      </td>
                       <td data-label="Temperature">
                         {formatWithUnit(measurement.temperatureK, "K", {
                           maximumFractionDigits: 2,
@@ -255,7 +265,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                           amber ? " is-amber" : ""
                         }`}
                       >
-                        <td colSpan={6} id={detailsId}>
+                        <td colSpan={7} id={detailsId}>
                           <div className="measurement-table__details-grid">
                             <div>
                               <span>CQD composition</span>
@@ -285,6 +295,20 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                                   : `${formatScientific(measurement.responseTimeS)} s`}
                               </strong>
                             </div>
+                            <div>
+                              <span>Instrument chain</span>
+                              <strong>
+                                {measurement.noiseInstrumentDetails ||
+                                  NOT_REPORTED}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Instrument evidence</span>
+                              <strong>
+                                {measurement.noiseInstrumentSource ||
+                                  NOT_REPORTED}
+                              </strong>
+                            </div>
                           </div>
                           <div className="measurement-table__details-actions">
                             <div>
@@ -306,7 +330,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
               })
             ) : (
               <tr>
-                <td colSpan={6} className="measurement-table__empty">
+                <td colSpan={7} className="measurement-table__empty">
                   No measurements match the current filters. Adjust or reset the
                   filters to restore records.
                 </td>

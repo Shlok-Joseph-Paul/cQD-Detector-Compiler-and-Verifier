@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "dataset_version": "1.0.0",
+  "schema_version": 2,
+  "dataset_version": "1.1.0",
   "generated_at": "2026-07-19T00:00:00.000Z",
   "papers": [
     {
@@ -877,6 +877,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "transient_current_fft"
+      ],
+      "noise_instrument_details": "Transient-current FFT method; acquisition hardware not identified.",
+      "noise_instrument_source": "PDF p. 4, Figure S14 discussion",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF pp. 4-5, Figure 4c",
       "curator_status": "reviewed",
@@ -900,6 +905,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Agilent N9010A signal analyzer with a battery-powered low-noise transimpedance preamplifier.",
+      "noise_instrument_source": "PDF p. 11, Experimental Procedures: Device Characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 7-8, Figure 4B and caption; p. 11 noise methods",
       "curator_status": "reviewed",
@@ -923,6 +933,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR770 spectrum analyzer with a FEMTO DLPCA-200 current preamplifier.",
+      "noise_instrument_source": "PDF p. 3, Noise Measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 7-8, Figure 4e-f and accompanying text",
       "curator_status": "reviewed",
@@ -946,6 +961,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "SRS SR865A lock-in amplifier operated in current mode.",
+      "noise_instrument_source": "PDF p. 7, Noise Current Spectral Density",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4, Figure 2c; pp. 6-7 methods",
       "curator_status": "reviewed",
@@ -969,6 +989,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "SRS SR850 lock-in amplifier.",
+      "noise_instrument_source": "PDF p. 8, Methods: Device characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
       "curator_status": "reviewed",
@@ -992,6 +1017,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "SRS SR850 lock-in amplifier.",
+      "noise_instrument_source": "PDF p. 8, Methods: Device characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
       "curator_status": "reviewed",
@@ -1015,6 +1045,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "D* uses a shot-noise approximation; measured-noise instrumentation is not applicable.",
+      "noise_instrument_source": "PDF detectivity discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 5, Figure 4b and accompanying text; p. 6 characterization methods",
       "curator_status": "reviewed",
@@ -1040,6 +1075,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Spectral analyzer; model not reported.",
+      "noise_instrument_source": "PDF p. 5, Figure 4f discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 5, Figure 4f and accompanying text; p. 6 conclusion",
       "curator_status": "reviewed",
@@ -1063,6 +1103,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Spectral analyzer; model not reported.",
+      "noise_instrument_source": "PDF p. 5, Figure 3e discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 5, Figure 3d-f and accompanying text",
       "curator_status": "reviewed",
@@ -1086,6 +1131,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "unspecified",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports D* at 1 kHz but does not identify the noise acquisition instrument.",
+      "noise_instrument_source": "PDF pp. 6-8, Figure 5a and discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 6-7, Figure 5a and accompanying text",
       "curator_status": "reviewed",
@@ -1109,6 +1159,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "unspecified",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports D* at 1 kHz but does not identify the noise acquisition instrument.",
+      "noise_instrument_source": "PDF pp. 6-8, Figure 5a and discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 6-7, Figure 5a and accompanying text",
       "curator_status": "reviewed",
@@ -1132,6 +1187,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR770 FFT spectrum analyzer with an SR570 current preamplifier.",
+      "noise_instrument_source": "PDF p. 4, Noise measurements",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 5 noise methods; pp. 7-8, Figure 5c and accompanying text",
       "curator_status": "reviewed",
@@ -1155,6 +1215,11 @@
       "response_time_s": 0.00000791,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 low-noise current preamplifier.",
+      "noise_instrument_source": "PDF p. 7, Experimental section",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
       "curator_status": "reviewed",
@@ -1178,6 +1243,11 @@
       "response_time_s": 0.00000923,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 low-noise current preamplifier.",
+      "noise_instrument_source": "PDF p. 7, Experimental section",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
       "curator_status": "reviewed",
@@ -1201,6 +1271,11 @@
       "response_time_s": 7.3e-7,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 preamplifier.",
+      "noise_instrument_source": "PDF p. 8, Experimental section",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 6-7, Figure 5c-e and accompanying text; PDF p. 7 experimental section",
       "curator_status": "reviewed",
@@ -1224,6 +1299,11 @@
       "response_time_s": 9.9e-7,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 preamplifier.",
+      "noise_instrument_source": "PDF p. 8, Experimental section",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 6-7, Figure 5c-e and accompanying text; PDF p. 7 experimental section",
       "curator_status": "reviewed",
@@ -1247,6 +1327,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "D* uses a shot-noise approximation; measured-noise instrumentation is not applicable.",
+      "noise_instrument_source": "PDF detectivity discussion",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF pp. 6-7, Figure 7a and accompanying text",
       "curator_status": "reviewed",
@@ -1272,6 +1357,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "D* uses a shot-noise approximation; measured-noise instrumentation is not applicable.",
+      "noise_instrument_source": "PDF detectivity discussion",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF pp. 6-7, Figure 7a and accompanying text",
       "curator_status": "reviewed",
@@ -1297,6 +1387,11 @@
       "response_time_s": 4.5e-7,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Spectrum analyzer; model not reported.",
+      "noise_instrument_source": "PDF p. 3, Figure 1e-f discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 2-4, Figures 1-2 and conclusion",
       "curator_status": "reviewed",
@@ -1320,6 +1415,11 @@
       "response_time_s": 4.5e-7,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Spectrum analyzer; model not reported.",
+      "noise_instrument_source": "PDF p. 3, Figure 1e-f discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 2-4, Figures 1-2 and conclusion",
       "curator_status": "reviewed",
@@ -1343,6 +1443,11 @@
       "response_time_s": 2e-7,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "oscilloscope_fft"
+      ],
+      "noise_instrument_details": "SRS SR570 low-noise current amplifier with a Tektronix DSO7054A oscilloscope FFT; 20 Hz resolution bandwidth.",
+      "noise_instrument_source": "PDF p. 8, Noise Current Measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
       "curator_status": "reviewed",
@@ -1366,6 +1471,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "oscilloscope_fft"
+      ],
+      "noise_instrument_details": "SRS SR570 low-noise current amplifier with a Tektronix DSO7054A oscilloscope FFT; 20 Hz resolution bandwidth.",
+      "noise_instrument_source": "PDF p. 8, Noise Current Measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
       "curator_status": "reviewed",
@@ -1389,6 +1499,12 @@
       "response_time_s": 0.00000165,
       "bandwidth_hz": 850000,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "transient_current_fft",
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "Low-frequency FFT current transients and an SRS SR830 lock-in amplifier at high frequency.",
+      "noise_instrument_source": "PDF p. 5, Figure S19 discussion; p. 7, Methods",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figures 3-4 and device methods",
       "curator_status": "reviewed",
@@ -1412,6 +1528,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article states that D* is based on measured noise current over 5-50 kHz but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 6, Figure 4f and Figure S23 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 6-7, Figure 4f and accompanying text",
       "curator_status": "reviewed",
@@ -1435,6 +1556,12 @@
       "response_time_s": 0.0000013,
       "bandwidth_hz": 110000,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "transient_current_fft",
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "Low-frequency FFT current transients and an SRS SR830 lock-in amplifier in noise-measurement mode at high frequency.",
+      "noise_instrument_source": "PDF p. 4, Supplementary Figure 11 discussion; p. 8, Methods",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 4, Figure 3b-c and accompanying text; PDF p. 8 methods",
       "curator_status": "reviewed",
@@ -1458,6 +1585,12 @@
       "response_time_s": null,
       "bandwidth_hz": 220000,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "transient_current_fft",
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "Low-frequency FFT current transients and an SRS SR830 lock-in amplifier in noise-measurement mode at high frequency.",
+      "noise_instrument_source": "PDF p. 4, Supplementary Figure 11 discussion; p. 8, Methods",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4 and Supplementary Figure 13",
       "curator_status": "reviewed",
@@ -1481,6 +1614,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
@@ -1504,6 +1642,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
@@ -1527,6 +1670,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
@@ -1550,6 +1698,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
@@ -1573,6 +1726,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
@@ -1596,6 +1754,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
@@ -1619,6 +1782,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
@@ -1642,6 +1810,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
@@ -1665,6 +1838,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR770 noise analyzer.",
+      "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3 and Table 1",
       "curator_status": "reviewed",
@@ -1688,6 +1866,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR770 noise analyzer.",
+      "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
       "curator_status": "reviewed",
@@ -1711,6 +1894,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR770 noise analyzer.",
+      "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
       "curator_status": "reviewed",
@@ -1734,6 +1922,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR770 noise analyzer.",
+      "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3h and Table 1",
       "curator_status": "reviewed",
@@ -1757,6 +1950,11 @@
       "response_time_s": null,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "dedicated_noise_analyzer"
+      ],
+      "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer with a Keysight B1500 parameter analyzer.",
+      "noise_instrument_source": "PDF p. 7, Experimental section",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
       "curator_status": "reviewed",
@@ -1780,6 +1978,11 @@
       "response_time_s": 0.00000106,
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The supplied article refers to measured noise-current-density data in Figure S17 but does not identify the acquisition instrument.",
+      "noise_instrument_source": "PDF p. 6, Figure 5c discussion and Supporting Information note",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 6, Figure 5a-c and accompanying text",
       "curator_status": "reviewed",
@@ -1803,6 +2006,11 @@
       "response_time_s": null,
       "bandwidth_hz": 1,
       "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Agilent N9010A signal analyzer with a FEMTO DHPCA-100 low-noise transimpedance preamplifier.",
+      "noise_instrument_source": "PDF p. 8, Noise Measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-6, Figure 4c-d and accompanying text; PDF p. 8 noise methods",
       "curator_status": "reviewed",
@@ -1860,6 +2068,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "transient_current_fft"
+        ],
+        "noise_instrument_details": "Transient-current FFT method; acquisition hardware not identified.",
+        "noise_instrument_source": "PDF p. 4, Figure S14 discussion",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF pp. 4-5, Figure 4c",
         "curator_status": "reviewed",
@@ -1918,6 +2131,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Agilent N9010A signal analyzer with a battery-powered low-noise transimpedance preamplifier.",
+        "noise_instrument_source": "PDF p. 11, Experimental Procedures: Device Characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 7-8, Figure 4B and caption; p. 11 noise methods",
         "curator_status": "reviewed",
@@ -1973,6 +2191,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR770 spectrum analyzer with a FEMTO DLPCA-200 current preamplifier.",
+        "noise_instrument_source": "PDF p. 3, Noise Measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 7-8, Figure 4e-f and accompanying text",
         "curator_status": "reviewed",
@@ -2032,6 +2255,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "SRS SR865A lock-in amplifier operated in current mode.",
+        "noise_instrument_source": "PDF p. 7, Noise Current Spectral Density",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4, Figure 2c; pp. 6-7 methods",
         "curator_status": "reviewed",
@@ -2097,6 +2325,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "SRS SR850 lock-in amplifier.",
+        "noise_instrument_source": "PDF p. 8, Methods: Device characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
         "curator_status": "reviewed",
@@ -2162,6 +2395,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "SRS SR850 lock-in amplifier.",
+        "noise_instrument_source": "PDF p. 8, Methods: Device characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4; Supplementary Figure 6f-i referenced in text",
         "curator_status": "reviewed",
@@ -2217,6 +2455,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "D* uses a shot-noise approximation; measured-noise instrumentation is not applicable.",
+        "noise_instrument_source": "PDF detectivity discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 5, Figure 4b and accompanying text; p. 6 characterization methods",
         "curator_status": "reviewed",
@@ -2286,6 +2529,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Spectral analyzer; model not reported.",
+        "noise_instrument_source": "PDF p. 5, Figure 4f discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 5, Figure 4f and accompanying text; p. 6 conclusion",
         "curator_status": "reviewed",
@@ -2345,6 +2593,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Spectral analyzer; model not reported.",
+        "noise_instrument_source": "PDF p. 5, Figure 3e discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 5, Figure 3d-f and accompanying text",
         "curator_status": "reviewed",
@@ -2414,6 +2667,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "unspecified",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports D* at 1 kHz but does not identify the noise acquisition instrument.",
+        "noise_instrument_source": "PDF pp. 6-8, Figure 5a and discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 6-7, Figure 5a and accompanying text",
         "curator_status": "reviewed",
@@ -2483,6 +2741,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "unspecified",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports D* at 1 kHz but does not identify the noise acquisition instrument.",
+        "noise_instrument_source": "PDF pp. 6-8, Figure 5a and discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 6-7, Figure 5a and accompanying text",
         "curator_status": "reviewed",
@@ -2538,6 +2801,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR770 FFT spectrum analyzer with an SR570 current preamplifier.",
+        "noise_instrument_source": "PDF p. 4, Noise measurements",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 5 noise methods; pp. 7-8, Figure 5c and accompanying text",
         "curator_status": "reviewed",
@@ -2597,6 +2865,11 @@
         "response_time_s": 0.00000791,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 low-noise current preamplifier.",
+        "noise_instrument_source": "PDF p. 7, Experimental section",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
         "curator_status": "reviewed",
@@ -2656,6 +2929,11 @@
         "response_time_s": 0.00000923,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 low-noise current preamplifier.",
+        "noise_instrument_source": "PDF p. 7, Experimental section",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
         "curator_status": "reviewed",
@@ -2719,6 +2997,11 @@
         "response_time_s": 7.3e-7,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 preamplifier.",
+        "noise_instrument_source": "PDF p. 8, Experimental section",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 6-7, Figure 5c-e and accompanying text; PDF p. 7 experimental section",
         "curator_status": "reviewed",
@@ -2782,6 +3065,11 @@
         "response_time_s": 9.9e-7,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with an SRS SR570 preamplifier.",
+        "noise_instrument_source": "PDF p. 8, Experimental section",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 6-7, Figure 5c-e and accompanying text; PDF p. 7 experimental section",
         "curator_status": "reviewed",
@@ -2838,6 +3126,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "D* uses a shot-noise approximation; measured-noise instrumentation is not applicable.",
+        "noise_instrument_source": "PDF detectivity discussion",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF pp. 6-7, Figure 7a and accompanying text",
         "curator_status": "reviewed",
@@ -2896,6 +3189,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "D* uses a shot-noise approximation; measured-noise instrumentation is not applicable.",
+        "noise_instrument_source": "PDF detectivity discussion",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF pp. 6-7, Figure 7a and accompanying text",
         "curator_status": "reviewed",
@@ -2950,6 +3248,11 @@
         "response_time_s": 4.5e-7,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Spectrum analyzer; model not reported.",
+        "noise_instrument_source": "PDF p. 3, Figure 1e-f discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 2-4, Figures 1-2 and conclusion",
         "curator_status": "reviewed",
@@ -3002,6 +3305,11 @@
         "response_time_s": 4.5e-7,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Spectrum analyzer; model not reported.",
+        "noise_instrument_source": "PDF p. 3, Figure 1e-f discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 2-4, Figures 1-2 and conclusion",
         "curator_status": "reviewed",
@@ -3064,6 +3372,11 @@
         "response_time_s": 2e-7,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "oscilloscope_fft"
+        ],
+        "noise_instrument_details": "SRS SR570 low-noise current amplifier with a Tektronix DSO7054A oscilloscope FFT; 20 Hz resolution bandwidth.",
+        "noise_instrument_source": "PDF p. 8, Noise Current Measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
         "curator_status": "reviewed",
@@ -3126,6 +3439,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "oscilloscope_fft"
+        ],
+        "noise_instrument_details": "SRS SR570 low-noise current amplifier with a Tektronix DSO7054A oscilloscope FFT; 20 Hz resolution bandwidth.",
+        "noise_instrument_source": "PDF p. 8, Noise Current Measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
         "curator_status": "reviewed",
@@ -3181,6 +3499,12 @@
         "response_time_s": 0.00000165,
         "bandwidth_hz": 850000,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "transient_current_fft",
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "Low-frequency FFT current transients and an SRS SR830 lock-in amplifier at high frequency.",
+        "noise_instrument_source": "PDF p. 5, Figure S19 discussion; p. 7, Methods",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figures 3-4 and device methods",
         "curator_status": "reviewed",
@@ -3244,6 +3568,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article states that D* is based on measured noise current over 5-50 kHz but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 6, Figure 4f and Figure S23 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 6-7, Figure 4f and accompanying text",
         "curator_status": "reviewed",
@@ -3301,6 +3630,12 @@
         "response_time_s": 0.0000013,
         "bandwidth_hz": 110000,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "transient_current_fft",
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "Low-frequency FFT current transients and an SRS SR830 lock-in amplifier in noise-measurement mode at high frequency.",
+        "noise_instrument_source": "PDF p. 4, Supplementary Figure 11 discussion; p. 8, Methods",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 4, Figure 3b-c and accompanying text; PDF p. 8 methods",
         "curator_status": "reviewed",
@@ -3358,6 +3693,12 @@
         "response_time_s": null,
         "bandwidth_hz": 220000,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "transient_current_fft",
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "Low-frequency FFT current transients and an SRS SR830 lock-in amplifier in noise-measurement mode at high frequency.",
+        "noise_instrument_source": "PDF p. 4, Supplementary Figure 11 discussion; p. 8, Methods",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4 and Supplementary Figure 13",
         "curator_status": "reviewed",
@@ -3413,6 +3754,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
@@ -3468,6 +3814,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
@@ -3523,6 +3874,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
@@ -3578,6 +3934,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
@@ -3633,6 +3994,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
@@ -3688,6 +4054,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
@@ -3743,6 +4114,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
@@ -3798,6 +4174,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article reports measured noise spectra but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 4, Figure S6 discussion",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
@@ -3853,6 +4234,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR770 noise analyzer.",
+        "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3 and Table 1",
         "curator_status": "reviewed",
@@ -3908,6 +4294,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR770 noise analyzer.",
+        "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
         "curator_status": "reviewed",
@@ -3963,6 +4354,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR770 noise analyzer.",
+        "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
         "curator_status": "reviewed",
@@ -4018,6 +4414,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR770 noise analyzer.",
+        "noise_instrument_source": "PDF p. 10, Methods: Device fabrication and characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3h and Table 1",
         "curator_status": "reviewed",
@@ -4078,6 +4479,11 @@
         "response_time_s": null,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "dedicated_noise_analyzer"
+        ],
+        "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer with a Keysight B1500 parameter analyzer.",
+        "noise_instrument_source": "PDF p. 7, Experimental section",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
         "curator_status": "reviewed",
@@ -4144,6 +4550,11 @@
         "response_time_s": 0.00000106,
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The supplied article refers to measured noise-current-density data in Figure S17 but does not identify the acquisition instrument.",
+        "noise_instrument_source": "PDF p. 6, Figure 5c discussion and Supporting Information note",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 6, Figure 5a-c and accompanying text",
         "curator_status": "reviewed",
@@ -4215,6 +4626,11 @@
         "response_time_s": null,
         "bandwidth_hz": 1,
         "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Agilent N9010A signal analyzer with a FEMTO DHPCA-100 low-noise transimpedance preamplifier.",
+        "noise_instrument_source": "PDF p. 8, Noise Measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-6, Figure 4c-d and accompanying text; PDF p. 8 noise methods",
         "curator_status": "reviewed",

@@ -729,6 +729,97 @@
       "publication_type": "journal_article",
       "peer_reviewed": true,
       "notes": "Cd3P2 CQD homojunction photodiode enabled by oxygen-driven polarity switching and a p-type Cd3P2-Cl charge-selective layer."
+    },
+    {
+      "paper_id": "imran-2025-insb-metal-halide",
+      "title": "Control Over Metal-Halide Reactivity Enables Uniform Growth of InSb Colloidal Quantum Dots for Enhanced SWIR Light Detection",
+      "authors": [
+        "Muhammad Imran",
+        "Da Bin Kim",
+        "Pan Xia",
+        "Francisco Yarur Villanueva",
+        "Benjamin Rehl",
+        "Joao M. Pina",
+        "Yanjiang Liu",
+        "Yangning Zhang",
+        "Oleksandr Voznyy",
+        "Eugenia Kumacheva",
+        "Sjoerd Hoogland",
+        "Edward H. Sargent"
+      ],
+      "first_author": "Muhammad Imran",
+      "journal": "Advanced Materials",
+      "publication_year": 2025,
+      "doi": "10.1002/adma.202420273",
+      "publication_url": "https://doi.org/10.1002/adma.202420273",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Heavy-metal-free InSb CQD n-i-p photodiode with measured frequency-dependent noise; the supplied DOCX Supporting Information identifies the noise-acquisition chain."
+    },
+    {
+      "paper_id": "kim-2026-inas-shape-engineering",
+      "title": "Ligand-Mediated Shape Engineering of SWIR InAs Colloidal Quantum Dots for Photodetector Applications",
+      "authors": [
+        "Taewan Kim",
+        "Jae Taek Oh",
+        "Hao Wu",
+        "Marta Martos Valverde",
+        "Debranjan Mandal",
+        "Gerasimos Konstantatos"
+      ],
+      "first_author": "Taewan Kim",
+      "journal": "Advanced Materials",
+      "publication_year": 2026,
+      "doi": "10.1002/adma.74004",
+      "publication_url": "https://doi.org/10.1002/adma.74004",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Heavy-metal-free shape-engineered InAs CQD photodiode prepared using a non-pyrophoric amino-arsine route."
+    },
+    {
+      "paper_id": "pi-2026-agbis2-mxene",
+      "title": "An Ultra-Low Dark Current AgBiS2 CQDs NIR Photodetector Using ZnO/MXene Bilayer Electron Transport Layer for Image Sensor",
+      "authors": [
+        "Huihui Pi",
+        "Cheng Ding",
+        "Yuxuan Liu",
+        "Henan Yang",
+        "Guohui Li",
+        "Bingkun Chen",
+        "Yanxia Cui"
+      ],
+      "first_author": "Huihui Pi",
+      "journal": "Nano Research",
+      "publication_year": 2026,
+      "doi": "10.26599/NR.2026.94908699",
+      "publication_url": "https://doi.org/10.26599/NR.2026.94908699",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Pb- and Hg-free AgBiS2 CQD photodiode with a ZnO/MXene bilayer electron-transport layer; the internally inconsistent 375 nm detectivity is not curated."
+    },
+    {
+      "paper_id": "qin-2023-hgte-planar-pn",
+      "title": "Mercury Telluride Colloidal Quantum-Dot Focal Plane Array with Planar p-n Junctions Enabled by In Situ Electric Field-Activated Doping",
+      "authors": [
+        "Tianling Qin",
+        "Ge Mu",
+        "Pengfei Zhao",
+        "Yimei Tan",
+        "Yanfei Liu",
+        "Shuo Zhang",
+        "Yuning Luo",
+        "Qun Hao",
+        "Menglu Chen",
+        "Xin Tang"
+      ],
+      "first_author": "Tianling Qin",
+      "journal": "Science Advances",
+      "publication_year": 2023,
+      "doi": "10.1126/sciadv.adg7827",
+      "publication_url": "https://doi.org/10.1126/sciadv.adg7827",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Planar HgTe CQD p-n photodiode focal-plane array enabled by in situ electric-field-activated doping; only the extractable FPA measurement is curated."
     }
   ],
   "devices": [
@@ -1151,6 +1242,46 @@
       "device_stack": "ITO / ZnO / Cd3P2 CQD absorber (~100 nm) / p-Cd3P2-Cl (~30 nm) / MoOx (10 nm) / Ag (120 nm)",
       "active_area_cm2": null,
       "device_notes": "The 0.002 cm2 area reported for transient testing is not assigned to the detectivity record."
+    },
+    {
+      "device_id": "imran-2025-insb-device",
+      "paper_id": "imran-2025-insb-metal-halide",
+      "material_family": "InSb",
+      "material_composition": "Resurfaced and ligand-exchanged InSb CQDs",
+      "device_architecture": "n-i-p CQD photodiode",
+      "device_stack": "glass / ITO / ZnO / InSb CQDs (~280 nm) / MoOx (14 nm) / Ag (140 nm)",
+      "active_area_cm2": 0.049,
+      "device_notes": "The CQD layers use sequential malonic-acid TBAI and NH4I solid-state ligand exchange."
+    },
+    {
+      "device_id": "kim-2026-inas-shape-device",
+      "paper_id": "kim-2026-inas-shape-engineering",
+      "material_family": "InAs",
+      "material_composition": "Halide-passivated shape-engineered InAs CQD ink",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "ITO / SnO2 nanocrystals / InAs CQD ink / MTA-InAs CQDs / MoO3 / Au",
+      "active_area_cm2": 0.0314,
+      "device_notes": "The principal InAs CQD absorber is approximately 120 nm thick; the MTA-InAs layer is an electron-blocking interlayer."
+    },
+    {
+      "device_id": "pi-2026-agbis2-mxene-device",
+      "paper_id": "pi-2026-agbis2-mxene",
+      "material_family": "AgBiS2",
+      "material_composition": "TMAI-exchanged AgBiS2 CQDs with a ZnO/MXene electron-transport bilayer",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "ITO / ZnO / MXene / AgBiS2 CQDs (~500 nm) / PTAA / MoO3 / Ag",
+      "active_area_cm2": null,
+      "device_notes": "Optimized device fabricated using a 0.05 mg/mL MXene dispersion; the single-pixel active area is not reported."
+    },
+    {
+      "device_id": "qin-2023-hgte-fpa-device",
+      "paper_id": "qin-2023-hgte-planar-pn",
+      "material_family": "HgTe",
+      "material_composition": "CdCl2-treated HgTe CQD film with in situ electric-field-activated lateral doping",
+      "device_architecture": "Planar p-n CQD photodiode focal-plane array",
+      "device_stack": "Si CMOS ROIC / interdigitated planar electrodes / spin-coated HgTe CQD film",
+      "active_area_cm2": null,
+      "device_notes": "A 640 x 512 array with 15 um pixel pitch; system-level noise includes detector pixels ROIC and connecting wires."
     }
   ],
   "measurements": [
@@ -2690,6 +2821,122 @@
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Supporting Information Table S2 assigns 1100 nm to this-work D* while the main text and Figure S21 caption assign -0.5 V. Table S2 instead lists 0 V; the co-located main-text and Figure S21 evidence is retained. The zero-bias EQE and transient values are not transferred to this row.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "imran-2025-insb-1380",
+      "device_id": "imran-2025-insb-device",
+      "wavelength_nm": 1380,
+      "detectivity_jones": 1000000000000,
+      "responsivity_a_w": 0.35,
+      "eqe_percent": 33,
+      "temperature_k": null,
+      "bias_v": 1,
+      "measurement_frequency_hz": 2000,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "Stanford Research Systems SR570 low-noise current preamplifier connected to a Stanford Research Systems SR830 lock-in amplifier; noise spectral density evaluated from 100 Hz to 10 kHz.",
+      "noise_instrument_source": "Supporting Information DOCX, Device characterization",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 6-7, Figure 5; Supporting Information DOCX, Device characterization",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "lock_in_only_noise_measurement"
+      ],
+      "amber_explanation": "The SR830 lock-in amplifier is the sole controlled noise-acquisition class; the SR570 current preamplifier is retained in the instrument details.",
+      "curator_notes": "The Keithley 2400 was used for J-V measurements rather than noise acquisition. The noise reached a 1.17e-13 A Hz^-1/2 plateau near 2 kHz. Measurements are described as room temperature without a numeric temperature.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "kim-2026-inas-shape-1300",
+      "device_id": "kim-2026-inas-shape-device",
+      "wavelength_nm": 1300,
+      "detectivity_jones": 33700000000,
+      "responsivity_a_w": 0.0377,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": 0,
+      "measurement_frequency_hz": 20,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "FEMTO DLPCA-200 variable-gain low-noise transimpedance amplifier connected to a Zurich Instruments MFLI lock-in amplifier.",
+      "noise_instrument_source": "Main article PDF p. 9, Device Characterization",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF p. 6, Figure 4e; p. 9, Device Characterization",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "lock_in_only_noise_measurement"
+      ],
+      "amber_explanation": "The MFLI lock-in amplifier is the sole controlled noise-acquisition class; the DLPCA-200 transimpedance amplifier is retained in the instrument details.",
+      "curator_notes": "Noise-current density is 1.99e-13 A Hz^-1/2 at 20 Hz. The Keysight B1500A was used for J-V characterization and the SR830 for EQE rather than noise. The 19.1% EQE measured at -1 V is not transferred to this zero-bias record.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "pi-2026-agbis2-mxene-980",
+      "device_id": "pi-2026-agbis2-mxene-device",
+      "wavelength_nm": 980,
+      "detectivity_jones": 78000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": 0.3,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The article reports directly measured frequency-dependent noise that plateaus above 10 kHz but does not identify the noise-acquisition instrument.",
+      "noise_instrument_source": "Main article PDF pp. 6-7, Figure 4c",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 6-8, Figure 4c-d and conclusion",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "The internally inconsistent 375 nm detectivity is excluded: the abstract reports 1.16e12 Jones the main text 1.6e12 Jones and Figure 4d approximately 1.65e12 Jones. Measurements are described as room temperature without a numeric temperature.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "qin-2023-hgte-fpa-2500",
+      "device_id": "qin-2023-hgte-fpa-device",
+      "wavelength_nm": 2500,
+      "detectivity_jones": 30000000000,
+      "responsivity_a_w": 0.4,
+      "eqe_percent": 25,
+      "temperature_k": null,
+      "bias_v": null,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The reported pixel noise includes the HgTe CQD detector ROIC and connecting wires; the supplied article does not identify the acquisition instrument used for the FPA noise histogram.",
+      "noise_instrument_source": "Main article PDF p. 5, planar p-n junction FPA imager discussion",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 5-6, Figure 3d-i",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "The paper associates the FPA detectivity with a 2.5 um cutoff and reports responsivity at 2.5 um; the D* calculation uses calibrated blackbody illumination and system-level FPA noise rather than an explicitly stated monochromatic 2500 nm noise measurement. Reported values are approximately 3e10 Jones 0.4 +/- 0.04 A/W and 25 +/- 2% EQE at room temperature.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
     }
@@ -6137,6 +6384,261 @@
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Supporting Information Table S2 assigns 1100 nm to this-work D* while the main text and Figure S21 caption assign -0.5 V. Table S2 instead lists 0 V; the co-located main-text and Figure S21 evidence is retained. The zero-bias EQE and transient values are not transferred to this row.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "imran-2025-insb-metal-halide",
+        "title": "Control Over Metal-Halide Reactivity Enables Uniform Growth of InSb Colloidal Quantum Dots for Enhanced SWIR Light Detection",
+        "authors": [
+          "Muhammad Imran",
+          "Da Bin Kim",
+          "Pan Xia",
+          "Francisco Yarur Villanueva",
+          "Benjamin Rehl",
+          "Joao M. Pina",
+          "Yanjiang Liu",
+          "Yangning Zhang",
+          "Oleksandr Voznyy",
+          "Eugenia Kumacheva",
+          "Sjoerd Hoogland",
+          "Edward H. Sargent"
+        ],
+        "first_author": "Muhammad Imran",
+        "journal": "Advanced Materials",
+        "publication_year": 2025,
+        "doi": "10.1002/adma.202420273",
+        "publication_url": "https://doi.org/10.1002/adma.202420273",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Heavy-metal-free InSb CQD n-i-p photodiode with measured frequency-dependent noise; the supplied DOCX Supporting Information identifies the noise-acquisition chain."
+      },
+      "device": {
+        "device_id": "imran-2025-insb-device",
+        "paper_id": "imran-2025-insb-metal-halide",
+        "material_family": "InSb",
+        "material_composition": "Resurfaced and ligand-exchanged InSb CQDs",
+        "device_architecture": "n-i-p CQD photodiode",
+        "device_stack": "glass / ITO / ZnO / InSb CQDs (~280 nm) / MoOx (14 nm) / Ag (140 nm)",
+        "active_area_cm2": 0.049,
+        "device_notes": "The CQD layers use sequential malonic-acid TBAI and NH4I solid-state ligand exchange."
+      },
+      "measurement": {
+        "measurement_id": "imran-2025-insb-1380",
+        "device_id": "imran-2025-insb-device",
+        "wavelength_nm": 1380,
+        "detectivity_jones": 1000000000000,
+        "responsivity_a_w": 0.35,
+        "eqe_percent": 33,
+        "temperature_k": null,
+        "bias_v": 1,
+        "measurement_frequency_hz": 2000,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "Stanford Research Systems SR570 low-noise current preamplifier connected to a Stanford Research Systems SR830 lock-in amplifier; noise spectral density evaluated from 100 Hz to 10 kHz.",
+        "noise_instrument_source": "Supporting Information DOCX, Device characterization",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 6-7, Figure 5; Supporting Information DOCX, Device characterization",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "lock_in_only_noise_measurement"
+        ],
+        "amber_explanation": "The SR830 lock-in amplifier is the sole controlled noise-acquisition class; the SR570 current preamplifier is retained in the instrument details.",
+        "curator_notes": "The Keithley 2400 was used for J-V measurements rather than noise acquisition. The noise reached a 1.17e-13 A Hz^-1/2 plateau near 2 kHz. Measurements are described as room temperature without a numeric temperature.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "kim-2026-inas-shape-engineering",
+        "title": "Ligand-Mediated Shape Engineering of SWIR InAs Colloidal Quantum Dots for Photodetector Applications",
+        "authors": [
+          "Taewan Kim",
+          "Jae Taek Oh",
+          "Hao Wu",
+          "Marta Martos Valverde",
+          "Debranjan Mandal",
+          "Gerasimos Konstantatos"
+        ],
+        "first_author": "Taewan Kim",
+        "journal": "Advanced Materials",
+        "publication_year": 2026,
+        "doi": "10.1002/adma.74004",
+        "publication_url": "https://doi.org/10.1002/adma.74004",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Heavy-metal-free shape-engineered InAs CQD photodiode prepared using a non-pyrophoric amino-arsine route."
+      },
+      "device": {
+        "device_id": "kim-2026-inas-shape-device",
+        "paper_id": "kim-2026-inas-shape-engineering",
+        "material_family": "InAs",
+        "material_composition": "Halide-passivated shape-engineered InAs CQD ink",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "ITO / SnO2 nanocrystals / InAs CQD ink / MTA-InAs CQDs / MoO3 / Au",
+        "active_area_cm2": 0.0314,
+        "device_notes": "The principal InAs CQD absorber is approximately 120 nm thick; the MTA-InAs layer is an electron-blocking interlayer."
+      },
+      "measurement": {
+        "measurement_id": "kim-2026-inas-shape-1300",
+        "device_id": "kim-2026-inas-shape-device",
+        "wavelength_nm": 1300,
+        "detectivity_jones": 33700000000,
+        "responsivity_a_w": 0.0377,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": 0,
+        "measurement_frequency_hz": 20,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "FEMTO DLPCA-200 variable-gain low-noise transimpedance amplifier connected to a Zurich Instruments MFLI lock-in amplifier.",
+        "noise_instrument_source": "Main article PDF p. 9, Device Characterization",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF p. 6, Figure 4e; p. 9, Device Characterization",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "lock_in_only_noise_measurement"
+        ],
+        "amber_explanation": "The MFLI lock-in amplifier is the sole controlled noise-acquisition class; the DLPCA-200 transimpedance amplifier is retained in the instrument details.",
+        "curator_notes": "Noise-current density is 1.99e-13 A Hz^-1/2 at 20 Hz. The Keysight B1500A was used for J-V characterization and the SR830 for EQE rather than noise. The 19.1% EQE measured at -1 V is not transferred to this zero-bias record.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "pi-2026-agbis2-mxene",
+        "title": "An Ultra-Low Dark Current AgBiS2 CQDs NIR Photodetector Using ZnO/MXene Bilayer Electron Transport Layer for Image Sensor",
+        "authors": [
+          "Huihui Pi",
+          "Cheng Ding",
+          "Yuxuan Liu",
+          "Henan Yang",
+          "Guohui Li",
+          "Bingkun Chen",
+          "Yanxia Cui"
+        ],
+        "first_author": "Huihui Pi",
+        "journal": "Nano Research",
+        "publication_year": 2026,
+        "doi": "10.26599/NR.2026.94908699",
+        "publication_url": "https://doi.org/10.26599/NR.2026.94908699",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Pb- and Hg-free AgBiS2 CQD photodiode with a ZnO/MXene bilayer electron-transport layer; the internally inconsistent 375 nm detectivity is not curated."
+      },
+      "device": {
+        "device_id": "pi-2026-agbis2-mxene-device",
+        "paper_id": "pi-2026-agbis2-mxene",
+        "material_family": "AgBiS2",
+        "material_composition": "TMAI-exchanged AgBiS2 CQDs with a ZnO/MXene electron-transport bilayer",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "ITO / ZnO / MXene / AgBiS2 CQDs (~500 nm) / PTAA / MoO3 / Ag",
+        "active_area_cm2": null,
+        "device_notes": "Optimized device fabricated using a 0.05 mg/mL MXene dispersion; the single-pixel active area is not reported."
+      },
+      "measurement": {
+        "measurement_id": "pi-2026-agbis2-mxene-980",
+        "device_id": "pi-2026-agbis2-mxene-device",
+        "wavelength_nm": 980,
+        "detectivity_jones": 78000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": 0.3,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The article reports directly measured frequency-dependent noise that plateaus above 10 kHz but does not identify the noise-acquisition instrument.",
+        "noise_instrument_source": "Main article PDF pp. 6-7, Figure 4c",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 6-8, Figure 4c-d and conclusion",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "The internally inconsistent 375 nm detectivity is excluded: the abstract reports 1.16e12 Jones the main text 1.6e12 Jones and Figure 4d approximately 1.65e12 Jones. Measurements are described as room temperature without a numeric temperature.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "qin-2023-hgte-planar-pn",
+        "title": "Mercury Telluride Colloidal Quantum-Dot Focal Plane Array with Planar p-n Junctions Enabled by In Situ Electric Field-Activated Doping",
+        "authors": [
+          "Tianling Qin",
+          "Ge Mu",
+          "Pengfei Zhao",
+          "Yimei Tan",
+          "Yanfei Liu",
+          "Shuo Zhang",
+          "Yuning Luo",
+          "Qun Hao",
+          "Menglu Chen",
+          "Xin Tang"
+        ],
+        "first_author": "Tianling Qin",
+        "journal": "Science Advances",
+        "publication_year": 2023,
+        "doi": "10.1126/sciadv.adg7827",
+        "publication_url": "https://doi.org/10.1126/sciadv.adg7827",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Planar HgTe CQD p-n photodiode focal-plane array enabled by in situ electric-field-activated doping; only the extractable FPA measurement is curated."
+      },
+      "device": {
+        "device_id": "qin-2023-hgte-fpa-device",
+        "paper_id": "qin-2023-hgte-planar-pn",
+        "material_family": "HgTe",
+        "material_composition": "CdCl2-treated HgTe CQD film with in situ electric-field-activated lateral doping",
+        "device_architecture": "Planar p-n CQD photodiode focal-plane array",
+        "device_stack": "Si CMOS ROIC / interdigitated planar electrodes / spin-coated HgTe CQD film",
+        "active_area_cm2": null,
+        "device_notes": "A 640 x 512 array with 15 um pixel pitch; system-level noise includes detector pixels ROIC and connecting wires."
+      },
+      "measurement": {
+        "measurement_id": "qin-2023-hgte-fpa-2500",
+        "device_id": "qin-2023-hgte-fpa-device",
+        "wavelength_nm": 2500,
+        "detectivity_jones": 30000000000,
+        "responsivity_a_w": 0.4,
+        "eqe_percent": 25,
+        "temperature_k": null,
+        "bias_v": null,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The reported pixel noise includes the HgTe CQD detector ROIC and connecting wires; the supplied article does not identify the acquisition instrument used for the FPA noise histogram.",
+        "noise_instrument_source": "Main article PDF p. 5, planar p-n junction FPA imager discussion",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 5-6, Figure 3d-i",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "The paper associates the FPA detectivity with a 2.5 um cutoff and reports responsivity at 2.5 um; the D* calculation uses calibrated blackbody illumination and system-level FPA noise rather than an explicitly stated monochromatic 2500 nm noise measurement. Reported values are approximately 3e10 Jones 0.4 +/- 0.04 A/W and 25 +/- 2% EQE at room temperature.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
       }

@@ -192,21 +192,27 @@ function datumFromPoint(point: ScatterPointItem): PlotDatum | undefined {
 function AtlasPoint({
   point,
   selectedMeasurementId,
+  hoveredMeasurementId,
   showLabel,
+  onHover,
   onSelect,
 }: {
   point: ScatterPointItem;
   selectedMeasurementId?: string;
+  hoveredMeasurementId?: string;
   showLabel: boolean;
+  onHover: (measurementId?: string) => void;
   onSelect: (record: AtlasRecord) => void;
 }) {
   const datum = datumFromPoint(point);
   if (!datum || point.cx === undefined || point.cy === undefined) return null;
   const { measurement, device, paper } = datum.record;
   const selected = measurement.measurementId === selectedMeasurementId;
+  const hovered = measurement.measurementId === hoveredMeasurementId;
+  const dimmed = Boolean(hoveredMeasurementId) && !hovered;
   const isShotNoise = measurement.noiseMethod === "shot_noise_approximation";
-  const isMeasuredNoise = measurement.noiseMethod === "measured_noise";
-  const stroke = measurement.flag === "amber" ? "#b45309" : "#ffffff";
+  const isCaution = measurement.flag === "amber";
+  const stroke = isCaution ? "#9a4d06" : "#334b43";
   const accessibleLabel = `${device.materialFamily}, ${formatWithUnit(
     measurement.wavelengthNm,
     "nanometers",
@@ -217,21 +223,29 @@ function AtlasPoint({
   const common = {
     fill: datum.fill,
     stroke,
-    strokeWidth: selected ? 3.5 : measurement.flag === "amber" ? 3 : 1.75,
-    strokeDasharray: measurement.flag === "amber" ? "3 2" : undefined,
+    fillOpacity: hovered ? 0.95 : 0.7,
+    strokeOpacity: 0.96,
+    strokeWidth: selected ? 3 : isCaution ? 2.5 : 1.35,
     vectorEffect: "non-scaling-stroke" as const,
   };
+  const radius = hovered || selected ? 7 : 5.5;
 
   return (
     <g
       className={`atlas-point atlas-point--${measurement.flag}${
         selected ? " atlas-point--selected" : ""
+      }${hovered ? " atlas-point--hovered" : ""}${
+        dimmed ? " atlas-point--dimmed" : ""
       }`}
       role="button"
       tabIndex={0}
       aria-label={accessibleLabel}
       aria-pressed={selected}
       onClick={activate}
+      onMouseEnter={() => onHover(measurement.measurementId)}
+      onMouseLeave={() => onHover(undefined)}
+      onFocus={() => onHover(measurement.measurementId)}
+      onBlur={() => onHover(undefined)}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
@@ -250,24 +264,22 @@ function AtlasPoint({
           opacity="0.5"
         />
       ) : null}
-      {isShotNoise ? (
+      {isCaution ? (
         <path
-          d={`M ${point.cx} ${point.cy - 7} L ${point.cx + 7} ${point.cy} L ${
+          d={`M ${point.cx} ${point.cy - radius} L ${point.cx + radius} ${point.cy} L ${
             point.cx
-          } ${point.cy + 7} L ${point.cx - 7} ${point.cy} Z`}
+          } ${point.cy + radius} L ${point.cx - radius} ${point.cy} Z`}
           {...common}
         />
-      ) : isMeasuredNoise ? (
-        <circle cx={point.cx} cy={point.cy} r="6.5" {...common} />
+      ) : isShotNoise ? (
+        <path
+          d={`M ${point.cx} ${point.cy - radius} L ${point.cx + radius} ${
+            point.cy + radius * 0.8
+          } L ${point.cx - radius} ${point.cy + radius * 0.8} Z`}
+          {...common}
+        />
       ) : (
-        <rect
-          x={point.cx - 6}
-          y={point.cy - 6}
-          width="12"
-          height="12"
-          rx="1"
-          {...common}
-        />
+        <circle cx={point.cx} cy={point.cy} r={radius} {...common} />
       )}
       {showLabel ? (
         <text
@@ -342,15 +354,12 @@ function MarkerLegend() {
         Measured noise
       </span>
       <span>
-        <i className="plot-marker plot-marker--diamond" aria-hidden="true" />
+        <i className="plot-marker plot-marker--triangle" aria-hidden="true" />
         Shot-noise estimate
       </span>
       <span>
-        <i className="plot-marker plot-marker--square" aria-hidden="true" />
-        Other / unspecified noise
-      </span>
-      <span className="plot-legend__flag plot-legend__flag--amber">
-        Amber outline = flagged
+        <i className="plot-marker plot-marker--diamond" aria-hidden="true" />
+        Methodological caution
       </span>
     </div>
   );
@@ -365,7 +374,8 @@ export function PerformancePlot({
 }: PerformancePlotProps) {
   const chartRef = useRef<HTMLDivElement>(null);
   const [showNotableLabels, setShowNotableLabels] = useState(false);
-  const [showPaperMaximums, setShowPaperMaximums] = useState(false);
+  const [showPaperMaximums, setShowPaperMaximums] = useState(true);
+  const [hoveredMeasurementId, setHoveredMeasurementId] = useState<string>();
   const validRecords = records.filter(
     (record) =>
       Number.isFinite(record.measurement.wavelengthNm) &&
@@ -428,12 +438,14 @@ export function PerformancePlot({
     <AtlasPoint
       point={point}
       selectedMeasurementId={selectedMeasurementId}
+      hoveredMeasurementId={hoveredMeasurementId}
       showLabel={
         showNotableLabels &&
         notableMeasurementIds.has(
           datumFromPoint(point)?.record.measurement.measurementId ?? "",
         )
       }
+      onHover={setHoveredMeasurementId}
       onSelect={onSelect}
     />
   );
@@ -457,7 +469,7 @@ export function PerformancePlot({
             onClick={() => setShowPaperMaximums((shown) => !shown)}
             title="Show only the highest detectivity measurement remaining for each paper"
           >
-            {showPaperMaximums ? "Show all points" : "Maximum D* per paper"}
+            {showPaperMaximums ? "All measurements" : "Maximum D* per paper"}
           </button>
           <button
             type="button"

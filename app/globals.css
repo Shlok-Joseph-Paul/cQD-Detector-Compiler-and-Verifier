@@ -991,6 +991,12 @@ select {
 
 .atlas-point {
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 140ms ease;
+}
+
+.atlas-point--dimmed {
+  opacity: 0.2;
 }
 
 .atlas-point:focus-visible {
@@ -1178,8 +1184,8 @@ select {
   display: inline-block;
   width: 11px;
   height: 11px;
-  border: 1px solid #52615c;
-  background: #52615c;
+  border: 1px solid #334b43;
+  background: rgb(82 97 92 / 70%);
 }
 
 .plot-marker--circle {
@@ -1190,8 +1196,14 @@ select {
   transform: rotate(45deg);
 }
 
-.plot-marker--square {
-  border-radius: 1px;
+.plot-marker--triangle {
+  width: 0;
+  height: 0;
+  border: 0;
+  border-right: 6px solid transparent;
+  border-bottom: 11px solid rgb(82 97 92 / 70%);
+  border-left: 6px solid transparent;
+  background: transparent;
 }
 
 .plot-legend__flag {

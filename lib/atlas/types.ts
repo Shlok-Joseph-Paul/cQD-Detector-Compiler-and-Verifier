@@ -19,6 +19,35 @@ export type PublicFlag = "green" | "amber";
 export type TemperatureCategory = CanonicalTemperatureCategory;
 export type BiasCondition = CanonicalBiasCondition;
 export type PublicationFilter = "peer_reviewed" | "preprint" | "demonstration";
+export type ExtendedReviewFilter = "all" | "checked" | "source_unavailable";
+export type AtlasHistoryMode = "push" | "replace";
+
+export const ATLAS_METRIC_KEYS = [
+  "wavelength",
+  "detectivity",
+  "responsivity",
+  "eqe",
+  "response_time",
+  "rise_time",
+  "fall_time",
+  "bandwidth",
+  "ldr",
+] as const;
+export type AtlasMetricKey = (typeof ATLAS_METRIC_KEYS)[number];
+
+export const ATLAS_PLOT_MODES = ["performance_map", "compare_metrics"] as const;
+export type AtlasPlotMode = (typeof ATLAS_PLOT_MODES)[number];
+
+export const ATLAS_PLOT_SCOPES = ["paper_maxima", "all_measurements"] as const;
+export type AtlasPlotScope = (typeof ATLAS_PLOT_SCOPES)[number];
+
+export const ATLAS_TABLE_VIEWS = [
+  "overview",
+  "optical",
+  "speed",
+  "methods",
+] as const;
+export type AtlasTableView = (typeof ATLAS_TABLE_VIEWS)[number];
 
 export interface AtlasPaper {
   paperId: string;
@@ -121,9 +150,41 @@ export interface AtlasFilterState {
   noiseMethod: NoiseMethod | "all";
   flag: PublicFlag | "all";
   publicationType: PublicationFilter | "all";
+  hasResponsivity: boolean;
+  hasEqe: boolean;
+  hasTemporal: boolean;
+  hasRiseTime: boolean;
+  hasFallTime: boolean;
+  hasBandwidth: boolean;
+  hasLdr: boolean;
+  extendedReview: ExtendedReviewFilter;
+  ambiguousExtraction: boolean;
+  responsivityMin?: number;
+  eqeMin?: number;
+  responseTimeMaxS?: number;
+  riseTimeMaxS?: number;
+  fallTimeMaxS?: number;
+  bandwidthMinHz?: number;
+  ldrMinDb?: number;
+  plotMode: AtlasPlotMode;
+  plotX: AtlasMetricKey;
+  plotY: AtlasMetricKey;
+  plotScope: AtlasPlotScope;
+  tableView: AtlasTableView;
 }
 
-export type AtlasSortKey = "material" | "wavelength" | "detectivity" | "year";
+export type AtlasSortKey =
+  | "material"
+  | "wavelength"
+  | "detectivity"
+  | "responsivity"
+  | "eqe"
+  | "response_time"
+  | "rise_time"
+  | "fall_time"
+  | "bandwidth"
+  | "ldr"
+  | "year";
 export type SortDirection = "asc" | "desc";
 
 export interface AtlasSortState {

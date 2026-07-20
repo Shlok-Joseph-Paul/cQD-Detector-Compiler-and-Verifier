@@ -10,13 +10,29 @@ import {
 import {
   DEFAULT_ATLAS_FILTERS,
   biasCondition,
+  clearMetricFilters,
   filterAtlasRecords,
   lockMaterialFilter,
+  normalizeMetricFilterValue,
   parseAtlasFilters,
   publicationCategory,
+  resetAtlasFilterCriteria,
   serializeAtlasFilters,
   temperatureCategory,
 } from "../lib/atlas/filters.ts";
+import {
+  ATLAS_METRICS,
+  ATLAS_PLOT_PRESETS,
+  availablePlotPresets,
+  isPlottableMetricValue,
+  ldrValuePrefix,
+  metricConditionSummary,
+  metricDefinitionSummary,
+  metricEvidenceSummary,
+  metricLimitLabel,
+  recordsForPlotScope,
+  recordsWithMetricPair,
+} from "../lib/atlas/metrics.ts";
 import {
   formatAmberReason,
   formatScientific,
@@ -26,7 +42,11 @@ import {
 } from "../lib/atlas/format.ts";
 import { summarizeMaterials } from "../lib/atlas/materials.ts";
 import { sortAtlasRecords } from "../lib/atlas/sort.ts";
-import type { AtlasRecord } from "../lib/atlas/types.ts";
+import type {
+  AtlasFilterState,
+  AtlasRecord,
+  AtlasSortKey,
+} from "../lib/atlas/types.ts";
 
 const measuredRecord: AtlasRecord = {
   paper: {
@@ -144,6 +164,32 @@ const shotNoiseRecord: AtlasRecord = {
 };
 
 const records = [measuredRecord, shotNoiseRecord];
+
+function recordWithMeasurement(
+  measurementId: string,
+  measurement: Partial<AtlasRecord["measurement"]>,
+): AtlasRecord {
+  const paperId = `paper-${measurementId}`;
+  const deviceId = `device-${measurementId}`;
+  return {
+    paper: {
+      ...measuredRecord.paper,
+      paperId,
+      title: `Fixture ${measurementId}`,
+    },
+    device: {
+      ...measuredRecord.device,
+      deviceId,
+      paperId,
+    },
+    measurement: {
+      ...measuredRecord.measurement,
+      measurementId,
+      deviceId,
+      ...measurement,
+    },
+  };
+}
 
 test("filters measurements across scientific and publication dimensions", () => {
   assert.deepEqual(
@@ -364,4 +410,581 @@ test("material summaries count unique papers and noise-method shares", () => {
     measuredNoisePercent: 100,
     shotNoisePercent: 0,
   });
+});
+
+test("extended explorer URL state round-trips with explicit units", () => {
+  const filters: AtlasFilterState = {
+    ...DEFAULT_ATLAS_FILTERS,
+    hasResponsivity: true,
+    hasEqe: true,
+    hasTemporal: true,
+    hasRiseTime: true,
+    hasFallTime: true,
+    hasBandwidth: true,
+    hasLdr: true,
+    extendedReview: "checked",
+    ambiguousExtraction: true,
+    responsivityMin: 0,
+    eqeMin: 12.5,
+    responseTimeMaxS: 1e-6,
+    riseTimeMaxS: 2e-6,
+    fallTimeMaxS: 3e-6,
+    bandwidthMinHz: 1e6,
+    ldrMinDb: 80,
+    plotMode: "compare_metrics",
+    plotX: "bandwidth",
+    plotY: "responsivity",
+    plotScope: "all_measurements",
+    tableView: "speed",
+  };
+  const params = serializeAtlasFilters(
+    filters,
+    new URLSearchParams(
+      "view=compact&responsivityMin=99&eqeMin=99&unrelated=kept",
+    ),
+  );
+
+  assert.equal(params.get("view"), "compact");
+  assert.equal(params.get("unrelated"), "kept");
+  assert.equal(params.get("responsivityMin"), null);
+  assert.equal(params.get("eqeMin"), null);
+  assert.equal(params.get("responsivityMinAW"), "0");
+  assert.equal(params.get("eqeMinPercent"), "12.5");
+  assert.deepEqual(parseAtlasFilters(params), filters);
+});
+
+test("invalid explorer URL values fall back safely and duplicate axes are repaired", () => {
+  const invalid = parseAtlasFilters(
+    new URLSearchParams(
+      [
+        "plot=not-a-mode",
+        "xMetric=not-a-metric",
+        "yMetric=also-not-a-metric",
+        "scope=not-a-scope",
+        "table=not-a-view",
+        "extendedReview=not-a-status",
+        "responsivityMinAW=-1",
+        "eqeMinPercent=NaN",
+        "responseMaxS=-0.1",
+        "bandwidthMinHz=-5",
+        "ldrMinDb=-2",
+      ].join("&"),
+    ),
+  );
+
+  assert.equal(invalid.plotMode, DEFAULT_ATLAS_FILTERS.plotMode);
+  assert.equal(invalid.plotX, DEFAULT_ATLAS_FILTERS.plotX);
+  assert.equal(invalid.plotY, DEFAULT_ATLAS_FILTERS.plotY);
+  assert.equal(invalid.plotScope, DEFAULT_ATLAS_FILTERS.plotScope);
+  assert.equal(invalid.tableView, DEFAULT_ATLAS_FILTERS.tableView);
+  assert.equal(invalid.extendedReview, "all");
+  assert.equal(invalid.responsivityMin, undefined);
+  assert.equal(invalid.eqeMin, undefined);
+  assert.equal(invalid.responseTimeMaxS, undefined);
+  assert.equal(invalid.bandwidthMinHz, undefined);
+  assert.equal(invalid.ldrMinDb, undefined);
+
+  const duplicateBandwidth = parseAtlasFilters(
+    new URLSearchParams("xMetric=bandwidth&yMetric=bandwidth"),
+  );
+  assert.equal(duplicateBandwidth.plotX, "bandwidth");
+  assert.equal(duplicateBandwidth.plotY, "detectivity");
+
+  const duplicateDetectivity = parseAtlasFilters(
+    new URLSearchParams("xMetric=detectivity&yMetric=detectivity"),
+  );
+  assert.equal(duplicateDetectivity.plotX, "detectivity");
+  assert.equal(duplicateDetectivity.plotY, "wavelength");
+});
+
+test("metric availability filters treat zero as reported and null as missing", () => {
+  const zeroMetrics = recordWithMeasurement("zero-metrics", {
+    responsivityAW: 0,
+    eqePercent: 0,
+    responseTimeS: 0,
+    riseTimeS: 0,
+    fallTimeS: 0,
+    bandwidthHz: 0,
+    linearDynamicRangeDb: 0,
+  });
+  const missingMetrics = recordWithMeasurement("missing-metrics", {
+    responsivityAW: null,
+    eqePercent: null,
+    responseTimeS: null,
+    riseTimeS: null,
+    fallTimeS: null,
+    bandwidthHz: null,
+    linearDynamicRangeDb: null,
+    linearDynamicRangeMin: null,
+    linearDynamicRangeMax: null,
+  });
+  const availabilityKeys = [
+    "hasResponsivity",
+    "hasEqe",
+    "hasTemporal",
+    "hasRiseTime",
+    "hasFallTime",
+    "hasBandwidth",
+    "hasLdr",
+  ] as const satisfies readonly (keyof AtlasFilterState)[];
+
+  for (const key of availabilityKeys) {
+    const filters: AtlasFilterState = {
+      ...DEFAULT_ATLAS_FILTERS,
+      [key]: true,
+    };
+    assert.deepEqual(
+      filterAtlasRecords([zeroMetrics, missingMetrics], filters).map(
+        (record) => record.measurement.measurementId,
+      ),
+      ["zero-metrics"],
+      key,
+    );
+  }
+
+  const rawRangeOnly = recordWithMeasurement("raw-ldr-range", {
+    linearDynamicRangeDb: null,
+    linearDynamicRangeMin: 0,
+    linearDynamicRangeMax: 1,
+    linearDynamicRangeUnits: "mW cm^-2",
+  });
+  assert.deepEqual(
+    filterAtlasRecords([rawRangeOnly], {
+      ...DEFAULT_ATLAS_FILTERS,
+      hasLdr: true,
+    }).map((record) => record.measurement.measurementId),
+    ["raw-ldr-range"],
+  );
+  assert.equal(
+    filterAtlasRecords([rawRangeOnly], {
+      ...DEFAULT_ATLAS_FILTERS,
+      ldrMinDb: 0,
+    }).length,
+    0,
+  );
+});
+
+test("numeric metric filters distinguish zero from null and use inclusive bounds", () => {
+  const zeroMetrics = recordWithMeasurement("numeric-zero", {
+    responsivityAW: 0,
+    eqePercent: 0,
+    responseTimeS: 0,
+    riseTimeS: 0,
+    fallTimeS: 0,
+    bandwidthHz: 0,
+    linearDynamicRangeDb: 0,
+  });
+  const positiveMetrics = recordWithMeasurement("numeric-positive", {
+    responsivityAW: 1,
+    eqePercent: 1,
+    responseTimeS: 1,
+    riseTimeS: 1,
+    fallTimeS: 1,
+    bandwidthHz: 1,
+    linearDynamicRangeDb: 1,
+  });
+  const missingMetrics = recordWithMeasurement("numeric-missing", {
+    responsivityAW: null,
+    eqePercent: null,
+    responseTimeS: null,
+    riseTimeS: null,
+    fallTimeS: null,
+    bandwidthHz: null,
+    linearDynamicRangeDb: null,
+  });
+  const metricRecords = [zeroMetrics, positiveMetrics, missingMetrics];
+  const minimumKeys = [
+    "responsivityMin",
+    "eqeMin",
+    "bandwidthMinHz",
+    "ldrMinDb",
+  ] as const satisfies readonly (keyof AtlasFilterState)[];
+  const maximumKeys = [
+    "responseTimeMaxS",
+    "riseTimeMaxS",
+    "fallTimeMaxS",
+  ] as const satisfies readonly (keyof AtlasFilterState)[];
+
+  for (const key of minimumKeys) {
+    const filters: AtlasFilterState = {
+      ...DEFAULT_ATLAS_FILTERS,
+      [key]: 0,
+    };
+    assert.deepEqual(
+      filterAtlasRecords(metricRecords, filters).map(
+        (record) => record.measurement.measurementId,
+      ),
+      ["numeric-zero", "numeric-positive"],
+      key,
+    );
+  }
+
+  for (const key of maximumKeys) {
+    const filters: AtlasFilterState = {
+      ...DEFAULT_ATLAS_FILTERS,
+      [key]: 0,
+    };
+    assert.deepEqual(
+      filterAtlasRecords(metricRecords, filters).map(
+        (record) => record.measurement.measurementId,
+      ),
+      ["numeric-zero"],
+      key,
+    );
+  }
+
+  assert.deepEqual(
+    filterAtlasRecords(metricRecords, {
+      ...DEFAULT_ATLAS_FILTERS,
+      responsivityMin: 1,
+      eqeMin: 1,
+      responseTimeMaxS: 1,
+      riseTimeMaxS: 1,
+      fallTimeMaxS: 1,
+      bandwidthMinHz: 1,
+      ldrMinDb: 1,
+    }).map((record) => record.measurement.measurementId),
+    ["numeric-positive"],
+  );
+});
+
+test("extended review status is an exclusive filter", () => {
+  const checked = recordWithMeasurement("review-checked", {
+    extendedMetricsReviewStatus: "checked",
+  });
+  const unavailable = recordWithMeasurement("review-unavailable", {
+    extendedMetricsReviewStatus: "source_unavailable",
+  });
+  const notChecked = recordWithMeasurement("review-not-checked", {
+    extendedMetricsReviewStatus: "not_checked",
+  });
+  const reviewRecords = [checked, unavailable, notChecked];
+
+  assert.deepEqual(
+    filterAtlasRecords(reviewRecords, {
+      ...DEFAULT_ATLAS_FILTERS,
+      extendedReview: "checked",
+    }).map((record) => record.measurement.measurementId),
+    ["review-checked"],
+  );
+  assert.deepEqual(
+    filterAtlasRecords(reviewRecords, {
+      ...DEFAULT_ATLAS_FILTERS,
+      extendedReview: "source_unavailable",
+    }).map((record) => record.measurement.measurementId),
+    ["review-unavailable"],
+  );
+  assert.deepEqual(
+    filterAtlasRecords(reviewRecords, DEFAULT_ATLAS_FILTERS).map(
+      (record) => record.measurement.measurementId,
+    ),
+    ["review-checked", "review-unavailable", "review-not-checked"],
+  );
+});
+
+test("ambiguous extraction filter checks every extended metric group", () => {
+  const direct = recordWithMeasurement("direct-extraction", {
+    responsivityExtractionMethod: "directly_reported",
+    responseTimeExtractionMethod: "not_reported",
+    bandwidthExtractionMethod: "not_reported",
+    linearDynamicRangeExtractionMethod: "not_reported",
+  });
+  const ambiguityCases = [
+    ["ambiguous-responsivity", "responsivityExtractionMethod"],
+    ["ambiguous-temporal", "responseTimeExtractionMethod"],
+    ["ambiguous-bandwidth", "bandwidthExtractionMethod"],
+    ["ambiguous-ldr", "linearDynamicRangeExtractionMethod"],
+  ] as const;
+  const ambiguousRecords = ambiguityCases.map(([id, field]) =>
+    recordWithMeasurement(id, { [field]: "ambiguous" }),
+  );
+
+  assert.deepEqual(
+    filterAtlasRecords([direct, ...ambiguousRecords], {
+      ...DEFAULT_ATLAS_FILTERS,
+      ambiguousExtraction: true,
+    }).map((record) => record.measurement.measurementId),
+    ambiguityCases.map(([id]) => id),
+  );
+});
+
+test("metric pairs exclude missing and log-invalid values without rejecting linear zero", () => {
+  const valid = recordWithMeasurement("pair-valid", {
+    detectivityJones: 1e10,
+    responsivityAW: 1,
+  });
+  const linearZero = recordWithMeasurement("pair-linear-zero", {
+    detectivityJones: 1e10,
+    responsivityAW: 0,
+  });
+  const missing = recordWithMeasurement("pair-missing", {
+    detectivityJones: 1e10,
+    responsivityAW: null,
+  });
+  const logZero = recordWithMeasurement("pair-log-zero", {
+    detectivityJones: 0,
+    responsivityAW: 1,
+  });
+  const logNegative = recordWithMeasurement("pair-log-negative", {
+    detectivityJones: -1,
+    responsivityAW: 1,
+  });
+
+  const pair = recordsWithMetricPair(
+    [valid, linearZero, missing, logZero, logNegative],
+    "responsivity",
+    "detectivity",
+  );
+  assert.deepEqual(
+    pair.plotted.map((record) => record.measurement.measurementId),
+    ["pair-valid", "pair-linear-zero"],
+  );
+  assert.equal(pair.excluded, 3);
+  assert.equal(isPlottableMetricValue(0, "responsivity"), true);
+  assert.equal(isPlottableMetricValue(0, "ldr"), true);
+  assert.equal(isPlottableMetricValue(0, "response_time"), false);
+  assert.equal(isPlottableMetricValue(Number.NaN, "bandwidth"), false);
+  assert.equal(isPlottableMetricValue(null, "detectivity"), false);
+});
+
+test("all extended metric sorts keep missing values last in either direction", () => {
+  const low = recordWithMeasurement("sort-low", {
+    responsivityAW: 0,
+    eqePercent: 0,
+    responseTimeS: 0,
+    riseTimeS: 0,
+    fallTimeS: 0,
+    bandwidthHz: 0,
+    linearDynamicRangeDb: 0,
+  });
+  const high = recordWithMeasurement("sort-high", {
+    responsivityAW: 2,
+    eqePercent: 2,
+    responseTimeS: 2,
+    riseTimeS: 2,
+    fallTimeS: 2,
+    bandwidthHz: 2,
+    linearDynamicRangeDb: 2,
+  });
+  const missing = recordWithMeasurement("sort-missing", {
+    responsivityAW: null,
+    eqePercent: null,
+    responseTimeS: null,
+    riseTimeS: null,
+    fallTimeS: null,
+    bandwidthHz: null,
+    linearDynamicRangeDb: null,
+  });
+  const metricSortKeys = [
+    "responsivity",
+    "eqe",
+    "response_time",
+    "rise_time",
+    "fall_time",
+    "bandwidth",
+    "ldr",
+  ] as const satisfies readonly AtlasSortKey[];
+
+  for (const key of metricSortKeys) {
+    assert.deepEqual(
+      sortAtlasRecords([high, missing, low], {
+        key,
+        direction: "asc",
+      }).map((record) => record.measurement.measurementId),
+      ["sort-low", "sort-high", "sort-missing"],
+      `${key} ascending`,
+    );
+    assert.deepEqual(
+      sortAtlasRecords([low, missing, high], {
+        key,
+        direction: "desc",
+      }).map((record) => record.measurement.measurementId),
+      ["sort-high", "sort-low", "sort-missing"],
+      `${key} descending`,
+    );
+  }
+});
+
+test("plot definitions keep curated presets and scientifically appropriate scales", () => {
+  assert.deepEqual(
+    ATLAS_PLOT_PRESETS.map(({ x, y }) => [x, y]),
+    [
+      ["wavelength", "detectivity"],
+      ["responsivity", "detectivity"],
+      ["response_time", "detectivity"],
+      ["bandwidth", "detectivity"],
+      ["ldr", "detectivity"],
+      ["bandwidth", "responsivity"],
+    ],
+  );
+
+  for (const metric of [
+    "detectivity",
+    "response_time",
+    "rise_time",
+    "fall_time",
+    "bandwidth",
+  ] as const) {
+    assert.equal(ATLAS_METRICS[metric].scale, "log", metric);
+  }
+  for (const metric of ["wavelength", "responsivity", "eqe", "ldr"] as const) {
+    assert.equal(ATLAS_METRICS[metric].scale, "linear", metric);
+  }
+});
+
+test("preset availability and plot scope follow the current scientific record set", () => {
+  const lower = recordWithMeasurement("scope-lower", {
+    detectivityJones: 1e10,
+    responsivityAW: 0.2,
+  });
+  const higher: AtlasRecord = {
+    ...lower,
+    measurement: {
+      ...lower.measurement,
+      measurementId: "scope-higher",
+      detectivityJones: 2e10,
+      responsivityAW: 0.4,
+    },
+  };
+  const other = recordWithMeasurement("scope-other", {
+    detectivityJones: 3e10,
+    responsivityAW: null,
+  });
+
+  assert.deepEqual(
+    recordsForPlotScope([lower, higher, other], "paper_maxima").map(
+      (record) => record.measurement.measurementId,
+    ),
+    ["scope-higher", "scope-other"],
+  );
+  assert.deepEqual(
+    recordsForPlotScope([lower, higher, other], "all_measurements").map(
+      (record) => record.measurement.measurementId,
+    ),
+    ["scope-lower", "scope-higher", "scope-other"],
+  );
+  assert.deepEqual(
+    availablePlotPresets([lower]).map((preset) => preset.key),
+    ["dstar-wavelength", "dstar-responsivity"],
+  );
+});
+
+test("metric threshold unit conversion and clear-all preserve view state", () => {
+  assert.equal(normalizeMetricFilterValue(25, 1e6), 25e-6);
+  assert.equal(normalizeMetricFilterValue(2.5, 1e-3), 2500);
+  assert.equal(normalizeMetricFilterValue(0, 1e6), 0);
+  assert.equal(normalizeMetricFilterValue(-1, 1e6), undefined);
+  assert.equal(normalizeMetricFilterValue(1, 0), undefined);
+
+  const configured: AtlasFilterState = {
+    ...DEFAULT_ATLAS_FILTERS,
+    material: "HgTe",
+    hasResponsivity: true,
+    hasBandwidth: true,
+    extendedReview: "source_unavailable",
+    ambiguousExtraction: true,
+    responsivityMin: 0.5,
+    responseTimeMaxS: 1e-6,
+    bandwidthMinHz: 1e6,
+    plotMode: "compare_metrics",
+    plotX: "bandwidth",
+    plotY: "responsivity",
+    plotScope: "all_measurements",
+    tableView: "speed",
+  };
+  const cleared = clearMetricFilters(configured);
+  assert.equal(cleared.material, "HgTe");
+  assert.equal(cleared.plotMode, "compare_metrics");
+  assert.equal(cleared.plotX, "bandwidth");
+  assert.equal(cleared.plotY, "responsivity");
+  assert.equal(cleared.plotScope, "all_measurements");
+  assert.equal(cleared.tableView, "speed");
+  assert.equal(cleared.hasResponsivity, false);
+  assert.equal(cleared.hasBandwidth, false);
+  assert.equal(cleared.extendedReview, "all");
+  assert.equal(cleared.ambiguousExtraction, false);
+  assert.equal(cleared.responsivityMin, undefined);
+  assert.equal(cleared.responseTimeMaxS, undefined);
+  assert.equal(cleared.bandwidthMinHz, undefined);
+
+  const reset = resetAtlasFilterCriteria(configured);
+  assert.equal(reset.material, "all");
+  assert.equal(reset.hasResponsivity, false);
+  assert.equal(reset.responsivityMin, undefined);
+  assert.equal(reset.plotMode, "compare_metrics");
+  assert.equal(reset.plotX, "bandwidth");
+  assert.equal(reset.plotY, "responsivity");
+  assert.equal(reset.plotScope, "all_measurements");
+  assert.equal(reset.tableView, "speed");
+});
+
+test("metric provenance never borrows D* conditions for EQE or LDR", () => {
+  const extended = recordWithMeasurement("conditions", {
+    wavelengthNm: 1550,
+    biasV: -0.2,
+    temperatureK: 300,
+    responsivityWavelengthNm: 1450,
+    responsivityBiasV: -0.1,
+    responsivityTemperatureK: 295,
+    eqePercent: 70,
+    linearDynamicRangeDb: 80,
+    linearDynamicRangeDefinition: "Lower bound (>80 dB) at 1,550 nm",
+    bandwidthHz: 1e6,
+    bandwidthBiasV: -0.3,
+    bandwidthLimit: "instrument_limited",
+    responseTimeS: 1e-6,
+    responseTimeLimit: "measured",
+  });
+
+  assert.deepEqual(metricConditionSummary(extended, "eqe"), []);
+  assert.deepEqual(metricConditionSummary(extended, "ldr"), []);
+  assert.deepEqual(metricConditionSummary(extended, "responsivity"), [
+    "1,450 nm",
+    "-0.1 V",
+    "295 K",
+  ]);
+  assert.equal(metricLimitLabel(extended, "response_time"), null);
+  assert.equal(metricLimitLabel(extended, "bandwidth"), "Instrument limited");
+  assert.equal(ldrValuePrefix(extended), ">");
+  assert.equal(
+    metricDefinitionSummary(extended, "ldr"),
+    "Lower bound (>80 dB) at 1,550 nm",
+  );
+
+  const unavailable = recordWithMeasurement("unavailable-eqe", {
+    eqePercent: 70,
+    extendedMetricsReviewStatus: "source_unavailable",
+  });
+  assert.equal(
+    metricEvidenceSummary(unavailable, "eqe"),
+    "Source unavailable · value unverified",
+  );
+});
+
+test("graph, table, and CSV can share one filtered record set", () => {
+  const reported = recordWithMeasurement("shared-reported", {
+    responsivityAW: 0,
+  });
+  const missing = recordWithMeasurement("shared-missing", {
+    responsivityAW: null,
+  });
+  const filtered = filterAtlasRecords([reported, missing], {
+    ...DEFAULT_ATLAS_FILTERS,
+    hasResponsivity: true,
+  });
+  const plot = recordsWithMetricPair(
+    recordsForPlotScope(filtered, "all_measurements"),
+    "responsivity",
+    "detectivity",
+  );
+  const csvRows = atlasRecordsToCsv(filtered).trimEnd().split("\r\n");
+
+  assert.deepEqual(
+    filtered.map((record) => record.measurement.measurementId),
+    ["shared-reported"],
+  );
+  assert.deepEqual(plot.plotted, filtered);
+  assert.equal(plot.excluded, 0);
+  assert.equal(csvRows.length, 2);
+  assert.match(csvRows[1], /shared-reported/);
 });

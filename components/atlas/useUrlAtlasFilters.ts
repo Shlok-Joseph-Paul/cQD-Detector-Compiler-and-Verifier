@@ -6,9 +6,10 @@ import {
   DEFAULT_ATLAS_FILTERS,
   lockMaterialFilter,
   parseAtlasFilters,
+  resetAtlasFilterCriteria,
   serializeAtlasFilters,
 } from "@/lib/atlas/filters";
-import type { AtlasFilterState } from "@/lib/atlas/types";
+import type { AtlasFilterState, AtlasHistoryMode } from "@/lib/atlas/types";
 
 function readFilters(
   base: AtlasFilterState,
@@ -23,12 +24,18 @@ function readFilters(
   return lockMaterialFilter(parseAtlasFilters(merged), lockedMaterial);
 }
 
-function writeFilters(filters: AtlasFilterState): void {
+function writeFilters(
+  filters: AtlasFilterState,
+  historyMode: AtlasHistoryMode = "push",
+): void {
   const current = new URLSearchParams(window.location.search);
   const params = serializeAtlasFilters(filters, current);
   const query = params.toString();
   const url = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
-  window.history.replaceState(window.history.state, "", url);
+  const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (url === currentUrl) return;
+  const method = historyMode === "replace" ? "replaceState" : "pushState";
+  window.history[method](window.history.state, "", url);
 }
 
 /** URL-backed filter state without imposing Next.js router/Suspense requirements. */
@@ -37,7 +44,10 @@ export function useUrlAtlasFilters(
   lockedMaterial?: string,
 ): {
   filters: AtlasFilterState;
-  setFilters: (filters: AtlasFilterState) => void;
+  setFilters: (
+    filters: AtlasFilterState,
+    historyMode?: AtlasHistoryMode,
+  ) => void;
   resetFilters: () => void;
 } {
   const [base] = useState<AtlasFilterState>(() => ({
@@ -54,7 +64,7 @@ export function useUrlAtlasFilters(
         "material",
       );
       if (lockedMaterial && urlMaterial && urlMaterial !== lockedMaterial) {
-        writeFilters(next);
+        writeFilters(next, "replace");
       }
     };
     updateFromLocation();
@@ -63,19 +73,22 @@ export function useUrlAtlasFilters(
   }, [base, lockedMaterial]);
 
   const setFilters = useCallback(
-    (next: AtlasFilterState) => {
+    (next: AtlasFilterState, historyMode: AtlasHistoryMode = "push") => {
       const constrained = lockMaterialFilter(next, lockedMaterial);
       setFilterState(constrained);
-      writeFilters(constrained);
+      writeFilters(constrained, historyMode);
     },
     [lockedMaterial],
   );
 
   const resetFilters = useCallback(() => {
-    const constrained = lockMaterialFilter(base, lockedMaterial);
+    const constrained = lockMaterialFilter(
+      resetAtlasFilterCriteria(filters, base),
+      lockedMaterial,
+    );
     setFilterState(constrained);
     writeFilters(constrained);
-  }, [base, lockedMaterial]);
+  }, [base, filters, lockedMaterial]);
 
   return { filters, setFilters, resetFilters };
 }

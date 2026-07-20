@@ -9,8 +9,8 @@ import type { AtlasFilterState, AtlasRecord } from "@/lib/atlas/types";
 
 import { AtlasFilters } from "./AtlasFilters";
 import { MeasurementDetails } from "./MeasurementDetails";
-import { MeasurementTable } from "./MeasurementTable";
-import { PerformancePlot } from "./PerformancePlot";
+import { MetricMeasurementTable } from "./MetricMeasurementTable";
+import { PerformanceExplorer } from "./PerformanceExplorer";
 import { useUrlAtlasFilters } from "./useUrlAtlasFilters";
 
 export interface AtlasExplorerProps {
@@ -64,24 +64,20 @@ export function AtlasExplorer({
         </div>
       ) : null}
 
-      <AtlasFilters
-        records={normalized}
-        filters={filters}
-        resultCount={filtered.length}
-        lockedMaterial={lockedMaterial}
-        onChange={setFilters}
-        onReset={resetFilters}
-      />
-
       <div
         className={`atlas-explorer__visual${
           selectedRecord ? " atlas-explorer__visual--selected" : ""
         }`}
       >
-        <PerformancePlot
+        <PerformanceExplorer
           records={filtered}
+          plotMode={filters.plotMode}
+          plotX={filters.plotX}
+          plotY={filters.plotY}
+          plotScope={filters.plotScope}
           activeMaterial={filters.material}
           selectedMeasurementId={selectedMeasurementId}
+          onConfigChange={(changes) => setFilters({ ...filters, ...changes })}
           onMaterialFilter={
             lockedMaterial
               ? undefined
@@ -102,7 +98,20 @@ export function AtlasExplorer({
         ) : null}
       </div>
 
-      <MeasurementTable records={filtered} />
+      <AtlasFilters
+        records={normalized}
+        filters={filters}
+        resultCount={filtered.length}
+        lockedMaterial={lockedMaterial}
+        onChange={setFilters}
+        onReset={resetFilters}
+      />
+
+      <MetricMeasurementTable
+        records={filtered}
+        view={filters.tableView}
+        onViewChange={(tableView) => setFilters({ ...filters, tableView })}
+      />
     </div>
   );
 }

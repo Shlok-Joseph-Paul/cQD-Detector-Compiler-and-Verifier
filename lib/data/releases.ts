@@ -15,13 +15,16 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
     date: DATASET_RELEASE_DATE,
     title: "Extended detector metrics",
     summary:
-      "Adds a source-audited view of responsivity, temporal response, explicit −3 dB bandwidth, and detector linear dynamic range across the atlas.",
+      "Adds a source-audited view of responsivity, temporal response, explicit −3 dB bandwidth, and detector linear dynamic range, together with an interactive interface for exploring those metrics.",
     changes: [
       "Reprocessed 25 available main articles and Supporting Information files for extended detector metrics.",
       "Added condition-specific provenance, extraction methods, measurement bounds, and review status for responsivity, response time, rise/fall time, bandwidth, and LDR.",
       "Removed 21 false 1 Hz bandwidth entries that represented detectivity noise-equivalent bandwidth rather than detector −3 dB bandwidth.",
       "Marked 11 papers as source unavailable instead of treating unchecked metrics as not reported.",
       "Extended the paper importer so future uploads extract and validate the same metric set.",
+      "Added configurable performance-map and compare-metrics modes with curated tradeoff presets, shareable URL state, and maximum-D* or all-measurements scopes.",
+      "Added Overview, Optical, Speed, and Methods table views plus availability, review-status, and normalized numeric metric filters.",
+      "Preserved metric-specific operating conditions, source-unavailable provenance, temporal and bandwidth limits, and LDR lower bounds throughout plot and table displays.",
     ],
   },
   {

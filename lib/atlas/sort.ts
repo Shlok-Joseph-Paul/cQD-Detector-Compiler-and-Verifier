@@ -11,6 +11,20 @@ function sortValue(
       return record.measurement.wavelengthNm;
     case "detectivity":
       return record.measurement.detectivityJones;
+    case "responsivity":
+      return record.measurement.responsivityAW;
+    case "eqe":
+      return record.measurement.eqePercent;
+    case "response_time":
+      return record.measurement.responseTimeS;
+    case "rise_time":
+      return record.measurement.riseTimeS;
+    case "fall_time":
+      return record.measurement.fallTimeS;
+    case "bandwidth":
+      return record.measurement.bandwidthHz;
+    case "ldr":
+      return record.measurement.linearDynamicRangeDb;
     case "year":
       return record.paper.publicationYear;
   }

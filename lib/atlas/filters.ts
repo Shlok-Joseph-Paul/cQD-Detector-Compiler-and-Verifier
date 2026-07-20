@@ -1,14 +1,26 @@
 import type {
   AtlasFilterState,
+  AtlasMetricKey,
+  AtlasPlotMode,
+  AtlasPlotScope,
   AtlasRecord,
+  AtlasTableView,
   BiasCondition,
+  ExtendedReviewFilter,
   NoiseMethod,
   PublicationFilter,
   PublicFlag,
   TemperatureCategory,
 } from "./types";
 import { biasCondition, temperatureCategory } from "../data/filter.ts";
-import { NOISE_METHODS } from "./types.ts";
+import { hasAmbiguousExtendedMetric, hasTemporalMetric } from "./metrics.ts";
+import {
+  ATLAS_METRIC_KEYS,
+  ATLAS_PLOT_MODES,
+  ATLAS_PLOT_SCOPES,
+  ATLAS_TABLE_VIEWS,
+  NOISE_METHODS,
+} from "./types.ts";
 
 export { biasCondition, temperatureCategory };
 
@@ -23,6 +35,27 @@ export const DEFAULT_ATLAS_FILTERS: AtlasFilterState = {
   noiseMethod: "all",
   flag: "all",
   publicationType: "all",
+  hasResponsivity: false,
+  hasEqe: false,
+  hasTemporal: false,
+  hasRiseTime: false,
+  hasFallTime: false,
+  hasBandwidth: false,
+  hasLdr: false,
+  extendedReview: "all",
+  ambiguousExtraction: false,
+  responsivityMin: undefined,
+  eqeMin: undefined,
+  responseTimeMaxS: undefined,
+  riseTimeMaxS: undefined,
+  fallTimeMaxS: undefined,
+  bandwidthMinHz: undefined,
+  ldrMinDb: undefined,
+  plotMode: "performance_map",
+  plotX: "wavelength",
+  plotY: "detectivity",
+  plotScope: "paper_maxima",
+  tableView: "overview",
 };
 
 const TEMPERATURE_CATEGORIES: readonly TemperatureCategory[] = [
@@ -49,6 +82,11 @@ function finiteNumber(value: string | null): number | undefined {
   return Number.isFinite(parsed) ? parsed : undefined;
 }
 
+function nonnegativeNumber(value: string | null): number | undefined {
+  const parsed = finiteNumber(value);
+  return parsed !== undefined && parsed >= 0 ? parsed : undefined;
+}
+
 function oneOf<T extends string>(
   value: string | null,
   values: readonly T[],
@@ -57,6 +95,23 @@ function oneOf<T extends string>(
   return value !== null && values.includes(value as T)
     ? (value as T)
     : fallback;
+}
+
+function selectedValue<T extends string>(
+  value: string | null,
+  values: readonly T[],
+  fallback: T,
+): T {
+  return value !== null && values.includes(value as T)
+    ? (value as T)
+    : fallback;
+}
+
+function enabled(
+  params: URLSearchParams | Readonly<URLSearchParams>,
+  key: string,
+) {
+  return params.get(key) === "1";
 }
 
 export function publicationCategory(record: AtlasRecord): PublicationFilter {
@@ -144,6 +199,78 @@ export function recordMatchesFilters(
   ) {
     return false;
   }
+  const measurement = record.measurement;
+  if (filters.hasResponsivity && measurement.responsivityAW === null)
+    return false;
+  if (filters.hasEqe && measurement.eqePercent === null) return false;
+  if (filters.hasTemporal && !hasTemporalMetric(record)) return false;
+  if (filters.hasRiseTime && measurement.riseTimeS === null) return false;
+  if (filters.hasFallTime && measurement.fallTimeS === null) return false;
+  if (filters.hasBandwidth && measurement.bandwidthHz === null) return false;
+  if (
+    filters.hasLdr &&
+    measurement.linearDynamicRangeDb === null &&
+    measurement.linearDynamicRangeMin === null &&
+    measurement.linearDynamicRangeMax === null
+  ) {
+    return false;
+  }
+  if (
+    filters.extendedReview !== "all" &&
+    measurement.extendedMetricsReviewStatus !== filters.extendedReview
+  ) {
+    return false;
+  }
+  if (filters.ambiguousExtraction && !hasAmbiguousExtendedMetric(record))
+    return false;
+  if (
+    filters.responsivityMin !== undefined &&
+    (measurement.responsivityAW === null ||
+      measurement.responsivityAW < filters.responsivityMin)
+  ) {
+    return false;
+  }
+  if (
+    filters.eqeMin !== undefined &&
+    (measurement.eqePercent === null || measurement.eqePercent < filters.eqeMin)
+  ) {
+    return false;
+  }
+  if (
+    filters.responseTimeMaxS !== undefined &&
+    (measurement.responseTimeS === null ||
+      measurement.responseTimeS > filters.responseTimeMaxS)
+  ) {
+    return false;
+  }
+  if (
+    filters.riseTimeMaxS !== undefined &&
+    (measurement.riseTimeS === null ||
+      measurement.riseTimeS > filters.riseTimeMaxS)
+  ) {
+    return false;
+  }
+  if (
+    filters.fallTimeMaxS !== undefined &&
+    (measurement.fallTimeS === null ||
+      measurement.fallTimeS > filters.fallTimeMaxS)
+  ) {
+    return false;
+  }
+  if (
+    filters.bandwidthMinHz !== undefined &&
+    (measurement.bandwidthHz === null ||
+      measurement.bandwidthHz < filters.bandwidthMinHz)
+  ) {
+    return false;
+  }
+  if (
+    filters.ldrMinDb !== undefined &&
+    (measurement.linearDynamicRangeDb === null ||
+      measurement.linearDynamicRangeDb < filters.ldrMinDb)
+  ) {
+    return false;
+  }
   return true;
 }
 
@@ -152,6 +279,62 @@ export function filterAtlasRecords(
   filters: AtlasFilterState,
 ): AtlasRecord[] {
   return records.filter((record) => recordMatchesFilters(record, filters));
+}
+
+/** Convert a user-facing threshold into the normalized units stored in data. */
+export function normalizeMetricFilterValue(
+  displayValue: number,
+  displayScale: number,
+): number | undefined {
+  if (
+    !Number.isFinite(displayValue) ||
+    displayValue < 0 ||
+    !Number.isFinite(displayScale) ||
+    displayScale <= 0
+  ) {
+    return undefined;
+  }
+  return displayValue / displayScale;
+}
+
+/** Clear advanced metric constraints without changing the current view. */
+export function clearMetricFilters(
+  filters: AtlasFilterState,
+): AtlasFilterState {
+  return {
+    ...filters,
+    hasResponsivity: false,
+    hasEqe: false,
+    hasTemporal: false,
+    hasRiseTime: false,
+    hasFallTime: false,
+    hasBandwidth: false,
+    hasLdr: false,
+    extendedReview: "all",
+    ambiguousExtraction: false,
+    responsivityMin: undefined,
+    eqeMin: undefined,
+    responseTimeMaxS: undefined,
+    riseTimeMaxS: undefined,
+    fallTimeMaxS: undefined,
+    bandwidthMinHz: undefined,
+    ldrMinDb: undefined,
+  };
+}
+
+/** Reset filtering criteria while retaining graph and table view choices. */
+export function resetAtlasFilterCriteria(
+  current: AtlasFilterState,
+  base: AtlasFilterState = DEFAULT_ATLAS_FILTERS,
+): AtlasFilterState {
+  return {
+    ...base,
+    plotMode: current.plotMode,
+    plotX: current.plotX,
+    plotY: current.plotY,
+    plotScope: current.plotScope,
+    tableView: current.tableView,
+  };
 }
 
 /** Keep a material-route explorer constrained even if its query says otherwise. */
@@ -166,6 +349,18 @@ export function parseAtlasFilters(
   params: URLSearchParams | Readonly<URLSearchParams>,
 ): AtlasFilterState {
   const year = finiteNumber(params.get("year"));
+  const plotX = selectedValue(
+    params.get("xMetric"),
+    ATLAS_METRIC_KEYS,
+    "wavelength",
+  ) as AtlasMetricKey;
+  let plotY = selectedValue(
+    params.get("yMetric"),
+    ATLAS_METRIC_KEYS,
+    "detectivity",
+  ) as AtlasMetricKey;
+  if (plotX === plotY)
+    plotY = plotX === "detectivity" ? "wavelength" : "detectivity";
   return {
     search: params.get("q")?.trim() ?? "",
     material: params.get("material")?.trim() || "all",
@@ -184,6 +379,47 @@ export function parseAtlasFilters(
       NoiseMethod | "all",
     flag: oneOf(params.get("flag"), FLAGS),
     publicationType: oneOf(params.get("publication"), PUBLICATION_FILTERS),
+    hasResponsivity: enabled(params, "hasResponsivity"),
+    hasEqe: enabled(params, "hasEqe"),
+    hasTemporal: enabled(params, "hasTemporal"),
+    hasRiseTime: enabled(params, "hasRise"),
+    hasFallTime: enabled(params, "hasFall"),
+    hasBandwidth: enabled(params, "hasBandwidth"),
+    hasLdr: enabled(params, "hasLdr"),
+    extendedReview: selectedValue(
+      params.get("extendedReview"),
+      ["all", "checked", "source_unavailable"] as const,
+      "all",
+    ) as ExtendedReviewFilter,
+    ambiguousExtraction: enabled(params, "ambiguous"),
+    responsivityMin: nonnegativeNumber(
+      params.get("responsivityMinAW") ?? params.get("responsivityMin"),
+    ),
+    eqeMin: nonnegativeNumber(
+      params.get("eqeMinPercent") ?? params.get("eqeMin"),
+    ),
+    responseTimeMaxS: nonnegativeNumber(params.get("responseMaxS")),
+    riseTimeMaxS: nonnegativeNumber(params.get("riseMaxS")),
+    fallTimeMaxS: nonnegativeNumber(params.get("fallMaxS")),
+    bandwidthMinHz: nonnegativeNumber(params.get("bandwidthMinHz")),
+    ldrMinDb: nonnegativeNumber(params.get("ldrMinDb")),
+    plotMode: selectedValue(
+      params.get("plot"),
+      ATLAS_PLOT_MODES,
+      "performance_map",
+    ) as AtlasPlotMode,
+    plotX,
+    plotY,
+    plotScope: selectedValue(
+      params.get("scope"),
+      ATLAS_PLOT_SCOPES,
+      "paper_maxima",
+    ) as AtlasPlotScope,
+    tableView: selectedValue(
+      params.get("table"),
+      ATLAS_TABLE_VIEWS,
+      "overview",
+    ) as AtlasTableView,
   };
 }
 
@@ -197,6 +433,15 @@ function setOrDelete(
   } else {
     params.set(key, String(value));
   }
+}
+
+function setBoolean(
+  params: URLSearchParams,
+  key: string,
+  value: boolean,
+): void {
+  if (value) params.set(key, "1");
+  else params.delete(key);
 }
 
 /**
@@ -217,6 +462,49 @@ export function serializeAtlasFilters(
   setOrDelete(params, "noise", filters.noiseMethod);
   setOrDelete(params, "flag", filters.flag);
   setOrDelete(params, "publication", filters.publicationType);
+  setBoolean(params, "hasResponsivity", filters.hasResponsivity);
+  setBoolean(params, "hasEqe", filters.hasEqe);
+  setBoolean(params, "hasTemporal", filters.hasTemporal);
+  setBoolean(params, "hasRise", filters.hasRiseTime);
+  setBoolean(params, "hasFall", filters.hasFallTime);
+  setBoolean(params, "hasBandwidth", filters.hasBandwidth);
+  setBoolean(params, "hasLdr", filters.hasLdr);
+  setOrDelete(params, "extendedReview", filters.extendedReview);
+  setBoolean(params, "ambiguous", filters.ambiguousExtraction);
+  params.delete("responsivityMin");
+  params.delete("eqeMin");
+  setOrDelete(params, "responsivityMinAW", filters.responsivityMin);
+  setOrDelete(params, "eqeMinPercent", filters.eqeMin);
+  setOrDelete(params, "responseMaxS", filters.responseTimeMaxS);
+  setOrDelete(params, "riseMaxS", filters.riseTimeMaxS);
+  setOrDelete(params, "fallMaxS", filters.fallTimeMaxS);
+  setOrDelete(params, "bandwidthMinHz", filters.bandwidthMinHz);
+  setOrDelete(params, "ldrMinDb", filters.ldrMinDb);
+  setOrDelete(
+    params,
+    "plot",
+    filters.plotMode === "performance_map" ? undefined : filters.plotMode,
+  );
+  setOrDelete(
+    params,
+    "xMetric",
+    filters.plotX === "wavelength" ? undefined : filters.plotX,
+  );
+  setOrDelete(
+    params,
+    "yMetric",
+    filters.plotY === "detectivity" ? undefined : filters.plotY,
+  );
+  setOrDelete(
+    params,
+    "scope",
+    filters.plotScope === "paper_maxima" ? undefined : filters.plotScope,
+  );
+  setOrDelete(
+    params,
+    "table",
+    filters.tableView === "overview" ? undefined : filters.tableView,
+  );
   return params;
 }
 
@@ -231,7 +519,23 @@ export function countActiveFilters(filters: AtlasFilterState): number {
     Number(filters.bias !== "all") +
     Number(filters.noiseMethod !== "all") +
     Number(filters.flag !== "all") +
-    Number(filters.publicationType !== "all")
+    Number(filters.publicationType !== "all") +
+    Number(filters.hasResponsivity) +
+    Number(filters.hasEqe) +
+    Number(filters.hasTemporal) +
+    Number(filters.hasRiseTime) +
+    Number(filters.hasFallTime) +
+    Number(filters.hasBandwidth) +
+    Number(filters.hasLdr) +
+    Number(filters.extendedReview !== "all") +
+    Number(filters.ambiguousExtraction) +
+    Number(filters.responsivityMin !== undefined) +
+    Number(filters.eqeMin !== undefined) +
+    Number(filters.responseTimeMaxS !== undefined) +
+    Number(filters.riseTimeMaxS !== undefined) +
+    Number(filters.fallTimeMaxS !== undefined) +
+    Number(filters.bandwidthMinHz !== undefined) +
+    Number(filters.ldrMinDb !== undefined)
   );
 }
 

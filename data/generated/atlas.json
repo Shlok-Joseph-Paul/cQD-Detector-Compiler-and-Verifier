@@ -25,6 +25,37 @@
       "notes": "Ag2Te CQD SWIR photodiode and LiDAR demonstration."
     },
     {
+      "paper_id": "dang-2023-multiresonant-grating",
+      "title": "Multiresonant Grating to Replace Transparent Conductive Oxide Electrode for Bias Selected Filtering of Infrared Photoresponse",
+      "authors": [
+        "Tung Huu Dang",
+        "Mariarosa Cavallo",
+        "Adrien Khalili",
+        "Corentin Dabard",
+        "Erwan Bossavit",
+        "Huichen Zhang",
+        "Nicolas Ledos",
+        "Yoann Prado",
+        "Xavier Lafosse",
+        "Claire Abadie",
+        "Djamal Gacemi",
+        "Sandrine Ithurria",
+        "Grégory Vincent",
+        "Yanko Todorov",
+        "Carlo Sirtori",
+        "Angela Vasanelli",
+        "Emmanuel Lhuillier"
+      ],
+      "first_author": "Tung Huu Dang",
+      "journal": "Nano Letters",
+      "publication_year": 2023,
+      "doi": "10.1021/acs.nanolett.3c02306",
+      "publication_url": "https://doi.org/10.1021/acs.nanolett.3c02306",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "HgTe CQD MWIR photodiode using a multiresonant 2D gold grid as the transparent bottom electrode."
+    },
+    {
       "paper_id": "vafaie-2021-pbs-fast",
       "title": "Colloidal quantum dot photodetectors with 10-ns response time and 80% quantum efficiency at 1,550 nm",
       "authors": [
@@ -834,6 +865,16 @@
       "device_notes": "Champion-device area is not specified for the spectral detectivity measurement."
     },
     {
+      "device_id": "dang-2023-grid-device",
+      "paper_id": "dang-2023-multiresonant-grating",
+      "material_family": "HgTe",
+      "material_composition": "HgTe colloidal quantum dots",
+      "device_architecture": "Vertical photovoltaic photodiode with a multiresonant 2D gold-grid electrode",
+      "device_stack": "sapphire / 2D Au grid / HgTe CQDs / Ag2Te / Au",
+      "active_area_cm2": 0.0001,
+      "device_notes": "Champion device; approximately 350 nm HgTe layer with 350 nm-wide gold stripes on a 1.8 µm square-lattice period."
+    },
+    {
       "device_id": "vafaie-2021-pbs-device",
       "paper_id": "vafaie-2021-pbs-fast",
       "material_family": "PbS",
@@ -1310,6 +1351,34 @@
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approximate values read near the SWIR maximum of the champion-device curves.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "dang-2023-grid-m1",
+      "device_id": "dang-2023-grid-device",
+      "wavelength_nm": 5000,
+      "detectivity_jones": 700000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": 80,
+      "bias_v": 0,
+      "measurement_frequency_hz": 1000,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR780 spectrum analyzer with a FEMTO DLPCA-200 current amplifier.",
+      "noise_instrument_source": "Supporting Information p. S4, Device characterization",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main PDF p. 4; Supporting Information pp. S4 and S19-S20",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "The paper reports responsivity close to 3 A/W and EQE above 90%, but these approximate/inequality values are retained only in the device record context. Optical response is approximately 80 ns under a 4.4 µm QCL; electrical bandwidth is approximately 20 MHz. SI states noise spectra were acquired from 10-800 Hz while the detectivity figure is labeled at 1 kHz; the published 1 kHz condition is preserved.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
     },
@@ -2999,6 +3068,77 @@
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approximate values read near the SWIR maximum of the champion-device curves.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "dang-2023-multiresonant-grating",
+        "title": "Multiresonant Grating to Replace Transparent Conductive Oxide Electrode for Bias Selected Filtering of Infrared Photoresponse",
+        "authors": [
+          "Tung Huu Dang",
+          "Mariarosa Cavallo",
+          "Adrien Khalili",
+          "Corentin Dabard",
+          "Erwan Bossavit",
+          "Huichen Zhang",
+          "Nicolas Ledos",
+          "Yoann Prado",
+          "Xavier Lafosse",
+          "Claire Abadie",
+          "Djamal Gacemi",
+          "Sandrine Ithurria",
+          "Grégory Vincent",
+          "Yanko Todorov",
+          "Carlo Sirtori",
+          "Angela Vasanelli",
+          "Emmanuel Lhuillier"
+        ],
+        "first_author": "Tung Huu Dang",
+        "journal": "Nano Letters",
+        "publication_year": 2023,
+        "doi": "10.1021/acs.nanolett.3c02306",
+        "publication_url": "https://doi.org/10.1021/acs.nanolett.3c02306",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "HgTe CQD MWIR photodiode using a multiresonant 2D gold grid as the transparent bottom electrode."
+      },
+      "device": {
+        "device_id": "dang-2023-grid-device",
+        "paper_id": "dang-2023-multiresonant-grating",
+        "material_family": "HgTe",
+        "material_composition": "HgTe colloidal quantum dots",
+        "device_architecture": "Vertical photovoltaic photodiode with a multiresonant 2D gold-grid electrode",
+        "device_stack": "sapphire / 2D Au grid / HgTe CQDs / Ag2Te / Au",
+        "active_area_cm2": 0.0001,
+        "device_notes": "Champion device; approximately 350 nm HgTe layer with 350 nm-wide gold stripes on a 1.8 µm square-lattice period."
+      },
+      "measurement": {
+        "measurement_id": "dang-2023-grid-m1",
+        "device_id": "dang-2023-grid-device",
+        "wavelength_nm": 5000,
+        "detectivity_jones": 700000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": 80,
+        "bias_v": 0,
+        "measurement_frequency_hz": 1000,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR780 spectrum analyzer with a FEMTO DLPCA-200 current amplifier.",
+        "noise_instrument_source": "Supporting Information p. S4, Device characterization",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main PDF p. 4; Supporting Information pp. S4 and S19-S20",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "The paper reports responsivity close to 3 A/W and EQE above 90%, but these approximate/inequality values are retained only in the device record context. Optical response is approximately 80 ns under a 4.4 µm QCL; electrical bandwidth is approximately 20 MHz. SI states noise spectra were acquired from 10-800 Hz while the detectivity figure is labeled at 1 kHz; the published 1 kHz condition is preserved.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
       }

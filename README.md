@@ -251,6 +251,16 @@ scripts/              Data-validation and generation entry points
 tests/                Data and interface behavior tests
 ```
 
+## License and copyright
+
+Copyright © 2026 Shlok Joseph Paul.
+
+The software code in this repository is licensed under the
+[MIT License](./LICENSE). The license does not grant rights to the curated
+datasets in `data/`, or to third-party publications, figures, abstracts, and
+other source materials. Those materials remain subject to their respective
+copyrights and terms unless a separate license is expressly stated.
+
 ## Contributing a paper or correction
 
 Public suggestions use GitHub issues rather than a simulated form, email

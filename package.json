@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
-    "build": "pnpm run check-data && WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "build": "node --experimental-strip-types scripts/validate-data.ts --check && WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "validate-data": "node --experimental-strip-types scripts/validate-data.ts",
     "discovery": "node --experimental-strip-types scripts/discovery.ts",

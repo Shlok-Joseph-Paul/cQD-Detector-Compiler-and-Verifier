@@ -1,6 +1,7 @@
 export * from "./api.ts";
 export * from "./csv.ts";
 export * from "./dedupe.ts";
+export * from "./extended-metrics.ts";
 export * from "./normalize.ts";
 export * from "./pdf-acquisition.ts";
 export * from "./pipeline.ts";

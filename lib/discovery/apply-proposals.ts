@@ -51,12 +51,39 @@ function measurementRow(measurement: Measurement): unknown[] {
     measurement.wavelength_nm,
     measurement.detectivity_jones,
     measurement.responsivity_a_w,
+    measurement.responsivity_wavelength_nm,
+    measurement.responsivity_bias_v,
+    measurement.responsivity_temperature_k,
+    measurement.responsivity_source_location,
+    measurement.responsivity_extraction_method,
     measurement.eqe_percent,
     measurement.temperature_k,
     measurement.bias_v,
     measurement.measurement_frequency_hz,
     measurement.response_time_s,
+    measurement.rise_time_s,
+    measurement.fall_time_s,
+    measurement.response_time_definition,
+    measurement.response_time_wavelength_nm,
+    measurement.response_time_bias_v,
+    measurement.response_time_source_location,
+    measurement.response_time_limit,
+    measurement.response_time_extraction_method,
     measurement.bandwidth_hz,
+    measurement.bandwidth_bias_v,
+    measurement.bandwidth_source_location,
+    measurement.bandwidth_limit,
+    measurement.bandwidth_extraction_method,
+    measurement.linear_dynamic_range_db,
+    measurement.linear_dynamic_range_min,
+    measurement.linear_dynamic_range_max,
+    measurement.linear_dynamic_range_units,
+    measurement.linear_dynamic_range_definition,
+    measurement.linear_dynamic_range_source_location,
+    measurement.linear_dynamic_range_extraction_method,
+    measurement.extended_metrics_review_status,
+    measurement.extended_metrics_review_date,
+    measurement.extended_metrics_notes,
     measurement.noise_method,
     measurement.noise_instruments.join("|"),
     measurement.noise_instrument_details,
@@ -75,6 +102,23 @@ function measurementRow(measurement: Measurement): unknown[] {
 
 function rows(source: string): string[][] {
   return parseCsv(source).rows.map((row) => row.fields);
+}
+
+function rowsForColumns(
+  source: string,
+  columns: readonly string[],
+): string[][] {
+  const parsed = parseCsv(source);
+  const sourceColumns = parsed.headers;
+  const sourceIndexes = new Map(
+    sourceColumns.map((column, index) => [column, index]),
+  );
+  return parsed.rows.map((row) =>
+    columns.map((column) => {
+      const index = sourceIndexes.get(column);
+      return index == null ? "" : (row.fields[index] ?? "");
+    }),
+  );
 }
 
 export async function applyApprovedProposals(
@@ -145,7 +189,7 @@ export async function applyApprovedProposals(
       ),
     ]),
     measurements: serializeCsv(MEASUREMENT_CSV_COLUMNS, [
-      ...rows(measurementText),
+      ...rowsForColumns(measurementText, MEASUREMENT_CSV_COLUMNS),
       ...reviewedMeasurements.map(measurementRow),
     ]),
   };

@@ -11,6 +11,10 @@ import type {
   ProposalSource,
   StagedPaperProposal,
 } from "./proposal-types.ts";
+import {
+  extractExtendedMetricCandidates,
+  selectMetricCandidate,
+} from "./extended-metrics.ts";
 
 interface PageText {
   page: number;
@@ -271,6 +275,7 @@ export function extractStagedProposal(
     ),
   ];
   const allText = pages.map((page) => page.text).join("\n");
+  const extendedMetrics = extractExtendedMetricCandidates(pages);
   const normalizedText = allText.replace(/\s+/g, " ");
   const lower = allText.toLowerCase();
   const scopeReasons: string[] = [];
@@ -505,6 +510,56 @@ export function extractStagedProposal(
                 ? 1e3
                 : 1)
           : null;
+      const responsivityCandidate = selectMetricCandidate(
+        extendedMetrics.responsivity,
+        wavelengthNm,
+        bias,
+      );
+      const responseCandidate = selectMetricCandidate(
+        extendedMetrics.temporal.filter(
+          (candidate) => candidate.kind === "response",
+        ),
+        wavelengthNm,
+        bias,
+      );
+      const riseCandidate = selectMetricCandidate(
+        extendedMetrics.temporal.filter(
+          (candidate) => candidate.kind === "rise",
+        ),
+        wavelengthNm,
+        bias,
+      );
+      const fallCandidate = selectMetricCandidate(
+        extendedMetrics.temporal.filter(
+          (candidate) => candidate.kind === "fall",
+        ),
+        wavelengthNm,
+        bias,
+      );
+      const bandwidthCandidate = selectMetricCandidate(
+        extendedMetrics.bandwidth,
+        wavelengthNm,
+        bias,
+      );
+      const ldrCandidate = selectMetricCandidate(
+        extendedMetrics.ldr,
+        wavelengthNm,
+        bias,
+      );
+      const selectedResponsivity = responsivityCandidate?.value ?? responsivity;
+      const temporalSource =
+        responseCandidate?.sourceLocation ??
+        riseCandidate?.sourceLocation ??
+        fallCandidate?.sourceLocation ??
+        null;
+      const temporalDefinition =
+        [
+          responseCandidate?.definition,
+          riseCandidate?.definition,
+          fallCandidate?.definition,
+        ]
+          .filter(Boolean)
+          .join("; ") || null;
       const amberExplanation = noise.amberReasons.length
         ? `Automatic caution: ${noise.amberReasons.join(", ")}. Confirm from the cited noise-method evidence before approval.`
         : null;
@@ -514,13 +569,68 @@ export function extractStagedProposal(
         device_id: deviceId,
         wavelength_nm: wavelengthNm,
         detectivity_jones: detectivity,
-        responsivity_a_w: responsivity,
+        responsivity_a_w: selectedResponsivity,
+        responsivity_wavelength_nm:
+          responsivityCandidate?.wavelengthNm ??
+          (selectedResponsivity != null ? wavelengthNm : null),
+        responsivity_bias_v:
+          responsivityCandidate?.biasV ??
+          (selectedResponsivity != null ? bias : null),
+        responsivity_temperature_k: responsivityCandidate?.temperatureK ?? null,
+        responsivity_source_location:
+          responsivityCandidate?.sourceLocation ??
+          (selectedResponsivity != null ? pageLocation(page) : null),
+        responsivity_extraction_method:
+          selectedResponsivity != null ? "directly_reported" : "not_reported",
         eqe_percent: eqe,
         temperature_k: temperature,
         bias_v: bias,
         measurement_frequency_hz: frequency,
-        response_time_s: null,
-        bandwidth_hz: null,
+        response_time_s: responseCandidate?.value ?? null,
+        rise_time_s: riseCandidate?.value ?? null,
+        fall_time_s: fallCandidate?.value ?? null,
+        response_time_definition: temporalDefinition,
+        response_time_wavelength_nm:
+          responseCandidate?.wavelengthNm ??
+          riseCandidate?.wavelengthNm ??
+          fallCandidate?.wavelengthNm ??
+          null,
+        response_time_bias_v:
+          responseCandidate?.biasV ??
+          riseCandidate?.biasV ??
+          fallCandidate?.biasV ??
+          null,
+        response_time_source_location: temporalSource,
+        response_time_limit:
+          responseCandidate?.limit ??
+          riseCandidate?.limit ??
+          fallCandidate?.limit ??
+          "not_reported",
+        response_time_extraction_method: temporalSource
+          ? "directly_reported"
+          : "not_reported",
+        bandwidth_hz: bandwidthCandidate?.value ?? null,
+        bandwidth_bias_v: bandwidthCandidate?.biasV ?? null,
+        bandwidth_source_location: bandwidthCandidate?.sourceLocation ?? null,
+        bandwidth_limit: bandwidthCandidate?.limit ?? "not_reported",
+        bandwidth_extraction_method: bandwidthCandidate
+          ? "directly_reported"
+          : "not_reported",
+        linear_dynamic_range_db:
+          ldrCandidate?.units === "dB" ? ldrCandidate.value : null,
+        linear_dynamic_range_min: ldrCandidate?.minimum ?? null,
+        linear_dynamic_range_max: ldrCandidate?.maximum ?? null,
+        linear_dynamic_range_units: ldrCandidate?.units ?? null,
+        linear_dynamic_range_definition: ldrCandidate?.definition ?? null,
+        linear_dynamic_range_source_location:
+          ldrCandidate?.sourceLocation ?? null,
+        linear_dynamic_range_extraction_method: ldrCandidate
+          ? "directly_reported"
+          : "not_reported",
+        extended_metrics_review_status: "needs_review",
+        extended_metrics_review_date: now.toISOString().slice(0, 10),
+        extended_metrics_notes:
+          "Automatically extracted from the supplied article and available Supporting Information; curator approval is required before publication.",
         noise_method: noise.method,
         noise_instruments: noise.instruments,
         noise_instrument_details: noise.details,
@@ -542,6 +652,24 @@ export function extractStagedProposal(
         conciseEvidence: snippet,
         confidence: possibleComparison ? 0.45 : 0.72,
       });
+      for (const [field, candidate] of [
+        ["responsivity_a_w", responsivityCandidate],
+        [
+          "response_time_s",
+          responseCandidate ?? riseCandidate ?? fallCandidate,
+        ],
+        ["bandwidth_hz", bandwidthCandidate],
+        ["linear_dynamic_range_db", ldrCandidate],
+      ] as const) {
+        if (!candidate) continue;
+        evidence.push({
+          field: `measurement-${index}.${field}`,
+          page: Number(candidate.sourceLocation.match(/page (\d+)/i)?.[1] ?? 0),
+          location: candidate.sourceLocation,
+          conciseEvidence: candidate.evidence,
+          confidence: candidate.wavelengthNm == null ? 0.68 : 0.82,
+        });
+      }
     }
   }
   if (!proposedMeasurements.length) {
@@ -611,6 +739,6 @@ export function extractStagedProposal(
     proposedAt: now.toISOString(),
     decidedAt: null,
     appliedAt: null,
-    extractorVersion: "cqd-proposal-extractor-v1",
+    extractorVersion: "cqd-proposal-extractor-v2",
   };
 }

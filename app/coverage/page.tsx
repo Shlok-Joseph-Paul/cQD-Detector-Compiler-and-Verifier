@@ -154,6 +154,11 @@ export default function CoveragePage() {
                 </div>
               ))}
             </div>
+            <p className="coverage-panel__footnote">
+              Reporting completeness means a parameter was stated by the source;
+              it does not imply that an unreported capability was absent from
+              the detector.
+            </p>
           </section>
 
           <section

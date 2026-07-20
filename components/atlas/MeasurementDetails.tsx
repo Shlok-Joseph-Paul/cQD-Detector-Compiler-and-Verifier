@@ -30,6 +30,21 @@ function optionalText(value: string | null): string {
   return value?.trim() || NOT_REPORTED;
 }
 
+function extendedMissing(status: string): string {
+  if (status === "source_unavailable") return "Source unavailable";
+  if (status === "needs_review") return "Needs review";
+  return status === "checked" ? NOT_REPORTED : "Not checked";
+}
+
+function extendedText(value: string | null, status: string): string {
+  return value?.trim() || extendedMissing(status);
+}
+
+function bandwidthPrefix(limit: string | null): string {
+  if (limit === "lower_bound") return ">";
+  return limit === "upper_bound" ? "<" : "";
+}
+
 function SemanticHeading({
   level,
   className,
@@ -169,9 +184,11 @@ export function MeasurementDetails({
               })}
             </Detail>
             <Detail label="Responsivity">
-              {formatWithUnit(measurement.responsivityAW, "A W⁻¹", {
-                maximumSignificantDigits: 5,
-              })}
+              {measurement.responsivityAW === null
+                ? extendedMissing(measurement.extendedMetricsReviewStatus)
+                : formatWithUnit(measurement.responsivityAW, "A W⁻¹", {
+                    maximumSignificantDigits: 5,
+                  })}
             </Detail>
             <Detail label="EQE">
               {formatWithUnit(measurement.eqePercent, "%", {
@@ -179,19 +196,106 @@ export function MeasurementDetails({
               })}
             </Detail>
             <Detail label="Response time">
-              {formatWithUnit(measurement.responseTimeS, "s", {
-                maximumSignificantDigits: 5,
-              })}
+              {measurement.responseTimeS === null
+                ? extendedMissing(measurement.extendedMetricsReviewStatus)
+                : formatWithUnit(measurement.responseTimeS, "s", {
+                    maximumSignificantDigits: 5,
+                  })}
             </Detail>
-            <Detail label="Bandwidth">
-              {formatWithUnit(measurement.bandwidthHz, "Hz", {
-                maximumSignificantDigits: 5,
-              })}
+            <Detail label="Rise time">
+              {measurement.riseTimeS === null
+                ? extendedMissing(measurement.extendedMetricsReviewStatus)
+                : formatWithUnit(measurement.riseTimeS, "s", {
+                    maximumSignificantDigits: 5,
+                  })}
+            </Detail>
+            <Detail label="Fall time">
+              {measurement.fallTimeS === null
+                ? extendedMissing(measurement.extendedMetricsReviewStatus)
+                : formatWithUnit(measurement.fallTimeS, "s", {
+                    maximumSignificantDigits: 5,
+                  })}
+            </Detail>
+            <Detail label="Explicit −3 dB bandwidth">
+              {measurement.bandwidthHz === null
+                ? extendedMissing(measurement.extendedMetricsReviewStatus)
+                : `${bandwidthPrefix(measurement.bandwidthLimit)}${formatWithUnit(
+                    measurement.bandwidthHz,
+                    "Hz",
+                    { maximumSignificantDigits: 5 },
+                  )}`}
+            </Detail>
+            <Detail label="Linear dynamic range">
+              {measurement.linearDynamicRangeDb !== null
+                ? formatWithUnit(measurement.linearDynamicRangeDb, "dB", {
+                    maximumSignificantDigits: 5,
+                  })
+                : measurement.linearDynamicRangeMin !== null ||
+                    measurement.linearDynamicRangeMax !== null
+                  ? `${formatNumber(measurement.linearDynamicRangeMin)}–${formatNumber(
+                      measurement.linearDynamicRangeMax,
+                    )} ${measurement.linearDynamicRangeUnits ?? ""}`.trim()
+                  : extendedMissing(measurement.extendedMetricsReviewStatus)}
             </Detail>
             <Detail label="Measurement frequency">
               {formatWithUnit(measurement.measurementFrequencyHz, "Hz", {
                 maximumSignificantDigits: 5,
               })}
+            </Detail>
+            <Detail label="Responsivity conditions">
+              {[
+                formatWithUnit(measurement.responsivityWavelengthNm, "nm"),
+                formatWithUnit(measurement.responsivityBiasV, "V"),
+                formatWithUnit(measurement.responsivityTemperatureK, "K"),
+              ]
+                .filter((value) => value !== NOT_REPORTED)
+                .join(" · ") ||
+                extendedMissing(measurement.extendedMetricsReviewStatus)}
+            </Detail>
+            <Detail label="Responsivity evidence">
+              {extendedText(
+                measurement.responsivitySourceLocation,
+                measurement.extendedMetricsReviewStatus,
+              )}
+            </Detail>
+            <Detail label="Temporal-response definition">
+              {extendedText(
+                measurement.responseTimeDefinition,
+                measurement.extendedMetricsReviewStatus,
+              )}
+            </Detail>
+            <Detail label="Temporal-response evidence">
+              {extendedText(
+                measurement.responseTimeSourceLocation,
+                measurement.extendedMetricsReviewStatus,
+              )}
+            </Detail>
+            <Detail label="Bandwidth evidence">
+              {extendedText(
+                measurement.bandwidthSourceLocation,
+                measurement.extendedMetricsReviewStatus,
+              )}
+            </Detail>
+            <Detail label="Bandwidth classification">
+              {extendedText(
+                measurement.bandwidthLimit,
+                measurement.extendedMetricsReviewStatus,
+              )}
+            </Detail>
+            <Detail label="LDR definition">
+              {extendedText(
+                measurement.linearDynamicRangeDefinition,
+                measurement.extendedMetricsReviewStatus,
+              )}
+            </Detail>
+            <Detail label="LDR evidence">
+              {extendedText(
+                measurement.linearDynamicRangeSourceLocation,
+                measurement.extendedMetricsReviewStatus,
+              )}
+            </Detail>
+            <Detail label="Extended-metrics review">
+              {humanizeCode(measurement.extendedMetricsReviewStatus)}
             </Detail>
             <Detail label="Noise instrument chain">
               {optionalText(measurement.noiseInstrumentDetails)}

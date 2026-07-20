@@ -227,6 +227,12 @@ current dataset. Dataset releases use a human-facing semantic version separate
 from the schema version; every CSV export includes `dataset_version`, and the
 Releases page records the public changelog and citation guidance.
 
+Responsivity, rise/fall/response time, explicit -3 dB bandwidth, and linear
+dynamic range use metric-specific source and operating-condition fields. The UI
+distinguishes **Not checked** from **Not reported**: the latter is used only
+after the main article and available Supporting Information have been reviewed.
+These missing fields never create an amber flag.
+
 Unavailable optional values are displayed as **Not reported**, never as zero.
 Shot-noise-derived values receive a prominent badge. Each amber result exposes
 its exact caution reasons, and every measurement page links back to its paper

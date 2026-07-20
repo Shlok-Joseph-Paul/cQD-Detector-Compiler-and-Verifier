@@ -38,6 +38,44 @@ export const DETECTIVITY_EXTRACTION_METHODS = [
 export type DetectivityExtractionMethod =
   (typeof DETECTIVITY_EXTRACTION_METHODS)[number];
 
+export const EXTENDED_METRIC_EXTRACTION_METHODS = [
+  "directly_reported",
+  "graphically_extracted",
+  "calculated_from_reported_values",
+  "not_reported",
+  "ambiguous",
+] as const;
+export type ExtendedMetricExtractionMethod =
+  (typeof EXTENDED_METRIC_EXTRACTION_METHODS)[number];
+
+export const EXTENDED_METRICS_REVIEW_STATUSES = [
+  "not_checked",
+  "checked",
+  "source_unavailable",
+  "needs_review",
+] as const;
+export type ExtendedMetricsReviewStatus =
+  (typeof EXTENDED_METRICS_REVIEW_STATUSES)[number];
+
+export const RESPONSE_TIME_LIMITS = [
+  "measured",
+  "instrument_limited",
+  "source_limited",
+  "upper_bound",
+  "lower_bound",
+  "not_reported",
+] as const;
+export type ResponseTimeLimit = (typeof RESPONSE_TIME_LIMITS)[number];
+
+export const BANDWIDTH_LIMITS = [
+  "measured",
+  "instrument_limited",
+  "upper_bound",
+  "lower_bound",
+  "not_reported",
+] as const;
+export type BandwidthLimit = (typeof BANDWIDTH_LIMITS)[number];
+
 export const CURATOR_STATUSES = ["reviewed", "pending_review"] as const;
 export type CuratorStatus = (typeof CURATOR_STATUSES)[number];
 
@@ -87,12 +125,39 @@ export interface Measurement {
   wavelength_nm: number;
   detectivity_jones: number;
   responsivity_a_w: number | null;
+  responsivity_wavelength_nm?: number | null;
+  responsivity_bias_v?: number | null;
+  responsivity_temperature_k?: number | null;
+  responsivity_source_location?: string | null;
+  responsivity_extraction_method?: ExtendedMetricExtractionMethod | null;
   eqe_percent: number | null;
   temperature_k: number | null;
   bias_v: number | null;
   measurement_frequency_hz: number | null;
   response_time_s: number | null;
+  rise_time_s?: number | null;
+  fall_time_s?: number | null;
+  response_time_definition?: string | null;
+  response_time_wavelength_nm?: number | null;
+  response_time_bias_v?: number | null;
+  response_time_source_location?: string | null;
+  response_time_limit?: ResponseTimeLimit | null;
+  response_time_extraction_method?: ExtendedMetricExtractionMethod | null;
   bandwidth_hz: number | null;
+  bandwidth_bias_v?: number | null;
+  bandwidth_source_location?: string | null;
+  bandwidth_limit?: BandwidthLimit | null;
+  bandwidth_extraction_method?: ExtendedMetricExtractionMethod | null;
+  linear_dynamic_range_db?: number | null;
+  linear_dynamic_range_min?: number | null;
+  linear_dynamic_range_max?: number | null;
+  linear_dynamic_range_units?: string | null;
+  linear_dynamic_range_definition?: string | null;
+  linear_dynamic_range_source_location?: string | null;
+  linear_dynamic_range_extraction_method?: ExtendedMetricExtractionMethod | null;
+  extended_metrics_review_status?: ExtendedMetricsReviewStatus;
+  extended_metrics_review_date?: string | null;
+  extended_metrics_notes?: string | null;
   noise_method: NoiseMethod;
   noise_instruments: NoiseInstrument[];
   noise_instrument_details: string | null;

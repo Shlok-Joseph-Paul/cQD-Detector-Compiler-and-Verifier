@@ -172,6 +172,20 @@ test("missing operating conditions do not make a reviewed record amber", () => {
   assert.equal(result.valid, true);
 });
 
+test("checked missing extended metrics do not create an amber flag", () => {
+  const checked = {
+    extended_metrics_review_status: "checked" as const,
+    extended_metrics_review_date: "2026-07-20",
+    responsivity_extraction_method: "not_reported" as const,
+    response_time_extraction_method: "not_reported" as const,
+    bandwidth_extraction_method: "not_reported" as const,
+    linear_dynamic_range_extraction_method: "not_reported" as const,
+  };
+  const result = validateAtlasEntities(entities(checked));
+  assert.equal(result.valid, true);
+  assert.equal(entities(checked).measurements[0].flag, "green");
+});
+
 test("a missing instrument citation does not make measured-noise data amber", () => {
   const result = validateAtlasEntities(
     entities({

@@ -12,6 +12,7 @@ import {
   deduplicateRegistryCandidates,
   exportScreeningCsv,
   exportProposalDecisionsCsv,
+  extractExtendedMetricCandidates,
   extractStagedProposal,
   extractAtlasDoisFromCsv,
   fetchJsonCached,
@@ -21,6 +22,8 @@ import {
   importProposalDecisionsCsv,
   normalizeDoi,
   normalizeTitle,
+  convertPrefixedValue,
+  selectMetricCandidate,
   rankNewCandidates,
   renderCandidateShortlist,
   updateRegistryIncrementally,
@@ -542,4 +545,84 @@ test("proposal decisions require an in-scope measurement before approval", () =>
   );
   const rejected = importProposalDecisionsCsv(registry, rejectedCsv);
   assert.equal(rejected.proposals[0].status, "rejected");
+});
+
+test("extended metric extraction converts units and separates temporal definitions", () => {
+  assert.equal(convertPrefixedValue(250, "m"), 0.25);
+  assert.equal(convertPrefixedValue(8, "n"), 8e-9);
+  const metrics = extractExtendedMetricCandidates([
+    {
+      page: 4,
+      documentLabel: "Main article",
+      text: [
+        "At 1550 nm and -0.2 V, the responsivity was 250 mA/W.",
+        "The 10-90% rise time was 8 ns and the fall time was 12 ns.",
+        "The explicit -3 dB bandwidth was 42 MHz.",
+        "The detector exhibited a linear dynamic range (LDR) of 86 dB.",
+      ].join(" "),
+    },
+  ]);
+  assert.equal(metrics.responsivity[0]?.value, 0.25);
+  assert.equal(metrics.responsivity[0]?.wavelengthNm, 1550);
+  assert.equal(
+    metrics.temporal.find((item) => item.kind === "rise")?.value,
+    8e-9,
+  );
+  assert.ok(
+    Math.abs(
+      (metrics.temporal.find((item) => item.kind === "fall")?.value ?? 0) -
+        12e-9,
+    ) < 1e-18,
+  );
+  assert.equal(metrics.bandwidth[0]?.value, 42e6);
+  assert.equal(metrics.bandwidth[0]?.limit, "measured");
+  assert.equal(metrics.ldr[0]?.value, 86);
+});
+
+test("extended metrics preserve condition matching, paired rise/fall values, bounds, and LDR ranges", () => {
+  const metrics = extractExtendedMetricCandidates([
+    {
+      page: 8,
+      documentLabel: "Supporting Information",
+      text: [
+        "At 940 nm and -1 V, the responsivity was 0.22 A/W.",
+        "At 1550 nm and -3 V, the responsivity was 0.60 A/W.",
+        "The rise and fall times were 26 and 40 us, respectively (10-90%).",
+        "The explicit -3 dB bandwidth exceeded 100 kHz, the measurement limit.",
+        "The linear optical-input range (LDR) was from 10 nW/cm2 to 4 mW/cm2.",
+      ].join(" "),
+    },
+  ]);
+  assert.equal(
+    selectMetricCandidate(metrics.responsivity, 940, -1)?.value,
+    0.22,
+  );
+  assert.equal(
+    metrics.temporal.find((item) => item.kind === "rise")?.value,
+    26e-6,
+  );
+  assert.ok(
+    Math.abs(
+      (metrics.temporal.find((item) => item.kind === "fall")?.value ?? 0) -
+        40e-6,
+    ) < 1e-15,
+  );
+  assert.equal(metrics.bandwidth[0]?.value, 100e3);
+  assert.equal(metrics.bandwidth[0]?.limit, "lower_bound");
+  assert.equal(metrics.ldr[0]?.minimum, 10e-9);
+  assert.equal(metrics.ldr[0]?.maximum, 4e-3);
+});
+
+test("bandwidth extraction rejects noise bandwidths and unqualified test frequencies", () => {
+  const metrics = extractExtendedMetricCandidates([
+    {
+      page: 3,
+      documentLabel: "Main article",
+      text: [
+        "The noise-equivalent bandwidth was set to 1 Hz for D*.",
+        "The response was tested at modulation frequencies up to 2 MHz.",
+      ].join(" "),
+    },
+  ]);
+  assert.deepEqual(metrics.bandwidth, []);
 });

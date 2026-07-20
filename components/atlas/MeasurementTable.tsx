@@ -7,6 +7,7 @@ import { atlasRecordsToCsv } from "@/lib/atlas/csv";
 import {
   formatNoiseMethod,
   formatNoiseInstruments,
+  formatNumber,
   formatScientific,
   formatWithUnit,
   NOT_REPORTED,
@@ -92,6 +93,69 @@ function downloadCsv(records: readonly AtlasRecord[]): void {
   URL.revokeObjectURL(href);
 }
 
+function missingExtendedMetric(status: string): string {
+  if (status === "source_unavailable") return "Source unavailable";
+  if (status === "needs_review") return "Needs review";
+  return status === "checked" ? NOT_REPORTED : "Not checked";
+}
+
+function compactMetric(
+  value: number | null,
+  unit: string,
+  status: string,
+): string {
+  return value === null
+    ? missingExtendedMetric(status)
+    : `${formatScientific(value)} ${unit}`;
+}
+
+function compactBandwidth(record: AtlasRecord): string {
+  const metric = record.measurement;
+  if (metric.bandwidthHz === null)
+    return missingExtendedMetric(metric.extendedMetricsReviewStatus);
+  const prefix =
+    metric.bandwidthLimit === "lower_bound"
+      ? ">"
+      : metric.bandwidthLimit === "upper_bound"
+        ? "<"
+        : "";
+  return `${prefix}${formatScientific(metric.bandwidthHz)} Hz`;
+}
+
+function compactTemporal(record: AtlasRecord): string {
+  const metric = record.measurement;
+  if (metric.responseTimeS !== null)
+    return `${formatScientific(metric.responseTimeS)} s`;
+  const parts = [
+    metric.riseTimeS === null
+      ? null
+      : `rise ${formatScientific(metric.riseTimeS)} s`,
+    metric.fallTimeS === null
+      ? null
+      : `fall ${formatScientific(metric.fallTimeS)} s`,
+  ].filter(Boolean);
+  return parts.length
+    ? parts.join(" / ")
+    : missingExtendedMetric(metric.extendedMetricsReviewStatus);
+}
+
+function compactLdr(record: AtlasRecord): string {
+  const metric = record.measurement;
+  if (metric.linearDynamicRangeDb !== null)
+    return `${formatNumber(metric.linearDynamicRangeDb, {
+      maximumSignificantDigits: 4,
+    })} dB`;
+  if (
+    metric.linearDynamicRangeMin !== null ||
+    metric.linearDynamicRangeMax !== null
+  ) {
+    return `${formatNumber(metric.linearDynamicRangeMin)}–${formatNumber(
+      metric.linearDynamicRangeMax,
+    )} ${metric.linearDynamicRangeUnits ?? ""}`.trim();
+  }
+  return missingExtendedMetric(metric.extendedMetricsReviewStatus);
+}
+
 export function MeasurementTable({ records }: MeasurementTableProps) {
   const [sort, setSort] = useState<AtlasSortState>({
     key: "detectivity",
@@ -121,9 +185,9 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
             device and provenance details.
           </p>
           <p className="measurement-table-section__audit-note">
-            Noise instrument fields were source-reprocessed for dataset v
-            {DATASET_VERSION}; expand a row to inspect the instrument chain and
-            evidence location.
+            Extended metrics distinguish not checked from checked and not
+            reported. Expand a row to inspect operating-condition matching and
+            evidence locations.
           </p>
         </div>
         <button
@@ -172,6 +236,10 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                   onSort={sortBy}
                 />
               </th>
+              <th scope="col">Responsivity</th>
+              <th scope="col">Temporal response</th>
+              <th scope="col">−3 dB bandwidth</th>
+              <th scope="col">LDR</th>
               <th scope="col">Noise method</th>
               <th scope="col">Noise instrument</th>
               <th scope="col">Temperature</th>
@@ -232,6 +300,22 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                       >
                         {formatScientific(measurement.detectivityJones)} Jones
                       </td>
+                      <td data-label="Responsivity">
+                        {compactMetric(
+                          measurement.responsivityAW,
+                          "A W⁻¹",
+                          measurement.extendedMetricsReviewStatus,
+                        )}
+                      </td>
+                      <td data-label="Temporal response">
+                        {compactTemporal({ paper, device, measurement })}
+                      </td>
+                      <td data-label="−3 dB bandwidth">
+                        {compactBandwidth({ paper, device, measurement })}
+                      </td>
+                      <td data-label="LDR">
+                        {compactLdr({ paper, device, measurement })}
+                      </td>
                       <td data-label="Noise method">
                         {formatNoiseMethod(measurement.noiseMethod)}
                       </td>
@@ -265,7 +349,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                           amber ? " is-amber" : ""
                         }`}
                       >
-                        <td colSpan={7} id={detailsId}>
+                        <td colSpan={11} id={detailsId}>
                           <div className="measurement-table__details-grid">
                             <div>
                               <span>CQD composition</span>
@@ -293,6 +377,34 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                                 {measurement.responseTimeS === null
                                   ? NOT_REPORTED
                                   : `${formatScientific(measurement.responseTimeS)} s`}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Rise / fall time</span>
+                              <strong>
+                                {compactTemporal({
+                                  paper,
+                                  device,
+                                  measurement,
+                                })}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Responsivity evidence</span>
+                              <strong>
+                                {measurement.responsivitySourceLocation ||
+                                  missingExtendedMetric(
+                                    measurement.extendedMetricsReviewStatus,
+                                  )}
+                              </strong>
+                            </div>
+                            <div>
+                              <span>Temporal-response evidence</span>
+                              <strong>
+                                {measurement.responseTimeSourceLocation ||
+                                  missingExtendedMetric(
+                                    measurement.extendedMetricsReviewStatus,
+                                  )}
                               </strong>
                             </div>
                             <div>
@@ -330,7 +442,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
               })
             ) : (
               <tr>
-                <td colSpan={7} className="measurement-table__empty">
+                <td colSpan={11} className="measurement-table__empty">
                   No measurements match the current filters. Adjust or reset the
                   filters to restore records.
                 </td>

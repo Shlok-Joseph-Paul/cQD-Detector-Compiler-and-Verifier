@@ -294,6 +294,35 @@ export default function MethodologyPage() {
             </p>
           </section>
 
+          <section aria-labelledby="extended-metrics-heading">
+            <h2 id="extended-metrics-heading">Extended performance metrics</h2>
+            <p>
+              Responsivity, temporal response, explicit −3 dB bandwidth, and
+              linear dynamic range are rechecked in both the main article and
+              available Supporting Information. Each reported value retains its
+              own wavelength, bias, temperature, definition, and source location
+              where available because those conditions may differ from the
+              plotted D<sup>*</sup> operating point.
+            </p>
+            <p>
+              Rise time, fall time, a general response time, and −3 dB bandwidth
+              are stored separately and are not converted into one another
+              unless the source itself reports that calculation. The highest
+              tested modulation frequency is not treated as bandwidth without an
+              explicit −3 dB definition. Likewise, an LDR value or optical input
+              range is recorded only when the publication identifies a linear
+              dynamic range; a near-unity power-law slope alone is not
+              sufficient.
+            </p>
+            <p>
+              <q>Not reported</q> means a source check was completed and the
+              metric was absent. <q>Not checked</q> means the focused review has
+              not yet been completed, while <q>Source unavailable</q> means the
+              article or required Supporting Information could not be inspected.
+              None of these statuses changes the green or amber flag.
+            </p>
+          </section>
+
           <section aria-labelledby="curation-heading">
             <h2 id="curation-heading">Curation and corrections</h2>
             <p>

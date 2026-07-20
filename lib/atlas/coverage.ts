@@ -87,9 +87,46 @@ export function reportingCoverage(records: readonly AtlasRecord[]) {
       ).length,
     },
     {
-      label: "Response time",
+      label: "Any temporal response",
       reported: records.filter(
-        (record) => record.measurement.responseTimeS !== null,
+        (record) =>
+          record.measurement.responseTimeS !== null ||
+          record.measurement.riseTimeS !== null ||
+          record.measurement.fallTimeS !== null,
+      ).length,
+    },
+    {
+      label: "Rise time",
+      reported: records.filter(
+        (record) => record.measurement.riseTimeS !== null,
+      ).length,
+    },
+    {
+      label: "Fall time",
+      reported: records.filter(
+        (record) => record.measurement.fallTimeS !== null,
+      ).length,
+    },
+    {
+      label: "Explicit −3 dB bandwidth",
+      reported: records.filter(
+        (record) => record.measurement.bandwidthHz !== null,
+      ).length,
+    },
+    {
+      label: "Linear dynamic range",
+      reported: records.filter(
+        (record) =>
+          record.measurement.linearDynamicRangeDb !== null ||
+          record.measurement.linearDynamicRangeMin !== null ||
+          record.measurement.linearDynamicRangeMax !== null,
+      ).length,
+    },
+    {
+      label: "Extended-metrics review complete",
+      reported: records.filter(
+        (record) =>
+          record.measurement.extendedMetricsReviewStatus === "checked",
       ).length,
     },
   ];

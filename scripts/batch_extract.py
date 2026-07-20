@@ -30,6 +30,20 @@ CATEGORIES: dict[str, tuple[str, ...]] = {
     ),
     "device": (r"device fabrication", r"device structure", r"device stack", r"\bito\b", r"\bfto\b"),
     "conditions": (r"\bbias\b", r"temperature", r"frequency", r"\bhz\b", r"active area", r"device area"),
+    "responsivity": (
+        r"responsiv(?:ity|ities)", r"photoresponsivity", r"\b[munµμ]?A\s*(?:/\s*W|W.?1)"
+    ),
+    "temporal_response": (
+        r"response time", r"rise time", r"fall time", r"temporal response",
+        r"transient response", r"switching time", r"impulse response",
+    ),
+    "bandwidth_3db": (
+        r"[−-]?3\s*dB", r"cutoff frequency", r"frequency response",
+    ),
+    "linear_dynamic_range": (
+        r"linear dynamic range", r"\bLDR\b", r"linear (?:response|intensity) range",
+        r"power-dependent photocurrent", r"irradiance range", r"optical-power range",
+    ),
 }
 
 

@@ -1,12 +1,16 @@
 import { parseCsv, CsvSyntaxError, type ParsedCsv } from "./csv.ts";
 import {
   AMBER_REASONS,
+  BANDWIDTH_LIMITS,
   CURATOR_STATUSES,
   DETECTIVITY_EXTRACTION_METHODS,
+  EXTENDED_METRIC_EXTRACTION_METHODS,
+  EXTENDED_METRICS_REVIEW_STATUSES,
   FLAGS,
   NOISE_INSTRUMENTS,
   NOISE_METHODS,
   PUBLICATION_TYPES,
+  RESPONSE_TIME_LIMITS,
   type AmberReason,
   type AtlasEntities,
   type CsvSourceRows,
@@ -43,7 +47,7 @@ export const DEVICE_CSV_COLUMNS = [
   "device_notes",
 ] as const;
 
-export const MEASUREMENT_CSV_COLUMNS = [
+export const LEGACY_MEASUREMENT_CSV_COLUMNS = [
   "measurement_id",
   "device_id",
   "wavelength_nm",
@@ -55,6 +59,60 @@ export const MEASUREMENT_CSV_COLUMNS = [
   "measurement_frequency_hz",
   "response_time_s",
   "bandwidth_hz",
+  "noise_method",
+  "noise_instruments",
+  "noise_instrument_details",
+  "noise_instrument_source",
+  "detectivity_extraction_method",
+  "source_location",
+  "curator_status",
+  "flag",
+  "amber_reasons",
+  "amber_explanation",
+  "curator_notes",
+  "date_added",
+  "date_updated",
+] as const;
+
+export const MEASUREMENT_CSV_COLUMNS = [
+  "measurement_id",
+  "device_id",
+  "wavelength_nm",
+  "detectivity_jones",
+  "responsivity_a_w",
+  "responsivity_wavelength_nm",
+  "responsivity_bias_v",
+  "responsivity_temperature_k",
+  "responsivity_source_location",
+  "responsivity_extraction_method",
+  "eqe_percent",
+  "temperature_k",
+  "bias_v",
+  "measurement_frequency_hz",
+  "response_time_s",
+  "rise_time_s",
+  "fall_time_s",
+  "response_time_definition",
+  "response_time_wavelength_nm",
+  "response_time_bias_v",
+  "response_time_source_location",
+  "response_time_limit",
+  "response_time_extraction_method",
+  "bandwidth_hz",
+  "bandwidth_bias_v",
+  "bandwidth_source_location",
+  "bandwidth_limit",
+  "bandwidth_extraction_method",
+  "linear_dynamic_range_db",
+  "linear_dynamic_range_min",
+  "linear_dynamic_range_max",
+  "linear_dynamic_range_units",
+  "linear_dynamic_range_definition",
+  "linear_dynamic_range_source_location",
+  "linear_dynamic_range_extraction_method",
+  "extended_metrics_review_status",
+  "extended_metrics_review_date",
+  "extended_metrics_notes",
   "noise_method",
   "noise_instruments",
   "noise_instrument_details",
@@ -103,6 +161,7 @@ function prepareRows(
   source: string,
   entity: EntityName,
   expectedColumns: readonly string[],
+  requiredColumns: readonly string[] = expectedColumns,
 ): { rows: PreparedRow[]; issues: ValidationIssue[] } {
   let table: ParsedCsv;
   try {
@@ -157,7 +216,7 @@ function prepareRows(
     seenHeaders.add(header);
   }
 
-  for (const column of expectedColumns) {
+  for (const column of requiredColumns) {
     if (!seenHeaders.has(column)) {
       issues.push(
         issue(
@@ -246,6 +305,12 @@ class RowReader {
     return this.row.values[field] || null;
   }
 
+  optionalString(field: string): string | null | undefined {
+    return Object.prototype.hasOwnProperty.call(this.row.values, field)
+      ? this.nullableString(field)
+      : undefined;
+  }
+
   requiredNumber(field: string): number {
     const raw = this.requiredString(field);
     const value = Number(raw);
@@ -281,6 +346,35 @@ class RowReader {
       );
     }
     return value;
+  }
+
+  optionalNumber(field: string): number | null | undefined {
+    return Object.prototype.hasOwnProperty.call(this.row.values, field)
+      ? this.nullableNumber(field)
+      : undefined;
+  }
+
+  optionalOneOf<const T extends readonly string[]>(
+    field: string,
+    allowed: T,
+  ): T[number] | null | undefined {
+    if (!Object.prototype.hasOwnProperty.call(this.row.values, field))
+      return undefined;
+    const raw = this.row.values[field] ?? "";
+    if (!raw) return null;
+    if (!allowed.includes(raw)) {
+      this.issues.push(
+        issue(
+          this.entity,
+          this.row.rowNumber,
+          field,
+          "invalid_enum",
+          `Expected one of ${allowed.join(", ")}; received "${raw}".`,
+          raw,
+        ),
+      );
+    }
+    return raw as T[number];
   }
 
   boolean(field: string): boolean {
@@ -456,7 +550,12 @@ function parseDevices(source: string): ParsedEntity<Device> {
 }
 
 function parseMeasurements(source: string): ParsedEntity<Measurement> {
-  const prepared = prepareRows(source, "measurements", MEASUREMENT_CSV_COLUMNS);
+  const prepared = prepareRows(
+    source,
+    "measurements",
+    MEASUREMENT_CSV_COLUMNS,
+    LEGACY_MEASUREMENT_CSV_COLUMNS,
+  );
   const records: Measurement[] = [];
   const rowsById = new Map<string, number>();
 
@@ -468,12 +567,78 @@ function parseMeasurements(source: string): ParsedEntity<Measurement> {
       wavelength_nm: read.requiredNumber("wavelength_nm"),
       detectivity_jones: read.requiredNumber("detectivity_jones"),
       responsivity_a_w: read.nullableNumber("responsivity_a_w"),
+      responsivity_wavelength_nm: read.optionalNumber(
+        "responsivity_wavelength_nm",
+      ),
+      responsivity_bias_v: read.optionalNumber("responsivity_bias_v"),
+      responsivity_temperature_k: read.optionalNumber(
+        "responsivity_temperature_k",
+      ),
+      responsivity_source_location: read.optionalString(
+        "responsivity_source_location",
+      ),
+      responsivity_extraction_method: read.optionalOneOf(
+        "responsivity_extraction_method",
+        EXTENDED_METRIC_EXTRACTION_METHODS,
+      ),
       eqe_percent: read.nullableNumber("eqe_percent"),
       temperature_k: read.nullableNumber("temperature_k"),
       bias_v: read.nullableNumber("bias_v"),
       measurement_frequency_hz: read.nullableNumber("measurement_frequency_hz"),
       response_time_s: read.nullableNumber("response_time_s"),
+      rise_time_s: read.optionalNumber("rise_time_s"),
+      fall_time_s: read.optionalNumber("fall_time_s"),
+      response_time_definition: read.optionalString("response_time_definition"),
+      response_time_wavelength_nm: read.optionalNumber(
+        "response_time_wavelength_nm",
+      ),
+      response_time_bias_v: read.optionalNumber("response_time_bias_v"),
+      response_time_source_location: read.optionalString(
+        "response_time_source_location",
+      ),
+      response_time_limit: read.optionalOneOf(
+        "response_time_limit",
+        RESPONSE_TIME_LIMITS,
+      ),
+      response_time_extraction_method: read.optionalOneOf(
+        "response_time_extraction_method",
+        EXTENDED_METRIC_EXTRACTION_METHODS,
+      ),
       bandwidth_hz: read.nullableNumber("bandwidth_hz"),
+      bandwidth_bias_v: read.optionalNumber("bandwidth_bias_v"),
+      bandwidth_source_location: read.optionalString(
+        "bandwidth_source_location",
+      ),
+      bandwidth_limit: read.optionalOneOf("bandwidth_limit", BANDWIDTH_LIMITS),
+      bandwidth_extraction_method: read.optionalOneOf(
+        "bandwidth_extraction_method",
+        EXTENDED_METRIC_EXTRACTION_METHODS,
+      ),
+      linear_dynamic_range_db: read.optionalNumber("linear_dynamic_range_db"),
+      linear_dynamic_range_min: read.optionalNumber("linear_dynamic_range_min"),
+      linear_dynamic_range_max: read.optionalNumber("linear_dynamic_range_max"),
+      linear_dynamic_range_units: read.optionalString(
+        "linear_dynamic_range_units",
+      ),
+      linear_dynamic_range_definition: read.optionalString(
+        "linear_dynamic_range_definition",
+      ),
+      linear_dynamic_range_source_location: read.optionalString(
+        "linear_dynamic_range_source_location",
+      ),
+      linear_dynamic_range_extraction_method: read.optionalOneOf(
+        "linear_dynamic_range_extraction_method",
+        EXTENDED_METRIC_EXTRACTION_METHODS,
+      ),
+      extended_metrics_review_status:
+        read.optionalOneOf(
+          "extended_metrics_review_status",
+          EXTENDED_METRICS_REVIEW_STATUSES,
+        ) ?? undefined,
+      extended_metrics_review_date: read.optionalString(
+        "extended_metrics_review_date",
+      ),
+      extended_metrics_notes: read.optionalString("extended_metrics_notes"),
       noise_method: read.oneOf("noise_method", NOISE_METHODS),
       noise_instruments: read.list(
         "noise_instruments",

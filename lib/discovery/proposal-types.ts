@@ -60,7 +60,7 @@ export interface StagedPaperProposal {
   proposedAt: string;
   decidedAt: string | null;
   appliedAt: string | null;
-  extractorVersion: "cqd-proposal-extractor-v1";
+  extractorVersion: "cqd-proposal-extractor-v1" | "cqd-proposal-extractor-v2";
 }
 
 export interface ProposalRegistry {

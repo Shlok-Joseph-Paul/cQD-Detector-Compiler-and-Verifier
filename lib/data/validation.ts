@@ -1,12 +1,16 @@
 import { amberReasonsToExplanation } from "./constants.ts";
 import {
   AMBER_REASONS,
+  BANDWIDTH_LIMITS,
   CURATOR_STATUSES,
   DETECTIVITY_EXTRACTION_METHODS,
+  EXTENDED_METRIC_EXTRACTION_METHODS,
+  EXTENDED_METRICS_REVIEW_STATUSES,
   FLAGS,
   NOISE_INSTRUMENTS,
   NOISE_METHODS,
   PUBLICATION_TYPES,
+  RESPONSE_TIME_LIMITS,
   type AmberReason,
   type AtlasEntities,
   type CsvSourceRows,
@@ -172,6 +176,34 @@ function validateNullableString(
   if (value !== null && typeof value !== "string") {
     add(field, "invalid_type", "Expected text or null.", value);
   }
+}
+
+function validateOptionalNullableString(
+  value: unknown,
+  field: string,
+  add: (field: string, code: string, message: string, value?: unknown) => void,
+): void {
+  if (value !== undefined) validateNullableString(value, field, add);
+}
+
+function validateOptionalNullableNumber(
+  value: unknown,
+  field: string,
+  add: (field: string, code: string, message: string, value?: unknown) => void,
+  options: { positive?: boolean; nonnegative?: boolean } = {},
+): void {
+  if (value !== undefined)
+    validateNumber(value, field, add, { nullable: true, ...options });
+}
+
+function validateOptionalNullableEnum(
+  value: unknown,
+  field: string,
+  allowed: readonly string[],
+  add: (field: string, code: string, message: string, value?: unknown) => void,
+): void {
+  if (value !== undefined && value !== null)
+    validateEnum(value, field, allowed, add);
 }
 
 function validateNumber(
@@ -352,6 +384,34 @@ function validateMeasurement(
     nullable: true,
     nonnegative: true,
   });
+  validateOptionalNullableNumber(
+    measurement.responsivity_wavelength_nm,
+    "responsivity_wavelength_nm",
+    add,
+    { positive: true },
+  );
+  validateOptionalNullableNumber(
+    measurement.responsivity_bias_v,
+    "responsivity_bias_v",
+    add,
+  );
+  validateOptionalNullableNumber(
+    measurement.responsivity_temperature_k,
+    "responsivity_temperature_k",
+    add,
+    { positive: true },
+  );
+  validateOptionalNullableString(
+    measurement.responsivity_source_location,
+    "responsivity_source_location",
+    add,
+  );
+  validateOptionalNullableEnum(
+    measurement.responsivity_extraction_method,
+    "responsivity_extraction_method",
+    EXTENDED_METRIC_EXTRACTION_METHODS,
+    add,
+  );
   validateNumber(measurement.eqe_percent, "eqe_percent", add, {
     nullable: true,
     nonnegative: true,
@@ -371,10 +431,251 @@ function validateMeasurement(
     nullable: true,
     positive: true,
   });
+  validateOptionalNullableNumber(measurement.rise_time_s, "rise_time_s", add, {
+    positive: true,
+  });
+  validateOptionalNullableNumber(measurement.fall_time_s, "fall_time_s", add, {
+    positive: true,
+  });
+  validateOptionalNullableString(
+    measurement.response_time_definition,
+    "response_time_definition",
+    add,
+  );
+  validateOptionalNullableNumber(
+    measurement.response_time_wavelength_nm,
+    "response_time_wavelength_nm",
+    add,
+    { positive: true },
+  );
+  validateOptionalNullableNumber(
+    measurement.response_time_bias_v,
+    "response_time_bias_v",
+    add,
+  );
+  validateOptionalNullableString(
+    measurement.response_time_source_location,
+    "response_time_source_location",
+    add,
+  );
+  validateOptionalNullableEnum(
+    measurement.response_time_limit,
+    "response_time_limit",
+    RESPONSE_TIME_LIMITS,
+    add,
+  );
+  validateOptionalNullableEnum(
+    measurement.response_time_extraction_method,
+    "response_time_extraction_method",
+    EXTENDED_METRIC_EXTRACTION_METHODS,
+    add,
+  );
   validateNumber(measurement.bandwidth_hz, "bandwidth_hz", add, {
     nullable: true,
     positive: true,
   });
+  validateOptionalNullableNumber(
+    measurement.bandwidth_bias_v,
+    "bandwidth_bias_v",
+    add,
+  );
+  validateOptionalNullableString(
+    measurement.bandwidth_source_location,
+    "bandwidth_source_location",
+    add,
+  );
+  validateOptionalNullableEnum(
+    measurement.bandwidth_limit,
+    "bandwidth_limit",
+    BANDWIDTH_LIMITS,
+    add,
+  );
+  validateOptionalNullableEnum(
+    measurement.bandwidth_extraction_method,
+    "bandwidth_extraction_method",
+    EXTENDED_METRIC_EXTRACTION_METHODS,
+    add,
+  );
+  validateOptionalNullableNumber(
+    measurement.linear_dynamic_range_db,
+    "linear_dynamic_range_db",
+    add,
+    { nonnegative: true },
+  );
+  validateOptionalNullableNumber(
+    measurement.linear_dynamic_range_min,
+    "linear_dynamic_range_min",
+    add,
+  );
+  validateOptionalNullableNumber(
+    measurement.linear_dynamic_range_max,
+    "linear_dynamic_range_max",
+    add,
+  );
+  validateOptionalNullableString(
+    measurement.linear_dynamic_range_units,
+    "linear_dynamic_range_units",
+    add,
+  );
+  validateOptionalNullableString(
+    measurement.linear_dynamic_range_definition,
+    "linear_dynamic_range_definition",
+    add,
+  );
+  validateOptionalNullableString(
+    measurement.linear_dynamic_range_source_location,
+    "linear_dynamic_range_source_location",
+    add,
+  );
+  validateOptionalNullableEnum(
+    measurement.linear_dynamic_range_extraction_method,
+    "linear_dynamic_range_extraction_method",
+    EXTENDED_METRIC_EXTRACTION_METHODS,
+    add,
+  );
+  if (measurement.extended_metrics_review_status !== undefined) {
+    validateEnum(
+      measurement.extended_metrics_review_status,
+      "extended_metrics_review_status",
+      EXTENDED_METRICS_REVIEW_STATUSES,
+      add,
+    );
+  }
+  validateOptionalNullableString(
+    measurement.extended_metrics_review_date,
+    "extended_metrics_review_date",
+    add,
+  );
+  validateOptionalNullableString(
+    measurement.extended_metrics_notes,
+    "extended_metrics_notes",
+    add,
+  );
+
+  const extendedStatus = measurement.extended_metrics_review_status;
+  if (
+    extendedStatus !== undefined &&
+    extendedStatus !== "not_checked" &&
+    (typeof measurement.extended_metrics_review_date !== "string" ||
+      !isIsoDate(measurement.extended_metrics_review_date))
+  ) {
+    add(
+      "extended_metrics_review_date",
+      "review_date_required",
+      "A real review date is required after an extended-metrics source check.",
+      measurement.extended_metrics_review_date,
+    );
+  }
+
+  const metricGroups = [
+    {
+      label: "responsivity",
+      values: [measurement.responsivity_a_w],
+      method: measurement.responsivity_extraction_method,
+      source: measurement.responsivity_source_location,
+    },
+    {
+      label: "response_time",
+      values: [
+        measurement.response_time_s,
+        measurement.rise_time_s,
+        measurement.fall_time_s,
+      ],
+      method: measurement.response_time_extraction_method,
+      source: measurement.response_time_source_location,
+    },
+    {
+      label: "bandwidth",
+      values: [measurement.bandwidth_hz],
+      method: measurement.bandwidth_extraction_method,
+      source: measurement.bandwidth_source_location,
+    },
+    {
+      label: "linear_dynamic_range",
+      values: [
+        measurement.linear_dynamic_range_db,
+        measurement.linear_dynamic_range_min,
+        measurement.linear_dynamic_range_max,
+      ],
+      method: measurement.linear_dynamic_range_extraction_method,
+      source: measurement.linear_dynamic_range_source_location,
+    },
+  ];
+  for (const group of metricGroups) {
+    const hasValue = group.values.some(
+      (value) => typeof value === "number" && Number.isFinite(value),
+    );
+    if (hasValue && group.method === "not_reported") {
+      add(
+        `${group.label}_extraction_method`,
+        "value_marked_not_reported",
+        `A ${group.label} value cannot be marked not reported.`,
+        group.method,
+      );
+    }
+    if (
+      hasValue &&
+      (extendedStatus === "checked" || extendedStatus === "needs_review") &&
+      (group.method == null || group.source == null)
+    ) {
+      add(
+        `${group.label}_source_location`,
+        "metric_provenance_required",
+        `A checked ${group.label} value requires an extraction method and source location.`,
+      );
+    }
+    if (extendedStatus === "checked" && group.method == null) {
+      add(
+        `${group.label}_extraction_method`,
+        "metric_disposition_required",
+        `A checked paper must classify ${group.label} as reported, calculated, graphical, ambiguous, or not reported.`,
+      );
+    }
+  }
+  if (
+    measurement.bandwidth_hz != null &&
+    measurement.bandwidth_limit === "not_reported"
+  ) {
+    add(
+      "bandwidth_limit",
+      "value_marked_not_reported",
+      "A bandwidth value or bound cannot be marked not reported.",
+      measurement.bandwidth_limit,
+    );
+  }
+  if (
+    extendedStatus === "checked" &&
+    measurement.bandwidth_hz != null &&
+    measurement.bandwidth_limit == null
+  ) {
+    add(
+      "bandwidth_limit",
+      "bandwidth_disposition_required",
+      "A checked reported bandwidth requires a measured, instrument-limited, upper-bound, or lower-bound classification.",
+    );
+  }
+  if (
+    typeof measurement.linear_dynamic_range_min === "number" &&
+    typeof measurement.linear_dynamic_range_max === "number" &&
+    measurement.linear_dynamic_range_min > measurement.linear_dynamic_range_max
+  ) {
+    add(
+      "linear_dynamic_range_min",
+      "invalid_range",
+      "The LDR minimum cannot exceed its maximum.",
+    );
+  }
+  if (
+    (measurement.linear_dynamic_range_min != null ||
+      measurement.linear_dynamic_range_max != null) &&
+    !measurement.linear_dynamic_range_units
+  ) {
+    add(
+      "linear_dynamic_range_units",
+      "range_units_required",
+      "LDR range bounds require their reported units.",
+    );
+  }
   validateEnum(measurement.noise_method, "noise_method", NOISE_METHODS, add);
   if (
     !Array.isArray(measurement.noise_instruments) ||

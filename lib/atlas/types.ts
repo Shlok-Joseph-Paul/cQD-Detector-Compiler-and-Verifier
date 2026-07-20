@@ -51,12 +51,39 @@ export interface AtlasMeasurement {
   wavelengthNm: number;
   detectivityJones: number;
   responsivityAW: number | null;
+  responsivityWavelengthNm: number | null;
+  responsivityBiasV: number | null;
+  responsivityTemperatureK: number | null;
+  responsivitySourceLocation: string | null;
+  responsivityExtractionMethod: string | null;
   eqePercent: number | null;
   temperatureK: number | null;
   biasV: number | null;
   measurementFrequencyHz: number | null;
   responseTimeS: number | null;
+  riseTimeS: number | null;
+  fallTimeS: number | null;
+  responseTimeDefinition: string | null;
+  responseTimeWavelengthNm: number | null;
+  responseTimeBiasV: number | null;
+  responseTimeSourceLocation: string | null;
+  responseTimeLimit: string | null;
+  responseTimeExtractionMethod: string | null;
   bandwidthHz: number | null;
+  bandwidthBiasV: number | null;
+  bandwidthSourceLocation: string | null;
+  bandwidthLimit: string | null;
+  bandwidthExtractionMethod: string | null;
+  linearDynamicRangeDb: number | null;
+  linearDynamicRangeMin: number | null;
+  linearDynamicRangeMax: number | null;
+  linearDynamicRangeUnits: string | null;
+  linearDynamicRangeDefinition: string | null;
+  linearDynamicRangeSourceLocation: string | null;
+  linearDynamicRangeExtractionMethod: string | null;
+  extendedMetricsReviewStatus: string;
+  extendedMetricsReviewDate: string | null;
+  extendedMetricsNotes: string | null;
   noiseMethod: NoiseMethod;
   noiseInstruments: NoiseInstrument[];
   noiseInstrumentDetails: string | null;
@@ -267,6 +294,26 @@ export function normalizeJoinedMeasurement(
         "responsivity_a_w",
         "responsivityAW",
       ]),
+      responsivityWavelengthNm: nullableNumber(measurement, [
+        "responsivity_wavelength_nm",
+        "responsivityWavelengthNm",
+      ]),
+      responsivityBiasV: nullableNumber(measurement, [
+        "responsivity_bias_v",
+        "responsivityBiasV",
+      ]),
+      responsivityTemperatureK: nullableNumber(measurement, [
+        "responsivity_temperature_k",
+        "responsivityTemperatureK",
+      ]),
+      responsivitySourceLocation: nullableText(measurement, [
+        "responsivity_source_location",
+        "responsivitySourceLocation",
+      ]),
+      responsivityExtractionMethod: nullableText(measurement, [
+        "responsivity_extraction_method",
+        "responsivityExtractionMethod",
+      ]),
       eqePercent: nullableNumber(measurement, ["eqe_percent", "eqePercent"]),
       temperatureK: nullableNumber(measurement, [
         "temperature_k",
@@ -281,7 +328,90 @@ export function normalizeJoinedMeasurement(
         "response_time_s",
         "responseTimeS",
       ]),
+      riseTimeS: nullableNumber(measurement, ["rise_time_s", "riseTimeS"]),
+      fallTimeS: nullableNumber(measurement, ["fall_time_s", "fallTimeS"]),
+      responseTimeDefinition: nullableText(measurement, [
+        "response_time_definition",
+        "responseTimeDefinition",
+      ]),
+      responseTimeWavelengthNm: nullableNumber(measurement, [
+        "response_time_wavelength_nm",
+        "responseTimeWavelengthNm",
+      ]),
+      responseTimeBiasV: nullableNumber(measurement, [
+        "response_time_bias_v",
+        "responseTimeBiasV",
+      ]),
+      responseTimeSourceLocation: nullableText(measurement, [
+        "response_time_source_location",
+        "responseTimeSourceLocation",
+      ]),
+      responseTimeLimit: nullableText(measurement, [
+        "response_time_limit",
+        "responseTimeLimit",
+      ]),
+      responseTimeExtractionMethod: nullableText(measurement, [
+        "response_time_extraction_method",
+        "responseTimeExtractionMethod",
+      ]),
       bandwidthHz: nullableNumber(measurement, ["bandwidth_hz", "bandwidthHz"]),
+      bandwidthBiasV: nullableNumber(measurement, [
+        "bandwidth_bias_v",
+        "bandwidthBiasV",
+      ]),
+      bandwidthSourceLocation: nullableText(measurement, [
+        "bandwidth_source_location",
+        "bandwidthSourceLocation",
+      ]),
+      bandwidthLimit: nullableText(measurement, [
+        "bandwidth_limit",
+        "bandwidthLimit",
+      ]),
+      bandwidthExtractionMethod: nullableText(measurement, [
+        "bandwidth_extraction_method",
+        "bandwidthExtractionMethod",
+      ]),
+      linearDynamicRangeDb: nullableNumber(measurement, [
+        "linear_dynamic_range_db",
+        "linearDynamicRangeDb",
+      ]),
+      linearDynamicRangeMin: nullableNumber(measurement, [
+        "linear_dynamic_range_min",
+        "linearDynamicRangeMin",
+      ]),
+      linearDynamicRangeMax: nullableNumber(measurement, [
+        "linear_dynamic_range_max",
+        "linearDynamicRangeMax",
+      ]),
+      linearDynamicRangeUnits: nullableText(measurement, [
+        "linear_dynamic_range_units",
+        "linearDynamicRangeUnits",
+      ]),
+      linearDynamicRangeDefinition: nullableText(measurement, [
+        "linear_dynamic_range_definition",
+        "linearDynamicRangeDefinition",
+      ]),
+      linearDynamicRangeSourceLocation: nullableText(measurement, [
+        "linear_dynamic_range_source_location",
+        "linearDynamicRangeSourceLocation",
+      ]),
+      linearDynamicRangeExtractionMethod: nullableText(measurement, [
+        "linear_dynamic_range_extraction_method",
+        "linearDynamicRangeExtractionMethod",
+      ]),
+      extendedMetricsReviewStatus: textValue(
+        measurement,
+        ["extended_metrics_review_status", "extendedMetricsReviewStatus"],
+        "not_checked",
+      ),
+      extendedMetricsReviewDate: nullableText(measurement, [
+        "extended_metrics_review_date",
+        "extendedMetricsReviewDate",
+      ]),
+      extendedMetricsNotes: nullableText(measurement, [
+        "extended_metrics_notes",
+        "extendedMetricsNotes",
+      ]),
       noiseMethod: noiseMethodValue(measurement),
       noiseInstruments: listValue(measurement, [
         "noise_instruments",

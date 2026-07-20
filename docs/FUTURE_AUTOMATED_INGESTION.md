@@ -1,8 +1,10 @@
 # Future automated ingestion
 
 Status: the repository now includes a local, API-based Paper Discovery Queue
-for OpenAlex and Crossref metadata. The extraction, full-text processing,
-scheduler, and publisher integration described below remain future work. See
+for OpenAlex and Crossref metadata plus an open-access PDF acquisition,
+batch-extraction, staged proposal, curator-decision, and approved-only CSV
+application workflow. Scheduling, model-assisted extraction, multi-reviewer
+permissions, and pull-request/publisher integration remain future work. See
 `docs/DISCOVERY_QUEUE.md` for the implemented operator workflow and
 `docs/LITERATURE_SEARCH_PROTOCOL.md` for its scientific-search protocol.
 
@@ -186,8 +188,9 @@ still runs the repository's data validation and application tests. A pull
 request makes the exact record changes reviewable before deployment.
 
 There is deliberately no `publish()` method in the ingestion adapter boundary.
-Only the curation workflow can cross from a private proposal into the public
-atlas.
+The local `apply-approved` curation command is the only implemented crossing:
+it requires a separately imported approval and validates the prospective atlas
+before updating the reviewable CSV sources.
 
 ## Adapter boundary
 

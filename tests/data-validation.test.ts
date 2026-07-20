@@ -88,7 +88,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 3);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 41);
+  assert.equal(atlas.measurements.length, 54);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.ok(
     atlas.records.every(
@@ -99,18 +99,18 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 7);
+  assert.equal(amberRecords.length, 12);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
     ).length,
-    3,
+    7,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("lock_in_only_noise_measurement"),
     ).length,
-    3,
+    5,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -118,7 +118,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
         "source_measure_unit_noise_measurement",
       ),
     ).length,
-    1,
+    0,
   );
 });
 

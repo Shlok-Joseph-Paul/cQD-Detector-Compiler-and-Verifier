@@ -89,7 +89,11 @@ reduce precision.
 6. Export browser-local decisions and import the CSV into the registry.
 7. Commit candidate decisions and the append-only run log for an auditable
    search snapshot.
-8. Send only screened candidates to the CQD Paper Importer.
+8. Acquire only a recorded, unauthenticated open-access PDF and stage an
+   evidence-linked proposal.
+9. Review the proposal, export and import an explicit approval decision, then
+   separately apply only the approved proposal through the validated CSV
+   workflow.
 
 The CSV is the interchange surface for review. Browser decisions use local
 storage and are not committed or published until explicitly exported and
@@ -98,10 +102,14 @@ imported.
 ## PDF policy
 
 The discovery pipeline records only PDF URLs that OpenAlex identifies as open
-access. It does not download PDFs. It does not use institutional sessions,
-cookies, credentials, or paywall circumvention. `available` means only that an
-open-access URL was reported; a curator still needs to check that URL and its
-version before acquisition or parsing.
+access. The proposal command may download one of those URLs only when it is
+plain HTTP(S), unauthenticated, and actually returns a PDF. It does not use
+institutional sessions, cookies, credentials, browser state, or paywall
+circumvention. The PDF and page-marked extraction remain in an external cache;
+the repository stores its checksum, source URL, acquisition metadata, short
+evidence snippets, and proposed records. `available` still means only that an
+open-access URL was reported. `acquired` means the response was verified as a
+PDF, not that its scientific claims were accepted.
 
 ## Google Scholar
 

@@ -2,14 +2,14 @@
   "version": "1.0.0",
   "openAlex": {
     "baseUrl": "https://api.openalex.org",
-    "mailto": "",
+    "mailto": "shlokjpaul@gmail.com",
     "perPage": 50,
     "maxPagesPerQuery": 4,
     "minimumRequestIntervalMs": 120
   },
   "crossref": {
     "baseUrl": "https://api.crossref.org",
-    "mailto": "",
+    "mailto": "shlokjpaul@gmail.com",
     "minimumRequestIntervalMs": 120
   },
   "materialTerms": [

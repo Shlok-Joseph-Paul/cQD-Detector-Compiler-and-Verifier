@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "proposals": [
+    {
+      "proposalId": "proposal-798a7e0d2116",
+      "candidateId": "candidate-71090b30b704834c",
+      "source": {
+        "url": "https://www.sciopen.com/local/article_pdf/10.26599/NR.2026.94908647.pdf",
+        "openAccessSource": "Nano Research",
+        "pdfSha256": "1c4f60fee576d2d2bfcc23bf97833ba5eaed88272b4c33e3262e586caa36ae59",
+        "acquiredAt": "2026-07-20T01:21:04.002Z",
+        "contentType": "application/pdf",
+        "byteLength": 7103999,
+        "extractionEngine": "pypdf",
+        "pageCount": 8,
+        "needsOcr": false
+      },
+      "scopeStatus": "in-scope",
+      "scopeReasons": [
+        "Full text contains colloidal or solution-processed quantum-dot terminology.",
+        "Full text describes a photodiode, photovoltaic detector, or rectifying junction."
+      ],
+      "proposedPaper": {
+        "paper_id": "paper-798a7e0d2116",
+        "title": "Interface modification for silver telluride quantum dots shortwave-infrared photodetectors beyond 1.5 μm",
+        "authors": [
+          "Zhixuan Wang",
+          "Zhiyong Tang",
+          "Ziyan Zhang",
+          "Yejun Zhang",
+          "Jiang Jiang",
+          "Hongchao Yang",
+          "Qiangbin Wang"
+        ],
+        "first_author": "Zhixuan Wang",
+        "journal": "Nano Research",
+        "publication_year": 2026,
+        "doi": "10.26599/nr.2026.94908647",
+        "publication_url": "https://doi.org/10.26599/nr.2026.94908647",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Staged from a verified open-access PDF; bibliographic metadata and all measurements require curator approval."
+      },
+      "proposedDevices": [
+        {
+          "device_id": "device-798a7e0d2116-1",
+          "paper_id": "paper-798a7e0d2116",
+          "material_family": "Ag2Te",
+          "material_composition": "Ag2Te",
+          "device_architecture": "CQD photodiode; exact architecture requires curator confirmation",
+          "device_stack": "ITO/SnO2/BiCl3/Ag2Te QDs/P3HT/MoO3/Ag",
+          "active_area_cm2": 0.06,
+          "device_notes": "Automatically staged from full text; confirm absorber, junction type, stack order, and area against the cited source locations."
+        }
+      ],
+      "proposedMeasurements": [
+        {
+          "measurement_id": "measurement-798a7e0d2116-1",
+          "device_id": "device-798a7e0d2116-1",
+          "wavelength_nm": 1540,
+          "detectivity_jones": 230000000000,
+          "responsivity_a_w": 0.22,
+          "eqe_percent": null,
+          "temperature_k": null,
+          "bias_v": 0,
+          "measurement_frequency_hz": 1,
+          "response_time_s": null,
+          "bandwidth_hz": null,
+          "noise_method": "measured_noise",
+          "noise_instruments": ["dedicated_noise_analyzer"],
+          "noise_instrument_details": "p. 2: rent density–voltage (J–V) characteristics of Ag2Te QD photodetector was measured on a semiconductor analyzer (Keithley 4200A-SCS). The noise spectral density was measured using a… | p. 4: esponsivity, in is noise current (at 1 Hz), A is device area (0.06 cm2), and Δf is electrical bandwidth (1 Hz). The frequency-dependent noise spectral density was measured using a…",
+          "noise_instrument_source": "PDF page 2",
+          "detectivity_extraction_method": "directly_reported",
+          "source_location": "PDF page 5",
+          "curator_status": "pending_review",
+          "flag": "green",
+          "amber_reasons": [],
+          "amber_explanation": null,
+          "curator_notes": "Automatically staged evidence: with the dark current in Fig. 3(d). And the noise current of the optimized device measured at 0 V was 4 × 10−13 A/Hz0.5 at 1 Hz, which was used in the calculation of D*. The optimized device achieved a responsivity of 0.22 A/W at 1540 nm under zero bias (Fig. S19 in the ESM), corresponding to a D* of 2.3 × 1011 Jones…",
+          "date_added": "2026-07-20",
+          "date_updated": "2026-07-20"
+        }
+      ],
+      "evidence": [
+        {
+          "field": "device.device_stack",
+          "page": 2,
+          "location": "PDF page 2",
+          "conciseEvidence": "g/mL chlorobenzene solution. Under vacuum (< 1 × 10−6 torr), the top electrode layers, consisting of 10 nm of MoO3 and 100 nm of Ag, were successively deposited onto the ITO/SnO2/BiCl3/QD/P3HT structure by a thermal evaporator at a rate of 0.1 and 1 Å/s, respectively. 2.5 Device characterization The current density–vo…",
+          "confidence": 0.78
+        },
+        {
+          "field": "device.active_area_cm2",
+          "page": 4,
+          "location": "PDF page 4",
+          "conciseEvidence": "and the suppression of recombination. The D* was calculated using the formula [42]: D* = R × (A × Δf)1/2/in, where R is responsivity, in is noise current (at 1 Hz), A is device area (0.06 cm2), and Δf is electrical bandwidth (1 Hz). The frequency-dependent noise spectral density was measured using a low-frequency nois…",
+          "confidence": 0.9
+        },
+        {
+          "field": "measurement-1.detectivity_jones+wavelength_nm",
+          "page": 5,
+          "location": "PDF page 5",
+          "conciseEvidence": "with the dark current in Fig. 3(d). And the noise current of the optimized device measured at 0 V was 4 × 10−13 A/Hz0.5 at 1 Hz, which was used in the calculation of D*. The optimized device achieved a responsivity of 0.22 A/W at 1540 nm under zero bias (Fig. S19 in the ESM), corresponding to a D* of 2.3 × 1011 Jones…",
+          "confidence": 0.72
+        }
+      ],
+      "warnings": [],
+      "missingFields": [
+        "measurement.eqe_percent",
+        "measurement.temperature_k",
+        "measurement.response_time_s",
+        "measurement.bandwidth_hz"
+      ],
+      "status": "applied",
+      "decisionNotes": "Explicitly approved by Shlok in Codex on 2026-07-19.",
+      "proposedAt": "2026-07-20T01:21:04.003Z",
+      "decidedAt": "2026-07-20T01:24:58.333Z",
+      "appliedAt": "2026-07-20T01:25:04.635Z",
+      "extractorVersion": "cqd-proposal-extractor-v1"
+    }
+  ]
+}

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import registry from "@/data/discovery/candidates.json";
+import proposalRegistry from "@/data/discovery/proposals.json";
 import { DiscoveryQueueClient } from "@/components/discovery/DiscoveryQueueClient";
 import { SiteShell } from "@/components/SiteShell";
 import type { CandidateRegistry } from "@/lib/discovery/types";
+import type { ProposalRegistry } from "@/lib/discovery/proposal-types";
 
 export const metadata: Metadata = {
   title: "Discovery Queue",
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
 
 export default function DiscoveryPage() {
   const candidates = (registry as CandidateRegistry).candidates;
+  const proposals = (proposalRegistry as ProposalRegistry).proposals;
   return (
     <SiteShell>
       <div className="page-shell discovery-page">
@@ -33,7 +36,7 @@ export default function DiscoveryPage() {
             </p>
           </aside>
         </header>
-        <DiscoveryQueueClient candidates={candidates} />
+        <DiscoveryQueueClient candidates={candidates} proposals={proposals} />
       </div>
     </SiteShell>
   );

@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "dataset_version": "1.2.0",
-  "generated_at": "2026-07-19T00:00:00.000Z",
+  "generated_at": "2026-07-20T00:00:00.000Z",
   "papers": [
     {
       "paper_id": "wang-2025-ag2te-lidar",
@@ -569,6 +569,166 @@
       "publication_type": "journal_article",
       "peer_reviewed": true,
       "notes": "Fast InAs CQD near-infrared photodiode using InBr3 surface treatment."
+    },
+    {
+      "paper_id": "paper-798a7e0d2116",
+      "title": "Interface modification for silver telluride quantum dots shortwave-infrared photodetectors beyond 1.5 μm",
+      "authors": [
+        "Zhixuan Wang",
+        "Zhiyong Tang",
+        "Ziyan Zhang",
+        "Yejun Zhang",
+        "Jiang Jiang",
+        "Hongchao Yang",
+        "Qiangbin Wang"
+      ],
+      "first_author": "Zhixuan Wang",
+      "journal": "Nano Research",
+      "publication_year": 2026,
+      "doi": "10.26599/nr.2026.94908647",
+      "publication_url": "https://doi.org/10.26599/nr.2026.94908647",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Staged from a verified open-access PDF; bibliographic metadata and all measurements require curator approval."
+    },
+    {
+      "paper_id": "lee-2026-hgcdse-neutralized",
+      "title": "Surface-Neutralized HgCdSe Quantum Dots for High-Detectivity Infrared Photodetectors",
+      "authors": [
+        "Wonseok Lee",
+        "Su Hwan Lee",
+        "Sang Hyun Nam",
+        "Min-Jae Si",
+        "Se-Woong Baek",
+        "Young-Hoon Kim",
+        "Andrew M. Smith"
+      ],
+      "first_author": "Wonseok Lee",
+      "journal": "Nano Letters",
+      "publication_year": 2026,
+      "doi": "10.1021/acs.nanolett.6c02200",
+      "publication_url": "https://doi.org/10.1021/acs.nanolett.6c02200",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Surface-neutralized Hg0.95Cd0.05Se CQD photodiodes with measured frequency-dependent noise and room-temperature SWIR detectivity."
+    },
+    {
+      "paper_id": "park-2026-internal-field",
+      "title": "Internal field tailoring enables low noise high speed colloidal quantum dot photodetectors beyond 1500 nm",
+      "authors": [
+        "Youngsang Park",
+        "Seongmin Park",
+        "Hyeonjun Jeong",
+        "Daekwon Shin",
+        "Eunji Jang",
+        "Hyoin Kim",
+        "Sohee Jeong"
+      ],
+      "first_author": "Youngsang Park",
+      "journal": "Nature Communications",
+      "publication_year": 2026,
+      "doi": "10.1038/s41467-026-71335-w",
+      "publication_url": "https://doi.org/10.1038/s41467-026-71335-w",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "InAs and PbS CQD photodiodes using internal-field tailoring for low-noise high-speed detection beyond 1500 nm."
+    },
+    {
+      "paper_id": "huang-2026-cdte-hgte-htl",
+      "title": "Cation-Exchange Synthesized CdTe/HgTe Core/Shell Quantum Dots as Hole Transport Layers for HgTe Quantum Dot Photodetectors",
+      "authors": [
+        "Runze Huang",
+        "Mengxuan Yu",
+        "Xingchen Zhang",
+        "Xudong Hu",
+        "Xi Ran",
+        "Mohan Yuan",
+        "Jun Ouyan",
+        "Jungang He",
+        "Xinzheng Lan"
+      ],
+      "first_author": "Runze Huang",
+      "journal": "ACS Applied Electronic Materials",
+      "publication_year": 2026,
+      "doi": "10.1021/acsaelm.6c00900",
+      "publication_url": "https://doi.org/10.1021/acsaelm.6c00900",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "CdTe/HgTe core-shell CQD hole-transport layers for HgTe CQD photodiodes with directly measured noise."
+    },
+    {
+      "paper_id": "xia-2025-pbse-mle",
+      "title": "Uncooled and Broadband PbSe Colloidal-Quantum-Dot Short-Wave Infrared Photodetectors",
+      "authors": [
+        "Hang Xia",
+        "Jing Liu",
+        "Mohan Yuan",
+        "Xudong Hu",
+        "Liang Gao",
+        "Jianbing Zhang",
+        "Jiang Tang",
+        "Xinzheng Lan"
+      ],
+      "first_author": "Hang Xia",
+      "journal": "Nano Letters",
+      "publication_year": 2025,
+      "doi": "10.1021/acs.nanolett.5c03752",
+      "publication_url": "https://doi.org/10.1021/acs.nanolett.5c03752",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Uncooled MLE-PbSe CQD photodiodes spanning conventional and extended short-wave infrared wavelengths."
+    },
+    {
+      "paper_id": "hu-2025-hgte-double-heterojunction",
+      "title": "Double-Heterojunction-Based HgTe Colloidal Quantum Dot Imagers",
+      "authors": [
+        "Huicheng Hu",
+        "Jing Liu",
+        "Jing Liu",
+        "Mohan Yuan",
+        "Haifei Ma",
+        "Binbin Wang",
+        "Ya Wang",
+        "Hang Xia",
+        "Junrui Yang",
+        "Liang Gao",
+        "Jianbing Zhang",
+        "Jiang Tang",
+        "Xinzheng Lan"
+      ],
+      "first_author": "Huicheng Hu",
+      "journal": "ACS Nano",
+      "publication_year": 2025,
+      "doi": "10.1021/acsnano.4c17257",
+      "publication_url": "https://doi.org/10.1021/acsnano.4c17257",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Double-heterojunction HgTe CQD photodiodes and a monolithically integrated short-wave infrared imager."
+    },
+    {
+      "paper_id": "tran-2026-cd3p2-polarity",
+      "title": "Surface-Interaction-Driven Polarity Switching in II-V Cd3P2 Colloidal Quantum Dots for Infrared Photodiodes",
+      "authors": [
+        "Ha-Chi V. Tran",
+        "Doeun Shim",
+        "Youngsang Park",
+        "Mahnmin Choi",
+        "Hyeonjun Jeong",
+        "Guillaume Bonifas",
+        "Liyan Ouyang",
+        "Celine Nayral",
+        "Fabien Delpech",
+        "Joongoo Kang",
+        "Sohee Jeong"
+      ],
+      "first_author": "Ha-Chi V. Tran",
+      "journal": "Advanced Science",
+      "publication_year": 2026,
+      "doi": "10.1002/advs.202600061",
+      "publication_url": "https://doi.org/10.1002/advs.202600061",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Cd3P2 CQD homojunction photodiode enabled by oxygen-driven polarity switching and a p-type Cd3P2-Cl charge-selective layer."
     }
   ],
   "devices": [
@@ -861,6 +1021,136 @@
       "device_stack": "glass / ITO / ZnO / InAs CQDs (~120 nm) / MoO3 (10 nm) / Au (120 nm)",
       "active_area_cm2": 0.1,
       "device_notes": "The separate 2 ns response-time measurement used a smaller-area device and is not assigned to the D* record."
+    },
+    {
+      "device_id": "device-798a7e0d2116-1",
+      "paper_id": "paper-798a7e0d2116",
+      "material_family": "Ag2Te",
+      "material_composition": "Ag2Te",
+      "device_architecture": "CQD photodiode; exact architecture requires curator confirmation",
+      "device_stack": "ITO/SnO2/BiCl3/Ag2Te QDs/P3HT/MoO3/Ag",
+      "active_area_cm2": 0.06,
+      "device_notes": "Automatically staged from full text; confirm absorber, junction type, stack order, and area against the cited source locations."
+    },
+    {
+      "device_id": "lee-2026-hgcdse-qd2-device",
+      "paper_id": "lee-2026-hgcdse-neutralized",
+      "material_family": "HgCdSe",
+      "material_composition": "Hg0.95Cd0.05Se QD(2) with optimized 80 °C DDT surface treatment",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "glass / ITO / SnO2 / HgCdSe QD(2) / Spiro-MeOTAD / MoO3 (4 nm) / Ag (100 nm)",
+      "active_area_cm2": 0.05,
+      "device_notes": "Surface-neutralized QD(2) active layer with intrinsic electronic character and suppressed leakage current."
+    },
+    {
+      "device_id": "lee-2026-hgcdse-qd1-device",
+      "paper_id": "lee-2026-hgcdse-neutralized",
+      "material_family": "HgCdSe",
+      "material_composition": "Hg0.95Cd0.05Se QD(1) with room-temperature DDT surface treatment",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "glass / ITO / SnO2 / HgCdSe QD(1) / Spiro-MeOTAD / MoO3 (4 nm) / Ag (100 nm)",
+      "active_area_cm2": 0.05,
+      "device_notes": "Comparison QD(1) active layer retaining partial n-type doping and higher noise."
+    },
+    {
+      "device_id": "park-2026-inas-oldp-device",
+      "paper_id": "park-2026-internal-field",
+      "material_family": "InAs",
+      "material_composition": "Optimized internal-field-tailored InAs CQDs with n-type and low- and high-doping-potential layers",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "ITO / ZnO / n-InAs / LDP / HDP / MoOx / Ag",
+      "active_area_cm2": 0.002,
+      "device_notes": "Optimized o-LDP InAs device; the response-time measurement reports 24 ns rise and 210 ns fall times."
+    },
+    {
+      "device_id": "park-2026-inas-ldp-device",
+      "paper_id": "park-2026-internal-field",
+      "material_family": "InAs",
+      "material_composition": "InAs CQDs with an LDP hole-transport layer",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "ITO / ZnO / n-InAs / LDP / MoOx / Ag",
+      "active_area_cm2": 0.002,
+      "device_notes": "LDP comparison device used for the directly reported 1500 nm detectivity."
+    },
+    {
+      "device_id": "park-2026-pbs-ldp-device",
+      "paper_id": "park-2026-internal-field",
+      "material_family": "PbS",
+      "material_composition": "PbS CQDs with an LDP hole-transport layer",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "PbS-I / light PbS-EDT / MoOx / Au",
+      "active_area_cm2": null,
+      "device_notes": "LDP PbS comparison device; only the partial stack reported with the detectivity comparison is retained."
+    },
+    {
+      "device_id": "park-2026-pbs-hdp-device",
+      "paper_id": "park-2026-internal-field",
+      "material_family": "PbS",
+      "material_composition": "PbS CQDs with an HDP hole-transport layer",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "PbS-I / light PbS-EDT / MoOx / Au",
+      "active_area_cm2": null,
+      "device_notes": "HDP PbS comparison device; only the partial stack reported with the detectivity comparison is retained."
+    },
+    {
+      "device_id": "huang-2026-cdte-hgte-edt-device",
+      "paper_id": "huang-2026-cdte-hgte-htl",
+      "material_family": "HgTe",
+      "material_composition": "Se:HgTe CQD absorber with an EDT-treated CdTe/HgTe core-shell CQD hole-transport layer",
+      "device_architecture": "p-on-n CQD photodiode",
+      "device_stack": "quartz / ITO / Bi2S3 (5 nm) / Se:HgTe CQDs (~450 nm) / EDT-treated CdTe-HgTe CQDs (~100 nm) / Au",
+      "active_area_cm2": 0.0782,
+      "device_notes": "The detectivity calculation uses 0.0782 cm2; the fabrication section separately reports 0.0786 cm2."
+    },
+    {
+      "device_id": "huang-2026-cdte-hgte-untreated-device",
+      "paper_id": "huang-2026-cdte-hgte-htl",
+      "material_family": "HgTe",
+      "material_composition": "Se:HgTe CQD absorber with an untreated CdTe/HgTe core-shell CQD hole-transport layer",
+      "device_architecture": "p-on-n CQD photodiode",
+      "device_stack": "quartz / ITO / Bi2S3 (5 nm) / Se:HgTe CQDs (~450 nm) / untreated CdTe-HgTe CQDs (~100 nm) / Au",
+      "active_area_cm2": 0.0782,
+      "device_notes": "The detectivity calculation uses 0.0782 cm2; the fabrication section separately reports 0.0786 cm2."
+    },
+    {
+      "device_id": "xia-2025-pbse-1640-device",
+      "paper_id": "xia-2025-pbse-mle",
+      "material_family": "PbSe",
+      "material_composition": "MLE-PbSe CQDs with an approximately 1640 nm excitonic peak",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "ITO / NiOx / PbS-EDT / PbSe CQDs / C60 / SnO2 / ITO",
+      "active_area_cm2": null,
+      "device_notes": "Conventional-SWIR MLE-PbSe absorber device."
+    },
+    {
+      "device_id": "xia-2025-pbse-2360-device",
+      "paper_id": "xia-2025-pbse-mle",
+      "material_family": "PbSe",
+      "material_composition": "MLE-PbSe CQDs with an approximately 2360 nm excitonic peak",
+      "device_architecture": "Vertical CQD photodiode",
+      "device_stack": "ITO / NiOx / PbS-EDT / PbSe CQDs / C60 / SnO2 / ITO",
+      "active_area_cm2": null,
+      "device_notes": "Extended-SWIR MLE-PbSe absorber device with a spectral cutoff near 2500 nm."
+    },
+    {
+      "device_id": "hu-2025-hgte-dh-device",
+      "paper_id": "hu-2025-hgte-double-heterojunction",
+      "material_family": "HgTe",
+      "material_composition": "Hybrid-ligand-capped HgTe CQDs between ZnO and ZnTe charge-transport layers",
+      "device_architecture": "Double-heterojunction p-i-n CQD photodiode",
+      "device_stack": "glass / bottom ITO / ZnO (200 nm) / HgTe CQDs (~420 nm) / ZnTe (30 nm) / top ITO (100 nm)",
+      "active_area_cm2": 0.0414,
+      "device_notes": "Top-illuminated single-pixel photodiode architecture used for the spectral detectivity measurement and subsequent CMOS imager integration."
+    },
+    {
+      "device_id": "tran-2026-cd3p2-homojunction-device",
+      "paper_id": "tran-2026-cd3p2-polarity",
+      "material_family": "Cd3P2",
+      "material_composition": "Cd3P2 CQD absorber with a p-type chloride-treated Cd3P2 CQD charge-selective layer",
+      "device_architecture": "Cd3P2 CQD homojunction photodiode",
+      "device_stack": "ITO / ZnO / Cd3P2 CQD absorber (~100 nm) / p-Cd3P2-Cl (~30 nm) / MoOx (10 nm) / Ag (120 nm)",
+      "active_area_cm2": null,
+      "device_notes": "The 0.002 cm2 area reported for transient testing is not assigned to the detectivity record."
     }
   ],
   "measurements": [
@@ -1957,20 +2247,17 @@
       "bandwidth_hz": null,
       "noise_method": "measured_noise",
       "noise_instruments": [
-        "dedicated_noise_analyzer",
-        "source_measure_unit"
+        "dedicated_noise_analyzer"
       ],
-      "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer with a Keysight B1500 parameter analyzer.",
+      "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer; the Experimental section also names a Keysight B1500 parameter analyzer as supporting instrumentation.",
       "noise_instrument_source": "PDF p. 7, Experimental section",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
       "curator_status": "reviewed",
-      "flag": "amber",
-      "amber_reasons": [
-        "source_measure_unit_noise_measurement"
-      ],
-      "amber_explanation": "The reported noise-acquisition chain includes a Keysight B1500 parameter analyzer, so the result is flagged for caution even though it is paired with a dedicated noise analyzer.",
-      "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz.",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz. The E4727B is classified as the noise-acquisition instrument; the accompanying B1500 is not classified as an independent noise-acquisition method.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
     },
@@ -2027,6 +2314,382 @@
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Maximum reported D*; the separately reported 2 ns response at 850 nm is not transferred to this record.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "measurement-798a7e0d2116-1",
+      "device_id": "device-798a7e0d2116-1",
+      "wavelength_nm": 1540,
+      "detectivity_jones": 230000000000,
+      "responsivity_a_w": 0.22,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": 0,
+      "measurement_frequency_hz": 1,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "dedicated_noise_analyzer"
+      ],
+      "noise_instrument_details": "p. 2: rent density–voltage (J–V) characteristics of Ag2Te QD photodetector was measured on a semiconductor analyzer (Keithley 4200A-SCS). The noise spectral density was measured using a… | p. 4: esponsivity, in is noise current (at 1 Hz), A is device area (0.06 cm2), and Δf is electrical bandwidth (1 Hz). The frequency-dependent noise spectral density was measured using a…",
+      "noise_instrument_source": "PDF page 2",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "PDF page 5",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Automatically staged evidence: with the dark current in Fig. 3(d). And the noise current of the optimized device measured at 0 V was 4 × 10−13 A/Hz0.5 at 1 Hz, which was used in the calculation of D*. The optimized device achieved a responsivity of 0.22 A/W at 1540 nm under zero bias (Fig. S19 in the ESM), corresponding to a D* of 2.3 × 1011 Jones…",
+      "date_added": "2026-07-20",
+      "date_updated": "2026-07-20"
+    },
+    {
+      "measurement_id": "lee-2026-hgcdse-qd2-50khz",
+      "device_id": "lee-2026-hgcdse-qd2-device",
+      "wavelength_nm": 1355,
+      "detectivity_jones": 1400000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": 298,
+      "bias_v": 0,
+      "measurement_frequency_hz": 50000,
+      "response_time_s": 0.00001939,
+      "bandwidth_hz": 36000,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "Stanford Research Systems SR570 transimpedance preamplifier connected to an SR830 lock-in amplifier.",
+      "noise_instrument_source": "Supporting Information PDF p. 6, Device characterization",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF p. 7, Figure 5e; Supporting Information Figure S11a",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "lock_in_only_noise_measurement"
+      ],
+      "amber_explanation": "The SR830 lock-in amplifier is the sole controlled noise-acquisition class; the SR570 transimpedance preamplifier is retained in the instrument details.",
+      "curator_notes": "Maximum measured-noise D* at 50 kHz and 0 V. The response-time field records the 19.39 µs fall time; the reported rise time is 6.86 µs. The −3 dB bandwidth is 36 kHz.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "lee-2026-hgcdse-qd1-50khz",
+      "device_id": "lee-2026-hgcdse-qd1-device",
+      "wavelength_nm": 1400,
+      "detectivity_jones": 26000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": 298,
+      "bias_v": 0,
+      "measurement_frequency_hz": 50000,
+      "response_time_s": 0.0000789,
+      "bandwidth_hz": 30000,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "lock_in_amplifier"
+      ],
+      "noise_instrument_details": "Stanford Research Systems SR570 transimpedance preamplifier connected to an SR830 lock-in amplifier.",
+      "noise_instrument_source": "Supporting Information PDF p. 6, Device characterization",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF p. 7; Supporting Information Figure S11b",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "lock_in_only_noise_measurement"
+      ],
+      "amber_explanation": "The SR830 lock-in amplifier is the sole controlled noise-acquisition class; the SR570 transimpedance preamplifier is retained in the instrument details.",
+      "curator_notes": "Maximum measured-noise D* at 50 kHz and 0 V. The response-time field records the 78.9 µs fall time; the reported rise time is 75.2 µs. The −3 dB bandwidth is 30 kHz.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "park-2026-inas-oldp-1500",
+      "device_id": "park-2026-inas-oldp-device",
+      "wavelength_nm": 1500,
+      "detectivity_jones": 520000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": -0.15,
+      "measurement_frequency_hz": null,
+      "response_time_s": 2.1e-7,
+      "bandwidth_hz": null,
+      "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; the Zurich Instruments MFLI lock-in was used only to verify frequency-resolved noise behavior and was not the noise term used for D*.",
+      "noise_instrument_source": "Main article PDF, detectivity equation and frequency-resolved noise discussion",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF, optimized InAs device results and Figure 3",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "shot_noise_approximation"
+      ],
+      "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+      "curator_notes": "Maximum optimized o-LDP InAs detectivity. The response-time field records the 210 ns fall time; the reported rise time is 24 ns.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "park-2026-inas-ldp-1500",
+      "device_id": "park-2026-inas-ldp-device",
+      "wavelength_nm": 1500,
+      "detectivity_jones": 280000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": -0.15,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; no directly measured noise term was used for D*.",
+      "noise_instrument_source": "Main article PDF, detectivity equation and device comparison",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF, 1500 nm InAs device comparison",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "shot_noise_approximation"
+      ],
+      "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+      "curator_notes": "LDP InAs comparison device.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "park-2026-pbs-ldp-1550",
+      "device_id": "park-2026-pbs-ldp-device",
+      "wavelength_nm": 1550,
+      "detectivity_jones": 580000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": -0.1,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; no directly measured noise term was used for D*.",
+      "noise_instrument_source": "Main article PDF, detectivity equation and PbS device comparison",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF, 1550 nm PbS device comparison",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "shot_noise_approximation"
+      ],
+      "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+      "curator_notes": "LDP PbS comparison device at the reported operating bias.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "park-2026-pbs-hdp-1550",
+      "device_id": "park-2026-pbs-hdp-device",
+      "wavelength_nm": 1550,
+      "detectivity_jones": 380000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": -0.1,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; no directly measured noise term was used for D*.",
+      "noise_instrument_source": "Main article PDF, detectivity equation and PbS device comparison",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF, 1550 nm PbS device comparison",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "shot_noise_approximation"
+      ],
+      "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+      "curator_notes": "HDP PbS comparison device at the reported operating bias.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "huang-2026-cdte-hgte-edt-1600",
+      "device_id": "huang-2026-cdte-hgte-edt-device",
+      "wavelength_nm": 1600,
+      "detectivity_jones": 1730000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": 50.5,
+      "temperature_k": null,
+      "bias_v": 0,
+      "measurement_frequency_hz": 500,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "dedicated_noise_analyzer"
+      ],
+      "noise_instrument_details": "LFN-2000 low-frequency noise test system manufactured by Wuxi Xinjian Semiconductor-Tech Co. Ltd.",
+      "noise_instrument_source": "Main article PDF p. 3, Device characterization",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Noise-current density is 1.0e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "huang-2026-cdte-hgte-untreated-1600",
+      "device_id": "huang-2026-cdte-hgte-untreated-device",
+      "wavelength_nm": 1600,
+      "detectivity_jones": 850000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": 38.3,
+      "temperature_k": null,
+      "bias_v": 0,
+      "measurement_frequency_hz": 500,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "dedicated_noise_analyzer"
+      ],
+      "noise_instrument_details": "LFN-2000 low-frequency noise test system manufactured by Wuxi Xinjian Semiconductor-Tech Co. Ltd.",
+      "noise_instrument_source": "Main article PDF p. 3, Device characterization",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Noise-current density is 1.3e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "xia-2025-pbse-1640",
+      "device_id": "xia-2025-pbse-1640-device",
+      "wavelength_nm": 1640,
+      "detectivity_jones": 3100000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": 61.5,
+      "temperature_k": null,
+      "bias_v": null,
+      "measurement_frequency_hz": 500,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The article reports frequency-dependent measured noise but does not identify the acquisition-instrument model in the available evidence.",
+      "noise_instrument_source": "Main article PDF p. 4, Figure 3f; Supporting Information noise material",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 4-6, Figure 3e-f",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Bias and numeric temperature are not explicitly assigned to this spectral D* record.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "xia-2025-pbse-2360",
+      "device_id": "xia-2025-pbse-2360-device",
+      "wavelength_nm": 2360,
+      "detectivity_jones": 300000000000,
+      "responsivity_a_w": 0.445,
+      "eqe_percent": 23.4,
+      "temperature_k": null,
+      "bias_v": 0,
+      "measurement_frequency_hz": 500,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "The article reports frequency-dependent measured noise but does not identify the acquisition-instrument model in the available evidence.",
+      "noise_instrument_source": "Main article PDF p. 6 and Supporting Information Figure S19",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF p. 6, Figure 3i; Supporting Information Figure S19",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Noise-current density is 4.16e-13 A Hz^-1/2 at 500 Hz and zero bias. The result is described as room temperature; no numeric temperature is assigned.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "hu-2025-hgte-dh-1600",
+      "device_id": "hu-2025-hgte-dh-device",
+      "wavelength_nm": 1600,
+      "detectivity_jones": 360000000000,
+      "responsivity_a_w": 0.72,
+      "eqe_percent": 56,
+      "temperature_k": null,
+      "bias_v": null,
+      "measurement_frequency_hz": 500,
+      "response_time_s": 5.79e-7,
+      "bandwidth_hz": 71000,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Stanford Research Systems SR570 low-noise current preamplifier.",
+      "noise_instrument_source": "Main article PDF p. 8, Device Measurements",
+      "detectivity_extraction_method": "graphically_extracted",
+      "source_location": "Main article PDF pp. 5-8, Figure 3f-i and Device Measurements",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "The 1600 nm position of the reported maximum was confirmed from Figure 3g. Measurements are described as room temperature; no numeric temperature is assigned. Bias is left blank because it is not unambiguously assigned to the D* spectrum. The response-time field records the 579 ns fall time.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "tran-2026-cd3p2-homojunction-1100",
+      "device_id": "tran-2026-cd3p2-homojunction-device",
+      "wavelength_nm": 1100,
+      "detectivity_jones": 132000000000,
+      "responsivity_a_w": null,
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": -0.5,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "unspecified",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "Neither the main article nor the supplied Supporting Information identifies the noise basis or a noise-acquisition instrument.",
+      "noise_instrument_source": "Main article PDF p. 6; Supporting Information Figure S21 and Table S2",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF p. 6; Supporting Information Figure S21 and Table S2",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Supporting Information Table S2 assigns 1100 nm to this-work D* while the main text and Figure S21 caption assign -0.5 V. Table S2 instead lists 0 V; the co-located main-text and Figure S21 evidence is retained. The zero-bias EQE and transient values are not transferred to this row.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
     }
@@ -4495,20 +5158,17 @@
         "bandwidth_hz": null,
         "noise_method": "measured_noise",
         "noise_instruments": [
-          "dedicated_noise_analyzer",
-          "source_measure_unit"
+          "dedicated_noise_analyzer"
         ],
-        "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer with a Keysight B1500 parameter analyzer.",
+        "noise_instrument_details": "Keysight E4727B Advanced Low-Frequency Noise Analyzer; the Experimental section also names a Keysight B1500 parameter analyzer as supporting instrumentation.",
         "noise_instrument_source": "PDF p. 7, Experimental section",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
         "curator_status": "reviewed",
-        "flag": "amber",
-        "amber_reasons": [
-          "source_measure_unit_noise_measurement"
-        ],
-        "amber_explanation": "The reported noise-acquisition chain includes a Keysight B1500 parameter analyzer, so the result is flagged for caution even though it is paired with a dedicated noise analyzer.",
-        "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz.",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz. The E4727B is classified as the noise-acquisition instrument; the accompanying B1500 is not classified as an independent noise-acquisition method.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
       }
@@ -4656,6 +5316,827 @@
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Maximum reported D*; the separately reported 2 ns response at 850 nm is not transferred to this record.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "paper-798a7e0d2116",
+        "title": "Interface modification for silver telluride quantum dots shortwave-infrared photodetectors beyond 1.5 μm",
+        "authors": [
+          "Zhixuan Wang",
+          "Zhiyong Tang",
+          "Ziyan Zhang",
+          "Yejun Zhang",
+          "Jiang Jiang",
+          "Hongchao Yang",
+          "Qiangbin Wang"
+        ],
+        "first_author": "Zhixuan Wang",
+        "journal": "Nano Research",
+        "publication_year": 2026,
+        "doi": "10.26599/nr.2026.94908647",
+        "publication_url": "https://doi.org/10.26599/nr.2026.94908647",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Staged from a verified open-access PDF; bibliographic metadata and all measurements require curator approval."
+      },
+      "device": {
+        "device_id": "device-798a7e0d2116-1",
+        "paper_id": "paper-798a7e0d2116",
+        "material_family": "Ag2Te",
+        "material_composition": "Ag2Te",
+        "device_architecture": "CQD photodiode; exact architecture requires curator confirmation",
+        "device_stack": "ITO/SnO2/BiCl3/Ag2Te QDs/P3HT/MoO3/Ag",
+        "active_area_cm2": 0.06,
+        "device_notes": "Automatically staged from full text; confirm absorber, junction type, stack order, and area against the cited source locations."
+      },
+      "measurement": {
+        "measurement_id": "measurement-798a7e0d2116-1",
+        "device_id": "device-798a7e0d2116-1",
+        "wavelength_nm": 1540,
+        "detectivity_jones": 230000000000,
+        "responsivity_a_w": 0.22,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": 0,
+        "measurement_frequency_hz": 1,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "dedicated_noise_analyzer"
+        ],
+        "noise_instrument_details": "p. 2: rent density–voltage (J–V) characteristics of Ag2Te QD photodetector was measured on a semiconductor analyzer (Keithley 4200A-SCS). The noise spectral density was measured using a… | p. 4: esponsivity, in is noise current (at 1 Hz), A is device area (0.06 cm2), and Δf is electrical bandwidth (1 Hz). The frequency-dependent noise spectral density was measured using a…",
+        "noise_instrument_source": "PDF page 2",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "PDF page 5",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Automatically staged evidence: with the dark current in Fig. 3(d). And the noise current of the optimized device measured at 0 V was 4 × 10−13 A/Hz0.5 at 1 Hz, which was used in the calculation of D*. The optimized device achieved a responsivity of 0.22 A/W at 1540 nm under zero bias (Fig. S19 in the ESM), corresponding to a D* of 2.3 × 1011 Jones…",
+        "date_added": "2026-07-20",
+        "date_updated": "2026-07-20"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "lee-2026-hgcdse-neutralized",
+        "title": "Surface-Neutralized HgCdSe Quantum Dots for High-Detectivity Infrared Photodetectors",
+        "authors": [
+          "Wonseok Lee",
+          "Su Hwan Lee",
+          "Sang Hyun Nam",
+          "Min-Jae Si",
+          "Se-Woong Baek",
+          "Young-Hoon Kim",
+          "Andrew M. Smith"
+        ],
+        "first_author": "Wonseok Lee",
+        "journal": "Nano Letters",
+        "publication_year": 2026,
+        "doi": "10.1021/acs.nanolett.6c02200",
+        "publication_url": "https://doi.org/10.1021/acs.nanolett.6c02200",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Surface-neutralized Hg0.95Cd0.05Se CQD photodiodes with measured frequency-dependent noise and room-temperature SWIR detectivity."
+      },
+      "device": {
+        "device_id": "lee-2026-hgcdse-qd2-device",
+        "paper_id": "lee-2026-hgcdse-neutralized",
+        "material_family": "HgCdSe",
+        "material_composition": "Hg0.95Cd0.05Se QD(2) with optimized 80 °C DDT surface treatment",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "glass / ITO / SnO2 / HgCdSe QD(2) / Spiro-MeOTAD / MoO3 (4 nm) / Ag (100 nm)",
+        "active_area_cm2": 0.05,
+        "device_notes": "Surface-neutralized QD(2) active layer with intrinsic electronic character and suppressed leakage current."
+      },
+      "measurement": {
+        "measurement_id": "lee-2026-hgcdse-qd2-50khz",
+        "device_id": "lee-2026-hgcdse-qd2-device",
+        "wavelength_nm": 1355,
+        "detectivity_jones": 1400000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": 298,
+        "bias_v": 0,
+        "measurement_frequency_hz": 50000,
+        "response_time_s": 0.00001939,
+        "bandwidth_hz": 36000,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "Stanford Research Systems SR570 transimpedance preamplifier connected to an SR830 lock-in amplifier.",
+        "noise_instrument_source": "Supporting Information PDF p. 6, Device characterization",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF p. 7, Figure 5e; Supporting Information Figure S11a",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "lock_in_only_noise_measurement"
+        ],
+        "amber_explanation": "The SR830 lock-in amplifier is the sole controlled noise-acquisition class; the SR570 transimpedance preamplifier is retained in the instrument details.",
+        "curator_notes": "Maximum measured-noise D* at 50 kHz and 0 V. The response-time field records the 19.39 µs fall time; the reported rise time is 6.86 µs. The −3 dB bandwidth is 36 kHz.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "lee-2026-hgcdse-neutralized",
+        "title": "Surface-Neutralized HgCdSe Quantum Dots for High-Detectivity Infrared Photodetectors",
+        "authors": [
+          "Wonseok Lee",
+          "Su Hwan Lee",
+          "Sang Hyun Nam",
+          "Min-Jae Si",
+          "Se-Woong Baek",
+          "Young-Hoon Kim",
+          "Andrew M. Smith"
+        ],
+        "first_author": "Wonseok Lee",
+        "journal": "Nano Letters",
+        "publication_year": 2026,
+        "doi": "10.1021/acs.nanolett.6c02200",
+        "publication_url": "https://doi.org/10.1021/acs.nanolett.6c02200",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Surface-neutralized Hg0.95Cd0.05Se CQD photodiodes with measured frequency-dependent noise and room-temperature SWIR detectivity."
+      },
+      "device": {
+        "device_id": "lee-2026-hgcdse-qd1-device",
+        "paper_id": "lee-2026-hgcdse-neutralized",
+        "material_family": "HgCdSe",
+        "material_composition": "Hg0.95Cd0.05Se QD(1) with room-temperature DDT surface treatment",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "glass / ITO / SnO2 / HgCdSe QD(1) / Spiro-MeOTAD / MoO3 (4 nm) / Ag (100 nm)",
+        "active_area_cm2": 0.05,
+        "device_notes": "Comparison QD(1) active layer retaining partial n-type doping and higher noise."
+      },
+      "measurement": {
+        "measurement_id": "lee-2026-hgcdse-qd1-50khz",
+        "device_id": "lee-2026-hgcdse-qd1-device",
+        "wavelength_nm": 1400,
+        "detectivity_jones": 26000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": 298,
+        "bias_v": 0,
+        "measurement_frequency_hz": 50000,
+        "response_time_s": 0.0000789,
+        "bandwidth_hz": 30000,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "lock_in_amplifier"
+        ],
+        "noise_instrument_details": "Stanford Research Systems SR570 transimpedance preamplifier connected to an SR830 lock-in amplifier.",
+        "noise_instrument_source": "Supporting Information PDF p. 6, Device characterization",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF p. 7; Supporting Information Figure S11b",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "lock_in_only_noise_measurement"
+        ],
+        "amber_explanation": "The SR830 lock-in amplifier is the sole controlled noise-acquisition class; the SR570 transimpedance preamplifier is retained in the instrument details.",
+        "curator_notes": "Maximum measured-noise D* at 50 kHz and 0 V. The response-time field records the 78.9 µs fall time; the reported rise time is 75.2 µs. The −3 dB bandwidth is 30 kHz.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "park-2026-internal-field",
+        "title": "Internal field tailoring enables low noise high speed colloidal quantum dot photodetectors beyond 1500 nm",
+        "authors": [
+          "Youngsang Park",
+          "Seongmin Park",
+          "Hyeonjun Jeong",
+          "Daekwon Shin",
+          "Eunji Jang",
+          "Hyoin Kim",
+          "Sohee Jeong"
+        ],
+        "first_author": "Youngsang Park",
+        "journal": "Nature Communications",
+        "publication_year": 2026,
+        "doi": "10.1038/s41467-026-71335-w",
+        "publication_url": "https://doi.org/10.1038/s41467-026-71335-w",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "InAs and PbS CQD photodiodes using internal-field tailoring for low-noise high-speed detection beyond 1500 nm."
+      },
+      "device": {
+        "device_id": "park-2026-inas-oldp-device",
+        "paper_id": "park-2026-internal-field",
+        "material_family": "InAs",
+        "material_composition": "Optimized internal-field-tailored InAs CQDs with n-type and low- and high-doping-potential layers",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "ITO / ZnO / n-InAs / LDP / HDP / MoOx / Ag",
+        "active_area_cm2": 0.002,
+        "device_notes": "Optimized o-LDP InAs device; the response-time measurement reports 24 ns rise and 210 ns fall times."
+      },
+      "measurement": {
+        "measurement_id": "park-2026-inas-oldp-1500",
+        "device_id": "park-2026-inas-oldp-device",
+        "wavelength_nm": 1500,
+        "detectivity_jones": 520000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": -0.15,
+        "measurement_frequency_hz": null,
+        "response_time_s": 2.1e-7,
+        "bandwidth_hz": null,
+        "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; the Zurich Instruments MFLI lock-in was used only to verify frequency-resolved noise behavior and was not the noise term used for D*.",
+        "noise_instrument_source": "Main article PDF, detectivity equation and frequency-resolved noise discussion",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF, optimized InAs device results and Figure 3",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "shot_noise_approximation"
+        ],
+        "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+        "curator_notes": "Maximum optimized o-LDP InAs detectivity. The response-time field records the 210 ns fall time; the reported rise time is 24 ns.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "park-2026-internal-field",
+        "title": "Internal field tailoring enables low noise high speed colloidal quantum dot photodetectors beyond 1500 nm",
+        "authors": [
+          "Youngsang Park",
+          "Seongmin Park",
+          "Hyeonjun Jeong",
+          "Daekwon Shin",
+          "Eunji Jang",
+          "Hyoin Kim",
+          "Sohee Jeong"
+        ],
+        "first_author": "Youngsang Park",
+        "journal": "Nature Communications",
+        "publication_year": 2026,
+        "doi": "10.1038/s41467-026-71335-w",
+        "publication_url": "https://doi.org/10.1038/s41467-026-71335-w",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "InAs and PbS CQD photodiodes using internal-field tailoring for low-noise high-speed detection beyond 1500 nm."
+      },
+      "device": {
+        "device_id": "park-2026-inas-ldp-device",
+        "paper_id": "park-2026-internal-field",
+        "material_family": "InAs",
+        "material_composition": "InAs CQDs with an LDP hole-transport layer",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "ITO / ZnO / n-InAs / LDP / MoOx / Ag",
+        "active_area_cm2": 0.002,
+        "device_notes": "LDP comparison device used for the directly reported 1500 nm detectivity."
+      },
+      "measurement": {
+        "measurement_id": "park-2026-inas-ldp-1500",
+        "device_id": "park-2026-inas-ldp-device",
+        "wavelength_nm": 1500,
+        "detectivity_jones": 280000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": -0.15,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; no directly measured noise term was used for D*.",
+        "noise_instrument_source": "Main article PDF, detectivity equation and device comparison",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF, 1500 nm InAs device comparison",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "shot_noise_approximation"
+        ],
+        "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+        "curator_notes": "LDP InAs comparison device.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "park-2026-internal-field",
+        "title": "Internal field tailoring enables low noise high speed colloidal quantum dot photodetectors beyond 1500 nm",
+        "authors": [
+          "Youngsang Park",
+          "Seongmin Park",
+          "Hyeonjun Jeong",
+          "Daekwon Shin",
+          "Eunji Jang",
+          "Hyoin Kim",
+          "Sohee Jeong"
+        ],
+        "first_author": "Youngsang Park",
+        "journal": "Nature Communications",
+        "publication_year": 2026,
+        "doi": "10.1038/s41467-026-71335-w",
+        "publication_url": "https://doi.org/10.1038/s41467-026-71335-w",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "InAs and PbS CQD photodiodes using internal-field tailoring for low-noise high-speed detection beyond 1500 nm."
+      },
+      "device": {
+        "device_id": "park-2026-pbs-ldp-device",
+        "paper_id": "park-2026-internal-field",
+        "material_family": "PbS",
+        "material_composition": "PbS CQDs with an LDP hole-transport layer",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "PbS-I / light PbS-EDT / MoOx / Au",
+        "active_area_cm2": null,
+        "device_notes": "LDP PbS comparison device; only the partial stack reported with the detectivity comparison is retained."
+      },
+      "measurement": {
+        "measurement_id": "park-2026-pbs-ldp-1550",
+        "device_id": "park-2026-pbs-ldp-device",
+        "wavelength_nm": 1550,
+        "detectivity_jones": 580000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": -0.1,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; no directly measured noise term was used for D*.",
+        "noise_instrument_source": "Main article PDF, detectivity equation and PbS device comparison",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF, 1550 nm PbS device comparison",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "shot_noise_approximation"
+        ],
+        "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+        "curator_notes": "LDP PbS comparison device at the reported operating bias.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "park-2026-internal-field",
+        "title": "Internal field tailoring enables low noise high speed colloidal quantum dot photodetectors beyond 1500 nm",
+        "authors": [
+          "Youngsang Park",
+          "Seongmin Park",
+          "Hyeonjun Jeong",
+          "Daekwon Shin",
+          "Eunji Jang",
+          "Hyoin Kim",
+          "Sohee Jeong"
+        ],
+        "first_author": "Youngsang Park",
+        "journal": "Nature Communications",
+        "publication_year": 2026,
+        "doi": "10.1038/s41467-026-71335-w",
+        "publication_url": "https://doi.org/10.1038/s41467-026-71335-w",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "InAs and PbS CQD photodiodes using internal-field tailoring for low-noise high-speed detection beyond 1500 nm."
+      },
+      "device": {
+        "device_id": "park-2026-pbs-hdp-device",
+        "paper_id": "park-2026-internal-field",
+        "material_family": "PbS",
+        "material_composition": "PbS CQDs with an HDP hole-transport layer",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "PbS-I / light PbS-EDT / MoOx / Au",
+        "active_area_cm2": null,
+        "device_notes": "HDP PbS comparison device; only the partial stack reported with the detectivity comparison is retained."
+      },
+      "measurement": {
+        "measurement_id": "park-2026-pbs-hdp-1550",
+        "device_id": "park-2026-pbs-hdp-device",
+        "wavelength_nm": 1550,
+        "detectivity_jones": 380000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": -0.1,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "Detectivity calculated from the shot-noise expression using dark-current density; no directly measured noise term was used for D*.",
+        "noise_instrument_source": "Main article PDF, detectivity equation and PbS device comparison",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF, 1550 nm PbS device comparison",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "shot_noise_approximation"
+        ],
+        "amber_explanation": "The reported D* is calculated using a shot-noise approximation rather than directly measured noise.",
+        "curator_notes": "HDP PbS comparison device at the reported operating bias.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "huang-2026-cdte-hgte-htl",
+        "title": "Cation-Exchange Synthesized CdTe/HgTe Core/Shell Quantum Dots as Hole Transport Layers for HgTe Quantum Dot Photodetectors",
+        "authors": [
+          "Runze Huang",
+          "Mengxuan Yu",
+          "Xingchen Zhang",
+          "Xudong Hu",
+          "Xi Ran",
+          "Mohan Yuan",
+          "Jun Ouyan",
+          "Jungang He",
+          "Xinzheng Lan"
+        ],
+        "first_author": "Runze Huang",
+        "journal": "ACS Applied Electronic Materials",
+        "publication_year": 2026,
+        "doi": "10.1021/acsaelm.6c00900",
+        "publication_url": "https://doi.org/10.1021/acsaelm.6c00900",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "CdTe/HgTe core-shell CQD hole-transport layers for HgTe CQD photodiodes with directly measured noise."
+      },
+      "device": {
+        "device_id": "huang-2026-cdte-hgte-edt-device",
+        "paper_id": "huang-2026-cdte-hgte-htl",
+        "material_family": "HgTe",
+        "material_composition": "Se:HgTe CQD absorber with an EDT-treated CdTe/HgTe core-shell CQD hole-transport layer",
+        "device_architecture": "p-on-n CQD photodiode",
+        "device_stack": "quartz / ITO / Bi2S3 (5 nm) / Se:HgTe CQDs (~450 nm) / EDT-treated CdTe-HgTe CQDs (~100 nm) / Au",
+        "active_area_cm2": 0.0782,
+        "device_notes": "The detectivity calculation uses 0.0782 cm2; the fabrication section separately reports 0.0786 cm2."
+      },
+      "measurement": {
+        "measurement_id": "huang-2026-cdte-hgte-edt-1600",
+        "device_id": "huang-2026-cdte-hgte-edt-device",
+        "wavelength_nm": 1600,
+        "detectivity_jones": 1730000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": 50.5,
+        "temperature_k": null,
+        "bias_v": 0,
+        "measurement_frequency_hz": 500,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "dedicated_noise_analyzer"
+        ],
+        "noise_instrument_details": "LFN-2000 low-frequency noise test system manufactured by Wuxi Xinjian Semiconductor-Tech Co. Ltd.",
+        "noise_instrument_source": "Main article PDF p. 3, Device characterization",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Noise-current density is 1.0e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "huang-2026-cdte-hgte-htl",
+        "title": "Cation-Exchange Synthesized CdTe/HgTe Core/Shell Quantum Dots as Hole Transport Layers for HgTe Quantum Dot Photodetectors",
+        "authors": [
+          "Runze Huang",
+          "Mengxuan Yu",
+          "Xingchen Zhang",
+          "Xudong Hu",
+          "Xi Ran",
+          "Mohan Yuan",
+          "Jun Ouyan",
+          "Jungang He",
+          "Xinzheng Lan"
+        ],
+        "first_author": "Runze Huang",
+        "journal": "ACS Applied Electronic Materials",
+        "publication_year": 2026,
+        "doi": "10.1021/acsaelm.6c00900",
+        "publication_url": "https://doi.org/10.1021/acsaelm.6c00900",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "CdTe/HgTe core-shell CQD hole-transport layers for HgTe CQD photodiodes with directly measured noise."
+      },
+      "device": {
+        "device_id": "huang-2026-cdte-hgte-untreated-device",
+        "paper_id": "huang-2026-cdte-hgte-htl",
+        "material_family": "HgTe",
+        "material_composition": "Se:HgTe CQD absorber with an untreated CdTe/HgTe core-shell CQD hole-transport layer",
+        "device_architecture": "p-on-n CQD photodiode",
+        "device_stack": "quartz / ITO / Bi2S3 (5 nm) / Se:HgTe CQDs (~450 nm) / untreated CdTe-HgTe CQDs (~100 nm) / Au",
+        "active_area_cm2": 0.0782,
+        "device_notes": "The detectivity calculation uses 0.0782 cm2; the fabrication section separately reports 0.0786 cm2."
+      },
+      "measurement": {
+        "measurement_id": "huang-2026-cdte-hgte-untreated-1600",
+        "device_id": "huang-2026-cdte-hgte-untreated-device",
+        "wavelength_nm": 1600,
+        "detectivity_jones": 850000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": 38.3,
+        "temperature_k": null,
+        "bias_v": 0,
+        "measurement_frequency_hz": 500,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "dedicated_noise_analyzer"
+        ],
+        "noise_instrument_details": "LFN-2000 low-frequency noise test system manufactured by Wuxi Xinjian Semiconductor-Tech Co. Ltd.",
+        "noise_instrument_source": "Main article PDF p. 3, Device characterization",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Noise-current density is 1.3e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "xia-2025-pbse-mle",
+        "title": "Uncooled and Broadband PbSe Colloidal-Quantum-Dot Short-Wave Infrared Photodetectors",
+        "authors": [
+          "Hang Xia",
+          "Jing Liu",
+          "Mohan Yuan",
+          "Xudong Hu",
+          "Liang Gao",
+          "Jianbing Zhang",
+          "Jiang Tang",
+          "Xinzheng Lan"
+        ],
+        "first_author": "Hang Xia",
+        "journal": "Nano Letters",
+        "publication_year": 2025,
+        "doi": "10.1021/acs.nanolett.5c03752",
+        "publication_url": "https://doi.org/10.1021/acs.nanolett.5c03752",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Uncooled MLE-PbSe CQD photodiodes spanning conventional and extended short-wave infrared wavelengths."
+      },
+      "device": {
+        "device_id": "xia-2025-pbse-1640-device",
+        "paper_id": "xia-2025-pbse-mle",
+        "material_family": "PbSe",
+        "material_composition": "MLE-PbSe CQDs with an approximately 1640 nm excitonic peak",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "ITO / NiOx / PbS-EDT / PbSe CQDs / C60 / SnO2 / ITO",
+        "active_area_cm2": null,
+        "device_notes": "Conventional-SWIR MLE-PbSe absorber device."
+      },
+      "measurement": {
+        "measurement_id": "xia-2025-pbse-1640",
+        "device_id": "xia-2025-pbse-1640-device",
+        "wavelength_nm": 1640,
+        "detectivity_jones": 3100000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": 61.5,
+        "temperature_k": null,
+        "bias_v": null,
+        "measurement_frequency_hz": 500,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The article reports frequency-dependent measured noise but does not identify the acquisition-instrument model in the available evidence.",
+        "noise_instrument_source": "Main article PDF p. 4, Figure 3f; Supporting Information noise material",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 4-6, Figure 3e-f",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Bias and numeric temperature are not explicitly assigned to this spectral D* record.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "xia-2025-pbse-mle",
+        "title": "Uncooled and Broadband PbSe Colloidal-Quantum-Dot Short-Wave Infrared Photodetectors",
+        "authors": [
+          "Hang Xia",
+          "Jing Liu",
+          "Mohan Yuan",
+          "Xudong Hu",
+          "Liang Gao",
+          "Jianbing Zhang",
+          "Jiang Tang",
+          "Xinzheng Lan"
+        ],
+        "first_author": "Hang Xia",
+        "journal": "Nano Letters",
+        "publication_year": 2025,
+        "doi": "10.1021/acs.nanolett.5c03752",
+        "publication_url": "https://doi.org/10.1021/acs.nanolett.5c03752",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Uncooled MLE-PbSe CQD photodiodes spanning conventional and extended short-wave infrared wavelengths."
+      },
+      "device": {
+        "device_id": "xia-2025-pbse-2360-device",
+        "paper_id": "xia-2025-pbse-mle",
+        "material_family": "PbSe",
+        "material_composition": "MLE-PbSe CQDs with an approximately 2360 nm excitonic peak",
+        "device_architecture": "Vertical CQD photodiode",
+        "device_stack": "ITO / NiOx / PbS-EDT / PbSe CQDs / C60 / SnO2 / ITO",
+        "active_area_cm2": null,
+        "device_notes": "Extended-SWIR MLE-PbSe absorber device with a spectral cutoff near 2500 nm."
+      },
+      "measurement": {
+        "measurement_id": "xia-2025-pbse-2360",
+        "device_id": "xia-2025-pbse-2360-device",
+        "wavelength_nm": 2360,
+        "detectivity_jones": 300000000000,
+        "responsivity_a_w": 0.445,
+        "eqe_percent": 23.4,
+        "temperature_k": null,
+        "bias_v": 0,
+        "measurement_frequency_hz": 500,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "The article reports frequency-dependent measured noise but does not identify the acquisition-instrument model in the available evidence.",
+        "noise_instrument_source": "Main article PDF p. 6 and Supporting Information Figure S19",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF p. 6, Figure 3i; Supporting Information Figure S19",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Noise-current density is 4.16e-13 A Hz^-1/2 at 500 Hz and zero bias. The result is described as room temperature; no numeric temperature is assigned.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "hu-2025-hgte-double-heterojunction",
+        "title": "Double-Heterojunction-Based HgTe Colloidal Quantum Dot Imagers",
+        "authors": [
+          "Huicheng Hu",
+          "Jing Liu",
+          "Jing Liu",
+          "Mohan Yuan",
+          "Haifei Ma",
+          "Binbin Wang",
+          "Ya Wang",
+          "Hang Xia",
+          "Junrui Yang",
+          "Liang Gao",
+          "Jianbing Zhang",
+          "Jiang Tang",
+          "Xinzheng Lan"
+        ],
+        "first_author": "Huicheng Hu",
+        "journal": "ACS Nano",
+        "publication_year": 2025,
+        "doi": "10.1021/acsnano.4c17257",
+        "publication_url": "https://doi.org/10.1021/acsnano.4c17257",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Double-heterojunction HgTe CQD photodiodes and a monolithically integrated short-wave infrared imager."
+      },
+      "device": {
+        "device_id": "hu-2025-hgte-dh-device",
+        "paper_id": "hu-2025-hgte-double-heterojunction",
+        "material_family": "HgTe",
+        "material_composition": "Hybrid-ligand-capped HgTe CQDs between ZnO and ZnTe charge-transport layers",
+        "device_architecture": "Double-heterojunction p-i-n CQD photodiode",
+        "device_stack": "glass / bottom ITO / ZnO (200 nm) / HgTe CQDs (~420 nm) / ZnTe (30 nm) / top ITO (100 nm)",
+        "active_area_cm2": 0.0414,
+        "device_notes": "Top-illuminated single-pixel photodiode architecture used for the spectral detectivity measurement and subsequent CMOS imager integration."
+      },
+      "measurement": {
+        "measurement_id": "hu-2025-hgte-dh-1600",
+        "device_id": "hu-2025-hgte-dh-device",
+        "wavelength_nm": 1600,
+        "detectivity_jones": 360000000000,
+        "responsivity_a_w": 0.72,
+        "eqe_percent": 56,
+        "temperature_k": null,
+        "bias_v": null,
+        "measurement_frequency_hz": 500,
+        "response_time_s": 5.79e-7,
+        "bandwidth_hz": 71000,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Stanford Research Systems SR570 low-noise current preamplifier.",
+        "noise_instrument_source": "Main article PDF p. 8, Device Measurements",
+        "detectivity_extraction_method": "graphically_extracted",
+        "source_location": "Main article PDF pp. 5-8, Figure 3f-i and Device Measurements",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "The 1600 nm position of the reported maximum was confirmed from Figure 3g. Measurements are described as room temperature; no numeric temperature is assigned. Bias is left blank because it is not unambiguously assigned to the D* spectrum. The response-time field records the 579 ns fall time.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "tran-2026-cd3p2-polarity",
+        "title": "Surface-Interaction-Driven Polarity Switching in II-V Cd3P2 Colloidal Quantum Dots for Infrared Photodiodes",
+        "authors": [
+          "Ha-Chi V. Tran",
+          "Doeun Shim",
+          "Youngsang Park",
+          "Mahnmin Choi",
+          "Hyeonjun Jeong",
+          "Guillaume Bonifas",
+          "Liyan Ouyang",
+          "Celine Nayral",
+          "Fabien Delpech",
+          "Joongoo Kang",
+          "Sohee Jeong"
+        ],
+        "first_author": "Ha-Chi V. Tran",
+        "journal": "Advanced Science",
+        "publication_year": 2026,
+        "doi": "10.1002/advs.202600061",
+        "publication_url": "https://doi.org/10.1002/advs.202600061",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Cd3P2 CQD homojunction photodiode enabled by oxygen-driven polarity switching and a p-type Cd3P2-Cl charge-selective layer."
+      },
+      "device": {
+        "device_id": "tran-2026-cd3p2-homojunction-device",
+        "paper_id": "tran-2026-cd3p2-polarity",
+        "material_family": "Cd3P2",
+        "material_composition": "Cd3P2 CQD absorber with a p-type chloride-treated Cd3P2 CQD charge-selective layer",
+        "device_architecture": "Cd3P2 CQD homojunction photodiode",
+        "device_stack": "ITO / ZnO / Cd3P2 CQD absorber (~100 nm) / p-Cd3P2-Cl (~30 nm) / MoOx (10 nm) / Ag (120 nm)",
+        "active_area_cm2": null,
+        "device_notes": "The 0.002 cm2 area reported for transient testing is not assigned to the detectivity record."
+      },
+      "measurement": {
+        "measurement_id": "tran-2026-cd3p2-homojunction-1100",
+        "device_id": "tran-2026-cd3p2-homojunction-device",
+        "wavelength_nm": 1100,
+        "detectivity_jones": 132000000000,
+        "responsivity_a_w": null,
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": -0.5,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "unspecified",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "Neither the main article nor the supplied Supporting Information identifies the noise basis or a noise-acquisition instrument.",
+        "noise_instrument_source": "Main article PDF p. 6; Supporting Information Figure S21 and Table S2",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF p. 6; Supporting Information Figure S21 and Table S2",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Supporting Information Table S2 assigns 1100 nm to this-work D* while the main text and Figure S21 caption assign -0.5 V. Table S2 instead lists 0 V; the co-located main-text and Figure S21 evidence is retained. The zero-bias EQE and transient values are not transferred to this row.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
       }

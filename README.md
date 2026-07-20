@@ -123,7 +123,11 @@ generated atlas artifact is stale.
 The versioned discovery pipeline searches OpenAlex, expands citation graphs
 from included atlas papers, validates DOI metadata through Crossref, caches
 responses, ranks candidates with visible reasons, and exports screening CSVs.
-Candidates remain in `data/discovery/` and can never be published directly.
+For provider-recorded open-access PDFs it can also batch-extract compact,
+evidence-linked Paper → Device → Measurement proposals. Proposals remain staged
+until a curator exports and imports an explicit approval; a second command then
+applies approved records through the validated CSV workflow. Neither search nor
+parsing publishes directly.
 See the [operator guide](./docs/DISCOVERY_QUEUE.md) and
 [literature-search protocol](./docs/LITERATURE_SEARCH_PROTOCOL.md).
 

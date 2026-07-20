@@ -3757,6 +3757,130 @@ select {
   background: var(--surface);
 }
 
+.proposal-workspace {
+  margin: 38px 0;
+}
+
+.proposal-list {
+  display: grid;
+}
+
+.proposal-card {
+  padding: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.proposal-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: start;
+}
+
+.proposal-card__header h3 {
+  margin: 10px 0 5px;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.6vw, 31px);
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+.proposal-card__header p,
+.proposal-card__header a {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.proposal-card__header a {
+  flex: none;
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.proposal-scope {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border-left: 3px solid var(--teal);
+  background: var(--teal-pale);
+  font-size: 12px;
+}
+
+.proposal-scope ul,
+.proposal-evidence ul {
+  margin: 7px 0 0;
+  padding-left: 18px;
+}
+
+.proposal-records {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1.5fr;
+  gap: 16px;
+}
+
+.proposal-records section {
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.proposal-records h4 {
+  margin: 0 0 12px;
+  font-family: var(--font-serif);
+  font-size: 18px;
+}
+
+.proposal-records dl {
+  margin: 0;
+}
+
+.proposal-records dl div + div {
+  margin-top: 9px;
+}
+
+.proposal-records dt {
+  color: var(--ink-soft);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proposal-records dd {
+  margin: 3px 0 0;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+}
+
+.proposal-measurements {
+  display: grid;
+  gap: 8px;
+}
+
+.proposal-measurements > div {
+  display: grid;
+  grid-template-columns: 0.7fr 1.2fr 1fr 1fr;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+}
+
+.proposal-evidence {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.proposal-evidence summary {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.proposal-review {
+  grid-template-columns: 0.8fr 2fr;
+}
+
 .discovery-toolbar {
   display: flex;
   justify-content: space-between;
@@ -3975,6 +4099,9 @@ select {
   .discovery-details {
     grid-template-columns: repeat(2, 1fr);
   }
+  .proposal-records {
+    grid-template-columns: 1fr;
+  }
   .discovery-filters {
     grid-template-columns: 1fr 1fr;
   }
@@ -3991,6 +4118,12 @@ select {
   .discovery-toolbar {
     align-items: stretch;
     flex-direction: column;
+  }
+  .proposal-card__header {
+    flex-direction: column;
+  }
+  .proposal-measurements > div {
+    grid-template-columns: 1fr 1fr;
   }
   .discovery-card {
     grid-template-columns: 1fr;

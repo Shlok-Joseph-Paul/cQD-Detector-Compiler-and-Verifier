@@ -45,3 +45,5 @@ next-env.d.ts
 
 # Discovery API cache is reproducible local state, not curated source data.
 /data/discovery/cache/*.json
+/data/discovery/screening.csv
+/data/discovery/proposal-decisions.csv

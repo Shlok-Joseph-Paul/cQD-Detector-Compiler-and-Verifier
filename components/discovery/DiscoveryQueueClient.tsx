@@ -5,6 +5,10 @@ import type {
   DiscoveryCandidate,
   ScreeningStatus,
 } from "@/lib/discovery/types";
+import type {
+  ProposalStatus,
+  StagedPaperProposal,
+} from "@/lib/discovery/proposal-types";
 
 interface LocalDecision {
   screeningStatus: ScreeningStatus;
@@ -12,7 +16,13 @@ interface LocalDecision {
   screeningNotes: string;
 }
 
+interface LocalProposalDecision {
+  status: ProposalStatus;
+  decisionNotes: string;
+}
+
 const STORAGE_KEY = "cqd-atlas-discovery-decisions-v1";
+const PROPOSAL_STORAGE_KEY = "cqd-atlas-proposal-decisions-v1";
 const statuses: ScreeningStatus[] = [
   "unreviewed",
   "include",
@@ -35,8 +45,10 @@ function countBy(values: string[]): Array<[string, number]> {
 
 export function DiscoveryQueueClient({
   candidates,
+  proposals,
 }: {
   candidates: DiscoveryCandidate[];
+  proposals: StagedPaperProposal[];
 }) {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<ScreeningStatus | "all">("all");
@@ -55,6 +67,28 @@ export function DiscoveryQueueClient({
         return {};
       }
     },
+  );
+  const [proposalDecisions, setProposalDecisions] = useState<
+    Record<string, LocalProposalDecision>
+  >(() => {
+    if (typeof window === "undefined") return {};
+    try {
+      const stored = window.localStorage.getItem(PROPOSAL_STORAGE_KEY);
+      return stored
+        ? (JSON.parse(stored) as Record<string, LocalProposalDecision>)
+        : {};
+    } catch {
+      return {};
+    }
+  });
+
+  const effectiveProposals = useMemo(
+    () =>
+      proposals.map((proposal) => ({
+        ...proposal,
+        ...(proposalDecisions[proposal.proposalId] ?? {}),
+      })),
+    [proposalDecisions, proposals],
   );
 
   const effective = useMemo(
@@ -202,8 +236,257 @@ export function DiscoveryQueueClient({
     URL.revokeObjectURL(link.href);
   }
 
+  function updateProposalDecision(
+    proposal: StagedPaperProposal,
+    patch: Partial<LocalProposalDecision>,
+  ) {
+    const current = proposalDecisions[proposal.proposalId] ?? {
+      status: proposal.status,
+      decisionNotes: proposal.decisionNotes ?? "",
+    };
+    const next = {
+      ...proposalDecisions,
+      [proposal.proposalId]: { ...current, ...patch },
+    };
+    setProposalDecisions(next);
+    try {
+      window.localStorage.setItem(PROPOSAL_STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      /* optional */
+    }
+  }
+
+  function exportProposalDecisions() {
+    const rows = effectiveProposals.map((proposal) => [
+      proposal.proposalId,
+      proposal.status,
+      proposal.decisionNotes,
+    ]);
+    const csv = [["proposal_id", "status", "decision_notes"], ...rows]
+      .map((row) => row.map(csvCell).join(","))
+      .join("\n")
+      .concat("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "cqd-proposal-decisions.csv";
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
+
   return (
     <>
+      <section className="discovery-workspace proposal-workspace">
+        <header className="discovery-toolbar">
+          <div>
+            <p className="section-kicker">Extracted data approval</p>
+            <h2>Staged import proposals</h2>
+            <p>{effectiveProposals.length} proposals awaiting curator action</p>
+          </div>
+          <div className="discovery-toolbar__actions">
+            <button
+              className="primary-button"
+              type="button"
+              onClick={exportProposalDecisions}
+              disabled={!effectiveProposals.length}
+            >
+              Export proposal decisions
+            </button>
+          </div>
+        </header>
+        <p className="discovery-local-note">
+          <strong>Two explicit gates.</strong> Review the extracted evidence,
+          export this CSV, then import it with the CLI. Only proposals marked
+          approved can be applied; viewing or exporting never changes the
+          published atlas.
+        </p>
+        <div className="proposal-list">
+          {effectiveProposals.map((proposal) => {
+            const canApprove =
+              proposal.scopeStatus === "in-scope" &&
+              proposal.proposedMeasurements.length > 0;
+            return (
+              <article className="proposal-card" key={proposal.proposalId}>
+                <header className="proposal-card__header">
+                  <div>
+                    <div className="discovery-card__meta">
+                      <span className="discovery-chip">
+                        {proposal.scopeStatus}
+                      </span>
+                      <span>{proposal.status}</span>
+                      <span>{proposal.source.pageCount} PDF pages</span>
+                    </div>
+                    <h3>{proposal.proposedPaper.title}</h3>
+                    <p>
+                      {proposal.proposedPaper.first_author} ·{" "}
+                      {proposal.proposedPaper.journal ?? "Journal not reported"}{" "}
+                      ·{" "}
+                      {proposal.proposedPaper.publication_year ??
+                        "Year not reported"}
+                    </p>
+                  </div>
+                  <a
+                    href={proposal.source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Source PDF ↗
+                  </a>
+                </header>
+
+                <div className="proposal-scope">
+                  <strong>Scope assessment</strong>
+                  <ul>
+                    {proposal.scopeReasons.map((reason) => (
+                      <li key={reason}>{reason}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="proposal-records">
+                  <section>
+                    <h4>Paper</h4>
+                    <dl>
+                      <div>
+                        <dt>DOI</dt>
+                        <dd>{proposal.proposedPaper.doi ?? "Not reported"}</dd>
+                      </div>
+                      <div>
+                        <dt>Authors</dt>
+                        <dd>
+                          {proposal.proposedPaper.authors.join(", ") ||
+                            "Not reported"}
+                        </dd>
+                      </div>
+                    </dl>
+                  </section>
+                  <section>
+                    <h4>Device</h4>
+                    {proposal.proposedDevices.map((device) => (
+                      <dl key={device.device_id}>
+                        <div>
+                          <dt>Material</dt>
+                          <dd>{device.material_composition}</dd>
+                        </div>
+                        <div>
+                          <dt>Architecture</dt>
+                          <dd>{device.device_architecture}</dd>
+                        </div>
+                        <div>
+                          <dt>Stack</dt>
+                          <dd>{device.device_stack ?? "Not reported"}</dd>
+                        </div>
+                      </dl>
+                    ))}
+                  </section>
+                  <section>
+                    <h4>Measurements</h4>
+                    {proposal.proposedMeasurements.length ? (
+                      <div className="proposal-measurements">
+                        {proposal.proposedMeasurements.map((measurement) => (
+                          <div key={measurement.measurement_id}>
+                            <strong>{measurement.wavelength_nm} nm</strong>
+                            <span>
+                              D*{" "}
+                              {measurement.detectivity_jones.toExponential(2)}{" "}
+                              Jones
+                            </span>
+                            <span>
+                              {measurement.flag} · {measurement.noise_method}
+                            </span>
+                            <span>
+                              {measurement.bias_v == null
+                                ? "bias not reported"
+                                : `${measurement.bias_v} V`}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p>
+                        No qualifying detectivity measurement was extracted.
+                      </p>
+                    )}
+                  </section>
+                </div>
+
+                <details className="proposal-evidence">
+                  <summary>Evidence and extraction notes</summary>
+                  <ul>
+                    {proposal.evidence.map((item) => (
+                      <li key={`${item.field}-${item.page}-${item.location}`}>
+                        <strong>{item.field}</strong> · page {item.page} ·{" "}
+                        {Math.round(item.confidence * 100)}% —{" "}
+                        {item.conciseEvidence}
+                      </li>
+                    ))}
+                  </ul>
+                  {!!proposal.warnings.length && (
+                    <p className="discovery-warning">
+                      <strong>Warnings:</strong> {proposal.warnings.join(" · ")}
+                    </p>
+                  )}
+                  {!!proposal.missingFields.length && (
+                    <p>
+                      <strong>Not extracted:</strong>{" "}
+                      {proposal.missingFields.join(", ")}
+                    </p>
+                  )}
+                </details>
+
+                <div className="proposal-review discovery-review">
+                  <label>
+                    Approval decision
+                    <select
+                      value={proposal.status}
+                      disabled={proposal.status === "applied"}
+                      onChange={(event) =>
+                        updateProposalDecision(proposal, {
+                          status: event.target.value as ProposalStatus,
+                        })
+                      }
+                    >
+                      <option value="awaiting-approval">
+                        awaiting-approval
+                      </option>
+                      <option value="approved" disabled={!canApprove}>
+                        approved
+                      </option>
+                      <option value="needs-correction">needs-correction</option>
+                      <option value="rejected">rejected</option>
+                      {proposal.status === "applied" && (
+                        <option value="applied">applied</option>
+                      )}
+                    </select>
+                  </label>
+                  <label className="discovery-review__notes">
+                    Decision notes
+                    <input
+                      value={proposal.decisionNotes ?? ""}
+                      disabled={proposal.status === "applied"}
+                      onChange={(event) =>
+                        updateProposalDecision(proposal, {
+                          decisionNotes: event.target.value,
+                        })
+                      }
+                      placeholder="Corrections, rationale, or approval note"
+                    />
+                  </label>
+                </div>
+              </article>
+            );
+          })}
+          {!effectiveProposals.length && (
+            <div className="discovery-empty">
+              <h3>No extracted proposals yet.</h3>
+              <p>
+                Acquire and parse an open-access candidate to stage it here.
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
       <section
         className="discovery-stat-grid"
         aria-label="Candidate screening totals"

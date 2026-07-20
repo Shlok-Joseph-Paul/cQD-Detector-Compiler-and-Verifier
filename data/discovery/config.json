@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "openAlex": {
+    "baseUrl": "https://api.openalex.org",
+    "mailto": "",
+    "perPage": 50,
+    "maxPagesPerQuery": 4,
+    "minimumRequestIntervalMs": 120
+  },
+  "crossref": {
+    "baseUrl": "https://api.crossref.org",
+    "mailto": "",
+    "minimumRequestIntervalMs": 120
+  },
+  "materialTerms": [
+    "HgTe",
+    "PbS",
+    "PbSe",
+    "Ag2Se",
+    "Ag2Te",
+    "InAs",
+    "InSb",
+    "III-V quantum dot",
+    "heavy-metal-free quantum dot"
+  ],
+  "deviceTerms": [
+    "photodiode",
+    "photodetector",
+    "infrared detector",
+    "image sensor",
+    "imager",
+    "focal plane array",
+    "photoconductor"
+  ],
+  "spectralTerms": [
+    "infrared",
+    "near infrared",
+    "NIR",
+    "SWIR",
+    "eSWIR",
+    "MWIR"
+  ],
+  "queries": [
+    "\"colloidal quantum dot\" infrared photodiode",
+    "\"colloidal quantum dot\" infrared photodetector",
+    "nanocrystal infrared photodiode",
+    "\"quantum dot imager\" infrared",
+    "HgTe colloidal quantum dot infrared photodiode",
+    "PbS colloidal quantum dot infrared photodiode",
+    "PbSe colloidal quantum dot infrared photodiode",
+    "Ag2Se colloidal quantum dot infrared photodiode",
+    "Ag2Te colloidal quantum dot infrared photodiode",
+    "InAs colloidal quantum dot infrared photodiode",
+    "InSb colloidal quantum dot infrared photodiode",
+    "III-V colloidal quantum dot infrared photodetector",
+    "heavy-metal-free colloidal quantum dot infrared photodetector"
+  ],
+  "ranking": {
+    "fuzzyTitleThreshold": 0.94,
+    "positiveWeights": {
+      "colloidalTerminology": 24,
+      "configuredMaterial": 18,
+      "deviceTerminology": 18,
+      "infraredTerminology": 14,
+      "performanceTerminology": 10,
+      "atlasCitationConnection": 8,
+      "journalArticle": 8
+    },
+    "negativeWeights": {
+      "reviewOrPerspective": -24,
+      "emitterOnly": -26,
+      "solarCellOnly": -22,
+      "synthesisOnly": -18,
+      "theoryOnly": -24,
+      "nonColloidalQuantumDots": -30,
+      "nonPrimaryRecord": -35
+    }
+  }
+}

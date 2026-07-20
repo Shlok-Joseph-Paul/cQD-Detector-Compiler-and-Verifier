@@ -1,8 +1,10 @@
 # Future automated ingestion
 
-Status: architecture note only. No discovery scheduler, crawler, full-text
-downloader, automated extractor, or publisher integration is implemented in the
-first release.
+Status: the repository now includes a local, API-based Paper Discovery Queue
+for OpenAlex and Crossref metadata. The extraction, full-text processing,
+scheduler, and publisher integration described below remain future work. See
+`docs/DISCOVERY_QUEUE.md` for the implemented operator workflow and
+`docs/LITERATURE_SEARCH_PROTOCOL.md` for its scientific-search protocol.
 
 The CQD Photodiode Atlas currently treats the repository CSV files as its only
 publishable source of truth. A future service may help curators _discover_ and

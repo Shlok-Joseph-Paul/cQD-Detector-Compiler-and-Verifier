@@ -113,9 +113,19 @@ or credentials are needed for the static atlas.
 | `pnpm run typecheck`     | Run strict TypeScript checks without emitting files                                    |
 | `pnpm run build`         | Validate data and create the production build                                          |
 | `pnpm run start`         | Start the production build locally                                                     |
+| `pnpm discovery <cmd>`   | Operate the separate, human-screened paper discovery queue                             |
 
 The production build is expected to fail if curated data is invalid or the
 generated atlas artifact is stale.
+
+## Paper discovery queue
+
+The versioned discovery pipeline searches OpenAlex, expands citation graphs
+from included atlas papers, validates DOI metadata through Crossref, caches
+responses, ranks candidates with visible reasons, and exports screening CSVs.
+Candidates remain in `data/discovery/` and can never be published directly.
+See the [operator guide](./docs/DISCOVERY_QUEUE.md) and
+[literature-search protocol](./docs/LITERATURE_SEARCH_PROTOCOL.md).
 
 ## Curated data workflow
 

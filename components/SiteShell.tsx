@@ -4,6 +4,7 @@ const navigation = [
   { href: "/", label: "Atlas" },
   { href: "/materials", label: "Materials" },
   { href: "/coverage", label: "Coverage" },
+  { href: "/discovery", label: "Discovery" },
   { href: "/methodology", label: "Methodology" },
   { href: "/releases", label: "Releases" },
   { href: "/contribute", label: "Contribute" },

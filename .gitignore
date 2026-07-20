@@ -42,3 +42,6 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# Discovery API cache is reproducible local state, not curated source data.
+/data/discovery/cache/*.json

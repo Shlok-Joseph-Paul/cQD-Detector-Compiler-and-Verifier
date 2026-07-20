@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { atlasRecordsToCsv } from "../lib/atlas/csv.ts";
+import { DATASET_VERSION } from "../lib/data/releases.ts";
 import {
   maxDetectivityPerPaper,
   reportingCoverage,
@@ -302,7 +303,7 @@ test("filtered CSV is one measurement per row and safely escapes text", () => {
   assert.match(lines[0], /source_location,curator_status/);
   assert.match(lines[0], /authors,first_author,journal/);
   assert.match(lines[0], /dataset_version$/);
-  assert.match(lines[1], /,1\.2\.0$/);
+  assert.ok(lines[1].endsWith(`,${DATASET_VERSION}`));
   assert.match(lines[1], /measurement-1/);
   assert.match(lines[1], /1\.2e\+?12/);
   assert.match(lines[1], /Ada Researcher\|Sam Scientist/);

@@ -25,6 +25,35 @@
       "notes": "Ag2Te CQD SWIR photodiode and LiDAR demonstration."
     },
     {
+      "paper_id": "song-2024-ag-hgte",
+      "title": "Narrow Bandgap Silver Mercury Telluride Alloy Semiconductor Nanocrystal for Self-Powered Midwavelength-Infrared Photodiode",
+      "authors": [
+        "Haemin Song",
+        "So Young Eom",
+        "Gahyeon Kim",
+        "Yoon Seo Jung",
+        "Dongsun Choi",
+        "Gundam Sandeep Kumar",
+        "Jin Hyeok Lee",
+        "Hyeong Seok Kang",
+        "Jiyeon Ban",
+        "Gyeong Won Seo",
+        "Sungmin Hong",
+        "Sooho Bae",
+        "Gyu Weon Hwang",
+        "Woong Kim",
+        "Kwang Seob Jeong"
+      ],
+      "first_author": "Haemin Song",
+      "journal": "Communications Materials",
+      "publication_year": 2024,
+      "doi": "10.1038/s43246-024-00499-z",
+      "publication_url": "https://doi.org/10.1038/s43246-024-00499-z",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Self-powered MWIR HgTe/Ag-HgTe alloy CQD photodiode with a synthesized p-type Ag-HgTe layer."
+    },
+    {
       "paper_id": "dang-2023-multiresonant-grating",
       "title": "Multiresonant Grating to Replace Transparent Conductive Oxide Electrode for Bias Selected Filtering of Infrared Photoresponse",
       "authors": [
@@ -865,6 +894,16 @@
       "device_notes": "Champion-device area is not specified for the spectral detectivity measurement."
     },
     {
+      "device_id": "song-2024-ag-hgte-device",
+      "paper_id": "song-2024-ag-hgte",
+      "material_family": "HgTe",
+      "material_composition": "n-type EDT/HCl-treated HgTe CQDs with a 10.5 at.% Ag CTAB-treated p-type Ag-HgTe alloy CQD layer",
+      "device_architecture": "Self-powered vertical p-n CQD photodiode",
+      "device_stack": "sapphire / ITO / HgTe CQDs / Ag-HgTe alloy CQDs / Au",
+      "active_area_cm2": 0.0105,
+      "device_notes": "Champion CTAB-treated device; approximately 440 nm HgTe and 45 nm Ag-HgTe CQD layers."
+    },
+    {
       "device_id": "dang-2023-grid-device",
       "paper_id": "dang-2023-multiresonant-grating",
       "material_family": "HgTe",
@@ -1351,6 +1390,34 @@
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approximate values read near the SWIR maximum of the champion-device curves.",
+      "date_added": "2026-07-19",
+      "date_updated": "2026-07-19"
+    },
+    {
+      "measurement_id": "song-2024-ag-hgte-m1",
+      "device_id": "song-2024-ag-hgte-device",
+      "wavelength_nm": 3300,
+      "detectivity_jones": 115000000000,
+      "responsivity_a_w": 0.58,
+      "eqe_percent": null,
+      "temperature_k": 130,
+      "bias_v": 0,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "bandwidth_hz": null,
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "spectrum_analyzer"
+      ],
+      "noise_instrument_details": "SRS SR785 FFT dynamic signal analyzer with an SRS SR570 low-noise current preamplifier.",
+      "noise_instrument_source": "Main PDF p. 7, Noise spectral density measurement; Supporting Information p. 17, Figure S16",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main PDF p. 5; Supporting Information pp. 17 and 21, Figure S16 and Table S1",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Temperature mismatch in the published detectivity calculation: the main text reports D*=1.15e11 Jones using responsivity 0.58 A/W at 130 K, area 1.05 mm2, and noise density 0.5 pA Hz^-1/2, while Supporting Figure S16 states that the noise spectrum was acquired at 78 K. Supporting Table S1 separately lists this work at 3.3 µm, 78 K, approximately 1.2e11 Jones, and 0.3 A/W. The main-text champion claim is preserved, with the non-co-located noise and responsivity temperatures disclosed.",
       "date_added": "2026-07-19",
       "date_updated": "2026-07-19"
     },
@@ -3068,6 +3135,75 @@
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approximate values read near the SWIR maximum of the champion-device curves.",
+        "date_added": "2026-07-19",
+        "date_updated": "2026-07-19"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "song-2024-ag-hgte",
+        "title": "Narrow Bandgap Silver Mercury Telluride Alloy Semiconductor Nanocrystal for Self-Powered Midwavelength-Infrared Photodiode",
+        "authors": [
+          "Haemin Song",
+          "So Young Eom",
+          "Gahyeon Kim",
+          "Yoon Seo Jung",
+          "Dongsun Choi",
+          "Gundam Sandeep Kumar",
+          "Jin Hyeok Lee",
+          "Hyeong Seok Kang",
+          "Jiyeon Ban",
+          "Gyeong Won Seo",
+          "Sungmin Hong",
+          "Sooho Bae",
+          "Gyu Weon Hwang",
+          "Woong Kim",
+          "Kwang Seob Jeong"
+        ],
+        "first_author": "Haemin Song",
+        "journal": "Communications Materials",
+        "publication_year": 2024,
+        "doi": "10.1038/s43246-024-00499-z",
+        "publication_url": "https://doi.org/10.1038/s43246-024-00499-z",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Self-powered MWIR HgTe/Ag-HgTe alloy CQD photodiode with a synthesized p-type Ag-HgTe layer."
+      },
+      "device": {
+        "device_id": "song-2024-ag-hgte-device",
+        "paper_id": "song-2024-ag-hgte",
+        "material_family": "HgTe",
+        "material_composition": "n-type EDT/HCl-treated HgTe CQDs with a 10.5 at.% Ag CTAB-treated p-type Ag-HgTe alloy CQD layer",
+        "device_architecture": "Self-powered vertical p-n CQD photodiode",
+        "device_stack": "sapphire / ITO / HgTe CQDs / Ag-HgTe alloy CQDs / Au",
+        "active_area_cm2": 0.0105,
+        "device_notes": "Champion CTAB-treated device; approximately 440 nm HgTe and 45 nm Ag-HgTe CQD layers."
+      },
+      "measurement": {
+        "measurement_id": "song-2024-ag-hgte-m1",
+        "device_id": "song-2024-ag-hgte-device",
+        "wavelength_nm": 3300,
+        "detectivity_jones": 115000000000,
+        "responsivity_a_w": 0.58,
+        "eqe_percent": null,
+        "temperature_k": 130,
+        "bias_v": 0,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "bandwidth_hz": null,
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "spectrum_analyzer"
+        ],
+        "noise_instrument_details": "SRS SR785 FFT dynamic signal analyzer with an SRS SR570 low-noise current preamplifier.",
+        "noise_instrument_source": "Main PDF p. 7, Noise spectral density measurement; Supporting Information p. 17, Figure S16",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main PDF p. 5; Supporting Information pp. 17 and 21, Figure S16 and Table S1",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Temperature mismatch in the published detectivity calculation: the main text reports D*=1.15e11 Jones using responsivity 0.58 A/W at 130 K, area 1.05 mm2, and noise density 0.5 pA Hz^-1/2, while Supporting Figure S16 states that the noise spectrum was acquired at 78 K. Supporting Table S1 separately lists this work at 3.3 µm, 78 K, approximately 1.2e11 Jones, and 0.3 A/W. The main-text champion claim is preserved, with the non-co-located noise and responsivity temperatures disclosed.",
         "date_added": "2026-07-19",
         "date_updated": "2026-07-19"
       }

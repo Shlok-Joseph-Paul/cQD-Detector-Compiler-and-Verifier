@@ -3,6 +3,11 @@ import registry from "@/data/discovery/candidates.json";
 import proposalRegistry from "@/data/discovery/proposals.json";
 import { DiscoveryQueueClient } from "@/components/discovery/DiscoveryQueueClient";
 import { SiteShell } from "@/components/SiteShell";
+import { atlasData } from "@/lib/data/generated";
+import {
+  filterPublicDiscoveryCandidates,
+  filterPublicDiscoveryProposals,
+} from "@/lib/discovery/public-queue";
 import type { CandidateRegistry } from "@/lib/discovery/types";
 import type { ProposalRegistry } from "@/lib/discovery/proposal-types";
 
@@ -13,8 +18,14 @@ export const metadata: Metadata = {
 };
 
 export default function DiscoveryPage() {
-  const candidates = (registry as CandidateRegistry).candidates;
-  const proposals = (proposalRegistry as ProposalRegistry).proposals;
+  const candidates = filterPublicDiscoveryCandidates(
+    (registry as CandidateRegistry).candidates,
+    atlasData.papers,
+  );
+  const proposals = filterPublicDiscoveryProposals(
+    (proposalRegistry as ProposalRegistry).proposals,
+    atlasData.papers,
+  );
   return (
     <SiteShell>
       <div className="page-shell discovery-page">

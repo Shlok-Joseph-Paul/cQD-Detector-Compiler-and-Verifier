@@ -15,6 +15,8 @@ import {
   extractExtendedMetricCandidates,
   extractStagedProposal,
   extractAtlasDoisFromCsv,
+  filterPublicDiscoveryCandidates,
+  filterPublicDiscoveryProposals,
   fetchJsonCached,
   findCandidateMatch,
   fuzzyTitleSimilarity,
@@ -281,6 +283,72 @@ test("human shortlist excludes atlas duplicates and ranks new paper links", () =
   assert.match(markdown, /open PDF/);
   assert.doesNotMatch(markdown, /Already Published/);
   assert.doesNotMatch(markdown, /Review of/);
+});
+
+test("public discovery queue omits atlas papers, applied proposals, and unrelated records", () => {
+  const atlasPaper = {
+    paper_id: "paper-1",
+    title: "Already Published CQD Photodiode",
+    authors: ["A. Researcher"],
+    first_author: "A. Researcher",
+    journal: "Test Journal",
+    publication_year: 2025,
+    doi: "10.9999/article",
+    publication_url: "https://doi.org/10.9999/article",
+    publication_type: "journal_article" as const,
+    peer_reviewed: true,
+    notes: null,
+  };
+  const duplicate = candidate({
+    candidateId: "duplicate",
+    doi: "10.9999/article",
+    normalizedDoi: "10.9999/article",
+  });
+  const unrelated = candidate({
+    candidateId: "candidate-6d75de2413fbe344",
+  });
+  const fresh = candidate({ candidateId: "fresh" });
+  assert.deepEqual(
+    filterPublicDiscoveryCandidates(
+      [duplicate, unrelated, fresh],
+      [atlasPaper],
+    ).map((item) => item.candidateId),
+    ["fresh"],
+  );
+
+  const proposal = {
+    proposalId: "proposal-1",
+    candidateId: "duplicate",
+    source: {
+      url: "https://example.test/paper.pdf",
+      openAccessSource: "test",
+      pdfSha256: "a".repeat(64),
+      acquiredAt: "2026-07-20T00:00:00.000Z",
+      contentType: "application/pdf",
+      byteLength: 100,
+      extractionEngine: "pypdf",
+      pageCount: 1,
+      needsOcr: false,
+    },
+    scopeStatus: "in-scope" as const,
+    scopeReasons: [],
+    proposedPaper: atlasPaper,
+    proposedDevices: [],
+    proposedMeasurements: [],
+    evidence: [],
+    warnings: [],
+    missingFields: [],
+    status: "applied" as const,
+    decisionNotes: null,
+    proposedAt: "2026-07-20T00:00:00.000Z",
+    decidedAt: null,
+    appliedAt: "2026-07-20T00:00:00.000Z",
+    extractorVersion: "cqd-proposal-extractor-v2" as const,
+  };
+  assert.deepEqual(
+    filterPublicDiscoveryProposals([proposal], [atlasPaper]),
+    [],
+  );
 });
 
 test("incremental updates preserve IDs and combine discovery provenance", () => {

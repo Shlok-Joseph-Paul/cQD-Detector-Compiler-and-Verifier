@@ -10,6 +10,7 @@ export * from "./proposal-extractor.ts";
 export * from "./proposal-pipeline.ts";
 export * from "./proposal-registry.ts";
 export * from "./proposal-types.ts";
+export * from "./public-queue.ts";
 export * from "./apply-proposals.ts";
 export * from "./score.ts";
 export * from "./shortlist.ts";

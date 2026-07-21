@@ -32,10 +32,11 @@ export default function Home() {
         <div className="page-shell atlas-hero__grid">
           <div className="atlas-hero__copy">
             <p className="eyebrow">Curator-reviewed literature data</p>
-            <h1>CQD Photodiode Atlas</h1>
+            <h1>Photodiode Atlas</h1>
             <p className="atlas-hero__lede">
-              Compare reported colloidal quantum-dot photodiode performance
-              across materials, wavelengths, and measurement methods.
+              Compare reported colloidal quantum-dot and metal-halide perovskite
+              photodiodes across materials, wavelengths, and measurement
+              methods.
             </p>
             <div className="atlas-hero__actions">
               <a className="primary-button" href="#performance-map">

@@ -12,7 +12,7 @@ import { atlasData } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Dataset coverage",
   description:
-    "Transparent coverage statistics for papers, materials, reporting completeness, and measurement methods in the CQD Photodiode Atlas.",
+    "Transparent coverage statistics for papers, technologies, materials, reporting completeness, and measurement methods in the Photodiode Atlas.",
 };
 
 export default function CoveragePage() {

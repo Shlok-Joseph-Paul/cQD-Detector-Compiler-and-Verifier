@@ -31,6 +31,7 @@ const records: JoinedMeasurement[] = [
     device: {
       device_id: "device-b",
       paper_id: "paper-b",
+      technology_family: "cqd",
       material_family: "Beta CQD",
       material_composition: null,
       device_architecture: "Vertical",
@@ -82,6 +83,7 @@ const records: JoinedMeasurement[] = [
     device: {
       device_id: "device-a",
       paper_id: "paper-a",
+      technology_family: "cqd",
       material_family: "Alpha CQD",
       material_composition: "A",
       device_architecture: null,

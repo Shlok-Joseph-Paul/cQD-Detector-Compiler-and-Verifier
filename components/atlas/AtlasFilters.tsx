@@ -7,6 +7,7 @@ import {
   countActiveFilters,
   materialOptions,
   normalizeMetricFilterValue,
+  technologyOptions,
   yearOptions,
 } from "@/lib/atlas/filters";
 import {
@@ -24,6 +25,7 @@ import type {
   PublicationFilter,
   PublicFlag,
   TemperatureCategory,
+  TechnologyFamily,
 } from "@/lib/atlas/types";
 import { NOISE_METHODS } from "@/lib/atlas/types";
 
@@ -128,7 +130,14 @@ export function AtlasFilters({
   onReset,
 }: AtlasFiltersProps) {
   const id = useId();
-  const materials = materialOptions(records);
+  const technologies = technologyOptions(records);
+  const materials = materialOptions(
+    filters.technology === "all"
+      ? records
+      : records.filter(
+          (record) => record.device.technologyFamily === filters.technology,
+        ),
+  );
   const years = yearOptions(records);
   const activeCount = Math.max(
     0,
@@ -188,6 +197,15 @@ export function AtlasFilters({
     chips.push({
       label: `Search: ${filters.search.trim()}`,
       clear: () => update("search", ""),
+    });
+  }
+  if (filters.technology !== "all") {
+    chips.push({
+      label:
+        filters.technology === "cqd"
+          ? "Colloidal quantum dots"
+          : "Metal-halide perovskites",
+      clear: () => update("technology", "all"),
     });
   }
   if (!lockedMaterial && filters.material !== "all") {
@@ -416,6 +434,31 @@ export function AtlasFilters({
             autoComplete="off"
             aria-controls="atlas-performance-plot atlas-measurement-table"
           />
+        </label>
+
+        <label className="atlas-field" htmlFor={`${id}-technology`}>
+          <span>Technology</span>
+          <select
+            id={`${id}-technology`}
+            value={filters.technology}
+            onChange={(event) => {
+              const technology = event.target.value as TechnologyFamily | "all";
+              onChange({
+                ...filters,
+                technology,
+                material: "all",
+              });
+            }}
+          >
+            <option value="all">All technologies</option>
+            {technologies.map((technology) => (
+              <option value={technology} key={technology}>
+                {technology === "cqd"
+                  ? "Colloidal quantum dots"
+                  : "Metal-halide perovskites"}
+              </option>
+            ))}
+          </select>
         </label>
 
         <label className="atlas-field" htmlFor={`${id}-material`}>

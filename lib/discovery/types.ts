@@ -34,7 +34,11 @@ export const DISCOVERY_METHODS = [
 export type DiscoveryMethod = (typeof DISCOVERY_METHODS)[number];
 
 export type DuplicateRelationshipType =
-  "exact-doi" | "openalex-id" | "title-year" | "possible-fuzzy-title";
+  | "exact-doi"
+  | "openalex-id"
+  | "title-year"
+  | "exact-pdf-hash"
+  | "possible-fuzzy-title";
 
 export interface DuplicateRelationship {
   candidateId: string;
@@ -71,6 +75,7 @@ export interface DiscoveryCandidate {
   discoveryQueries: string[];
   seedPaperIds: string[];
   discoveryMethods: DiscoveryMethod[];
+  technologyFamilies?: TechnologyFamily[];
   candidateMaterialClasses: string[];
   candidateDeviceType: string | null;
   candidateSpectralRegions: string[];
@@ -107,14 +112,38 @@ export interface DiscoveryConfig {
     mailto: string;
     minimumRequestIntervalMs: number;
   };
+  unpaywall?: {
+    baseUrl: string;
+    email: string;
+    minimumRequestIntervalMs: number;
+  };
   materialTerms: string[];
   deviceTerms: string[];
   spectralTerms: string[];
   queries: string[];
+  defaultProfile?: TechnologyFamily;
+  profiles?: Partial<
+    Record<
+      TechnologyFamily,
+      {
+        label: string;
+        technologyFamily: TechnologyFamily;
+        terminology: "cqd" | "perovskite";
+        materialTerms: string[];
+        queries: string[];
+      }
+    >
+  >;
   ranking: {
     fuzzyTitleThreshold: number;
     positiveWeights: Record<string, number>;
     negativeWeights: Record<string, number>;
+  };
+  reviewPreparation?: {
+    defaultLimit: number;
+    minimumRelevanceScore: number;
+    allowMediumAtlasFit: boolean;
+    excludePossibleDuplicates: boolean;
   };
 }
 
@@ -164,3 +193,4 @@ export interface DiscoveryRunLog {
   incompleteRequests: string[];
   dryRun: boolean;
 }
+import type { TechnologyFamily } from "../data/types.ts";

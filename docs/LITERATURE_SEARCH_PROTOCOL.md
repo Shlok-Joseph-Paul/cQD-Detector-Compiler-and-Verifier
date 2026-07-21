@@ -26,6 +26,12 @@ queries can be edited without changing application code. A run log records the
 configuration version, exact queries, seed IDs, optional date filters, counts,
 and incomplete requests.
 
+OpenAlex keyword search can match indexed full text as well as titles and
+abstracts. Discovery therefore favors recall, while automatic review-batch
+eligibility uses only local title and reconstructed-abstract evidence for CQD,
+detector, and detectivity signals. Citation expansion remains important for
+papers with missing abstracts or unusual terminology.
+
 For a formal search, record the search date and use `--to=YYYY-MM-DD` as the
 cutoff date. Use an overlap window on later incremental runs to accommodate
 indexing delays. The registry is idempotently updated, so overlap does not
@@ -33,11 +39,12 @@ recreate candidates.
 
 ## Screening criteria
 
-Prioritize experimental, solution-processed colloidal-quantum-dot infrared
-photodiodes with an identifiable measurement wavelength and reported specific
-detectivity. Candidate ranking deliberately has higher recall than the atlas's
-inclusion rule. It therefore allows photodetector, imager, focal-plane-array,
-and photoconductor terminology to surface papers for human screening.
+Prioritize experimental, solution-processed colloidal-quantum-dot photodiodes
+with an identifiable measurement wavelength and reported specific detectivity.
+The scope does not require a particular spectral region. Candidate ranking
+deliberately has higher recall than the atlas's inclusion rule. It therefore
+allows photodetector, imager, focal-plane-array, and photoconductor terminology
+to surface papers for human screening.
 
 Exclude from the published atlas when the original work is limited to:
 
@@ -85,12 +92,14 @@ reduce precision.
 2. Expand the atlas citation graph.
 3. Refresh DOI metadata through Crossref.
 4. Deduplicate and inspect possible fuzzy matches.
-5. Screen in the local Discovery Queue page or export a CSV.
-6. Export browser-local decisions and import the CSV into the registry.
+5. Run `prepare-review` to stage a conservative batch automatically, and/or
+   screen candidates in the local Discovery Queue page or exported CSV.
+6. Export browser-local screening decisions and import the CSV into the
+   registry.
 7. Commit candidate decisions and the append-only run log for an auditable
    search snapshot.
-8. Acquire only a recorded, unauthenticated open-access PDF and stage an
-   evidence-linked proposal.
+8. Acquire only a resolved, unauthenticated open-access PDF and stage an
+   evidence-linked proposal. Automatic preparation does not imply inclusion.
 9. Review the proposal, export and import an explicit approval decision, then
    separately apply only the approved proposal through the validated CSV
    workflow.
@@ -101,15 +110,16 @@ imported.
 
 ## PDF policy
 
-The discovery pipeline records only PDF URLs that OpenAlex identifies as open
-access. The proposal command may download one of those URLs only when it is
-plain HTTP(S), unauthenticated, and actually returns a PDF. It does not use
-institutional sessions, cookies, credentials, browser state, or paywall
-circumvention. The PDF and page-marked extraction remain in an external cache;
-the repository stores its checksum, source URL, acquisition metadata, short
-evidence snippets, and proposed records. `available` still means only that an
-open-access URL was reported. `acquired` means the response was verified as a
-PDF, not that its scientific claims were accepted.
+The discovery pipeline considers PDF URLs recorded by OpenAlex, curator
+overrides, refreshed OpenAlex locations, and DOI-based Unpaywall locations. The
+proposal command may download a resolved URL only when it is plain HTTP(S),
+unauthenticated, and actually returns a PDF. It does not use institutional
+sessions, cookies, credentials, browser state, or paywall circumvention. The
+PDF and page-marked extraction remain in an external cache; the repository
+stores its checksum, source URL, acquisition metadata, short evidence snippets,
+and proposed records. `available` still means only that an open-access URL was
+reported. `acquired` means the response was verified as a PDF, not that its
+scientific claims were accepted.
 
 ## Google Scholar
 

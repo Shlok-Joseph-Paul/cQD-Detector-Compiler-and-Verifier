@@ -18,26 +18,76 @@ function has(text: string, expression: RegExp): boolean {
   return expression.test(text);
 }
 
+function normalizeEvidenceText(value: string): string {
+  return value
+    .replace(/\s*<sub>\s*([0-9]+)\s*<\/sub>/gi, "$1")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[₀₁₂₃₄₅₆₇₈₉]/g, (digit) => String("₀₁₂₃₄₅₆₇₈₉".indexOf(digit)))
+    .replace(/[–—−]/g, "-")
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+}
+
+const MATERIAL_PATTERNS: Readonly<Record<string, RegExp>> = {
+  HgTe: /\b(?:hgte|mercury telluride)\b/i,
+  PbS: /\b(?:pbs|lead sulfide)\b/i,
+  PbSe: /\b(?:pbse|lead selenide)\b/i,
+  Ag2Se: /\b(?:ag2se|silver selenide)\b/i,
+  Ag2Te: /\b(?:ag2te|silver telluride)\b/i,
+  InAs: /\b(?:inas|indium arsenide)\b/i,
+  InSb: /\b(?:insb|indium antimonide)\b/i,
+  HgCdSe: /\b(?:hgcdse|mercury cadmium selenide)\b/i,
+  Cd3P2: /\b(?:cd3p2|cadmium phosphide)\b/i,
+  AgBiS2: /\b(?:agbis2|silver bismuth sulfide)\b/i,
+  "In(As,P)":
+    /\b(?:inasp|indium arsenide phosphide)\b|in\s*\(\s*as\s*,\s*p\s*\)/i,
+  MAPbI3: /\b(?:mapbi3|methylammonium lead iodide|mapi)\b/i,
+  MAPbBr3: /\b(?:mapbbr3|methylammonium lead bromide)\b/i,
+  MAPbCl3: /\b(?:mapbcl3|methylammonium lead chloride)\b/i,
+  FAPbI3: /\b(?:fapbi3|formamidinium lead iodide)\b/i,
+  FAPbBr3: /\b(?:fapbbr3|formamidinium lead bromide)\b/i,
+  CsPbBr3: /\b(?:cspbbr3|cesium lead bromide)\b/i,
+  CsPbI3: /\b(?:cspbi3|cesium lead iodide)\b/i,
+  Cs2AgBiBr6: /\b(?:cs2ag bibr6|cs2agbi br6|cs2ag bibr 6|cs2agbibr6)\b/i,
+  "mixed Pb-Sn perovskite":
+    /\b(?:mixed[ -]?(?:lead|pb)[ -]?(?:tin|sn)|pb[ -]?sn)\b[^.]{0,80}\bperovskite/i,
+  "mixed-halide perovskite": /\bmixed[ -]halide perovskite/i,
+  "quasi-2D perovskite": /\b(?:quasi[ -]?2d|multidimensional) perovskite/i,
+  "metal-halide perovskite":
+    /\b(?:metal[ -]halide|lead[ -]halide|hybrid) perovskite/i,
+};
+
+function matchesMaterial(text: string, term: string): boolean {
+  const known = MATERIAL_PATTERNS[term];
+  if (known) return has(text, known);
+  const escaped = term.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return has(
+    text,
+    new RegExp(
+      `(?:^|[^a-z0-9])${escaped.replace(/\\ /g, "\\s+")}(?=$|[^a-z0-9])`,
+      "i",
+    ),
+  );
+}
+
 export function calculateRelevance(
   work: OpenAlexWork,
   config: DiscoveryConfig,
   methods: readonly DiscoveryMethod[] = [],
+  technologyFamily?: TechnologyFamily,
 ): RelevanceResult {
   const title = work.title ?? work.display_name ?? "";
   const abstract = reconstructOpenAlexAbstract(work.abstract_inverted_index);
-  const text = `${title} ${abstract ?? ""}`.toLowerCase();
+  const text = normalizeEvidenceText(`${title} ${abstract ?? ""}`);
   const positive = config.ranking.positiveWeights;
   const negative = config.ranking.negativeWeights;
+  const profile = resolveDiscoveryProfile(config, technologyFamily);
   const reasons: string[] = [];
   let score = 0;
 
-  const materials = config.materialTerms.filter((term) => {
-    const escaped = term.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return has(
-      text,
-      new RegExp(`\\b${escaped.replace(/\\ /g, "\\s+")}\\b`, "i"),
-    );
-  });
+  const materials = profile.materialTerms.filter((term) =>
+    matchesMaterial(text, term),
+  );
   const deviceTerms = config.deviceTerms.filter((term) =>
     text.includes(term.toLowerCase()),
   );
@@ -45,14 +95,23 @@ export function calculateRelevance(
     text.includes(term.toLowerCase()),
   );
 
-  if (
-    has(
-      text,
-      /\b(colloidal quantum dots?|colloidal nanocrystals?|nanocrystals?)\b/i,
-    )
-  ) {
+  const hasProfileTerminology =
+    profile.terminology === "perovskite"
+      ? has(
+          text,
+          /\b(?:metal[ -]halide |lead[ -]halide |hybrid )?perovskites?\b/i,
+        )
+      : has(
+          text,
+          /\b(colloidal quantum dots?|colloidal nanocrystals?|solution[ -]processed (?:colloidal )?quantum dots?|cqds?)\b/i,
+        );
+  if (hasProfileTerminology) {
     score += positive.colloidalTerminology ?? 0;
-    reasons.push("Explicit colloidal quantum-dot or nanocrystal terminology");
+    reasons.push(
+      profile.terminology === "perovskite"
+        ? "Explicit metal-halide perovskite terminology"
+        : "Explicit colloidal quantum-dot or nanocrystal terminology",
+    );
   }
   if (materials.length) {
     score += positive.configuredMaterial ?? 0;
@@ -64,7 +123,7 @@ export function calculateRelevance(
   }
   if (spectralTerms.length || has(text, /\b\d(?:\.\d+)?\s*(?:µm|um|nm)\b/i)) {
     score += positive.infraredTerminology ?? 0;
-    reasons.push("Infrared or wavelength terminology");
+    reasons.push("Spectral-region or wavelength terminology");
   }
   const performanceMatches = [
     "detectivity",
@@ -121,7 +180,8 @@ export function calculateRelevance(
     ],
     [
       has(text, /\b(epitaxial|self assembled|self-assembled)\b/i) &&
-        !has(text, /\bcolloidal\b/i),
+        profile.terminology === "cqd" &&
+        !has(text, /\b(?:colloidal|cqds?)\b/i),
       "Epitaxial, self-assembled, or non-colloidal quantum dots",
       "nonColloidalQuantumDots",
     ],
@@ -158,3 +218,5 @@ export function calculateRelevance(
     spectralRegions,
   };
 }
+import type { TechnologyFamily } from "../data/types.ts";
+import { resolveDiscoveryProfile } from "./profiles.ts";

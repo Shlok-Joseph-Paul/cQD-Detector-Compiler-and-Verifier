@@ -3,8 +3,12 @@
 Status: the repository now includes a local, API-based Paper Discovery Queue
 for OpenAlex and Crossref metadata plus an open-access PDF acquisition,
 batch-extraction, staged proposal, curator-decision, and approved-only CSV
-application workflow. Scheduling, model-assisted extraction, multi-reviewer
-permissions, and pull-request/publisher integration remain future work. See
+application workflow. It also includes conservative automatic batch selection,
+multi-source PDF resolution, per-paper failure isolation, and resumable
+`prepare-review` orchestration. Hosted scheduling, model-assisted extraction,
+multi-reviewer permissions, and pull-request/publisher integration remain
+future work; an external local scheduler can invoke the implemented command
+today. See
 `docs/DISCOVERY_QUEUE.md` for the implemented operator workflow and
 `docs/LITERATURE_SEARCH_PROTOCOL.md` for its scientific-search protocol.
 

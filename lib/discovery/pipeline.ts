@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
-import { appendFile, readFile, writeFile } from "node:fs/promises";
+import { appendFile, readFile } from "node:fs/promises";
 import path from "node:path";
+import type { TechnologyFamily } from "../data/types.ts";
 import { CrossrefClient, OpenAlexClient } from "./api.ts";
 import {
   deduplicateRegistryCandidates,
@@ -15,6 +16,8 @@ import {
   reconstructOpenAlexAbstract,
 } from "./normalize.ts";
 import { calculateRelevance } from "./score.ts";
+import { resolveDiscoveryProfile } from "./profiles.ts";
+import { withDiscoveryWriteLock, writeTextAtomically } from "./storage.ts";
 import type {
   CandidateRegistry,
   DiscoveryCandidate,
@@ -38,6 +41,7 @@ export interface PipelineOptions {
   dryRun?: boolean;
   fetchImpl?: typeof fetch;
   now?: () => Date;
+  technologyFamily?: TechnologyFamily;
 }
 
 export interface UpdateResult {
@@ -85,7 +89,7 @@ export async function writeCandidateRegistry(
         a.candidateId.localeCompare(b.candidateId),
     ),
   };
-  await writeFile(file, `${JSON.stringify(sorted, null, 2)}\n`, "utf8");
+  await writeTextAtomically(file, `${JSON.stringify(sorted, null, 2)}\n`);
 }
 
 export function extractAtlasDoisFromCsv(csv: string): Set<string> {
@@ -133,15 +137,27 @@ export function candidateFromOpenAlex(
     query?: string;
     seedPaperId?: string;
     now?: Date;
+    technologyFamily?: TechnologyFamily;
   },
 ): DiscoveryCandidate | null {
   const title = work.title ?? work.display_name;
   if (!title || typeof title !== "string") return null;
   const now = context.now ?? new Date();
-  const score = calculateRelevance(work, config, [context.method]);
+  const profile = resolveDiscoveryProfile(config, context.technologyFamily);
+  const score = calculateRelevance(
+    work,
+    config,
+    [context.method],
+    profile.technologyFamily,
+  );
   const doi = normalizeDoi(work.doi);
-  const oaLocation = work.best_oa_location ?? work.primary_location;
-  const pdf = oaLocation?.pdf_url ?? null;
+  const pdf =
+    work.best_oa_location?.pdf_url ?? work.primary_location?.pdf_url ?? null;
+  const pdfSource = work.best_oa_location?.pdf_url
+    ? work.best_oa_location.source?.display_name
+    : work.primary_location?.pdf_url
+      ? work.primary_location.source?.display_name
+      : null;
   return {
     candidateId: candidateId(work),
     doi,
@@ -163,12 +179,13 @@ export function candidateFromOpenAlex(
       (doi ? `https://doi.org/${doi}` : (work.id ?? null)),
     openAccessPdfUrl: pdf,
     openAccessPdfSource: pdf
-      ? (oaLocation?.source?.display_name ?? "OpenAlex open-access location")
+      ? (pdfSource ?? "OpenAlex open-access location")
       : null,
     discoverySources: ["OpenAlex"],
     discoveryQueries: context.query ? [context.query] : [],
     seedPaperIds: context.seedPaperId ? [context.seedPaperId] : [],
     discoveryMethods: [context.method],
+    technologyFamilies: [profile.technologyFamily],
     candidateMaterialClasses: score.materials,
     candidateDeviceType: score.deviceType,
     candidateSpectralRegions: score.spectralRegions,
@@ -195,6 +212,7 @@ export function updateRegistryIncrementally(
     query?: string;
     seedPaperId?: string;
     now?: Date;
+    technologyFamily?: TechnologyFamily;
   },
   atlasDois = new Set<string>(),
 ): UpdateResult {
@@ -243,12 +261,14 @@ export class DiscoveryPipeline {
   readonly dryRun: boolean;
   private readonly now: () => Date;
   private readonly options: PipelineOptions;
+  private readonly writeLockHeld: boolean;
 
-  constructor(options: PipelineOptions) {
+  constructor(options: PipelineOptions, writeLockHeld = false) {
     this.options = options;
     this.paths = defaultPipelinePaths(options.root);
     this.dryRun = options.dryRun ?? false;
     this.now = options.now ?? (() => new Date());
+    this.writeLockHeld = writeLockHeld;
   }
 
   async discoverKeywords(
@@ -256,7 +276,19 @@ export class DiscoveryPipeline {
     from?: string,
     to?: string,
   ): Promise<UpdateResult> {
+    if (!this.dryRun && !this.writeLockHeld)
+      return withDiscoveryWriteLock(this.options.root, () =>
+        new DiscoveryPipeline(this.options, true).discoverKeywords(
+          queries,
+          from,
+          to,
+        ),
+      );
     const config = await readDiscoveryConfig(this.paths.config);
+    const profile = resolveDiscoveryProfile(
+      config,
+      this.options.technologyFamily,
+    );
     let registry = await readCandidateRegistry(this.paths.registry);
     const atlasDois = extractAtlasDoisFromCsv(
       await readFile(this.paths.atlasPapers, "utf8"),
@@ -267,7 +299,7 @@ export class DiscoveryPipeline {
       this.dryRun,
       this.options.fetchImpl,
     );
-    const selected = queries?.length ? queries : config.queries;
+    const selected = queries?.length ? queries : profile.queries;
     const total: UpdateResult = {
       registry,
       retrieved: 0,
@@ -283,7 +315,12 @@ export class DiscoveryPipeline {
           registry,
           works,
           config,
-          { method: "keyword", query, now: this.now() },
+          {
+            method: "keyword",
+            query,
+            now: this.now(),
+            technologyFamily: profile.technologyFamily,
+          },
           atlasDois,
         );
         registry = result.registry;
@@ -316,6 +353,10 @@ export class DiscoveryPipeline {
   }
 
   async refreshMetadata(): Promise<{ refreshed: number; errors: string[] }> {
+    if (!this.dryRun && !this.writeLockHeld)
+      return withDiscoveryWriteLock(this.options.root, () =>
+        new DiscoveryPipeline(this.options, true).refreshMetadata(),
+      );
     const config = await readDiscoveryConfig(this.paths.config);
     const registry = await readCandidateRegistry(this.paths.registry);
     const client = new CrossrefClient(
@@ -389,7 +430,15 @@ export class DiscoveryPipeline {
       "author",
     ],
   ): Promise<UpdateResult> {
+    if (!this.dryRun && !this.writeLockHeld)
+      return withDiscoveryWriteLock(this.options.root, () =>
+        new DiscoveryPipeline(this.options, true).expandAtlasSeeds(methods),
+      );
     const config = await readDiscoveryConfig(this.paths.config);
+    const profile = resolveDiscoveryProfile(
+      config,
+      this.options.technologyFamily,
+    );
     let registry = await readCandidateRegistry(this.paths.registry);
     const papersCsv = await readFile(this.paths.atlasPapers, "utf8");
     const atlasDois = extractAtlasDoisFromCsv(papersCsv);
@@ -459,7 +508,12 @@ export class DiscoveryPipeline {
             registry,
             works,
             config,
-            { method, seedPaperId: seed.paperId, now: this.now() },
+            {
+              method,
+              seedPaperId: seed.paperId,
+              now: this.now(),
+              technologyFamily: profile.technologyFamily,
+            },
             atlasDois,
           );
           registry = result.registry;
@@ -496,6 +550,10 @@ export class DiscoveryPipeline {
     possible: number;
     registry: CandidateRegistry;
   }> {
+    if (!this.dryRun && !this.writeLockHeld)
+      return withDiscoveryWriteLock(this.options.root, () =>
+        new DiscoveryPipeline(this.options, true).deduplicate(),
+      );
     const config = await readDiscoveryConfig(this.paths.config);
     const registry = await readCandidateRegistry(this.paths.registry);
     const result = deduplicateRegistryCandidates(

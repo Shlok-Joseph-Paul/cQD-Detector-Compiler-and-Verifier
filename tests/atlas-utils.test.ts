@@ -65,6 +65,7 @@ const measuredRecord: AtlasRecord = {
   device: {
     deviceId: "device-1",
     paperId: "paper-1",
+    technologyFamily: "cqd",
     materialFamily: "PbS",
     materialComposition: "PbS CQDs",
     deviceArchitecture: "p–n photodiode",

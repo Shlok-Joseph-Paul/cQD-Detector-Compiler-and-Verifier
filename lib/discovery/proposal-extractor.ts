@@ -6,6 +6,7 @@ import type {
   Paper,
 } from "../data/types.ts";
 import type { DiscoveryCandidate } from "./types.ts";
+import { candidateTechnologyFamilies } from "./profiles.ts";
 import type {
   ProposalEvidence,
   ProposalSource,
@@ -230,7 +231,7 @@ function detectNoise(pages: PageText[]): {
 
 function findStack(pages: PageText[]): string | null {
   const stackPattern =
-    /\b(?:ITO|FTO|Au|Ag|Al|ZnO|TiO2|MoO3|PEDOT:PSS|CQDs?|quantum dots?)(?:\s*\/\s*(?:ITO|FTO|Au|Ag|Al|ZnO|TiO2|MoO3|PEDOT:PSS|[A-Za-z0-9₂₃().:+-]{2,24})){3,}\b/i;
+    /\b(?:ITO|FTO|Au|Ag|Al|ZnO|TiO2|MoO3|PEDOT:PSS|CQDs?|quantum dots?|perovskite|MAPI|MAPbI3)(?:\s*\/\s*(?:ITO|FTO|Au|Ag|Al|ZnO|TiO2|MoO3|PEDOT:PSS|perovskite|MAPI|MAPbI3|[A-Za-z0-9₂₃().:+-]{2,24})){3,}\b/i;
   for (const page of pages) {
     const match = page.text.match(stackPattern);
     if (match) return cleanSnippet(match[0], 240);
@@ -281,10 +282,17 @@ export function extractStagedProposal(
   const scopeReasons: string[] = [];
   const warnings: string[] = [];
   const missingFields: string[] = [];
+  const technologyFamilies = candidateTechnologyFamilies(candidate);
+  const isPerovskite = technologyFamilies.includes("perovskite");
   const hasColloidal =
     /colloidal quantum dot|colloidal nanocrystal|solution[\s-]*processed/.test(
       lower,
     );
+  const hasPerovskite =
+    /\b(?:metal[\s-]halide |lead[\s-]halide |hybrid )?perovskites?\b/.test(
+      lower,
+    );
+  const hasProfileAbsorber = isPerovskite ? hasPerovskite : hasColloidal;
   const hasPhotodiode =
     /photodiode|photovoltaic (?:detector|device)|p[\s-]*n junction|p[\s-]*i[\s-]*n/.test(
       lower,
@@ -292,13 +300,15 @@ export function extractStagedProposal(
   const onlyExcluded =
     /photoconductor|phototransistor|photoresistor|bolometer/.test(lower) &&
     !hasPhotodiode;
-  if (hasColloidal)
+  if (hasProfileAbsorber)
     scopeReasons.push(
-      "Full text contains colloidal or solution-processed quantum-dot terminology.",
+      isPerovskite
+        ? "Full text contains metal-halide perovskite terminology."
+        : "Full text contains colloidal or solution-processed quantum-dot terminology.",
     );
   else
     scopeReasons.push(
-      "Colloidal or solution-processed absorber terminology was not established automatically.",
+      `${isPerovskite ? "Metal-halide perovskite" : "Colloidal or solution-processed CQD"} absorber terminology was not established automatically.`,
     );
   if (hasPhotodiode)
     scopeReasons.push(
@@ -345,7 +355,7 @@ export function extractStagedProposal(
 
   const materials = candidate.candidateMaterialClasses.length
     ? candidate.candidateMaterialClasses
-    : ["Other CQDs"];
+    : [isPerovskite ? "Metal-halide perovskite" : "Other CQDs"];
   let stack = findStack(pages);
   if (stack && /Ag2Te/i.test(materials[0]))
     stack = stack.replace(/\/QD(?=\/)/i, "/Ag2Te QDs");
@@ -364,10 +374,11 @@ export function extractStagedProposal(
   const proposedDevice: Device = {
     device_id: deviceId,
     paper_id: paperId,
+    technology_family: isPerovskite ? "perovskite" : "cqd",
     material_family: materials[0],
     material_composition: materials.join("/"),
     device_architecture: hasPhotodiode
-      ? "CQD photodiode; exact architecture requires curator confirmation"
+      ? `${isPerovskite ? "Perovskite" : "CQD"} photodiode; exact architecture requires curator confirmation`
       : null,
     device_stack: stack,
     active_area_cm2: activeArea,
@@ -719,7 +730,7 @@ export function extractStagedProposal(
 
   const scopeStatus: StagedPaperProposal["scopeStatus"] = onlyExcluded
     ? "out-of-scope"
-    : hasColloidal && hasPhotodiode && proposedMeasurements.length
+    : hasProfileAbsorber && hasPhotodiode && proposedMeasurements.length
       ? "in-scope"
       : "uncertain";
   return {
@@ -739,6 +750,6 @@ export function extractStagedProposal(
     proposedAt: now.toISOString(),
     decidedAt: null,
     appliedAt: null,
-    extractorVersion: "cqd-proposal-extractor-v2",
+    extractorVersion: "photodiode-proposal-extractor-v3",
   };
 }

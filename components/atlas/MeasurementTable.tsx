@@ -208,7 +208,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
       >
         <table className="measurement-table measurement-table--compact">
           <caption className="sr-only">
-            CQD photodiode measurements matching the current filters
+            Photodiode measurements matching the current filters
           </caption>
           <thead>
             <tr>
@@ -352,7 +352,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                         <td colSpan={11} id={detailsId}>
                           <div className="measurement-table__details-grid">
                             <div>
-                              <span>CQD composition</span>
+                              <span>Absorber composition</span>
                               <strong>
                                 {device.materialComposition || NOT_REPORTED}
                               </strong>

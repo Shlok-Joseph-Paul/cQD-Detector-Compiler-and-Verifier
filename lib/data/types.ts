@@ -1,4 +1,7 @@
-/** Canonical schema for the manually curated CQD Photodiode Atlas dataset. */
+/** Canonical schema for the manually curated Photodiode Atlas dataset. */
+
+export const TECHNOLOGY_FAMILIES = ["cqd", "perovskite"] as const;
+export type TechnologyFamily = (typeof TECHNOLOGY_FAMILIES)[number];
 
 export const PUBLICATION_TYPES = [
   "journal_article",
@@ -111,6 +114,7 @@ export interface Paper {
 export interface Device {
   device_id: string;
   paper_id: string;
+  technology_family: TechnologyFamily;
   material_family: string;
   material_composition: string | null;
   device_architecture: string | null;

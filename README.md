@@ -123,11 +123,19 @@ generated atlas artifact is stale.
 The versioned discovery pipeline searches OpenAlex, expands citation graphs
 from included atlas papers, validates DOI metadata through Crossref, caches
 responses, ranks candidates with visible reasons, and exports screening CSVs.
-For provider-recorded open-access PDFs it can also batch-extract compact,
+For resolver-verified open-access PDFs it can also batch-extract compact,
 evidence-linked Paper → Device → Measurement proposals. Proposals remain staged
 until a curator exports and imports an explicit approval; a second command then
 applies approved records through the validated CSV workflow. Neither search nor
 parsing publishes directly.
+
+`pnpm discovery prepare-review --limit=5` selects a conservative batch of
+unprocessed candidates from title/abstract evidence, resolves lawful PDFs
+through recorded OpenAlex and DOI-based open-access locations, and stages the
+results for review. Add `--discover --expand` to refresh keyword and atlas
+citation-graph candidates before preparing the batch. The limit counts papers
+attempted, not guaranteed proposals; unavailable or unparseable papers are
+reported individually and do not stop the remaining batch.
 See the [operator guide](./docs/DISCOVERY_QUEUE.md) and
 [literature-search protocol](./docs/LITERATURE_SEARCH_PROTOCOL.md).
 
@@ -305,17 +313,22 @@ the visualization components.
 - Graphically extracted values inherit digitization uncertainty.
 - The atlas does not fetch paywalled content, use publisher or institutional
   authentication, or store copyrighted papers.
-- There is no autonomous scraping, AI extraction, scheduled discovery,
-  theoretical-limit calculation, or automated physical-consistency verdict.
+- There is no publisher-page scraping, repository-hosted scheduler,
+  model-assisted scientific extraction, theoretical-limit calculation, or
+  automated physical-consistency verdict. The scheduler-ready local batch
+  command remains conservative and requires explicit human approval before
+  publication.
 - Green means the record meets the atlas's documentation criteria; it does not
   independently validate the underlying experiment.
 
 ## Planned automated discovery
 
 The repository defines provider-neutral interfaces in `lib/ingestion/` for a
-future metadata-discovery, lawful open-access resolution, proposal-extraction,
-and private review-queue service. These are interfaces only; there is no crawler
-or scheduled job in v1.
+future hosted ingestion service. The local discovery queue already implements
+API-based metadata discovery, lawful open-access resolution, cached PDF
+extraction, batch proposal preparation, and explicit review gates. It can be
+invoked by an external local scheduler, but there is no hosted worker bundled
+with the repository in v1.
 
 The proposed daily process is:
 

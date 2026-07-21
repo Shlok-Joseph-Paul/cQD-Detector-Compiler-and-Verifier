@@ -50,7 +50,8 @@
           "device_architecture": "CQD photodiode; exact architecture requires curator confirmation",
           "device_stack": "ITO/SnO2/BiCl3/Ag2Te QDs/P3HT/MoO3/Ag",
           "active_area_cm2": 0.06,
-          "device_notes": "Automatically staged from full text; confirm absorber, junction type, stack order, and area against the cited source locations."
+          "device_notes": "Automatically staged from full text; confirm absorber, junction type, stack order, and area against the cited source locations.",
+          "technology_family": "cqd"
         }
       ],
       "proposedMeasurements": [

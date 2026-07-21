@@ -44,6 +44,15 @@ pnpm discovery parse-open-access --candidate=candidate-id
 # Or parse every candidate already marked include
 pnpm discovery parse-open-access --included
 
+# Prepare the five best unprocessed candidates without requiring include first
+pnpm discovery prepare-review --limit=5
+
+# Refresh keyword and citation-graph candidates before preparing the batch
+pnpm discovery prepare-review --limit=5 --discover --expand
+
+# Constrain an incremental refresh with an overlap window
+pnpm discovery prepare-review --limit=5 --discover --from=2026-07-01 --to=2026-07-21
+
 # 8. Export/import explicit proposal decisions
 pnpm discovery export-proposal-decisions --output=data/discovery/proposal-decisions.csv
 pnpm discovery import-proposal-decisions --input=data/discovery/proposal-decisions.csv
@@ -58,6 +67,7 @@ pnpm discovery summary
 # 11. Exercise a mutating command without changing tracked data
 pnpm discovery discover --dry-run
 pnpm discovery parse-open-access --candidate=candidate-id --dry-run
+pnpm discovery prepare-review --limit=5 --dry-run
 pnpm discovery apply-approved --proposal=proposal-id --dry-run
 ```
 
@@ -65,6 +75,60 @@ The `--query` option accepts multiple exact queries separated by `|`. Repeated
 runs update matching candidates rather than recreating them. Remote JSON is
 cached under `data/discovery/cache/`; cached payloads are intentionally ignored
 by Git, while the registry and audit log are versioned.
+
+## Automated review-batch preparation
+
+`prepare-review` consumes the existing registry by default. `--discover` runs
+the configured OpenAlex keyword queries first, while `--expand` refreshes the
+atlas-seed reference, citation, related-work, and author paths before
+deduplication. Use an explicit overlapping `--from`/`--to` window for recurring
+keyword runs.
+
+Automatic eligibility is permission to create a private proposal, not an
+inclusion or publication decision. An unreviewed candidate must:
+
+- be absent from the published atlas and proposal registry;
+- have a retryable import state rather than `parsed`, `approved`, or
+  `published`;
+- not be excluded, uncertain, or a possible fuzzy duplicate;
+- meet the configured relevance threshold; and
+- contain CQD, detector, and detectivity evidence in its title and reconstructed
+  abstract.
+
+An explicit curator `include` decision bypasses the automatic score and
+title/abstract confidence gates, but never bypasses atlas duplication, existing
+proposal, or terminal-state checks. The command never changes a candidate's
+screening decision.
+
+Eligible candidates are ordered deterministically. Curator-included records
+come first, followed by candidates with already recorded PDFs, atlas-fit class,
+relevance, publication year, title, and stable candidate ID. `--limit` is the
+number of candidates attempted; resolution or extraction failures can therefore
+produce fewer proposals.
+
+PDF resolution tries, in order, a curator-provided override, the recorded
+candidate location, refreshed OpenAlex locations, and DOI-based Unpaywall
+locations. Every response must still pass the same unauthenticated HTTP(S), PDF
+signature, redirect, and 50 MB acquisition checks. A missing location is marked
+`requested`; exhausted locations are marked `inaccessible`; successful
+extraction becomes `parsed`. These states remain retryable or reviewable and do
+not alter the atlas CSVs.
+
+The JSON result reports every selected, deferred, skipped, unresolved, and
+failed candidate with a reason. A failure for one paper does not abort other
+usable proposals. Existing proposals are always skipped so a rerun cannot erase
+an approval, rejection, or correction decision. Identical acquired PDF hashes
+are linked as duplicates and are not proposed twice.
+
+`--dry-run` may use remote APIs and temporary external PDF/extraction caches to
+show realistic outcomes, but it does not write the candidate registry, proposal
+registry, run log, repository cache, or published atlas files.
+
+Recurring execution should call this same command from an external scheduler
+with an overlapping date window. The scheduled job may discover, resolve, and
+stage proposals, then notify a curator with the review summary. It must not call
+`apply-approved`; publication remains a separate explicit curator action. The
+repository itself does not install an operating-system or hosted scheduler.
 
 ## Candidate statuses
 
@@ -83,11 +147,12 @@ curator-ready recommendation set, use
 
 ## Open-access proposal and approval workflow
 
-`parse-open-access` accepts only an unauthenticated HTTP(S) PDF URL recorded by
-the discovery provider. It rejects login pages and non-PDF responses, limits
-downloads to 50 MB, hashes the PDF, batch-extracts page-marked text, and writes
-only a compact proposal to `data/discovery/proposals.json`. PDFs and full text
-stay in a temporary external cache, not in Git or the public site.
+`parse-open-access` and `prepare-review` accept only unauthenticated HTTP(S) PDF
+locations resolved from configured scholarly/open-access providers. They reject
+login pages and non-PDF responses, limit downloads to 50 MB, hash each PDF,
+batch-extract page-marked text, and write only compact proposals to
+`data/discovery/proposals.json`. PDFs and full text stay in a temporary external
+cache, not in Git or the public site.
 
 Extraction is conservative: a measurement requires co-located D* in Jones and
 a wavelength. Each proposal shows its Paper → Device → Measurement structure,

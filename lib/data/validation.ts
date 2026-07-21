@@ -11,6 +11,7 @@ import {
   NOISE_METHODS,
   PUBLICATION_TYPES,
   RESPONSE_TIME_LIMITS,
+  TECHNOLOGY_FAMILIES,
   type AmberReason,
   type AtlasEntities,
   type CsvSourceRows,
@@ -349,6 +350,12 @@ function validateDevice(
 ): void {
   validateIdentifier(device.device_id, add, "device_id");
   validateIdentifier(device.paper_id, add, "paper_id");
+  validateEnum(
+    device.technology_family,
+    "technology_family",
+    TECHNOLOGY_FAMILIES,
+    add,
+  );
   validateRequiredString(device.material_family, "material_family", add);
   validateNullableString(
     device.material_composition,

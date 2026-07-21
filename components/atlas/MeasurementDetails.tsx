@@ -138,8 +138,13 @@ export function MeasurementDetails({
       <AmberReasons measurement={measurement} compact={variant === "summary"} />
 
       <dl className="measurement-details__grid">
-        <Detail label="CQD material">
+        <Detail label="Absorber material">
           <MaterialLabel value={device.materialFamily} />
+        </Detail>
+        <Detail label="Technology">
+          {device.technologyFamily === "cqd"
+            ? "Colloidal quantum dot"
+            : "Metal-halide perovskite"}
         </Detail>
         <Detail label="Composition">
           {device.materialComposition || NOT_REPORTED}

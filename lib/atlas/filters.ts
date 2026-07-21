@@ -13,6 +13,7 @@ import type {
   TemperatureCategory,
 } from "./types";
 import { biasCondition, temperatureCategory } from "../data/filter.ts";
+import { TECHNOLOGY_FAMILIES } from "../data/types.ts";
 import { hasAmbiguousExtendedMetric, hasTemporalMetric } from "./metrics.ts";
 import {
   ATLAS_METRIC_KEYS,
@@ -26,6 +27,7 @@ export { biasCondition, temperatureCategory };
 
 export const DEFAULT_ATLAS_FILTERS: AtlasFilterState = {
   search: "",
+  technology: "all",
   material: "all",
   wavelengthMin: undefined,
   wavelengthMax: undefined,
@@ -125,6 +127,7 @@ export function publicationCategory(record: AtlasRecord): PublicationFilter {
 function searchableText(record: AtlasRecord): string {
   return [
     record.measurement.measurementId,
+    record.device.technologyFamily,
     record.device.materialFamily,
     record.device.materialComposition,
     record.device.deviceArchitecture,
@@ -148,6 +151,11 @@ export function recordMatchesFilters(
 ): boolean {
   const query = filters.search.trim().toLocaleLowerCase();
   if (query && !searchableText(record).includes(query)) return false;
+  if (
+    filters.technology !== "all" &&
+    record.device.technologyFamily !== filters.technology
+  )
+    return false;
   if (
     filters.material !== "all" &&
     record.device.materialFamily !== filters.material
@@ -363,6 +371,7 @@ export function parseAtlasFilters(
     plotY = plotX === "detectivity" ? "wavelength" : "detectivity";
   return {
     search: params.get("q")?.trim() ?? "",
+    technology: oneOf(params.get("technology"), TECHNOLOGY_FAMILIES),
     material: params.get("material")?.trim() || "all",
     wavelengthMin: finiteNumber(params.get("wavelengthMin")),
     wavelengthMax: finiteNumber(params.get("wavelengthMax")),
@@ -453,6 +462,7 @@ export function serializeAtlasFilters(
 ): URLSearchParams {
   const params = new URLSearchParams(existing);
   setOrDelete(params, "q", filters.search.trim());
+  setOrDelete(params, "technology", filters.technology);
   setOrDelete(params, "material", filters.material);
   setOrDelete(params, "wavelengthMin", filters.wavelengthMin);
   setOrDelete(params, "wavelengthMax", filters.wavelengthMax);
@@ -511,6 +521,7 @@ export function serializeAtlasFilters(
 export function countActiveFilters(filters: AtlasFilterState): number {
   return (
     Number(Boolean(filters.search.trim())) +
+    Number(filters.technology !== "all") +
     Number(filters.material !== "all") +
     Number(filters.wavelengthMin !== undefined) +
     Number(filters.wavelengthMax !== undefined) +
@@ -543,6 +554,15 @@ export function materialOptions(records: readonly AtlasRecord[]): string[] {
   return [...new Set(records.map((record) => record.device.materialFamily))]
     .filter(Boolean)
     .sort((left, right) => left.localeCompare(right));
+}
+
+export function technologyOptions(
+  records: readonly AtlasRecord[],
+): Array<(typeof TECHNOLOGY_FAMILIES)[number]> {
+  const present = new Set(
+    records.map((record) => record.device.technologyFamily),
+  );
+  return TECHNOLOGY_FAMILIES.filter((family) => present.has(family));
 }
 
 export function yearOptions(records: readonly AtlasRecord[]): number[] {

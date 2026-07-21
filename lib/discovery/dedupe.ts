@@ -94,6 +94,8 @@ export function mergeExactCandidate(
   existing: DiscoveryCandidate,
   incoming: DiscoveryCandidate,
 ): DiscoveryCandidate {
+  const preserveAcquiredLocation =
+    existing.pdfStatus === "acquired" && Boolean(existing.openAccessPdfUrl);
   return {
     ...existing,
     doi: existing.doi ?? incoming.doi,
@@ -107,9 +109,12 @@ export function mergeExactCandidate(
     openAlexId: existing.openAlexId ?? incoming.openAlexId,
     crossrefMetadata: incoming.crossrefMetadata ?? existing.crossrefMetadata,
     publicationUrl: existing.publicationUrl ?? incoming.publicationUrl,
-    openAccessPdfUrl: existing.openAccessPdfUrl ?? incoming.openAccessPdfUrl,
-    openAccessPdfSource:
-      existing.openAccessPdfSource ?? incoming.openAccessPdfSource,
+    openAccessPdfUrl: preserveAcquiredLocation
+      ? existing.openAccessPdfUrl
+      : (incoming.openAccessPdfUrl ?? existing.openAccessPdfUrl),
+    openAccessPdfSource: preserveAcquiredLocation
+      ? existing.openAccessPdfSource
+      : (incoming.openAccessPdfSource ?? existing.openAccessPdfSource),
     discoverySources: union(
       existing.discoverySources,
       incoming.discoverySources,
@@ -122,6 +127,10 @@ export function mergeExactCandidate(
     discoveryMethods: union(
       existing.discoveryMethods,
       incoming.discoveryMethods,
+    ),
+    technologyFamilies: union(
+      existing.technologyFamilies ?? ["cqd"],
+      incoming.technologyFamilies ?? ["cqd"],
     ),
     candidateMaterialClasses: union(
       existing.candidateMaterialClasses,

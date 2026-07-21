@@ -6,11 +6,13 @@ import { SiteShell } from "@/components/SiteShell";
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "Scope, record structure, noise classifications, recommended measurement literature, and curation policy for the CQD Photodiode Atlas.",
+    "Scope, record structure, noise classifications, and curation policy for the CQD and perovskite Photodiode Atlas.",
 };
 
 const includedRecords = [
-  "Experimental colloidal quantum-dot photodiodes reported in peer-reviewed papers, plus clearly identified preprints.",
+  "Experimental solution-processed colloidal quantum-dot photodiodes.",
+  "Experimental metal-halide perovskite photodiodes, including 3D, 2D, quasi-2D, mixed-halide, lead, tin, and lead-free absorbers.",
+  "Peer-reviewed primary papers and clearly identified preprints.",
   "Measurements for which a specific detectivity and measurement wavelength can be identified.",
   "Distinct operating points from the same device when the publication reports them separately.",
 ];
@@ -18,14 +20,15 @@ const includedRecords = [
 const excludedRecords = [
   "Photoconductors, photoresistors, phototransistors, and bolometers.",
   "Focal-plane-array reports without an extractable photodiode measurement.",
-  "Epitaxial quantum-dot detectors and non-CQD perovskite thin films.",
+  "Epitaxial or self-assembled quantum-dot detectors.",
+  "Perovskite solar cells, LEDs, photoconductors, and phototransistors without an extractable junction-photodiode measurement.",
   "Theoretical devices without an experimental photodiode.",
   "Comparison values copied from another paper; those values belong to the original source record.",
 ];
 
 const greenCriteria = [
   "A human curator has reviewed the record.",
-  "The value clearly belongs to a CQD photodiode.",
+  "The value clearly belongs to an in-scope CQD or perovskite photodiode.",
   "Detectivity and wavelength are explicitly identifiable.",
   "The value does not use a shot-noise approximation.",
   "A lock-in amplifier was not the sole noise-acquisition method.",
@@ -49,21 +52,23 @@ export default function MethodologyPage() {
             <p className="eyebrow">Methods &amp; inclusion policy</p>
             <h1>How records enter the atlas</h1>
             <p className="prose-lede">
-              The CQD Photodiode Atlas is a curated index of published specific
-              detectivity measurements. Its unit of comparison is a measurement,
-              with the publication and device context preserved around it.
+              The Photodiode Atlas is a curated index of published specific
+              detectivity measurements for colloidal quantum-dot and
+              metal-halide perovskite photodiodes. Its unit of comparison is a
+              measurement, with the publication and device context preserved
+              around it.
             </p>
           </header>
 
           <section aria-labelledby="scope-heading">
             <h2 id="scope-heading">Scientific scope</h2>
             <p>
-              For this database, a <dfn>CQD photodiode</dfn> is an experimental
-              diode-like photodetector whose light-absorbing semiconductor is
-              made from solution-processed colloidal quantum dots and whose
-              reported operation is based on a rectifying or photovoltaic
-              junction. A record must report specific detectivity, D<sup>*</sup>
-              , in Jones (cm Hz<sup>1/2</sup> W<sup>−1</sup>).
+              An in-scope device is an experimental diode-like photodetector
+              whose absorber is either solution-processed colloidal quantum dots
+              or a metal-halide perovskite, and whose operation is based on a
+              rectifying or photovoltaic junction. A record must report specific
+              detectivity, D<sup>*</sup>, in Jones (cm Hz
+              <sup>1/2</sup> W<sup>−1</sup>).
             </p>
 
             <div className="method-grid">

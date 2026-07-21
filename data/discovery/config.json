@@ -1,5 +1,41 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "defaultProfile": "cqd",
+  "profiles": {
+    "perovskite": {
+      "label": "Metal-halide perovskites",
+      "technologyFamily": "perovskite",
+      "terminology": "perovskite",
+      "materialTerms": [
+        "MAPbI3",
+        "MAPbBr3",
+        "MAPbCl3",
+        "FAPbI3",
+        "FAPbBr3",
+        "CsPbBr3",
+        "CsPbI3",
+        "Cs2AgBiBr6",
+        "mixed Pb-Sn perovskite",
+        "mixed-halide perovskite",
+        "quasi-2D perovskite",
+        "metal-halide perovskite"
+      ],
+      "queries": [
+        "\"perovskite photodiode\" detectivity",
+        "\"perovskite photodiodes\" detectivity",
+        "\"metal halide perovskite\" photodiode detectivity",
+        "\"hybrid perovskite photodetector\" detectivity",
+        "\"perovskite photodetector\" \"p-i-n\" detectivity",
+        "\"multidimensional perovskite\" photodiode detectivity",
+        "\"vacuum-deposited perovskite photodiode\" detectivity",
+        "\"narrowband perovskite photodiode\" detectivity",
+        "MAPbI3 photodiode detectivity",
+        "FAPbI3 photodiode detectivity",
+        "CsPbBr3 photodiode detectivity",
+        "\"lead-free perovskite\" photodiode detectivity"
+      ]
+    }
+  },
   "openAlex": {
     "baseUrl": "https://api.openalex.org",
     "mailto": "shlokjpaul@gmail.com",
@@ -12,6 +48,11 @@
     "mailto": "shlokjpaul@gmail.com",
     "minimumRequestIntervalMs": 120
   },
+  "unpaywall": {
+    "baseUrl": "https://api.unpaywall.org/v2",
+    "email": "shlokjpaul@gmail.com",
+    "minimumRequestIntervalMs": 120
+  },
   "materialTerms": [
     "HgTe",
     "PbS",
@@ -20,12 +61,17 @@
     "Ag2Te",
     "InAs",
     "InSb",
+    "HgCdSe",
+    "Cd3P2",
+    "AgBiS2",
+    "In(As,P)",
     "III-V quantum dot",
     "heavy-metal-free quantum dot"
   ],
   "deviceTerms": [
     "photodiode",
     "photodetector",
+    "photovoltaic detector",
     "infrared detector",
     "image sensor",
     "imager",
@@ -41,19 +87,23 @@
     "MWIR"
   ],
   "queries": [
-    "\"colloidal quantum dot\" infrared photodiode",
-    "\"colloidal quantum dot\" infrared photodetector",
-    "nanocrystal infrared photodiode",
-    "\"quantum dot imager\" infrared",
-    "HgTe colloidal quantum dot infrared photodiode",
-    "PbS colloidal quantum dot infrared photodiode",
-    "PbSe colloidal quantum dot infrared photodiode",
-    "Ag2Se colloidal quantum dot infrared photodiode",
-    "Ag2Te colloidal quantum dot infrared photodiode",
-    "InAs colloidal quantum dot infrared photodiode",
-    "InSb colloidal quantum dot infrared photodiode",
-    "III-V colloidal quantum dot infrared photodetector",
-    "heavy-metal-free colloidal quantum dot infrared photodetector"
+    "\"colloidal quantum dot\" photodiode detectivity",
+    "\"colloidal quantum dot\" photodetector detectivity",
+    "\"colloidal nanocrystal\" photodiode detectivity",
+    "\"colloidal nanocrystal\" photodetector detectivity",
+    "\"solution-processed quantum dot\" photodiode detectivity",
+    "\"CQD photodiode\" detectivity",
+    "\"CQD photodetector\" detectivity",
+    "\"colloidal quantum dot\" \"photovoltaic detector\" detectivity",
+    "\"quantum dot imager\" detectivity",
+    "\"quantum dot focal plane array\" detectivity",
+    "\"colloidal quantum dot diode\" photodetection detectivity",
+    "\"silver telluride quantum dot\" photodetector detectivity",
+    "\"silver selenide quantum dot\" photodetector detectivity",
+    "AgBiS2 CQD photodetector detectivity",
+    "HgCdSe quantum dot photodetector detectivity",
+    "Cd3P2 quantum dot photodiode detectivity",
+    "InAsP colloidal quantum dot photodiode detectivity"
   ],
   "ranking": {
     "fuzzyTitleThreshold": 0.94,
@@ -75,5 +125,11 @@
       "nonColloidalQuantumDots": -30,
       "nonPrimaryRecord": -35
     }
+  },
+  "reviewPreparation": {
+    "defaultLimit": 5,
+    "minimumRelevanceScore": 70,
+    "allowMediumAtlasFit": true,
+    "excludePossibleDuplicates": true
   }
 }

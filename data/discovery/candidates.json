@@ -1,7 +1,57 @@
 {
   "schemaVersion": 1,
-  "configVersion": "1.0.0",
+  "configVersion": "1.1.0",
   "candidates": [
+    {
+      "candidateId": "candidate-200124f7fc00026f",
+      "doi": "10.1063/5.0332150",
+      "normalizedDoi": "10.1063/5.0332150",
+      "title": "Hot-assisted spin-coating for ultrasmooth PbS colloidal quantum dot film in high-performance NIR photodetectors",
+      "normalizedTitle": "hot assisted spin coating for ultrasmooth pbs colloidal quantum dot film in high performance nir photodetectors",
+      "authors": [
+        "Xuanyue Huang",
+        "Jiaming Yi",
+        "Feng Yang",
+        "Hongxing Li",
+        "Kai Huang"
+      ],
+      "publicationYear": 2026,
+      "journal": "Applied Physics Letters",
+      "abstract": "Lead sulfide (PbS) colloidal quantum dots (CQDs) exhibit significant promise for near-infrared (NIR) photodetectors owing to their size-tunable bandgap and facile solution processability. However, with increasing PbS CQD size, a higher fraction of nonpolar (100) facets is exposed, thereby increasing their susceptibility to agglomeration during both synthesis and film formation, which degrades photodetection performance. Here, we develop a hot-assisted spin-coating technique that precisely regulates the evaporation kinetics of the mixed solvent, enabling single-step deposition of smooth, densely packed CQD films. When performed at 60 °C, this method yields an ultrasmooth film with a root mean square roughness of only 0.947 nm. The resulting p-i-n photodiode exhibits outstanding performance at 1350 nm: a specific detectivity (D*) exceeding 2.5×1011 Jones, a responsivity (R) of 0.21 A/W, and a −3 dB bandwidth of ∼92 kHz. Additionally, the device demonstrates its ability to faithfully resolve fine arterial pulse features under NIR illumination, highlighting its promise for high-sensitivity, real-time NIR photodetection and practical integration into wearable biomedical sensors.",
+      "openAlexId": "https://openalex.org/W7168170140",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1063/5.0332150",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodiode detectivity",
+        "\"colloidal quantum dot\" photodetector detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "candidateMaterialClasses": ["PbS"],
+      "candidateDeviceType": "photodiode",
+      "candidateSpectralRegions": ["NIR"],
+      "relevanceScore": 92,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Configured material: PbS",
+        "Detector terminology: photodiode, photodetector",
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity, responsivity, bandwidth",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "requested",
+      "importStatus": "queued",
+      "dateDiscovered": "2026-07-21",
+      "lastMetadataRefresh": "2026-07-21T14:05:57.617Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
     {
       "candidateId": "candidate-402fe0a019b37726",
       "doi": "10.1021/acs.nanolett.5c04477",
@@ -47,10 +97,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "not-checked",
-      "importStatus": "not-started",
+      "pdfStatus": "requested",
+      "importStatus": "queued",
       "dateDiscovered": "2026-07-20",
-      "lastMetadataRefresh": "2026-07-20T01:00:27.566Z",
+      "lastMetadataRefresh": "2026-07-21T14:05:57.862Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -160,6 +210,65 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-976a350adfd5cf7a",
+      "doi": "10.1021/acs.nanolett.6c02200.s001",
+      "normalizedDoi": "10.1021/acs.nanolett.6c02200.s001",
+      "title": "Surface-NeutralizedHgCdSe Quantum Dots for High-DetectivityInfrared Photodetectors",
+      "normalizedTitle": "surface neutralizedhgcdse quantum dots for high detectivityinfrared photodetectors",
+      "authors": [
+        "Won Suk Lee",
+        "Su Hwan Lee",
+        "Sang Hyun Nam",
+        "Min‐Jae Si",
+        "Se‐Woong Baek",
+        "Young-Hoon Kim (286883)",
+        "Andrew M. Smith (251118)"
+      ],
+      "publicationYear": 2026,
+      "journal": "Figshare",
+      "abstract": "Infrared (IR) photodetectors used in advanced imaging and sensing applications rely on epitaxially grown semiconductors that are expensive to manufacture. Colloidal quantum dots (QDs) offer lower-cost production, with substantial progress using PbS and HgTe QDs. HgSe and HgCdSe QDs offer wide spectral tunability, higher absorption coefficients, and air stability, but their inherent n-type doping has hindered their use. Here, we show that n-type doping can be depleted by neutralizing nanocrystal surfaces by displacing surface metal cations acting as Z-type ligands. Heating with alkanethiols yields QDs coated with protonated thiols and with unfilled conduction bands. Surface-neutralized HgSe and HgCdSe QDs exhibit sharp excitonic absorption features at IR wavelengths up to ∼1700 nm. Photodiodes fabricated from HgCdSe QDs have a room-temperature specific detectivity of 1.4 × 10<sup>12</sup> Jones at 1355 nm, attributable to suppressed doping and low dark current. These air-stable, broadly tunable materials with strong IR absorption may enable low-cost IR sensors.",
+      "openAlexId": "https://openalex.org/W7167808939",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://figshare.com/articles/journal_contribution/Surface-Neutralized_HgCdSe_Quantum_Dots_for_High-Detectivity_Infrared_Photodetectors/32927455",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodiode detectivity",
+        "\"colloidal quantum dot\" photodetector detectivity",
+        "HgCdSe quantum dot photodetector detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "candidateMaterialClasses": ["HgTe", "PbS", "HgCdSe"],
+      "candidateDeviceType": "photodiode",
+      "candidateSpectralRegions": ["infrared"],
+      "relevanceScore": 92,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Configured material: HgTe, PbS, HgCdSe",
+        "Detector terminology: photodiode, photodetector",
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity, dark current",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "not-checked",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-07-21",
+      "lastMetadataRefresh": "2026-07-21T14:05:55.631Z",
+      "duplicateRelationships": [
+        {
+          "candidateId": "candidate-4dcf2144ba227b10",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        }
+      ],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-f0290c7275301699",
       "doi": "10.1002/adom.202002066",
       "normalizedDoi": "10.1002/adom.202002066",
@@ -266,6 +375,55 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-133a8d2e98a39129",
+      "doi": "10.60893/figshare.apl.c.8424939",
+      "normalizedDoi": "10.60893/figshare.apl.c.8424939",
+      "title": "<strong>Hot-Assisted </strong><strong>Spin-Coating</strong><strong> for Ultras</strong><strong>mooth</strong><strong> </strong><strong>PbS</strong><strong> Colloidal</strong><strong> </strong><strong>Quantum Dot Film</strong><strong> </strong><strong>in </strong><strong>High-Performance</strong><strong> </strong><strong>NIR Photodetectors</strong>",
+      "normalizedTitle": "strong hot assisted strong strong spin coating strong strong for ultras strong strong mooth strong strong strong strong pbs strong strong colloidal strong strong strong strong quantum dot film strong strong strong strong in strong strong high performance strong strong strong strong nir photodetectors strong",
+      "authors": [
+        "Feng Yang",
+        "Kai Huang",
+        "Hongxing Li",
+        "Jiaming Yi",
+        "Xuanyue Huang"
+      ],
+      "publicationYear": 2026,
+      "journal": "AIP Publishing",
+      "abstract": "Lead sulfide (PbS) colloidal quantum dots (CQDs) exhibit significant promise for near-infrared (NIR) photodetectors owing to their size-tunable bandgap and facile solution processability. However, with increasing PbS CQD size, a higher fraction of nonpolar (100) facets is exposed, thereby increasing their susceptibility to agglomeration during both synthesis and film formation, which degrades photodetection performance. Here, we develop a hot-assisted spin-coating technique that precisely regulate the evaporation kinetics of the mixed solvent, enabling single-step deposition of smooth, densely packed CQD films. When performed at 60 {degree sign}C, this method yields an ultrasmooth film with a root-mean-square (RMS) roughness of only 0.947 nm. The resulting p-i-n photodiode exhibits outstanding performance at 1350 nm: a specific detectivity (D*) exceeding 2.5×10<sup>11</sup> Jones, a responsivity (R) of 0.21 A/W, and a -3dB bandwidth of ~92 kHz. Additionally, the device demonstrates its ability to faithfully resolve fine arterial pulse features under NIR illumination, highlighting its promise for high-sensitivity, real-time NIR photodetection and practical integration into wearable biomedical sensors.",
+      "openAlexId": "https://openalex.org/W7168129163",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.60893/figshare.apl.c.8424939",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodiode detectivity",
+        "\"colloidal quantum dot\" photodetector detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "candidateMaterialClasses": ["PbS"],
+      "candidateDeviceType": "photodiode",
+      "candidateSpectralRegions": ["NIR"],
+      "relevanceScore": 84,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Configured material: PbS",
+        "Detector terminology: photodiode, photodetector",
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity, responsivity, bandwidth"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "requested",
+      "importStatus": "queued",
+      "dateDiscovered": "2026-07-21",
+      "lastMetadataRefresh": "2026-07-21T14:05:58.098Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-4dcf2144ba227b10",
       "doi": "10.26434/chemrxiv.15001251/v1",
       "normalizedDoi": "10.26434/chemrxiv.15001251/v1",
@@ -310,7 +468,13 @@
       "importStatus": "not-started",
       "dateDiscovered": "2026-07-20",
       "lastMetadataRefresh": "2026-07-20T01:00:27.566Z",
-      "duplicateRelationships": [],
+      "duplicateRelationships": [
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        }
+      ],
       "manualOverrides": {}
     },
     {
@@ -679,10 +843,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-07-20",
-      "lastMetadataRefresh": "2026-07-20T01:00:27.566Z",
+      "lastMetadataRefresh": "2026-07-21T14:05:57.426Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -1207,6 +1371,52 @@
       "importStatus": "not-started",
       "dateDiscovered": "2026-07-20",
       "lastMetadataRefresh": "2026-07-20T01:00:27.566Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
+      "candidateId": "candidate-2c70f75a7914d329",
+      "doi": "10.1038/s43246-026-01276-w",
+      "normalizedDoi": "10.1038/s43246-026-01276-w",
+      "title": "Ultraviolet-light-induced photoresponse by nitrogen enriched nanoporous polytriazine",
+      "normalizedTitle": "ultraviolet light induced photoresponse by nitrogen enriched nanoporous polytriazine",
+      "authors": [
+        "Tanya Gupta",
+        "Akshaykumar Salunke",
+        "Santanu Pradhan",
+        "Vivek K. Malik",
+        "Paritosh Mohanty"
+      ],
+      "publicationYear": 2026,
+      "journal": "Communications Materials",
+      "abstract": "This work demonstrates the use of a simple organic polymeric framework material to fabricate prototype photodetector devices that measure UV intensity and the UV index with high precision and efficiency. Fast ultraviolet (UV, 390 nm) photodetection with rise/fall times of 11/9 µs, respectively, by organic photodetector (OPD) fabricated using nitrogen-enriched nanoporous polytriazine (NENP) is reported. Electronic and structural modulation by treating NENP at various pH has improved optoelectronic performance. NENP treated at pH 3 has shown the best performance with excellent responsivity and specific detectivity of 108.36 A W−1 and 1.3 × 1012 Jones, respectively at −10 V voltage bias with 1.9 µW mm−2 incident optical power density. This superior photo-response could be attributed to protonation-induced modifications in electronic structure of polymer, rendering exciton dissociation, higher carrier mobility, and reduced trapping density within nanoporous structure. High photostability of ~45 days of continuous UV exposure without any noticeable degradation of material or performance, highlights its potential as next-generation UV OPD. Based on this, a portable PD prototype has been fabricated, which further drives the technology towards industrial production of UV OPD. Ultraviolet photodetection is critical for monitoring UV radiation in environmental sensing, biomedical research, and space exploration. Here, the authors demonstrate rapid ultraviolet (390 nm) photodetection using an organic photodetector incorporating nitrogen-enriched nanoporous polytriazine.",
+      "openAlexId": "https://openalex.org/W7168182354",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1038/s43246-026-01276-w",
+      "openAccessPdfUrl": "https://www.nature.com/articles/s43246-026-01276-w_reference.pdf",
+      "openAccessPdfSource": "Communications Materials",
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodetector detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "candidateMaterialClasses": [],
+      "candidateDeviceType": "photodetector",
+      "candidateSpectralRegions": [],
+      "relevanceScore": 36,
+      "relevanceReasons": [
+        "Detector terminology: photodetector",
+        "Performance metrics: detectivity, responsivity",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "available",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-07-21",
+      "lastMetadataRefresh": "2026-07-21T14:05:53.782Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },

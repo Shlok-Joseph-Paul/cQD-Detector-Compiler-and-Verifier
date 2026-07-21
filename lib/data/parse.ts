@@ -11,6 +11,7 @@ import {
   NOISE_METHODS,
   PUBLICATION_TYPES,
   RESPONSE_TIME_LIMITS,
+  TECHNOLOGY_FAMILIES,
   type AmberReason,
   type AtlasEntities,
   type CsvSourceRows,
@@ -39,6 +40,7 @@ export const PAPER_CSV_COLUMNS = [
 export const DEVICE_CSV_COLUMNS = [
   "device_id",
   "paper_id",
+  "technology_family",
   "material_family",
   "material_composition",
   "device_architecture",
@@ -519,6 +521,7 @@ function parseDevices(source: string): ParsedEntity<Device> {
     const device: Device = {
       device_id: read.requiredString("device_id"),
       paper_id: read.requiredString("paper_id"),
+      technology_family: read.oneOf("technology_family", TECHNOLOGY_FAMILIES),
       material_family: read.requiredString("material_family"),
       material_composition: read.nullableString("material_composition"),
       device_architecture: read.nullableString("device_architecture"),

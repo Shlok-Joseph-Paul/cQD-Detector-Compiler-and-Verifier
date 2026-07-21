@@ -6,6 +6,7 @@ import test from "node:test";
 import configJson from "../data/discovery/config.json" with { type: "json" };
 import {
   DiscoveryPipeline,
+  OpenAlexClient,
   acquireOpenAccessPdf,
   candidateFromOpenAlex,
   calculateRelevance,
@@ -183,6 +184,52 @@ test("relevance score is explainable and applies positive and negative signals",
   );
   assert.ok(negative.score < positive.score);
   assert.ok(negative.reasons.some((reason) => reason.includes("Review")));
+});
+
+test("relevance recognizes CQD chemistry aliases without treating every nanocrystal as colloidal", () => {
+  const cqd = calculateRelevance(
+    work({
+      title: "AgBiS <sub>2</sub> CQD photodetector with measured detectivity",
+      abstract_inverted_index: null,
+    }),
+    config,
+  );
+  assert.ok(cqd.materials.includes("AgBiS2"));
+  assert.ok(
+    cqd.reasons.some((reason) => reason.includes("Explicit colloidal")),
+  );
+
+  const generic = calculateRelevance(
+    work({
+      title: "Crystallization of binary nanocrystal superlattices",
+      abstract_inverted_index: null,
+    }),
+    config,
+  );
+  assert.equal(
+    generic.reasons.some((reason) => reason.includes("Explicit colloidal")),
+    false,
+  );
+});
+
+test("candidate creation falls back to a primary PDF when the best OA location has none", () => {
+  const value = candidateFromOpenAlex(
+    work({
+      best_oa_location: {
+        landing_page_url: "https://example.test/best",
+        source: { display_name: "Landing page only" },
+      },
+      primary_location: {
+        landing_page_url: "https://example.test/article",
+        pdf_url: "https://example.test/primary.pdf",
+        source: { display_name: "Primary repository" },
+      },
+    }),
+    config,
+    { method: "keyword" },
+  );
+  assert.equal(value?.openAccessPdfUrl, "https://example.test/primary.pdf");
+  assert.equal(value?.openAccessPdfSource, "Primary repository");
 });
 
 test("controlled screening, PDF, and import statuses are validated", () => {
@@ -459,6 +506,43 @@ test("malformed API payloads are rejected and rate-limited requests retry", asyn
   );
 });
 
+test("OpenAlex filter expansion follows configured cursor pages", async () => {
+  const cacheDirectory = await mkdtemp(
+    path.join(os.tmpdir(), "cqd-openalex-pagination-"),
+  );
+  let calls = 0;
+  const fetchImpl: typeof fetch = async (input) => {
+    calls += 1;
+    const cursor = new URL(String(input)).searchParams.get("cursor");
+    return new Response(
+      JSON.stringify(
+        cursor === "*"
+          ? {
+              results: [work({ id: "https://openalex.org/W1" })],
+              meta: { next_cursor: "page-2" },
+            }
+          : {
+              results: [work({ id: "https://openalex.org/W2" })],
+              meta: { next_cursor: null },
+            },
+      ),
+      { status: 200, headers: { "content-type": "application/json" } },
+    );
+  };
+  const client = new OpenAlexClient(
+    { ...config, openAlex: { ...config.openAlex, maxPagesPerQuery: 3 } },
+    cacheDirectory,
+    false,
+    fetchImpl,
+  );
+  const works = await client.worksByFilter("cites:W-SEED");
+  assert.deepEqual(
+    works.map((item) => item.id),
+    ["https://openalex.org/W1", "https://openalex.org/W2"],
+  );
+  assert.equal(calls, 2);
+});
+
 test("open-access acquisition accepts verified PDFs and rejects non-PDF responses", async () => {
   const cacheDirectory = await mkdtemp(
     path.join(os.tmpdir(), "cqd-pdf-acquisition-"),
@@ -487,6 +571,20 @@ test("open-access acquisition accepts verified PDFs and rejects non-PDF response
       acquireOpenAccessPdf("https://example.test/not-a-pdf", cacheDirectory, {
         fetchImpl: htmlFetch,
       }),
+    /did not return a PDF/,
+  );
+  const misleadingPdfFetch: typeof fetch = async () =>
+    new Response("<html>not a PDF</html>", {
+      status: 200,
+      headers: { "content-type": "application/pdf" },
+    });
+  await assert.rejects(
+    () =>
+      acquireOpenAccessPdf(
+        "https://example.test/misleading.pdf",
+        cacheDirectory,
+        { fetchImpl: misleadingPdfFetch },
+      ),
     /did not return a PDF/,
   );
   await assert.rejects(

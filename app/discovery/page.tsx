@@ -14,7 +14,7 @@ import type { ProposalRegistry } from "@/lib/discovery/proposal-types";
 export const metadata: Metadata = {
   title: "Discovery Queue",
   description:
-    "A reproducible, human-screened candidate-paper registry for the CQD Photodiode Atlas.",
+    "A reproducible, human-screened candidate-paper registry for the Photodiode Atlas.",
 };
 
 export default function DiscoveryPage() {
@@ -34,15 +34,16 @@ export default function DiscoveryPage() {
             <p className="eyebrow">Literature discovery</p>
             <h1>Discovery Queue</h1>
             <p>
-              Candidate CQD infrared-detector papers found through reproducible
-              keyword and citation-graph searches, ranked for human review.
+              Candidate CQD and perovskite photodiode papers found through
+              reproducible keyword and citation-graph searches, ranked for human
+              review.
             </p>
           </div>
           <aside>
             <strong>Screening is not publication.</strong>
             <p>
               Candidates remain separate from the curated atlas. Inclusion
-              requires a human decision and the existing CQD Paper Importer
+              requires a human decision and the evidence-linked paper importer
               workflow.
             </p>
           </aside>

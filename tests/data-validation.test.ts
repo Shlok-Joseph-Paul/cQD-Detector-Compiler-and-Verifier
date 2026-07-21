@@ -33,6 +33,7 @@ const paper: Paper = {
 const device: Device = {
   device_id: "device-1",
   paper_id: paper.paper_id,
+  technology_family: "cqd",
   material_family: "Test CQD",
   material_composition: null,
   device_architecture: "Test photodiode",
@@ -88,7 +89,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 3);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 65);
+  assert.equal(atlas.measurements.length, 66);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.ok(
     atlas.records.every(

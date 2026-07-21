@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "dataset_version": "1.4.0",
-  "generated_at": "2026-07-20T00:00:00.000Z",
+  "generated_at": "2026-07-21T00:00:00.000Z",
   "papers": [
     {
       "paper_id": "wang-2025-ag2te-lidar",
@@ -935,12 +935,32 @@
       "publication_type": "journal_article",
       "peer_reviewed": true,
       "notes": "Heavy-metal-free In(As,P) CQD photodiodes spanning approximately 1140–1400 nm."
+    },
+    {
+      "paper_id": "huang-2026-pbs-hot-spin",
+      "title": "Hot-assisted spin-coating for ultrasmooth PbS colloidal quantum dot film in high-performance NIR photodetectors",
+      "authors": [
+        "Xuanyue Huang",
+        "Jiaming Yi",
+        "Feng Yang",
+        "Hongxing Li",
+        "Kai Huang"
+      ],
+      "first_author": "Xuanyue Huang",
+      "journal": "Applied Physics Letters",
+      "publication_year": 2026,
+      "doi": "10.1063/5.0332150",
+      "publication_url": "https://doi.org/10.1063/5.0332150",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Champion hot-assisted spin-coated PbS CQD photodiode curated; the room-temperature control was excluded by curator choice. Supporting Information was not supplied."
     }
   ],
   "devices": [
     {
       "device_id": "wang-2025-ag2te-device",
       "paper_id": "wang-2025-ag2te-lidar",
+      "technology_family": "cqd",
       "material_family": "Ag2Te",
       "material_composition": "Ag2Te CQDs with AgNO3 and EDT surface treatment",
       "device_architecture": "Vertical SWIR photodiode",
@@ -951,6 +971,7 @@
     {
       "device_id": "song-2024-ag-hgte-device",
       "paper_id": "song-2024-ag-hgte",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "n-type EDT/HCl-treated HgTe CQDs with a 10.5 at.% Ag CTAB-treated p-type Ag-HgTe alloy CQD layer",
       "device_architecture": "Self-powered vertical p-n CQD photodiode",
@@ -961,6 +982,7 @@
     {
       "device_id": "dang-2023-grid-device",
       "paper_id": "dang-2023-multiresonant-grating",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "HgTe colloidal quantum dots",
       "device_architecture": "Vertical photovoltaic photodiode with a multiresonant 2D gold-grid electrode",
@@ -971,6 +993,7 @@
     {
       "device_id": "vafaie-2021-pbs-device",
       "paper_id": "vafaie-2021-pbs-fast",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "Halide-passivated PbS CQDs with EDT-treated PbS hole-transport layer",
       "device_architecture": "Vertical SWIR photodiode",
@@ -981,6 +1004,7 @@
     {
       "device_id": "paul-2025-ag2se-device",
       "paper_id": "paul-2025-ag2se",
+      "technology_family": "cqd",
       "material_family": "Ag2Se",
       "material_composition": "SPLE-processed Ag2Se CQDs",
       "device_architecture": "Self-powered vertical photodiode",
@@ -991,6 +1015,7 @@
     {
       "device_id": "molnas-2024-pbs-ase-device",
       "paper_id": "molnas-2024-pbs-ase",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "PbS CQDs coupled to amorphous selenium",
       "device_architecture": "Vertical hybrid photodiode",
@@ -1001,6 +1026,7 @@
     {
       "device_id": "liu-2022-pbs-device",
       "paper_id": "liu-2022-pbs-imager",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "Halide-passivated PbS CQDs with an EDT-treated PbS interlayer",
       "device_architecture": "Top-illuminated vertical photodiode",
@@ -1011,6 +1037,7 @@
     {
       "device_id": "shin-2024-inas-device",
       "paper_id": "shin-2024-inas-extended-absorber",
+      "technology_family": "cqd",
       "material_family": "InAs",
       "material_composition": "InBr3-passivated InAs CQDs with a 290 nm optimized absorber",
       "device_architecture": "Vertical photodiode",
@@ -1021,6 +1048,7 @@
     {
       "device_id": "yang-2022-hgte-device",
       "paper_id": "yang-2022-hgte-ligand",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Monodisperse ligand-engineered HgTe CQDs",
       "device_architecture": "p-on-n vertical photodiode",
@@ -1031,6 +1059,7 @@
     {
       "device_id": "wang-2024-hgte-device",
       "paper_id": "wang-2024-hgte-top-imager",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "HgTe CQDs with a blended HgTe/Ag2Te p-type layer",
       "device_architecture": "Top-illuminated n-on-p vertical photodiode",
@@ -1041,6 +1070,7 @@
     {
       "device_id": "rastogi-2022-hgte-device",
       "paper_id": "rastogi-2022-cdse-hgte-ag2te",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "CdSe/HgTe/Ag2Te CQD stack",
       "device_architecture": "Vertical extended-SWIR photodiode",
@@ -1051,6 +1081,7 @@
     {
       "device_id": "paul-2025-hgte-device",
       "paper_id": "paul-2025-hgte-transparent-electrode",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "HgTe CQDs with Ag2Te hole-transport layer",
       "device_architecture": "Top-illuminated vertical photodiode",
@@ -1061,6 +1092,7 @@
     {
       "device_id": "yu-2024-hgte-me4pacz-device",
       "paper_id": "yu-2024-hgte-sam",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Se-capped HgTe absorber with an Ag:HgTe hole-transport layer and Me-4PACz interface",
       "device_architecture": "Top-illuminated n-on-p vertical photodiode",
@@ -1071,6 +1103,7 @@
     {
       "device_id": "yu-2024-hgte-bare-device",
       "paper_id": "yu-2024-hgte-sam",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Se-capped HgTe absorber with an Ag:HgTe hole-transport layer",
       "device_architecture": "Top-illuminated n-on-p vertical photodiode",
@@ -1081,6 +1114,7 @@
     {
       "device_id": "wang-2023-pbs-oxidized-device",
       "paper_id": "wang-2023-pbs-oxidation",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "Halide-passivated PbS absorber with a controlled-oxidation PbS-EDT hole-transport layer",
       "device_architecture": "p-on-n vertical photodiode",
@@ -1091,6 +1125,7 @@
     {
       "device_id": "wang-2023-pbs-control-device",
       "paper_id": "wang-2023-pbs-oxidation",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "Halide-passivated PbS absorber with an untreated PbS-EDT hole-transport layer",
       "device_architecture": "p-on-n vertical photodiode",
@@ -1101,6 +1136,7 @@
     {
       "device_id": "chen-2014-hgte-plasmonic-device",
       "paper_id": "chen-2014-hgte-au-nanorods",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Aqueous thioglycerol-capped HgTe CQDs with embedded Au nanorods",
       "device_architecture": "HgTe CQD/ZnO heterojunction photodiode",
@@ -1111,6 +1147,7 @@
     {
       "device_id": "chen-2014-hgte-control-device",
       "paper_id": "chen-2014-hgte-au-nanorods",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Aqueous thioglycerol-capped HgTe CQDs",
       "device_architecture": "HgTe CQD/ZnO heterojunction photodiode",
@@ -1121,6 +1158,7 @@
     {
       "device_id": "ackerman-2020-hgte-2200-device",
       "paper_id": "ackerman-2020-hgte-eswir",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "HgCl2-treated and EDT/HCl-cross-linked HgTe CQDs with a 2.2 µm cutoff",
       "device_architecture": "Vertical eSWIR photodiode",
@@ -1131,6 +1169,7 @@
     {
       "device_id": "ackerman-2020-hgte-2500-device",
       "paper_id": "ackerman-2020-hgte-eswir",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "HgCl2-treated and EDT/HCl-cross-linked HgTe CQDs with a 2.5 µm cutoff",
       "device_architecture": "Vertical eSWIR photodiode",
@@ -1141,6 +1180,7 @@
     {
       "device_id": "ahn-2024-ag2te-mpa-device",
       "paper_id": "ahn-2024-ag2te-fast-eswir",
+      "technology_family": "cqd",
       "material_family": "Ag2Te",
       "material_composition": "MPA-exchanged Ag2Te CQDs",
       "device_architecture": "Vertical p-n photodiode",
@@ -1151,6 +1191,7 @@
     {
       "device_id": "peng-2024-insb-inp-device",
       "paper_id": "peng-2024-insb-inp",
+      "technology_family": "cqd",
       "material_family": "InSb",
       "material_composition": "InSb/InP core-shell CQDs with InI3 solid-state ligand exchange",
       "device_architecture": "Vertical SWIR photodiode",
@@ -1161,6 +1202,7 @@
     {
       "device_id": "muhammad-2023-insb-device",
       "paper_id": "muhammad-2023-insb-halide",
+      "technology_family": "cqd",
       "material_family": "InSb",
       "material_composition": "Halide-passivated InSb CQDs produced using ZnBr2-assisted synthesis",
       "device_architecture": "Vertical SWIR photodiode",
@@ -1171,6 +1213,7 @@
     {
       "device_id": "wang-2024-ag2te-main-device",
       "paper_id": "wang-2024-ag2te-imager",
+      "technology_family": "cqd",
       "material_family": "Ag2Te",
       "material_composition": "EDT-exchanged Ag2Te CQDs with an AgBiS2 nanocrystal buffer layer",
       "device_architecture": "Vertical broadband SWIR photodiode",
@@ -1181,6 +1224,7 @@
     {
       "device_id": "wang-2024-ag2te-1520-device",
       "paper_id": "wang-2024-ag2te-imager",
+      "technology_family": "cqd",
       "material_family": "Ag2Te",
       "material_composition": "Larger EDT-exchanged Ag2Te CQDs with a 1520 nm absorption peak and AgBiS2 buffer layer",
       "device_architecture": "Vertical SWIR photodiode",
@@ -1191,6 +1235,7 @@
     {
       "device_id": "chen-2023-hgte-pin-device",
       "paper_id": "chen-2023-hgte-universal-homojunction",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Remote-doped n-type intrinsic and p-type HgTe CQD inks",
       "device_architecture": "Normal p-i-n homojunction",
@@ -1201,6 +1246,7 @@
     {
       "device_id": "chen-2023-hgte-nip-device",
       "paper_id": "chen-2023-hgte-universal-homojunction",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Remote-doped p-type intrinsic and n-type HgTe CQD inks",
       "device_architecture": "Inverted n-i-p homojunction",
@@ -1211,6 +1257,7 @@
     {
       "device_id": "xue-2023-hgte-gradient-pin-device",
       "paper_id": "xue-2023-hgte-gradient-homojunction",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Gradient-doped HgTe CQDs with strong and weak n-type and p-type layers",
       "device_architecture": "Gradient p-i-n homojunction",
@@ -1221,6 +1268,7 @@
     {
       "device_id": "siddik-2025-inas-device",
       "paper_id": "siddik-2025-inas-cmos",
+      "technology_family": "cqd",
       "material_family": "InAs",
       "material_composition": "InBr3-treated InAs CQDs with CuI and PTB7-Th hole-transport layers",
       "device_architecture": "Vertical PIN heterojunction",
@@ -1231,6 +1279,7 @@
     {
       "device_id": "sheikh-2024-inas-znse-device",
       "paper_id": "sheikh-2024-inas-znse",
+      "technology_family": "cqd",
       "material_family": "InAs",
       "material_composition": "EDT-exchanged InAs/ZnSe core-shell colloidal nanorod quantum dots",
       "device_architecture": "Vertical photodiode",
@@ -1241,6 +1290,7 @@
     {
       "device_id": "sun-2022-inas-device",
       "paper_id": "sun-2022-inas-fast",
+      "technology_family": "cqd",
       "material_family": "InAs",
       "material_composition": "InBr3- and ammonium-acetate-treated InAs CQDs",
       "device_architecture": "Vertical photodiode",
@@ -1251,6 +1301,7 @@
     {
       "device_id": "device-798a7e0d2116-1",
       "paper_id": "paper-798a7e0d2116",
+      "technology_family": "cqd",
       "material_family": "Ag2Te",
       "material_composition": "Ag2Te",
       "device_architecture": "CQD photodiode; exact architecture requires curator confirmation",
@@ -1261,6 +1312,7 @@
     {
       "device_id": "lee-2026-hgcdse-qd2-device",
       "paper_id": "lee-2026-hgcdse-neutralized",
+      "technology_family": "cqd",
       "material_family": "HgCdSe",
       "material_composition": "Hg0.95Cd0.05Se QD(2) with optimized 80 °C DDT surface treatment",
       "device_architecture": "Vertical CQD photodiode",
@@ -1271,6 +1323,7 @@
     {
       "device_id": "lee-2026-hgcdse-qd1-device",
       "paper_id": "lee-2026-hgcdse-neutralized",
+      "technology_family": "cqd",
       "material_family": "HgCdSe",
       "material_composition": "Hg0.95Cd0.05Se QD(1) with room-temperature DDT surface treatment",
       "device_architecture": "Vertical CQD photodiode",
@@ -1281,6 +1334,7 @@
     {
       "device_id": "park-2026-inas-oldp-device",
       "paper_id": "park-2026-internal-field",
+      "technology_family": "cqd",
       "material_family": "InAs",
       "material_composition": "Optimized internal-field-tailored InAs CQDs with n-type and low- and high-doping-potential layers",
       "device_architecture": "Vertical CQD photodiode",
@@ -1291,6 +1345,7 @@
     {
       "device_id": "park-2026-inas-ldp-device",
       "paper_id": "park-2026-internal-field",
+      "technology_family": "cqd",
       "material_family": "InAs",
       "material_composition": "InAs CQDs with an LDP hole-transport layer",
       "device_architecture": "Vertical CQD photodiode",
@@ -1301,6 +1356,7 @@
     {
       "device_id": "park-2026-pbs-ldp-device",
       "paper_id": "park-2026-internal-field",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "PbS CQDs with an LDP hole-transport layer",
       "device_architecture": "Vertical CQD photodiode",
@@ -1311,6 +1367,7 @@
     {
       "device_id": "park-2026-pbs-hdp-device",
       "paper_id": "park-2026-internal-field",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "PbS CQDs with an HDP hole-transport layer",
       "device_architecture": "Vertical CQD photodiode",
@@ -1321,6 +1378,7 @@
     {
       "device_id": "huang-2026-cdte-hgte-edt-device",
       "paper_id": "huang-2026-cdte-hgte-htl",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Se:HgTe CQD absorber with an EDT-treated CdTe/HgTe core-shell CQD hole-transport layer",
       "device_architecture": "p-on-n CQD photodiode",
@@ -1331,6 +1389,7 @@
     {
       "device_id": "huang-2026-cdte-hgte-untreated-device",
       "paper_id": "huang-2026-cdte-hgte-htl",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Se:HgTe CQD absorber with an untreated CdTe/HgTe core-shell CQD hole-transport layer",
       "device_architecture": "p-on-n CQD photodiode",
@@ -1341,6 +1400,7 @@
     {
       "device_id": "xia-2025-pbse-1640-device",
       "paper_id": "xia-2025-pbse-mle",
+      "technology_family": "cqd",
       "material_family": "PbSe",
       "material_composition": "MLE-PbSe CQDs with an approximately 1640 nm excitonic peak",
       "device_architecture": "Vertical CQD photodiode",
@@ -1351,6 +1411,7 @@
     {
       "device_id": "xia-2025-pbse-2360-device",
       "paper_id": "xia-2025-pbse-mle",
+      "technology_family": "cqd",
       "material_family": "PbSe",
       "material_composition": "MLE-PbSe CQDs with an approximately 2360 nm excitonic peak",
       "device_architecture": "Vertical CQD photodiode",
@@ -1361,6 +1422,7 @@
     {
       "device_id": "hu-2025-hgte-dh-device",
       "paper_id": "hu-2025-hgte-double-heterojunction",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "Hybrid-ligand-capped HgTe CQDs between ZnO and ZnTe charge-transport layers",
       "device_architecture": "Double-heterojunction p-i-n CQD photodiode",
@@ -1371,6 +1433,7 @@
     {
       "device_id": "tran-2026-cd3p2-homojunction-device",
       "paper_id": "tran-2026-cd3p2-polarity",
+      "technology_family": "cqd",
       "material_family": "Cd3P2",
       "material_composition": "Cd3P2 CQD absorber with a p-type chloride-treated Cd3P2 CQD charge-selective layer",
       "device_architecture": "Cd3P2 CQD homojunction photodiode",
@@ -1381,6 +1444,7 @@
     {
       "device_id": "imran-2025-insb-device",
       "paper_id": "imran-2025-insb-metal-halide",
+      "technology_family": "cqd",
       "material_family": "InSb",
       "material_composition": "Resurfaced and ligand-exchanged InSb CQDs",
       "device_architecture": "n-i-p CQD photodiode",
@@ -1391,6 +1455,7 @@
     {
       "device_id": "kim-2026-inas-shape-device",
       "paper_id": "kim-2026-inas-shape-engineering",
+      "technology_family": "cqd",
       "material_family": "InAs",
       "material_composition": "Halide-passivated shape-engineered InAs CQD ink",
       "device_architecture": "Vertical CQD photodiode",
@@ -1401,6 +1466,7 @@
     {
       "device_id": "pi-2026-agbis2-mxene-device",
       "paper_id": "pi-2026-agbis2-mxene",
+      "technology_family": "cqd",
       "material_family": "AgBiS2",
       "material_composition": "TMAI-exchanged AgBiS2 CQDs with a ZnO/MXene electron-transport bilayer",
       "device_architecture": "Vertical CQD photodiode",
@@ -1411,6 +1477,7 @@
     {
       "device_id": "qin-2023-hgte-fpa-device",
       "paper_id": "qin-2023-hgte-planar-pn",
+      "technology_family": "cqd",
       "material_family": "HgTe",
       "material_composition": "CdCl2-treated HgTe CQD film with in situ electric-field-activated lateral doping",
       "device_architecture": "Planar p-n CQD photodiode focal-plane array",
@@ -1421,6 +1488,7 @@
     {
       "device_id": "deng-2026-pbs-1500-device",
       "paper_id": "deng-2026-pbs-bifunctional",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "n-PbS CQD absorber with EDT-treated p-PbS CQD layer",
       "device_architecture": "Vertical CQD photodiode",
@@ -1431,6 +1499,7 @@
     {
       "device_id": "deng-2026-pbs-50-device",
       "paper_id": "deng-2026-pbs-bifunctional",
+      "technology_family": "cqd",
       "material_family": "PbS",
       "material_composition": "n-PbS CQD absorber with EDT-treated p-PbS CQD layer",
       "device_architecture": "Vertical CQD photodiode",
@@ -1441,6 +1510,7 @@
     {
       "device_id": "leemans-2022-inasp-1140-device",
       "paper_id": "leemans-2022-inasp-swir",
+      "technology_family": "cqd",
       "material_family": "In(As,P)",
       "material_composition": "1140 nm band-edge n-type In(As,P) CQDs",
       "device_architecture": "Vertical CQD photodiode",
@@ -1451,6 +1521,7 @@
     {
       "device_id": "leemans-2022-inasp-1270-device",
       "paper_id": "leemans-2022-inasp-swir",
+      "technology_family": "cqd",
       "material_family": "In(As,P)",
       "material_composition": "1270 nm band-edge n-type In(As,P) CQDs",
       "device_architecture": "Vertical CQD photodiode",
@@ -1461,12 +1532,24 @@
     {
       "device_id": "leemans-2022-inasp-1400-device",
       "paper_id": "leemans-2022-inasp-swir",
+      "technology_family": "cqd",
       "material_family": "In(As,P)",
       "material_composition": "1400 nm band-edge n-type In(As,P) CQDs",
       "device_architecture": "Vertical CQD photodiode",
       "device_stack": "ITO / NiO / n-In(As,P) CQDs (~120 nm) / Nb:TiO2 nanoparticles / Al",
       "active_area_cm2": 0.13,
       "device_notes": "Device from the 1400 nm band-edge CQD series."
+    },
+    {
+      "device_id": "huang-2026-pbs-hsc60-device",
+      "paper_id": "huang-2026-pbs-hot-spin",
+      "technology_family": "cqd",
+      "material_family": "PbS",
+      "material_composition": "PbS CQDs with a halide/amine-exchanged intrinsic absorber and PbS@EDT hole-transport layer",
+      "device_architecture": "p-i-n CQD photodiode",
+      "device_stack": "glass / FTO / ZnO / intrinsic halide-exchanged PbS CQDs (~200 nm) / PbS@EDT / Au",
+      "active_area_cm2": null,
+      "device_notes": "Champion H-SC@60 °C device with approximately 0.947 nm absorber-film RMS roughness. The 60 °C value is the spin-coating temperature rather than the detector operating temperature."
     }
   ],
   "measurements": [
@@ -5081,6 +5164,61 @@
       "curator_notes": "The responsivity is reported at -4 V. The article does not unambiguously assign the detectivity values to a numeric bias in the supplied main text, so measurement bias is left blank. Keithley 2400 instruments were used for electrical characterization and a lock-in amplifier for EQE, not for noise measurement.",
       "date_added": "2026-07-20",
       "date_updated": "2026-07-20"
+    },
+    {
+      "measurement_id": "huang-2026-pbs-hsc60-1350-1hz",
+      "device_id": "huang-2026-pbs-hsc60-device",
+      "wavelength_nm": 1350,
+      "detectivity_jones": 250000000000,
+      "responsivity_a_w": 0.21,
+      "responsivity_wavelength_nm": 1350,
+      "responsivity_bias_v": null,
+      "responsivity_temperature_k": null,
+      "responsivity_source_location": "Main article PDF p. 6 and Figure 3b (PDF p. 5)",
+      "responsivity_extraction_method": "directly_reported",
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": 0,
+      "measurement_frequency_hz": 1,
+      "response_time_s": null,
+      "rise_time_s": null,
+      "fall_time_s": null,
+      "response_time_definition": null,
+      "response_time_wavelength_nm": null,
+      "response_time_bias_v": null,
+      "response_time_source_location": null,
+      "response_time_limit": null,
+      "response_time_extraction_method": null,
+      "bandwidth_hz": 92000,
+      "bandwidth_bias_v": 0,
+      "bandwidth_source_location": "Main article PDF pp. 5-6, Figure 3e",
+      "bandwidth_limit": "measured",
+      "bandwidth_extraction_method": "directly_reported",
+      "linear_dynamic_range_db": 97,
+      "linear_dynamic_range_min": null,
+      "linear_dynamic_range_max": null,
+      "linear_dynamic_range_units": null,
+      "linear_dynamic_range_definition": "20 log10(Pmax/Pmin); reported as >97 dB",
+      "linear_dynamic_range_source_location": "Main article PDF pp. 5-6, Figure 3d and accompanying text",
+      "linear_dynamic_range_extraction_method": "directly_reported",
+      "extended_metrics_review_status": "source_unavailable",
+      "extended_metrics_review_date": "2026-07-21",
+      "extended_metrics_notes": "Supporting Information was not supplied. The main article contains temporal traces but no numeric response, rise, or fall time; H-SC D* is described as both exceeding and approximately 2.5e11 Jones.",
+      "noise_method": "measured_noise",
+      "noise_instruments": [
+        "not_reported"
+      ],
+      "noise_instrument_details": "Measured 1/f noise spectrum from 0.05 to 50 Hz at zero bias; 9.18e-14 A Hz^-1/2 at 1 Hz. Acquisition instrument not identified in the supplied main article.",
+      "noise_instrument_source": "Main article PDF pp. 4-6, Figure 3a and accompanying text",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 5-6, Figure 3c and accompanying text",
+      "curator_status": "reviewed",
+      "flag": "green",
+      "amber_reasons": [],
+      "amber_explanation": null,
+      "curator_notes": "Champion H-SC@60 °C device only. D* uses measured 1 Hz zero-bias noise. Stored 2.5e11 from the approximately/exceeding reported value; LDR stored as 97 dB with the reported >97 dB bound preserved. The 60 °C value is fabrication temperature, not operating temperature.",
+      "date_added": "2026-07-21",
+      "date_updated": "2026-07-21"
     }
   ],
   "records": [
@@ -5109,6 +5247,7 @@
       "device": {
         "device_id": "wang-2025-ag2te-device",
         "paper_id": "wang-2025-ag2te-lidar",
+        "technology_family": "cqd",
         "material_family": "Ag2Te",
         "material_composition": "Ag2Te CQDs with AgNO3 and EDT surface treatment",
         "device_architecture": "Vertical SWIR photodiode",
@@ -5205,6 +5344,7 @@
       "device": {
         "device_id": "song-2024-ag-hgte-device",
         "paper_id": "song-2024-ag-hgte",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "n-type EDT/HCl-treated HgTe CQDs with a 10.5 at.% Ag CTAB-treated p-type Ag-HgTe alloy CQD layer",
         "device_architecture": "Self-powered vertical p-n CQD photodiode",
@@ -5303,6 +5443,7 @@
       "device": {
         "device_id": "dang-2023-grid-device",
         "paper_id": "dang-2023-multiresonant-grating",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "HgTe colloidal quantum dots",
         "device_architecture": "Vertical photovoltaic photodiode with a multiresonant 2D gold-grid electrode",
@@ -5393,6 +5534,7 @@
       "device": {
         "device_id": "vafaie-2021-pbs-device",
         "paper_id": "vafaie-2021-pbs-fast",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "Halide-passivated PbS CQDs with EDT-treated PbS hole-transport layer",
         "device_architecture": "Vertical SWIR photodiode",
@@ -5480,6 +5622,7 @@
       "device": {
         "device_id": "paul-2025-ag2se-device",
         "paper_id": "paul-2025-ag2se",
+        "technology_family": "cqd",
         "material_family": "Ag2Se",
         "material_composition": "SPLE-processed Ag2Se CQDs",
         "device_architecture": "Self-powered vertical photodiode",
@@ -5571,6 +5714,7 @@
       "device": {
         "device_id": "molnas-2024-pbs-ase-device",
         "paper_id": "molnas-2024-pbs-ase",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "PbS CQDs coupled to amorphous selenium",
         "device_architecture": "Vertical hybrid photodiode",
@@ -5670,6 +5814,7 @@
       "device": {
         "device_id": "liu-2022-pbs-device",
         "paper_id": "liu-2022-pbs-imager",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "Halide-passivated PbS CQDs with an EDT-treated PbS interlayer",
         "device_architecture": "Top-illuminated vertical photodiode",
@@ -5769,6 +5914,7 @@
       "device": {
         "device_id": "liu-2022-pbs-device",
         "paper_id": "liu-2022-pbs-imager",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "Halide-passivated PbS CQDs with an EDT-treated PbS interlayer",
         "device_architecture": "Top-illuminated vertical photodiode",
@@ -5858,6 +6004,7 @@
       "device": {
         "device_id": "shin-2024-inas-device",
         "paper_id": "shin-2024-inas-extended-absorber",
+        "technology_family": "cqd",
         "material_family": "InAs",
         "material_composition": "InBr3-passivated InAs CQDs with a 290 nm optimized absorber",
         "device_architecture": "Vertical photodiode",
@@ -5959,6 +6106,7 @@
       "device": {
         "device_id": "yang-2022-hgte-device",
         "paper_id": "yang-2022-hgte-ligand",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Monodisperse ligand-engineered HgTe CQDs",
         "device_architecture": "p-on-n vertical photodiode",
@@ -6050,6 +6198,7 @@
       "device": {
         "device_id": "wang-2024-hgte-device",
         "paper_id": "wang-2024-hgte-top-imager",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "HgTe CQDs with a blended HgTe/Ag2Te p-type layer",
         "device_architecture": "Top-illuminated n-on-p vertical photodiode",
@@ -6151,6 +6300,7 @@
       "device": {
         "device_id": "rastogi-2022-hgte-device",
         "paper_id": "rastogi-2022-cdse-hgte-ag2te",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "CdSe/HgTe/Ag2Te CQD stack",
         "device_architecture": "Vertical extended-SWIR photodiode",
@@ -6252,6 +6402,7 @@
       "device": {
         "device_id": "rastogi-2022-hgte-device",
         "paper_id": "rastogi-2022-cdse-hgte-ag2te",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "CdSe/HgTe/Ag2Te CQD stack",
         "device_architecture": "Vertical extended-SWIR photodiode",
@@ -6339,6 +6490,7 @@
       "device": {
         "device_id": "paul-2025-hgte-device",
         "paper_id": "paul-2025-hgte-transparent-electrode",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "HgTe CQDs with Ag2Te hole-transport layer",
         "device_architecture": "Top-illuminated vertical photodiode",
@@ -6430,6 +6582,7 @@
       "device": {
         "device_id": "yu-2024-hgte-me4pacz-device",
         "paper_id": "yu-2024-hgte-sam",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Se-capped HgTe absorber with an Ag:HgTe hole-transport layer and Me-4PACz interface",
         "device_architecture": "Top-illuminated n-on-p vertical photodiode",
@@ -6521,6 +6674,7 @@
       "device": {
         "device_id": "yu-2024-hgte-bare-device",
         "paper_id": "yu-2024-hgte-sam",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Se-capped HgTe absorber with an Ag:HgTe hole-transport layer",
         "device_architecture": "Top-illuminated n-on-p vertical photodiode",
@@ -6616,6 +6770,7 @@
       "device": {
         "device_id": "wang-2023-pbs-oxidized-device",
         "paper_id": "wang-2023-pbs-oxidation",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "Halide-passivated PbS absorber with a controlled-oxidation PbS-EDT hole-transport layer",
         "device_architecture": "p-on-n vertical photodiode",
@@ -6711,6 +6866,7 @@
       "device": {
         "device_id": "wang-2023-pbs-control-device",
         "paper_id": "wang-2023-pbs-oxidation",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "Halide-passivated PbS absorber with an untreated PbS-EDT hole-transport layer",
         "device_architecture": "p-on-n vertical photodiode",
@@ -6799,6 +6955,7 @@
       "device": {
         "device_id": "chen-2014-hgte-plasmonic-device",
         "paper_id": "chen-2014-hgte-au-nanorods",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Aqueous thioglycerol-capped HgTe CQDs with embedded Au nanorods",
         "device_architecture": "HgTe CQD/ZnO heterojunction photodiode",
@@ -6889,6 +7046,7 @@
       "device": {
         "device_id": "chen-2014-hgte-control-device",
         "paper_id": "chen-2014-hgte-au-nanorods",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Aqueous thioglycerol-capped HgTe CQDs",
         "device_architecture": "HgTe CQD/ZnO heterojunction photodiode",
@@ -6975,6 +7133,7 @@
       "device": {
         "device_id": "ackerman-2020-hgte-2200-device",
         "paper_id": "ackerman-2020-hgte-eswir",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "HgCl2-treated and EDT/HCl-cross-linked HgTe CQDs with a 2.2 µm cutoff",
         "device_architecture": "Vertical eSWIR photodiode",
@@ -7059,6 +7218,7 @@
       "device": {
         "device_id": "ackerman-2020-hgte-2500-device",
         "paper_id": "ackerman-2020-hgte-eswir",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "HgCl2-treated and EDT/HCl-cross-linked HgTe CQDs with a 2.5 µm cutoff",
         "device_architecture": "Vertical eSWIR photodiode",
@@ -7153,6 +7313,7 @@
       "device": {
         "device_id": "ahn-2024-ag2te-mpa-device",
         "paper_id": "ahn-2024-ag2te-fast-eswir",
+        "technology_family": "cqd",
         "material_family": "Ag2Te",
         "material_composition": "MPA-exchanged Ag2Te CQDs",
         "device_architecture": "Vertical p-n photodiode",
@@ -7247,6 +7408,7 @@
       "device": {
         "device_id": "ahn-2024-ag2te-mpa-device",
         "paper_id": "ahn-2024-ag2te-fast-eswir",
+        "technology_family": "cqd",
         "material_family": "Ag2Te",
         "material_composition": "MPA-exchanged Ag2Te CQDs",
         "device_architecture": "Vertical p-n photodiode",
@@ -7334,6 +7496,7 @@
       "device": {
         "device_id": "peng-2024-insb-inp-device",
         "paper_id": "peng-2024-insb-inp",
+        "technology_family": "cqd",
         "material_family": "InSb",
         "material_composition": "InSb/InP core-shell CQDs with InI3 solid-state ligand exchange",
         "device_architecture": "Vertical SWIR photodiode",
@@ -7430,6 +7593,7 @@
       "device": {
         "device_id": "muhammad-2023-insb-device",
         "paper_id": "muhammad-2023-insb-halide",
+        "technology_family": "cqd",
         "material_family": "InSb",
         "material_composition": "Halide-passivated InSb CQDs produced using ZnBr2-assisted synthesis",
         "device_architecture": "Vertical SWIR photodiode",
@@ -7519,6 +7683,7 @@
       "device": {
         "device_id": "wang-2024-ag2te-main-device",
         "paper_id": "wang-2024-ag2te-imager",
+        "technology_family": "cqd",
         "material_family": "Ag2Te",
         "material_composition": "EDT-exchanged Ag2Te CQDs with an AgBiS2 nanocrystal buffer layer",
         "device_architecture": "Vertical broadband SWIR photodiode",
@@ -7609,6 +7774,7 @@
       "device": {
         "device_id": "wang-2024-ag2te-1520-device",
         "paper_id": "wang-2024-ag2te-imager",
+        "technology_family": "cqd",
         "material_family": "Ag2Te",
         "material_composition": "Larger EDT-exchanged Ag2Te CQDs with a 1520 nm absorption peak and AgBiS2 buffer layer",
         "device_architecture": "Vertical SWIR photodiode",
@@ -7697,6 +7863,7 @@
       "device": {
         "device_id": "chen-2023-hgte-pin-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped n-type intrinsic and p-type HgTe CQD inks",
         "device_architecture": "Normal p-i-n homojunction",
@@ -7784,6 +7951,7 @@
       "device": {
         "device_id": "chen-2023-hgte-pin-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped n-type intrinsic and p-type HgTe CQD inks",
         "device_architecture": "Normal p-i-n homojunction",
@@ -7871,6 +8039,7 @@
       "device": {
         "device_id": "chen-2023-hgte-pin-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped n-type intrinsic and p-type HgTe CQD inks",
         "device_architecture": "Normal p-i-n homojunction",
@@ -7958,6 +8127,7 @@
       "device": {
         "device_id": "chen-2023-hgte-pin-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped n-type intrinsic and p-type HgTe CQD inks",
         "device_architecture": "Normal p-i-n homojunction",
@@ -8045,6 +8215,7 @@
       "device": {
         "device_id": "chen-2023-hgte-nip-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped p-type intrinsic and n-type HgTe CQD inks",
         "device_architecture": "Inverted n-i-p homojunction",
@@ -8132,6 +8303,7 @@
       "device": {
         "device_id": "chen-2023-hgte-nip-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped p-type intrinsic and n-type HgTe CQD inks",
         "device_architecture": "Inverted n-i-p homojunction",
@@ -8219,6 +8391,7 @@
       "device": {
         "device_id": "chen-2023-hgte-nip-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped p-type intrinsic and n-type HgTe CQD inks",
         "device_architecture": "Inverted n-i-p homojunction",
@@ -8306,6 +8479,7 @@
       "device": {
         "device_id": "chen-2023-hgte-nip-device",
         "paper_id": "chen-2023-hgte-universal-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Remote-doped p-type intrinsic and n-type HgTe CQD inks",
         "device_architecture": "Inverted n-i-p homojunction",
@@ -8393,6 +8567,7 @@
       "device": {
         "device_id": "xue-2023-hgte-gradient-pin-device",
         "paper_id": "xue-2023-hgte-gradient-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Gradient-doped HgTe CQDs with strong and weak n-type and p-type layers",
         "device_architecture": "Gradient p-i-n homojunction",
@@ -8480,6 +8655,7 @@
       "device": {
         "device_id": "xue-2023-hgte-gradient-pin-device",
         "paper_id": "xue-2023-hgte-gradient-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Gradient-doped HgTe CQDs with strong and weak n-type and p-type layers",
         "device_architecture": "Gradient p-i-n homojunction",
@@ -8567,6 +8743,7 @@
       "device": {
         "device_id": "xue-2023-hgte-gradient-pin-device",
         "paper_id": "xue-2023-hgte-gradient-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Gradient-doped HgTe CQDs with strong and weak n-type and p-type layers",
         "device_architecture": "Gradient p-i-n homojunction",
@@ -8654,6 +8831,7 @@
       "device": {
         "device_id": "xue-2023-hgte-gradient-pin-device",
         "paper_id": "xue-2023-hgte-gradient-homojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Gradient-doped HgTe CQDs with strong and weak n-type and p-type layers",
         "device_architecture": "Gradient p-i-n homojunction",
@@ -8746,6 +8924,7 @@
       "device": {
         "device_id": "siddik-2025-inas-device",
         "paper_id": "siddik-2025-inas-cmos",
+        "technology_family": "cqd",
         "material_family": "InAs",
         "material_composition": "InBr3-treated InAs CQDs with CuI and PTB7-Th hole-transport layers",
         "device_architecture": "Vertical PIN heterojunction",
@@ -8844,6 +9023,7 @@
       "device": {
         "device_id": "sheikh-2024-inas-znse-device",
         "paper_id": "sheikh-2024-inas-znse",
+        "technology_family": "cqd",
         "material_family": "InAs",
         "material_composition": "EDT-exchanged InAs/ZnSe core-shell colloidal nanorod quantum dots",
         "device_architecture": "Vertical photodiode",
@@ -8947,6 +9127,7 @@
       "device": {
         "device_id": "sun-2022-inas-device",
         "paper_id": "sun-2022-inas-fast",
+        "technology_family": "cqd",
         "material_family": "InAs",
         "material_composition": "InBr3- and ammonium-acetate-treated InAs CQDs",
         "device_architecture": "Vertical photodiode",
@@ -9035,6 +9216,7 @@
       "device": {
         "device_id": "device-798a7e0d2116-1",
         "paper_id": "paper-798a7e0d2116",
+        "technology_family": "cqd",
         "material_family": "Ag2Te",
         "material_composition": "Ag2Te",
         "device_architecture": "CQD photodiode; exact architecture requires curator confirmation",
@@ -9123,6 +9305,7 @@
       "device": {
         "device_id": "lee-2026-hgcdse-qd2-device",
         "paper_id": "lee-2026-hgcdse-neutralized",
+        "technology_family": "cqd",
         "material_family": "HgCdSe",
         "material_composition": "Hg0.95Cd0.05Se QD(2) with optimized 80 °C DDT surface treatment",
         "device_architecture": "Vertical CQD photodiode",
@@ -9213,6 +9396,7 @@
       "device": {
         "device_id": "lee-2026-hgcdse-qd1-device",
         "paper_id": "lee-2026-hgcdse-neutralized",
+        "technology_family": "cqd",
         "material_family": "HgCdSe",
         "material_composition": "Hg0.95Cd0.05Se QD(1) with room-temperature DDT surface treatment",
         "device_architecture": "Vertical CQD photodiode",
@@ -9303,6 +9487,7 @@
       "device": {
         "device_id": "park-2026-inas-oldp-device",
         "paper_id": "park-2026-internal-field",
+        "technology_family": "cqd",
         "material_family": "InAs",
         "material_composition": "Optimized internal-field-tailored InAs CQDs with n-type and low- and high-doping-potential layers",
         "device_architecture": "Vertical CQD photodiode",
@@ -9393,6 +9578,7 @@
       "device": {
         "device_id": "park-2026-inas-ldp-device",
         "paper_id": "park-2026-internal-field",
+        "technology_family": "cqd",
         "material_family": "InAs",
         "material_composition": "InAs CQDs with an LDP hole-transport layer",
         "device_architecture": "Vertical CQD photodiode",
@@ -9483,6 +9669,7 @@
       "device": {
         "device_id": "park-2026-pbs-ldp-device",
         "paper_id": "park-2026-internal-field",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "PbS CQDs with an LDP hole-transport layer",
         "device_architecture": "Vertical CQD photodiode",
@@ -9573,6 +9760,7 @@
       "device": {
         "device_id": "park-2026-pbs-hdp-device",
         "paper_id": "park-2026-internal-field",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "PbS CQDs with an HDP hole-transport layer",
         "device_architecture": "Vertical CQD photodiode",
@@ -9665,6 +9853,7 @@
       "device": {
         "device_id": "huang-2026-cdte-hgte-edt-device",
         "paper_id": "huang-2026-cdte-hgte-htl",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Se:HgTe CQD absorber with an EDT-treated CdTe/HgTe core-shell CQD hole-transport layer",
         "device_architecture": "p-on-n CQD photodiode",
@@ -9755,6 +9944,7 @@
       "device": {
         "device_id": "huang-2026-cdte-hgte-untreated-device",
         "paper_id": "huang-2026-cdte-hgte-htl",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Se:HgTe CQD absorber with an untreated CdTe/HgTe core-shell CQD hole-transport layer",
         "device_architecture": "p-on-n CQD photodiode",
@@ -9844,6 +10034,7 @@
       "device": {
         "device_id": "xia-2025-pbse-1640-device",
         "paper_id": "xia-2025-pbse-mle",
+        "technology_family": "cqd",
         "material_family": "PbSe",
         "material_composition": "MLE-PbSe CQDs with an approximately 1640 nm excitonic peak",
         "device_architecture": "Vertical CQD photodiode",
@@ -9933,6 +10124,7 @@
       "device": {
         "device_id": "xia-2025-pbse-2360-device",
         "paper_id": "xia-2025-pbse-mle",
+        "technology_family": "cqd",
         "material_family": "PbSe",
         "material_composition": "MLE-PbSe CQDs with an approximately 2360 nm excitonic peak",
         "device_architecture": "Vertical CQD photodiode",
@@ -10027,6 +10219,7 @@
       "device": {
         "device_id": "hu-2025-hgte-dh-device",
         "paper_id": "hu-2025-hgte-double-heterojunction",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "Hybrid-ligand-capped HgTe CQDs between ZnO and ZnTe charge-transport layers",
         "device_architecture": "Double-heterojunction p-i-n CQD photodiode",
@@ -10119,6 +10312,7 @@
       "device": {
         "device_id": "tran-2026-cd3p2-homojunction-device",
         "paper_id": "tran-2026-cd3p2-polarity",
+        "technology_family": "cqd",
         "material_family": "Cd3P2",
         "material_composition": "Cd3P2 CQD absorber with a p-type chloride-treated Cd3P2 CQD charge-selective layer",
         "device_architecture": "Cd3P2 CQD homojunction photodiode",
@@ -10212,6 +10406,7 @@
       "device": {
         "device_id": "imran-2025-insb-device",
         "paper_id": "imran-2025-insb-metal-halide",
+        "technology_family": "cqd",
         "material_family": "InSb",
         "material_composition": "Resurfaced and ligand-exchanged InSb CQDs",
         "device_architecture": "n-i-p CQD photodiode",
@@ -10301,6 +10496,7 @@
       "device": {
         "device_id": "kim-2026-inas-shape-device",
         "paper_id": "kim-2026-inas-shape-engineering",
+        "technology_family": "cqd",
         "material_family": "InAs",
         "material_composition": "Halide-passivated shape-engineered InAs CQD ink",
         "device_architecture": "Vertical CQD photodiode",
@@ -10391,6 +10587,7 @@
       "device": {
         "device_id": "pi-2026-agbis2-mxene-device",
         "paper_id": "pi-2026-agbis2-mxene",
+        "technology_family": "cqd",
         "material_family": "AgBiS2",
         "material_composition": "TMAI-exchanged AgBiS2 CQDs with a ZnO/MXene electron-transport bilayer",
         "device_architecture": "Vertical CQD photodiode",
@@ -10482,6 +10679,7 @@
       "device": {
         "device_id": "qin-2023-hgte-fpa-device",
         "paper_id": "qin-2023-hgte-planar-pn",
+        "technology_family": "cqd",
         "material_family": "HgTe",
         "material_composition": "CdCl2-treated HgTe CQD film with in situ electric-field-activated lateral doping",
         "device_architecture": "Planar p-n CQD photodiode focal-plane array",
@@ -10577,6 +10775,7 @@
       "device": {
         "device_id": "deng-2026-pbs-1500-device",
         "paper_id": "deng-2026-pbs-bifunctional",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "n-PbS CQD absorber with EDT-treated p-PbS CQD layer",
         "device_architecture": "Vertical CQD photodiode",
@@ -10672,6 +10871,7 @@
       "device": {
         "device_id": "deng-2026-pbs-50-device",
         "paper_id": "deng-2026-pbs-bifunctional",
+        "technology_family": "cqd",
         "material_family": "PbS",
         "material_composition": "n-PbS CQD absorber with EDT-treated p-PbS CQD layer",
         "device_architecture": "Vertical CQD photodiode",
@@ -10766,6 +10966,7 @@
       "device": {
         "device_id": "leemans-2022-inasp-1140-device",
         "paper_id": "leemans-2022-inasp-swir",
+        "technology_family": "cqd",
         "material_family": "In(As,P)",
         "material_composition": "1140 nm band-edge n-type In(As,P) CQDs",
         "device_architecture": "Vertical CQD photodiode",
@@ -10862,6 +11063,7 @@
       "device": {
         "device_id": "leemans-2022-inasp-1270-device",
         "paper_id": "leemans-2022-inasp-swir",
+        "technology_family": "cqd",
         "material_family": "In(As,P)",
         "material_composition": "1270 nm band-edge n-type In(As,P) CQDs",
         "device_architecture": "Vertical CQD photodiode",
@@ -10958,6 +11160,7 @@
       "device": {
         "device_id": "leemans-2022-inasp-1400-device",
         "paper_id": "leemans-2022-inasp-swir",
+        "technology_family": "cqd",
         "material_family": "In(As,P)",
         "material_composition": "1400 nm band-edge n-type In(As,P) CQDs",
         "device_architecture": "Vertical CQD photodiode",
@@ -11021,6 +11224,93 @@
         "curator_notes": "The responsivity is reported at -4 V. The article does not unambiguously assign the detectivity values to a numeric bias in the supplied main text, so measurement bias is left blank. Keithley 2400 instruments were used for electrical characterization and a lock-in amplifier for EQE, not for noise measurement.",
         "date_added": "2026-07-20",
         "date_updated": "2026-07-20"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "huang-2026-pbs-hot-spin",
+        "title": "Hot-assisted spin-coating for ultrasmooth PbS colloidal quantum dot film in high-performance NIR photodetectors",
+        "authors": [
+          "Xuanyue Huang",
+          "Jiaming Yi",
+          "Feng Yang",
+          "Hongxing Li",
+          "Kai Huang"
+        ],
+        "first_author": "Xuanyue Huang",
+        "journal": "Applied Physics Letters",
+        "publication_year": 2026,
+        "doi": "10.1063/5.0332150",
+        "publication_url": "https://doi.org/10.1063/5.0332150",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Champion hot-assisted spin-coated PbS CQD photodiode curated; the room-temperature control was excluded by curator choice. Supporting Information was not supplied."
+      },
+      "device": {
+        "device_id": "huang-2026-pbs-hsc60-device",
+        "paper_id": "huang-2026-pbs-hot-spin",
+        "technology_family": "cqd",
+        "material_family": "PbS",
+        "material_composition": "PbS CQDs with a halide/amine-exchanged intrinsic absorber and PbS@EDT hole-transport layer",
+        "device_architecture": "p-i-n CQD photodiode",
+        "device_stack": "glass / FTO / ZnO / intrinsic halide-exchanged PbS CQDs (~200 nm) / PbS@EDT / Au",
+        "active_area_cm2": null,
+        "device_notes": "Champion H-SC@60 °C device with approximately 0.947 nm absorber-film RMS roughness. The 60 °C value is the spin-coating temperature rather than the detector operating temperature."
+      },
+      "measurement": {
+        "measurement_id": "huang-2026-pbs-hsc60-1350-1hz",
+        "device_id": "huang-2026-pbs-hsc60-device",
+        "wavelength_nm": 1350,
+        "detectivity_jones": 250000000000,
+        "responsivity_a_w": 0.21,
+        "responsivity_wavelength_nm": 1350,
+        "responsivity_bias_v": null,
+        "responsivity_temperature_k": null,
+        "responsivity_source_location": "Main article PDF p. 6 and Figure 3b (PDF p. 5)",
+        "responsivity_extraction_method": "directly_reported",
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": 0,
+        "measurement_frequency_hz": 1,
+        "response_time_s": null,
+        "rise_time_s": null,
+        "fall_time_s": null,
+        "response_time_definition": null,
+        "response_time_wavelength_nm": null,
+        "response_time_bias_v": null,
+        "response_time_source_location": null,
+        "response_time_limit": null,
+        "response_time_extraction_method": null,
+        "bandwidth_hz": 92000,
+        "bandwidth_bias_v": 0,
+        "bandwidth_source_location": "Main article PDF pp. 5-6, Figure 3e",
+        "bandwidth_limit": "measured",
+        "bandwidth_extraction_method": "directly_reported",
+        "linear_dynamic_range_db": 97,
+        "linear_dynamic_range_min": null,
+        "linear_dynamic_range_max": null,
+        "linear_dynamic_range_units": null,
+        "linear_dynamic_range_definition": "20 log10(Pmax/Pmin); reported as >97 dB",
+        "linear_dynamic_range_source_location": "Main article PDF pp. 5-6, Figure 3d and accompanying text",
+        "linear_dynamic_range_extraction_method": "directly_reported",
+        "extended_metrics_review_status": "source_unavailable",
+        "extended_metrics_review_date": "2026-07-21",
+        "extended_metrics_notes": "Supporting Information was not supplied. The main article contains temporal traces but no numeric response, rise, or fall time; H-SC D* is described as both exceeding and approximately 2.5e11 Jones.",
+        "noise_method": "measured_noise",
+        "noise_instruments": [
+          "not_reported"
+        ],
+        "noise_instrument_details": "Measured 1/f noise spectrum from 0.05 to 50 Hz at zero bias; 9.18e-14 A Hz^-1/2 at 1 Hz. Acquisition instrument not identified in the supplied main article.",
+        "noise_instrument_source": "Main article PDF pp. 4-6, Figure 3a and accompanying text",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 5-6, Figure 3c and accompanying text",
+        "curator_status": "reviewed",
+        "flag": "green",
+        "amber_reasons": [],
+        "amber_explanation": null,
+        "curator_notes": "Champion H-SC@60 °C device only. D* uses measured 1 Hz zero-bias noise. Stored 2.5e11 from the approximately/exceeding reported value; LDR stored as 97 dB with the reported >97 dB bound preserved. The 60 °C value is fabrication temperature, not operating temperature.",
+        "date_added": "2026-07-21",
+        "date_updated": "2026-07-21"
       }
     }
   ]

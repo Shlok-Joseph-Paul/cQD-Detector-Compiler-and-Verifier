@@ -638,7 +638,7 @@ export function PerformancePlot({
               data={data}
               shape={renderPoint}
               isAnimationActive="auto"
-              name="CQD photodiode measurements"
+              name="Photodiode measurements"
             />
           </ScatterChart>
         </ResponsiveContainer>

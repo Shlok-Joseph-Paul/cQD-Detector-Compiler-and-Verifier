@@ -1199,7 +1199,7 @@ export function PerformanceExplorer({
                 shape={renderPoint}
                 isAnimationActive={reducedMotion ? false : "auto"}
                 animationDuration={240}
-                name="CQD photodiode measurements"
+                name="Photodiode measurements"
               />
             </ScatterChart>
           </ResponsiveContainer>

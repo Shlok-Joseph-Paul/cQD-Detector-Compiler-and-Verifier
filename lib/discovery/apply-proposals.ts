@@ -14,6 +14,7 @@ import {
   readProposalRegistry,
   writeProposalRegistry,
 } from "./proposal-registry.ts";
+import { withDiscoveryWriteLock } from "./storage.ts";
 
 function paperRow(paper: Paper): unknown[] {
   return [
@@ -35,6 +36,7 @@ function deviceRow(device: Device): unknown[] {
   return [
     device.device_id,
     device.paper_id,
+    device.technology_family || "cqd",
     device.material_family,
     device.material_composition,
     device.device_architecture,
@@ -121,7 +123,7 @@ function rowsForColumns(
   );
 }
 
-export async function applyApprovedProposals(
+async function applyApprovedProposalsUnlocked(
   root: string,
   proposalIds: string[],
   options: { dryRun?: boolean; now?: Date } = {},
@@ -246,4 +248,19 @@ export async function applyApprovedProposals(
       measurements: atlas.measurements.length,
     },
   };
+}
+
+export async function applyApprovedProposals(
+  root: string,
+  proposalIds: string[],
+  options: { dryRun?: boolean; now?: Date } = {},
+): Promise<{
+  applied: string[];
+  atlasCounts: { papers: number; devices: number; measurements: number };
+}> {
+  if (options.dryRun)
+    return applyApprovedProposalsUnlocked(root, proposalIds, options);
+  return withDiscoveryWriteLock(root, () =>
+    applyApprovedProposalsUnlocked(root, proposalIds, options),
+  );
 }

@@ -18,14 +18,14 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <Link
             className="wordmark"
             href="/"
-            aria-label="CQD Photodiode Atlas home"
+            aria-label="Photodiode Atlas home"
           >
             <span className="wordmark-mark" aria-hidden="true">
               D*
               <i />λ
             </span>
             <span>
-              <strong>CQD</strong>
+              <strong>Open</strong>
               <small>Photodiode Atlas</small>
             </span>
           </Link>
@@ -49,10 +49,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
       <footer className="site-footer">
         <div>
-          <p className="footer-title">CQD Photodiode Atlas</p>
+          <p className="footer-title">Photodiode Atlas</p>
           <p>
-            A transparent, curator-reviewed map of reported colloidal
-            quantum-dot photodiode performance.
+            A transparent, curator-reviewed map of reported CQD and metal-halide
+            perovskite photodiode performance.
           </p>
         </div>
         <div className="footer-links">

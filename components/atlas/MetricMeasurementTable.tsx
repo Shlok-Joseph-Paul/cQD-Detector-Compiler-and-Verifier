@@ -841,7 +841,7 @@ function DetailsContent({ record }: { record: AtlasRecord }) {
     <>
       <div className="measurement-table__details-grid">
         <div>
-          <span>CQD composition</span>
+          <span>Absorber composition</span>
           <strong>{device.materialComposition || NOT_REPORTED}</strong>
         </div>
         <div>
@@ -1076,8 +1076,8 @@ export function MetricMeasurementTable({
             className={`measurement-table measurement-table--compact measurement-table--${activeView}`}
           >
             <caption className="sr-only">
-              {currentViewOption.label} view of CQD photodiode measurements
-              matching the current filters
+              {currentViewOption.label} view of photodiode measurements matching
+              the current filters
             </caption>
             <thead>
               <TableHeaders

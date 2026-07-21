@@ -1,9 +1,10 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import type {
   ProposalRegistry,
   StagedPaperProposal,
 } from "./proposal-types.ts";
 import { PROPOSAL_STATUSES, SCOPE_STATUSES } from "./proposal-types.ts";
+import { writeTextAtomically } from "./storage.ts";
 
 export async function readProposalRegistry(
   file: string,
@@ -83,5 +84,5 @@ export async function writeProposalRegistry(
         left.proposalId.localeCompare(right.proposalId),
     ),
   };
-  await writeFile(file, `${JSON.stringify(sorted, null, 2)}\n`, "utf8");
+  await writeTextAtomically(file, `${JSON.stringify(sorted, null, 2)}\n`);
 }

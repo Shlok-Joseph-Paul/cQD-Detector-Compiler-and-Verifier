@@ -16,40 +16,42 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(origin),
     title: {
-      default: "CQD Photodiode Atlas",
-      template: "%s · CQD Photodiode Atlas",
+      default: "Photodiode Atlas",
+      template: "%s · Photodiode Atlas",
     },
     description:
-      "A curated map of reported colloidal quantum-dot photodiode performance across materials and wavelengths.",
-    applicationName: "CQD Photodiode Atlas",
+      "A curated map of reported colloidal quantum-dot and metal-halide perovskite photodiode performance.",
+    applicationName: "Photodiode Atlas",
     keywords: [
       "colloidal quantum dots",
       "photodiodes",
       "specific detectivity",
       "detector database",
       "CQD",
+      "metal-halide perovskites",
+      "perovskite photodiodes",
     ],
-    authors: [{ name: "CQD Photodiode Atlas contributors" }],
+    authors: [{ name: "Photodiode Atlas contributors" }],
     openGraph: {
-      title: "CQD Photodiode Atlas",
+      title: "Photodiode Atlas",
       description:
-        "Compare reported CQD photodiode detectivity across materials, wavelengths, and noise methods.",
+        "Compare reported CQD and perovskite photodiode detectivity across materials, wavelengths, and noise methods.",
       type: "website",
-      siteName: "CQD Photodiode Atlas",
+      siteName: "Photodiode Atlas",
       images: [
         {
           url: new URL("/og-v2.png", origin).toString(),
           width: 1200,
           height: 630,
-          alt: "CQD Photodiode Atlas detectivity versus wavelength data map",
+          alt: "Photodiode Atlas detectivity versus wavelength data map",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "CQD Photodiode Atlas",
+      title: "Photodiode Atlas",
       description:
-        "A curated map of reported colloidal quantum-dot photodiode performance.",
+        "A curated map of reported CQD and perovskite photodiode performance.",
       images: [new URL("/og-v2.png", origin).toString()],
     },
     icons: {

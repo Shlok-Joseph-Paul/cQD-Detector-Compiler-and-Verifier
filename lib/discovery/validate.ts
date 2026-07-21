@@ -5,6 +5,7 @@ import {
   type CandidateRegistry,
   type DiscoveryCandidate,
 } from "./types.ts";
+import { TECHNOLOGY_FAMILIES } from "../data/types.ts";
 import { normalizeDoi, normalizeTitle } from "./normalize.ts";
 
 export function validateCandidate(candidate: DiscoveryCandidate): string[] {
@@ -26,6 +27,12 @@ export function validateCandidate(candidate: DiscoveryCandidate): string[] {
   if (!IMPORT_STATUSES.includes(candidate.importStatus)) {
     errors.push(`invalid importStatus: ${candidate.importStatus}`);
   }
+  if (
+    candidate.technologyFamilies?.some(
+      (family) => !TECHNOLOGY_FAMILIES.includes(family),
+    )
+  )
+    errors.push("technologyFamilies contains an unsupported value");
   return errors;
 }
 

@@ -3,7 +3,10 @@ import type {
   JoinedMeasurement,
   NoiseInstrument as CanonicalNoiseInstrument,
   TemperatureCategory as CanonicalTemperatureCategory,
+  TechnologyFamily,
 } from "@/lib/data/types";
+
+export type { TechnologyFamily } from "@/lib/data/types";
 
 export const NOISE_METHODS = [
   "measured_noise",
@@ -66,6 +69,7 @@ export interface AtlasPaper {
 export interface AtlasDevice {
   deviceId: string;
   paperId: string;
+  technologyFamily: TechnologyFamily;
   materialFamily: string;
   materialComposition: string;
   deviceArchitecture: string;
@@ -141,6 +145,7 @@ export interface AtlasRecord {
 
 export interface AtlasFilterState {
   search: string;
+  technology: TechnologyFamily | "all";
   material: string;
   wavelengthMin?: number;
   wavelengthMax?: number;
@@ -324,6 +329,11 @@ export function normalizeJoinedMeasurement(
     device: {
       deviceId: textValue(device, ["device_id", "deviceId"]),
       paperId: textValue(device, ["paper_id", "paperId"]),
+      technologyFamily: textValue(
+        device,
+        ["technology_family", "technologyFamily"],
+        "cqd",
+      ) as TechnologyFamily,
       materialFamily: textValue(device, ["material_family", "materialFamily"]),
       materialComposition: textValue(device, [
         "material_composition",

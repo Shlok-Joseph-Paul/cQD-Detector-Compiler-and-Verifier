@@ -1,5 +1,6 @@
 import { parseCsv } from "../data/csv.ts";
 import { normalizeDoi, normalizeTitle } from "./normalize.ts";
+import { candidateTechnologyFamilies } from "./profiles.ts";
 import type { DiscoveryCandidate } from "./types.ts";
 
 export interface RankedCandidate extends DiscoveryCandidate {
@@ -8,7 +9,7 @@ export interface RankedCandidate extends DiscoveryCandidate {
   atlasPriorityScore: number;
 }
 
-function atlasKeys(papersCsv: string): {
+export function extractAtlasKeys(papersCsv: string): {
   dois: Set<string>;
   titles: Set<string>;
 } {
@@ -29,7 +30,9 @@ function atlasKeys(papersCsv: string): {
   };
 }
 
-function looksLikeNonPrimary(candidate: DiscoveryCandidate): boolean {
+export function looksLikeNonPrimaryCandidate(
+  candidate: DiscoveryCandidate,
+): boolean {
   const text = `${candidate.title} ${candidate.abstract ?? ""}`.toLowerCase();
   return (
     candidate.relevanceReasons.some((reason) =>
@@ -43,20 +46,58 @@ function looksLikeNonPrimary(candidate: DiscoveryCandidate): boolean {
   );
 }
 
-function fit(candidate: DiscoveryCandidate): RankedCandidate["atlasFit"] {
-  const text = `${candidate.title} ${candidate.abstract ?? ""}`.toLowerCase();
+function normalizedEvidenceText(candidate: DiscoveryCandidate): string {
+  return `${candidate.title} ${candidate.abstract ?? ""}`
+    .replace(/\s*<sub>\s*([0-9]+)\s*<\/sub>/gi, "$1")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[₀₁₂₃₄₅₆₇₈₉]/g, (digit) => String("₀₁₂₃₄₅₆₇₈₉".indexOf(digit)))
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+}
+
+export function classifyAtlasFit(
+  candidate: DiscoveryCandidate,
+): RankedCandidate["atlasFit"] {
+  const text = normalizedEvidenceText(candidate);
   const hasDStar = /detectivit|\bd\s*\*/i.test(text);
-  const hasPhotodiode = /photodiode|photovoltaic detector/i.test(text);
-  const hasCqd = /colloidal|nanocrystal|quantum dot/i.test(text);
-  if (candidate.relevanceScore >= 74 && hasDStar && hasPhotodiode && hasCqd)
+  const hasPhotodiode =
+    /photodiode|photovoltaic detector|\b(?:p-?n|p-?i-?n)\s+junction/i.test(
+      text,
+    );
+  const hasDetector =
+    /photodiode|photodetector|photo detector|photovoltaic detector|image sensor|\bimager\b|focal plane array/i.test(
+      text,
+    );
+  const hasCqd =
+    /colloidal quantum dot|colloidal nanocrystal|solution[ -]processed (?:colloidal )?quantum dot|\bcqds?\b/i.test(
+      text,
+    );
+  const isPerovskite =
+    candidateTechnologyFamilies(candidate).includes("perovskite");
+  const hasPerovskite = /\bperovskites?\b/i.test(text);
+  const hasProfileAbsorber = isPerovskite ? hasPerovskite : hasCqd;
+  if (
+    candidate.relevanceScore >= 74 &&
+    hasDStar &&
+    hasPhotodiode &&
+    hasProfileAbsorber
+  )
     return "high";
-  if (candidate.relevanceScore >= 64 && hasDStar && hasCqd) return "medium";
+  if (
+    candidate.relevanceScore >= 64 &&
+    hasDStar &&
+    hasDetector &&
+    hasProfileAbsorber
+  )
+    return "medium";
   return "low";
 }
 
-function priorityScore(candidate: DiscoveryCandidate): number {
+export function atlasPriorityScore(candidate: DiscoveryCandidate): number {
   const text = `${candidate.title} ${candidate.abstract ?? ""} ${candidate.candidateMaterialClasses.join(" ")}`;
-  const fitValue = fit(candidate);
+  const fitValue = classifyAtlasFit(candidate);
+  const isPerovskite =
+    candidateTechnologyFamilies(candidate).includes("perovskite");
   const nonHeavyMetal =
     /Ag\s*2\s*(?:Te|Se)|silver\s+(?:telluride|selenide)|AgBiS|\bInAs\b|\bInSb\b|III.?V/i.test(
       text,
@@ -69,8 +110,8 @@ function priorityScore(candidate: DiscoveryCandidate): number {
       100,
       candidate.relevanceScore +
         (candidate.openAccessPdfUrl ? 8 : 0) +
-        (nonHeavyMetal ? 12 : 0) -
-        (heavyMetal ? 6 : 0) +
+        (!isPerovskite && nonHeavyMetal ? 12 : 0) -
+        (!isPerovskite && heavyMetal ? 6 : 0) +
         (fitValue === "high" ? 8 : fitValue === "medium" ? 4 : -20),
     ),
   );
@@ -80,7 +121,7 @@ export function rankNewCandidates(
   candidates: readonly DiscoveryCandidate[],
   papersCsv: string,
 ): RankedCandidate[] {
-  const existing = atlasKeys(papersCsv);
+  const existing = extractAtlasKeys(papersCsv);
   return candidates
     .filter((candidate) => candidate.importStatus !== "published")
     .filter((candidate) => candidate.screeningStatus !== "exclude")
@@ -91,11 +132,11 @@ export function rankNewCandidates(
     .filter(
       (candidate) => !existing.titles.has(normalizeTitle(candidate.title)),
     )
-    .filter((candidate) => !looksLikeNonPrimary(candidate))
+    .filter((candidate) => !looksLikeNonPrimaryCandidate(candidate))
     .map((candidate) => ({
       ...candidate,
-      atlasFit: fit(candidate),
-      atlasPriorityScore: priorityScore(candidate),
+      atlasFit: classifyAtlasFit(candidate),
+      atlasPriorityScore: atlasPriorityScore(candidate),
     }))
     .sort(
       (left, right) =>

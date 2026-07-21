@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type {
   CrossrefMetadata,
@@ -14,9 +14,11 @@ export interface CachedFetchOptions {
   maxRetries?: number;
   userAgent?: string;
   fetchImpl?: typeof fetch;
+  maxCacheAgeMs?: number;
 }
 
 let lastRequestAt = 0;
+const METADATA_CACHE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
 function delay(milliseconds: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
@@ -30,7 +32,12 @@ export async function fetchJsonCached<T>(
   const key = createHash("sha256").update(url).digest("hex");
   const file = path.join(options.cacheDirectory, `${key}.json`);
   try {
-    return JSON.parse(await readFile(file, "utf8")) as T;
+    const info = await stat(file);
+    if (
+      options.maxCacheAgeMs === undefined ||
+      Date.now() - info.mtimeMs <= options.maxCacheAgeMs
+    )
+      return JSON.parse(await readFile(file, "utf8")) as T;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
   }
@@ -97,6 +104,7 @@ export class OpenAlexClient {
       minimumIntervalMs: this.config.openAlex.minimumRequestIntervalMs,
       userAgent: `CQD-Photodiode-Atlas/1.0 (mailto:${this.config.openAlex.mailto})`,
       fetchImpl: this.fetchImpl,
+      maxCacheAgeMs: METADATA_CACHE_MAX_AGE_MS,
     });
   }
 
@@ -134,15 +142,28 @@ export class OpenAlexClient {
   }
 
   async worksByFilter(filter: string): Promise<OpenAlexWork[]> {
-    const url = new URL("/works", this.config.openAlex.baseUrl);
-    url.searchParams.set("filter", filter);
-    url.searchParams.set("per-page", String(this.config.openAlex.perPage));
-    if (this.config.openAlex.mailto)
-      url.searchParams.set("mailto", this.config.openAlex.mailto);
-    const payload = await this.get(url);
-    if (!Array.isArray(payload.results))
-      throw new Error(`Malformed OpenAlex results for filter: ${filter}`);
-    return payload.results;
+    const works: OpenAlexWork[] = [];
+    let cursor = "*";
+    for (
+      let page = 0;
+      page < this.config.openAlex.maxPagesPerQuery;
+      page += 1
+    ) {
+      const url = new URL("/works", this.config.openAlex.baseUrl);
+      url.searchParams.set("filter", filter);
+      url.searchParams.set("per-page", String(this.config.openAlex.perPage));
+      url.searchParams.set("cursor", cursor);
+      if (this.config.openAlex.mailto)
+        url.searchParams.set("mailto", this.config.openAlex.mailto);
+      const payload = await this.get(url);
+      if (!Array.isArray(payload.results))
+        throw new Error(`Malformed OpenAlex results for filter: ${filter}`);
+      works.push(...payload.results);
+      const next = payload.meta?.next_cursor;
+      if (!next || payload.results.length === 0) break;
+      cursor = next;
+    }
+    return works;
   }
 
   async workById(id: string): Promise<OpenAlexWork> {
@@ -159,6 +180,7 @@ export class OpenAlexClient {
       minimumIntervalMs: this.config.openAlex.minimumRequestIntervalMs,
       userAgent: `CQD-Photodiode-Atlas/1.0${this.config.openAlex.mailto ? ` (mailto:${this.config.openAlex.mailto})` : ""}`,
       fetchImpl: this.fetchImpl,
+      maxCacheAgeMs: METADATA_CACHE_MAX_AGE_MS,
     });
     if (!payload || typeof payload !== "object" || !payload.id) {
       throw new Error(`Malformed OpenAlex work: ${id}`);
@@ -200,6 +222,7 @@ export class CrossrefClient {
       minimumIntervalMs: this.config.crossref.minimumRequestIntervalMs,
       userAgent: `CQD-Photodiode-Atlas/1.0 (mailto:${this.config.crossref.mailto})`,
       fetchImpl: this.fetchImpl,
+      maxCacheAgeMs: METADATA_CACHE_MAX_AGE_MS,
     });
     const message = payload.message;
     if (!message || typeof message !== "object")

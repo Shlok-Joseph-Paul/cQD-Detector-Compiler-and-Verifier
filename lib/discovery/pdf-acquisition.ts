@@ -67,8 +67,8 @@ export async function acquireOpenAccessPdf(
   const contentType =
     response.headers.get("content-type")?.split(";")[0].trim().toLowerCase() ||
     "application/octet-stream";
-  const magic = new TextDecoder("ascii").decode(bytes.slice(0, 5));
-  if (contentType !== "application/pdf" && magic !== "%PDF-")
+  const header = new TextDecoder("ascii").decode(bytes.slice(0, 1024));
+  if (!header.includes("%PDF-"))
     throw new Error(
       `Open-access location did not return a PDF (${contentType})`,
     );

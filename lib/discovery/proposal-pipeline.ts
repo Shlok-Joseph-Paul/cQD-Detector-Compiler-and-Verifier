@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { mkdtemp, readFile } from "node:fs/promises";
+import { mkdtemp, readFile, realpath } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
@@ -123,10 +123,15 @@ async function runBatchExtraction(
   const manifestFile = path.join(extractionDirectory, "batch-manifest.json");
   const readCurrentManifest = async () => {
     const manifest = await readBatchManifest(manifestFile);
+    const canonicalPath = async (file: string) =>
+      realpath(file).catch(() => path.resolve(file));
     const recordedPaths = new Set(
-      manifest.papers.map((paper) => path.resolve(paper.pdf_path)),
+      await Promise.all(
+        manifest.papers.map((paper) => canonicalPath(paper.pdf_path)),
+      ),
     );
-    if (!pdfPaths.every((pdfPath) => recordedPaths.has(path.resolve(pdfPath))))
+    const requestedPaths = await Promise.all(pdfPaths.map(canonicalPath));
+    if (!requestedPaths.every((pdfPath) => recordedPaths.has(pdfPath)))
       throw new Error(
         "Batch extraction manifest does not cover every input PDF",
       );

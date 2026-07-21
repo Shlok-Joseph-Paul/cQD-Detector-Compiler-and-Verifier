@@ -1,8 +1,8 @@
-# CQD Photodiode Atlas
+# Photodiode Atlas
 
-A curated, searchable map of reported colloidal quantum-dot (CQD) photodiode
-performance across materials, wavelengths, device architectures, and
-measurement methods.
+A curated, searchable map of reported colloidal quantum-dot (CQD) and
+metal-halide perovskite photodiode performance across materials, wavelengths,
+device architectures, and measurement methods.
 
 The atlas plots **one point per reported measurement**, with wavelength on the
 x-axis and specific detectivity, D<sup>*</sup>, on a logarithmic y-axis. The same
@@ -21,8 +21,8 @@ versioned CSV.
 
 ## Scientific scope
 
-The atlas includes experimental, solution-processed CQD photodiodes with a
-reported specific detectivity in Jones and an identifiable measurement
+The atlas includes experimental CQD and metal-halide perovskite photodiodes
+with a reported specific detectivity in Jones and an identifiable measurement
 wavelength. Peer-reviewed papers and clearly labeled preprints are supported.
 
 The atlas excludes:
@@ -30,7 +30,6 @@ The atlas excludes:
 - photoconductors, photoresistors, phototransistors, and bolometers;
 - focal-plane-array reports without an extractable photodiode measurement;
 - epitaxial quantum-dot detectors;
-- non-CQD perovskite thin films;
 - theoretical devices without an experimental photodiode; and
 - literature-comparison values attributed to another paper. A value belongs to
   a record for its original source.
@@ -50,8 +49,8 @@ Paper 1 ──► many Devices 1 ──► many Measurements
 ```
 
 - **Paper** holds the original bibliographic source.
-- **Device** holds CQD material, composition, architecture, stack, and active
-  area.
+- **Device** holds the technology family, absorber material, composition,
+  architecture, stack, and active area.
 - **Measurement** holds one D<sup>*</sup> value, wavelength, operating
   conditions, noise method, acquisition instrument chain, provenance, and
   curation status.
@@ -129,13 +128,14 @@ until a curator exports and imports an explicit approval; a second command then
 applies approved records through the validated CSV workflow. Neither search nor
 parsing publishes directly.
 
-`pnpm discovery prepare-review --limit=5` selects a conservative batch of
-unprocessed candidates from title/abstract evidence, resolves lawful PDFs
-through recorded OpenAlex and DOI-based open-access locations, and stages the
-results for review. Add `--discover --expand` to refresh keyword and atlas
-citation-graph candidates before preparing the batch. The limit counts papers
-attempted, not guaranteed proposals; unavailable or unparseable papers are
-reported individually and do not stop the remaining batch.
+`pnpm discovery prepare-review --profile=perovskite --limit=5` selects a
+conservative perovskite batch from title/abstract evidence, resolves lawful
+PDFs through recorded OpenAlex and DOI-based open-access locations, and stages
+the results for review. Use `--profile=cqd` for the CQD queue. Add `--discover
+--expand` to refresh keyword and atlas citation-graph candidates before
+preparing the batch. The limit counts papers attempted, not guaranteed
+proposals; unavailable or unparseable papers are reported individually and do
+not stop the remaining batch.
 See the [operator guide](./docs/DISCOVERY_QUEUE.md) and
 [literature-search protocol](./docs/LITERATURE_SEARCH_PROTOCOL.md).
 

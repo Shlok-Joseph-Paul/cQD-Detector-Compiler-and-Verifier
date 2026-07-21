@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Photodiode Atlas",
       images: [
         {
-          url: new URL("/og-v2.png", origin).toString(),
+          url: new URL("/og.png", origin).toString(),
           width: 1200,
           height: 630,
           alt: "Photodiode Atlas detectivity versus wavelength data map",
@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Photodiode Atlas",
       description:
         "A curated map of reported CQD and perovskite photodiode performance.",
-      images: [new URL("/og-v2.png", origin).toString()],
+      images: [new URL("/og.png", origin).toString()],
     },
     icons: {
       icon: "/favicon.png",

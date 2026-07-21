@@ -48,7 +48,7 @@ const MATERIAL_PATTERNS: Readonly<Record<string, RegExp>> = {
   FAPbBr3: /\b(?:fapbbr3|formamidinium lead bromide)\b/i,
   CsPbBr3: /\b(?:cspbbr3|cesium lead bromide)\b/i,
   CsPbI3: /\b(?:cspbi3|cesium lead iodide)\b/i,
-  Cs2AgBiBr6: /\b(?:cs2ag bibr6|cs2agbi br6|cs2ag bibr 6|cs2agbibr6)\b/i,
+  Cs2AgBiBr6: /\b(?:cs2agbibr6|cesium silver bismuth bromide)\b/i,
   "mixed Pb-Sn perovskite":
     /\b(?:mixed[ -]?(?:lead|pb)[ -]?(?:tin|sn)|pb[ -]?sn)\b[^.]{0,80}\bperovskite/i,
   "mixed-halide perovskite": /\bmixed[ -]halide perovskite/i,

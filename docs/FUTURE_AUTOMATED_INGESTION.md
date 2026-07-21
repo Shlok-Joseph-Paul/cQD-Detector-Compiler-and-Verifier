@@ -12,7 +12,7 @@ today. See
 `docs/DISCOVERY_QUEUE.md` for the implemented operator workflow and
 `docs/LITERATURE_SEARCH_PROTOCOL.md` for its scientific-search protocol.
 
-The CQD Photodiode Atlas currently treats the repository CSV files as its only
+The Photodiode Atlas currently treats the repository CSV files as its only
 publishable source of truth. A future service may help curators _discover_ and
 _prepare_ candidate records, but it must not publish scientific values without
 an explicit human approval step.
@@ -110,7 +110,7 @@ papers. It can use title, abstract, keywords, and venue metadata, but its result
 is only a routing score. It must not decide public inclusion.
 
 The queue should make exclusions easy to record, including photoconductors,
-phototransistors, bolometers, epitaxial quantum dots, non-CQD perovskite films,
+phototransistors, bolometers, epitaxial quantum dots, perovskite solar cells,
 theory-only reports, and focal-plane-array papers without an extractable
 photodiode measurement. Recorded exclusion reasons prevent the same paper from
 being repeatedly proposed without hiding later corrected versions.

@@ -9,7 +9,7 @@ const newIssueUrl =
 export const metadata: Metadata = {
   title: "Contribute",
   description:
-    "Suggest a missing paper, correct a record, or provide additional metadata for the CQD Photodiode Atlas.",
+    "Suggest a missing paper, correct a record, or provide additional metadata for the Photodiode Atlas.",
 };
 
 export default function ContributePage() {
@@ -67,7 +67,9 @@ export default function ContributePage() {
                 <ul>
                   <li>Paper title, authors, year, and journal</li>
                   <li>DOI or stable publication link</li>
-                  <li>Why the device meets the CQD photodiode scope</li>
+                  <li>
+                    Why the device meets the CQD or perovskite photodiode scope
+                  </li>
                   <li>
                     Where D<sup>*</sup> and wavelength are reported
                   </li>
@@ -158,7 +160,7 @@ export default function ContributePage() {
               <h2 id="curator-card-heading">Shlok Joseph Paul</h2>
               <p className="curator-card__bio">
                 Shlok is an infrared-detector researcher and the curator of the
-                CQD Photodiode Atlas. He created the project to make published
+                Photodiode Atlas. He created the project to make published
                 detector performance easier to compare while keeping measurement
                 methods and source evidence visible.
               </p>

@@ -59,6 +59,7 @@ export function classifyAtlasFit(
   candidate: DiscoveryCandidate,
 ): RankedCandidate["atlasFit"] {
   const text = normalizedEvidenceText(candidate);
+  const title = candidate.title.replace(/<[^>]+>/g, " ").toLowerCase();
   const hasDStar = /detectivit|\bd\s*\*/i.test(text);
   const hasPhotodiode =
     /photodiode|photovoltaic detector|\b(?:p-?n|p-?i-?n)\s+junction/i.test(
@@ -76,18 +77,25 @@ export function classifyAtlasFit(
     candidateTechnologyFamilies(candidate).includes("perovskite");
   const hasPerovskite = /\bperovskites?\b/i.test(text);
   const hasProfileAbsorber = isPerovskite ? hasPerovskite : hasCqd;
+  const titleEstablishesPerovskiteDetector =
+    !isPerovskite ||
+    /photodiode|photodetector|photo detector|image sensor|\bimager\b|focal plane array/i.test(
+      title,
+    );
   if (
     candidate.relevanceScore >= 74 &&
     hasDStar &&
     hasPhotodiode &&
-    hasProfileAbsorber
+    hasProfileAbsorber &&
+    titleEstablishesPerovskiteDetector
   )
     return "high";
   if (
     candidate.relevanceScore >= 64 &&
     hasDStar &&
     hasDetector &&
-    hasProfileAbsorber
+    hasProfileAbsorber &&
+    titleEstablishesPerovskiteDetector
   )
     return "medium";
   return "low";

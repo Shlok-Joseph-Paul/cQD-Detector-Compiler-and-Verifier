@@ -1,4 +1,4 @@
-# CQD Photodiode Atlas data dictionary
+# Photodiode Atlas data dictionary
 
 The atlas is edited in three CSV files. A paper can own multiple devices, and a
 device can own multiple measurements. The graph's unit of observation is a
@@ -37,16 +37,17 @@ record”**. Delete all `demo-*` rows before adding the first literature record.
 
 ## `devices.csv`
 
-| Column                 | Type            | Required | Meaning                                                     |
-| ---------------------- | --------------- | -------- | ----------------------------------------------------------- |
-| `device_id`            | identifier      | yes      | Stable device identifier, referenced by measurements.       |
-| `paper_id`             | identifier      | yes      | Existing parent `paper_id`.                                 |
-| `material_family`      | text            | yes      | Extensible category such as `PbS`, `HgTe`, or `Other CQDs`. |
-| `material_composition` | text            | no       | Composition as reported by the source.                      |
-| `device_architecture`  | text            | no       | Photodiode architecture.                                    |
-| `device_stack`         | text            | no       | Layer stack in source order.                                |
-| `active_area_cm2`      | positive number | no       | Active area in square centimetres.                          |
-| `device_notes`         | text            | no       | Device-level curator notes.                                 |
+| Column                 | Type            | Required | Meaning                                                            |
+| ---------------------- | --------------- | -------- | ------------------------------------------------------------------ |
+| `device_id`            | identifier      | yes      | Stable device identifier, referenced by measurements.              |
+| `paper_id`             | identifier      | yes      | Existing parent `paper_id`.                                        |
+| `technology_family`    | enum            | yes      | `cqd` or `perovskite`.                                             |
+| `material_family`      | text            | yes      | Extensible category such as `PbS`, `HgTe`, `MAPbI3`, or `CsPbBr3`. |
+| `material_composition` | text            | no       | Composition as reported by the source.                             |
+| `device_architecture`  | text            | no       | Photodiode architecture.                                           |
+| `device_stack`         | text            | no       | Layer stack in source order.                                       |
+| `active_area_cm2`      | positive number | no       | Active area in square centimetres.                                 |
+| `device_notes`         | text            | no       | Device-level curator notes.                                        |
 
 ## `measurements.csv`
 

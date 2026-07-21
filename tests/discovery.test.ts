@@ -28,6 +28,7 @@ import {
   convertPrefixedValue,
   selectMetricCandidate,
   rankNewCandidates,
+  classifyAtlasFit,
   renderCandidateShortlist,
   updateRegistryIncrementally,
   validateCandidate,
@@ -210,6 +211,52 @@ test("relevance recognizes CQD chemistry aliases without treating every nanocrys
     generic.reasons.some((reason) => reason.includes("Explicit colloidal")),
     false,
   );
+});
+
+test("perovskite profile scores photodiodes independently from CQD terminology", () => {
+  const perovskiteWork = work({
+    title: "Multidimensional perovskites for high detectivity photodiodes",
+    abstract_inverted_index: {
+      quasi: [0],
+      two: [1],
+      dimensional: [2],
+      perovskite: [3],
+      photodiode: [4],
+      measured: [5],
+      noise: [6],
+      detectivity: [7],
+    },
+  });
+  const relevance = calculateRelevance(
+    perovskiteWork,
+    config,
+    ["keyword"],
+    "perovskite",
+  );
+  assert.ok(relevance.score >= 70);
+  assert.ok(
+    relevance.reasons.some((reason) =>
+      reason.includes("Explicit metal-halide perovskite terminology"),
+    ),
+  );
+
+  const value = candidateFromOpenAlex(perovskiteWork, config, {
+    method: "keyword",
+    technologyFamily: "perovskite",
+  });
+  assert.deepEqual(value?.technologyFamilies, ["perovskite"]);
+});
+
+test("automatic perovskite fit rejects materials papers whose references mention photodiodes", () => {
+  const value = candidate({
+    technologyFamilies: ["perovskite"],
+    title:
+      "Layer number dependence of chirality in chiral 2D halide perovskites",
+    abstract:
+      "The references discuss a perovskite photodiode with measured detectivity and a p-i-n junction.",
+    relevanceScore: 92,
+  });
+  assert.equal(classifyAtlasFit(value), "low");
 });
 
 test("candidate creation falls back to a primary PDF when the best OA location has none", () => {
@@ -620,6 +667,28 @@ test("extractor stages co-located detectivity and wavelength with conservative n
     "shot_noise_approximation",
   );
   assert.equal(proposal.proposedMeasurements[0].flag, "amber");
+});
+
+test("extractor stages metal-halide perovskite p–i–n photodiodes", () => {
+  const proposal = extractStagedProposal(
+    candidate({
+      technologyFamilies: ["perovskite"],
+      candidateMaterialClasses: ["quasi-2D"],
+      title: "Multidimensional perovskites for high detectivity photodiodes",
+    }),
+    proposalSource,
+    [
+      "=== PDF PAGE 1 ===",
+      "We fabricated a quasi-2D metal-halide perovskite p–i–n photodiode.",
+      "=== PDF PAGE 5 ===",
+      "At 600 nm and zero bias, the measured-noise specific detectivity D* reached 7 × 10^12 Jones.",
+    ].join("\n"),
+    new Date("2026-07-19T00:00:00.000Z"),
+  );
+  assert.equal(proposal.scopeStatus, "in-scope");
+  assert.equal(proposal.proposedDevices[0].technology_family, "perovskite");
+  assert.equal(proposal.proposedMeasurements[0].wavelength_nm, 600);
+  assert.equal(proposal.proposedMeasurements[0].detectivity_jones, 7e12);
 });
 
 test("extractor prefers richer results-page evidence and measured-noise apparatus", () => {

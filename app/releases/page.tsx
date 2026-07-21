@@ -7,7 +7,7 @@ import { atlasData, DATASET_RELEASES, DATASET_VERSION } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Dataset releases",
   description:
-    "Version history, release notes, and citation guidance for the CQD Photodiode Atlas dataset.",
+    "Version history, release notes, and citation guidance for the Photodiode Atlas dataset.",
 };
 
 const repositoryUrl =
@@ -51,7 +51,7 @@ export default function ReleasesPage() {
             <h2 id="citation-heading">Reference the exact dataset</h2>
           </div>
           <blockquote>
-            CQD Photodiode Atlas, dataset version {DATASET_VERSION}, released{" "}
+            Photodiode Atlas, dataset version {DATASET_VERSION}, released{" "}
             {current.date}, accessed [date], {repositoryUrl}.
           </blockquote>
           <p>

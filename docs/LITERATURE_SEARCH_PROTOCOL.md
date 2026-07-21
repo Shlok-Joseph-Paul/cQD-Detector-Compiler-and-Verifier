@@ -1,13 +1,13 @@
-# CQD Photodiode Atlas literature-search protocol
+# Photodiode Atlas literature-search protocol
 
 ## Purpose and boundary
 
 The Paper Discovery Queue identifies publications that may merit human
 screening. A candidate is not an atlas record. Discovery, relevance ranking,
 PDF availability, and a local `include` decision cannot add a paper to the
-published atlas. Publication still requires the CQD Paper Importer workflow,
-source-level verification, normalized Paper → Device → Measurement records,
-and the existing data validator.
+published atlas. Publication still requires source-level verification,
+normalized Paper → Device → Measurement records, and the existing data
+validator.
 
 ## Databases and search strategy
 
@@ -20,17 +20,18 @@ The automated search uses:
 - the current `data/papers.csv` entries as citation-graph seeds and an
   exclusion list.
 
-The versioned terms and exact keyword queries live in
-`data/discovery/config.json`. That file is the search-strategy source of truth;
-queries can be edited without changing application code. A run log records the
-configuration version, exact queries, seed IDs, optional date filters, counts,
-and incomplete requests.
+The versioned CQD and perovskite profiles, material terms, and exact keyword
+queries live in `data/discovery/config.json`. That file is the search-strategy
+source of truth; queries can be edited without changing application code. A
+run log records the profile, configuration version, exact queries, seed IDs,
+optional date filters, counts, and incomplete requests.
 
 OpenAlex keyword search can match indexed full text as well as titles and
 abstracts. Discovery therefore favors recall, while automatic review-batch
-eligibility uses only local title and reconstructed-abstract evidence for CQD,
-detector, and detectivity signals. Citation expansion remains important for
-papers with missing abstracts or unusual terminology.
+eligibility uses only local title and reconstructed-abstract evidence for the
+selected absorber profile, detector, and detectivity signals. Citation
+expansion remains important for papers with missing abstracts or unusual
+terminology.
 
 For a formal search, record the search date and use `--to=YYYY-MM-DD` as the
 cutoff date. Use an overlap window on later incremental runs to accommodate
@@ -39,18 +40,18 @@ recreate candidates.
 
 ## Screening criteria
 
-Prioritize experimental, solution-processed colloidal-quantum-dot photodiodes
-with an identifiable measurement wavelength and reported specific detectivity.
-The scope does not require a particular spectral region. Candidate ranking
-deliberately has higher recall than the atlas's inclusion rule. It therefore
-allows photodetector, imager, focal-plane-array, and photoconductor terminology
-to surface papers for human screening.
+Prioritize experimental CQD or metal-halide perovskite photodiodes with an
+identifiable measurement wavelength and reported specific detectivity. The
+scope does not require a particular spectral region. Candidate ranking has
+higher recall than the atlas's inclusion rule, so photodetector, imager,
+focal-plane-array, and photoconductor terminology can still surface papers for
+human screening.
 
 Exclude from the published atlas when the original work is limited to:
 
 - photoconductors, photoresistors, phototransistors, or bolometers;
 - focal-plane arrays without an extractable photodiode measurement;
-- epitaxial or self-assembled quantum-dot detectors;
+- epitaxial or self-assembled quantum-dot detectors in the CQD profile;
 - emitters, LEDs, lasers, or luminescence;
 - solar cells without detector characterization;
 - synthesis or theory without an experimental photodiode;

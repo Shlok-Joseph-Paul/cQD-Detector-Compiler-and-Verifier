@@ -13,8 +13,9 @@ configuration or repository.
 ## Commands
 
 ```bash
-# 1. Run all versioned keyword queries
-pnpm discovery discover
+# 1. Run all versioned keyword queries for one absorber profile
+pnpm discovery discover --profile=cqd
+pnpm discovery discover --profile=perovskite
 
 # Run selected queries or apply a formal publication-date window
 pnpm discovery discover --query='InSb colloidal quantum dot photodiode' --from=2020-01-01 --to=2026-07-19
@@ -45,13 +46,14 @@ pnpm discovery parse-open-access --candidate=candidate-id
 pnpm discovery parse-open-access --included
 
 # Prepare the five best unprocessed candidates without requiring include first
-pnpm discovery prepare-review --limit=5
+pnpm discovery prepare-review --profile=cqd --limit=5
+pnpm discovery prepare-review --profile=perovskite --limit=5
 
 # Refresh keyword and citation-graph candidates before preparing the batch
-pnpm discovery prepare-review --limit=5 --discover --expand
+pnpm discovery prepare-review --profile=perovskite --limit=5 --discover --expand
 
 # Constrain an incremental refresh with an overlap window
-pnpm discovery prepare-review --limit=5 --discover --from=2026-07-01 --to=2026-07-21
+pnpm discovery prepare-review --profile=perovskite --limit=5 --discover --from=2026-07-01 --to=2026-07-21
 
 # 8. Export/import explicit proposal decisions
 pnpm discovery export-proposal-decisions --output=data/discovery/proposal-decisions.csv
@@ -92,8 +94,8 @@ inclusion or publication decision. An unreviewed candidate must:
   `published`;
 - not be excluded, uncertain, or a possible fuzzy duplicate;
 - meet the configured relevance threshold; and
-- contain CQD, detector, and detectivity evidence in its title and reconstructed
-  abstract.
+- contain the selected profile's absorber, detector, and detectivity evidence
+  in its title and reconstructed abstract.
 
 An explicit curator `include` decision bypasses the automatic score and
 title/abstract confidence gates, but never bypasses atlas duplication, existing

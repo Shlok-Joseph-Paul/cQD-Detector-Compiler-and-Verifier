@@ -294,7 +294,7 @@ export function extractStagedProposal(
     );
   const hasProfileAbsorber = isPerovskite ? hasPerovskite : hasColloidal;
   const hasPhotodiode =
-    /photodiode|photovoltaic (?:detector|device)|p[\s-]*n junction|p[\s-]*i[\s-]*n/.test(
+    /photodiode|photovoltaic (?:detector|device)|p[\s\-–—−]*n junction|p[\s\-–—−]*i[\s\-–—−]*n/.test(
       lower,
     );
   const onlyExcluded =

@@ -32,6 +32,7 @@ export interface PipelinePaths {
   config: string;
   registry: string;
   atlasPapers: string;
+  atlasDevices: string;
   runLog: string;
   cacheDirectory: string;
 }
@@ -57,6 +58,7 @@ export function defaultPipelinePaths(root: string): PipelinePaths {
     config: path.join(root, "data/discovery/config.json"),
     registry: path.join(root, "data/discovery/candidates.json"),
     atlasPapers: path.join(root, "data/papers.csv"),
+    atlasDevices: path.join(root, "data/devices.csv"),
     runLog: path.join(root, "data/discovery/runs.jsonl"),
     cacheDirectory: path.join(root, "data/discovery/cache"),
   };
@@ -441,8 +443,24 @@ export class DiscoveryPipeline {
     );
     let registry = await readCandidateRegistry(this.paths.registry);
     const papersCsv = await readFile(this.paths.atlasPapers, "utf8");
+    const devicesCsv = await readFile(this.paths.atlasDevices, "utf8");
     const atlasDois = extractAtlasDoisFromCsv(papersCsv);
     const rows = parseCsv(papersCsv);
+    const deviceRows = parseCsv(devicesCsv);
+    const deviceHeaders = deviceRows[0] ?? [];
+    const devicePaperIdIndex = deviceHeaders.indexOf("paper_id");
+    const technologyIndex = deviceHeaders.indexOf("technology_family");
+    const profilePaperIds = new Set(
+      deviceRows
+        .slice(1)
+        .filter((row) => {
+          const technology =
+            technologyIndex >= 0 ? row[technologyIndex] : "cqd";
+          return technology === profile.technologyFamily;
+        })
+        .map((row) => row[devicePaperIdIndex])
+        .filter(Boolean),
+    );
     const headers = rows[0] ?? [];
     const idIndex = headers.indexOf("paper_id");
     const doiIndex = headers.indexOf("doi");
@@ -452,7 +470,9 @@ export class DiscoveryPipeline {
         paperId: row[idIndex],
         doi: normalizeDoi(row[doiIndex]),
       }))
-      .filter((seed) => seed.paperId && seed.doi);
+      .filter(
+        (seed) => seed.paperId && seed.doi && profilePaperIds.has(seed.paperId),
+      );
     const client = new OpenAlexClient(
       config,
       this.paths.cacheDirectory,

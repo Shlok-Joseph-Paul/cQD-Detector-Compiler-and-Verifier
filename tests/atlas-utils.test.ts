@@ -223,6 +223,22 @@ test("filters measurements across scientific and publication dimensions", () => 
     })[0]?.measurement.measurementId,
     "measurement-1",
   );
+
+  const perovskiteRecord: AtlasRecord = {
+    ...measuredRecord,
+    device: {
+      ...measuredRecord.device,
+      technologyFamily: "perovskite",
+      materialFamily: "MAPbI3",
+    },
+  };
+  assert.deepEqual(
+    filterAtlasRecords([measuredRecord, perovskiteRecord], {
+      ...DEFAULT_ATLAS_FILTERS,
+      technology: "perovskite",
+    }).map((record) => record.device.technologyFamily),
+    ["perovskite"],
+  );
 });
 
 test("temperature and bias category boundaries include missing values", () => {
@@ -240,6 +256,7 @@ test("URL filter state round-trips and preserves unrelated parameters", () => {
   const filters = {
     ...DEFAULT_ATLAS_FILTERS,
     search: "PbS diode",
+    technology: "perovskite" as const,
     material: "PbS",
     wavelengthMin: 700,
     publicationType: "peer_reviewed" as const,

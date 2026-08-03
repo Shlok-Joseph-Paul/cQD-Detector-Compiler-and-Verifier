@@ -89,7 +89,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 3);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 79);
+  assert.equal(atlas.measurements.length, 82);
   assert.equal(atlas.records.length, atlas.measurements.length);
   const preprintRecords = atlas.records.filter(
     ({ paper: source }) => source.publication_type === "preprint",
@@ -104,18 +104,18 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 25);
+  assert.equal(amberRecords.length, 27);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
     ).length,
-    17,
+    18,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("lock_in_only_noise_measurement"),
     ).length,
-    8,
+    9,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>

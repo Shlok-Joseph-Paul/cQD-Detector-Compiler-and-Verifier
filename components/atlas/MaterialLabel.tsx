@@ -4,12 +4,12 @@ export interface MaterialLabelProps {
   value: string;
 }
 
-/** Render chemical digits as subscripts while preserving the source label. */
+/** Render integer and decimal stoichiometries as subscripts. */
 export function MaterialLabel({ value }: MaterialLabelProps) {
   const parts: ReactNode[] = value
-    .split(/(\d+)/g)
+    .split(/(\d+(?:\.\d+)?)/g)
     .map((part, index) =>
-      /^\d+$/.test(part) ? (
+      /^\d+(?:\.\d+)?$/.test(part) ? (
         <sub key={`${part}-${index}`}>{part}</sub>
       ) : (
         <Fragment key={`${part}-${index}`}>{part}</Fragment>

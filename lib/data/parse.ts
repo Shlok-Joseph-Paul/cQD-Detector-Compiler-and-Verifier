@@ -7,6 +7,8 @@ import {
   EXTENDED_METRIC_EXTRACTION_METHODS,
   EXTENDED_METRICS_REVIEW_STATUSES,
   FLAGS,
+  LIGAND_EXCHANGE_STATUSES,
+  LIGAND_EXCHANGE_TYPES,
   NOISE_INSTRUMENTS,
   NOISE_METHODS,
   PUBLICATION_TYPES,
@@ -46,6 +48,13 @@ export const DEVICE_CSV_COLUMNS = [
   "device_architecture",
   "device_stack",
   "active_area_cm2",
+  "ligand_exchange_status",
+  "ligand_exchange_type",
+  "ligand_exchange_chemicals",
+  "native_ligands",
+  "ligand_exchange_target",
+  "ligand_exchange_conditions",
+  "ligand_exchange_source_location",
   "device_notes",
 ] as const;
 
@@ -527,6 +536,24 @@ function parseDevices(source: string): ParsedEntity<Device> {
       device_architecture: read.nullableString("device_architecture"),
       device_stack: read.nullableString("device_stack"),
       active_area_cm2: read.nullableNumber("active_area_cm2"),
+      ligand_exchange_status: read.oneOf(
+        "ligand_exchange_status",
+        LIGAND_EXCHANGE_STATUSES,
+      ),
+      ligand_exchange_type:
+        read.optionalOneOf("ligand_exchange_type", LIGAND_EXCHANGE_TYPES) ??
+        null,
+      ligand_exchange_chemicals: read.nullableString(
+        "ligand_exchange_chemicals",
+      ),
+      native_ligands: read.nullableString("native_ligands"),
+      ligand_exchange_target: read.nullableString("ligand_exchange_target"),
+      ligand_exchange_conditions: read.nullableString(
+        "ligand_exchange_conditions",
+      ),
+      ligand_exchange_source_location: read.nullableString(
+        "ligand_exchange_source_location",
+      ),
       device_notes: read.nullableString("device_notes"),
     };
     prepared.issues.push(...read.issues);

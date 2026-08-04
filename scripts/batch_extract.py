@@ -29,6 +29,12 @@ CATEGORIES: dict[str, tuple[str, ...]] = {
         r"\bFFT\b", r"transimpedance", r"electrometer",
     ),
     "device": (r"device fabrication", r"device structure", r"device stack", r"\bito\b", r"\bfto\b"),
+    "ligand_exchange": (
+        r"ligand.?exchange", r"ligand.?exchanged", r"solid.?state exchange",
+        r"solution.?phase exchange", r"ink.?phase", r"surface treatment",
+        r"\bEDT\b", r"\bMPA\b", r"\bTBAI\b", r"\bTMAI\b", r"\bDDT\b",
+        r"\bCTAB\b", r"\bInBr3\b", r"\bInI3\b", r"\bHgCl2\b",
+    ),
     "conditions": (r"\bbias\b", r"temperature", r"frequency", r"\bhz\b", r"active area", r"device area"),
     "responsivity": (
         r"responsiv(?:ity|ities)", r"photoresponsivity", r"\b[munµμ]?A\s*(?:/\s*W|W.?1)"

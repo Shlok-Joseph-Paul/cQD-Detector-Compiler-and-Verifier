@@ -376,6 +376,22 @@ export function DiscoveryQueueClient({
                           <dt>Stack</dt>
                           <dd>{device.device_stack ?? "Not reported"}</dd>
                         </div>
+                        <div>
+                          <dt>Ligand exchange</dt>
+                          <dd>
+                            {device.ligand_exchange_status ?? "Not checked"}
+                            {device.ligand_exchange_chemicals
+                              ? `: ${device.ligand_exchange_chemicals}`
+                              : ""}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Ligand source</dt>
+                          <dd>
+                            {device.ligand_exchange_source_location ??
+                              "Not reported"}
+                          </dd>
+                        </div>
                       </dl>
                     ))}
                   </section>

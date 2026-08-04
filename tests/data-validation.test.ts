@@ -39,6 +39,13 @@ const device: Device = {
   device_architecture: "Test photodiode",
   device_stack: null,
   active_area_cm2: 0.01,
+  ligand_exchange_status: "not_checked",
+  ligand_exchange_type: null,
+  ligand_exchange_chemicals: null,
+  native_ligands: null,
+  ligand_exchange_target: null,
+  ligand_exchange_conditions: null,
+  ligand_exchange_source_location: null,
   device_notes: null,
 };
 
@@ -175,6 +182,34 @@ test("missing operating conditions do not make a reviewed record amber", () => {
     }),
   );
   assert.equal(result.valid, true);
+});
+
+test("reported ligand exchange requires a type, chemical, and source location", () => {
+  const invalid = entities();
+  invalid.devices[0] = {
+    ...invalid.devices[0],
+    ligand_exchange_status: "reported",
+    ligand_exchange_type: null,
+    ligand_exchange_chemicals: null,
+    ligand_exchange_source_location: null,
+  };
+  const result = validateAtlasEntities(invalid);
+  assert.equal(result.valid, false);
+  assert.ok(
+    result.issues.some(
+      ({ code }) => code === "ligand_exchange_method_required",
+    ),
+  );
+  assert.ok(
+    result.issues.some(
+      ({ code }) => code === "ligand_exchange_chemicals_required",
+    ),
+  );
+  assert.ok(
+    result.issues.some(
+      ({ code }) => code === "ligand_exchange_source_required",
+    ),
+  );
 });
 
 test("checked missing extended metrics do not create an amber flag", () => {

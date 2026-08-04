@@ -23,7 +23,7 @@ export default function DiscoveryPage() {
     atlasData.papers,
   );
   const proposals = filterPublicDiscoveryProposals(
-    (proposalRegistry as ProposalRegistry).proposals,
+    (proposalRegistry as unknown as ProposalRegistry).proposals,
     atlasData.papers,
   );
   return (

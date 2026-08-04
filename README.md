@@ -50,7 +50,7 @@ Paper 1 ──► many Devices 1 ──► many Measurements
 
 - **Paper** holds the original bibliographic source.
 - **Device** holds the technology family, absorber material, composition,
-  architecture, stack, and active area.
+  architecture, stack, active area, and evidence-linked ligand-exchange method.
 - **Measurement** holds one D<sup>*</sup> value, wavelength, operating
   conditions, noise method, acquisition instrument chain, provenance, and
   curation status.
@@ -102,17 +102,19 @@ or credentials are needed for the static atlas.
 
 ## Commands
 
-| Command                  | Purpose                                                                                |
-| ------------------------ | -------------------------------------------------------------------------------------- |
-| `pnpm run dev`           | Start the local development site                                                       |
-| `pnpm run validate-data` | Validate the three CSV files and regenerate `data/generated/atlas.json`                |
-| `pnpm run check-data`    | Validate the CSV files and verify that generated JSON is current without writing files |
-| `pnpm test`              | Run automated schema, flags, filtering, sorting, formatting, and export tests          |
-| `pnpm run lint`          | Run the code-quality checks                                                            |
-| `pnpm run typecheck`     | Run strict TypeScript checks without emitting files                                    |
-| `pnpm run build`         | Validate data and create the production build                                          |
-| `pnpm run start`         | Start the production build locally                                                     |
-| `pnpm discovery <cmd>`   | Operate the separate, human-screened paper discovery queue                             |
+| Command                                         | Purpose                                                                                |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `pnpm run dev`                                  | Start the local development site                                                       |
+| `pnpm run validate-data`                        | Validate the three CSV files and regenerate `data/generated/atlas.json`                |
+| `pnpm run check-data`                           | Validate the CSV files and verify that generated JSON is current without writing files |
+| `pnpm test`                                     | Run automated schema, flags, filtering, sorting, formatting, and export tests          |
+| `pnpm run lint`                                 | Run the code-quality checks                                                            |
+| `pnpm run typecheck`                            | Run strict TypeScript checks without emitting files                                    |
+| `pnpm run build`                                | Validate data and create the production build                                          |
+| `pnpm run start`                                | Start the production build locally                                                     |
+| `pnpm discovery <cmd>`                          | Operate the separate, human-screened paper discovery queue                             |
+| `pnpm inbox <cmd>`                              | Operate the private local watched-folder paper parser                                  |
+| `pnpm run reprocess-ligands -- --manifest PATH` | Re-run ligand-exchange extraction against a cached PDF batch manifest                  |
 
 The production build is expected to fail if curated data is invalid or the
 generated atlas artifact is stale.
@@ -138,6 +140,18 @@ proposals; unavailable or unparseable papers are reported individually and do
 not stop the remaining batch.
 See the [operator guide](./docs/DISCOVERY_QUEUE.md) and
 [literature-search protocol](./docs/LITERATURE_SEARCH_PROTOCOL.md).
+
+## Local watched paper inbox
+
+`pnpm inbox init` creates a private paper inbox at
+`~/Documents/CQD Paper Inbox`. Papers placed directly in `Incoming`, or grouped
+with Supporting Information in one subfolder, are hash-checked, cached,
+extracted, and converted into review-only proposals. The watcher never changes
+the curated CSV files or publishes data.
+
+Run `pnpm inbox install` on macOS to schedule a bounded scan at login and every
+minute. See the [paper-inbox guide](./docs/PAPER_INBOX.md) for folder naming,
+metadata, runtime selection, job status, retry, and uninstall instructions.
 
 ## Curated data workflow
 
@@ -175,8 +189,9 @@ a guessed value as a substitute for missing information.
    `https://doi.org/` prefix unless the data dictionary requests it.
 4. **Add each distinct device.** In `data/devices.csv`, assign a unique
    `device_id`, reference the paper's `paper_id`, and record material family,
-   composition, architecture, layer stack, area, and notes. Use separate device
-   rows when stacks or architectures differ materially.
+   composition, architecture, layer stack, area, ligand-exchange chemistry and
+   process, and notes. Use separate device rows when stacks, architectures, or
+   ligand treatments differ materially.
 5. **Add each measurement.** In `data/measurements.csv`, assign a unique
    `measurement_id` and reference its `device_id`. Create separate rows for
    distinct reported wavelengths, biases, temperatures, frequencies, devices,

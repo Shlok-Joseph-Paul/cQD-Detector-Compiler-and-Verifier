@@ -2,6 +2,7 @@ export * from "./api.ts";
 export * from "./csv.ts";
 export * from "./dedupe.ts";
 export * from "./extended-metrics.ts";
+export * from "./ligand-exchange.ts";
 export * from "./full-text-resolver.ts";
 export * from "./normalize.ts";
 export * from "./pdf-acquisition.ts";

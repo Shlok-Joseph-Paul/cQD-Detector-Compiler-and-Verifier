@@ -669,6 +669,35 @@ test("extractor stages co-located detectivity and wavelength with conservative n
   assert.equal(proposal.proposedMeasurements[0].flag, "amber");
 });
 
+test("extractor stages an evidence-linked solid-state ligand exchange", () => {
+  const proposal = extractStagedProposal(
+    candidate({ candidateMaterialClasses: ["PbS"] }),
+    proposalSource,
+    [
+      "=== PDF PAGE 1 ===",
+      "We fabricated a solution-processed PbS colloidal quantum dot photodiode.",
+      "=== PDF PAGE 3 ===",
+      "Oleic-acid-capped PbS CQDs were deposited layer-by-layer. Each CQD film was treated using 0.02 vol% 1,2-ethanedithiol (EDT) in acetonitrile for 30 s, then rinsed twice.",
+      "At 1550 nm, the measured-noise specific detectivity D* reached 2.1 × 10^12 Jones.",
+    ].join("\n"),
+    new Date("2026-07-19T00:00:00.000Z"),
+  );
+  const device = proposal.proposedDevices[0];
+  assert.equal(device.ligand_exchange_status, "reported");
+  assert.equal(device.ligand_exchange_type, "solid_state");
+  assert.match(device.ligand_exchange_chemicals ?? "", /EDT/);
+  assert.match(device.native_ligands ?? "", /oleic acid/i);
+  assert.match(device.ligand_exchange_target ?? "", /CQD film/);
+  assert.equal(device.ligand_exchange_source_location, "PDF page 3");
+  assert.ok(
+    proposal.evidence.some(
+      (item) =>
+        item.field === "device.ligand_exchange" &&
+        item.location === "PDF page 3",
+    ),
+  );
+});
+
 test("extractor stages metal-halide perovskite p–i–n photodiodes", () => {
   const proposal = extractStagedProposal(
     candidate({
@@ -687,6 +716,10 @@ test("extractor stages metal-halide perovskite p–i–n photodiodes", () => {
   );
   assert.equal(proposal.scopeStatus, "in-scope");
   assert.equal(proposal.proposedDevices[0].technology_family, "perovskite");
+  assert.equal(
+    proposal.proposedDevices[0].ligand_exchange_status,
+    "not_applicable",
+  );
   assert.equal(proposal.proposedMeasurements[0].wavelength_nm, 600);
   assert.equal(proposal.proposedMeasurements[0].detectivity_jones, 7e12);
 });

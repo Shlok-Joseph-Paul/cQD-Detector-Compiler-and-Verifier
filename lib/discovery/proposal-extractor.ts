@@ -16,8 +16,9 @@ import {
   extractExtendedMetricCandidates,
   selectMetricCandidate,
 } from "./extended-metrics.ts";
+import { extractLigandExchange } from "./ligand-exchange.ts";
 
-interface PageText {
+export interface PageText {
   page: number;
   text: string;
   documentLabel: string;
@@ -371,6 +372,18 @@ export function extractStagedProposal(
   const activeArea = activeAreaMatch
     ? Number(activeAreaMatch[1]) * (/mm/i.test(activeAreaMatch[2]) ? 0.01 : 1)
     : null;
+  const ligandExchange = extractLigandExchange(
+    pages,
+    isPerovskite ? "perovskite" : "cqd",
+  );
+  if (
+    source.needsOcr &&
+    ligandExchange.ligand_exchange_status === "not_reported"
+  ) {
+    ligandExchange.ligand_exchange_status = "ambiguous";
+    ligandExchange.ligand_exchange_conditions =
+      "The source requires OCR, so absence of a searchable ligand-exchange method could not be confirmed.";
+  }
   const proposedDevice: Device = {
     device_id: deviceId,
     paper_id: paperId,
@@ -382,11 +395,25 @@ export function extractStagedProposal(
       : null,
     device_stack: stack,
     active_area_cm2: activeArea,
+    ligand_exchange_status: ligandExchange.ligand_exchange_status,
+    ligand_exchange_type: ligandExchange.ligand_exchange_type,
+    ligand_exchange_chemicals: ligandExchange.ligand_exchange_chemicals,
+    native_ligands: ligandExchange.native_ligands,
+    ligand_exchange_target: ligandExchange.ligand_exchange_target,
+    ligand_exchange_conditions: ligandExchange.ligand_exchange_conditions,
+    ligand_exchange_source_location:
+      ligandExchange.ligand_exchange_source_location,
     device_notes:
       "Automatically staged from full text; confirm absorber, junction type, stack order, and area against the cited source locations.",
   };
   if (!stack) missingFields.push("device.device_stack");
   if (activeArea == null) missingFields.push("device.active_area_cm2");
+  if (ligandExchange.ligand_exchange_status === "ambiguous") {
+    warnings.push(
+      "Ligand-exchange language was found, but the chemical, process type, or device-layer assignment requires curator confirmation.",
+    );
+    missingFields.push("device.ligand_exchange_method_confirmation");
+  }
 
   const evidence: ProposalEvidence[] = [];
   const stackEvidence = findPageEvidence(
@@ -412,6 +439,14 @@ export function extractStagedProposal(
       location: `${areaEvidence.documentLabel} PDF page ${areaEvidence.page}`,
       conciseEvidence: areaEvidence.snippet,
       confidence: 0.9,
+    });
+  for (const item of ligandExchange.evidence)
+    evidence.push({
+      field: "device.ligand_exchange",
+      page: item.page,
+      location: item.location,
+      conciseEvidence: item.conciseEvidence,
+      confidence: item.confidence,
     });
   const proposedMeasurements: Measurement[] = [];
   const noise = detectNoise(pages);
@@ -750,6 +785,6 @@ export function extractStagedProposal(
     proposedAt: now.toISOString(),
     decidedAt: null,
     appliedAt: null,
-    extractorVersion: "photodiode-proposal-extractor-v3",
+    extractorVersion: "photodiode-proposal-extractor-v4",
   };
 }

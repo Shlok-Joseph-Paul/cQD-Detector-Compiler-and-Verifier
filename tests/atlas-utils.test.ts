@@ -71,6 +71,13 @@ const measuredRecord: AtlasRecord = {
     deviceArchitecture: "p–n photodiode",
     deviceStack: null,
     activeAreaCm2: 0.01,
+    ligandExchangeStatus: "not_checked",
+    ligandExchangeType: null,
+    ligandExchangeChemicals: null,
+    nativeLigands: null,
+    ligandExchangeTarget: null,
+    ligandExchangeConditions: null,
+    ligandExchangeSourceLocation: null,
     deviceNotes: null,
   },
   measurement: {

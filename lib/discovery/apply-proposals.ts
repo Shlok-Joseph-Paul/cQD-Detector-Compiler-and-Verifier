@@ -42,6 +42,13 @@ function deviceRow(device: Device): unknown[] {
     device.device_architecture,
     device.device_stack,
     device.active_area_cm2,
+    device.ligand_exchange_status ?? "not_checked",
+    device.ligand_exchange_type,
+    device.ligand_exchange_chemicals,
+    device.native_ligands,
+    device.ligand_exchange_target,
+    device.ligand_exchange_conditions,
+    device.ligand_exchange_source_location,
     device.device_notes,
   ];
 }

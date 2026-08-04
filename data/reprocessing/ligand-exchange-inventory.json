@@ -1,0 +1,2174 @@
+{
+  "generatedAt": "2026-08-04T15:30:20.620Z",
+  "paperCount": 50,
+  "deviceCount": 69,
+  "matchedSourcePapers": 39,
+  "sourceUnavailablePapers": 11,
+  "statusCounts": {
+    "reported": 45,
+    "not_used": 0,
+    "not_reported": 2,
+    "not_applicable": 13,
+    "ambiguous": 2,
+    "source_unavailable": 7,
+    "not_checked": 0
+  },
+  "papers": [
+    {
+      "paperId": "wang-2025-ag2te-lidar",
+      "title": "Shortwave Infrared Light Detection and Ranging Using Silver Telluride Quantum Dots",
+      "sourceAvailable": true,
+      "sourceFilename": "Wang et al. - 2025 - Shortwave Infrared Light Detection and Ranging Using Silver Telluride Quantum Dots.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "wang-2025-ag2te-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | silver nitrate (AgNO3)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 30 s; acetonitrile; spin coated.",
+            "ligand_exchange_source_location": "PDF page 4 | PDF page 4"
+          },
+          "evidence": [
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "theD* reached 1011 Jones at the SWIR region, which is an order of magni- tudehigherthanpreviously. [21] Lineardynamicrange(LDR)was measured with the AgNO3 + EDT treated devices. As shown in Figure4d,SWIRphotodiodebasedonsurfaceengineeredAg 2Te QDs showed a cl…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "the Ag2Te QD photodiodes. b) Band diagram of the photodiode device. c) Temperature dependentdarkcurrentdensity–voltage( J–V–T)curvesofphotodiodeswithAgNO 3 +EDTtreatments.d)ActivationenergyofEDT-onlyandAgNO 3 + EDTdevicesextractedfrom J–V–Tmeasurements. The d…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "song-2024-ag-hgte",
+      "title": "Narrow Bandgap Silver Mercury Telluride Alloy Semiconductor Nanocrystal for Self-Powered Midwavelength-Infrared Photodiode",
+      "sourceAvailable": true,
+      "sourceFilename": "Song et al. - 2024 - Narrow bandgap silver mercury telluride alloy semiconductor nanocrystal for self-powered midwaveleng.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "song-2024-ag-hgte-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | cetyltrimethylammonium bromide (CTAB) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: layer-by-layer; wash.",
+            "ligand_exchange_source_location": "PDF page 5 | PDF page 2 | PDF page 5"
+          },
+          "evidence": [
+            {
+              "page": 5,
+              "location": "PDF page 5",
+              "conciseEvidence": "orption of halide ions on the NCs surface, forming the trap sites. However, it should be noted that even the lowest responsivity of devices using the CTAB outperforms the average responsivities of those using EDT and HDT, which shows the promising role of CTA…",
+              "confidence": 0.96
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "ively high transparency in the infrared region. The HgTe and Ag-HgTe NCs layers were deposited with the layer-by-layer (LBL) method. The HgTe ﬁlm was treated with the EDT/HCl to enhance the n-type character. Sup- plementary Fig. 10 shows the image of the HgTe…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 5,
+              "location": "PDF page 5",
+              "conciseEvidence": "d deviation. Surprisingly, the responsivity can be further improved as almost twice as high with CTAB compared to EDT. The speciﬁc detectivity of the CTAB-treated device is given by D /C3 ¼ R ﬃﬃﬃ ﬃ A p =N ð3Þ where N is the spectral noise density (0.5 pA Hz−1…",
+              "confidence": 0.9400000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "dang-2023-multiresonant-grating",
+      "title": "Multiresonant Grating to Replace Transparent Conductive Oxide Electrode for Bias Selected Filtering of Infrared Photoresponse",
+      "sourceAvailable": true,
+      "sourceFilename": "multiresonant-grating-to-replace-transparent-conductive-oxide-electrode-for-bias-selected-filtering-of-infrared.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "dang-2023-grid-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "mercury(II) chloride (HgCl2)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 4 | PDF page 2 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "−3 dB bandwidth is found to be around 20 MHz, corresponding to a rise time of t rise = 0.35/ f 3dB ≈ 18 ns. This suggests that the device dynamics is mainly determined by the capacitance of the diode. In the first part of the paper, we demonstrated that metal…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "n in Figure 1a. The cutoff wavelength will later be red-shifted upon the ligand exchange procedure and cooling (see Figures S1 and S14). Initial long capping ligands are replaced by a mixture of HgCl 2 and mercaptoethanol 39,40 to achieve a stronger interpart…",
+              "confidence": 0.8200000000000001
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": ", with the grown particles displaying an exciton peak at around 3 μm, as shown in Figure 1a. The cutoff wavelength will later be red-shifted upon the ligand exchange procedure and cooling (see Figures S1 and S14). Initial long capping ligands are replaced by…",
+              "confidence": 0.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "vafaie-2021-pbs-fast",
+      "title": "Colloidal quantum dot photodetectors with 10-ns response time and 80% quantum efficiency at 1,550 nm",
+      "sourceAvailable": true,
+      "sourceFilename": "Vafaie et al. - 2021 - Colloidal quantum dot photodetectors with 10-ns response time and 80% quantum efficiency at 1,550 nm.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "vafaie-2021-pbs-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: layer-by-layer.",
+            "ligand_exchange_source_location": "PDF page 10 | PDF page 10 | PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 10,
+              "location": "PDF page 10",
+              "conciseEvidence": "and were kept inside the glovebox to cool down before the next step. Next, using the smaller syn- thesized QDs, a thin layer of ethane-1,2-d ithiol (EDT)-treated QDs was deposited on top of the photoactive layer through layer-by-layer deposition to act as hol…",
+              "confidence": 0.92
+            },
+            {
+              "page": 10,
+              "location": "PDF page 10",
+              "conciseEvidence": "treated QDs was deposited on top of the photoactive layer through layer-by-layer deposition to act as hole trans- porting layer. The exact method for EDT solid-state ligand exchange is described by Fan et al. 14 Finally, a 160-nm layer of Au was deposited by…",
+              "confidence": 0.92
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "mental information ; Figures S6 and S7; Table S2 ). A larger built-in potential ( Vbi) and longer depletion width ( W) for the devices employing dual-exchanged CQD solids compared with HLB only suggests the importance of the charge-carrier drift component in…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "paul-2025-ag2se",
+      "title": "Heavy Metal Free Ag2Se Quantum Dot Inks for Near to Short-Wave Infrared Detection",
+      "sourceAvailable": true,
+      "sourceFilename": "Paul et al. - 2025 - Heavy Metal Free Ag2Se Quantum Dot Inks for Near to Short-Wave Infrared Detection.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "paul-2025-ag2se-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "1-dodecanethiol (DDT)",
+            "native_ligands": "trioctylphosphine (TOP) | dodecanethiol (DDT)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: layer-by-layer.",
+            "ligand_exchange_source_location": "PDF page 4 | PDF page 1 | PDF page 1"
+          },
+          "evidence": [
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "a the reaction of an Ag−DDT complex with TOP−Se, following a method adapted from Mølnås et al. 19 Representative images of the suspensions during the ligand exchange process are shown in Figure 2a. The absorption spectrum of the as-synthesized (AS) Ag 2 Se cQ…",
+              "confidence": 0.92
+            },
+            {
+              "page": 1,
+              "location": "PDF page 1",
+              "conciseEvidence": "doption under increasingly stringent regulatory frameworks. Here, we report high-performance, heavy-metal-free Ag 2 Se cQD photodetectors utilizing a solution phase ligand exchange (SPLE), which produces reproducible devices through a single-step deposition,…",
+              "confidence": 0.9
+            },
+            {
+              "page": 1,
+              "location": "PDF page 1",
+              "conciseEvidence": "reproducible devices through a single-step deposition, eliminating the need for multistep layer-by-layer depositions used in conventional solid-state ligand exchange approaches. The SPLE-based photoconductors exhibit responsivities of ∼150 mA/W under a 0.3 V…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "molnas-2024-pbs-ase",
+      "title": "Coupling of Infrared Active Colloidal Quantum Dots and Amorphous Selenium for Fast and Sensitive Photodetection",
+      "sourceAvailable": true,
+      "sourceFilename": "Mølnås et al. - 2024 - Coupling of Infrared Active Colloidal Quantum Dots and Amorphous Selenium for Fast and Sensitive Pho.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "molnas-2024-pbs-ase-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "3-mercaptopropionic acid (MPA)",
+            "native_ligands": "oleic acid (OA) | trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 45 sec; 10 sec; 10sec; 6H; 2000 rpm; 2500 rpm; 2500rpm; hexane; octane; methanol; spin coating.",
+            "ligand_exchange_source_location": "PDF page 6 | PDF page 6 | PDF page 6"
+          },
+          "evidence": [
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "fCeO2:3-MPAwasdepositedontopofthePbSlayers through spin coating of 30 mg mL−1 CQD in 9:1 hexane:octane solution (dynamic dispense, 2000 rpm, 45 sec), ligand exchange from OlAm to 3- MPA through spin coating 1 vol% 3-MPA in acetone (dynamic dispense, 2000 rpm,…",
+              "confidence": 0.92
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "cted.Forﬁlmabsorbance,50mgmL −1 PbS:OACQDinoctanewasspin coatedontosonicated(10mininacetone,isopropylalcohol,methanol)1 × 1 inch glass substrates and ligand exchanged from OA to 3-MPA as describedabove,whilePbS:Iwasspincoatedfrom500mgmL −1 inDMF withoutfurthe…",
+              "confidence": 0.92
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "1 PbS:OACQDinoctanewasspin coatedontosonicated(10mininacetone,isopropylalcohol,methanol)1 × 1 inch glass substrates and ligand exchanged from OA to 3-MPA as describedabove,whilePbS:Iwasspincoatedfrom500mgmL −1 inDMF withoutfurtherligandexchange.Thespectrumoft…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "liu-2022-pbs-imager",
+      "title": "A near-infrared colloidal quantum dot imager with monolithically integrated readout circuitry",
+      "sourceAvailable": true,
+      "sourceFilename": "Liu et al. - 2022 - A near-infrared colloidal quantum dot imager with monolithically integrated readout circuitry.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "liu-2022-pbs-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": "oleic acid (OA)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 0.10 M; 0.04 M; 20 s; 2 min; acetonitrile; octane; DMF; layer-by-layer; spin coating; rinsed.",
+            "ligand_exchange_source_location": "PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "edithiol) layer was fabricated via a layer-by-layer method43. The oleic acid capped PbS-CQDs were deposited by spin coating at 2,500 r.p.m. for 20 s, treated by 0.01% volume ratio of EDT in acetonitrile for 20 s and then NATure eLe CTr ONiCS | VOL 5 | JULy 20…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "shin-2024-inas-extended-absorber",
+      "title": "High Performance Infrared InAs Colloidal Quantum Dot Photodetector with 79% EQE Enabled by an Extended Absorber Layer",
+      "sourceAvailable": true,
+      "sourceFilename": "Shin et al. - High Performance Infrared InAs Colloidal Quantum Dot Photodetector with 79% EQE Enabled by an Extend.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "shin-2024-inas-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "indium(III) bromide (InBr3)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD absorber",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 300°C.",
+            "ligand_exchange_source_location": "PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "(≈50 nm)/InAs CQD IR absorber layer/MoOx hole trans- port layer (≈10 nm)/Au electrode (≈80 nm).[29,30] Prior to the simulation,wepreparedInAsCQDinkbytreatingtheCQDsur- face using indium(III) bromide (InBr3) and ammonium acetate (NH4OAc), referring to the prev…",
+              "confidence": 0.8600000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "yang-2022-hgte-ligand",
+      "title": "Ligand-Engineered HgTe Colloidal Quantum Dot Solids for Infrared Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "Yang et al. - 2022 - Ligand-Engineered HgTe Colloidal Quantum Dot Solids for Infrared Photodetectors.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "yang-2022-hgte-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "mercury(II) chloride (HgCl2)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 300 K; 77 K.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 3 | PDF page 1"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "rature-dependent electron mobility of the FET device with temperatures varying from 77 to 300 K. (f) Transfer curves of the FET device assembled from ligand-exchanged 15 nm monodisperse HgTe CQDs with di ﬀerent amounts of HgCl 2 treatment during the ligand ex…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "arying from 77 to 300 K. (f) Transfer curves of the FET device assembled from ligand-exchanged 15 nm monodisperse HgTe CQDs with di ﬀerent amounts of HgCl 2 treatment during the ligand exchange process. Nano Letters pubs.acs.org/NanoLett Letter https://doi.or…",
+              "confidence": 0.92
+            },
+            {
+              "page": 1,
+              "location": "PDF page 1",
+              "conciseEvidence": "le band gaps across the whole infrared region, and unique optoelectronic characteristics. 6 Driven by the advances in colloidal synthesis and surface ligand engineering, together with an enhanced understanding of device physics, their photodetectors have achi…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "wang-2024-hgte-top-imager",
+      "title": "Synergism in Binary Nanocrystals Enables Top-Illuminated HgTe Colloidal Quantum Dot Short-Wave Infrared Imager",
+      "sourceAvailable": true,
+      "sourceFilename": "Wang et al. - 2024 - Synergism in Binary Nanocrystals Enables Top-Illuminated HgTe Colloidal Quantum Dot Short-Wave Infra.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "wang-2024-hgte-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 2 S.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "elop an inverted n-on-p device architecture where the photodiode devices will start with p- type Ag-doped HgTe CQD layer (transformed from the cation exchange reaction of pure Ag 2 Te in the presence of HgCl 2 6 ) and finished by n-type Bi 2 S 3 . Unfortunate…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "cence (PL) studies suggested that both pure and blended CQDs show peak emission around 1800 nm (Figure S4). The PL intensity of the mixed CQD films cotreated with HgCl 2 was significantly enhanced compared to EDT-treated pure HgTe CQDs. This enhancement can b…",
+              "confidence": 0.8400000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "he mixed CQD films cotreated with HgCl 2 was significantly enhanced compared to EDT-treated pure HgTe CQDs. This enhancement can be attributed to the HgCl 2 treatment, which passivated the film surface and reduced nonradiative recombination. 35 To verify p-ty…",
+              "confidence": 0.8400000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "rastogi-2022-cdse-hgte-ag2te",
+      "title": "Extended Short-Wave Photodiode Based on CdSe/HgTe/Ag2Te Stack with High Internal Efficiency",
+      "sourceAvailable": true,
+      "sourceFilename": "Rastogi et al. - 2022 - Extended Short-Wave Photodiode Based on CdSeHgTeAg 2 Te Stack with High Internal Effici.pdf",
+      "sourceSimilarity": 0.86,
+      "devices": [
+        {
+          "deviceId": "rastogi-2022-hgte-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 10 mM; 15 s; 30 s; 2000 rpm; DMF; methanol; acetonitrile; spin- coating; spin-coated; rinsed; dipping.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "d by spin- coating speed and ink concentration in DMF solvent. On top of the HgTe ink film, a Ag 2 Te NC layer is spin-coated at 2000 rpm followed by HgCl 2 treatment. For HgCl 2 treatment, 50 μL of HgCl 2 methanol (10 mM) solution is dropped onto the HgTe fi…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "ed and ink concentration in DMF solvent. On top of the HgTe ink film, a Ag 2 Te NC layer is spin-coated at 2000 rpm followed by HgCl 2 treatment. For HgCl 2 treatment, 50 μL of HgCl 2 methanol (10 mM) solution is dropped onto the HgTe film and spin-dried afte…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "M) solution is dropped onto the HgTe film and spin-dried after 15 s. Then, the film is rinsed with IPA. This procedure is repeated twice. Finally, an EDT ligand- exchange is performed by dipping the film in 1% EDT acetonitrile solution for 30 s and rinsing wi…",
+              "confidence": 0.8200000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "paul-2025-hgte-transparent-electrode",
+      "title": "Plenty of room at the top: exploiting nanowire – polymer synergies in transparent electrodes for infrared imagers",
+      "sourceAvailable": true,
+      "sourceFilename": "Paul et al. - 2025 - Plenty of room at the top exploiting nanowire – polymer synergies in transparent electrodes for inf.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "paul-2025-hgte-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD absorber | CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 80 K; Dipping; rinse.",
+            "ligand_exchange_source_location": "PDF page 13 | PDF page 13 | PDF page 13"
+          },
+          "evidence": [
+            {
+              "page": 13,
+              "location": "PDF page 13",
+              "conciseEvidence": "nd blue rectangles. Image in panel (d) remains the copyright of Ossila. Adapted with permission from www.ossila.com. Table S2. Dipping parameters for ligand exchanged HgTe CQD films Device (Figure #) Beaker 1 (active layer) speed (mm min-1) Beaker 2 (ligand e…",
+              "confidence": 0.9
+            },
+            {
+              "page": 13,
+              "location": "PDF page 13",
+              "conciseEvidence": "www.ossila.com. Table S2. Dipping parameters for ligand exchanged HgTe CQD films Device (Figure #) Beaker 1 (active layer) speed (mm min-1) Beaker 2 (ligand exchange) speed (mm min-1) Beaker 3 (rinse) speed (mm min-1) Hold time in beaker 2 (s) # of repetition…",
+              "confidence": 0.9
+            },
+            {
+              "page": 13,
+              "location": "PDF page 13",
+              "conciseEvidence": "tive layer) speed (mm min-1) Beaker 2 (ligand exchange) speed (mm min-1) Beaker 3 (rinse) speed (mm min-1) Hold time in beaker 2 (s) # of repetitions EDT/HCl ligand exchange concentration in IPA (mol L-1) Figure 4 (Main text) and Figure S13 100 600 110 3 40 1…",
+              "confidence": 0.8400000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "yu-2024-hgte-sam",
+      "title": "Interfacially-Engineered HgTe Colloidal Quantum Dot Photodiodes Using Self-Assembled Monolayer",
+      "sourceAvailable": true,
+      "sourceFilename": "Yu et al. - 2024 - Interfacially-Engineered HgTe Colloidal Quantum Dot Photodiodes Using Self-Assembled Monolayer.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "yu-2024-hgte-me4pacz-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "ambiguous",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "atment (Figure S2). The change in surface properties is consistent with the coating of the carbazole groups. More importantly, it was found that such surface treatment favored the deposition of a more uniform CQD film, which is urgently required for FPA integ…",
+              "confidence": 0.6
+            }
+          ]
+        },
+        {
+          "deviceId": "yu-2024-hgte-bare-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "ambiguous",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "atment (Figure S2). The change in surface properties is consistent with the coating of the carbazole groups. More importantly, it was found that such surface treatment favored the deposition of a more uniform CQD film, which is urgently required for FPA integ…",
+              "confidence": 0.6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "wang-2023-pbs-oxidation",
+      "title": "Colloidal PbS Quantum Dot Photodiode Imager with Suppressed Dark Current",
+      "sourceAvailable": true,
+      "sourceFilename": "Wang et al. - 2023 - Colloidal PbS Quantum Dot Photodiode Imager with Suppressed Dark Current.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "wang-2023-pbs-oxidized-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": "hole-transport layer | electron-transport layer",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: spin-coated.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "bS CQD PDs. Generally, the devices were fabricated by using a widely employed architecture of indium tin oxide (ITO)/zinc oxide (ZnO)/PbS-halide CQDs/PbS-EDT CQDs/Au (Figure 1a). This is a “p on n” type photodiode, as shown by cross-sectional scanning electro…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "ITO substrate using the same process demonstrated in “p on n” type devices. Then, to completely rule out the influence of oxygen on other layers, the PbS-EDT layer was placed into the glovebox for the preparation of the PbS-halide active layer, C60, ZnO ETL,…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "QDs with controlled oxidation on the suppression of dark current, we conducted an electrical measurement of the ZnO ETL, PbS-halide active layer, and PbS-EDT HTL. The above Figure 2. Electrical characterizations for photoconductive devices with and without ox…",
+              "confidence": 0.9400000000000001
+            }
+          ]
+        },
+        {
+          "deviceId": "wang-2023-pbs-control-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": "hole-transport layer | electron-transport layer",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: spin-coated.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "bS CQD PDs. Generally, the devices were fabricated by using a widely employed architecture of indium tin oxide (ITO)/zinc oxide (ZnO)/PbS-halide CQDs/PbS-EDT CQDs/Au (Figure 1a). This is a “p on n” type photodiode, as shown by cross-sectional scanning electro…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "ITO substrate using the same process demonstrated in “p on n” type devices. Then, to completely rule out the influence of oxygen on other layers, the PbS-EDT layer was placed into the glovebox for the preparation of the PbS-halide active layer, C60, ZnO ETL,…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "QDs with controlled oxidation on the suppression of dark current, we conducted an electrical measurement of the ZnO ETL, PbS-halide active layer, and PbS-EDT HTL. The above Figure 2. Electrical characterizations for photoconductive devices with and without ox…",
+              "confidence": 0.9400000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "chen-2014-hgte-au-nanorods",
+      "title": "Photocurrent Enhancement of HgTe Quantum Dot Photodiodes by Plasmonic Gold Nanorod Structures",
+      "sourceAvailable": true,
+      "sourceFilename": "Chen et al. - 2014 - Photocurrent Enhancement of HgTe Quantum Dot Photodiodes by Plasmonic Gold Nanorod Structures.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "chen-2014-hgte-plasmonic-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_reported",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "chen-2014-hgte-control-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_reported",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "ackerman-2020-hgte-eswir",
+      "title": "HgTe colloidal quantum dot photodiodes for extended short-wave infrared detection",
+      "sourceAvailable": true,
+      "sourceFilename": "Ackerman et al. - 2020 - HgTe colloidal quantum dot photodiodes for extended short-wave infrared detection.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "ackerman-2020-hgte-2200-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 10 mM; 300 K; methanol; isopropanol.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 4 | PDF page 4"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "to the rise of the HgTe CQD conduc- tion band edge as the CQD size decreases, indicating that devices with FIG. 1. HgTe CQD photodiodes at 2.5 lm for EdT/HCl-only (blue) and HgCl 2- treated photodiodes (orange). (a) Relative spectral response at 300 K. The 50…",
+              "confidence": 0.96
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "rared photodetection. Compared to previous studies, 17 a processing step was added to the HgTe CQD ﬁlm deposition wherein each layer was exposed to a HgCl2 solution before cross-linking with EdT/HCl. A comparison between EdT/HCl-only and HgCl 2-treated photod…",
+              "confidence": 0.96
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "a processing step was added to the HgTe CQD ﬁlm deposition wherein each layer was exposed to a HgCl2 solution before cross-linking with EdT/HCl. A comparison between EdT/HCl-only and HgCl 2-treated photodiodes showed that the HgCl2 treatment increased R0A by…",
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "deviceId": "ackerman-2020-hgte-2500-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 10 mM; 300 K; methanol; isopropanol.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 4 | PDF page 4"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "to the rise of the HgTe CQD conduc- tion band edge as the CQD size decreases, indicating that devices with FIG. 1. HgTe CQD photodiodes at 2.5 lm for EdT/HCl-only (blue) and HgCl 2- treated photodiodes (orange). (a) Relative spectral response at 300 K. The 50…",
+              "confidence": 0.96
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "rared photodetection. Compared to previous studies, 17 a processing step was added to the HgTe CQD ﬁlm deposition wherein each layer was exposed to a HgCl2 solution before cross-linking with EdT/HCl. A comparison between EdT/HCl-only and HgCl 2-treated photod…",
+              "confidence": 0.96
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "a processing step was added to the HgTe CQD ﬁlm deposition wherein each layer was exposed to a HgCl2 solution before cross-linking with EdT/HCl. A comparison between EdT/HCl-only and HgCl 2-treated photodiodes showed that the HgCl2 treatment increased R0A by…",
+              "confidence": 0.96
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "ahn-2024-ag2te-fast-eswir",
+      "title": "Silver Telluride Colloidal Quantum Dot Solid for Fast Extended Shortwave Infrared Photodetector",
+      "sourceAvailable": true,
+      "sourceFilename": "Ahn et al. - 2024 - Silver Telluride Colloidal Quantum Dot Solid for Fast Extended Shortwave Infrared Photodetector.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "ahn-2024-ag2te-mpa-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "3-mercaptopropionic acid (MPA)",
+            "native_ligands": "oleic acid (OA) | dodecanethiol (DDT)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 5vol%; layer-by-layer.",
+            "ligand_exchange_source_location": "PDF page 7 | PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "1.Inaddition,solutionsof0.5vol%EDT,ME,and MPA in EA were prepared as surface modiﬁers. The layer-by-layer (LBL) techniquewasperformedusingasolid-stateligand-exchangemethodun- der ambient air conditions. Approximately 50μL of a 65 mg mL−1 CQD solution wasdispe…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "particular, the MPA-CQD devices demonstrated the fastest fall time of 72 ns at 0.009 cm2. This implies that the improved carrier mobility via eﬃcient passivation by MPA ligands, and thegenerated Vbi withMPA-CQDsolids,leadstoenhancements in both the drift and…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "peng-2024-insb-inp",
+      "title": "InSb/InP Core-Shell Colloidal Quantum Dots for Sensitive and Fast Short-Wave Infrared Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "Peng et al. - 2024 - InSbInP Core–Shell Colloidal Quantum Dots for Sensitive and Fast Short-Wave Infrared Photodetectors.pdf",
+      "sourceSimilarity": 0.979,
+      "devices": [
+        {
+          "deviceId": "peng-2024-insb-inp-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "indium(III) iodide (InI3)",
+            "native_ligands": "oleic acid (OA)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 4 | PDF page 5"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "t their potential for minority carrier based optoelectronic devices such as photo- diodes or light emitters has remained elusive. 31 The acid etching treatment may introduce the blue shift of absorption, and the metal dopants do not show significant improveme…",
+              "confidence": 0.9
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "gand exchange method. As shown in the Fourier transform infrared (FTIR) spectra (Figure S4), the surface organic ligands of InSb CQDs were completely removed after the solid ligand exchange. The conduction band, valence band, and Fermi level of the InSb and I…",
+              "confidence": 0.9
+            },
+            {
+              "page": 5,
+              "location": "PDF page 5",
+              "conciseEvidence": "e assessed the air stability of the InSb/InP CQD photodetector (Figure S14). Even after 2 months of exposure to the ambient environment without any encapsulation, the device maintains its rectification properties and nearly identical EQE levels, demonstrating…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "muhammad-2023-insb-halide",
+      "title": "Halide-Driven Synthetic Control of InSb Colloidal Quantum Dots Enables Short-Wave Infrared Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "Muhammad et al. - 2023 - Halide-Driven Synthetic Control of InSb Colloidal Quantum Dots Enables Short-Wave Infrared Photodete.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "muhammad-2023-insb-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "halide",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD absorber | CQD film",
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 1 | PDF page 6 | PDF page 6"
+          },
+          "evidence": [
+            {
+              "page": 1,
+              "location": "PDF page 1",
+              "conciseEvidence": "ect.TheresultantCQDsexhibit well-deﬁnedexcitonictransitionsinspectralrangeof1.26–0.98eV,alongwith strongphotoluminescence.Byimplementingapostsynthesisligand exchange,colloidallystableinksenablingthefabricationofhigh-qualityCQD ﬁlmsareachieved.Theﬁrstdemonstra…",
+              "confidence": 0.9
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "abricated using the structure of Figure 4a. ZnO nanoparticles are deposited on an indium tin oxide (ITO) substrate, followed by the deposition of the ligand- exchangedInSbCQDs.Molybdenumoxide(MoOx)isthenther- mally evaporated onto the InSb CQD active layer. T…",
+              "confidence": 0.9
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "seek to enhance band alignment and charge extraction mechanisms in InSb CQD devices. Ultraviolet photoelectron spectroscopy shows that valence bandofligandexchangedQDﬁlmsshiftedtowardvacuumcom- paredtothepristineCQD(FigureS21,SupportingInformation). Thebandal…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "wang-2024-ag2te-imager",
+      "title": "Silver telluride colloidal quantum dot infrared photodetectors and image sensors",
+      "sourceAvailable": true,
+      "sourceFilename": "Wang et al. - 2024 - Silver telluride colloidal quantum dot infrared photodetectors and image sensors.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "wang-2024-ag2te-main-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 30 s; acetonitrile; spin coated.",
+            "ligand_exchange_source_location": "PDF page 8 | PDF page 4 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "00 nm) of Ag2T e QDs were further deposited on top of AgBiS2 NCs. For each Ag2Te QD layer, 50 mg ml−1 QD solution was spin coated at 3,000 r.p.m. and ligand-exchanged with 1,2-ethanedithiol/acetonitrile (0.1%) for 30 s, followed by rinsing twice with acetonit…",
+              "confidence": 0.92
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "hesis method in device performance. Considering its importance, device stability was assessed in terms of dark J– V curves and photoresponsivity. Unencapsulated devices showed decent air stability, maintaining the original performance even after 25 days of ai…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "bind more strongly to Ag on the surface of QDs than thiols 26,35, and are probably not an optimal ligand choice for CQDs that would need to undergo a ligand-exchange process to render the films electrically conductive. Phosphine-free Ag2T e CQDs Various metho…",
+              "confidence": 0.8
+            }
+          ]
+        },
+        {
+          "deviceId": "wang-2024-ag2te-1520-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 30 s; acetonitrile; spin coated.",
+            "ligand_exchange_source_location": "PDF page 8 | PDF page 4 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "00 nm) of Ag2T e QDs were further deposited on top of AgBiS2 NCs. For each Ag2Te QD layer, 50 mg ml−1 QD solution was spin coated at 3,000 r.p.m. and ligand-exchanged with 1,2-ethanedithiol/acetonitrile (0.1%) for 30 s, followed by rinsing twice with acetonit…",
+              "confidence": 0.92
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "hesis method in device performance. Considering its importance, device stability was assessed in terms of dark J– V curves and photoresponsivity. Unencapsulated devices showed decent air stability, maintaining the original performance even after 25 days of ai…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "bind more strongly to Ag on the surface of QDs than thiols 26,35, and are probably not an optimal ligand choice for CQDs that would need to undergo a ligand-exchange process to render the films electrically conductive. Phosphine-free Ag2T e CQDs Various metho…",
+              "confidence": 0.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "chen-2023-hgte-universal-homojunction",
+      "title": "Universal Homojunction Design for Colloidal Quantum Dot Infrared Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "Chen et al. - 2023 - Universal Homojunction Design for Colloidal Quantum Dot Infrared Photodetectors.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "chen-2023-hgte-pin-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 2S; 10 s; spin-coating; rinsed.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 7 | PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "rtheliquidphase ligand exchange. The doping is adjusted by HgCl2 or (NH4)2S amountintheliquidphase.ThenCQDsolidispreparedbyspin- coating before solid ligand exchange with 2% HCl (v/v) and 2% ethanedithiol(EdT)(v/v)inethanolfor30s. This surface modiﬁcation pro…",
+              "confidence": 0.96
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "gthe supernatant,40 μLDMFwasusedtodissolvetheCQDsolids,yieldingcol- loidally stable solution. The CQD ﬁlms are prepared by spin-coating and followedbysolid-phaseligandexchangewithEDT/HCl/IPA(1:1:50byvol- ume) solution for 10 s, rinsed with IPA, and dried with…",
+              "confidence": 0.92
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "40 μLDMFwasusedtodissolvetheCQDsolids,yieldingcol- loidally stable solution. The CQD ﬁlms are prepared by spin-coating and followedbysolid-phaseligandexchangewithEDT/HCl/IPA(1:1:50byvol- ume) solution for 10 s, rinsed with IPA, and dried with N2.S o l i d - p…",
+              "confidence": 0.92
+            }
+          ]
+        },
+        {
+          "deviceId": "chen-2023-hgte-nip-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 2S; 10 s; spin-coating; rinsed.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 7 | PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "rtheliquidphase ligand exchange. The doping is adjusted by HgCl2 or (NH4)2S amountintheliquidphase.ThenCQDsolidispreparedbyspin- coating before solid ligand exchange with 2% HCl (v/v) and 2% ethanedithiol(EdT)(v/v)inethanolfor30s. This surface modiﬁcation pro…",
+              "confidence": 0.96
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "gthe supernatant,40 μLDMFwasusedtodissolvetheCQDsolids,yieldingcol- loidally stable solution. The CQD ﬁlms are prepared by spin-coating and followedbysolid-phaseligandexchangewithEDT/HCl/IPA(1:1:50byvol- ume) solution for 10 s, rinsed with IPA, and dried with…",
+              "confidence": 0.92
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "40 μLDMFwasusedtodissolvetheCQDsolids,yieldingcol- loidally stable solution. The CQD ﬁlms are prepared by spin-coating and followedbysolid-phaseligandexchangewithEDT/HCl/IPA(1:1:50byvol- ume) solution for 10 s, rinsed with IPA, and dried with N2.S o l i d - p…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "xue-2023-hgte-gradient-homojunction",
+      "title": "High-operating-temperature mid-infrared photodetectors via quantum dot gradient homojunction",
+      "sourceAvailable": true,
+      "sourceFilename": "Xue et al. - 2023 - High-operating-temperature mid-infrared photodetectors via quantum dot gradient homojunction.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "xue-2023-hgte-gradient-pin-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "mixed",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film | CQD ink",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 10 s; 1 s; 2S; DMF; phase transfer; spin-coating; rinsed.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 2 | PDF page 9"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "to accelerate this liquid phase transfer. We note the CQD dissolved in DMF is called CQD ink. CQD solids are prepared by spin-coating and followed by solid-phase ligand exchange with 1,2-Ethanedithiol (EDT) and HCl, which is necessary for solid stability (Fig…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "liquid phase transfer. We note the CQD dissolved in DMF is called CQD ink. CQD solids are prepared by spin-coating and followed by solid-phase ligand exchange with 1,2-Ethanedithiol (EDT) and HCl, which is necessary for solid stability (Fig. S1, SI). N-type,…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 9,
+              "location": "PDF page 9",
+              "conciseEvidence": "t, 40 µL DMF was used to dis- solve the CQD solids, yielding a colloidally-stable solution. The CQD ﬁlms are prepared by spin-coating and followed by solid-phase ligand exchange with ethanedithiol (EDT)/ HCl/IPA (1:1:50 by volume) solution for 10 s, rinsed wi…",
+              "confidence": 0.9400000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "siddik-2025-inas-cmos",
+      "title": "InAs Colloidal Quantum Dot Photodiode Stack for CMOS-Integrated Infrared Imaging",
+      "sourceAvailable": true,
+      "sourceFilename": "Siddik et al. - 2025 - InAs Colloidal Quantum Dot Photodiode Stack for CMOS-Integrated Infrared Imaging.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "siddik-2025-inas-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "indium(III) bromide (InBr3)",
+            "native_ligands": "oleic acid (OA)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: octane; toluene; DMF.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 2 | PDF page 6"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "ed imaging capability. 2. RESULTS AND DISCUSSION 2.1. Device Design and Characterization. The com- plete InAs QDPD stack on Si consists of TiN, IGZO, InBr 3 treated InAs CQD, CuI, poly[4,8-bis(5-(2-ethylhexyl)- thiophen-2-yl)benzo[1,2b;4,5-b′]dithiophene-2,6-…",
+              "confidence": 0.92
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "n flow of the photodiode and imager chip is included in the experimental section. We utilize InAs CQDs with an excitonic peak at 1200 nm, prepared by solution-phase InBr 3 ligand exchange following the method (Figure S2) introduced by Sargent and co-workers.…",
+              "confidence": 0.92
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "with oleic acid were purchased from Quantum Solutions in n- octane. Ligand exchange was performed under a nitrogen atmosphere using a solution-phase InBr 3 treatment following the method introduced by Sargent and co-workers. 12,16 Briefly, the indium(III) bro…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "sheikh-2024-inas-znse",
+      "title": "Surface-Reconstructed InAs Colloidal Nanorod Quantum Dots for Efficient Deep-Shortwave Infrared Emission and Photodetection",
+      "sourceAvailable": true,
+      "sourceFilename": "Sheikh et al. - 2024 - Surface-Reconstructed InAs Colloidal Nanorod Quantum Dots for Efficient Deep-Shortwave Infrared Emis.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "sheikh-2024-inas-znse-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": null,
+            "ligand_exchange_target": "hole-transport layer",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: layer-by-layer.",
+            "ligand_exchange_source_location": "PDF page 5 | PDF page 5 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 5,
+              "location": "PDF page 5",
+              "conciseEvidence": "ands that hamper the charge transport in the active and QD-HTL layers. To remove these long-chain organic ligands, we performed layer-by-layer ligand exchange with 1,2-ethanedi- thiol (EDT) (via the solid-state ligand exchange method). The exchange of these l…",
+              "confidence": 0.92
+            },
+            {
+              "page": 5,
+              "location": "PDF page 5",
+              "conciseEvidence": "g-chain organic ligands, we performed layer-by-layer ligand exchange with 1,2-ethanedi- thiol (EDT) (via the solid-state ligand exchange method). The exchange of these long-chain organic ligands with EDT was confirmed through Fourier transform infrared (FTIR)…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "photodetectors extends at least up to 1550 nm, with the longer wavelength cutoff being limited by our instrumental setup. 44,45 Overall, our surface-passivated InAs CNQDs represent a significant leap forward in the SWIR emission and photodetection capabilitie…",
+              "confidence": 0.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "sun-2022-inas-fast",
+      "title": "Fast Near-Infrared Photodetection Using III-V Colloidal Quantum Dots",
+      "sourceAvailable": true,
+      "sourceFilename": "Sun et al. - 2022 - Fast Near-Infrared Photodetection Using III–V Colloidal Quantum Dots.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "sun-2022-inas-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "indium(III) bromide (InBr3) | ammonium acetate (NH4OAc)",
+            "native_ligands": "oleic acid (OA) | trioctylphosphine (TOP)",
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 10 s; 1 H; 2500 rpm; octane; acetonitrile; DMF; spin-coated.",
+            "ligand_exchange_source_location": "PDF page 7 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "on EDT PbS CQD film as a back electrode. The photodetector area is described in Figure S11 (Supporting Information). InAs CQD Device Fabrication: The InBr 3 /AA solution-phase ligand- exchange process was carried out in a test tube in a N 2 -filled glovebox.…",
+              "confidence": 0.96
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "igand exchange on OA-capped InAs (OA-InAs) CQDs and compared with a control exchange (Experimental Section). [19] Figure 1b shows the In signal after ligand exchange, where films based on InBr 3 -passivated InAs (InBr3 –InAs) have a narrower peak compared to…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "paper-798a7e0d2116",
+      "title": "Interface modification for silver telluride quantum dots shortwave-infrared photodetectors beyond 1.5 μm",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "device-798a7e0d2116-1",
+          "ligandExchange": {
+            "ligand_exchange_status": "source_unavailable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "lee-2026-hgcdse-neutralized",
+      "title": "Surface-Neutralized HgCdSe Quantum Dots for High-Detectivity Infrared Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "surface-neutralized-hgcdse-quantum-dots-for-high-detectivity-infrared-photodetectors.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "lee-2026-hgcdse-qd2-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1-dodecanethiol (DDT)",
+            "native_ligands": "dodecanethiol (DDT)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 1S; 80 °C.",
+            "ligand_exchange_source_location": "PDF page 1 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 1,
+              "location": "PDF page 1",
+              "conciseEvidence": "k current. These air-stable, broadly tunable materials with strong IR absorption may enable low-cost IR sensors. KEYWORDS: nanoparticle, alloy, SWIR, ligand exchange, device Q uantum dots (QDs) are semiconductor nanocrystals with photophysical properties tuna…",
+              "confidence": 0.9
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "g n-type doping in HgSe QDs by surface ligand exchange. (a) Schematic illustration of surface ligands on as-synthesized HgSe, termed QD(0), and after ligand exchange with dodecanethiol (DDT). DDT treatment at room temperature generates QD(1) and at 80 °C gene…",
+              "confidence": 0.8200000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "and exchange. (a) Schematic illustration of surface ligands on as-synthesized HgSe, termed QD(0), and after ligand exchange with dodecanethiol (DDT). DDT treatment at room temperature generates QD(1) and at 80 °C generates QD(2). HgSe QD(0) is coated with a m…",
+              "confidence": 0.8200000000000001
+            }
+          ]
+        },
+        {
+          "deviceId": "lee-2026-hgcdse-qd1-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1-dodecanethiol (DDT)",
+            "native_ligands": "dodecanethiol (DDT)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 1S; 80 °C.",
+            "ligand_exchange_source_location": "PDF page 1 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 1,
+              "location": "PDF page 1",
+              "conciseEvidence": "k current. These air-stable, broadly tunable materials with strong IR absorption may enable low-cost IR sensors. KEYWORDS: nanoparticle, alloy, SWIR, ligand exchange, device Q uantum dots (QDs) are semiconductor nanocrystals with photophysical properties tuna…",
+              "confidence": 0.9
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "g n-type doping in HgSe QDs by surface ligand exchange. (a) Schematic illustration of surface ligands on as-synthesized HgSe, termed QD(0), and after ligand exchange with dodecanethiol (DDT). DDT treatment at room temperature generates QD(1) and at 80 °C gene…",
+              "confidence": 0.8200000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "and exchange. (a) Schematic illustration of surface ligands on as-synthesized HgSe, termed QD(0), and after ligand exchange with dodecanethiol (DDT). DDT treatment at room temperature generates QD(1) and at 80 °C generates QD(2). HgSe QD(0) is coated with a m…",
+              "confidence": 0.8200000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "park-2026-internal-field",
+      "title": "Internal field tailoring enables low noise high speed colloidal quantum dot photodetectors beyond 1500 nm",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "park-2026-inas-oldp-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "source_unavailable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "park-2026-inas-ldp-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "source_unavailable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "park-2026-pbs-ldp-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "source_unavailable",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": null,
+            "ligand_exchange_target": "hole-transport layer",
+            "ligand_exchange_conditions": "Existing curated device metadata indicates a ligand or surface treatment, but the source set was unavailable for method verification: PbS CQDs with an LDP hole-transport layer",
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "park-2026-pbs-hdp-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "source_unavailable",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": null,
+            "ligand_exchange_target": "hole-transport layer",
+            "ligand_exchange_conditions": "Existing curated device metadata indicates a ligand or surface treatment, but the source set was unavailable for method verification: PbS CQDs with an HDP hole-transport layer",
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "huang-2026-cdte-hgte-htl",
+      "title": "Cation-Exchange Synthesized CdTe/HgTe Core/Shell Quantum Dots as Hole Transport Layers for HgTe Quantum Dot Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "cation-exchange-synthesized-cdte-hgte-core-shell-quantum-dots-as-hole-transport-layers-for-hgte-quantum-dot.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "huang-2026-cdte-hgte-edt-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 50 mg/mL; 0.01 M; v/v = 1:2500; 30 s; 20 s; 60 s; 2500 rpm; methanol; DMF; spin-coating; washing; spin coating.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "yer-by-layer method. Each iteration consisted of spin-coating a 50 mg/mL Se:HgTe CQDs solution at 2500 rpm for 30 s, followed by exposure to a 0.01 M HgCl 2/methanol solution for 20 s, washing with methanol, and treating with an EDT/HCl/EtOH solution (v/v/ v…",
+              "confidence": 0.96
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "on peak at 598 nm and a concentration of 50 mg/mL. The resulting CdTe/ HgTe CQD ﬁlms were deposited by spin coating at 2500 rpm for 60 s, followed by treatment with an EDT/EtOH solution (v/v = 1:2500) for 20 s. For the untreated one, the CdTe/HgTe CQD ﬁlm wil…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "transferring CdTe CQDs from the nonpolar OCT phase to the polar DMF phase (details see the Experimental Section ). In the DMF phase, the presence of HgCl 2 promotes the cation exchange from CdTe to HgTe. Notably, because the cation exchange was conducted at r…",
+              "confidence": 0.92
+            }
+          ]
+        },
+        {
+          "deviceId": "huang-2026-cdte-hgte-untreated-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT) | mercury(II) chloride (HgCl2) | hydrochloric acid (HCl)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 50 mg/mL; 0.01 M; v/v = 1:2500; 30 s; 20 s; 60 s; 2500 rpm; methanol; DMF; spin-coating; washing; spin coating.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 3 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "yer-by-layer method. Each iteration consisted of spin-coating a 50 mg/mL Se:HgTe CQDs solution at 2500 rpm for 30 s, followed by exposure to a 0.01 M HgCl 2/methanol solution for 20 s, washing with methanol, and treating with an EDT/HCl/EtOH solution (v/v/ v…",
+              "confidence": 0.96
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "on peak at 598 nm and a concentration of 50 mg/mL. The resulting CdTe/ HgTe CQD ﬁlms were deposited by spin coating at 2500 rpm for 60 s, followed by treatment with an EDT/EtOH solution (v/v = 1:2500) for 20 s. For the untreated one, the CdTe/HgTe CQD ﬁlm wil…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "transferring CdTe CQDs from the nonpolar OCT phase to the polar DMF phase (details see the Experimental Section ). In the DMF phase, the presence of HgCl 2 promotes the cation exchange from CdTe to HgTe. Notably, because the cation exchange was conducted at r…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "xia-2025-pbse-mle",
+      "title": "Uncooled and Broadband PbSe Colloidal-Quantum-Dot Short-Wave Infrared Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "uncooled-and-broadband-pbse-colloidal-quantum-dot-short-wave-infrared-photodetectors.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "xia-2025-pbse-1640-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "ink_phase",
+            "ligand_exchange_chemicals": "halide",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film | CQD ink",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: DMF.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 2 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "approach. 33−35 We therefore developed a monomer-assisted ligand exchange (MLE) strategy that first enables the preparation of PbSe CQD ink with excellent colloidal stability while preserving their sharp band-edge absorption. The resultant MLE-PbSe CQD films�…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "preparation of PbSe CQD ink with excellent colloidal stability while preserving their sharp band-edge absorption. The resultant MLE-PbSe CQD films�compared to that based on a traditional solution-phase ligand-exchange process�show higher carrier mobility, inc…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "heir characterization. (a) Schematic for the preparation of MLE-PbSe CQDs. (b) Normalized absorption and (c) PL spectra of PbSe CQDs before and after ligand exchange. (d) Size distribution analysis of different PbSe species�including the PbSe monomer solution…",
+              "confidence": 0.9
+            }
+          ]
+        },
+        {
+          "deviceId": "xia-2025-pbse-2360-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "ink_phase",
+            "ligand_exchange_chemicals": "halide",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film | CQD ink",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: DMF.",
+            "ligand_exchange_source_location": "PDF page 2 | PDF page 2 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "approach. 33−35 We therefore developed a monomer-assisted ligand exchange (MLE) strategy that first enables the preparation of PbSe CQD ink with excellent colloidal stability while preserving their sharp band-edge absorption. The resultant MLE-PbSe CQD films�…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "preparation of PbSe CQD ink with excellent colloidal stability while preserving their sharp band-edge absorption. The resultant MLE-PbSe CQD films�compared to that based on a traditional solution-phase ligand-exchange process�show higher carrier mobility, inc…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "heir characterization. (a) Schematic for the preparation of MLE-PbSe CQDs. (b) Normalized absorption and (c) PL spectra of PbSe CQDs before and after ligand exchange. (d) Size distribution analysis of different PbSe species�including the PbSe monomer solution…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "hu-2025-hgte-double-heterojunction",
+      "title": "Double-Heterojunction-Based HgTe Colloidal Quantum Dot Imagers",
+      "sourceAvailable": true,
+      "sourceFilename": "Hu et al. - 2025 - Double-Heterojunction-Based HgTe Colloidal Quantum Dot Imagers.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "hu-2025-hgte-dh-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "ink_phase",
+            "ligand_exchange_chemicals": "mercury(II) chloride (HgCl2)",
+            "native_ligands": "oleylamine (OLA)",
+            "ligand_exchange_target": "CQD film | CQD ink",
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: DMF; butylamine; spin-coating.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 3 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "ty of HgTe CQDs in a DMF/BTA mixture (Figure S1, a frequently used mixed solvent for the deposition of thick CQD films). In contrast, the addition of HgCl 2 is able to change the ligand exchange dynamics. Leveraging the strong affinity of Hg for sulfur, HgCl…",
+              "confidence": 0.92
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "abrication of thick CQD films using spin-coating in a single step (Figure 1a). Fourier transform infrared spectroscopy (FTIR) was used to monitor the ligand exchange process. As shown in Figure 1b, the OLA- capped HgTe CQD film presents two strong peaks cente…",
+              "confidence": 0.9
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "e CQD film can be deposited directly in a single step. 32,33 Using this approach, conductive HgTe CQD ink was developed by using a hybrid ligand (HL) exchange process, where a mixture of HgCl 2 , 2-mercaptoethanol (ME), and n-butylamine (BTA) served as the li…",
+              "confidence": 0.8200000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "tran-2026-cd3p2-polarity",
+      "title": "Surface-Interaction-Driven Polarity Switching in II-V Cd3P2 Colloidal Quantum Dots for Infrared Photodiodes",
+      "sourceAvailable": true,
+      "sourceFilename": "Advanced Science - 2026 - Tran - Surface‐Interaction‐Driven Polarity Switching in II V Cd3P2 Colloidal Quantum Dots for.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "tran-2026-cd3p2-homojunction-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "halide",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 10 s; spin coating; spin-coated.",
+            "ligand_exchange_source_location": "PDF page 4 | PDF page 7 | PDF page 8"
+          },
+          "evidence": [
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "EM images and shown in Figure S13 . Their corresponding absorption and PL spectra are presented in Figure S14a . Each sample then underwent identical ligand exchange and FET fabrication. All sizes showed the same switching: p - type under ambient exposure and…",
+              "confidence": 0.9
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "introduction of a p -type Cd3 P2 -Cl interlayer between the Cd3 P2 absorber and the MoOx /Ag anode; photographs of phase separation before and after ligand exchange. (b) Energy-level alignment of the device stack. (c) Current density–voltage ( J–V ) character…",
+              "confidence": 0.9
+            },
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "µm; channel length: 5 µm) acting as source and drain contacts. Cd3 P2 QDs were deposited onto the substrate via spin coating, followed by solid-state ligand exchange as described in the Ligand Exchange section. After deposition, the devices were briefly remov…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "imran-2025-insb-metal-halide",
+      "title": "Control Over Metal-Halide Reactivity Enables Uniform Growth of InSb Colloidal Quantum Dots for Enhanced SWIR Light Detection",
+      "sourceAvailable": true,
+      "sourceFilename": "Advanced Materials - 2025 - Imran - Control Over Metal‐Halide Reactivity Enables Uniform Growth of InSb Colloidal Quantum.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "imran-2025-insb-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "tetrabutylammonium iodide (TBAI) | ammonium iodide (NH4I)",
+            "native_ligands": "dodecanethiol (DDT)",
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 5"
+          },
+          "evidence": [
+            {
+              "page": 5,
+              "location": "PDF page 5",
+              "conciseEvidence": "timized DDT-capped InSb CQDs, we fabricated CQD ﬁlms with some modiﬁcations to our previously reported method.[10] We used tetrabutylammonium iodide (TBAI) and Ammoniumiodidesaltsduringligandexchangereactionstoob- tainhalidepassivatedInSbCQDs(SeedetailsintheM…",
+              "confidence": 0.96
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "kim-2026-inas-shape-engineering",
+      "title": "Ligand-Mediated Shape Engineering of SWIR InAs Colloidal Quantum Dots for Photodetector Applications",
+      "sourceAvailable": true,
+      "sourceFilename": "Advanced Materials - 2026 - Kim - Ligand‐Mediated Shape Engineering of SWIR InAs Colloidal Quantum Dots for Photodetector.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "kim-2026-inas-shape-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "indium(III) bromide (InBr3)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 6 | PDF page 6 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "kification are presented in FigureS8, S9.W ea l s of a b r i c a t e da device based on InAs CQDs ink using indium(III) bromide and ammonium bromide (InBr3 and NH4Br) as passivating agents, modified from a previously reported method [7]. However, this device…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "]. However, this device exhibited poor rectifying behavior as a photodiode. This can be attributed to the excessively deep band-edge positions of the InBr3 + NH4Br-passivated InAs CQDs film, which result in unfavorable barrier formation at the heterojunction,…",
+              "confidence": 0.92
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "s CQDs remain scarce compared to their (TMS)3 As counterparts [17, 18]. To date,surfacefunctionalizationhasbeenpredominantlyrestricted to thiol-based ligand exchanges, and achieving high-efficiency devices combined with fast response speed beyond 1300 nm rema…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "pi-2026-agbis2-mxene",
+      "title": "An Ultra-Low Dark Current AgBiS2 CQDs NIR Photodetector Using ZnO/MXene Bilayer Electron Transport Layer for Image Sensor",
+      "sourceAvailable": true,
+      "sourceFilename": "An ultra-low dark current AgBiS2 CQDs NIR photodetector using ZnO_MXene bilayer electron transport layer for image sensor.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "pi-2026-agbis2-mxene-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "tetramethylammonium iodide (TMAI)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 30 s; toluene; methanol; layer-by-layer.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 3 | PDF page 2"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "m. The films were prepared using a layer-by-layer deposition method. XPS was further used to confirm the successful incorporation of iodide following TMAI treatment. As presented in Fig. S3 in the ESM, the TMAI- exchanged film shows distinct peaks at binding…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "tion method. XPS was further used to confirm the successful incorporation of iodide following TMAI treatment. As presented in Fig. S3 in the ESM, the TMAI- exchanged film shows distinct peaks at binding energies of 630.5 and 619.1 eV, corresponding to I 3d3/2…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 2,
+              "location": "PDF page 2",
+              "conciseEvidence": "The resulting device achieved a dark current density of approximately 5 × 10−4 A·cm−2 at −1 V bias [36]. Sun proposed a facile, mixed-halide-assisted solution-phase ligand exchange method to modulate the energy levels of AgBiS2 CQDs, achieving a dark current…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "qin-2023-hgte-planar-pn",
+      "title": "Mercury Telluride Colloidal Quantum-Dot Focal Plane Array with Planar p-n Junctions Enabled by In Situ Electric Field-Activated Doping",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "qin-2023-hgte-fpa-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "source_unavailable",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "cadmium chloride (CdCl2)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD film",
+            "ligand_exchange_conditions": "Existing curated device metadata indicates a ligand or surface treatment, but the source set was unavailable for method verification: CdCl2-treated HgTe CQD film with in situ electric-field-activated lateral doping",
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "deng-2026-pbs-bifunctional",
+      "title": "A Bifunctional Colloidal Quantum Dot Diode for Nanosecond Short-Wave Infrared Detection and Emission",
+      "sourceAvailable": true,
+      "sourceFilename": "Advanced Materials - 2026 - Deng - A Bifunctional Colloidal Quantum Dot Diode for Nanosecond Short‐Wave Infrared Detection.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "deng-2026-pbs-1500-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 0.02vol%; 30 s; 2500 rpm; methanol; spin-coated; spin-coating.",
+            "ligand_exchange_source_location": "PDF page 8 | PDF page 8 | PDF page 8"
+          },
+          "evidence": [
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "e a nitrogen-filled glovebox and subsequently allowed to cool to room temperature prior to proceeding with the next fabrication step. For the second, EDT-exchanged PbS QDlayer,colloidalQDswithaconcentrationof50mg/mLwere used.Theligandexchangewasperformedusing…",
+              "confidence": 0.92
+            },
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "ure prior to proceeding with the next fabrication step. For the second, EDT-exchanged PbS QDlayer,colloidalQDswithaconcentrationof50mg/mLwere used.Theligandexchangewasperformedusinganethanedithiol (EDT)solution(0.02vol%inacetonitrile).Finally,a100nm-thick gol…",
+              "confidence": 0.92
+            },
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "hanedithiol (EDT)solution(0.02vol%inacetonitrile).Finally,a100nm-thick gold (Au) electrode was thermally evaporated onto the PbS QD film. Solid-state ligand exchange. PbS quantum dots (QDs) were depositedontopoftheZnOlayerusingalayer-by-layermethod. In each c…",
+              "confidence": 0.92
+            }
+          ]
+        },
+        {
+          "deviceId": "deng-2026-pbs-50-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 0.02vol%; 30 s; 2500 rpm; methanol; spin-coated; spin-coating.",
+            "ligand_exchange_source_location": "PDF page 8 | PDF page 8 | PDF page 8"
+          },
+          "evidence": [
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "e a nitrogen-filled glovebox and subsequently allowed to cool to room temperature prior to proceeding with the next fabrication step. For the second, EDT-exchanged PbS QDlayer,colloidalQDswithaconcentrationof50mg/mLwere used.Theligandexchangewasperformedusing…",
+              "confidence": 0.92
+            },
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "ure prior to proceeding with the next fabrication step. For the second, EDT-exchanged PbS QDlayer,colloidalQDswithaconcentrationof50mg/mLwere used.Theligandexchangewasperformedusinganethanedithiol (EDT)solution(0.02vol%inacetonitrile).Finally,a100nm-thick gol…",
+              "confidence": 0.92
+            },
+            {
+              "page": 8,
+              "location": "PDF page 8",
+              "conciseEvidence": "hanedithiol (EDT)solution(0.02vol%inacetonitrile).Finally,a100nm-thick gold (Au) electrode was thermally evaporated onto the PbS QD film. Solid-state ligand exchange. PbS quantum dots (QDs) were depositedontopoftheZnOlayerusingalayer-by-layermethod. In each c…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "leemans-2022-inasp-swir",
+      "title": "Colloidal III–V Quantum Dot Photodiodes for Short-Wave Infrared Photodetection",
+      "sourceAvailable": true,
+      "sourceFilename": "Leemans et al. - 2022 - Colloidal III–V Quantum Dot Photodiodes for Short-Wave Infrared Photodetection.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "leemans-2022-inasp-1140-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "chloride",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: butylamine; spincoated; spincoating; phase transfer.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 6 | PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "ww.advancedsciencenews.com www.advancedscience.com Figure 2.a) Schematic of the In(As, P) QD ﬁeld eﬀect transistor, consisting of a spincoated ﬁlm of ligand exchanged QDs on top of cross-ﬁngered sourceanddrainelectrodesandseparatedfromthegateelectrodebyatherm…",
+              "confidence": 0.9
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "re prepared by lithograph- ically deﬁned source and drain contacts evaporated on top of Si sub- strates with a 300 nm layer of thermally grown oxide. Ligand exchanged InAs QDs were spincoated onto the FET substrates at a concentration of 100 mg mL−1 and a spi…",
+              "confidence": 0.9
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "ation: Indium tin oxide substrates were purchased. NiO was deposited via e-beam evaporation and conse- quentannealingat300 °CinairpriortoQDdeposition.Ligandexchanged In(As, P) QDs were deposited on top of NiO by spincoating a QD solu- tion at 200 mg mL−1 with…",
+              "confidence": 0.9
+            }
+          ]
+        },
+        {
+          "deviceId": "leemans-2022-inasp-1270-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "chloride",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: butylamine; spincoated; spincoating; phase transfer.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 6 | PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "ww.advancedsciencenews.com www.advancedscience.com Figure 2.a) Schematic of the In(As, P) QD ﬁeld eﬀect transistor, consisting of a spincoated ﬁlm of ligand exchanged QDs on top of cross-ﬁngered sourceanddrainelectrodesandseparatedfromthegateelectrodebyatherm…",
+              "confidence": 0.9
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "re prepared by lithograph- ically deﬁned source and drain contacts evaporated on top of Si sub- strates with a 300 nm layer of thermally grown oxide. Ligand exchanged InAs QDs were spincoated onto the FET substrates at a concentration of 100 mg mL−1 and a spi…",
+              "confidence": 0.9
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "ation: Indium tin oxide substrates were purchased. NiO was deposited via e-beam evaporation and conse- quentannealingat300 °CinairpriortoQDdeposition.Ligandexchanged In(As, P) QDs were deposited on top of NiO by spincoating a QD solu- tion at 200 mg mL−1 with…",
+              "confidence": 0.9
+            }
+          ]
+        },
+        {
+          "deviceId": "leemans-2022-inasp-1400-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solution_phase",
+            "ligand_exchange_chemicals": "chloride",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: butylamine; spincoated; spincoating; phase transfer.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 6 | PDF page 7"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "ww.advancedsciencenews.com www.advancedscience.com Figure 2.a) Schematic of the In(As, P) QD ﬁeld eﬀect transistor, consisting of a spincoated ﬁlm of ligand exchanged QDs on top of cross-ﬁngered sourceanddrainelectrodesandseparatedfromthegateelectrodebyatherm…",
+              "confidence": 0.9
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "re prepared by lithograph- ically deﬁned source and drain contacts evaporated on top of Si sub- strates with a 300 nm layer of thermally grown oxide. Ligand exchanged InAs QDs were spincoated onto the FET substrates at a concentration of 100 mg mL−1 and a spi…",
+              "confidence": 0.9
+            },
+            {
+              "page": 7,
+              "location": "PDF page 7",
+              "conciseEvidence": "ation: Indium tin oxide substrates were purchased. NiO was deposited via e-beam evaporation and conse- quentannealingat300 °CinairpriortoQDdeposition.Ligandexchanged In(As, P) QDs were deposited on top of NiO by spincoating a QD solu- tion at 200 mg mL−1 with…",
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "huang-2026-pbs-hot-spin",
+      "title": "Hot-assisted spin-coating for ultrasmooth PbS colloidal quantum dot film in high-performance NIR photodetectors",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "huang-2026-pbs-hsc60-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "source_unavailable",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": null,
+            "ligand_exchange_target": "CQD absorber | hole-transport layer",
+            "ligand_exchange_conditions": "Existing curated device metadata indicates a ligand or surface treatment, but the source set was unavailable for method verification: PbS CQDs with a halide/amine-exchanged intrinsic absorber and PbS@EDT hole-transport layer",
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "paper-05e0a265ba8c",
+      "title": "Large Photomultiplication by Charge-Self-Trapping for High-Response Quantum Dot Infrared Photodetectors",
+      "sourceAvailable": true,
+      "sourceFilename": "large-photomultiplication-by-charge-self-trapping-for-high-response-quantum-dot-infrared-photodetectors.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "device-05e0a265ba8c-1",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "solid_state",
+            "ligand_exchange_chemicals": "3-mercaptopropionic acid (MPA) | lead(II) iodide (PbI2)",
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatically extracted reported parameters: 3 s; 10 min; 80 °C; 2000 rpm.",
+            "ligand_exchange_source_location": "PDF page 3 | PDF page 6"
+          },
+          "evidence": [
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "Fermi level of the PbS-PbI 2 layer is close to the midgap; 18 hence, it is treated as the intrinsic layer. The PbS CQD layer prepared by solid-state ligand exchange using 3-mercaptopro- pionic acid as a ligand (PbS-MPA) works as a P-type EBL.19−22 ZnO layers…",
+              "confidence": 0.8400000000000001
+            },
+            {
+              "page": 6,
+              "location": "PDF page 6",
+              "conciseEvidence": "in-coated on the ZnO layer at 2000 rpm to form an IR active layer. The PbS-PbI 2 layer was annealed at 80 °C for 10 min. Two layers of PbS CQDs solid ligand exchanged with MPA (5% wt MPA/MeOH solution) (PbS-MPA) were deposited on the PbS-PbI 2 layer to serve…",
+              "confidence": 0.8400000000000001
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paperId": "paper-ffcc0c4eac37",
+      "title": "Electron Transport Layer Optimization for All-Inorganic, Vacuum-Deposited Perovskite-Based Photodiodes with Improved Reverse Bias Stability and High Speed",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "device-ffcc0c4eac37-1",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "device-ffcc0c4eac37-2",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "paper-c533f3ba2a4a",
+      "title": "Multidimensional Perovskites for High Detectivity Photodiodes",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "device-c533f3ba2a4a-1",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "device-c533f3ba2a4a-2",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "dou-2014-perovskite-high-detectivity",
+      "title": "Solution-processed hybrid perovskite photodetectors with high detectivity",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "dou-2014-pd3-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "sutherland-2015-perovskite-interface",
+      "title": "Sensitive, Fast, and Stable Perovskite Photodetectors Exploiting Interface Engineering",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "sutherland-2015-i3-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "paper-00f55628795b",
+      "title": "Improvement of the perovskite photodiodes performance via advanced interface engineering with polymer dielectric",
+      "sourceAvailable": true,
+      "sourceFilename": "proposal-00f55628795b.pdf",
+      "sourceSimilarity": 1,
+      "devices": [
+        {
+          "deviceId": "device-00f55628795b-1",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "device-00f55628795b-2",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        },
+        {
+          "deviceId": "device-00f55628795b-3",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "paper-b0fdb518c75e",
+      "title": "Ultralow dark current in near-infrared perovskite photodiodes by reducing charge injection and interfacial charge generation",
+      "sourceAvailable": true,
+      "sourceFilename": "proposal-b0fdb518c75e.pdf",
+      "sourceSimilarity": 1,
+      "devices": [
+        {
+          "deviceId": "device-b0fdb518c75e-1",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "kim-2022-trication-nanofibers",
+      "title": "Electrospun Tri-Cation Perovskite Nanofibers for Infrared Photodetection",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "kim-2022-trication-fiber-htm-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "li-2020-perovskite-organic-bhj",
+      "title": "Ultrafast and broadband photodetectors based on a perovskite/organic bulk heterojunction for large-dynamic-range imaging",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "li-2020-perovskite-organic-bhj-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "yang-2019-cs2agbibr6",
+      "title": "Stable, High-Sensitivity and Fast-Response Photodetectors Based on Lead-Free Cs2AgBiBr6 Double Perovskite Films",
+      "sourceAvailable": false,
+      "sourceFilename": null,
+      "sourceSimilarity": null,
+      "devices": [
+        {
+          "deviceId": "yang-2019-cs2agbibr6-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "not_applicable",
+            "ligand_exchange_type": null,
+            "ligand_exchange_chemicals": null,
+            "native_ligands": null,
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": null,
+            "ligand_exchange_source_location": null
+          },
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "paperId": "chang-2025-pbse-wide-depletion",
+      "title": "Efficient and Low-Noise Extended Shortwave Photodiodes Based on PbSe Colloidal Quantum Dots with Wide Depletion Width",
+      "sourceAvailable": true,
+      "sourceFilename": "Advanced Optical Materials - 2025 - Chang - Efficient and Low‐Noise Extended Shortwave Photodiodes Based on PbSe Colloidal.pdf",
+      "sourceSimilarity": 0.95,
+      "devices": [
+        {
+          "deviceId": "chang-2025-pbse-ag1-device",
+          "ligandExchange": {
+            "ligand_exchange_status": "reported",
+            "ligand_exchange_type": "other",
+            "ligand_exchange_chemicals": "1,2-ethanedithiol (EDT)",
+            "native_ligands": "trioctylphosphine (TOP)",
+            "ligand_exchange_target": null,
+            "ligand_exchange_conditions": "Automatic text extraction identified the exchange chemistry and process; consult the cited source for recipe details.",
+            "ligand_exchange_source_location": "PDF page 4 | PDF page 4 | PDF page 3"
+          },
+          "evidence": [
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "bS- EDT p-type layers with diﬀerent Ag doping, which were calcu- latedbasedonpreviousreportedmethods. [25,26] Theenergylevels ofPbSeCQDfunctionallayercappedwithhalideligands(PbSe- halide)werereferredtoourpreviouswork. [16] Thevalenceband maxima(VBMs)ofPbSe-ha…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 4,
+              "location": "PDF page 4",
+              "conciseEvidence": "kcurrentacceleratedsigniﬁcantly. Thiswasusuallycausedbyleakagecurrent,whichwasworsefor deviceswithoutAgdoping.Therefore,thesurfacemorphologies of the PbS-EDT w/wo Ag doping covered on top of PbSe-halide eSWIR active layer was examined by Atomic Force Microsco…",
+              "confidence": 0.9400000000000001
+            },
+            {
+              "page": 3,
+              "location": "PDF page 3",
+              "conciseEvidence": "synthesis of PbS CQDs would not bring beneﬁts. How- ever,thefactorsinﬂuencingtheperformanceofphotodiodesare oftensophisticated.WefoundthatreplacingthePbS-EDTp-type layer in PbSe eSWIR photodiodes by Ag doped PbS-EDT layer indeedimprovedthedeviceperformancealo…",
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

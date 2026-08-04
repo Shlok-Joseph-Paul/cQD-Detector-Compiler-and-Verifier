@@ -113,7 +113,7 @@ export default function MethodologyPage() {
               </li>
               <li>
                 <strong>Device</strong> stores material, architecture, layer
-                stack, and active area.
+                stack, active area, and ligand-exchange method.
               </li>
               <li>
                 <strong>Measurement</strong> stores one reported D<sup>*</sup>
@@ -124,6 +124,27 @@ export default function MethodologyPage() {
               Consequently, several points can legitimately link to the same
               paper or device. Each point on the performance map represents one
               measurement—not one publication and not an average across a paper.
+            </p>
+          </section>
+
+          <section aria-labelledby="ligand-exchange-heading">
+            <h2 id="ligand-exchange-heading">Ligand-exchange methods</h2>
+            <p>
+              CQD ligand exchange is recorded at the device level because a
+              paper can compare several treatments or use different exchanges in
+              the absorber and charge-transport layers. The atlas preserves the
+              reported chemicals, native ligands, treated layer, processing
+              conditions, and exact source location.
+            </p>
+            <p>
+              Process types distinguish solid-state or layer-by-layer exchange,
+              solution-phase exchange before deposition, exchanged CQD inks, and
+              mixed workflows. <q>Not reported</q> is used only after the
+              supplied main article and available Supporting Information have
+              been checked, while <q>Not used</q> preserves an explicit
+              statement that the device avoids ligand exchange. Ambiguous
+              assignments and unavailable sources remain explicit and do not
+              affect the green or amber measurement flag.
             </p>
           </section>
 

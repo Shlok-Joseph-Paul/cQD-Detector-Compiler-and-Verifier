@@ -190,6 +190,46 @@ export default async function PaperPage({ params }: PageProps) {
                       })}
                     </dd>
                   </div>
+                  <div>
+                    <dt>Ligand exchange</dt>
+                    <dd>{humanizeCode(device.ligand_exchange_status)}</dd>
+                  </div>
+                  <div>
+                    <dt>Exchange process</dt>
+                    <dd>
+                      {device.ligand_exchange_type
+                        ? humanizeCode(device.ligand_exchange_type)
+                        : NOT_REPORTED}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Exchange chemicals</dt>
+                    <dd>
+                      {device.ligand_exchange_chemicals?.replaceAll("|", ",") ||
+                        NOT_REPORTED}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Native ligands</dt>
+                    <dd>
+                      {device.native_ligands?.replaceAll("|", ",") ||
+                        NOT_REPORTED}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Treated layer</dt>
+                    <dd>{device.ligand_exchange_target || NOT_REPORTED}</dd>
+                  </div>
+                  <div>
+                    <dt>Method details</dt>
+                    <dd>{device.ligand_exchange_conditions || NOT_REPORTED}</dd>
+                  </div>
+                  <div>
+                    <dt>Ligand source</dt>
+                    <dd>
+                      {device.ligand_exchange_source_location || NOT_REPORTED}
+                    </dd>
+                  </div>
                 </dl>
 
                 <div

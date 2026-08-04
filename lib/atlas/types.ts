@@ -75,6 +75,13 @@ export interface AtlasDevice {
   deviceArchitecture: string;
   deviceStack: string | null;
   activeAreaCm2: number | null;
+  ligandExchangeStatus: string;
+  ligandExchangeType: string | null;
+  ligandExchangeChemicals: string | null;
+  nativeLigands: string | null;
+  ligandExchangeTarget: string | null;
+  ligandExchangeConditions: string | null;
+  ligandExchangeSourceLocation: string | null;
   deviceNotes: string | null;
 }
 
@@ -347,6 +354,32 @@ export function normalizeJoinedMeasurement(
       activeAreaCm2: nullableNumber(device, [
         "active_area_cm2",
         "activeAreaCm2",
+      ]),
+      ligandExchangeStatus: textValue(
+        device,
+        ["ligand_exchange_status", "ligandExchangeStatus"],
+        "not_checked",
+      ),
+      ligandExchangeType: nullableText(device, [
+        "ligand_exchange_type",
+        "ligandExchangeType",
+      ]),
+      ligandExchangeChemicals: nullableText(device, [
+        "ligand_exchange_chemicals",
+        "ligandExchangeChemicals",
+      ]),
+      nativeLigands: nullableText(device, ["native_ligands", "nativeLigands"]),
+      ligandExchangeTarget: nullableText(device, [
+        "ligand_exchange_target",
+        "ligandExchangeTarget",
+      ]),
+      ligandExchangeConditions: nullableText(device, [
+        "ligand_exchange_conditions",
+        "ligandExchangeConditions",
+      ]),
+      ligandExchangeSourceLocation: nullableText(device, [
+        "ligand_exchange_source_location",
+        "ligandExchangeSourceLocation",
       ]),
       deviceNotes: nullableText(device, ["device_notes", "deviceNotes"]),
     },

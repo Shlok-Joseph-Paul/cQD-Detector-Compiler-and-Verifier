@@ -7,6 +7,8 @@ import {
   EXTENDED_METRIC_EXTRACTION_METHODS,
   EXTENDED_METRICS_REVIEW_STATUSES,
   FLAGS,
+  LIGAND_EXCHANGE_STATUSES,
+  LIGAND_EXCHANGE_TYPES,
   NOISE_INSTRUMENTS,
   NOISE_METHODS,
   PUBLICATION_TYPES,
@@ -372,6 +374,77 @@ function validateDevice(
     nullable: true,
     positive: true,
   });
+  validateEnum(
+    device.ligand_exchange_status,
+    "ligand_exchange_status",
+    LIGAND_EXCHANGE_STATUSES,
+    add,
+  );
+  validateOptionalNullableEnum(
+    device.ligand_exchange_type,
+    "ligand_exchange_type",
+    LIGAND_EXCHANGE_TYPES,
+    add,
+  );
+  validateNullableString(
+    device.ligand_exchange_chemicals,
+    "ligand_exchange_chemicals",
+    add,
+  );
+  validateNullableString(device.native_ligands, "native_ligands", add);
+  validateNullableString(
+    device.ligand_exchange_target,
+    "ligand_exchange_target",
+    add,
+  );
+  validateNullableString(
+    device.ligand_exchange_conditions,
+    "ligand_exchange_conditions",
+    add,
+  );
+  validateNullableString(
+    device.ligand_exchange_source_location,
+    "ligand_exchange_source_location",
+    add,
+  );
+  if (device.ligand_exchange_status === "reported") {
+    if (device.ligand_exchange_type == null)
+      add(
+        "ligand_exchange_type",
+        "ligand_exchange_method_required",
+        "A reported ligand exchange requires a process type.",
+      );
+    if (
+      typeof device.ligand_exchange_chemicals !== "string" ||
+      device.ligand_exchange_chemicals.trim() === ""
+    )
+      add(
+        "ligand_exchange_chemicals",
+        "ligand_exchange_chemicals_required",
+        "A reported ligand exchange requires the reported exchange chemical or ligand.",
+      );
+    if (
+      typeof device.ligand_exchange_source_location !== "string" ||
+      device.ligand_exchange_source_location.trim() === ""
+    )
+      add(
+        "ligand_exchange_source_location",
+        "ligand_exchange_source_required",
+        "A reported ligand exchange requires an exact source location.",
+      );
+  }
+  if (
+    ["not_used", "not_reported", "not_applicable", "not_checked"].includes(
+      String(device.ligand_exchange_status),
+    ) &&
+    device.ligand_exchange_type != null
+  )
+    add(
+      "ligand_exchange_type",
+      "ligand_exchange_status_mismatch",
+      `Ligand-exchange type must be blank when status is ${String(device.ligand_exchange_status)}.`,
+      device.ligand_exchange_type,
+    );
   validateNullableString(device.device_notes, "device_notes", add);
 }
 

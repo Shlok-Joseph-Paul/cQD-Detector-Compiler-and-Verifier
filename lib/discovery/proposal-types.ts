@@ -63,7 +63,8 @@ export interface StagedPaperProposal {
   extractorVersion:
     | "cqd-proposal-extractor-v1"
     | "cqd-proposal-extractor-v2"
-    | "photodiode-proposal-extractor-v3";
+    | "photodiode-proposal-extractor-v3"
+    | "photodiode-proposal-extractor-v4";
 }
 
 export interface ProposalRegistry {

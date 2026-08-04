@@ -3,6 +3,26 @@
 export const TECHNOLOGY_FAMILIES = ["cqd", "perovskite"] as const;
 export type TechnologyFamily = (typeof TECHNOLOGY_FAMILIES)[number];
 
+export const LIGAND_EXCHANGE_TYPES = [
+  "solid_state",
+  "solution_phase",
+  "ink_phase",
+  "mixed",
+  "other",
+] as const;
+export type LigandExchangeType = (typeof LIGAND_EXCHANGE_TYPES)[number];
+
+export const LIGAND_EXCHANGE_STATUSES = [
+  "reported",
+  "not_used",
+  "not_reported",
+  "not_applicable",
+  "ambiguous",
+  "source_unavailable",
+  "not_checked",
+] as const;
+export type LigandExchangeStatus = (typeof LIGAND_EXCHANGE_STATUSES)[number];
+
 export const PUBLICATION_TYPES = [
   "journal_article",
   "preprint",
@@ -120,6 +140,13 @@ export interface Device {
   device_architecture: string | null;
   device_stack: string | null;
   active_area_cm2: number | null;
+  ligand_exchange_status: LigandExchangeStatus;
+  ligand_exchange_type: LigandExchangeType | null;
+  ligand_exchange_chemicals: string | null;
+  native_ligands: string | null;
+  ligand_exchange_target: string | null;
+  ligand_exchange_conditions: string | null;
+  ligand_exchange_source_location: string | null;
   device_notes: string | null;
 }
 

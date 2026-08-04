@@ -12,6 +12,8 @@
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "validate-data": "node --experimental-strip-types scripts/validate-data.ts",
     "discovery": "node --experimental-strip-types scripts/discovery.ts",
+    "inbox": "node --experimental-strip-types scripts/inbox.ts",
+    "reprocess-ligands": "node --experimental-strip-types scripts/reprocess-ligand-exchange.ts",
     "check-data": "node --experimental-strip-types scripts/validate-data.ts --check",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "format": "prettier --write .",

@@ -37,17 +37,42 @@ record”**. Delete all `demo-*` rows before adding the first literature record.
 
 ## `devices.csv`
 
-| Column                 | Type            | Required | Meaning                                                            |
-| ---------------------- | --------------- | -------- | ------------------------------------------------------------------ |
-| `device_id`            | identifier      | yes      | Stable device identifier, referenced by measurements.              |
-| `paper_id`             | identifier      | yes      | Existing parent `paper_id`.                                        |
-| `technology_family`    | enum            | yes      | `cqd` or `perovskite`.                                             |
-| `material_family`      | text            | yes      | Extensible category such as `PbS`, `HgTe`, `MAPbI3`, or `CsPbBr3`. |
-| `material_composition` | text            | no       | Composition as reported by the source.                             |
-| `device_architecture`  | text            | no       | Photodiode architecture.                                           |
-| `device_stack`         | text            | no       | Layer stack in source order.                                       |
-| `active_area_cm2`      | positive number | no       | Active area in square centimetres.                                 |
-| `device_notes`         | text            | no       | Device-level curator notes.                                        |
+| Column                            | Type                | Required    | Meaning                                                                                                                        |
+| --------------------------------- | ------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `device_id`                       | identifier          | yes         | Stable device identifier, referenced by measurements.                                                                          |
+| `paper_id`                        | identifier          | yes         | Existing parent `paper_id`.                                                                                                    |
+| `technology_family`               | enum                | yes         | `cqd` or `perovskite`.                                                                                                         |
+| `material_family`                 | text                | yes         | Extensible category such as `PbS`, `HgTe`, `MAPbI3`, or `CsPbBr3`.                                                             |
+| `material_composition`            | text                | no          | Composition as reported by the source.                                                                                         |
+| `device_architecture`             | text                | no          | Photodiode architecture.                                                                                                       |
+| `device_stack`                    | text                | no          | Layer stack in source order.                                                                                                   |
+| `active_area_cm2`                 | positive number     | no          | Active area in square centimetres.                                                                                             |
+| `ligand_exchange_status`          | enum                | yes         | Review outcome: `reported`, `not_used`, `not_reported`, `not_applicable`, `ambiguous`, `source_unavailable`, or `not_checked`. |
+| `ligand_exchange_type`            | enum                | conditional | `solid_state`, `solution_phase`, `ink_phase`, `mixed`, or `other`; required when an exchange is reported.                      |
+| `ligand_exchange_chemicals`       | pipe-separated text | conditional | Exchange ligand(s), salt(s), acid(s), or other reported treatment chemicals.                                                   |
+| `native_ligands`                  | pipe-separated text | no          | Starting/native ligand(s), when the source identifies them.                                                                    |
+| `ligand_exchange_target`          | text                | no          | Device layer, CQD ink, or film receiving the treatment.                                                                        |
+| `ligand_exchange_conditions`      | text                | no          | Concise reported recipe details such as solvent, concentration, temperature, time, or treatment sequence.                      |
+| `ligand_exchange_source_location` | text                | conditional | Exact main-article or Supporting Information page, figure, table, or section; required for `reported`.                         |
+| `device_notes`                    | text                | no          | Device-level curator notes.                                                                                                    |
+
+### Ligand exchange
+
+Ligand exchange is stored at the device level because one paper may compare
+different ligand systems, and a multilayer photodiode may treat its absorber
+and transport layers differently. `solid_state` covers film or layer-by-layer
+exchange; `solution_phase` covers exchange completed in solution before film
+deposition; `ink_phase` covers an explicitly prepared exchanged CQD ink;
+`mixed` preserves devices using more than one of these routes.
+
+Use `not_used` when the source explicitly says the device avoids or obviates
+ligand exchange. Use `not_reported` only after the main article and every available Supporting
+Information file have been checked. Use `source_unavailable` when that source
+set could not be inspected, `ambiguous` when ligand language cannot be assigned
+confidently to the atlas device or process type, and `not_applicable` for a
+device outside CQD ligand exchange. The automated parser stages evidence and a
+status for curator review; it never treats a missing search hit as proof when
+OCR is required.
 
 ## `measurements.csv`
 

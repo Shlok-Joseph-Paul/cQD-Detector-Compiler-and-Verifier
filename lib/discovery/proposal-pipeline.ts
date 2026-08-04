@@ -114,7 +114,7 @@ function mergeCandidateUpdate(
   return next;
 }
 
-async function runBatchExtraction(
+export async function runBatchExtraction(
   executable: string,
   script: string,
   extractionDirectory: string,

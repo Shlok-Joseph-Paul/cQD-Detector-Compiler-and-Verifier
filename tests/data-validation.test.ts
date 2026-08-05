@@ -96,7 +96,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 3);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 83);
+  assert.equal(atlas.measurements.length, 85);
   assert.equal(atlas.records.length, atlas.measurements.length);
   const preprintRecords = atlas.records.filter(
     ({ paper: source }) => source.publication_type === "preprint",

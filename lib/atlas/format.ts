@@ -64,6 +64,8 @@ export const AMBER_REASON_LABELS: Record<string, string> = {
     "Noise was acquired using a source measure unit or parameter analyzer rather than a dedicated noise-measurement instrument.",
   above_blip_limit:
     "The reported detectivity appears substantially above a plausible BLIP limit and warrants manual review.",
+  below_preamplifier_noise_floor:
+    "Measured device noise was reported below the current preamplifier noise floor, limiting confidence in the absolute noise value.",
 };
 
 function superscript(value: number): string {

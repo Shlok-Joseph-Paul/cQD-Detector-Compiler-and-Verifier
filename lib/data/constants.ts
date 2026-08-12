@@ -63,6 +63,11 @@ export const AMBER_REASON_DETAILS: Record<AmberReason, AmberReasonDetail> = {
     explanation:
       "The reported detectivity appears substantially above a plausible background-limited infrared photodetection limit and warrants manual review.",
   },
+  below_preamplifier_noise_floor: {
+    label: "Below preamplifier noise floor",
+    explanation:
+      "Measured device noise was reported below the noise floor of the current preamplifier, limiting confidence in the absolute noise value.",
+  },
 };
 
 export function amberReasonsToExplanation(

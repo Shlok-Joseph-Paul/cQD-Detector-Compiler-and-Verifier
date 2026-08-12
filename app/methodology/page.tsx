@@ -34,6 +34,7 @@ const greenCriteria = [
   "A lock-in amplifier was not the sole noise-acquisition method.",
   "A source measure unit was not used to acquire the noise signal.",
   "The reported detectivity does not appear substantially above a plausible BLIP limit.",
+  "The measured device noise was not reported below the current preamplifier noise floor.",
 ];
 
 const amberReasons = [
@@ -41,6 +42,7 @@ const amberReasons = [
   "A lock-in amplifier was the sole noise-acquisition method.",
   "A source measure unit or parameter analyzer acquired the noise signal.",
   "The reported detectivity appears substantially above a plausible background-limited infrared photodetection (BLIP) limit and warrants manual review.",
+  "The measured device noise was reported below the current preamplifier noise floor.",
 ];
 
 export default function MethodologyPage() {

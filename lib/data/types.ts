@@ -114,6 +114,7 @@ export const AMBER_REASONS = [
   "lock_in_only_noise_measurement",
   "source_measure_unit_noise_measurement",
   "above_blip_limit",
+  "below_preamplifier_noise_floor",
 ] as const;
 export type AmberReason = (typeof AMBER_REASONS)[number];
 

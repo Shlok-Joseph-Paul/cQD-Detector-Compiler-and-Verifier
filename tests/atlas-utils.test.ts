@@ -338,6 +338,10 @@ test("scientific and missing-value formatting is explicit", () => {
   assert.equal(formatScientific(null), NOT_REPORTED);
   assert.equal(formatWithUnit(null, "K"), NOT_REPORTED);
   assert.match(formatAmberReason("shot_noise_approximation"), /shot-noise/i);
+  assert.match(
+    formatAmberReason("below_preamplifier_noise_floor"),
+    /preamplifier noise floor/i,
+  );
 });
 
 test("DOI and publication source links remain separately labeled data", () => {

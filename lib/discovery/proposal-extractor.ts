@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import type {
-  Device,
+  DetectorClass,
   Measurement,
   NoiseInstrument,
   Paper,
@@ -10,6 +10,7 @@ import { candidateTechnologyFamilies } from "./profiles.ts";
 import type {
   ProposalEvidence,
   ProposalSource,
+  ProposedDevice,
   StagedPaperProposal,
 } from "./proposal-types.ts";
 import {
@@ -263,6 +264,138 @@ function findPageEvidence(
   return null;
 }
 
+export interface DetectorClassResult {
+  detectorClass: DetectorClass | null;
+  confidence: number;
+  evidence: ProposalEvidence[];
+  reasons: string[];
+}
+
+interface DetectorClassSignal {
+  detectorClass: DetectorClass;
+  reason: string;
+  confidence: number;
+  patterns: RegExp[];
+}
+
+const DETECTOR_CLASS_SIGNALS: readonly DetectorClassSignal[] = [
+  {
+    detectorClass: "phototransistor",
+    reason:
+      "Full text describes a gated phototransistor or photo-FET architecture.",
+    confidence: 0.94,
+    patterns: [
+      /\bphototransistor\b/i,
+      /\bphoto[\s-]*(?:fet|field[\s-]*effect transistor)\b/i,
+      /\bphotogating transistor\b/i,
+      /\blight[\s-]*sensitive field[\s-]*effect transistor\b/i,
+      /\bsource\b[^.\n]{0,140}\bdrain\b[^.\n]{0,140}\bgate\b/i,
+      /\bgate voltage\b[^.\n]{0,160}\bphoto(?:current|response)\b/i,
+    ],
+  },
+  {
+    detectorClass: "photodiode",
+    reason:
+      "Full text describes a photodiode, photovoltaic detector, or rectifying junction.",
+    confidence: 0.92,
+    patterns: [
+      /\bphotodiode\b/i,
+      /\bphotovoltaic (?:detector|device)\b/i,
+      /\b(?:p[\s\-–—−]*i[\s\-–—−]*n|n[\s\-–—−]*i[\s\-–—−]*p|p[\s\-–—−]*n)\s+(?:photo)?(?:diode|junction|device)\b/i,
+      /\b(?:schottky|heterojunction)\s+photodiode\b/i,
+      /\brectifying junction\b/i,
+    ],
+  },
+  {
+    detectorClass: "photoconductor",
+    reason:
+      "Full text describes a two-terminal photoconductor or photoresistor.",
+    confidence: 0.9,
+    patterns: [
+      /\bphotoconductor\b/i,
+      /\bphotoresistor\b/i,
+      /\bphotoconductive detector\b/i,
+      /\btwo[\s-]*terminal\b[^.\n]{0,160}\bphotoconductive (?:channel|device)\b/i,
+    ],
+  },
+];
+
+/** Classify the device mechanism from page-located full-text evidence. */
+export function classifyDetectorClass(
+  pages: readonly PageText[],
+): DetectorClassResult {
+  const matched = new Map<DetectorClass, ProposalEvidence>();
+  const reasons = new Map<DetectorClass, string>();
+
+  for (const signal of DETECTOR_CLASS_SIGNALS) {
+    for (const page of pages) {
+      const normalized = page.text.replace(/\s+/g, " ");
+      const match = signal.patterns
+        .map((pattern) => {
+          pattern.lastIndex = 0;
+          return pattern.exec(normalized);
+        })
+        .find(Boolean);
+      if (!match) continue;
+      const start = Math.max(0, (match.index ?? 0) - 170);
+      const end = Math.min(
+        normalized.length,
+        (match.index ?? 0) + match[0].length + 220,
+      );
+      matched.set(signal.detectorClass, {
+        field: "device.detector_class",
+        page: page.page,
+        location: pageLocation(page),
+        conciseEvidence: cleanSnippet(normalized.slice(start, end)),
+        confidence: signal.confidence,
+      });
+      reasons.set(signal.detectorClass, signal.reason);
+      break;
+    }
+  }
+
+  const hasTransistor = matched.has("phototransistor");
+  const hasDiode = matched.has("photodiode");
+  const hasConductor = matched.has("photoconductor");
+  if ((hasTransistor && hasDiode) || (hasDiode && hasConductor)) {
+    return {
+      detectorClass: null,
+      confidence: 0,
+      evidence: [...matched.values()],
+      reasons: [
+        ...reasons.values(),
+        "Conflicting detector-class evidence requires device-level curator review.",
+      ],
+    };
+  }
+
+  // A gated transistor takes precedence over generic photoconductor language.
+  const detectorClass: DetectorClass | null = hasTransistor
+    ? "phototransistor"
+    : hasDiode
+      ? "photodiode"
+      : hasConductor
+        ? "photoconductor"
+        : null;
+  if (!detectorClass) {
+    return {
+      detectorClass: null,
+      confidence: 0,
+      evidence: [],
+      reasons: [
+        "Full text did not establish a photodiode, photoconductor, or phototransistor architecture.",
+      ],
+    };
+  }
+  const evidence = matched.get(detectorClass)!;
+  return {
+    detectorClass,
+    confidence: evidence.confidence,
+    evidence: [evidence],
+    reasons: [reasons.get(detectorClass)!],
+  };
+}
+
 export function extractStagedProposal(
   candidate: DiscoveryCandidate,
   source: ProposalSource,
@@ -294,13 +427,10 @@ export function extractStagedProposal(
       lower,
     );
   const hasProfileAbsorber = isPerovskite ? hasPerovskite : hasColloidal;
-  const hasPhotodiode =
-    /photodiode|photovoltaic (?:detector|device)|p[\s\-–—−]*n junction|p[\s\-–—−]*i[\s\-–—−]*n/.test(
-      lower,
-    );
+  const detectorClassification = classifyDetectorClass(pages);
   const onlyExcluded =
-    /photoconductor|phototransistor|photoresistor|bolometer/.test(lower) &&
-    !hasPhotodiode;
+    /\bbolometer|photothermal detector|pyroelectric detector\b/.test(lower) &&
+    detectorClassification.detectorClass === null;
   if (hasProfileAbsorber)
     scopeReasons.push(
       isPerovskite
@@ -311,17 +441,10 @@ export function extractStagedProposal(
     scopeReasons.push(
       `${isPerovskite ? "Metal-halide perovskite" : "Colloidal or solution-processed CQD"} absorber terminology was not established automatically.`,
     );
-  if (hasPhotodiode)
-    scopeReasons.push(
-      "Full text describes a photodiode, photovoltaic detector, or rectifying junction.",
-    );
-  else
-    scopeReasons.push(
-      "Photodiode or rectifying-junction scope was not established automatically.",
-    );
+  scopeReasons.push(...detectorClassification.reasons);
   if (onlyExcluded)
     scopeReasons.push(
-      "Only an excluded photoconductive/transistor/bolometric architecture was detected.",
+      "Only an unsupported thermal-detector architecture was detected.",
     );
 
   const paperKey = shortHash(
@@ -384,14 +507,15 @@ export function extractStagedProposal(
     ligandExchange.ligand_exchange_conditions =
       "The source requires OCR, so absence of a searchable ligand-exchange method could not be confirmed.";
   }
-  const proposedDevice: Device = {
+  const proposedDevice: ProposedDevice = {
     device_id: deviceId,
     paper_id: paperId,
     technology_family: isPerovskite ? "perovskite" : "cqd",
+    detector_class: detectorClassification.detectorClass,
     material_family: materials[0],
     material_composition: materials.join("/"),
-    device_architecture: hasPhotodiode
-      ? `${isPerovskite ? "Perovskite" : "CQD"} photodiode; exact architecture requires curator confirmation`
+    device_architecture: detectorClassification.detectorClass
+      ? `${isPerovskite ? "Perovskite" : "CQD"} ${detectorClassification.detectorClass}; exact architecture requires curator confirmation`
       : null,
     device_stack: stack,
     active_area_cm2: activeArea,
@@ -404,8 +528,16 @@ export function extractStagedProposal(
     ligand_exchange_source_location:
       ligandExchange.ligand_exchange_source_location,
     device_notes:
-      "Automatically staged from full text; confirm absorber, junction type, stack order, and area against the cited source locations.",
+      "Automatically staged from full text; confirm absorber, detector class, architecture, stack order, and area against the cited source locations.",
   };
+  if (!detectorClassification.detectorClass) {
+    missingFields.push("device.detector_class");
+    warnings.push(
+      detectorClassification.evidence.length > 1
+        ? "Conflicting detector-class evidence was found. Confirm whether the paper reports distinct devices and map every measurement to the correct device before approval."
+        : "Detector class could not be established from full-text architecture evidence and requires curator correction.",
+    );
+  }
   if (!stack) missingFields.push("device.device_stack");
   if (activeArea == null) missingFields.push("device.active_area_cm2");
   if (ligandExchange.ligand_exchange_status === "ambiguous") {
@@ -415,7 +547,7 @@ export function extractStagedProposal(
     missingFields.push("device.ligand_exchange_method_confirmation");
   }
 
-  const evidence: ProposalEvidence[] = [];
+  const evidence: ProposalEvidence[] = [...detectorClassification.evidence];
   const stackEvidence = findPageEvidence(
     pages,
     /ITO\s*\/\s*SnO2\s*\/\s*BiCl3\s*\/\s*QD\s*\/\s*P3HT/i,
@@ -765,7 +897,9 @@ export function extractStagedProposal(
 
   const scopeStatus: StagedPaperProposal["scopeStatus"] = onlyExcluded
     ? "out-of-scope"
-    : hasProfileAbsorber && hasPhotodiode && proposedMeasurements.length
+    : hasProfileAbsorber &&
+        detectorClassification.detectorClass !== null &&
+        proposedMeasurements.length
       ? "in-scope"
       : "uncertain";
   return {
@@ -785,6 +919,6 @@ export function extractStagedProposal(
     proposedAt: now.toISOString(),
     decidedAt: null,
     appliedAt: null,
-    extractorVersion: "photodiode-proposal-extractor-v4",
+    extractorVersion: "photodetector-proposal-extractor-v5",
   };
 }

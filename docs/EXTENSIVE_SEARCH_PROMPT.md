@@ -1,20 +1,20 @@
-# Copy-paste prompt for an extensive CQD photodiode search
+# Copy-paste prompt for an extensive CQD photodetector search
 
 Use this as a fresh Codex task in the Detector Data Compiler repository:
 
 ```text
-Run an extensive online literature search for genuinely new experimental colloidal-quantum-dot photodiode papers that are not already in this atlas.
+Run an extensive online literature search for genuinely new experimental colloidal-quantum-dot photodiode, photoconductor, and phototransistor papers that are not already in this atlas.
 
 Scientific requirements:
-- The detector must be an experimental, solution-processed CQD photodiode or photovoltaic detector allowed by the repository methodology.
+- The detector must be an experimental, solution-processed CQD photodiode, photoconductor, or phototransistor allowed by the repository methodology.
 - It must report specific detectivity (D*) in Jones and an identifiable measurement wavelength from 550 nm through 3000 nm.
-- Exclude photoconductors, phototransistors, bolometers, epitaxial quantum dots, reviews, perspectives, theory-only work, solar cells without detector characterization, and values copied from comparison tables.
+- Exclude bolometers, other thermal detectors, epitaxial quantum dots, reviews, perspectives, theory-only work, solar cells without detector characterization, and values copied from comparison tables.
 - Prioritize non-heavy-metal absorbers, especially Ag2Te, Ag2Se, InAs, InSb, AgBiS2, and other RoHS-compatible CQDs. Keep Pb- and Hg-based results in a separate lower-priority section rather than mixing them with the non-heavy-metal shortlist.
 - Prefer papers with lawful, unauthenticated open-access PDFs. Do not use institutional credentials, cookies, paywall circumvention, or scraped Google Scholar pages.
 
 Search procedure:
 1. Search OpenAlex, Crossref, arXiv, public publisher/repository pages, and citation/reference chains from existing atlas papers.
-2. Use material synonyms, chemical formulas with and without subscripts, CQD/colloidal nanocrystal terminology, photodiode/photovoltaic detector terms, detectivity/D* terms, and NIR/SWIR/eSWIR wavelength terms.
+2. Use material synonyms, chemical formulas with and without subscripts, CQD/colloidal nanocrystal terminology, photodiode/photovoltaic detector, photoconductor/photoresistor, phototransistor/photo-FET, detectivity/D*, and NIR/SWIR/eSWIR terms.
 3. Deduplicate against data/papers.csv by normalized DOI and fuzzy normalized title, including preprint-to-journal version matches.
 4. Verify each recommended paper from its abstract or full text: original research, correct device class, reported D*, wavelength in range, and a direct publication or DOI link.
 5. Update only the discovery candidate registry and audit log. Do not parse PDFs or edit atlas CSVs yet.

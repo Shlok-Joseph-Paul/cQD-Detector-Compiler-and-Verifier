@@ -7,7 +7,8 @@ import {
   MEASUREMENT_CSV_COLUMNS,
   PAPER_CSV_COLUMNS,
 } from "../data/parse.ts";
-import type { Device, Measurement, Paper } from "../data/types.ts";
+import type { Measurement, Paper } from "../data/types.ts";
+import type { ProposedDevice } from "./proposal-types.ts";
 import { normalizeDoi } from "./normalize.ts";
 import { readCandidateRegistry, writeCandidateRegistry } from "./pipeline.ts";
 import {
@@ -32,11 +33,12 @@ function paperRow(paper: Paper): unknown[] {
   ];
 }
 
-function deviceRow(device: Device): unknown[] {
+function deviceRow(device: ProposedDevice): unknown[] {
   return [
     device.device_id,
     device.paper_id,
     device.technology_family || "cqd",
+    device.detector_class,
     device.material_family,
     device.material_composition,
     device.device_architecture,
@@ -155,7 +157,8 @@ async function applyApprovedProposalsUnlocked(
       );
     if (
       proposal.scopeStatus !== "in-scope" ||
-      proposal.proposedMeasurements.length === 0
+      proposal.proposedMeasurements.length === 0 ||
+      proposal.proposedDevices.some((device) => !device.detector_class)
     )
       throw new Error(
         `${proposal.proposalId}: proposal is not an applicable in-scope measurement set`,

@@ -105,10 +105,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:51:59.295Z",
+      "lastMetadataRefresh": "2026-08-12T15:43:22.521Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -326,15 +326,19 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "include",
       "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningNotes": "Approved by Shlok on 2026-08-12 from the supplied primary PDF. Champion MeO-2PACz PbS photodiode: measured-noise D*=1.64e12 Jones at approximately 1200 nm (graphically extracted), 0 V; retain 62 kHz bandwidth and 92 dB LDR. Exact response times remain SI-dependent.",
+      "pdfStatus": "acquired",
+      "importStatus": "published",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:53:39.739Z",
+      "lastMetadataRefresh": "2026-08-12T19:37:51.770Z",
       "duplicateRelationships": [],
-      "manualOverrides": {}
+      "manualOverrides": {
+        "curatorDecision": "approved",
+        "curatorDecisionDate": "2026-08-12",
+        "approvedMeasurementSummary": "MeO-2PACz PbS photodiode; D*=1.64e12 Jones at approximately 1200 nm, 0 V; measured noise at 1 Hz; green under current rules."
+      }
     },
     {
       "candidateId": "candidate-105143dac44b7047",
@@ -435,10 +439,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:53:16.998Z",
+      "lastMetadataRefresh": "2026-08-12T15:43:23.024Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -1411,13 +1415,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningStatus": "exclude",
+      "exclusionReason": "Phototransistor; atlas excludes transistor-gain detector metrics.",
+      "screeningNotes": "Title and abstract explicitly describe a heterojunction-gated field-effect phototransistor.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:51:59.295Z",
+      "lastMetadataRefresh": "2026-08-12T15:39:22.062Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -1915,7 +1919,7 @@
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-08-04T14:49:02.755Z",
+      "lastMetadataRefresh": "2026-08-11T14:43:57.859Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -2016,13 +2020,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningStatus": "exclude",
+      "exclusionReason": "Photoconductor; atlas requires a photodiode or rectifying photovoltaic junction.",
+      "screeningNotes": "Abstract explicitly identifies both 18 µm and 10 µm devices as CQD photoconductors.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:53:21.044Z",
+      "lastMetadataRefresh": "2026-08-12T15:42:17.558Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -2178,13 +2182,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "uncertain",
       "exclusionReason": null,
-      "screeningNotes": null,
+      "screeningNotes": "Already reviewed by curator; retain for manual follow-up if primary article and Supporting Information become available.",
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-04T14:48:36.362Z",
+      "lastMetadataRefresh": "2026-08-11T14:44:35.957Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -2284,13 +2288,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "uncertain",
       "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningNotes": "Metamaterial HgTe detector metadata does not establish a rectifying or photovoltaic junction; primary-source scope review required.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:52:57.484Z",
+      "lastMetadataRefresh": "2026-08-12T15:42:16.352Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -2533,7 +2537,7 @@
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-04T14:48:35.847Z",
+      "lastMetadataRefresh": "2026-08-11T14:44:35.634Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -2576,13 +2580,13 @@
         "Spectral-region or wavelength terminology",
         "Citation-graph connection to an included atlas paper"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
+      "screeningStatus": "exclude",
+      "exclusionReason": "Photoconductor; atlas requires a photodiode or rectifying photovoltaic junction.",
+      "screeningNotes": "Primary main article and Supporting Information were previously checked and both reported device geometries are photoconductors.",
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-07-20",
-      "lastMetadataRefresh": "2026-08-03T14:52:46.043Z",
+      "lastMetadataRefresh": "2026-08-12T15:39:23.097Z",
       "duplicateRelationships": [],
       "manualOverrides": {},
       "technologyFamilies": ["cqd"]
@@ -3432,13 +3436,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningStatus": "exclude",
+      "exclusionReason": "Phototransistor; atlas excludes transistor-gain detector metrics.",
+      "screeningNotes": "Title and abstract explicitly identify the reported HgTe result as a gated phototransistor.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:52:54.410Z",
+      "lastMetadataRefresh": "2026-08-12T15:43:23.667Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -3680,7 +3684,7 @@
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-04T14:48:37.614Z",
+      "lastMetadataRefresh": "2026-08-11T14:44:37.165Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -3727,13 +3731,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "uncertain",
       "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningNotes": "Planar multiband CQD detector lacks rectifying-junction evidence in available metadata; requires primary-source scope screening.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:52:57.484Z",
+      "lastMetadataRefresh": "2026-08-12T15:39:22.488Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -4150,8 +4154,8 @@
       "openAlexId": "https://openalex.org/W4399762265",
       "crossrefMetadata": null,
       "publicationUrl": "https://doi.org/10.1002/adma.202401206",
-      "openAccessPdfUrl": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202401206",
-      "openAccessPdfSource": "Advanced Materials",
+      "openAccessPdfUrl": "https://research.abo.fi/ws/files/62783987/Advanced_Materials_-_2024_-_Nodari_-_Dark_Current_in_Broadband_Perovskite_Organic_Heterojunction_Photodetectors_Controlled.pdf",
+      "openAccessPdfSource": "Unpaywall (repository, submittedVersion)",
       "discoverySources": ["OpenAlex"],
       "discoveryQueries": [
         "\"metal halide perovskite\" photodiode detectivity"
@@ -4175,10 +4179,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "pdfStatus": "acquired",
+      "importStatus": "parsed",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-08-03T14:55:14.472Z",
+      "lastMetadataRefresh": "2026-08-12T15:43:34.906Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -4583,10 +4587,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:52:57.484Z",
+      "lastMetadataRefresh": "2026-08-12T15:43:20.484Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -4645,13 +4649,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "uncertain",
       "exclusionReason": null,
-      "screeningNotes": null,
+      "screeningNotes": "Already reviewed by curator; retain for manual follow-up if primary article and Supporting Information become available.",
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-04T14:48:36.768Z",
+      "lastMetadataRefresh": "2026-08-11T14:44:36.478Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -5353,13 +5357,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningStatus": "exclude",
+      "exclusionReason": "Phototransistor; atlas excludes transistor-gain detector metrics.",
+      "screeningNotes": "Abstract explicitly identifies the reported CdS/HgTe result as a phototransistor.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:52:50.741Z",
+      "lastMetadataRefresh": "2026-08-12T15:42:12.423Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -5791,6 +5795,58 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-43f59ae06a9d52fd",
+      "doi": "10.1002/adma.74535",
+      "normalizedDoi": "10.1002/adma.74535",
+      "title": "Hydrogen‐Bond Mediated Synthesis of Conductive Quantum Dots for All‐Ink Optoelectronic Devices",
+      "normalizedTitle": "hydrogen bond mediated synthesis of conductive quantum dots for all ink optoelectronic devices",
+      "authors": [
+        "Chao Wang",
+        "Yinglin Wang",
+        "Hao Li",
+        "Zhixiang Gui",
+        "Dayang Wang",
+        "Xintong Zhang",
+        "Yichun Liu"
+      ],
+      "publicationYear": 2026,
+      "journal": "Advanced Materials",
+      "abstract": "ABSTRACT Short‐chain molecular ligands (SMLs) are favored for producing colloidal quantum dot (CQD) inks for solution‐processed optoelectronics, since they enable more efficient charge transport than conventional long‐chain ligands. However, their weak steric or electrostatic stabilization makes CQD inks vulnerable to aggregation or coalescence. To overcome this challenge, here we report a hydrogen‐bond‐mediated strategy for preparing SML‐capped CQD inks with excellent colloidal stability and solution processibility. Through theoretical and experimental evaluation of hydrogen‐bond strengths across polar organic solvents and small thiol molecules, we identify 1‐thioglycerol (TG) in dimethylsulfoxide (DMSO) as an optimal pair. This combination enables one‐step synthesis of CQDs of binary, ternary, and quaternary metal sulfide under ambient conditions, while strong ligand‐solvent hydrogen bonding ensures robust colloidal stability. Optoelectronic devices fabricated by stacking these p‐type PbS CQDs on n‐type PbS CQDs achieve a record power conversion efficiency of 12.2% solar cells in all‐ink‐processed devices and an enhanced detectivity of 9.4 × 10 11 Jones in near‐infrared photodetectors. This hydrogen‐bond‐mediated approach demonstrates a straightforward and cost‐effective route to produce p‐type PbS CQD conductive inks, holding great promise for advancing all‐ink scalable‐manufacturing optoelectronic devices.",
+      "openAlexId": "https://openalex.org/W7196961266",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1002/adma.74535",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodetector detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["cqd"],
+      "candidateMaterialClasses": ["PbS"],
+      "candidateDeviceType": "photodetector",
+      "candidateSpectralRegions": ["infrared"],
+      "relevanceScore": 92,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Configured material: PbS",
+        "Detector terminology: photodetector",
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "not-checked",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-09",
+      "lastMetadataRefresh": "2026-08-12T15:36:55.548Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-4c2af3d718f3f916",
       "doi": "10.1021/acsami.5c06812",
       "normalizedDoi": "10.1021/acsami.5c06812",
@@ -5951,13 +6007,13 @@
         "Performance metrics: detectivity, responsivity, external quantum efficiency",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
+      "screeningStatus": "exclude",
+      "exclusionReason": "Non-primary journal cover/highlight; use original article candidate candidate-229370ec8a6f65fd.",
+      "screeningNotes": "Already reviewed by curator and removed from automatic review batches.",
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-08-04T14:49:03.425Z",
+      "lastMetadataRefresh": "2026-08-11T14:43:58.349Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -6227,7 +6283,7 @@
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-08-04T14:49:05.038Z",
+      "lastMetadataRefresh": "2026-08-11T14:43:59.764Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -6352,6 +6408,66 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-97fca5d0503a0b07",
+      "doi": "10.1002/adfm.77563",
+      "normalizedDoi": "10.1002/adfm.77563",
+      "title": "Breaking the Passivation‐Band‐Alignment Trade‐Off in PbS Colloidal Quantum Dot Photodiodes via Gradient Doping",
+      "normalizedTitle": "breaking the passivation band alignment trade off in pbs colloidal quantum dot photodiodes via gradient doping",
+      "authors": [
+        "Luna Xiao",
+        "Shuai Zou",
+        "Chengjie Deng",
+        "Jingjing Wang",
+        "Juntao Pi",
+        "Qiyuan Guo",
+        "Yuhan Zhang",
+        "Hao Li",
+        "Xing Zhou",
+        "Sen Li",
+        "Jianbing Zhang",
+        "Jing Liu",
+        "Liang Gao",
+        "Jiang Tang"
+      ],
+      "publicationYear": 2026,
+      "journal": "Advanced Functional Materials",
+      "abstract": "ABSTRACT Solution‐processed PbS colloidal quantum dots (CQDs) are promising materials for short‐wave infrared (SWIR) photodetection, yet extending the response to longer wavelengths is commonly accompanied by more severe surface trapping and unfavorable band alignment, which together limit carrier extraction and device sensitivity. Here, we report a post‐deposition gradient doping strategy based on antimony trifluoride (SbF 3 ) to simultaneously address these two bottlenecks in 1650 nm PbS CQD photodiodes. The SbF 3 treatment creates a depth‐dependent n ‐type doping profile in the halide‐passivated CQD film, while F − coordination with undercoordinated Pb 2+ sites suppresses deep surface trap states and nonradiative recombination. Meanwhile, the resulting graded electronic structure reduces the conduction‐band offset at the CQD/electron‐transport‐layer interface and establishes a more favorable quasi‐type‐II junction for electron extraction. As a result, the optimized p‐i‐n photodiodes deliver an external quantum efficiency (EQE) of 56.5% at 1650 nm under zero bias, a low dark current density of 31 nA cm −2 at −0.1 V, and a specific detectivity ( D *) of 5.62 × 10 11 Jones. Furthermore, monolithic integration with a complementary metal‐oxide‐semiconductor (CMOS) readout integrated circuit enables high‐contrast SWIR imaging. This work offers an effective route to simultaneously regulate surface chemistry and junction energetics, providing a practical design strategy for high‐performance long‐wavelength CQD optoelectronics.",
+      "openAlexId": "https://openalex.org/W7196960029",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1002/adfm.77563",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodiode detectivity",
+        "\"CQD photodiode\" detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["cqd"],
+      "candidateMaterialClasses": ["PbS"],
+      "candidateDeviceType": "photodiode",
+      "candidateSpectralRegions": ["SWIR"],
+      "relevanceScore": 92,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Configured material: PbS",
+        "Detector terminology: photodiode",
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity, external quantum efficiency, eqe, dark current",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "not-checked",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-09",
+      "lastMetadataRefresh": "2026-08-12T15:36:56.500Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-a3e037247778398a",
       "doi": "10.3390/nano14181472",
       "normalizedDoi": "10.3390/nano14181472",
@@ -6398,6 +6514,66 @@
       "importStatus": "not-started",
       "dateDiscovered": "2026-07-21",
       "lastMetadataRefresh": "2026-07-21T16:05:45.607Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
+      "candidateId": "candidate-a79479d928a6196a",
+      "doi": "10.1021/acs.jpcc.6c02911",
+      "normalizedDoi": "10.1021/acs.jpcc.6c02911",
+      "title": "Facet-SelectiveMultidentate Passivation for SuppressingDefects in PbS Colloidal Quantum Dot Photodiodes",
+      "normalizedTitle": "facet selectivemultidentate passivation for suppressingdefects in pbs colloidal quantum dot photodiodes",
+      "authors": [
+        "Huilei Shi",
+        "Yichuan Wang",
+        "Chengjie Deng",
+        "Juntao Pi",
+        "Qiyuan Guo",
+        "Yuhan Zhang",
+        "Hao Li",
+        "Yuxuan Liu",
+        "Xing Zhou",
+        "Jianbing Zhang",
+        "Sen Li",
+        "Jing Liu",
+        "Liang Gao",
+        "Jiang Tang"
+      ],
+      "publicationYear": 2026,
+      "journal": "The Journal of Physical Chemistry C",
+      "abstract": "Abstract Lead sulfide (PbS) colloidal quantum dots (CQDs) are highly promising materials for short-wave infrared (SWIR) optoelectronics, but their performance is frequently limited by facet-dependent surface defects and energetic disorder. Specifically, the (100) facets prevalent in larger quantum dots are highly susceptible to ligand stripping and trap formation, which induce nonradiative recombination and limit device efficiency. In this work, we demonstrate a facet-selective supplementary passivation strategy, utilizing 2,6-bis(aminomethyl)pyridine (DAMP) to specifically target undercoordinated lead-rich sites on PbS (100) surfaces. Acting synergistically with conventional halide treatments, the multidentate DAMP molecules selectively anchor to the exposed (100) facets, significantly suppressing band-edge energetic disorder and defect-assisted leakage pathways. Consequently, our DAMP-passivated PbS CQD photodiodes exhibit a 2.5-fold reduction in dark current density at a reverse bias of −0.5 V and achieve an improved specific detectivity of 1.86 × 1012 Jones. Furthermore, we successfully integrate this surface engineering strategy into a 640 × 512 focal plane array (FPA). This imaging array exhibits high-resolution short-wave infrared (SWIR) capability, enabling precise material identification and subsurface defect detection, as demonstrated by distinguishing similar solvents, revealing internal defects in biological samples, and differentiating visually indistinguishable substances. Ultimately, this facet-aware passivation approach provides a highly effective and scalable pathway for realizing high-sensitivity, next-generation SWIR optoelectronic technologies.",
+      "openAlexId": "https://openalex.org/W7172402009",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1021/acs.jpcc.6c02911",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodiode detectivity",
+        "\"CQD photodiode\" detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["cqd"],
+      "candidateMaterialClasses": ["PbS"],
+      "candidateDeviceType": "photodiode",
+      "candidateSpectralRegions": ["SWIR"],
+      "relevanceScore": 92,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Configured material: PbS",
+        "Detector terminology: photodiode, focal plane array",
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity, dark current",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "not-checked",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-06",
+      "lastMetadataRefresh": "2026-08-11T14:44:13.861Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -6563,7 +6739,7 @@
       "pdfStatus": "requested",
       "importStatus": "queued",
       "dateDiscovered": "2026-08-02",
-      "lastMetadataRefresh": "2026-08-04T14:48:19.466Z",
+      "lastMetadataRefresh": "2026-08-11T14:44:13.861Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -6617,6 +6793,67 @@
       "importStatus": "not-started",
       "dateDiscovered": "2026-07-21",
       "lastMetadataRefresh": "2026-07-21T16:05:53.136Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
+      "candidateId": "candidate-c3c19bf71a6dc941",
+      "doi": "10.1002/lpor.71699",
+      "normalizedDoi": "10.1002/lpor.71699",
+      "title": "Room‐Temperature Cation‐Exchange Synthesis of PbS Colloidal Quantum Dots in Polar‐Solvent for High‐Performance Near Infrared Optoelectronic Devices",
+      "normalizedTitle": "room temperature cation exchange synthesis of pbs colloidal quantum dots in polar solvent for high performance near infrared optoelectronic devices",
+      "authors": [
+        "Ke-Lei Zu",
+        "Hai-Liang Long",
+        "Ji-Xiong Zhao",
+        "Jun-Tao Hu",
+        "Dengke Wang",
+        "Nan Chen",
+        "Yin-Fen Ma",
+        "Jian Xu",
+        "Jun‐Liang Li",
+        "Qi Zhan",
+        "Feng Qiu",
+        "Bin Xu",
+        "Changsheng Shi",
+        "Mei Leng",
+        "Yong‐Biao Zhao",
+        "Zheng‐Hong Lu"
+      ],
+      "publicationYear": 2026,
+      "journal": "Laser & Photonics Review",
+      "abstract": "ABSTRACT PbS colloidal quantum dots (CQDs) have attracted significant attention as light sources and photodetectors in the second near‐infrared (NIR‐II) window for optical communication, bioimaging, and night vision. Recently, a room‐temperature direct synthesis of PbS CQD inks has been developed, enabling low‐cost and large‐scale fabrication of QD optoelectronic devices. However, the synthesis of high‐quality large‐sized CQDs with photoluminescence (PL) peaks beyond 1550 nm remains challenging. In this work, we developed a novel room‐temperature cation‐exchange synthesis strategy in a polar solvent system. Distinct from existing approaches, the strategy employs ZnS nanoseeds as the sulfur precursor, enabling tunable PL peaks in the range of 1050–1650 nm by precisely controlling the reaction kinetics. The in situ passivation by Zn cations and acetate anions effectively reduces surface defects on the nonpolar (100) facets. Based on this strategy, we fabricated near‐infrared II (NIR‐II) light‐emitting diodes (LEDs) exhibiting a maximum radiance of 22.15 W sr −1 m −2 , together with a record‐breaking critical current density for external quantum efficiency (EQE) roll‐off ( J 1/2EQE = 3.4 A cm −2 ). Furthermore, NIR‐II photodetectors demonstrate a high photoresponsivity of 0.68 A W −1 and a specific detectivity of 1.12 × 10 11 Jones at 1490 nm.",
+      "openAlexId": "https://openalex.org/W7172500523",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1002/lpor.71699",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodetector detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["cqd"],
+      "candidateMaterialClasses": ["PbS"],
+      "candidateDeviceType": "photodetector",
+      "candidateSpectralRegions": ["NIR"],
+      "relevanceScore": 92,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Configured material: PbS",
+        "Detector terminology: photodetector",
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity, responsivity, external quantum efficiency, eqe",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "not-checked",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-06",
+      "lastMetadataRefresh": "2026-08-12T15:36:55.548Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -6780,13 +7017,13 @@
         "Performance metrics: detectivity, responsivity",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "uncertain",
       "exclusionReason": null,
-      "screeningNotes": null,
+      "screeningNotes": "Already reviewed by curator; phototransistor headline is excluded and the separate low-detectivity photodiode branch needs primary evidence.",
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-08-04T14:49:03.875Z",
+      "lastMetadataRefresh": "2026-08-11T14:43:58.714Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -8675,13 +8912,13 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "uncertain",
       "exclusionReason": null,
-      "screeningNotes": null,
+      "screeningNotes": "Already reviewed by curator; exact numeric detectivity wavelengths and HgTe/stack measurement association remain unresolved.",
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-04T14:48:38.239Z",
+      "lastMetadataRefresh": "2026-08-11T14:44:38.041Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -9973,13 +10210,13 @@
         "Journal article",
         "Citation-graph connection to an included atlas paper"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "uncertain",
       "exclusionReason": null,
-      "screeningNotes": null,
+      "screeningNotes": "Already reviewed by curator; retain for manual follow-up if primary article and Supporting Information become available.",
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-08-04T14:49:05.498Z",
+      "lastMetadataRefresh": "2026-08-11T14:44:00.408Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -10440,15 +10677,19 @@
         "Journal article",
         "Citation-graph connection to an included atlas paper"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "include",
       "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "inaccessible",
-      "importStatus": "queued",
+      "screeningNotes": "Approved by Shlok on 2026-08-12 from the supplied primary PDF. Retain three zero-bias measured-noise rows: Ctrl 2.22e11 Jones at 532 nm, Tgt I 3.70e11 Jones at 635 nm, and Tgt IB 4.51e11 Jones at 635 nm. Exclude the hypothetical up-to-30x intrinsic-noise extrapolation and >200 dB modeled LDR.",
+      "pdfStatus": "acquired",
+      "importStatus": "published",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-08-03T14:55:14.472Z",
+      "lastMetadataRefresh": "2026-08-12T19:37:52.124Z",
       "duplicateRelationships": [],
-      "manualOverrides": {}
+      "manualOverrides": {
+        "curatorDecision": "approved",
+        "curatorDecisionDate": "2026-08-12",
+        "approvedMeasurementSummary": "Ctrl 2.22e11 Jones at 532 nm; Tgt I 3.70e11 Jones at 635 nm; Tgt IB 4.51e11 Jones at 635 nm; all 0 V, 300 K, measured noise, green under current rules."
+      }
     },
     {
       "candidateId": "candidate-b603dcbb2083c88e",
@@ -11223,6 +11464,56 @@
           "candidateId": "candidate-976a350adfd5cf7a",
           "type": "possible-fuzzy-title",
           "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
+        },
+        {
+          "candidateId": "candidate-976a350adfd5cf7a",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9440993788819876
         }
       ],
       "manualOverrides": {},
@@ -11467,7 +11758,7 @@
       "openAlexId": "https://openalex.org/W3179866822",
       "crossrefMetadata": null,
       "publicationUrl": "https://doi.org/10.1002/adma.202101056",
-      "openAccessPdfUrl": "https://utoronto.scholaris.ca/bitstreams/2f002f81-ca6b-4746-93e9-a1484c131b98/download",
+      "openAccessPdfUrl": "https://utoronto.scholaris.ca/server/api/core/bitstreams/2f002f81-ca6b-4746-93e9-a1484c131b98/content",
       "openAccessPdfSource": "TSpace (University of Toronto)",
       "discoverySources": ["OpenAlex"],
       "discoveryQueries": [],
@@ -11486,15 +11777,19 @@
         "Citation-graph connection to an included atlas paper",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "include",
       "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningNotes": "Approved by Shlok on 2026-08-12 after correction of proposal-74024208aab5. Retain separate 0.09 cm2 c-ALD and standard-PbS control detectivity rows; keep the 0.0001 cm2 timing devices and their 7/20 ns values out of those D* rows.",
+      "pdfStatus": "acquired",
+      "importStatus": "published",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:53:34.264Z",
+      "lastMetadataRefresh": "2026-08-12T15:39:23.969Z",
       "duplicateRelationships": [],
-      "manualOverrides": {}
+      "manualOverrides": {
+        "curatorDecision": "approved",
+        "curatorDecisionDate": "2026-08-12",
+        "proposalId": "proposal-74024208aab5"
+      }
     },
     {
       "candidateId": "candidate-0e2fa4354149887b",
@@ -13503,8 +13798,8 @@
       "openAlexId": "https://openalex.org/W4376564172",
       "crossrefMetadata": null,
       "publicationUrl": "https://doi.org/10.1002/adfm.202300846",
-      "openAccessPdfUrl": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202300846",
-      "openAccessPdfSource": "Advanced Functional Materials",
+      "openAccessPdfUrl": "https://hal.science/hal-04097395/document",
+      "openAccessPdfSource": "Unpaywall (repository, submittedVersion)",
       "discoverySources": ["OpenAlex"],
       "discoveryQueries": [],
       "seedPaperIds": [
@@ -13528,10 +13823,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "pdfStatus": "acquired",
+      "importStatus": "parsed",
       "dateDiscovered": "2026-08-03",
-      "lastMetadataRefresh": "2026-08-03T14:52:57.484Z",
+      "lastMetadataRefresh": "2026-08-12T15:39:23.956Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -15953,7 +16248,7 @@
       "pdfStatus": "inaccessible",
       "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-07-21T16:07:58.833Z",
+      "lastMetadataRefresh": "2026-08-12T15:43:31.762Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -16632,15 +16927,20 @@
         "Performance metrics: detectivity, noise, response time",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
+      "screeningStatus": "include",
       "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "inaccessible",
-      "importStatus": "queued",
+      "screeningNotes": "Approved by Shlok on 2026-08-12 from the supplied primary PDF. Retain PMMA sample and reference measured-noise rows as amber for source_measure_unit_noise_measurement. Exclude the explicitly overestimated shot-noise D* values. Curator note: sub-0.1-Hz flicker behavior was not demonstrated.",
+      "pdfStatus": "acquired",
+      "importStatus": "published",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-07-21T16:08:07.124Z",
+      "lastMetadataRefresh": "2026-08-12T19:37:52.949Z",
       "duplicateRelationships": [],
-      "manualOverrides": {}
+      "manualOverrides": {
+        "curatorDecision": "approved",
+        "curatorDecisionDate": "2026-08-12",
+        "approvedMeasurementSummary": "PMMA sample approximately 1.07e12 Jones and reference approximately 0.97e11 Jones at approximately 700 nm, 0 V; measured dark-current FFT acquired by Keithley 2636 SMU; amber source_measure_unit_noise_measurement.",
+        "excludedValues": "Shot-noise approximations 4.5e13 and 2.5e13 Jones."
+      }
     },
     {
       "candidateId": "candidate-bd7f16f56b8f1b3c",
@@ -23683,13 +23983,13 @@
         "Performance metrics: detectivity, responsivity, response time",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningStatus": "exclude",
+      "exclusionReason": "Review/comparison article; no original experimental photodiode measurement.",
+      "screeningNotes": "Abstract states conclusions are based on analysis of reported literature data.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-07-21T16:05:55.415Z",
+      "lastMetadataRefresh": "2026-08-12T15:36:57.894Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -24327,13 +24627,13 @@
         "Performance metrics: detectivity, noise",
         "Journal article"
       ],
-      "screeningStatus": "unreviewed",
-      "exclusionReason": null,
-      "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "screeningStatus": "exclude",
+      "exclusionReason": "Non-primary journal cover/highlight; use the original research article.",
+      "screeningNotes": "Abstract is a page highlight describing work by other authors rather than a primary article abstract.",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-07-21T16:05:40.359Z",
+      "lastMetadataRefresh": "2026-08-12T15:42:30.829Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -24492,10 +24792,10 @@
       "screeningStatus": "unreviewed",
       "exclusionReason": null,
       "screeningNotes": null,
-      "pdfStatus": "available",
-      "importStatus": "not-started",
+      "pdfStatus": "inaccessible",
+      "importStatus": "queued",
       "dateDiscovered": "2026-07-21",
-      "lastMetadataRefresh": "2026-07-21T16:05:40.359Z",
+      "lastMetadataRefresh": "2026-08-12T15:43:32.222Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -36742,7 +37042,7 @@
       "pdfStatus": "not-checked",
       "importStatus": "not-started",
       "dateDiscovered": "2026-08-02",
-      "lastMetadataRefresh": "2026-08-04T14:48:47.392Z",
+      "lastMetadataRefresh": "2026-08-12T15:36:39.713Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -50967,6 +51267,56 @@
           "candidateId": "candidate-918cd28cd3c7a36d",
           "type": "possible-fuzzy-title",
           "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
+        },
+        {
+          "candidateId": "candidate-918cd28cd3c7a36d",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9720670391061452
         }
       ],
       "manualOverrides": {}
@@ -51483,6 +51833,56 @@
           "candidateId": "candidate-af51e56fd671cce3",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-af51e56fd671cce3",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -51582,6 +51982,56 @@
       "dateDiscovered": "2026-07-21",
       "lastMetadataRefresh": "2026-07-21T16:05:48.207Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
+        {
+          "candidateId": "candidate-def38b5f1c358974",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9716981132075472
+        },
         {
           "candidateId": "candidate-def38b5f1c358974",
           "type": "possible-fuzzy-title",
@@ -52094,6 +52544,56 @@
       "dateDiscovered": "2026-07-21",
       "lastMetadataRefresh": "2026-07-21T16:05:48.207Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-ee3d1b0ff67458d7",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
         {
           "candidateId": "candidate-ee3d1b0ff67458d7",
           "type": "possible-fuzzy-title",
@@ -59227,6 +59727,58 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-00cd38284f79ce78",
+      "doi": "10.1126/sciadv.aed0245",
+      "normalizedDoi": "10.1126/sciadv.aed0245",
+      "title": "Multispectral infrared-to-full-color upconversion expanding human vision",
+      "normalizedTitle": "multispectral infrared to full color upconversion expanding human vision",
+      "authors": [
+        "Chengchang Fu",
+        "Jintao Zou",
+        "Xiaoxue Yang",
+        "Qun Hao",
+        "Xin Tang",
+        "Ge Mu"
+      ],
+      "publicationYear": 2026,
+      "journal": "Science Advances",
+      "abstract": "The human visual system is inherently blind to infrared radiation due to the insufficient energy of infrared photons to trigger the photoisomerization of the retinal chromophore, resulting in the loss of over half of the solar spectrum. Here, we report a colloidal quantum dot (CQD)-based infrared-to-visible upconverter that enables ultrasensitive upconversion of multispectral infrared light radiation as full-color visible vision. The photon-energy-selective excitonic transitions in quantum-confined states and the photon flux, respectively, enable infrared wavelength- and intensity-dependent number of photogenerated carriers. A dual-emissive-layer organic architecture with the strategically engineered hole-injection barrier could route these carriers into distinct color emission channels, resulting in correlated wavelength/intensity-to-color/luminance mapping. This paradigm shift yields a discrimination sensitivity for subtle infrared variations exceeding more than two orders of magnitude higher than conventional single-color modes, capitalizing on the human eye’s intrinsic superiority in chromatic differentiation over only brightness contrast. The resulting upconverter exhibits broadband detection extending beyond 2 μm, luminance exceeding 700 cd m −2 , and a photon-to-photon conversion efficiency of 3.85%. The upconverter could be applied as a lightweight, semi-transparent wearable eyeglass that projects multispectral infrared as full-color vision directly onto the retina. Besides, upconverters bound to light-sensitive proteins, potentially as an implantable retinal photoreceptor, confer innate infrared vision. By surpassing the evolutionary constraints of natural vision, this work establishes a versatile foundation for next-generation visual prosthetics and human-integrated sensory expansion.",
+      "openAlexId": "https://openalex.org/W7171702703",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1126/sciadv.aed0245",
+      "openAccessPdfUrl": null,
+      "openAccessPdfSource": null,
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodiode detectivity",
+        "\"colloidal quantum dot\" photodetector detectivity",
+        "\"solution-processed quantum dot\" photodiode detectivity",
+        "\"quantum dot imager\" detectivity",
+        "\"quantum dot focal plane array\" detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["cqd"],
+      "candidateMaterialClasses": [],
+      "candidateDeviceType": null,
+      "candidateSpectralRegions": ["infrared"],
+      "relevanceScore": 46,
+      "relevanceReasons": [
+        "Explicit colloidal quantum-dot or nanocrystal terminology",
+        "Spectral-region or wavelength terminology",
+        "Journal article"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "not-checked",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-06",
+      "lastMetadataRefresh": "2026-08-12T15:36:57.514Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-34ea3637c0ae7e79",
       "doi": "10.1021/acsnano.6b02734",
       "normalizedDoi": "10.1021/acsnano.6b02734",
@@ -60245,6 +60797,56 @@
       "dateDiscovered": "2026-08-03",
       "lastMetadataRefresh": "2026-08-03T14:53:06.089Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-1297a8a10ad78923",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
         {
           "candidateId": "candidate-1297a8a10ad78923",
           "type": "possible-fuzzy-title",
@@ -64645,6 +65247,56 @@
           "candidateId": "candidate-8b984ee7acc92123",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-8b984ee7acc92123",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -65211,6 +65863,56 @@
           "candidateId": "candidate-8da79e0efebaa320",
           "type": "possible-fuzzy-title",
           "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
+        },
+        {
+          "candidateId": "candidate-8da79e0efebaa320",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9795918367346939
         }
       ],
       "manualOverrides": {}
@@ -65629,6 +66331,56 @@
       "dateDiscovered": "2026-07-21",
       "lastMetadataRefresh": "2026-07-21T16:05:55.415Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-bb115b6aa56c2364",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
         {
           "candidateId": "candidate-bb115b6aa56c2364",
           "type": "possible-fuzzy-title",
@@ -71091,6 +71843,56 @@
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -75867,6 +76669,50 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-ce81ec80fedf7d4f",
+      "doi": "10.21203/rs.3.rs-10536300/v1",
+      "normalizedDoi": "10.21203/rs.3.rs-10536300/v1",
+      "title": "AI-Optimized Graded CsPbBr₃/MoS₂ Photodetectors for Broadband UV-Visible Detection",
+      "normalizedTitle": "ai optimized graded cspbbr3 mos2 photodetectors for broadband uv visible detection",
+      "authors": [
+        "V Rama Krishna",
+        "Mamata Choudhury",
+        "M B S Sreekara reddy",
+        "K. S. Raghuram",
+        "S. N. Padhi"
+      ],
+      "publicationYear": 2026,
+      "journal": "Research Square",
+      "abstract": null,
+      "openAlexId": "https://openalex.org/W7196966262",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.21203/rs.3.rs-10536300/v1",
+      "openAccessPdfUrl": "https://www.researchsquare.com/article/rs-10536300/latest.pdf",
+      "openAccessPdfSource": "Research Square",
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": ["\"hybrid perovskite photodetector\" detectivity"],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["perovskite"],
+      "candidateMaterialClasses": ["CsPbBr3"],
+      "candidateDeviceType": "photodetector",
+      "candidateSpectralRegions": [],
+      "relevanceScore": 36,
+      "relevanceReasons": [
+        "Configured material: CsPbBr3",
+        "Detector terminology: photodetector"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "available",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-09",
+      "lastMetadataRefresh": "2026-08-12T15:36:40.516Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-d0fe1a4e08b1a435",
       "doi": "10.1109/jsen.2023.3239808",
       "normalizedDoi": "10.1109/jsen.2023.3239808",
@@ -78577,6 +79423,56 @@
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -79127,6 +80023,56 @@
       "dateDiscovered": "2026-08-03",
       "lastMetadataRefresh": "2026-08-03T14:52:57.484Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
         {
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
@@ -82214,7 +83160,7 @@
       "pdfStatus": "available",
       "importStatus": "not-started",
       "dateDiscovered": "2026-08-02",
-      "lastMetadataRefresh": "2026-08-04T14:48:18.610Z",
+      "lastMetadataRefresh": "2026-08-12T15:36:55.548Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -86244,6 +87190,56 @@
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -86878,6 +87874,56 @@
       "dateDiscovered": "2026-08-03",
       "lastMetadataRefresh": "2026-08-03T14:51:46.498Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
         {
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
@@ -91773,6 +92819,56 @@
           "candidateId": "candidate-4fdf0f2bdb4688b0",
           "type": "possible-fuzzy-title",
           "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
+        },
+        {
+          "candidateId": "candidate-4fdf0f2bdb4688b0",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.952755905511811
         }
       ],
       "manualOverrides": {}
@@ -96179,6 +97275,45 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-bb9a7b7719bfbabc",
+      "doi": "10.5772/intechopen.1017053",
+      "normalizedDoi": "10.5772/intechopen.1017053",
+      "title": "Quantum Dots: From Fundamental Materials to Integrated Devices and Emerging Applications",
+      "normalizedTitle": "quantum dots from fundamental materials to integrated devices and emerging applications",
+      "authors": ["Changle Meng", "Han Zhang", "Jiahong Chen"],
+      "publicationYear": 2026,
+      "journal": "IntechOpen eBooks",
+      "abstract": "This chapter presents a concise, logically complete overview of quantum dots (QDs) as nanoscale materials that connect quantum-confined semiconductor physics with practical optoelectronic, photonic, energy, and biomedical technologies. It begins with quantum confinement, discrete electronic structure, exciton dynamics, surface states, and the role of size, composition, shape, and heterostructure design. It then summarizes colloidal synthesis, ligand engineering, core/shell passivation, stability control, and manufacturing considerations. On this basis, the chapter reviews QD integration in light-emitting diodes, lasers, photodetectors, photovoltaic devices, biomedical imaging and biosensing, and photonic information processing. The main conclusion is that QD performance is not determined by the nanocrystal core alone but by the coupled design of core, shell, surface ligands, film morphology, interfaces, and device architecture. Large-scale application requires three coordinated advances: reproducible synthesis and metrology, durable surface and interface passivation, and heterogeneous integration with silicon electronics, optical cavities, polymers, biological interfaces, and photonic platforms.",
+      "openAlexId": "https://openalex.org/W7172273216",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.5772/intechopen.1017053",
+      "openAccessPdfUrl": "https://www.intechopen.com/citation-pdf-url/1259768",
+      "openAccessPdfSource": "IntechOpen eBooks",
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"colloidal quantum dot\" photodetector detectivity",
+        "\"colloidal nanocrystal\" photodetector detectivity",
+        "\"quantum dot imager\" detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["cqd"],
+      "candidateMaterialClasses": [],
+      "candidateDeviceType": "photodetector",
+      "candidateSpectralRegions": [],
+      "relevanceScore": 18,
+      "relevanceReasons": ["Detector terminology: photodetector"],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "available",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-06",
+      "lastMetadataRefresh": "2026-08-12T15:36:57.157Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-bc3a9025fdc2f6c6",
       "doi": "10.1126/science.aac7660",
       "normalizedDoi": "10.1126/science.aac7660",
@@ -99335,6 +100470,56 @@
       "dateDiscovered": "2026-08-03",
       "lastMetadataRefresh": "2026-08-03T14:52:57.484Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
         {
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
@@ -105001,6 +106186,50 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-002086301caab99e",
+      "doi": "10.1088/1402-4896/ae97c5",
+      "normalizedDoi": "10.1088/1402-4896/ae97c5",
+      "title": "Design and performance analysis of a vertical Au/CuSbS 2 /TiO 2 /ITO photodetector via SCAPS-1D simulation",
+      "normalizedTitle": "design and performance analysis of a vertical au cusbs 2 tio 2 ito photodetector via scaps 1d simulation",
+      "authors": ["R. Singh", "Girdhar Gopal"],
+      "publicationYear": 2026,
+      "journal": "Physica Scripta",
+      "abstract": "Abstract This study integrates Chalcostibite material, copper antimony sulphide (CuSbS2) which exhibit exceptional defect physics characterised by extremely low density of recombination centre defects with in the bandgap, with a non-toxic inorganic compound with high refractive index Titanium dioxide (TiO2), to create a hybrid architecture for photodetector using the SCAPS-1D simulation tool. The photodetector's performance was examined with differing thicknesses, doping levels, defect densities, light intensities, and temperatures. A comprehensive investigation of built-in potential, quantum efficiency, J-V characteristics, and additional performance factors revealed the optimal thickness, the doping density level, and bulk defect density for improved performance of heterojunction photodetector. TiO2 helps to improve performance by providing better transportation of charge carrier(electrons), higher absorption property and proper band alignment with CuSbS2. At 720 nm of wavelength of illumination, the device achieved specific detectivity(D*) of 3.3747×1014 Jones and responsivity(R) of 0.5513 A/W.",
+      "openAlexId": "https://openalex.org/W7202116340",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://doi.org/10.1088/1402-4896/ae97c5",
+      "openAccessPdfUrl": "https://iopscience.iop.org/article/10.1088/1402-4896/ae97c5/pdf",
+      "openAccessPdfSource": "Physica Scripta",
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"lead-free perovskite\" photodiode detectivity",
+        "\"colloidal quantum dot\" photodiode detectivity",
+        "\"colloidal quantum dot\" photodetector detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["perovskite", "cqd"],
+      "candidateMaterialClasses": [],
+      "candidateDeviceType": "photodetector",
+      "candidateSpectralRegions": [],
+      "relevanceScore": 12,
+      "relevanceReasons": [
+        "Detector terminology: photodetector",
+        "Performance metrics: detectivity, responsivity",
+        "Journal article",
+        "Theoretical or simulation-only focus"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "available",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-12",
+      "lastMetadataRefresh": "2026-08-12T15:36:55.548Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-087ac9cf0c7df4ec",
       "doi": "10.1038/s41467-025-62548-6",
       "normalizedDoi": "10.1038/s41467-025-62548-6",
@@ -105933,7 +107162,7 @@
       "pdfStatus": "available",
       "importStatus": "not-started",
       "dateDiscovered": "2026-08-02",
-      "lastMetadataRefresh": "2026-08-04T14:48:49.210Z",
+      "lastMetadataRefresh": "2026-08-12T15:36:59.152Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -108895,6 +110124,56 @@
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -111111,6 +112390,56 @@
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -111571,6 +112900,57 @@
       "importStatus": "not-started",
       "dateDiscovered": "2026-07-21",
       "lastMetadataRefresh": "2026-07-21T16:05:48.207Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
+      "candidateId": "candidate-5d90fcb0221ef6e9",
+      "doi": null,
+      "normalizedDoi": null,
+      "title": "High-speed and high-gain graphene photovoltaic phototransistor gated by a van der Waals heterojunction",
+      "normalizedTitle": "high speed and high gain graphene photovoltaic phototransistor gated by a van der waals heterojunction",
+      "authors": [
+        "Yihan Yin",
+        "Jiayi Zhang",
+        "Xiaolong Zhang",
+        "Zhang Jiongtao",
+        "Liang Liu",
+        "Haiya Ma",
+        "Xiaoguang Luo",
+        "Xuetao Gan"
+      ],
+      "publicationYear": 2026,
+      "journal": "arXiv (Cornell University)",
+      "abstract": "Two-dimensional (2D) material-based phototransistors offer a unique combination of optical sensing, signal amplification, and logic operation within a single device, yet fundamentally suffering from an inherent gain-speed trade-off. Here, we demonstrate a 2D photovoltaic phototransistor that overcomes this limitation using a MoS2/PtSe2 heterojunction to gate a graphene channel. The ultrafast photovoltaic effect in the heterojunction enables charge separation, yielding ultrahigh photoconductive gain (up to 10^8) in graphene channel via interfacial gating. Besides, the response time (below the instrumental resolution of 550 ns) is governed by carrier transit in graphene channel, enabling simultaneous high speed and high gain. Moreover, broadband photodetection from visible to near-infrared is enabled by the optical properties of the MoS2/PtSe2 heterojunction, with the detectivity exceeding 10^11 Jones. These results establish a new paradigm for high-performance 2D phototransistors by harnessing photovoltaic and photogating effects to overcome the classical gain-speed trade-off.",
+      "openAlexId": "https://openalex.org/W7172558347",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://arxiv.org/abs/2608.00771",
+      "openAccessPdfUrl": "https://arxiv.org/pdf/2608.00771",
+      "openAccessPdfSource": "arXiv (Cornell University)",
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"perovskite photodiode\" detectivity",
+        "\"perovskite photodiodes\" detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["perovskite"],
+      "candidateMaterialClasses": [],
+      "candidateDeviceType": null,
+      "candidateSpectralRegions": ["NIR"],
+      "relevanceScore": 2,
+      "relevanceReasons": [
+        "Spectral-region or wavelength terminology",
+        "Performance metrics: detectivity, response time",
+        "Solar-cell-only focus"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "available",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-09",
+      "lastMetadataRefresh": "2026-08-12T15:36:39.713Z",
       "duplicateRelationships": [],
       "manualOverrides": {}
     },
@@ -115620,6 +117000,56 @@
           "candidateId": "candidate-d6ad4c9cb2d9ae4a",
           "type": "possible-fuzzy-title",
           "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
+        },
+        {
+          "candidateId": "candidate-d6ad4c9cb2d9ae4a",
+          "type": "possible-fuzzy-title",
+          "similarity": 1
         }
       ],
       "manualOverrides": {}
@@ -116745,6 +118175,59 @@
       "manualOverrides": {}
     },
     {
+      "candidateId": "candidate-5b6fa05a9aa09c73",
+      "doi": null,
+      "normalizedDoi": null,
+      "title": "Performance Analysis of Double Perovskite-Based Solar Cells Using SCAPS-1D Simulation: A brief review",
+      "normalizedTitle": "performance analysis of double perovskite based solar cells using scaps 1d simulation a brief review",
+      "authors": [
+        "H. Laltlanmawii",
+        "Lalrem Kima",
+        "Mahabur Rahman",
+        "Md. Mahfuzur Rahman",
+        "Dilshod Nematov",
+        "S. Bhattarai",
+        "C. V. M. Chaturvedi",
+        "Yazen M. Alawaideh",
+        "A. Laref",
+        "D. P. Rai"
+      ],
+      "publicationYear": 2026,
+      "journal": "arXiv (Cornell University)",
+      "abstract": "Lead-free double perovskites are among the rapidly developing next-generation solar cell technologies, providing the required low toxicity, stability, as well as high optoelectronic potential. So far, experimentally prepared lead-free perovskite solar cell devices are reported to have low power conversion efficiency (PCE) for practical application as compared to the lead-based perovskites. In recent years, numerical simulations have emerged as a cost-effective approach that plays a crucial role in expediting scientific research, can bridge the gap between experiment and theory, and provide predictive information regarding the preparation of solar cells and their PCEs without undergoing real-time experiments. The tools, such as 1D numerical simulation software SCAPS-1D, are now needed to test newer architectures and determine what exactly is holding them back. So far in the field of solar cell research, SCAPS-1D has been extensively used and looks like a powerful software due to its user-friendliness and simulation of results in a few seconds. The speed and ease of simulation make SCAPS-1D a very popular tool; as a result, it enables rapid optimization of a large number of photovoltaic devices and their performances without undergoing any experimental work, which can save time and money. However, one serious drawback is that the SCAPS-1D simulator works only for 1D configurations. It is ineffective in incorporating atomistic interactions and 3D effects. Hence, the efficacy of the SCAPS-1D simulator solely relies on the accuracy of the input parameters that the user provides, failing which may give wrong results and large deviations from accuracy.",
+      "openAlexId": "https://openalex.org/W7201914983",
+      "crossrefMetadata": null,
+      "publicationUrl": "https://arxiv.org/abs/2608.04736",
+      "openAccessPdfUrl": "https://arxiv.org/pdf/2608.04736",
+      "openAccessPdfSource": "arXiv (Cornell University)",
+      "discoverySources": ["OpenAlex"],
+      "discoveryQueries": [
+        "\"hybrid perovskite photodetector\" detectivity",
+        "\"perovskite photodetector\" \"p-i-n\" detectivity"
+      ],
+      "seedPaperIds": [],
+      "discoveryMethods": ["keyword"],
+      "technologyFamilies": ["perovskite"],
+      "candidateMaterialClasses": [],
+      "candidateDeviceType": null,
+      "candidateSpectralRegions": [],
+      "relevanceScore": 0,
+      "relevanceReasons": [
+        "Explicit metal-halide perovskite terminology",
+        "Review or perspective",
+        "Solar-cell-only focus"
+      ],
+      "screeningStatus": "unreviewed",
+      "exclusionReason": null,
+      "screeningNotes": null,
+      "pdfStatus": "available",
+      "importStatus": "not-started",
+      "dateDiscovered": "2026-08-09",
+      "lastMetadataRefresh": "2026-08-12T15:36:40.743Z",
+      "duplicateRelationships": [],
+      "manualOverrides": {}
+    },
+    {
       "candidateId": "candidate-5cce3c58202203c4",
       "doi": "10.21175/rad.abstr.book.2023.36.1",
       "normalizedDoi": "10.21175/rad.abstr.book.2023.36.1",
@@ -117205,6 +118688,56 @@
       "dateDiscovered": "2026-07-21",
       "lastMetadataRefresh": "2026-07-21T16:05:50.511Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
+        {
+          "candidateId": "candidate-00c5d6e6b204c418",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9642857142857143
+        },
         {
           "candidateId": "candidate-00c5d6e6b204c418",
           "type": "possible-fuzzy-title",
@@ -121431,6 +122964,56 @@
       "dateDiscovered": "2026-08-03",
       "lastMetadataRefresh": "2026-08-03T14:52:57.484Z",
       "duplicateRelationships": [
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
+        {
+          "candidateId": "candidate-2fca367c30bde963",
+          "type": "possible-fuzzy-title",
+          "similarity": 0.9420289855072463
+        },
         {
           "candidateId": "candidate-2fca367c30bde963",
           "type": "possible-fuzzy-title",

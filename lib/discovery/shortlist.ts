@@ -42,7 +42,9 @@ export function looksLikeNonPrimaryCandidate(
       candidate.title,
     ) ||
     (/\b(emission|emitting|light emitting|luminescen)\b/i.test(text) &&
-      !/\bphotodiode\b/i.test(text))
+      !/\b(?:photodiode|photoconductor|photoresistor|phototransistor|photo-fet)\b/i.test(
+        text,
+      ))
   );
 }
 
@@ -61,12 +63,12 @@ export function classifyAtlasFit(
   const text = normalizedEvidenceText(candidate);
   const title = candidate.title.replace(/<[^>]+>/g, " ").toLowerCase();
   const hasDStar = /detectivit|\bd\s*\*/i.test(text);
-  const hasPhotodiode =
-    /photodiode|photovoltaic detector|\b(?:p-?n|p-?i-?n)\s+junction/i.test(
+  const hasSupportedDetector =
+    /photodiode|photovoltaic detector|photoconductor|photoresistor|phototransistor|photo[ -]?fet|\b(?:p-?n|p-?i-?n|n-?i-?p)\s+junction/i.test(
       text,
     );
   const hasDetector =
-    /photodiode|photodetector|photo detector|photovoltaic detector|image sensor|\bimager\b|focal plane array/i.test(
+    /photodiode|photodetector|photo detector|photovoltaic detector|photoconductor|photoresistor|phototransistor|photo[ -]?fet|image sensor|\bimager\b|focal plane array/i.test(
       text,
     );
   const hasCqd =
@@ -79,13 +81,13 @@ export function classifyAtlasFit(
   const hasProfileAbsorber = isPerovskite ? hasPerovskite : hasCqd;
   const titleEstablishesPerovskiteDetector =
     !isPerovskite ||
-    /photodiode|photodetector|photo detector|image sensor|\bimager\b|focal plane array/i.test(
+    /photodiode|photodetector|photo detector|photoconductor|photoresistor|phototransistor|photo[ -]?fet|image sensor|\bimager\b|focal plane array/i.test(
       title,
     );
   if (
     candidate.relevanceScore >= 74 &&
     hasDStar &&
-    hasPhotodiode &&
+    hasSupportedDetector &&
     hasProfileAbsorber &&
     titleEstablishesPerovskiteDetector
   )

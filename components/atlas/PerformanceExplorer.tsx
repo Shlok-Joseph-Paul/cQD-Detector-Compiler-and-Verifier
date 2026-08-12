@@ -17,6 +17,7 @@ import {
 import { atlasRecordsToCsv } from "@/lib/atlas/csv";
 import {
   formatAmberReason,
+  formatDetectorClass,
   formatNoiseMethod,
   formatWithUnit,
   humanizeCode,
@@ -43,6 +44,7 @@ import {
   type AtlasMetricKey,
   type AtlasPlotMode,
   type AtlasRecord,
+  type DetectorClass,
 } from "@/lib/atlas/types";
 import { DATASET_VERSION } from "@/lib/data";
 
@@ -56,6 +58,7 @@ type PlotConfiguration = Pick<
 export interface PerformanceExplorerProps extends PlotConfiguration {
   records: readonly AtlasRecord[];
   activeMaterial?: string;
+  detectorClass: DetectorClass | "all";
   selectedMeasurementId?: string;
   onConfigChange: (changes: Partial<PlotConfiguration>) => void;
   onMaterialFilter?: (material: string) => void;
@@ -536,6 +539,10 @@ function AtlasTooltip({
           </div>
         ) : null}
         <div>
+          <dt>Detector class</dt>
+          <dd>{formatDetectorClass(device.detectorClass)}</dd>
+        </div>
+        <div>
           <dt>D* bias</dt>
           <dd>{formatWithUnit(measurement.biasV, "V")}</dd>
         </div>
@@ -761,6 +768,7 @@ export function PerformanceExplorer({
   plotX,
   plotY,
   plotScope,
+  detectorClass,
   activeMaterial = "all",
   selectedMeasurementId,
   onConfigChange,
@@ -995,6 +1003,13 @@ export function PerformanceExplorer({
       ) : null}
 
       <div className="performance-plot__meta">
+        {detectorClass === "all" ? (
+          <p className="performance-plot__comparison-note">
+            Detector classes may use different gain mechanisms and
+            performance-normalization assumptions. Compare D* across classes
+            with care.
+          </p>
+        ) : null}
         <div
           className="performance-plot__summary"
           aria-label="Plot summary"
@@ -1199,7 +1214,7 @@ export function PerformanceExplorer({
                 shape={renderPoint}
                 isAnimationActive={reducedMotion ? false : "auto"}
                 animationDuration={240}
-                name="Photodiode measurements"
+                name="Photodetector measurements"
               />
             </ScatterChart>
           </ResponsiveContainer>

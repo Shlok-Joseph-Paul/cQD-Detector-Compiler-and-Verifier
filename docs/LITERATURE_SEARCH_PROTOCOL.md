@@ -1,4 +1,4 @@
-# Photodiode Atlas literature-search protocol
+# Photodetector Atlas literature-search protocol
 
 ## Purpose and boundary
 
@@ -40,28 +40,31 @@ recreate candidates.
 
 ## Screening criteria
 
-Prioritize experimental CQD or metal-halide perovskite photodiodes with an
-identifiable measurement wavelength and reported specific detectivity. The
-scope does not require a particular spectral region. Candidate ranking has
-higher recall than the atlas's inclusion rule, so photodetector, imager,
-focal-plane-array, and photoconductor terminology can still surface papers for
-human screening.
+Prioritize experimental CQD or metal-halide perovskite photodiodes,
+photoconductors, and phototransistors with an identifiable measurement
+wavelength and reported specific detectivity. The scope does not require a
+particular spectral region. Candidate ranking has higher recall than the
+atlas's inclusion rule, so generic photodetector, imager, and focal-plane-array
+terminology can still surface papers for human screening. The final device
+class must be established from full-text architecture evidence.
 
 Exclude from the published atlas when the original work is limited to:
 
-- photoconductors, photoresistors, phototransistors, or bolometers;
-- focal-plane arrays without an extractable photodiode measurement;
+- bolometers or other thermal detectors;
+- focal-plane arrays without an extractable supported-device measurement;
 - epitaxial or self-assembled quantum-dot detectors in the CQD profile;
 - emitters, LEDs, lasers, or luminescence;
 - solar cells without detector characterization;
-- synthesis or theory without an experimental photodiode;
+- synthesis or theory without an experimental supported photodetector;
 - reviews, perspectives, corrections, or retractions rather than the primary
   research article; or
 - performance values cited from another publication.
 
 An `include` screening decision means “send to the importer,” not “publish.”
 The importer must still confirm D*, wavelength, noise method, source location,
-and device scope from the original paper.
+detector class, and device scope from the original paper. “Photodetector” alone
+does not establish class; ambiguous or conflicting class evidence requires
+curator correction before approval.
 
 ## Deduplication
 

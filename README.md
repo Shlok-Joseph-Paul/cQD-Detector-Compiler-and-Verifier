@@ -1,8 +1,9 @@
 # Photodiode Atlas
 
 A curated, searchable map of reported colloidal quantum-dot (CQD) and
-metal-halide perovskite photodiode performance across materials, wavelengths,
-device architectures, and measurement methods.
+metal-halide perovskite photodetector performance across photodiodes,
+photoconductors, phototransistors, materials, wavelengths, architectures, and
+measurement methods.
 
 The atlas plots **one point per reported measurement**, with wavelength on the
 x-axis and specific detectivity, D<sup>*</sup>, on a logarithmic y-axis. The same
@@ -21,24 +22,28 @@ versioned CSV.
 
 ## Scientific scope
 
-The atlas includes experimental CQD and metal-halide perovskite photodiodes
-with a reported specific detectivity in Jones and an identifiable measurement
-wavelength. Peer-reviewed papers and clearly labeled preprints are supported.
+The atlas includes experimental CQD and metal-halide perovskite photodiodes,
+photoconductors, and phototransistors with a reported specific detectivity in
+Jones and an identifiable measurement wavelength. Peer-reviewed papers and
+clearly labeled preprints are supported. Detector class is stored per device;
+the combined view is available, but class-specific filtering is recommended
+for benchmarking because gain and normalization assumptions can differ.
 
 The atlas excludes:
 
-- photoconductors, photoresistors, phototransistors, and bolometers;
-- focal-plane-array reports without an extractable photodiode measurement;
+- bolometers and other thermal detectors;
+- focal-plane-array reports without an extractable supported-device measurement;
 - epitaxial quantum-dot detectors;
-- theoretical devices without an experimental photodiode; and
+- theoretical devices without an experimental supported photodetector; and
 - literature-comparison values attributed to another paper. A value belongs to
   a record for its original source.
 
-Photoconductive and transistor detectors are kept out because their gain and
-noise behavior can make detectivity values fundamentally different from
-junction-photodiode measurements. See the in-site
+Photoconductive and transistor detectors are retained as separate classes
+because their gain, speed, noise, geometry, and bandwidth behavior can make D*
+fundamentally different from junction-photodiode measurements. Detector class
+alone never determines a green or amber flag. See the in-site
 [Methodology](./app/methodology/page.tsx) page for the complete inclusion,
-noise, missing-data, and flag policies.
+comparison, noise, missing-data, and flag policies.
 
 ## Data model and interpretation
 
@@ -49,8 +54,9 @@ Paper 1 ──► many Devices 1 ──► many Measurements
 ```
 
 - **Paper** holds the original bibliographic source.
-- **Device** holds the technology family, absorber material, composition,
-  architecture, stack, active area, and evidence-linked ligand-exchange method.
+- **Device** holds detector class, technology family, absorber material,
+  composition, architecture, stack, active area, and evidence-linked
+  ligand-exchange method.
 - **Measurement** holds one D<sup>*</sup> value, wavelength, operating
   conditions, noise method, acquisition instrument chain, provenance, and
   curation status.
@@ -182,16 +188,17 @@ a guessed value as a substitute for missing information.
    the atlas to confirm there are no orphaned rows.
 2. **Confirm scope and provenance.** Work from the original paper, not a value
    repeated in a review or comparison table. Confirm that it is an experimental
-   CQD photodiode and that D<sup>*</sup> and wavelength are identifiable.
+   supported photodetector and that D<sup>*</sup> and wavelength are identifiable.
 3. **Add one paper row.** In `data/papers.csv`, assign a unique `paper_id` and
    enter the title, full author list, first author, journal, publication year,
    DOI/link, publication type, peer-review status, and notes. Do not include a
    `https://doi.org/` prefix unless the data dictionary requests it.
 4. **Add each distinct device.** In `data/devices.csv`, assign a unique
-   `device_id`, reference the paper's `paper_id`, and record material family,
-   composition, architecture, layer stack, area, ligand-exchange chemistry and
-   process, and notes. Use separate device rows when stacks, architectures, or
-   ligand treatments differ materially.
+   `device_id`, reference the paper's `paper_id`, classify it as a photodiode,
+   photoconductor, or phototransistor from full-text architecture evidence, and
+   record material family, composition, architecture, layer stack, area,
+   ligand-exchange chemistry and process, and notes. Use separate device rows
+   when class, stack, architecture, or ligand treatment differs materially.
 5. **Add each measurement.** In `data/measurements.csv`, assign a unique
    `measurement_id` and reference its `device_id`. Create separate rows for
    distinct reported wavelengths, biases, temperatures, frequencies, devices,
@@ -230,8 +237,9 @@ and run validation again.
 
 ## Site behavior
 
-The main atlas supports search and filters for material, wavelength, year,
-temperature category, bias condition, noise method, flag, and publication type.
+The main atlas supports search and filters for detector class, material,
+wavelength, year, temperature category, bias condition, noise method, flag,
+and publication type.
 Filter state is represented in the URL where practical so a view can be shared.
 The plot and table consume the same filtered record set. CSV export includes
 that current set rather than silently exporting the full dataset. The plot can

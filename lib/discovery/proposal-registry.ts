@@ -50,6 +50,8 @@ export function validateProposal(proposal: StagedPaperProposal): string[] {
       errors.push("only in-scope proposals can be approved");
     if (proposal.proposedMeasurements.length === 0)
       errors.push("approved proposal requires at least one measurement");
+    if (proposal.proposedDevices.some((device) => !device.detector_class))
+      errors.push("approved proposal requires detector_class for every device");
   }
   return errors;
 }

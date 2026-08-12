@@ -34,6 +34,7 @@ const device: Device = {
   device_id: "device-1",
   paper_id: paper.paper_id,
   technology_family: "cqd",
+  detector_class: "photodiode",
   material_family: "Test CQD",
   material_composition: null,
   device_architecture: "Test photodiode",
@@ -94,10 +95,13 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     readFile(new URL("measurements.csv", dataDirectory), "utf8"),
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
-  assert.equal(atlas.schema_version, 3);
+  assert.equal(atlas.schema_version, 4);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 91);
+  assert.equal(atlas.measurements.length, 99);
   assert.equal(atlas.records.length, atlas.measurements.length);
+  assert.ok(
+    atlas.devices.every((record) => record.detector_class === "photodiode"),
+  );
   const preprintRecords = atlas.records.filter(
     ({ paper: source }) => source.publication_type === "preprint",
   );
@@ -111,7 +115,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 32);
+  assert.equal(amberRecords.length, 36);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
@@ -122,7 +126,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("lock_in_only_noise_measurement"),
     ).length,
-    10,
+    12,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -130,13 +134,44 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
         "source_measure_unit_noise_measurement",
       ),
     ).length,
-    0,
+    2,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("below_preamplifier_noise_floor"),
     ).length,
     1,
+  );
+});
+
+test("detector class is required and accepts only the canonical device classes", () => {
+  for (const detectorClass of [
+    "photodiode",
+    "photoconductor",
+    "phototransistor",
+  ] as const) {
+    const input = entities();
+    input.devices[0].detector_class = detectorClass;
+    assert.equal(validateAtlasEntities(input).valid, true, detectorClass);
+  }
+
+  const missing = entities();
+  delete (missing.devices[0] as Partial<Device>).detector_class;
+  assert.ok(
+    validateAtlasEntities(missing).issues.some(
+      ({ field, code }) =>
+        field === "detector_class" && code === "invalid_enum",
+    ),
+  );
+
+  const unknown = entities();
+  (unknown.devices[0] as unknown as Record<string, unknown>).detector_class =
+    "photomultiplier";
+  assert.ok(
+    validateAtlasEntities(unknown).issues.some(
+      ({ field, code }) =>
+        field === "detector_class" && code === "invalid_enum",
+    ),
   );
 });
 

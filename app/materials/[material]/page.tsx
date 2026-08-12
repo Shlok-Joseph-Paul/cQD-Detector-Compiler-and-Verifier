@@ -25,7 +25,7 @@ export async function generateMetadata({
   const decodedMaterial = decodeURIComponent(material);
   return {
     title: decodedMaterial,
-    description: `Curated ${decodedMaterial} colloidal quantum-dot photodiode measurements and material summary.`,
+    description: `Curated ${decodedMaterial} photodetector measurements and material summary.`,
   };
 }
 

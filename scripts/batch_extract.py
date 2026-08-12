@@ -19,7 +19,16 @@ from typing import Any
 
 CATEGORIES: dict[str, tuple[str, ...]] = {
     "metadata": (r"\bdoi\b", r"\babstract\b", r"\bcite this\b", r"\bjournal\b"),
-    "scope": (r"photodiode", r"photovoltaic", r"rectif", r"junction", r"photoconductor"),
+    "scope": (
+        r"photodiode",
+        r"photovoltaic",
+        r"rectif",
+        r"junction",
+        r"photoconductor",
+        r"photoresistor",
+        r"phototransistor",
+        r"photo[- ]?fet",
+    ),
     "detectivity": (r"detectivity", r"\bd\s*\*", r"jones", r"\bnep\b"),
     "noise": (r"noise", r"shot.noise", r"johnson", r"spectral density", r"spectrum analyzer"),
     "noise_instrument": (

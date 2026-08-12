@@ -6,29 +6,29 @@ import { SiteShell } from "@/components/SiteShell";
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "Scope, record structure, noise classifications, and curation policy for the CQD and perovskite Photodiode Atlas.",
+    "Scope, detector classes, record structure, noise classifications, and curation policy for the CQD and perovskite Photodiode Atlas.",
 };
 
 const includedRecords = [
-  "Experimental solution-processed colloidal quantum-dot photodiodes.",
-  "Experimental metal-halide perovskite photodiodes, including 3D, 2D, quasi-2D, mixed-halide, lead, tin, and lead-free absorbers.",
+  "Experimental solution-processed colloidal quantum-dot photodiodes, photoconductors, and phototransistors.",
+  "Experimental metal-halide perovskite photodiodes, photoconductors, and phototransistors, including 3D, 2D, quasi-2D, mixed-halide, lead, tin, and lead-free absorbers.",
   "Peer-reviewed primary papers and clearly identified preprints.",
   "Measurements for which a specific detectivity and measurement wavelength can be identified.",
   "Distinct operating points from the same device when the publication reports them separately.",
 ];
 
 const excludedRecords = [
-  "Photoconductors, photoresistors, phototransistors, and bolometers.",
-  "Focal-plane-array reports without an extractable photodiode measurement.",
+  "Bolometers and other thermal detectors.",
+  "Focal-plane-array reports without an extractable supported-device measurement.",
   "Epitaxial or self-assembled quantum-dot detectors.",
-  "Perovskite solar cells, LEDs, photoconductors, and phototransistors without an extractable junction-photodiode measurement.",
-  "Theoretical devices without an experimental photodiode.",
+  "Perovskite solar cells and LEDs without an extractable detector measurement.",
+  "Theoretical devices without an experimental supported photodetector.",
   "Comparison values copied from another paper; those values belong to the original source record.",
 ];
 
 const greenCriteria = [
   "A human curator has reviewed the record.",
-  "The value clearly belongs to an in-scope CQD or perovskite photodiode.",
+  "The value clearly belongs to an in-scope CQD or perovskite photodetector with a reviewed device class.",
   "Detectivity and wavelength are explicitly identifiable.",
   "The value does not use a shot-noise approximation.",
   "A lock-in amplifier was not the sole noise-acquisition method.",
@@ -56,20 +56,19 @@ export default function MethodologyPage() {
             <p className="prose-lede">
               The Photodiode Atlas is a curated index of published specific
               detectivity measurements for colloidal quantum-dot and
-              metal-halide perovskite photodiodes. Its unit of comparison is a
-              measurement, with the publication and device context preserved
-              around it.
+              metal-halide perovskite photodiodes, photoconductors, and
+              phototransistors. Its unit of comparison is a measurement, with
+              the publication and device context preserved around it.
             </p>
           </header>
 
           <section aria-labelledby="scope-heading">
             <h2 id="scope-heading">Scientific scope</h2>
             <p>
-              An in-scope device is an experimental diode-like photodetector
-              whose absorber is either solution-processed colloidal quantum dots
-              or a metal-halide perovskite, and whose operation is based on a
-              rectifying or photovoltaic junction. A record must report specific
-              detectivity, D<sup>*</sup>, in Jones (cm Hz
+              An in-scope device is an experimental photodiode, photoconductor,
+              or phototransistor whose absorber is either solution-processed
+              colloidal quantum dots or a metal-halide perovskite. A record must
+              report specific detectivity, D<sup>*</sup>, in Jones (cm Hz
               <sup>1/2</sup> W<sup>−1</sup>).
             </p>
 
@@ -93,12 +92,12 @@ export default function MethodologyPage() {
             </div>
 
             <p>
-              Photoconductors and phototransistors are excluded because internal
-              gain, carrier lifetime, transit time, and bias-dependent noise can
-              make their detectivity values fundamentally different from
-              junction-photodiode measurements. Keeping device classes separate
-              improves comparability without implying that excluded devices are
-              less useful.
+              Detector class is stored at the device level. The atlas permits a
+              combined view, but class-specific filtering is recommended for
+              benchmarking because internal gain, carrier lifetime, transit
+              time, bias-dependent noise, geometry, and bandwidth normalization
+              can make cross-class D* comparisons misleading. Detector class
+              alone does not determine green or amber status.
             </p>
           </section>
 
@@ -114,8 +113,9 @@ export default function MethodologyPage() {
                 <strong>Paper</strong> stores the bibliographic source.
               </li>
               <li>
-                <strong>Device</strong> stores material, architecture, layer
-                stack, active area, and ligand-exchange method.
+                <strong>Device</strong> stores detector class, material,
+                architecture, layer stack, active area, and ligand-exchange
+                method.
               </li>
               <li>
                 <strong>Measurement</strong> stores one reported D<sup>*</sup>

@@ -58,8 +58,9 @@ export function AtlasExplorer({
         <div className="atlas-explorer__heading">
           <h2>{title}</h2>
           <p>
-            Each point and row represents one reported photodiode measurement.
-            Filters are reflected in the URL so this view can be shared.
+            Each point and row represents one reported photodetector
+            measurement. Filters are reflected in the URL so this view can be
+            shared.
           </p>
         </div>
       ) : null}
@@ -75,6 +76,7 @@ export function AtlasExplorer({
           plotX={filters.plotX}
           plotY={filters.plotY}
           plotScope={filters.plotScope}
+          detectorClass={filters.detectorClass}
           activeMaterial={filters.material}
           selectedMeasurementId={selectedMeasurementId}
           onConfigChange={(changes) => setFilters({ ...filters, ...changes })}

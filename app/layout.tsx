@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s · Photodiode Atlas",
     },
     description:
-      "A curated map of reported colloidal quantum-dot and metal-halide perovskite photodiode performance.",
+      "A curated map of reported colloidal quantum-dot and metal-halide perovskite photodetector performance by device class.",
     applicationName: "Photodiode Atlas",
     keywords: [
       "colloidal quantum dots",
@@ -51,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Photodiode Atlas",
       description:
-        "A curated map of reported CQD and perovskite photodiode performance.",
+        "A curated map of reported CQD and perovskite photodetector performance by device class.",
       images: [new URL("/og.png", origin).toString()],
     },
     icons: {

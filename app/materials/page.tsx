@@ -12,7 +12,7 @@ import { atlasData } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Materials",
   description:
-    "Browse CQD and perovskite material families represented in the curated photodiode measurement atlas.",
+    "Browse CQD and perovskite material families represented in the curated photodetector measurement atlas.",
 };
 
 export default function MaterialsPage() {

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import {
   formatAuthors,
+  formatDetectorClass,
   formatNoiseMethod,
   formatNoiseInstruments,
   formatNumber,
@@ -145,6 +146,9 @@ export function MeasurementDetails({
           {device.technologyFamily === "cqd"
             ? "Colloidal quantum dot"
             : "Metal-halide perovskite"}
+        </Detail>
+        <Detail label="Detector class">
+          {formatDetectorClass(device.detectorClass)}
         </Detail>
         <Detail label="Composition">
           {device.materialComposition || NOT_REPORTED}

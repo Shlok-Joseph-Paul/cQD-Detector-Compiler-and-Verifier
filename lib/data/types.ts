@@ -3,6 +3,13 @@
 export const TECHNOLOGY_FAMILIES = ["cqd", "perovskite"] as const;
 export type TechnologyFamily = (typeof TECHNOLOGY_FAMILIES)[number];
 
+export const DETECTOR_CLASSES = [
+  "photodiode",
+  "photoconductor",
+  "phototransistor",
+] as const;
+export type DetectorClass = (typeof DETECTOR_CLASSES)[number];
+
 export const LIGAND_EXCHANGE_TYPES = [
   "solid_state",
   "solution_phase",
@@ -136,6 +143,7 @@ export interface Device {
   device_id: string;
   paper_id: string;
   technology_family: TechnologyFamily;
+  detector_class: DetectorClass;
   material_family: string;
   material_composition: string | null;
   device_architecture: string | null;
@@ -221,7 +229,7 @@ export interface JoinedMeasurement {
 }
 
 export interface AtlasData extends AtlasEntities {
-  schema_version: 3;
+  schema_version: 4;
   /** Human-facing release identifier for reproducible exports and citations. */
   dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */
@@ -241,6 +249,7 @@ export interface NumericRange {
 
 export interface AtlasFilters {
   search?: string;
+  detector_classes?: readonly DetectorClass[];
   material_families?: readonly string[];
   wavelength_nm?: NumericRange;
   publication_year?: NumericRange;

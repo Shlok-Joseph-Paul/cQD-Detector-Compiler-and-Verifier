@@ -39,6 +39,7 @@ function searchableText(record: JoinedMeasurement): string {
     paper.journal,
     paper.doi,
     device.material_family,
+    device.detector_class,
     device.material_composition,
     device.device_architecture,
     device.device_stack,
@@ -66,6 +67,7 @@ export function filterAtlasRecords(
   const query = filters.search?.trim().toLocaleLowerCase() ?? "";
   return records.filter(({ paper, device, measurement }) => {
     if (
+      !selected(device.detector_class, filters.detector_classes) ||
       !selected(device.material_family, filters.material_families) ||
       !inRange(
         measurement.wavelength_nm,

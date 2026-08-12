@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { FlagBadge, MaterialLabel, ShotNoiseBadge } from "@/components/atlas";
 import { SiteShell } from "@/components/SiteShell";
 import {
+  formatDetectorClass,
   formatAuthors,
   formatNoiseMethod,
   formatNoiseInstruments,
@@ -31,7 +32,7 @@ export async function generateMetadata({
   return paper
     ? {
         title: paper.title,
-        description: `Devices and CQD photodiode measurements curated from ${paper.first_author} et al. (${paper.publication_year}).`,
+        description: `CQD and perovskite photodetector measurements curated from ${paper.first_author} et al. (${paper.publication_year}).`,
       }
     : { title: "Paper not found" };
 }
@@ -163,13 +164,17 @@ export default async function PaperPage({ params }: PageProps) {
                     </p>
                     <h2 id={`${device.device_id}-heading`}>
                       <MaterialLabel value={device.material_family} />{" "}
-                      photodiode
+                      {formatDetectorClass(device.detector_class).toLowerCase()}
                     </h2>
                   </div>
                   <span>{device.device_id}</span>
                 </header>
 
                 <dl className="paper-device__metadata">
+                  <div>
+                    <dt>Detector class</dt>
+                    <dd>{formatDetectorClass(device.detector_class)}</dd>
+                  </div>
                   <div>
                     <dt>Composition</dt>
                     <dd>{device.material_composition || NOT_REPORTED}</dd>

@@ -208,7 +208,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
       >
         <table className="measurement-table measurement-table--compact">
           <caption className="sr-only">
-            Photodiode measurements matching the current filters
+            Photodetector measurements matching the current filters
           </caption>
           <thead>
             <tr>

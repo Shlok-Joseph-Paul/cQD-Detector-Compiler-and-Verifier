@@ -10,6 +10,7 @@ import {
   acquireOpenAccessPdf,
   candidateFromOpenAlex,
   calculateRelevance,
+  classifyDetectorClass,
   deduplicateRegistryCandidates,
   exportScreeningCsv,
   exportProposalDecisionsCsv,
@@ -659,6 +660,14 @@ test("extractor stages co-located detectivity and wavelength with conservative n
     new Date("2026-07-19T00:00:00.000Z"),
   );
   assert.equal(proposal.scopeStatus, "in-scope");
+  assert.equal(proposal.proposedDevices[0].detector_class, "photodiode");
+  assert.ok(
+    proposal.evidence.some(
+      (item) =>
+        item.field === "device.detector_class" &&
+        item.location === "PDF page 1",
+    ),
+  );
   assert.equal(proposal.proposedMeasurements.length, 1);
   assert.equal(proposal.proposedMeasurements[0].wavelength_nm, 1520);
   assert.equal(proposal.proposedMeasurements[0].detectivity_jones, 3.6e12);
@@ -667,6 +676,88 @@ test("extractor stages co-located detectivity and wavelength with conservative n
     "shot_noise_approximation",
   );
   assert.equal(proposal.proposedMeasurements[0].flag, "amber");
+});
+
+test("detector classifier distinguishes supported mechanisms from generic wording", () => {
+  const classify = (text: string) =>
+    classifyDetectorClass([{ page: 4, documentLabel: "Main article", text }]);
+
+  assert.equal(
+    classify("The p-i-n photodiode uses a rectifying junction.").detectorClass,
+    "photodiode",
+  );
+  assert.equal(
+    classify(
+      "The externally biased two-terminal photoconductive channel functions as a photoresistor.",
+    ).detectorClass,
+    "photoconductor",
+  );
+  assert.equal(
+    classify(
+      "The photo-FET contains source, drain, and gate electrodes and its photocurrent depends on gate voltage.",
+    ).detectorClass,
+    "phototransistor",
+  );
+  assert.equal(
+    classify(
+      "This high-performance photodetector exhibits a photoconductive response.",
+    ).detectorClass,
+    null,
+  );
+  assert.equal(
+    classify(
+      "We compare a p-i-n photodiode with a gated phototransistor in the same paper.",
+    ).detectorClass,
+    null,
+  );
+});
+
+test("extractor stages photoconductors and phototransistors but leaves conflicting classes uncertain", () => {
+  const makeProposal = (architecture: string) =>
+    extractStagedProposal(
+      candidate({ candidateMaterialClasses: ["PbS"] }),
+      proposalSource,
+      [
+        "=== PDF PAGE 1 ===",
+        `We fabricated solution-processed colloidal quantum dots. ${architecture}`,
+        "=== PDF PAGE 3 ===",
+        "At 1200 nm, the measured-noise specific detectivity D* reached 4 × 10^11 Jones.",
+      ].join("\n"),
+      new Date("2026-07-19T00:00:00.000Z"),
+    );
+
+  const conductor = makeProposal(
+    "The detector is an externally biased two-terminal photoconductive channel and photoresistor.",
+  );
+  assert.equal(conductor.scopeStatus, "in-scope");
+  assert.equal(conductor.proposedDevices[0].detector_class, "photoconductor");
+  assert.ok(
+    conductor.evidence.some(
+      (item) =>
+        item.field === "device.detector_class" &&
+        item.location === "PDF page 1",
+    ),
+  );
+
+  const transistor = makeProposal(
+    "The photo-FET phototransistor has source, drain, and gate electrodes.",
+  );
+  assert.equal(transistor.scopeStatus, "in-scope");
+  assert.equal(transistor.proposedDevices[0].detector_class, "phototransistor");
+
+  const generic = makeProposal(
+    "The high-performance photodetector shows a photoconductive response.",
+  );
+  assert.equal(generic.scopeStatus, "uncertain");
+  assert.equal(generic.proposedDevices[0].detector_class, null);
+  assert.ok(generic.missingFields.includes("device.detector_class"));
+
+  const conflicting = makeProposal(
+    "The paper compares a p-i-n photodiode and a gated phototransistor with source, drain, and gate electrodes.",
+  );
+  assert.equal(conflicting.scopeStatus, "uncertain");
+  assert.equal(conflicting.proposedDevices[0].detector_class, null);
+  assert.match(conflicting.warnings.join(" "), /Conflicting detector-class/);
 });
 
 test("extractor stages an evidence-linked solid-state ligand exchange", () => {

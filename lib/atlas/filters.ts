@@ -6,6 +6,7 @@ import type {
   AtlasRecord,
   AtlasTableView,
   BiasCondition,
+  DetectorClass,
   ExtendedReviewFilter,
   NoiseMethod,
   PublicationFilter,
@@ -13,7 +14,7 @@ import type {
   TemperatureCategory,
 } from "./types";
 import { biasCondition, temperatureCategory } from "../data/filter.ts";
-import { TECHNOLOGY_FAMILIES } from "../data/types.ts";
+import { DETECTOR_CLASSES, TECHNOLOGY_FAMILIES } from "../data/types.ts";
 import { hasAmbiguousExtendedMetric, hasTemporalMetric } from "./metrics.ts";
 import {
   ATLAS_METRIC_KEYS,
@@ -27,6 +28,7 @@ export { biasCondition, temperatureCategory };
 
 export const DEFAULT_ATLAS_FILTERS: AtlasFilterState = {
   search: "",
+  detectorClass: "all",
   technology: "all",
   material: "all",
   wavelengthMin: undefined,
@@ -127,6 +129,7 @@ export function publicationCategory(record: AtlasRecord): PublicationFilter {
 function searchableText(record: AtlasRecord): string {
   return [
     record.measurement.measurementId,
+    record.device.detectorClass,
     record.device.technologyFamily,
     record.device.materialFamily,
     record.device.materialComposition,
@@ -151,6 +154,11 @@ export function recordMatchesFilters(
 ): boolean {
   const query = filters.search.trim().toLocaleLowerCase();
   if (query && !searchableText(record).includes(query)) return false;
+  if (
+    filters.detectorClass !== "all" &&
+    record.device.detectorClass !== filters.detectorClass
+  )
+    return false;
   if (
     filters.technology !== "all" &&
     record.device.technologyFamily !== filters.technology
@@ -371,6 +379,8 @@ export function parseAtlasFilters(
     plotY = plotX === "detectivity" ? "wavelength" : "detectivity";
   return {
     search: params.get("q")?.trim() ?? "",
+    detectorClass: oneOf(params.get("detector"), DETECTOR_CLASSES) as
+      DetectorClass | "all",
     technology: oneOf(params.get("technology"), TECHNOLOGY_FAMILIES),
     material: params.get("material")?.trim() || "all",
     wavelengthMin: finiteNumber(params.get("wavelengthMin")),
@@ -462,6 +472,7 @@ export function serializeAtlasFilters(
 ): URLSearchParams {
   const params = new URLSearchParams(existing);
   setOrDelete(params, "q", filters.search.trim());
+  setOrDelete(params, "detector", filters.detectorClass);
   setOrDelete(params, "technology", filters.technology);
   setOrDelete(params, "material", filters.material);
   setOrDelete(params, "wavelengthMin", filters.wavelengthMin);
@@ -521,6 +532,7 @@ export function serializeAtlasFilters(
 export function countActiveFilters(filters: AtlasFilterState): number {
   return (
     Number(Boolean(filters.search.trim())) +
+    Number(filters.detectorClass !== "all") +
     Number(filters.technology !== "all") +
     Number(filters.material !== "all") +
     Number(filters.wavelengthMin !== undefined) +

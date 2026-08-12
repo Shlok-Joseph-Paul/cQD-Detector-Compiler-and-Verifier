@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.4.0";
-export const DATASET_RELEASE_DATE = "2026-07-20";
+export const DATASET_VERSION = "1.5.0";
+export const DATASET_RELEASE_DATE = "2026-08-12";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Detector-class expansion",
+    summary:
+      "Adds device-level photodiode, photoconductor, and phototransistor classification throughout ingestion, validation, filtering, visualization, and export.",
+    changes: [
+      "Added a required detector_class field to every device and migrated the existing photodiode-only corpus without changing its scientific values.",
+      "Expanded full-text proposal extraction to classify supported detector mechanisms from page-located architecture evidence.",
+      "Leaves generic or conflicting photodetector terminology uncertain until a curator resolves the device class.",
+      "Added detector-class filtering to shared graph, table, URL, search, detail, and CSV workflows.",
+      "Added a cross-class comparison caution while preserving the combined view and existing green/amber rules.",
+    ],
+  },
+  {
+    version: "1.4.0",
+    date: "2026-07-20",
     title: "Extended detector metrics",
     summary:
       "Adds a source-audited view of responsivity, temporal response, explicit −3 dB bandwidth, and detector linear dynamic range, together with an interactive interface for exploring those metrics.",
@@ -55,7 +69,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.1.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-07-20",
     title: "Noise-instrument audit",
     summary:
       "Adds evidence-backed acquisition-instrument classifications for every curated detectivity measurement.",
@@ -68,7 +82,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.0.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-07-20",
     title: "First curated literature release",
     summary:
       "Establishes the atlas as a versioned, reproducible collection of curator-reviewed CQD photodiode measurements.",

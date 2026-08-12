@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "defaultProfile": "cqd",
   "profiles": {
     "perovskite": {
@@ -23,6 +23,8 @@
       "queries": [
         "\"perovskite photodiode\" detectivity",
         "\"perovskite photodiodes\" detectivity",
+        "\"perovskite photoconductor\" detectivity",
+        "\"perovskite phototransistor\" detectivity",
         "\"metal halide perovskite\" photodiode detectivity",
         "\"hybrid perovskite photodetector\" detectivity",
         "\"perovskite photodetector\" \"p-i-n\" detectivity",
@@ -76,7 +78,10 @@
     "image sensor",
     "imager",
     "focal plane array",
-    "photoconductor"
+    "photoconductor",
+    "photoresistor",
+    "phototransistor",
+    "photo-FET"
   ],
   "spectralTerms": [
     "infrared",
@@ -89,6 +94,8 @@
   "queries": [
     "\"colloidal quantum dot\" photodiode detectivity",
     "\"colloidal quantum dot\" photodetector detectivity",
+    "\"colloidal quantum dot\" photoconductor detectivity",
+    "\"colloidal quantum dot\" phototransistor detectivity",
     "\"colloidal nanocrystal\" photodiode detectivity",
     "\"colloidal nanocrystal\" photodetector detectivity",
     "\"solution-processed quantum dot\" photodiode detectivity",

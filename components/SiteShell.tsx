@@ -52,7 +52,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <p className="footer-title">Photodiode Atlas</p>
           <p>
             A transparent, curator-reviewed map of reported CQD and metal-halide
-            perovskite photodiode performance.
+            perovskite photodetector performance by device class.
           </p>
         </div>
         <div className="footer-links">

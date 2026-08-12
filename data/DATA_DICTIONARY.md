@@ -42,9 +42,10 @@ record”**. Delete all `demo-*` rows before adding the first literature record.
 | `device_id`                       | identifier          | yes         | Stable device identifier, referenced by measurements.                                                                                                     |
 | `paper_id`                        | identifier          | yes         | Existing parent `paper_id`.                                                                                                                               |
 | `technology_family`               | enum                | yes         | `cqd` or `perovskite`.                                                                                                                                    |
+| `detector_class`                  | enum                | yes         | Device mechanism: `photodiode`, `photoconductor`, or `phototransistor`. `all` is a filter state and is never stored.                                      |
 | `material_family`                 | text                | yes         | Index label for the absorber. Use the reported perovskite formula rather than a broad class; examples include `PbS`, `HgTe`, `CH3NH3PbI3`, and `CsPbBr3`. |
 | `material_composition`            | text                | no          | Composition as reported by the source.                                                                                                                    |
-| `device_architecture`             | text                | no          | Photodiode architecture.                                                                                                                                  |
+| `device_architecture`             | text                | no          | Reported photodetector architecture.                                                                                                                      |
 | `device_stack`                    | text                | no          | Layer stack in source order.                                                                                                                              |
 | `active_area_cm2`                 | positive number     | no          | Active area in square centimetres.                                                                                                                        |
 | `ligand_exchange_status`          | enum                | yes         | Review outcome: `reported`, `not_used`, `not_reported`, `not_applicable`, `ambiguous`, `source_unavailable`, or `not_checked`.                            |
@@ -73,6 +74,17 @@ confidently to the atlas device or process type, and `not_applicable` for a
 device outside CQD ligand exchange. The automated parser stages evidence and a
 status for curator review; it never treats a missing search hit as proof when
 OCR is required.
+
+### Detector classes
+
+Detector class is stored at the device level because one paper may describe
+more than one operating mechanism. `photodiode` covers rectifying or
+photovoltaic junction devices; `photoconductor` covers externally biased,
+two-terminal photoconductive channels or photoresistors; and
+`phototransistor` covers gated transistor and photogating architectures. The
+generic term “photodetector” is not enough to assign a class. Ambiguous or
+conflicting full-text evidence remains in the proposal queue for curator
+correction and cannot be published without a valid class.
 
 ## `measurements.csv`
 

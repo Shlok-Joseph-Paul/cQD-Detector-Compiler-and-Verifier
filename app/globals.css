@@ -1115,6 +1115,16 @@ select {
   border-bottom: 1px solid #e4e9e6;
 }
 
+.performance-plot__comparison-note {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--teal);
+  background: var(--teal-pale);
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
 .performance-plot__summary {
   display: flex;
   flex-wrap: wrap;

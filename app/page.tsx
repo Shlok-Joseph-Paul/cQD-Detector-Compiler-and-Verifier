@@ -58,7 +58,7 @@ export default function Home() {
               Built for scientific comparison
             </p>
             <ul>
-              <li>Each point is one reported photodiode measurement.</li>
+              <li>Each point is one reported photodetector measurement.</li>
               <li>Noise methodology stays attached to every D* value.</li>
               <li>Green and amber flags expose comparison caveats.</li>
             </ul>

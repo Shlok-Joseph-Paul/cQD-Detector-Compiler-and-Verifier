@@ -20,7 +20,8 @@ an explicit human approval step.
 ## Design principles
 
 1. **Discovery is not inclusion.** A search match is a private candidate until a
-   curator confirms that it describes an in-scope experimental CQD photodiode.
+   curator confirms that it describes an in-scope experimental CQD
+   photodiode, photoconductor, or phototransistor.
 2. **Extraction produces proposals, not facts.** Every proposed value must carry
    source evidence and may be edited or rejected during review.
 3. **Approval is a hard boundary.** Automated workers cannot change the public
@@ -72,6 +73,7 @@ private human-review queue
 A scheduled job runs once per day with an overlap window so delayed indexing
 does not create gaps. Provider adapters query documented metadata APIs using a
 high-recall group of terms around colloidal quantum dots, photodiodes,
+photoconductors, phototransistors,
 detectivity, noise, and relevant material families.
 
 The job should:
@@ -105,15 +107,17 @@ file appears.
 
 ### 3. Triage scientific scope
 
-A rule-based or model-assisted classifier may prioritize likely CQD photodiode
-papers. It can use title, abstract, keywords, and venue metadata, but its result
-is only a routing score. It must not decide public inclusion.
+A rule-based or model-assisted classifier may prioritize likely CQD
+photodetector papers. It can use title, abstract, keywords, and venue metadata,
+but its result is only a routing score. It must not decide public inclusion.
 
-The queue should make exclusions easy to record, including photoconductors,
-phototransistors, bolometers, epitaxial quantum dots, perovskite solar cells,
-theory-only reports, and focal-plane-array papers without an extractable
-photodiode measurement. Recorded exclusion reasons prevent the same paper from
-being repeatedly proposed without hiding later corrected versions.
+The queue should make exclusions easy to record, including bolometers,
+epitaxial quantum dots, perovskite solar cells, theory-only reports, and
+focal-plane-array papers without an extractable supported-device measurement.
+Photodiodes, photoconductors, and phototransistors remain separate device
+classes and require full-text evidence; generic “photodetector” wording is not
+enough. Recorded exclusion reasons prevent the same paper from being repeatedly
+proposed without hiding later corrected versions.
 
 ### 4. Resolve legally accessible full text
 

@@ -12,6 +12,7 @@ import {
 } from "@/lib/atlas/filters";
 import {
   BIAS_LABELS,
+  DETECTOR_CLASS_LABELS,
   formatNoiseMethod,
   NOISE_METHOD_LABELS,
   TEMPERATURE_LABELS,
@@ -21,6 +22,7 @@ import type {
   AtlasHistoryMode,
   AtlasRecord,
   BiasCondition,
+  DetectorClass,
   NoiseMethod,
   PublicationFilter,
   PublicFlag,
@@ -28,6 +30,7 @@ import type {
   TechnologyFamily,
 } from "@/lib/atlas/types";
 import { NOISE_METHODS } from "@/lib/atlas/types";
+import { DETECTOR_CLASSES } from "@/lib/data/types";
 
 export interface AtlasFiltersProps {
   records: readonly AtlasRecord[];
@@ -132,11 +135,13 @@ export function AtlasFilters({
   const id = useId();
   const technologies = technologyOptions(records);
   const materials = materialOptions(
-    filters.technology === "all"
-      ? records
-      : records.filter(
-          (record) => record.device.technologyFamily === filters.technology,
-        ),
+    records.filter(
+      (record) =>
+        (filters.technology === "all" ||
+          record.device.technologyFamily === filters.technology) &&
+        (filters.detectorClass === "all" ||
+          record.device.detectorClass === filters.detectorClass),
+    ),
   );
   const years = yearOptions(records);
   const activeCount = Math.max(
@@ -197,6 +202,12 @@ export function AtlasFilters({
     chips.push({
       label: `Search: ${filters.search.trim()}`,
       clear: () => update("search", ""),
+    });
+  }
+  if (filters.detectorClass !== "all") {
+    chips.push({
+      label: `Detector: ${DETECTOR_CLASS_LABELS[filters.detectorClass]}`,
+      clear: () => update("detectorClass", "all"),
     });
   }
   if (filters.technology !== "all") {
@@ -456,6 +467,28 @@ export function AtlasFilters({
                 {technology === "cqd"
                   ? "Colloidal quantum dots"
                   : "Metal-halide perovskites"}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="atlas-field" htmlFor={`${id}-detector-class`}>
+          <span>Detector class</span>
+          <select
+            id={`${id}-detector-class`}
+            value={filters.detectorClass}
+            onChange={(event) =>
+              onChange({
+                ...filters,
+                detectorClass: event.target.value as DetectorClass | "all",
+                material: "all",
+              })
+            }
+          >
+            <option value="all">All detector classes</option>
+            {DETECTOR_CLASSES.map((detectorClass) => (
+              <option value={detectorClass} key={detectorClass}>
+                {DETECTOR_CLASS_LABELS[detectorClass]}s
               </option>
             ))}
           </select>

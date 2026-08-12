@@ -32,6 +32,7 @@ const records: JoinedMeasurement[] = [
       device_id: "device-b",
       paper_id: "paper-b",
       technology_family: "cqd",
+      detector_class: "photoconductor",
       material_family: "Beta CQD",
       material_composition: null,
       device_architecture: "Vertical",
@@ -91,6 +92,7 @@ const records: JoinedMeasurement[] = [
       device_id: "device-a",
       paper_id: "paper-a",
       technology_family: "cqd",
+      detector_class: "photodiode",
       material_family: "Alpha CQD",
       material_composition: "A",
       device_architecture: null,
@@ -138,6 +140,7 @@ test("filtering supports search, scientific facets, and inclusive ranges", () =>
   assert.deepEqual(
     filterAtlasRecords(records, {
       search: "alpha",
+      detector_classes: ["photodiode"],
       wavelength_nm: { min: 800, max: 1000 },
       temperature_categories: ["room_temperature"],
       bias_conditions: ["zero_bias"],
@@ -191,5 +194,7 @@ test("CSV export preserves null as blank, zero as zero, and quotes special text"
   assert.match(csv, /measurement-a/);
   assert.match(csv, /,0,100,/);
   assert.match(csv, /Example One\|Example Two/);
+  assert.match(csv.split("\n")[0], /detector_class/);
+  assert.match(csv, /photoconductor/);
   assert.doesNotMatch(csv, /Not reported/);
 });

@@ -3,6 +3,7 @@ import test from "node:test";
 
 import { atlasRecordsToCsv } from "../lib/atlas/csv.ts";
 import { DATASET_VERSION } from "../lib/data/releases.ts";
+import { parseCsv } from "../lib/data/csv.ts";
 import {
   maxDetectivityPerPaper,
   reportingCoverage,
@@ -11,6 +12,7 @@ import {
   DEFAULT_ATLAS_FILTERS,
   biasCondition,
   clearMetricFilters,
+  countActiveFilters,
   filterAtlasRecords,
   lockMaterialFilter,
   normalizeMetricFilterValue,
@@ -66,6 +68,7 @@ const measuredRecord: AtlasRecord = {
     deviceId: "device-1",
     paperId: "paper-1",
     technologyFamily: "cqd",
+    detectorClass: "photodiode",
     materialFamily: "PbS",
     materialComposition: "PbS CQDs",
     deviceArchitecture: "p–n photodiode",
@@ -263,6 +266,7 @@ test("URL filter state round-trips and preserves unrelated parameters", () => {
   const filters = {
     ...DEFAULT_ATLAS_FILTERS,
     search: "PbS diode",
+    detectorClass: "photoconductor" as const,
     technology: "perovskite" as const,
     material: "PbS",
     wavelengthMin: 700,
@@ -273,6 +277,7 @@ test("URL filter state round-trips and preserves unrelated parameters", () => {
     new URLSearchParams("view=compact"),
   );
   assert.equal(params.get("view"), "compact");
+  assert.equal(params.get("detector"), "photoconductor");
   assert.deepEqual(parseAtlasFilters(params), filters);
 
   const legacy = parseAtlasFilters(
@@ -487,6 +492,7 @@ test("invalid explorer URL values fall back safely and duplicate axes are repair
     new URLSearchParams(
       [
         "plot=not-a-mode",
+        "detector=not-a-detector",
         "xMetric=not-a-metric",
         "yMetric=also-not-a-metric",
         "scope=not-a-scope",
@@ -502,6 +508,7 @@ test("invalid explorer URL values fall back safely and duplicate axes are repair
   );
 
   assert.equal(invalid.plotMode, DEFAULT_ATLAS_FILTERS.plotMode);
+  assert.equal(invalid.detectorClass, "all");
   assert.equal(invalid.plotX, DEFAULT_ATLAS_FILTERS.plotX);
   assert.equal(invalid.plotY, DEFAULT_ATLAS_FILTERS.plotY);
   assert.equal(invalid.plotScope, DEFAULT_ATLAS_FILTERS.plotScope);
@@ -898,6 +905,73 @@ test("preset availability and plot scope follow the current scientific record se
   );
 });
 
+test("detector-class filtering is shared by plot scope, active counts, and CSV export", () => {
+  const photodiode = recordWithMeasurement("detector-diode", {
+    detectivityJones: 3e12,
+  });
+  const photoconductor: AtlasRecord = {
+    ...photodiode,
+    device: {
+      ...photodiode.device,
+      deviceId: "device-photoconductor",
+      detectorClass: "photoconductor",
+    },
+    measurement: {
+      ...photodiode.measurement,
+      measurementId: "detector-conductor",
+      deviceId: "device-photoconductor",
+      detectivityJones: 1e11,
+    },
+  };
+  const phototransistor: AtlasRecord = {
+    ...photodiode,
+    paper: { ...photodiode.paper, paperId: "paper-phototransistor" },
+    device: {
+      ...photodiode.device,
+      paperId: "paper-phototransistor",
+      deviceId: "device-phototransistor",
+      detectorClass: "phototransistor",
+    },
+    measurement: {
+      ...photodiode.measurement,
+      measurementId: "detector-transistor",
+      deviceId: "device-phototransistor",
+    },
+  };
+  const all = [photodiode, photoconductor, phototransistor];
+
+  for (const detectorClass of [
+    "photodiode",
+    "photoconductor",
+    "phototransistor",
+  ] as const) {
+    const filters = { ...DEFAULT_ATLAS_FILTERS, detectorClass };
+    const filtered = filterAtlasRecords(all, filters);
+    assert.deepEqual(
+      filtered.map((record) => record.device.detectorClass),
+      [detectorClass],
+    );
+    assert.deepEqual(
+      recordsForPlotScope(filtered, "paper_maxima").map(
+        (record) => record.device.detectorClass,
+      ),
+      [detectorClass],
+    );
+    assert.equal(countActiveFilters(filters), 1);
+  }
+
+  assert.equal(filterAtlasRecords(all, DEFAULT_ATLAS_FILTERS).length, 3);
+  const csv = atlasRecordsToCsv(
+    filterAtlasRecords(all, {
+      ...DEFAULT_ATLAS_FILTERS,
+      detectorClass: "photoconductor",
+    }),
+  );
+  assert.match(csv.split("\r\n")[0], /detector_class/);
+  assert.match(csv, /photoconductor/);
+  assert.doesNotMatch(csv, /phototransistor/);
+});
+
 test("metric threshold unit conversion and clear-all preserve view state", () => {
   assert.equal(normalizeMetricFilterValue(25, 1e6), 25e-6);
   assert.equal(normalizeMetricFilterValue(2.5, 1e-3), 2500);
@@ -907,6 +981,7 @@ test("metric threshold unit conversion and clear-all preserve view state", () =>
 
   const configured: AtlasFilterState = {
     ...DEFAULT_ATLAS_FILTERS,
+    detectorClass: "photoconductor",
     material: "HgTe",
     hasResponsivity: true,
     hasBandwidth: true,
@@ -937,6 +1012,7 @@ test("metric threshold unit conversion and clear-all preserve view state", () =>
   assert.equal(cleared.bandwidthMinHz, undefined);
 
   const reset = resetAtlasFilterCriteria(configured);
+  assert.equal(reset.detectorClass, "all");
   assert.equal(reset.material, "all");
   assert.equal(reset.hasResponsivity, false);
   assert.equal(reset.responsivityMin, undefined);
@@ -1007,6 +1083,8 @@ test("graph, table, and CSV can share one filtered record set", () => {
     "detectivity",
   );
   const csvRows = atlasRecordsToCsv(filtered).trimEnd().split("\r\n");
+  const parsedCsv = parseCsv(atlasRecordsToCsv(filtered));
+  assert.equal(parsedCsv.headers.length, parsedCsv.rows[0].fields.length);
 
   assert.deepEqual(
     filtered.map((record) => record.measurement.measurementId),

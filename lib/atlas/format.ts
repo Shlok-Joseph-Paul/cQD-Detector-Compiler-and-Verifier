@@ -1,11 +1,22 @@
 import type {
   BiasCondition,
+  DetectorClass,
   NoiseInstrument,
   NoiseMethod,
   TemperatureCategory,
 } from "./types";
 
 export const NOT_REPORTED = "Not reported";
+
+export const DETECTOR_CLASS_LABELS: Record<DetectorClass, string> = {
+  photodiode: "Photodiode",
+  photoconductor: "Photoconductor",
+  phototransistor: "Phototransistor",
+};
+
+export function formatDetectorClass(detectorClass: DetectorClass): string {
+  return DETECTOR_CLASS_LABELS[detectorClass];
+}
 
 const SUPERSCRIPT_DIGITS: Record<string, string> = {
   "-": "⁻",

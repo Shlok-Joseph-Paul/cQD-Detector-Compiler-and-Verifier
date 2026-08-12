@@ -27,7 +27,7 @@ export async function generateMetadata({
   return record
     ? {
         title: `${record.device.material_family} · ${record.measurement.wavelength_nm} nm`,
-        description: `Measurement record ${id}: ${record.device.material_family} photodiode detectivity at ${record.measurement.wavelength_nm} nm.`,
+        description: `Measurement record ${id}: ${record.device.material_family} ${record.device.detector_class} detectivity at ${record.measurement.wavelength_nm} nm.`,
       }
     : { title: "Measurement not found" };
 }

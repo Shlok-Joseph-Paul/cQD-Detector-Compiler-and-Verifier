@@ -11,6 +11,7 @@ import {
 
 import { atlasRecordsToCsv } from "@/lib/atlas/csv";
 import {
+  formatDetectorClass,
   formatNoiseInstruments,
   formatNoiseMethod,
   formatNumber,
@@ -511,10 +512,19 @@ function MaterialCell({ record }: { record: AtlasRecord }) {
   );
 }
 
+function DetectorClassCell({ record }: { record: AtlasRecord }) {
+  return (
+    <td data-label="Detector class">
+      {formatDetectorClass(record.device.detectorClass)}
+    </td>
+  );
+}
+
 function OverviewCells({ record }: { record: AtlasRecord }) {
   const { measurement } = record;
   return (
     <>
+      <DetectorClassCell record={record} />
       <MaterialCell record={record} />
       <td data-label="Wavelength">
         {formatWithUnit(measurement.wavelengthNm, "nm", {
@@ -546,6 +556,7 @@ function OpticalCells({ record }: { record: AtlasRecord }) {
   const { measurement } = record;
   return (
     <>
+      <DetectorClassCell record={record} />
       <MaterialCell record={record} />
       <td data-label="Wavelength">
         {formatWithUnit(measurement.wavelengthNm, "nm", {
@@ -594,6 +605,7 @@ function SpeedCells({ record }: { record: AtlasRecord }) {
   const { measurement } = record;
   return (
     <>
+      <DetectorClassCell record={record} />
       <MaterialCell record={record} />
       <td data-label="Response time">
         <MetricDisplay
@@ -669,6 +681,7 @@ function MethodsCells({ record }: { record: AtlasRecord }) {
   )}`;
   return (
     <>
+      <DetectorClassCell record={record} />
       <td data-label="Noise method">
         {formatNoiseMethod(measurement.noiseMethod)}
         <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
@@ -714,6 +727,7 @@ function TableHeaders({
       <th scope="col" aria-sort={ariaSort(sort, "year")}>
         <SortButton label="Paper" sortKey="year" sort={sort} onSort={onSort} />
       </th>
+      <th scope="col">Detector class</th>
       {view !== "methods" ? (
         <th scope="col" aria-sort={ariaSort(sort, "material")}>
           <SortButton
@@ -843,6 +857,10 @@ function DetailsContent({ record }: { record: AtlasRecord }) {
         <div>
           <span>Absorber composition</span>
           <strong>{device.materialComposition || NOT_REPORTED}</strong>
+        </div>
+        <div>
+          <span>Detector class</span>
+          <strong>{formatDetectorClass(device.detectorClass)}</strong>
         </div>
         <div>
           <span>Device architecture</span>
@@ -1076,8 +1094,8 @@ export function MetricMeasurementTable({
             className={`measurement-table measurement-table--compact measurement-table--${activeView}`}
           >
             <caption className="sr-only">
-              {currentViewOption.label} view of photodiode measurements matching
-              the current filters
+              {currentViewOption.label} view of photodetector measurements
+              matching the current filters
             </caption>
             <thead>
               <TableHeaders
@@ -1136,7 +1154,7 @@ export function MetricMeasurementTable({
                             amber ? " is-amber" : ""
                           }`}
                         >
-                          <td colSpan={7} id={detailsId}>
+                          <td colSpan={8} id={detailsId}>
                             <DetailsContent record={record} />
                           </td>
                         </tr>
@@ -1146,7 +1164,7 @@ export function MetricMeasurementTable({
                 })
               ) : (
                 <tr>
-                  <td colSpan={7} className="measurement-table__empty">
+                  <td colSpan={8} className="measurement-table__empty">
                     No measurements match the current filters. Adjust or reset
                     the filters to restore records.
                   </td>

@@ -1,4 +1,13 @@
-import type { Device, Measurement, Paper } from "../data/types.ts";
+import type {
+  DetectorClass,
+  Device,
+  Measurement,
+  Paper,
+} from "../data/types.ts";
+
+export type ProposedDevice = Omit<Device, "detector_class"> & {
+  detector_class: DetectorClass | null;
+};
 
 export const PROPOSAL_STATUSES = [
   "awaiting-approval",
@@ -50,7 +59,7 @@ export interface StagedPaperProposal {
   scopeStatus: ProposalScopeStatus;
   scopeReasons: string[];
   proposedPaper: Paper;
-  proposedDevices: Device[];
+  proposedDevices: ProposedDevice[];
   proposedMeasurements: Measurement[];
   evidence: ProposalEvidence[];
   warnings: string[];
@@ -64,7 +73,8 @@ export interface StagedPaperProposal {
     | "cqd-proposal-extractor-v1"
     | "cqd-proposal-extractor-v2"
     | "photodiode-proposal-extractor-v3"
-    | "photodiode-proposal-extractor-v4";
+    | "photodiode-proposal-extractor-v4"
+    | "photodetector-proposal-extractor-v5";
 }
 
 export interface ProposalRegistry {

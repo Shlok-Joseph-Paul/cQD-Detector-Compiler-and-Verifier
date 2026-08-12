@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { formatDetectorClass } from "@/lib/atlas/format";
 import type {
   DiscoveryCandidate,
   ScreeningStatus,
@@ -304,7 +305,8 @@ export function DiscoveryQueueClient({
           {effectiveProposals.map((proposal) => {
             const canApprove =
               proposal.scopeStatus === "in-scope" &&
-              proposal.proposedMeasurements.length > 0;
+              proposal.proposedMeasurements.length > 0 &&
+              proposal.proposedDevices.every((device) => device.detector_class);
             return (
               <article className="proposal-card" key={proposal.proposalId}>
                 <header className="proposal-card__header">
@@ -364,6 +366,14 @@ export function DiscoveryQueueClient({
                     <h4>Device</h4>
                     {proposal.proposedDevices.map((device) => (
                       <dl key={device.device_id}>
+                        <div>
+                          <dt>Detector class</dt>
+                          <dd>
+                            {device.detector_class
+                              ? formatDetectorClass(device.detector_class)
+                              : "Needs curator correction"}
+                          </dd>
+                        </div>
                         <div>
                           <dt>Material</dt>
                           <dd>{device.material_composition}</dd>

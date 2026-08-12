@@ -1,5 +1,6 @@
 import type {
   BiasCondition as CanonicalBiasCondition,
+  DetectorClass,
   JoinedMeasurement,
   NoiseInstrument as CanonicalNoiseInstrument,
   TemperatureCategory as CanonicalTemperatureCategory,
@@ -7,6 +8,7 @@ import type {
 } from "@/lib/data/types";
 
 export type { TechnologyFamily } from "@/lib/data/types";
+export type { DetectorClass } from "@/lib/data/types";
 
 export const NOISE_METHODS = [
   "measured_noise",
@@ -70,6 +72,7 @@ export interface AtlasDevice {
   deviceId: string;
   paperId: string;
   technologyFamily: TechnologyFamily;
+  detectorClass: DetectorClass;
   materialFamily: string;
   materialComposition: string;
   deviceArchitecture: string;
@@ -152,6 +155,7 @@ export interface AtlasRecord {
 
 export interface AtlasFilterState {
   search: string;
+  detectorClass: DetectorClass | "all";
   technology: TechnologyFamily | "all";
   material: string;
   wavelengthMin?: number;
@@ -341,6 +345,11 @@ export function normalizeJoinedMeasurement(
         ["technology_family", "technologyFamily"],
         "cqd",
       ) as TechnologyFamily,
+      detectorClass: textValue(
+        device,
+        ["detector_class", "detectorClass"],
+        "photodiode",
+      ) as DetectorClass,
       materialFamily: textValue(device, ["material_family", "materialFamily"]),
       materialComposition: textValue(device, [
         "material_composition",

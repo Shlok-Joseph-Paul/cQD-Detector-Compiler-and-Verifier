@@ -3,6 +3,7 @@ import {
   AMBER_REASONS,
   BANDWIDTH_LIMITS,
   CURATOR_STATUSES,
+  DETECTOR_CLASSES,
   DETECTIVITY_EXTRACTION_METHODS,
   EXTENDED_METRIC_EXTRACTION_METHODS,
   EXTENDED_METRICS_REVIEW_STATUSES,
@@ -358,6 +359,7 @@ function validateDevice(
     TECHNOLOGY_FAMILIES,
     add,
   );
+  validateEnum(device.detector_class, "detector_class", DETECTOR_CLASSES, add);
   validateRequiredString(device.material_family, "material_family", add);
   validateNullableString(
     device.material_composition,

@@ -34,7 +34,7 @@ export default function DiscoveryPage() {
             <p className="eyebrow">Literature discovery</p>
             <h1>Discovery Queue</h1>
             <p>
-              Candidate CQD and perovskite photodiode papers found through
+              Candidate CQD and perovskite photodetector papers found through
               reproducible keyword and citation-graph searches, ranked for human
               review.
             </p>

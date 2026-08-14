@@ -68,8 +68,10 @@ average across devices.
 Only green and amber public flags are used. Amber does **not** mean a result is
 incorrect. It is required for a shot-noise approximation, a lock-in amplifier
 used as the sole noise-acquisition method, or noise acquired by a source measure
-unit. A curator may also apply amber when reported D* is substantially above a
-plausible BLIP limit. That comparison is made only when straightforward; the
+unit. A curator may also apply amber when an unreported D* noise basis materially
+limits interpretation at a critical operating point, or when reported D* is
+substantially above a plausible BLIP limit. These judgments are never inferred
+from a blank field; the BLIP comparison is made only when straightforward, and the
 atlas does not calculate BLIP limits automatically. Missing conditions remain
 visible as “Not reported” but do not change the flag. Every amber record must
 contain at least one machine-readable reason and a human-readable explanation.

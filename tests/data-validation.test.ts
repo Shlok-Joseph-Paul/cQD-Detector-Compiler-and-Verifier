@@ -97,7 +97,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 4);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 103);
+  assert.equal(atlas.measurements.length, 117);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.ok(
     atlas.devices.every((record) => record.detector_class === "photodiode"),
@@ -115,12 +115,18 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 38);
+  assert.equal(amberRecords.length, 52);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
     ).length,
-    21,
+    27,
+  );
+  assert.equal(
+    amberRecords.filter(({ measurement }) =>
+      measurement.amber_reasons.includes("noise_method_not_reported"),
+    ).length,
+    8,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>

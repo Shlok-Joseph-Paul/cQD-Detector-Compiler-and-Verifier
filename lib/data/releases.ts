@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.5.0";
-export const DATASET_RELEASE_DATE = "2026-08-12";
+export const DATASET_VERSION = "1.6.0";
+export const DATASET_RELEASE_DATE = "2026-08-14";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Avalanche and lead-free CQD additions",
+    summary:
+      "Adds two curator-reviewed CQD photodiode papers with device-resolved ligand chemistry, operating conditions, speed metrics, and explicit noise cautions.",
+    changes: [
+      "Added four ligand-defined PbS avalanche-photodiode devices and eight 940 nm measurements from Kim et al.",
+      "Applied a curator-directed amber caution to the Kim records because the D* noise basis is not reported and high-bias noise may materially affect interpretation.",
+      "Added AgI-control and dual-halometallate AgBiS2 photodiodes with six directly reported measurements from Sharma et al.",
+      "Preserved Sharma's shot-noise approximation, wavelength-specific responsivity, 10-90% rise and 90-10% fall times, and explicit -3 dB bandwidths.",
+      "Expanded the controlled amber vocabulary with a manual noise-method-not-reported reason that requires a curator explanation and is never inferred from a blank field.",
+    ],
+  },
+  {
+    version: "1.5.0",
+    date: "2026-08-12",
     title: "Detector-class expansion",
     summary:
       "Adds device-level photodiode, photoconductor, and phototransistor classification throughout ingestion, validation, filtering, visualization, and export.",

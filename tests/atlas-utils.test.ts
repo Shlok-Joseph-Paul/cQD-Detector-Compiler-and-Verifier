@@ -347,6 +347,10 @@ test("scientific and missing-value formatting is explicit", () => {
     formatAmberReason("below_preamplifier_noise_floor"),
     /preamplifier noise floor/i,
   );
+  assert.match(
+    formatAmberReason("noise_method_not_reported"),
+    /noise method not reported/i,
+  );
 });
 
 test("DOI and publication source links remain separately labeled data", () => {

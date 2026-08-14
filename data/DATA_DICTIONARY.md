@@ -215,6 +215,7 @@ optical characterization are excluded from `noise_instruments`.
 | `shot_noise_approximation`              | Shot-noise approximation was used.                                                         |
 | `lock_in_only_noise_measurement`        | A lock-in amplifier was the sole noise-acquisition class.                                  |
 | `source_measure_unit_noise_measurement` | An SMU or parameter analyzer acquired the noise signal.                                    |
+| `noise_method_not_reported`             | A curator determined that an unreported D* noise basis materially limits interpretation.   |
 | `above_blip_limit`                      | Reported D* appears substantially above a plausible BLIP limit and warrants manual review. |
 | `below_preamplifier_noise_floor`        | Measured device noise falls below the reported current-preamplifier noise floor.           |
 
@@ -222,12 +223,13 @@ The validator automatically requires `shot_noise_approximation` when that noise
 method is selected, `lock_in_only_noise_measurement` when `lock_in_amplifier` is
 the only noise instrument, and `source_measure_unit_noise_measurement` whenever
 `source_measure_unit` acquired noise. A mixed FFT-plus-lock-in workflow does not
-trigger the lock-in-only reason. `above_blip_limit` and
-`below_preamplifier_noise_floor` are curator-applied judgments; the atlas does
+trigger the lock-in-only reason. `noise_method_not_reported`, `above_blip_limit`,
+and `below_preamplifier_noise_floor` are curator-applied judgments; the atlas does
 not attempt an automatic BLIP calculation or infer instrument noise floors. Missing
 area, temperature, bias, frequency, source location, graphical extraction,
-calculated values, preprint status, or incomplete conditions do not
-independently trigger amber. A green record contains no amber reason or
+calculated values, preprint status, or incomplete conditions do not independently
+trigger amber. An unreported noise method remains neutral unless a curator records
+why the omission is material at the cited operating point. A green record contains no amber reason or
 explanation. Green is a curation status—not an endorsement or independent
 reproduction of the result.
 

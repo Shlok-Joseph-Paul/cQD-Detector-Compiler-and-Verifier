@@ -120,6 +120,7 @@ export const AMBER_REASONS = [
   "shot_noise_approximation",
   "lock_in_only_noise_measurement",
   "source_measure_unit_noise_measurement",
+  "noise_method_not_reported",
   "above_blip_limit",
   "below_preamplifier_noise_floor",
 ] as const;

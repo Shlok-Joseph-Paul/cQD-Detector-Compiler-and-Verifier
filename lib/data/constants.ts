@@ -58,6 +58,11 @@ export const AMBER_REASON_DETAILS: Record<AmberReason, AmberReasonDetail> = {
     explanation:
       "Noise was acquired using a source measure unit or parameter analyzer rather than a dedicated noise-measurement instrument.",
   },
+  noise_method_not_reported: {
+    label: "Noise method not reported",
+    explanation:
+      "The source does not establish the noise basis used to calculate detectivity at the cited operating point, limiting interpretation when the curator identifies the omission as material.",
+  },
   above_blip_limit: {
     label: "Potentially above the BLIP limit",
     explanation:

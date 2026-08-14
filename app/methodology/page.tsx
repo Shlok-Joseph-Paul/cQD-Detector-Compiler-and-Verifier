@@ -33,6 +33,7 @@ const greenCriteria = [
   "The value does not use a shot-noise approximation.",
   "A lock-in amplifier was not the sole noise-acquisition method.",
   "A source measure unit was not used to acquire the noise signal.",
+  "No curator-applied caution identifies an unreported D* noise basis as material to interpretation.",
   "The reported detectivity does not appear substantially above a plausible BLIP limit.",
   "The measured device noise was not reported below the current preamplifier noise floor.",
 ];
@@ -41,6 +42,7 @@ const amberReasons = [
   "Detectivity uses a shot-noise approximation.",
   "A lock-in amplifier was the sole noise-acquisition method.",
   "A source measure unit or parameter analyzer acquired the noise signal.",
+  "A curator determined that the publication does not establish the D* noise basis at a critical operating point.",
   "The reported detectivity appears substantially above a plausible background-limited infrared photodetection (BLIP) limit and warrants manual review.",
   "The measured device noise was reported below the current preamplifier noise floor.",
 ];
@@ -288,8 +290,12 @@ export default function MethodologyPage() {
               measurements are always amber. Mixed FFT-plus-lock-in acquisition
               does not trigger the lock-in-only rule. A potential BLIP-limit
               concern is applied by a curator only when the comparison is
-              straightforward and the reported value is clearly anomalous. An
-              amber flag is never shown without an explanation.
+              straightforward and the reported value is clearly anomalous. A
+              curator may also apply amber when an unreported D* noise basis
+              materially limits interpretation at a critical operating point,
+              such as high reverse bias. This is not inferred automatically from
+              a missing field. An amber flag is never shown without an
+              explanation.
             </p>
           </section>
 

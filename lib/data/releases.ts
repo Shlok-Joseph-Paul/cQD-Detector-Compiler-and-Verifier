@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.7.0";
+export const DATASET_VERSION = "1.8.0";
 export const DATASET_RELEASE_DATE = "2026-08-17";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Six-paper detector expansion",
+    summary:
+      "Adds six curator-approved CQD and metal-halide perovskite detector papers with device-resolved performance, noise-method evidence, and review cautions.",
+    changes: [
+      "Added 12 devices and 14 measurements spanning flexible strained perovskites, interface-modified photodiodes, Fe@Cx transport layers, mechanochemical CsPbBr3 nanocrystals, AgBiS2/InGaAs, and a CsPbBr3-sensitized SnSe2/MoTe2 heterojunction.",
+      "Retained only the two measured-noise D* records from the Wang CsPbIBr2/CDCA study, excluding its shot-noise estimates by curator direction.",
+      "Recorded measured-noise instrumentation for the strain-driven Kim study and the Wang CsPbBr3/SnSe2/MoTe2 heterojunction.",
+      "Applied amber cautions to four Fe@Cx and one AgBiS2/InGaAs shot-noise estimates, plus two CsPbBr3 records derived from source-measure-unit current traces.",
+      "Published seven green and seven amber measurements with source locations, operating conditions, extended metrics, and curator notes.",
+    ],
+  },
+  {
+    version: "1.7.0",
+    date: "2026-08-17",
     title: "Johnson-noise photoconductor caution",
     summary:
       "Adds a curator-approved HgTe CQD photoconductor record and a mandatory amber classification for Johnson-noise-only detectivity estimates.",

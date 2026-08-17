@@ -13,6 +13,7 @@ export type { DetectorClass } from "@/lib/data/types";
 export const NOISE_METHODS = [
   "measured_noise",
   "shot_noise_approximation",
+  "johnson_noise_approximation",
   "calculated_shot_and_thermal_noise",
   "nep_from_minimum_detectable_power",
   "unspecified",

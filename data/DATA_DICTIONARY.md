@@ -148,6 +148,8 @@ correction and cannot be published without a valid class.
   spectrum.
 - `shot_noise_approximation`: shot-noise approximation; always amber and must
   include `shot_noise_approximation` in `amber_reasons`.
+- `johnson_noise_approximation`: Johnson-noise-only approximation; always amber
+  and must include `johnson_noise_approximation` in `amber_reasons`.
 - `calculated_shot_and_thermal_noise`: calculated shot and thermal terms;
   preserved as methodology metadata but not automatically amber.
 - `nep_from_minimum_detectable_power`: NEP obtained from a minimum detectable
@@ -203,7 +205,8 @@ ranges.
   total noise.
 
 `not_reported` and `not_applicable` cannot be combined with another instrument.
-Every shot-noise-approximation record must use `not_applicable`. A missing or
+Every shot-noise- or Johnson-noise-approximation record must use
+`not_applicable`. A missing or
 unreported instrument does not change the green/amber flag. A lock-in counts
 only when it acquired noise; lock-ins used only for EQE, responsivity, or other
 optical characterization are excluded from `noise_instruments`.
@@ -213,14 +216,16 @@ optical characterization are excluded from `noise_instruments`.
 | Key                                     | When to use                                                                                |
 | --------------------------------------- | ------------------------------------------------------------------------------------------ |
 | `shot_noise_approximation`              | Shot-noise approximation was used.                                                         |
+| `johnson_noise_approximation`           | A Johnson-noise-only approximation was used.                                               |
 | `lock_in_only_noise_measurement`        | A lock-in amplifier was the sole noise-acquisition class.                                  |
 | `source_measure_unit_noise_measurement` | An SMU or parameter analyzer acquired the noise signal.                                    |
 | `noise_method_not_reported`             | A curator determined that an unreported D* noise basis materially limits interpretation.   |
 | `above_blip_limit`                      | Reported D* appears substantially above a plausible BLIP limit and warrants manual review. |
 | `below_preamplifier_noise_floor`        | Measured device noise falls below the reported current-preamplifier noise floor.           |
 
-The validator automatically requires `shot_noise_approximation` when that noise
-method is selected, `lock_in_only_noise_measurement` when `lock_in_amplifier` is
+The validator automatically requires `shot_noise_approximation` or
+`johnson_noise_approximation` when the matching modeled-noise method is selected,
+`lock_in_only_noise_measurement` when `lock_in_amplifier` is
 the only noise instrument, and `source_measure_unit_noise_measurement` whenever
 `source_measure_unit` acquired noise. A mixed FFT-plus-lock-in workflow does not
 trigger the lock-in-only reason. `noise_method_not_reported`, `above_blip_limit`,

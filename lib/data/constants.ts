@@ -11,6 +11,7 @@ export const DEMONSTRATION_NOTICE =
 export const NOISE_METHOD_LABELS: Record<NoiseMethod, string> = {
   measured_noise: "Measured noise",
   shot_noise_approximation: "Shot-noise estimate",
+  johnson_noise_approximation: "Johnson-noise estimate",
   calculated_shot_and_thermal_noise: "Calculated shot and thermal noise",
   nep_from_minimum_detectable_power: "NEP from minimum detectable power",
   unspecified: "Noise method not specified",
@@ -47,6 +48,11 @@ export const AMBER_REASON_DETAILS: Record<AmberReason, AmberReasonDetail> = {
     label: "Shot-noise estimate",
     explanation:
       "Detectivity was calculated using a shot-noise approximation rather than a measured total-noise spectrum.",
+  },
+  johnson_noise_approximation: {
+    label: "Johnson-noise estimate",
+    explanation:
+      "Detectivity was calculated using a Johnson-noise-only approximation rather than a measured total-noise spectrum.",
   },
   lock_in_only_noise_measurement: {
     label: "Lock-in-only noise measurement",

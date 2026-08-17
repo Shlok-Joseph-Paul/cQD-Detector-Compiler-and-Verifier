@@ -40,6 +40,7 @@ export type PublicationType = (typeof PUBLICATION_TYPES)[number];
 export const NOISE_METHODS = [
   "measured_noise",
   "shot_noise_approximation",
+  "johnson_noise_approximation",
   "calculated_shot_and_thermal_noise",
   "nep_from_minimum_detectable_power",
   "unspecified",
@@ -118,6 +119,7 @@ export type Flag = (typeof FLAGS)[number];
  */
 export const AMBER_REASONS = [
   "shot_noise_approximation",
+  "johnson_noise_approximation",
   "lock_in_only_noise_measurement",
   "source_measure_unit_noise_measurement",
   "noise_method_not_reported",
@@ -230,7 +232,7 @@ export interface JoinedMeasurement {
 }
 
 export interface AtlasData extends AtlasEntities {
-  schema_version: 4;
+  schema_version: 5;
   /** Human-facing release identifier for reproducible exports and citations. */
   dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */

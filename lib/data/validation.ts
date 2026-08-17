@@ -84,6 +84,10 @@ export function deriveRequiredAmberReasons(
     reasons.push("shot_noise_approximation");
   }
 
+  if (measurement.noise_method === "johnson_noise_approximation") {
+    reasons.push("johnson_noise_approximation");
+  }
+
   if (instruments.length === 1 && instruments[0] === "lock_in_amplifier") {
     reasons.push("lock_in_only_noise_measurement");
   }
@@ -793,13 +797,14 @@ function validateMeasurement(
       );
     }
     if (
-      measurement.noise_method === "shot_noise_approximation" &&
+      (measurement.noise_method === "shot_noise_approximation" ||
+        measurement.noise_method === "johnson_noise_approximation") &&
       (instruments.length !== 1 || instruments[0] !== "not_applicable")
     ) {
       add(
         "noise_instruments",
-        "shot_noise_instrument_mismatch",
-        "Shot-noise approximations must use not_applicable because total noise was not measured.",
+        "modeled_noise_instrument_mismatch",
+        "Shot-noise and Johnson-noise approximations must use not_applicable because total noise was not measured.",
       );
     }
     if (

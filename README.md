@@ -66,9 +66,9 @@ the measurement—not a paper, a champion value selected by the atlas, or an
 average across devices.
 
 Only green and amber public flags are used. Amber does **not** mean a result is
-incorrect. It is required for a shot-noise approximation, a lock-in amplifier
-used as the sole noise-acquisition method, or noise acquired by a source measure
-unit. A curator may also apply amber when an unreported D* noise basis materially
+incorrect. It is required for a shot-noise approximation, a Johnson-noise-only
+approximation, a lock-in amplifier used as the sole noise-acquisition method,
+or noise acquired by a source measure unit. A curator may also apply amber when an unreported D* noise basis materially
 limits interpretation at a critical operating point, or when reported D* is
 substantially above a plausible BLIP limit. These judgments are never inferred
 from a blank field; the BLIP comparison is made only when straightforward, and the
@@ -210,8 +210,9 @@ a guessed value as a substitute for missing information.
    source page/figure/table/supporting-information location, operating
    conditions, and curator notes. Preserve the source units in notes when a
    conversion is needed.
-7. **Apply flags.** Shot-noise approximations, lock-in-only noise acquisition,
-   and source-measure-unit noise acquisition are always amber. A clearly
+7. **Apply flags.** Shot-noise approximations, Johnson-noise-only
+   approximations, lock-in-only noise acquisition, and source-measure-unit
+   noise acquisition are always amber. A clearly
    anomalous value above a plausible BLIP limit may be marked amber after
    curator review. A lock-in used only for EQE or responsivity does not count as
    a noise instrument. Other missing or incomplete fields do not affect the

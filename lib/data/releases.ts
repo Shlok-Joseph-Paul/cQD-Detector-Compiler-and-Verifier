@@ -6,13 +6,26 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.6.0";
-export const DATASET_RELEASE_DATE = "2026-08-14";
+export const DATASET_VERSION = "1.7.0";
+export const DATASET_RELEASE_DATE = "2026-08-17";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Johnson-noise photoconductor caution",
+    summary:
+      "Adds a curator-approved HgTe CQD photoconductor record and a mandatory amber classification for Johnson-noise-only detectivity estimates.",
+    changes: [
+      "Added the Sanvordenker et al. HgTe branched-nanorod photoconductor at the curator-directed 1100 nm representative wavelength.",
+      "Added a Johnson-noise-approximation noise method and matching automatically required amber reason.",
+      "Preserved that the source used broadband infrared illumination above 1.1 µm and did not measure a total-noise spectrum.",
+      "Recorded the curator assessment that the reported D* is likely overestimated by orders of magnitude.",
+    ],
+  },
+  {
+    version: "1.6.0",
+    date: "2026-08-14",
     title: "Avalanche and lead-free CQD additions",
     summary:
       "Adds two curator-reviewed CQD photodiode papers with device-resolved ligand chemistry, operating conditions, speed metrics, and explicit noise cautions.",

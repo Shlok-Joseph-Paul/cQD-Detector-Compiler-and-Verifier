@@ -1,7 +1,7 @@
 {
-  "schema_version": 4,
-  "dataset_version": "1.6.0",
-  "generated_at": "2026-08-14T00:00:00.000Z",
+  "schema_version": 5,
+  "dataset_version": "1.7.0",
+  "generated_at": "2026-08-17T00:00:00.000Z",
   "papers": [
     {
       "paper_id": "xu-2022-pbs-si-heterojunction",
@@ -1623,6 +1623,27 @@
       "publication_type": "journal_article",
       "peer_reviewed": true,
       "notes": "Peer-reviewed primary research. Main article reviewed; Supporting Information was referenced but not supplied. Detectivity uses the reported shot-noise approximation."
+    },
+    {
+      "paper_id": "sanvordenker-2026-hgte-nanorods",
+      "title": "Chemically and Morphologically Stable HgTe Nanorods for Infrared Photodetector Applications",
+      "authors": [
+        "Shea Sanvordenker",
+        "Andrei Dolocan",
+        "Zaheer Ahmad",
+        "Jamie Howell",
+        "Sejal V. Shah",
+        "Richard Pimpinella",
+        "Brian A. Korgel"
+      ],
+      "first_author": "Shea Sanvordenker",
+      "journal": "Chemistry of Materials",
+      "publication_year": 2026,
+      "doi": "10.1021/acs.chemmater.6c01452",
+      "publication_url": "https://doi.org/10.1021/acs.chemmater.6c01452",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Peer-reviewed HgTe CQD photoconductor study. Supporting Information was referenced but not supplied. The 1100 nm measurement wavelength is a curator-directed representative threshold for the reported broadband infrared illumination above 1.1 µm."
     }
   ],
   "devices": [
@@ -3468,6 +3489,25 @@
       "ligand_exchange_conditions": "Solution-phase exchange used 0.3 mmol AgI, 0.3 mmol MAI, 0.06 mmol AgBr, and 0.06 mmol MABr in 3 mL DMF with 3 mL of 6 mg/mL OLA-capped AgBiS2 NCs for 90 s; the separate p+ layer used 0.01 vol% EDT in acetonitrile for 30 s followed by three rinses.",
       "ligand_exchange_source_location": "Main article PDF p. 3, Sections 2.4-2.5",
       "device_notes": "Dual-halometallate target device."
+    },
+    {
+      "device_id": "sanvordenker-2026-hgte-nanorod-device",
+      "paper_id": "sanvordenker-2026-hgte-nanorods",
+      "technology_family": "cqd",
+      "detector_class": "photoconductor",
+      "material_family": "HgTe",
+      "material_composition": "DDT-capped branched HgTe nanorods with post-deposition EDT/HCl ligand exchange",
+      "device_architecture": "Planar single-element photoconductor with interdigitated electrodes",
+      "device_stack": "Si substrate / interdigitated Au electrodes / HgTe branched-nanorod film",
+      "active_area_cm2": 0.01,
+      "ligand_exchange_status": "reported",
+      "ligand_exchange_type": "mixed",
+      "ligand_exchange_chemicals": "1-dodecanethiol (DDT)|1,2-ethanedithiol (EDT)|hydrochloric acid (HCl)",
+      "native_ligands": "oleylamine (OAm)",
+      "ligand_exchange_target": "HgTe branched nanorods and deposited nanorod film",
+      "ligand_exchange_conditions": "Solution-phase DDT exchange used 2 mL DDT in 5 mL toluene with 1 h bath sonication; the deposited film was immersed in 20:1:1 isopropanol:HCl:EDT for 30 s and dried under vacuum for 1 h.",
+      "ligand_exchange_source_location": "Main article PDF pp. 2-3, Ligand Exchange in Solution and Single-Element Detector Fabrication and Photoconductivity Measurements",
+      "device_notes": "Curator-approved photoconductor scope exception. The retained point represents the initial DDT-to-EDT branched-nanorod device; distinct aging, storage, annealing, oxidation, tetrahedron, and alternative-ligand variants are not imported."
     }
   ],
   "measurements": [
@@ -10012,6 +10052,63 @@
       "curator_notes": "Approved by Shlok on 2026-08-14. The Keithley instruments acquired J-V data rather than noise.",
       "date_added": "2026-08-14",
       "date_updated": "2026-08-14"
+    },
+    {
+      "measurement_id": "sanvordenker-2026-hgte-nanorod-1100-pos2",
+      "device_id": "sanvordenker-2026-hgte-nanorod-device",
+      "wavelength_nm": 1100,
+      "detectivity_jones": 700000000000,
+      "responsivity_a_w": 0.6,
+      "responsivity_wavelength_nm": null,
+      "responsivity_bias_v": 2,
+      "responsivity_temperature_k": null,
+      "responsivity_source_location": "Main article PDF p. 5, Figure 4a and accompanying text",
+      "responsivity_extraction_method": "directly_reported",
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": 2,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "rise_time_s": null,
+      "fall_time_s": null,
+      "response_time_definition": null,
+      "response_time_wavelength_nm": null,
+      "response_time_bias_v": null,
+      "response_time_source_location": null,
+      "response_time_limit": null,
+      "response_time_extraction_method": "ambiguous",
+      "bandwidth_hz": null,
+      "bandwidth_bias_v": null,
+      "bandwidth_source_location": null,
+      "bandwidth_limit": null,
+      "bandwidth_extraction_method": "ambiguous",
+      "linear_dynamic_range_db": null,
+      "linear_dynamic_range_min": null,
+      "linear_dynamic_range_max": null,
+      "linear_dynamic_range_units": null,
+      "linear_dynamic_range_definition": null,
+      "linear_dynamic_range_source_location": null,
+      "linear_dynamic_range_extraction_method": "ambiguous",
+      "extended_metrics_review_status": "source_unavailable",
+      "extended_metrics_review_date": "2026-08-17",
+      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. The paper reports no response time, rise time, fall time, explicit -3 dB bandwidth, or linear dynamic range in the supplied source. The stored 1100 nm wavelength is a curator-directed representative threshold for broadband infrared illumination above 1.1 µm.",
+      "noise_method": "johnson_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "D* was estimated from responsivity, active area, temperature, and zero-bias resistance using a Johnson-noise-only expression. The Keithley 2400 measured dark current and photocurrent at 2 V and did not acquire a noise spectrum.",
+      "noise_instrument_source": "Main article PDF p. 3, Equation 1 and Single-Element Detector Fabrication and Photoconductivity Measurements",
+      "detectivity_extraction_method": "graphically_extracted",
+      "source_location": "Main article PDF pp. 4-5, Figure 4a and accompanying text",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "johnson_noise_approximation"
+      ],
+      "amber_explanation": "Detectivity assumes only Johnson noise rather than measured total noise and is likely overestimated by orders of magnitude.",
+      "curator_notes": "Approved by Shlok on 2026-08-17 as a photoconductor scope exception at 1100 nm. D*=7e11 Jones is graphically extracted to one significant digit for the initial DDT-to-EDT branched-nanorod device under broadband IR illumination above 1.1 µm.",
+      "date_added": "2026-08-17",
+      "date_updated": "2026-08-17"
     }
   ],
   "records": [
@@ -21858,6 +21955,105 @@
         "curator_notes": "Approved by Shlok on 2026-08-14. The Keithley instruments acquired J-V data rather than noise.",
         "date_added": "2026-08-14",
         "date_updated": "2026-08-14"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "sanvordenker-2026-hgte-nanorods",
+        "title": "Chemically and Morphologically Stable HgTe Nanorods for Infrared Photodetector Applications",
+        "authors": [
+          "Shea Sanvordenker",
+          "Andrei Dolocan",
+          "Zaheer Ahmad",
+          "Jamie Howell",
+          "Sejal V. Shah",
+          "Richard Pimpinella",
+          "Brian A. Korgel"
+        ],
+        "first_author": "Shea Sanvordenker",
+        "journal": "Chemistry of Materials",
+        "publication_year": 2026,
+        "doi": "10.1021/acs.chemmater.6c01452",
+        "publication_url": "https://doi.org/10.1021/acs.chemmater.6c01452",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Peer-reviewed HgTe CQD photoconductor study. Supporting Information was referenced but not supplied. The 1100 nm measurement wavelength is a curator-directed representative threshold for the reported broadband infrared illumination above 1.1 µm."
+      },
+      "device": {
+        "device_id": "sanvordenker-2026-hgte-nanorod-device",
+        "paper_id": "sanvordenker-2026-hgte-nanorods",
+        "technology_family": "cqd",
+        "detector_class": "photoconductor",
+        "material_family": "HgTe",
+        "material_composition": "DDT-capped branched HgTe nanorods with post-deposition EDT/HCl ligand exchange",
+        "device_architecture": "Planar single-element photoconductor with interdigitated electrodes",
+        "device_stack": "Si substrate / interdigitated Au electrodes / HgTe branched-nanorod film",
+        "active_area_cm2": 0.01,
+        "ligand_exchange_status": "reported",
+        "ligand_exchange_type": "mixed",
+        "ligand_exchange_chemicals": "1-dodecanethiol (DDT)|1,2-ethanedithiol (EDT)|hydrochloric acid (HCl)",
+        "native_ligands": "oleylamine (OAm)",
+        "ligand_exchange_target": "HgTe branched nanorods and deposited nanorod film",
+        "ligand_exchange_conditions": "Solution-phase DDT exchange used 2 mL DDT in 5 mL toluene with 1 h bath sonication; the deposited film was immersed in 20:1:1 isopropanol:HCl:EDT for 30 s and dried under vacuum for 1 h.",
+        "ligand_exchange_source_location": "Main article PDF pp. 2-3, Ligand Exchange in Solution and Single-Element Detector Fabrication and Photoconductivity Measurements",
+        "device_notes": "Curator-approved photoconductor scope exception. The retained point represents the initial DDT-to-EDT branched-nanorod device; distinct aging, storage, annealing, oxidation, tetrahedron, and alternative-ligand variants are not imported."
+      },
+      "measurement": {
+        "measurement_id": "sanvordenker-2026-hgte-nanorod-1100-pos2",
+        "device_id": "sanvordenker-2026-hgte-nanorod-device",
+        "wavelength_nm": 1100,
+        "detectivity_jones": 700000000000,
+        "responsivity_a_w": 0.6,
+        "responsivity_wavelength_nm": null,
+        "responsivity_bias_v": 2,
+        "responsivity_temperature_k": null,
+        "responsivity_source_location": "Main article PDF p. 5, Figure 4a and accompanying text",
+        "responsivity_extraction_method": "directly_reported",
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": 2,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "rise_time_s": null,
+        "fall_time_s": null,
+        "response_time_definition": null,
+        "response_time_wavelength_nm": null,
+        "response_time_bias_v": null,
+        "response_time_source_location": null,
+        "response_time_limit": null,
+        "response_time_extraction_method": "ambiguous",
+        "bandwidth_hz": null,
+        "bandwidth_bias_v": null,
+        "bandwidth_source_location": null,
+        "bandwidth_limit": null,
+        "bandwidth_extraction_method": "ambiguous",
+        "linear_dynamic_range_db": null,
+        "linear_dynamic_range_min": null,
+        "linear_dynamic_range_max": null,
+        "linear_dynamic_range_units": null,
+        "linear_dynamic_range_definition": null,
+        "linear_dynamic_range_source_location": null,
+        "linear_dynamic_range_extraction_method": "ambiguous",
+        "extended_metrics_review_status": "source_unavailable",
+        "extended_metrics_review_date": "2026-08-17",
+        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. The paper reports no response time, rise time, fall time, explicit -3 dB bandwidth, or linear dynamic range in the supplied source. The stored 1100 nm wavelength is a curator-directed representative threshold for broadband infrared illumination above 1.1 µm.",
+        "noise_method": "johnson_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "D* was estimated from responsivity, active area, temperature, and zero-bias resistance using a Johnson-noise-only expression. The Keithley 2400 measured dark current and photocurrent at 2 V and did not acquire a noise spectrum.",
+        "noise_instrument_source": "Main article PDF p. 3, Equation 1 and Single-Element Detector Fabrication and Photoconductivity Measurements",
+        "detectivity_extraction_method": "graphically_extracted",
+        "source_location": "Main article PDF pp. 4-5, Figure 4a and accompanying text",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "johnson_noise_approximation"
+        ],
+        "amber_explanation": "Detectivity assumes only Johnson noise rather than measured total noise and is likely overestimated by orders of magnitude.",
+        "curator_notes": "Approved by Shlok on 2026-08-17 as a photoconductor scope exception at 1100 nm. D*=7e11 Jones is graphically extracted to one significant digit for the initial DDT-to-EDT branched-nanorod device under broadband IR illumination above 1.1 µm.",
+        "date_added": "2026-08-17",
+        "date_updated": "2026-08-17"
       }
     }
   ]

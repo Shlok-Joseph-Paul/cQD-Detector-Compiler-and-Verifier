@@ -36,6 +36,7 @@ const SUPERSCRIPT_DIGITS: Record<string, string> = {
 export const NOISE_METHOD_LABELS: Record<NoiseMethod, string> = {
   measured_noise: "Measured noise",
   shot_noise_approximation: "Shot-noise approximation",
+  johnson_noise_approximation: "Johnson-noise approximation",
   calculated_shot_and_thermal_noise: "Calculated shot and thermal noise",
   nep_from_minimum_detectable_power: "NEP from minimum detectable power",
   unspecified: "Unspecified",
@@ -69,6 +70,8 @@ export const BIAS_LABELS: Record<BiasCondition, string> = {
 export const AMBER_REASON_LABELS: Record<string, string> = {
   shot_noise_approximation:
     "Detectivity was calculated using a shot-noise approximation rather than a measured total-noise spectrum.",
+  johnson_noise_approximation:
+    "Detectivity was calculated using a Johnson-noise-only approximation rather than a measured total-noise spectrum.",
   lock_in_only_noise_measurement:
     "Noise was acquired using only a lock-in amplifier; interpret comparisons with full-spectrum noise measurements with caution.",
   source_measure_unit_noise_measurement:

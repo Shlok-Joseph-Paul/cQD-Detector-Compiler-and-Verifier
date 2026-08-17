@@ -150,19 +150,26 @@ function detectNoise(pages: PageText[]): {
   const shot =
     /shot[\s-]*noise/.test(lower) &&
     /calculat|estimat|assum|theoretical|sqrt|√/.test(lower);
+  const johnson =
+    /johnson[\s-]*noise/.test(lower) &&
+    /only accounts|only includes|calculat|estimat|assum|maximum value/.test(
+      lower,
+    );
   const measured =
     /noise\s+(?:current\s+|power\s+)?spectr|noise\s+spectral\s+density|measured\s+noise|noise\s+measurement/.test(
       lower,
     );
   const minimumPower =
     /minimum detectable (?:power|signal)|noise equivalent power/.test(lower);
-  const method: Measurement["noise_method"] = measured
-    ? "measured_noise"
-    : shot
-      ? "shot_noise_approximation"
-      : minimumPower
-        ? "nep_from_minimum_detectable_power"
-        : "unspecified";
+  const method: Measurement["noise_method"] = johnson
+    ? "johnson_noise_approximation"
+    : measured
+      ? "measured_noise"
+      : shot
+        ? "shot_noise_approximation"
+        : minimumPower
+          ? "nep_from_minimum_detectable_power"
+          : "unspecified";
   const instruments: NoiseInstrument[] = [];
   const instrumentPatterns: Array<[NoiseInstrument, RegExp]> = [
     ["spectrum_analyzer", /(?:spectrum|signal|dynamic signal) analy[sz]er/i],
@@ -210,7 +217,10 @@ function detectNoise(pages: PageText[]): {
       source ??= pageLocation(page);
     }
   }
-  if (method === "shot_noise_approximation")
+  if (
+    method === "shot_noise_approximation" ||
+    method === "johnson_noise_approximation"
+  )
     instruments.splice(0, instruments.length, "not_applicable");
   else if (method === "measured_noise" && instruments.length === 0)
     instruments.push("not_reported");
@@ -218,6 +228,8 @@ function detectNoise(pages: PageText[]): {
   const amberReasons: Measurement["amber_reasons"] = [];
   if (method === "shot_noise_approximation")
     amberReasons.push("shot_noise_approximation");
+  if (method === "johnson_noise_approximation")
+    amberReasons.push("johnson_noise_approximation");
   if (instruments.length === 1 && instruments[0] === "lock_in_amplifier")
     amberReasons.push("lock_in_only_noise_measurement");
   if (instruments.includes("source_measure_unit"))

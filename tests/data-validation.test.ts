@@ -95,12 +95,14 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     readFile(new URL("measurements.csv", dataDirectory), "utf8"),
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
-  assert.equal(atlas.schema_version, 4);
+  assert.equal(atlas.schema_version, 5);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 117);
+  assert.equal(atlas.measurements.length, 118);
   assert.equal(atlas.records.length, atlas.measurements.length);
-  assert.ok(
-    atlas.devices.every((record) => record.detector_class === "photodiode"),
+  assert.equal(
+    atlas.devices.filter((record) => record.detector_class === "photoconductor")
+      .length,
+    1,
   );
   const preprintRecords = atlas.records.filter(
     ({ paper: source }) => source.publication_type === "preprint",
@@ -115,12 +117,18 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 52);
+  assert.equal(amberRecords.length, 53);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
     ).length,
     27,
+  );
+  assert.equal(
+    amberRecords.filter(({ measurement }) =>
+      measurement.amber_reasons.includes("johnson_noise_approximation"),
+    ).length,
+    1,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -296,7 +304,7 @@ test("noise-instrument classifications remain consistent with the noise method",
     shotNoiseWithAnalyzer.issues.some(
       ({ field, code }) =>
         field === "noise_instruments" &&
-        code === "shot_noise_instrument_mismatch",
+        code === "modeled_noise_instrument_mismatch",
     ),
   );
 
@@ -368,6 +376,19 @@ test("shot-noise records are automatically amber and strict validation catches s
         field === "amber_reasons" && code === "missing_required_reason",
     ),
   );
+});
+
+test("Johnson-noise-only records are automatically amber", () => {
+  const johnsonNoise: Measurement = {
+    ...measurement,
+    noise_method: "johnson_noise_approximation",
+    noise_instruments: ["not_applicable"],
+    noise_instrument_details: "Johnson-noise-only approximation.",
+  };
+  const normalized = applyAutomaticAmberRules(johnsonNoise);
+  assert.equal(normalized.flag, "amber");
+  assert.deepEqual(normalized.amber_reasons, ["johnson_noise_approximation"]);
+  assert.match(normalized.amber_explanation ?? "", /Johnson-noise-only/i);
 });
 
 test("amber records require both machine-readable reasons and human-readable context", () => {

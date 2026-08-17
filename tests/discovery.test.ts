@@ -678,6 +678,29 @@ test("extractor stages co-located detectivity and wavelength with conservative n
   assert.equal(proposal.proposedMeasurements[0].flag, "amber");
 });
 
+test("extractor marks Johnson-noise-only detectivity amber", () => {
+  const markedText = [
+    "=== PDF PAGE 1 ===",
+    "We fabricated a solution-processed colloidal quantum dot photodiode based on HgTe CQDs.",
+    "=== PDF PAGE 2 ===",
+    "At 1100 nm and 2 V, the specific detectivity D* reached 7 × 10^11 Jones. This relationship only accounts for Johnson noise and represents the maximum possible D*.",
+  ].join("\n");
+  const proposal = extractStagedProposal(
+    candidate({ candidateMaterialClasses: ["HgTe"] }),
+    proposalSource,
+    markedText,
+    new Date("2026-08-17T00:00:00.000Z"),
+  );
+  assert.equal(
+    proposal.proposedMeasurements[0].noise_method,
+    "johnson_noise_approximation",
+  );
+  assert.deepEqual(proposal.proposedMeasurements[0].amber_reasons, [
+    "johnson_noise_approximation",
+  ]);
+  assert.equal(proposal.proposedMeasurements[0].flag, "amber");
+});
+
 test("detector classifier distinguishes supported mechanisms from generic wording", () => {
   const classify = (text: string) =>
     classifyDetectorClass([{ page: 4, documentLabel: "Main article", text }]);

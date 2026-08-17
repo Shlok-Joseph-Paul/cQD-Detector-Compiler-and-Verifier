@@ -344,6 +344,10 @@ test("scientific and missing-value formatting is explicit", () => {
   assert.equal(formatWithUnit(null, "K"), NOT_REPORTED);
   assert.match(formatAmberReason("shot_noise_approximation"), /shot-noise/i);
   assert.match(
+    formatAmberReason("johnson_noise_approximation"),
+    /Johnson-noise-only/i,
+  );
+  assert.match(
     formatAmberReason("below_preamplifier_noise_floor"),
     /preamplifier noise floor/i,
   );

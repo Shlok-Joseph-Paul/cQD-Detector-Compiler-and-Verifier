@@ -75,7 +75,7 @@ export const AMBER_REASON_LABELS: Record<string, string> = {
   lock_in_only_noise_measurement:
     "Noise was acquired using only a lock-in amplifier; interpret comparisons with full-spectrum noise measurements with caution.",
   source_measure_unit_noise_measurement:
-    "Noise was acquired using a source measure unit or parameter analyzer rather than a dedicated noise-measurement instrument.",
+    "Noise was acquired using a source measure unit or parameter analyzer without a spectrum or dynamic-signal analyzer in the reported acquisition chain.",
   above_blip_limit:
     "The reported detectivity appears substantially above a plausible BLIP limit and warrants manual review.",
   below_preamplifier_noise_floor:

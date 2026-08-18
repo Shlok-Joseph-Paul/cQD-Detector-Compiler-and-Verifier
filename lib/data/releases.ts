@@ -6,10 +6,24 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.8.0";
+export const DATASET_VERSION = "1.9.0";
 export const DATASET_RELEASE_DATE = "2026-08-17";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
+  {
+    version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "Measured-noise SWIR photodiode expansion",
+    summary:
+      "Adds three curator-approved HgTe, PbS, and Sn–Pb photodiode papers and refines green eligibility for mixed noise-acquisition chains.",
+    changes: [
+      "Added hybrid-passivated HgTe CQD, HIES-modified PbS CQD/organic, and Sn(SCN)2-passivated Sn–Pb perovskite photodiodes with four measured-noise D* records.",
+      "Stored the HIES device's engineering-comparable 65 dB LDR while preserving the authors' warning that the materials-field formula yields an overestimated 130 dB value.",
+      "Recorded the Sn–Pb device's complete dynamic-signal-analyzer, preamplifier, lock-in, and parameter-analyzer noise chain together with its measured 1/f spectrum.",
+      "Refined the automatic caution policy so parameter-analyzer-only noise acquisition remains amber, while mixed workflows that also report a spectrum or dynamic-signal analyzer remain eligible for green curator review.",
+      "Published all four new measurements as green following explicit curator approval.",
+    ],
+  },
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,

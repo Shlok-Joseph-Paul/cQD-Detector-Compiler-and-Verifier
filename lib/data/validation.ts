@@ -92,7 +92,10 @@ export function deriveRequiredAmberReasons(
     reasons.push("lock_in_only_noise_measurement");
   }
 
-  if (instruments.includes("source_measure_unit")) {
+  if (
+    instruments.includes("source_measure_unit") &&
+    !instruments.includes("spectrum_analyzer")
+  ) {
     reasons.push("source_measure_unit_noise_measurement");
   }
 

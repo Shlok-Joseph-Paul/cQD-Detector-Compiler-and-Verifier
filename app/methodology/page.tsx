@@ -33,7 +33,7 @@ const greenCriteria = [
   "The value does not use a shot-noise approximation.",
   "The value does not use a Johnson-noise-only approximation.",
   "A lock-in amplifier was not the sole noise-acquisition method.",
-  "A source measure unit was not used to acquire the noise signal.",
+  "A source measure unit was not the sole spectral acquisition route; mixed workflows that also use a spectrum or dynamic-signal analyzer remain eligible for green review.",
   "No curator-applied caution identifies an unreported D* noise basis as material to interpretation.",
   "The reported detectivity does not appear substantially above a plausible BLIP limit.",
   "The measured device noise was not reported below the current preamplifier noise floor.",
@@ -43,7 +43,7 @@ const amberReasons = [
   "Detectivity uses a shot-noise approximation.",
   "Detectivity uses a Johnson-noise-only approximation.",
   "A lock-in amplifier was the sole noise-acquisition method.",
-  "A source measure unit or parameter analyzer acquired the noise signal.",
+  "A source measure unit or parameter analyzer acquired the noise signal without a spectrum or dynamic-signal analyzer in the reported acquisition chain.",
   "A curator determined that the publication does not establish the D* noise basis at a critical operating point.",
   "The reported detectivity appears substantially above a plausible background-limited infrared photodetection (BLIP) limit and warrants manual review.",
   "The measured device noise was reported below the current preamplifier noise floor.",
@@ -296,15 +296,18 @@ export default function MethodologyPage() {
               Every amber record carries at least one machine-readable reason
               and a human-readable explanation. Shot-noise approximations,
               Johnson-noise-only approximations, lock-in-only noise
-              measurements, and source-measure-unit noise measurements are
+              measurements, and source-measure-unit-only noise acquisition are
               always amber. Mixed FFT-plus-lock-in acquisition does not trigger
-              the lock-in-only rule. A potential BLIP-limit concern is applied
-              by a curator only when the comparison is straightforward and the
-              reported value is clearly anomalous. A curator may also apply
-              amber when an unreported D* noise basis materially limits
-              interpretation at a critical operating point, such as high reverse
-              bias. This is not inferred automatically from a missing field. An
-              amber flag is never shown without an explanation.
+              the lock-in-only rule. A source measure unit or parameter analyzer
+              used alongside a spectrum or dynamic-signal analyzer does not
+              trigger the source-measure-unit rule. A potential BLIP-limit
+              concern is applied by a curator only when the comparison is
+              straightforward and the reported value is clearly anomalous. A
+              curator may also apply amber when an unreported D* noise basis
+              materially limits interpretation at a critical operating point,
+              such as high reverse bias. This is not inferred automatically from
+              a missing field. An amber flag is never shown without an
+              explanation.
             </p>
           </section>
 

@@ -97,7 +97,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 5);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 134);
+  assert.equal(atlas.measurements.length, 138);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.equal(
     atlas.devices.filter((record) => record.detector_class === "photoconductor")
@@ -345,6 +345,13 @@ test("automatic amber rules distinguish lock-in-only and SMU noise acquisition",
   assert.deepEqual(sourceMeasureUnit.amber_reasons, [
     "source_measure_unit_noise_measurement",
   ]);
+
+  const spectrumAnalyzerWithSourceMeasureUnit = applyAutomaticAmberRules({
+    ...measurement,
+    noise_instruments: ["spectrum_analyzer", "source_measure_unit"],
+  });
+  assert.equal(spectrumAnalyzerWithSourceMeasureUnit.flag, "green");
+  assert.deepEqual(spectrumAnalyzerWithSourceMeasureUnit.amber_reasons, []);
 });
 
 test("shot-noise records are automatically amber and strict validation catches stale green input", () => {

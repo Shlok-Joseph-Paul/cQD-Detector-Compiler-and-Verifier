@@ -232,7 +232,10 @@ function detectNoise(pages: PageText[]): {
     amberReasons.push("johnson_noise_approximation");
   if (instruments.length === 1 && instruments[0] === "lock_in_amplifier")
     amberReasons.push("lock_in_only_noise_measurement");
-  if (instruments.includes("source_measure_unit"))
+  if (
+    instruments.includes("source_measure_unit") &&
+    !instruments.includes("spectrum_analyzer")
+  )
     amberReasons.push("source_measure_unit_noise_measurement");
   return {
     method,

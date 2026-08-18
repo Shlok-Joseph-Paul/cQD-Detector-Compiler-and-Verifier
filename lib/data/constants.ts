@@ -62,7 +62,7 @@ export const AMBER_REASON_DETAILS: Record<AmberReason, AmberReasonDetail> = {
   source_measure_unit_noise_measurement: {
     label: "Source-measure-unit noise measurement",
     explanation:
-      "Noise was acquired using a source measure unit or parameter analyzer rather than a dedicated noise-measurement instrument.",
+      "Noise was acquired using a source measure unit or parameter analyzer without a spectrum or dynamic-signal analyzer in the reported acquisition chain.",
   },
   noise_method_not_reported: {
     label: "Noise method not reported",

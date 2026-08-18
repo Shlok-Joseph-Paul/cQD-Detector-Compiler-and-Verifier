@@ -6,12 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.10.0";
+export const DATASET_VERSION = "1.11.0";
 export const DATASET_RELEASE_DATE = "2026-08-18";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "CQD interface and HgTe synthesis expansion",
+    summary:
+      "Adds five curator-approved PbS and HgTe CQD photodiode papers with device-resolved interface engineering, measured-noise provenance, and shot-noise cautions.",
+    changes: [
+      "Added 10 devices and 12 measurements spanning top-illuminated PbS microstructures, Poly-TPD/UVO and ionic-density interface engineering, DPP-activated HgTe synthesis, and a CdHgTe CQD electron-transport layer.",
+      "Recorded measured-noise D* for the microstructured PbS, Poly-TPD/UVO PbS, DPP-HgTe, and CdHgTe-ETL devices with their reported acquisition chains and operating frequencies.",
+      "Marked four microstructure measurements amber because a semiconductor parameter analyzer/noise module was the sole reported noise-acquisition instrument.",
+      "Marked four ionic-density measurements amber because D* was calculated from a dark-current shot-noise approximation; preserved the separately measured noise spectrum as contextual evidence rather than the D* basis.",
+      "Captured responsivity, EQE, temporal response, explicit -3 dB bandwidth, and LDR where device and operating-point evidence supported the assignment, while retaining unavailable supplements as source-unavailable reviews.",
+      "Preserved the ionic-density paper's conflict between its no-CPE prose and Table 1, retaining the internally consistent tabulated 1.4e12-Jones value with a curator note.",
+    ],
+  },
+  {
+    version: "1.10.0",
     date: DATASET_RELEASE_DATE,
     title: "PbS homojunction champion addition",
     summary:
@@ -25,7 +40,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
     ],
   },
   {
-    version: DATASET_VERSION,
+    version: "1.9.0",
     date: DATASET_RELEASE_DATE,
     title: "Measured-noise SWIR photodiode expansion",
     summary:
@@ -39,7 +54,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
     ],
   },
   {
-    version: DATASET_VERSION,
+    version: "1.8.0",
     date: DATASET_RELEASE_DATE,
     title: "Six-paper detector expansion",
     summary:

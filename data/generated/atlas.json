@@ -1,6 +1,6 @@
 {
   "schema_version": 5,
-  "dataset_version": "1.9.0",
+  "dataset_version": "1.10.0",
   "generated_at": "2026-08-18T00:00:00.000Z",
   "papers": [
     {
@@ -1930,6 +1930,23 @@
       "publication_type": "journal_article",
       "peer_reviewed": true,
       "notes": "Primary peer-reviewed HgTe CQD MWIR photodiode article. The curated champion uses the approximately 5 µm detector cutoff as the atlas wavelength for a broadband blackbody D* result at Shlok's direction. Supporting Information was referenced but unavailable."
+    },
+    {
+      "paper_id": "zhang-2026-pbs-homojunction-photoresponse",
+      "title": "Tuning the Photoresponse Mode of PbS Quantum Dot Homojunction Photodetectors",
+      "authors": [
+        "Xiaoyu Zhang",
+        "Niuniu Zhang",
+        "Xiangxing Xu"
+      ],
+      "first_author": "Xiaoyu Zhang",
+      "journal": "ACS Applied Nano Materials",
+      "publication_year": 2026,
+      "doi": "10.1021/acsanm.5c04976",
+      "publication_url": "https://doi.org/10.1021/acsanm.5c04976",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "Primary peer-reviewed PbS CQD homojunction photodiode article. The Atlas retains only the 3.6 nm highest-D* device and its weakest-irradiance point at Shlok's direction; the other QD sizes and intensity points are excluded. The complete Supporting Information was reviewed."
     }
   ],
   "devices": [
@@ -4136,6 +4153,25 @@
       "ligand_exchange_conditions": "Layer-by-layer HgTe treatment with EDT/HCl/IPA (1:1:20); Ag2Te layer treated with 10 mM HgCl2 in methanol for 10 s and then 2 vol% EDT/IPA.",
       "ligand_exchange_source_location": "Main article PDF pp. 3 and 7, fabrication and Methods",
       "device_notes": "Selected 0.2 µm-spacer interference-enhanced device from Figure 5; 0.02 mm2 converted to 0.0002 cm2. The approved atlas wavelength is the approximately 5 µm detector cutoff rather than a monochromatic D* illumination wavelength."
+    },
+    {
+      "device_id": "zhang-2026-pbs-homojunction-3p6nm",
+      "paper_id": "zhang-2026-pbs-homojunction-photoresponse",
+      "technology_family": "cqd",
+      "detector_class": "photodiode",
+      "material_family": "PbS",
+      "material_composition": "3.6 nm PbS CQDs with TBAI-exchanged n-type and EDT-exchanged p-type layers",
+      "device_architecture": "vertical PbS CQD p-n homojunction photodiode with bias-tunable photoresponse",
+      "device_stack": "ITO / ZnO nanocrystals / PbS-TBAI (10 layers) / PbS-EDT (5 layers) / Au (100 nm)",
+      "active_area_cm2": 0.09,
+      "ligand_exchange_status": "reported",
+      "ligand_exchange_type": "solid_state",
+      "ligand_exchange_chemicals": "tetrabutylammonium iodide (TBAI)|1,2-ethanedithiol (EDT)",
+      "native_ligands": "oleic acid (OA)",
+      "ligand_exchange_target": "PbS CQD n-type and p-type layers",
+      "ligand_exchange_conditions": "Each of 10 PbS-TBAI layers was immersed in 10 mg/mL TBAI/methanol for 30 s and rinsed twice with methanol; each of 5 PbS-EDT layers was exchanged in 0.04 vol% EDT/acetonitrile for 30 s.",
+      "ligand_exchange_source_location": "Main article PDF p. 3, Sections 2.2-2.3",
+      "device_notes": "Selected 3.6 nm highest-D* variant; PbS QDs were synthesized at 120 °C. The reported 0.09 cm2 Au electrode area is used as the active area. At +1 V the Figure S7 measurement lies in the paper's Region IV high-field photoconductive response mode, although the physical device remains a rectifying p-n homojunction photodiode."
     }
   ],
   "measurements": [
@@ -11906,6 +11942,63 @@
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-18. Champion interference-enhanced device only; lower-D* non-interference and temperature-series values are excluded. The plotted wavelength is the detector cutoff and is not a monochromatic D* excitation wavelength.",
+      "date_added": "2026-08-18",
+      "date_updated": "2026-08-18"
+    },
+    {
+      "measurement_id": "zhang-2026-pbs-homojunction-3p6nm-450-1v",
+      "device_id": "zhang-2026-pbs-homojunction-3p6nm",
+      "wavelength_nm": 450,
+      "detectivity_jones": 120000000000,
+      "responsivity_a_w": 0.125,
+      "responsivity_wavelength_nm": 450,
+      "responsivity_bias_v": 1,
+      "responsivity_temperature_k": null,
+      "responsivity_source_location": "Supporting Information PDF p. 4, Figure S7b",
+      "responsivity_extraction_method": "graphically_extracted",
+      "eqe_percent": null,
+      "temperature_k": null,
+      "bias_v": 1,
+      "measurement_frequency_hz": null,
+      "response_time_s": null,
+      "rise_time_s": null,
+      "fall_time_s": null,
+      "response_time_definition": null,
+      "response_time_wavelength_nm": 450,
+      "response_time_bias_v": null,
+      "response_time_source_location": "Main article PDF pp. 3-4 and Supporting Information PDF p. 1, Figure S2",
+      "response_time_limit": null,
+      "response_time_extraction_method": "ambiguous",
+      "bandwidth_hz": null,
+      "bandwidth_bias_v": null,
+      "bandwidth_source_location": null,
+      "bandwidth_limit": "not_reported",
+      "bandwidth_extraction_method": "not_reported",
+      "linear_dynamic_range_db": null,
+      "linear_dynamic_range_min": null,
+      "linear_dynamic_range_max": null,
+      "linear_dynamic_range_units": null,
+      "linear_dynamic_range_definition": null,
+      "linear_dynamic_range_source_location": null,
+      "linear_dynamic_range_extraction_method": "not_reported",
+      "extended_metrics_review_status": "checked",
+      "extended_metrics_review_date": "2026-08-18",
+      "extended_metrics_notes": "Complete main article and Supporting Information checked. No explicit -3 dB bandwidth or LDR is reported. The Figure S7 EQE axis is omitted because it is internally inconsistent with the plotted responsivity and Equation S2 under the 450 nm context. Reported temporal values are not assigned because QD size and exact bias are not sufficiently matched to this device.",
+      "noise_method": "shot_noise_approximation",
+      "noise_instruments": [
+        "not_applicable"
+      ],
+      "noise_instrument_details": "D* was calculated as R/sqrt(2qJdark) using dark-current density from Keithley 2400 I-V measurements; no total-noise spectrum was acquired.",
+      "noise_instrument_source": "Supporting Information PDF p. 4, Equation S3; main article PDF p. 3, Section 2.4",
+      "detectivity_extraction_method": "graphically_extracted",
+      "source_location": "Supporting Information PDF p. 4, Figure S7b and Equation S3; wavelength context in main article PDF p. 5, Section 3.2",
+      "curator_status": "reviewed",
+      "flag": "amber",
+      "amber_reasons": [
+        "shot_noise_approximation"
+      ],
+      "amber_explanation": "Detectivity was calculated from a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
+      "curator_notes": "Approved by Shlok on 2026-08-18. Only the highest-D* 3.6 nm device and its weakest plotted irradiance of approximately 0.01 W/cm2 are retained; the 3.1 and 4.2 nm variants and remaining intensity points are excluded. Figure S7's caption omits wavelength, so 450 nm is taken from the immediately preceding main-text characterization context. At +1 V the response mode is high-field photoconductive although the device structure is a p-n homojunction photodiode.",
       "date_added": "2026-08-18",
       "date_updated": "2026-08-18"
     }
@@ -25947,6 +26040,101 @@
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-18. Champion interference-enhanced device only; lower-D* non-interference and temperature-series values are excluded. The plotted wavelength is the detector cutoff and is not a monochromatic D* excitation wavelength.",
+        "date_added": "2026-08-18",
+        "date_updated": "2026-08-18"
+      }
+    },
+    {
+      "paper": {
+        "paper_id": "zhang-2026-pbs-homojunction-photoresponse",
+        "title": "Tuning the Photoresponse Mode of PbS Quantum Dot Homojunction Photodetectors",
+        "authors": [
+          "Xiaoyu Zhang",
+          "Niuniu Zhang",
+          "Xiangxing Xu"
+        ],
+        "first_author": "Xiaoyu Zhang",
+        "journal": "ACS Applied Nano Materials",
+        "publication_year": 2026,
+        "doi": "10.1021/acsanm.5c04976",
+        "publication_url": "https://doi.org/10.1021/acsanm.5c04976",
+        "publication_type": "journal_article",
+        "peer_reviewed": true,
+        "notes": "Primary peer-reviewed PbS CQD homojunction photodiode article. The Atlas retains only the 3.6 nm highest-D* device and its weakest-irradiance point at Shlok's direction; the other QD sizes and intensity points are excluded. The complete Supporting Information was reviewed."
+      },
+      "device": {
+        "device_id": "zhang-2026-pbs-homojunction-3p6nm",
+        "paper_id": "zhang-2026-pbs-homojunction-photoresponse",
+        "technology_family": "cqd",
+        "detector_class": "photodiode",
+        "material_family": "PbS",
+        "material_composition": "3.6 nm PbS CQDs with TBAI-exchanged n-type and EDT-exchanged p-type layers",
+        "device_architecture": "vertical PbS CQD p-n homojunction photodiode with bias-tunable photoresponse",
+        "device_stack": "ITO / ZnO nanocrystals / PbS-TBAI (10 layers) / PbS-EDT (5 layers) / Au (100 nm)",
+        "active_area_cm2": 0.09,
+        "ligand_exchange_status": "reported",
+        "ligand_exchange_type": "solid_state",
+        "ligand_exchange_chemicals": "tetrabutylammonium iodide (TBAI)|1,2-ethanedithiol (EDT)",
+        "native_ligands": "oleic acid (OA)",
+        "ligand_exchange_target": "PbS CQD n-type and p-type layers",
+        "ligand_exchange_conditions": "Each of 10 PbS-TBAI layers was immersed in 10 mg/mL TBAI/methanol for 30 s and rinsed twice with methanol; each of 5 PbS-EDT layers was exchanged in 0.04 vol% EDT/acetonitrile for 30 s.",
+        "ligand_exchange_source_location": "Main article PDF p. 3, Sections 2.2-2.3",
+        "device_notes": "Selected 3.6 nm highest-D* variant; PbS QDs were synthesized at 120 °C. The reported 0.09 cm2 Au electrode area is used as the active area. At +1 V the Figure S7 measurement lies in the paper's Region IV high-field photoconductive response mode, although the physical device remains a rectifying p-n homojunction photodiode."
+      },
+      "measurement": {
+        "measurement_id": "zhang-2026-pbs-homojunction-3p6nm-450-1v",
+        "device_id": "zhang-2026-pbs-homojunction-3p6nm",
+        "wavelength_nm": 450,
+        "detectivity_jones": 120000000000,
+        "responsivity_a_w": 0.125,
+        "responsivity_wavelength_nm": 450,
+        "responsivity_bias_v": 1,
+        "responsivity_temperature_k": null,
+        "responsivity_source_location": "Supporting Information PDF p. 4, Figure S7b",
+        "responsivity_extraction_method": "graphically_extracted",
+        "eqe_percent": null,
+        "temperature_k": null,
+        "bias_v": 1,
+        "measurement_frequency_hz": null,
+        "response_time_s": null,
+        "rise_time_s": null,
+        "fall_time_s": null,
+        "response_time_definition": null,
+        "response_time_wavelength_nm": 450,
+        "response_time_bias_v": null,
+        "response_time_source_location": "Main article PDF pp. 3-4 and Supporting Information PDF p. 1, Figure S2",
+        "response_time_limit": null,
+        "response_time_extraction_method": "ambiguous",
+        "bandwidth_hz": null,
+        "bandwidth_bias_v": null,
+        "bandwidth_source_location": null,
+        "bandwidth_limit": "not_reported",
+        "bandwidth_extraction_method": "not_reported",
+        "linear_dynamic_range_db": null,
+        "linear_dynamic_range_min": null,
+        "linear_dynamic_range_max": null,
+        "linear_dynamic_range_units": null,
+        "linear_dynamic_range_definition": null,
+        "linear_dynamic_range_source_location": null,
+        "linear_dynamic_range_extraction_method": "not_reported",
+        "extended_metrics_review_status": "checked",
+        "extended_metrics_review_date": "2026-08-18",
+        "extended_metrics_notes": "Complete main article and Supporting Information checked. No explicit -3 dB bandwidth or LDR is reported. The Figure S7 EQE axis is omitted because it is internally inconsistent with the plotted responsivity and Equation S2 under the 450 nm context. Reported temporal values are not assigned because QD size and exact bias are not sufficiently matched to this device.",
+        "noise_method": "shot_noise_approximation",
+        "noise_instruments": [
+          "not_applicable"
+        ],
+        "noise_instrument_details": "D* was calculated as R/sqrt(2qJdark) using dark-current density from Keithley 2400 I-V measurements; no total-noise spectrum was acquired.",
+        "noise_instrument_source": "Supporting Information PDF p. 4, Equation S3; main article PDF p. 3, Section 2.4",
+        "detectivity_extraction_method": "graphically_extracted",
+        "source_location": "Supporting Information PDF p. 4, Figure S7b and Equation S3; wavelength context in main article PDF p. 5, Section 3.2",
+        "curator_status": "reviewed",
+        "flag": "amber",
+        "amber_reasons": [
+          "shot_noise_approximation"
+        ],
+        "amber_explanation": "Detectivity was calculated from a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
+        "curator_notes": "Approved by Shlok on 2026-08-18. Only the highest-D* 3.6 nm device and its weakest plotted irradiance of approximately 0.01 W/cm2 are retained; the 3.1 and 4.2 nm variants and remaining intensity points are excluded. Figure S7's caption omits wavelength, so 450 nm is taken from the immediately preceding main-text characterization context. At +1 V the response mode is high-field photoconductive although the device structure is a p-n homojunction photodiode.",
         "date_added": "2026-08-18",
         "date_updated": "2026-08-18"
       }

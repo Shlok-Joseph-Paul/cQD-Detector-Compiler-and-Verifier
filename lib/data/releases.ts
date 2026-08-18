@@ -6,10 +6,24 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.9.0";
-export const DATASET_RELEASE_DATE = "2026-08-17";
+export const DATASET_VERSION = "1.10.0";
+export const DATASET_RELEASE_DATE = "2026-08-18";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
+  {
+    version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "PbS homojunction champion addition",
+    summary:
+      "Adds the curator-selected highest-detectivity PbS CQD homojunction device with explicit shot-noise and operating-mode cautions.",
+    changes: [
+      "Added the 3.6 nm PbS-TBAI/PbS-EDT p-n homojunction photodiode and its approximately 1.2e11-Jones result at context-linked 450 nm and +1 V.",
+      "Retained only the weakest-irradiance peak point from the highest-D* size variant by curator direction, excluding the 3.1 and 4.2 nm devices and the remaining intensity-dependent points.",
+      "Marked the measurement amber because D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
+      "Preserved that the +1 V measurement operates in the paper's high-field photoconductive response regime despite the rectifying homojunction architecture.",
+      "Omitted the internally inconsistent EQE axis and unmatched temporal values; the complete article and Supporting Information report no explicit -3 dB bandwidth or LDR.",
+    ],
+  },
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,

@@ -297,9 +297,10 @@ export function DiscoveryQueueClient({
         </header>
         <p className="discovery-local-note">
           <strong>Two explicit gates.</strong> Review the extracted evidence,
-          export this CSV, then import it with the CLI. Only proposals marked
-          approved can be applied; viewing or exporting never changes the
-          published atlas.
+          export this CSV, then import it with the CLI. Proposals can be
+          approved as reviewed records or provisionally approved for visible
+          human follow-up; viewing or exporting never changes the published
+          atlas.
         </p>
         <div className="proposal-list">
           {effectiveProposals.map((proposal) => {
@@ -478,6 +479,12 @@ export function DiscoveryQueueClient({
                       <option value="approved" disabled={!canApprove}>
                         approved
                       </option>
+                      <option
+                        value="approved-provisional"
+                        disabled={!canApprove}
+                      >
+                        approved-provisional
+                      </option>
                       <option value="needs-correction">needs-correction</option>
                       <option value="rejected">rejected</option>
                       {proposal.status === "applied" && (
@@ -495,7 +502,7 @@ export function DiscoveryQueueClient({
                           decisionNotes: event.target.value,
                         })
                       }
-                      placeholder="Corrections, rationale, or approval note"
+                      placeholder="Required public explanation for provisional approval"
                     />
                   </label>
                 </div>

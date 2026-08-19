@@ -6,6 +6,7 @@ import {
   NOT_REPORTED,
 } from "./format.ts";
 import { maxDetectivityPerPaper } from "./coverage.ts";
+import { reviewedRecords } from "./review.ts";
 import type { AtlasMetricKey, AtlasPlotScope, AtlasRecord } from "./types.ts";
 
 export interface AtlasMetricDefinition {
@@ -171,7 +172,7 @@ export function recordsWithMetricPair(
   xMetric: AtlasMetricKey,
   yMetric: AtlasMetricKey,
 ): { plotted: AtlasRecord[]; excluded: number } {
-  const plotted = records.filter(
+  const plotted = reviewedRecords(records).filter(
     (record) =>
       isPlottableMetricValue(metricValue(record, xMetric), xMetric) &&
       isPlottableMetricValue(metricValue(record, yMetric), yMetric),
@@ -183,9 +184,8 @@ export function recordsForPlotScope(
   records: readonly AtlasRecord[],
   scope: AtlasPlotScope,
 ): AtlasRecord[] {
-  return scope === "paper_maxima"
-    ? maxDetectivityPerPaper(records)
-    : [...records];
+  const reviewed = reviewedRecords(records);
+  return scope === "paper_maxima" ? maxDetectivityPerPaper(reviewed) : reviewed;
 }
 
 export function availablePlotPresets(records: readonly AtlasRecord[]) {

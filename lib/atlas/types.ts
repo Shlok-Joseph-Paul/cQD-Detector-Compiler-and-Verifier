@@ -1,11 +1,14 @@
 import type {
   BiasCondition as CanonicalBiasCondition,
+  CuratorStatus,
   DetectorClass,
   JoinedMeasurement,
   NoiseInstrument as CanonicalNoiseInstrument,
   TemperatureCategory as CanonicalTemperatureCategory,
   TechnologyFamily,
+  FrequencyMatchStatus,
 } from "@/lib/data/types";
+import { deriveFrequencyMatchStatus } from "../data/frequency-match.ts";
 
 export type { TechnologyFamily } from "@/lib/data/types";
 export type { DetectorClass } from "@/lib/data/types";
@@ -22,6 +25,7 @@ export const NOISE_METHODS = [
 export type NoiseMethod = (typeof NOISE_METHODS)[number];
 export type NoiseInstrument = CanonicalNoiseInstrument;
 export type PublicFlag = "green" | "amber";
+export type AtlasCuratorStatus = CuratorStatus;
 export type TemperatureCategory = CanonicalTemperatureCategory;
 export type BiasCondition = CanonicalBiasCondition;
 export type PublicationFilter = "peer_reviewed" | "preprint" | "demonstration";
@@ -100,10 +104,13 @@ export interface AtlasMeasurement {
   responsivityTemperatureK: number | null;
   responsivitySourceLocation: string | null;
   responsivityExtractionMethod: string | null;
+  responsivityFrequencyHz: number | null;
   eqePercent: number | null;
+  eqeFrequencyHz: number | null;
   temperatureK: number | null;
   biasV: number | null;
   measurementFrequencyHz: number | null;
+  frequencyMatchStatus: FrequencyMatchStatus;
   responseTimeS: number | null;
   riseTimeS: number | null;
   fallTimeS: number | null;
@@ -134,7 +141,7 @@ export interface AtlasMeasurement {
   noiseInstrumentSource: string | null;
   detectivityExtractionMethod: string | null;
   sourceLocation: string | null;
-  curatorStatus: string;
+  curatorStatus: AtlasCuratorStatus;
   flag: PublicFlag;
   amberReasons: string[];
   amberExplanation: string | null;
@@ -310,6 +317,23 @@ export function normalizeJoinedMeasurement(
   const paper = section(root, "paper");
   const device = section(root, "device");
   const measurement = section(root, "measurement");
+  const responsivityAW = nullableNumber(measurement, [
+    "responsivity_a_w",
+    "responsivityAW",
+  ]);
+  const responsivityFrequencyHz = nullableNumber(measurement, [
+    "responsivity_frequency_hz",
+    "responsivityFrequencyHz",
+  ]);
+  const eqePercent = nullableNumber(measurement, ["eqe_percent", "eqePercent"]);
+  const eqeFrequencyHz = nullableNumber(measurement, [
+    "eqe_frequency_hz",
+    "eqeFrequencyHz",
+  ]);
+  const measurementFrequencyHz = nullableNumber(measurement, [
+    "measurement_frequency_hz",
+    "measurementFrequencyHz",
+  ]);
 
   return {
     paper: {
@@ -404,10 +428,7 @@ export function normalizeJoinedMeasurement(
         "detectivity_jones",
         "detectivityJones",
       ]),
-      responsivityAW: nullableNumber(measurement, [
-        "responsivity_a_w",
-        "responsivityAW",
-      ]),
+      responsivityAW,
       responsivityWavelengthNm: nullableNumber(measurement, [
         "responsivity_wavelength_nm",
         "responsivityWavelengthNm",
@@ -428,16 +449,22 @@ export function normalizeJoinedMeasurement(
         "responsivity_extraction_method",
         "responsivityExtractionMethod",
       ]),
-      eqePercent: nullableNumber(measurement, ["eqe_percent", "eqePercent"]),
+      responsivityFrequencyHz,
+      eqePercent,
+      eqeFrequencyHz,
       temperatureK: nullableNumber(measurement, [
         "temperature_k",
         "temperatureK",
       ]),
       biasV: nullableNumber(measurement, ["bias_v", "biasV"]),
-      measurementFrequencyHz: nullableNumber(measurement, [
-        "measurement_frequency_hz",
-        "measurementFrequencyHz",
-      ]),
+      measurementFrequencyHz,
+      frequencyMatchStatus: deriveFrequencyMatchStatus({
+        measurementFrequencyHz,
+        responsivityAW,
+        responsivityFrequencyHz,
+        eqePercent,
+        eqeFrequencyHz,
+      }),
       responseTimeS: nullableNumber(measurement, [
         "response_time_s",
         "responseTimeS",
@@ -547,10 +574,11 @@ export function normalizeJoinedMeasurement(
         "source_location",
         "sourceLocation",
       ]),
-      curatorStatus: textValue(measurement, [
-        "curator_status",
-        "curatorStatus",
-      ]),
+      curatorStatus: textValue(
+        measurement,
+        ["curator_status", "curatorStatus"],
+        "reviewed",
+      ) as AtlasCuratorStatus,
       flag: flagValue(measurement),
       amberReasons: listValue(measurement, ["amber_reasons", "amberReasons"]),
       amberExplanation: nullableText(measurement, [

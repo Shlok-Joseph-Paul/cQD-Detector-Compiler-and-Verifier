@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { FlagBadge, MaterialLabel, ShotNoiseBadge } from "@/components/atlas";
+import {
+  FlagBadge,
+  FrequencyMatchBadge,
+  MaterialLabel,
+  ProvisionalBadge,
+  ShotNoiseBadge,
+} from "@/components/atlas";
 import { SiteShell } from "@/components/SiteShell";
 import {
   formatDetectorClass,
@@ -15,6 +21,7 @@ import {
   NOT_REPORTED,
   publicationLinks,
 } from "@/lib/atlas/format";
+import { reviewedRecords } from "@/lib/atlas/review";
 import { normalizeJoinedMeasurement } from "@/lib/atlas/types";
 import { atlasData } from "@/lib/data";
 
@@ -49,9 +56,14 @@ export default async function PaperPage({ params }: PageProps) {
   const materials = [
     ...new Set(records.map((record) => record.device.materialFamily)),
   ];
-  const highestDetectivity = Math.max(
-    ...records.map((record) => record.measurement.detectivityJones),
-  );
+  const confirmedRecords = reviewedRecords(records);
+  const highestDetectivity = confirmedRecords.length
+    ? Math.max(
+        ...confirmedRecords.map(
+          (record) => record.measurement.detectivityJones,
+        ),
+      )
+    : null;
   const amberCount = records.filter(
     (record) => record.measurement.flag === "amber",
   ).length;
@@ -123,7 +135,11 @@ export default async function PaperPage({ params }: PageProps) {
             </div>
             <div>
               <dt>Highest D*</dt>
-              <dd>{formatScientific(highestDetectivity)}</dd>
+              <dd>
+                {highestDetectivity === null
+                  ? "Pending review"
+                  : formatScientific(highestDetectivity)}
+              </dd>
             </div>
           </dl>
         </header>
@@ -300,6 +316,12 @@ export default async function PaperPage({ params }: PageProps) {
                           </td>
                           <td>
                             <FlagBadge flag={record.measurement.flag} />
+                            <FrequencyMatchBadge
+                              measurement={record.measurement}
+                            />
+                            <ProvisionalBadge
+                              curatorStatus={record.measurement.curatorStatus}
+                            />
                           </td>
                           <td>
                             {record.measurement.sourceLocation || NOT_REPORTED}

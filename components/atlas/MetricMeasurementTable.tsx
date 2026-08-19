@@ -31,7 +31,14 @@ import type {
 } from "@/lib/atlas/types";
 import { DATASET_VERSION } from "@/lib/data";
 
-import { AmberReasons, FlagBadge, ShotNoiseBadge } from "./AtlasBadges";
+import {
+  AmberReasons,
+  FlagBadge,
+  FrequencyMatchBadge,
+  ProvisionalBadge,
+  ProvisionalNotice,
+  ShotNoiseBadge,
+} from "./AtlasBadges";
 import { MaterialLabel } from "./MaterialLabel";
 
 export interface MetricMeasurementTableProps {
@@ -546,6 +553,8 @@ function OverviewCells({ record }: { record: AtlasRecord }) {
       </td>
       <td data-label="Review flag" className="measurement-table__review-cell">
         <FlagBadge flag={measurement.flag} />
+        <FrequencyMatchBadge measurement={measurement} />
+        <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
         <ReviewStatus measurement={measurement} />
       </td>
     </>
@@ -953,8 +962,11 @@ function DetailsContent({ record }: { record: AtlasRecord }) {
         <div>
           <FlagBadge flag={measurement.flag} />
           <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
+          <FrequencyMatchBadge measurement={measurement} />
+          <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
         </div>
         <AmberReasons measurement={measurement} compact />
+        <ProvisionalNotice measurement={measurement} compact />
         <Link href={detailHref}>View complete record →</Link>
       </div>
     </>

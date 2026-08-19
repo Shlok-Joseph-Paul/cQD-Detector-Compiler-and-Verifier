@@ -1481,6 +1481,49 @@ select {
   color: #7b4b05;
 }
 
+.atlas-badge--provisional {
+  border-color: #8e93bd;
+  background: #f0f1fb;
+  color: #3f477f;
+}
+
+.atlas-badge--frequency-matched {
+  border-color: #70aeb0;
+  background: #edf8f7;
+  color: #175f62;
+}
+
+.atlas-badge--frequency-not-matched {
+  border-color: #9a8caf;
+  background: #f5f1f8;
+  color: #57416d;
+}
+
+.atlas-badge--frequency-not-established {
+  border-color: #a7a49d;
+  background: #f5f4f1;
+  color: #5f5c56;
+}
+
+.provisional-notice {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid #a7acd0;
+  border-left-width: 4px;
+  background: #f7f7fd;
+  color: #343b6d;
+}
+
+.provisional-notice p,
+.provisional-notice small {
+  margin: 0;
+}
+
+.provisional-notice--compact {
+  padding: 11px 13px;
+}
+
 .amber-reasons {
   margin: 0 26px 24px;
   padding: 14px 16px;

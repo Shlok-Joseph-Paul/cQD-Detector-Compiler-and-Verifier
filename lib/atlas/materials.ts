@@ -1,4 +1,5 @@
 import { isMeasuredNoiseMethod } from "../data/constants.ts";
+import { reviewedRecords } from "./review.ts";
 import type { AtlasRecord } from "./types";
 
 const KNOWN_MATERIAL_COLORS: Record<string, string> = {
@@ -60,7 +61,7 @@ export function summarizeMaterials(
   records: readonly AtlasRecord[],
 ): MaterialSummary[] {
   const groups = new Map<string, AtlasRecord[]>();
-  for (const record of records) {
+  for (const record of reviewedRecords(records)) {
     const material = record.device.materialFamily;
     const group = groups.get(material) ?? [];
     group.push(record);

@@ -1,4 +1,5 @@
 import { amberReasonsToExplanation } from "./constants.ts";
+import { deriveFrequencyMatchStatus } from "./frequency-match.ts";
 import {
   AMBER_REASONS,
   BANDWIDTH_LIMITS,
@@ -97,6 +98,18 @@ export function deriveRequiredAmberReasons(
     !instruments.includes("spectrum_analyzer")
   ) {
     reasons.push("source_measure_unit_noise_measurement");
+  }
+
+  if (
+    deriveFrequencyMatchStatus({
+      measurementFrequencyHz: measurement.measurement_frequency_hz,
+      responsivityAW: measurement.responsivity_a_w,
+      responsivityFrequencyHz: measurement.responsivity_frequency_hz,
+      eqePercent: measurement.eqe_percent,
+      eqeFrequencyHz: measurement.eqe_frequency_hz,
+    }) === "not_matched"
+  ) {
+    reasons.push("frequency_mismatch");
   }
 
   return uniqueReasons(reasons);
@@ -501,10 +514,41 @@ function validateMeasurement(
     EXTENDED_METRIC_EXTRACTION_METHODS,
     add,
   );
+  validateOptionalNullableNumber(
+    measurement.responsivity_frequency_hz,
+    "responsivity_frequency_hz",
+    add,
+    { positive: true },
+  );
   validateNumber(measurement.eqe_percent, "eqe_percent", add, {
     nullable: true,
     nonnegative: true,
   });
+  validateOptionalNullableNumber(
+    measurement.eqe_frequency_hz,
+    "eqe_frequency_hz",
+    add,
+    { positive: true },
+  );
+  if (
+    measurement.responsivity_frequency_hz != null &&
+    measurement.responsivity_a_w == null
+  ) {
+    add(
+      "responsivity_frequency_hz",
+      "frequency_without_metric",
+      "A responsivity frequency requires a responsivity value on the same record.",
+      measurement.responsivity_frequency_hz,
+    );
+  }
+  if (measurement.eqe_frequency_hz != null && measurement.eqe_percent == null) {
+    add(
+      "eqe_frequency_hz",
+      "frequency_without_metric",
+      "An EQE frequency requires an EQE value on the same record.",
+      measurement.eqe_frequency_hz,
+    );
+  }
   validateNumber(measurement.temperature_k, "temperature_k", add, {
     nullable: true,
     positive: true,
@@ -844,6 +888,17 @@ function validateMeasurement(
     CURATOR_STATUSES,
     add,
   );
+  if (
+    measurement.curator_status === "pending_review" &&
+    (typeof measurement.curator_notes !== "string" ||
+      !measurement.curator_notes.trim())
+  ) {
+    add(
+      "curator_notes",
+      "pending_review_explanation_required",
+      "A pending-review measurement requires a public explanation of the unresolved question.",
+    );
+  }
   validateEnum(measurement.flag, "flag", FLAGS, add);
   if (!Array.isArray(measurement.amber_reasons)) {
     add(

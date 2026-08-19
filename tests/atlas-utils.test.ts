@@ -94,10 +94,13 @@ const measuredRecord: AtlasRecord = {
     responsivityTemperatureK: null,
     responsivitySourceLocation: null,
     responsivityExtractionMethod: null,
+    responsivityFrequencyHz: null,
     eqePercent: null,
+    eqeFrequencyHz: null,
     temperatureK: 300,
     biasV: 0,
     measurementFrequencyHz: 10,
+    frequencyMatchStatus: "not_applicable",
     responseTimeS: null,
     riseTimeS: null,
     fallTimeS: null,
@@ -382,7 +385,11 @@ test("filtered CSV is one measurement per row and safely escapes text", () => {
   assert.match(lines[0], /device_stack,active_area_cm2/);
   assert.match(
     lines[0],
-    /responsivity_a_w,responsivity_wavelength_nm.*responsivity_extraction_method,eqe_percent/,
+    /responsivity_a_w,responsivity_wavelength_nm.*responsivity_extraction_method,responsivity_frequency_hz,eqe_percent,eqe_frequency_hz/,
+  );
+  assert.match(
+    lines[0],
+    /measurement_frequency_hz,frequency_match_status,response_time_s/,
   );
   assert.match(
     lines[0],
@@ -415,6 +422,23 @@ test("paper maxima retain exactly the highest-D* record per paper", () => {
       higherMeasurement,
     ]).map((record) => record.measurement.measurementId),
     ["measurement-3", "measurement-2"],
+  );
+
+  const provisionalHigher: AtlasRecord = {
+    ...higherMeasurement,
+    measurement: {
+      ...higherMeasurement.measurement,
+      measurementId: "measurement-provisional",
+      detectivityJones: 9e20,
+      curatorStatus: "pending_review",
+      curatorNotes: "The reported device assignment remains unresolved.",
+    },
+  };
+  assert.deepEqual(
+    maxDetectivityPerPaper([measuredRecord, provisionalHigher]).map(
+      (record) => record.measurement.measurementId,
+    ),
+    ["measurement-1"],
   );
 });
 
@@ -452,6 +476,12 @@ test("material summaries count unique papers and noise-method shares", () => {
     measuredNoisePercent: 100,
     shotNoisePercent: 0,
   });
+
+  const provisional = recordWithMeasurement("provisional-material", {
+    curatorStatus: "pending_review",
+    curatorNotes: "The metric assignment requires confirmation.",
+  });
+  assert.deepEqual(summarizeMaterials([provisional]), []);
 });
 
 test("extended explorer URL state round-trips with explicit units", () => {
@@ -773,9 +803,15 @@ test("metric pairs exclude missing and log-invalid values without rejecting line
     detectivityJones: -1,
     responsivityAW: 1,
   });
+  const provisional = recordWithMeasurement("pair-provisional", {
+    detectivityJones: 1e30,
+    responsivityAW: 1,
+    curatorStatus: "pending_review",
+    curatorNotes: "The operating-point assignment requires confirmation.",
+  });
 
   const pair = recordsWithMetricPair(
-    [valid, linearZero, missing, logZero, logNegative],
+    [valid, linearZero, missing, logZero, logNegative, provisional],
     "responsivity",
     "detectivity",
   );
@@ -783,7 +819,7 @@ test("metric pairs exclude missing and log-invalid values without rejecting line
     pair.plotted.map((record) => record.measurement.measurementId),
     ["pair-valid", "pair-linear-zero"],
   );
-  assert.equal(pair.excluded, 3);
+  assert.equal(pair.excluded, 4);
   assert.equal(isPlottableMetricValue(0, "responsivity"), true);
   assert.equal(isPlottableMetricValue(0, "ldr"), true);
   assert.equal(isPlottableMetricValue(0, "response_time"), false);

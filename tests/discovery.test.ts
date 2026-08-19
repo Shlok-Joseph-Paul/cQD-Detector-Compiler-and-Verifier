@@ -929,6 +929,42 @@ test("proposal decisions require an in-scope measurement before approval", () =>
   assert.equal(rejected.proposals[0].status, "rejected");
 });
 
+test("provisional proposal approval requires and preserves a review explanation", () => {
+  const proposal = extractStagedProposal(
+    candidate({ candidateMaterialClasses: ["Ag2Te"] }),
+    proposalSource,
+    [
+      "=== PDF PAGE 1 ===",
+      "A solution-processed colloidal quantum dot photodiode was demonstrated.",
+      "=== PDF PAGE 5 ===",
+      "At 1540 nm, the measured-noise specific detectivity D* reached 2.3 × 10^11 Jones.",
+    ].join("\n"),
+    new Date("2026-07-19T00:00:00.000Z"),
+  );
+  const registry = { schemaVersion: 1 as const, proposals: [proposal] };
+  const withoutExplanation = exportProposalDecisionsCsv(registry).replace(
+    "awaiting-approval",
+    "approved-provisional",
+  );
+  assert.throws(
+    () => importProposalDecisionsCsv(registry, withoutExplanation),
+    /provisional approval requires a public review explanation/,
+  );
+
+  const withExplanation = withoutExplanation
+    .trimEnd()
+    .replace(
+      /,$/,
+      ",Device grouping requires confirmation against the Supporting Information.",
+    );
+  const updated = importProposalDecisionsCsv(registry, `${withExplanation}\n`);
+  assert.equal(updated.proposals[0].status, "approved-provisional");
+  assert.match(
+    updated.proposals[0].decisionNotes ?? "",
+    /Device grouping requires confirmation/,
+  );
+});
+
 test("extended metric extraction converts units and separates temporal definitions", () => {
   assert.equal(convertPrefixedValue(250, "m"), 0.25);
   assert.equal(convertPrefixedValue(8, "n"), 8e-9);

@@ -36,6 +36,9 @@ export default function CoveragePage() {
   const measuredNoiseCount = records.filter(
     (record) => record.measurement.noiseMethod === "measured_noise",
   ).length;
+  const pendingReviewCount = records.filter(
+    (record) => record.measurement.curatorStatus === "pending_review",
+  ).length;
   const latestYear = Math.max(
     ...records.map((record) => record.paper.publicationYear),
   );
@@ -185,6 +188,9 @@ export default function CoveragePage() {
               noise.
               {amberCount
                 ? ` ${amberCount} records carry an amber caution.`
+                : ""}
+              {pendingReviewCount
+                ? ` ${pendingReviewCount} provisional records require human review and are excluded from performance comparisons.`
                 : ""}
             </p>
           </section>

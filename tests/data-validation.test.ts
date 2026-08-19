@@ -95,9 +95,9 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     readFile(new URL("measurements.csv", dataDirectory), "utf8"),
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
-  assert.equal(atlas.schema_version, 5);
+  assert.equal(atlas.schema_version, 6);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 156);
+  assert.equal(atlas.measurements.length, 159);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.equal(
     atlas.devices.filter((record) => record.detector_class === "photoconductor")
@@ -117,7 +117,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 73);
+  assert.equal(amberRecords.length, 76);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
@@ -129,6 +129,12 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
       measurement.amber_reasons.includes("johnson_noise_approximation"),
     ).length,
     1,
+  );
+  assert.equal(
+    amberRecords.filter(({ measurement }) =>
+      measurement.amber_reasons.includes("frequency_mismatch"),
+    ).length,
+    3,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -154,7 +160,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("below_preamplifier_noise_floor"),
     ).length,
-    1,
+    4,
   );
 });
 
@@ -239,6 +245,29 @@ test("missing operating conditions do not make a reviewed record amber", () => {
   assert.equal(result.valid, true);
 });
 
+test("pending-review measurements require a public curator explanation", () => {
+  const missingExplanation = validateAtlasEntities(
+    entities({ curator_status: "pending_review", curator_notes: null }),
+  );
+  assert.equal(missingExplanation.valid, false);
+  assert.ok(
+    missingExplanation.issues.some(
+      ({ field, code }) =>
+        field === "curator_notes" &&
+        code === "pending_review_explanation_required",
+    ),
+  );
+
+  const explained = validateAtlasEntities(
+    entities({
+      curator_status: "pending_review",
+      curator_notes:
+        "Device assignment requires human confirmation against the Supporting Information.",
+    }),
+  );
+  assert.equal(explained.valid, true);
+});
+
 test("reported ligand exchange requires a type, chemical, and source location", () => {
   const invalid = entities();
   invalid.devices[0] = {
@@ -279,6 +308,36 @@ test("checked missing extended metrics do not create an amber flag", () => {
   const result = validateAtlasEntities(entities(checked));
   assert.equal(result.valid, true);
   assert.equal(entities(checked).measurements[0].flag, "green");
+});
+
+test("a frequency mismatch requires an amber reason", () => {
+  const result = validateAtlasEntities(
+    entities({
+      responsivity_a_w: 0.2,
+      responsivity_frequency_hz: 10,
+      measurement_frequency_hz: 100,
+    }),
+  );
+  assert.equal(result.valid, false);
+  assert.ok(
+    result.issues.some(
+      ({ code, message }) =>
+        code === "missing_required_reason" &&
+        message.includes("frequency_mismatch"),
+    ),
+  );
+});
+
+test("signal frequencies require their corresponding metric", () => {
+  const result = validateAtlasEntities(
+    entities({ responsivity_frequency_hz: 10, eqe_frequency_hz: 10 }),
+  );
+  assert.equal(result.valid, false);
+  assert.equal(
+    result.issues.filter(({ code }) => code === "frequency_without_metric")
+      .length,
+    2,
+  );
 });
 
 test("a missing instrument citation does not make measured-noise data amber", () => {

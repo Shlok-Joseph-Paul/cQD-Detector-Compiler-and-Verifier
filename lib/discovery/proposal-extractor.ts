@@ -775,7 +775,9 @@ export function extractStagedProposal(
           (selectedResponsivity != null ? pageLocation(page) : null),
         responsivity_extraction_method:
           selectedResponsivity != null ? "directly_reported" : "not_reported",
+        responsivity_frequency_hz: responsivityCandidate?.frequencyHz ?? null,
         eqe_percent: eqe,
+        eqe_frequency_hz: null,
         temperature_k: temperature,
         bias_v: bias,
         measurement_frequency_hz: frequency,

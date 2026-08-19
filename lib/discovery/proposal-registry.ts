@@ -45,7 +45,10 @@ export function validateProposal(proposal: StagedPaperProposal): string[] {
         `${measurement.measurement_id}: detectivity must be positive`,
       );
   }
-  if (proposal.status === "approved") {
+  if (
+    proposal.status === "approved" ||
+    proposal.status === "approved-provisional"
+  ) {
     if (proposal.scopeStatus !== "in-scope")
       errors.push("only in-scope proposals can be approved");
     if (proposal.proposedMeasurements.length === 0)
@@ -53,6 +56,13 @@ export function validateProposal(proposal: StagedPaperProposal): string[] {
     if (proposal.proposedDevices.some((device) => !device.detector_class))
       errors.push("approved proposal requires detector_class for every device");
   }
+  if (
+    proposal.status === "approved-provisional" &&
+    !proposal.decisionNotes?.trim()
+  )
+    errors.push(
+      "provisional approval requires a public review explanation in decisionNotes",
+    );
   return errors;
 }
 

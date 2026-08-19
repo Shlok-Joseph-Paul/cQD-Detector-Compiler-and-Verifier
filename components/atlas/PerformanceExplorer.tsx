@@ -796,6 +796,13 @@ export function PerformanceExplorer({
     () => recordsForPlotScope(records, plotScope),
     [records, plotScope],
   );
+  const provisionalCount = useMemo(
+    () =>
+      records.filter(
+        (record) => record.measurement.curatorStatus === "pending_review",
+      ).length,
+    [records],
+  );
   const { plotted: plottedRecords, excluded } = useMemo(
     () => recordsWithMetricPair(recordsInScope, xMetric, yMetric),
     [recordsInScope, xMetric, yMetric],
@@ -1024,6 +1031,11 @@ export function PerformanceExplorer({
           <span>
             <strong>{excluded}</strong> excluded
           </span>
+          {provisionalCount ? (
+            <span>
+              <strong>{provisionalCount}</strong> provisional, not plotted
+            </span>
+          ) : null}
           <span>
             <strong>{paperCount}</strong> papers
           </span>

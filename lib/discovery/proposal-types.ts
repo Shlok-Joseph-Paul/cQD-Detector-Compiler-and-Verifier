@@ -12,6 +12,7 @@ export type ProposedDevice = Omit<Device, "detector_class"> & {
 export const PROPOSAL_STATUSES = [
   "awaiting-approval",
   "approved",
+  "approved-provisional",
   "rejected",
   "needs-correction",
   "applied",

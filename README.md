@@ -80,6 +80,14 @@ The atlas reproduces published claims as documented. It does not independently
 repeat experiments, endorse reported values, calculate theoretical limits, or
 perform automated physics-consistency checks.
 
+Published measurements also carry an independent curation status. `reviewed`
+means the Paper → Device → Measurement assignment has been confirmed by a human
+curator. `pending_review` means the primary-source value is sufficiently
+documented to remain visible, but a named interpretation or assignment question
+is unresolved. Pending-review records require a public curator note and are
+excluded from performance plots, paper maxima, rankings, and material aggregates
+until resolved. This status is separate from green/amber methodology flags.
+
 ## Technology
 
 - Next.js App Router with strict TypeScript
@@ -134,9 +142,10 @@ from included atlas papers, validates DOI metadata through Crossref, caches
 responses, ranks candidates with visible reasons, and exports screening CSVs.
 For resolver-verified open-access PDFs it can also batch-extract compact,
 evidence-linked Paper → Device → Measurement proposals. Proposals remain staged
-until a curator exports and imports an explicit approval; a second command then
-applies approved records through the validated CSV workflow. Neither search nor
-parsing publishes directly.
+until a curator exports and imports an explicit approval. The curator may approve
+a fully reviewed record or provisionally approve a record with a required public
+review explanation; a second command then applies the selected records through
+the validated CSV workflow. Neither search nor parsing publishes directly.
 
 `pnpm discovery prepare-review --profile=perovskite --limit=5` selects a
 conservative perovskite batch from title/abstract evidence, resolves lawful
@@ -217,7 +226,11 @@ a guessed value as a substitute for missing information.
    curator review. A lock-in used only for EQE or responsivity does not count as
    a noise instrument. Other missing or incomplete fields do not affect the
    flag.
-8. **Validate and inspect.** Run `pnpm run validate-data`, review the generated
+8. **Set curation status.** Use `reviewed` for fully confirmed assignments. Use
+   `pending_review` only when the reported measurement is likely in scope but a
+   specific interpretation or assignment question remains; record that question
+   in `curator_notes`.
+9. **Validate and inspect.** Run `pnpm run validate-data`, review the generated
    diff in `data/generated/atlas.json`, then run `pnpm test` and
    `pnpm run build`.
 
@@ -266,6 +279,12 @@ dynamic range use metric-specific source and operating-condition fields. The UI
 distinguishes **Not checked** from **Not reported**: the latter is used only
 after the main article and available Supporting Information have been reviewed.
 These missing fields never create an amber flag.
+
+When reported, responsivity and EQE modulation frequencies are compared with
+the noise/detectivity frequency. The UI labels D* as frequency matched,
+frequency mismatched, or not established when the evidence is incomplete. An
+explicit mismatch is amber because D* combines signal and noise inputs acquired
+at different frequencies; missing frequency evidence alone remains neutral.
 
 Unavailable optional values are displayed as **Not reported**, never as zero.
 Shot-noise-derived values receive a prominent badge. Each amber result exposes
@@ -344,8 +363,9 @@ the visualization components.
   automated physical-consistency verdict. The scheduler-ready local batch
   command remains conservative and requires explicit human approval before
   publication.
-- Green means the record meets the atlas's documentation criteria; it does not
-  independently validate the underlying experiment.
+- Green means no amber measurement-methodology caution currently applies; it
+  does not mean human review is complete or independently validate the
+  underlying experiment.
 
 ## Planned automated discovery
 

@@ -15,7 +15,14 @@ import {
 } from "@/lib/atlas/format";
 import type { AtlasRecord } from "@/lib/atlas/types";
 
-import { AmberReasons, FlagBadge, ShotNoiseBadge } from "./AtlasBadges";
+import {
+  AmberReasons,
+  FlagBadge,
+  FrequencyMatchBadge,
+  ProvisionalBadge,
+  ProvisionalNotice,
+  ShotNoiseBadge,
+} from "./AtlasBadges";
 import { MaterialLabel } from "./MaterialLabel";
 
 function Detail({ label, children }: { label: string; children: ReactNode }) {
@@ -105,6 +112,8 @@ export function MeasurementDetails({
           <div className="measurement-details__badges">
             <FlagBadge flag={measurement.flag} />
             <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
+            <FrequencyMatchBadge measurement={measurement} />
+            <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
           </div>
         </div>
         {onClose ? (
@@ -137,6 +146,10 @@ export function MeasurementDetails({
       </div>
 
       <AmberReasons measurement={measurement} compact={variant === "summary"} />
+      <ProvisionalNotice
+        measurement={measurement}
+        compact={variant === "summary"}
+      />
 
       <dl className="measurement-details__grid">
         <Detail label="Absorber material">
@@ -251,15 +264,24 @@ export function MeasurementDetails({
                 maximumSignificantDigits: 5,
               })}
             </Detail>
+            <Detail label="Frequency comparison">
+              <FrequencyMatchBadge measurement={measurement} />
+            </Detail>
             <Detail label="Responsivity conditions">
               {[
                 formatWithUnit(measurement.responsivityWavelengthNm, "nm"),
                 formatWithUnit(measurement.responsivityBiasV, "V"),
                 formatWithUnit(measurement.responsivityTemperatureK, "K"),
+                formatWithUnit(measurement.responsivityFrequencyHz, "Hz"),
               ]
                 .filter((value) => value !== NOT_REPORTED)
                 .join(" · ") ||
                 extendedMissing(measurement.extendedMetricsReviewStatus)}
+            </Detail>
+            <Detail label="EQE frequency">
+              {formatWithUnit(measurement.eqeFrequencyHz, "Hz", {
+                maximumSignificantDigits: 5,
+              })}
             </Detail>
             <Detail label="Responsivity evidence">
               {extendedText(

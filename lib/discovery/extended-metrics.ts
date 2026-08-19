@@ -14,6 +14,7 @@ export interface MetricCandidate {
   wavelengthNm: number | null;
   biasV: number | null;
   temperatureK: number | null;
+  frequencyHz: number | null;
   sourceLocation: string;
   evidence: string;
   extractionMethod: ExtendedMetricExtractionMethod;
@@ -89,16 +90,21 @@ function contextConditions(text: string): {
   wavelengthNm: number | null;
   biasV: number | null;
   temperatureK: number | null;
+  frequencyHz: number | null;
 } {
   const wavelength = text.match(/(\d+(?:\.\d+)?)\s*(nm|µm|μm|um)\b/i);
   const bias = text.match(/([+\-−]?\d+(?:\.\d+)?)\s*V\b/i);
   const temperature = text.match(/(\d+(?:\.\d+)?)\s*K\b/);
+  const frequency = text.match(/(\d+(?:\.\d+)?)\s*(k|K|M|G)?Hz\b/);
   return {
     wavelengthNm: wavelength
       ? Number(wavelength[1]) * (/nm/i.test(wavelength[2]) ? 1 : 1000)
       : null,
     biasV: bias ? Number(bias[1].replace("−", "-")) : null,
     temperatureK: temperature ? Number(temperature[1]) : null,
+    frequencyHz: frequency
+      ? convertPrefixedValue(Number(frequency[1]), frequency[2] ?? "")
+      : null,
   };
 }
 
@@ -123,6 +129,7 @@ function unique<T extends MetricCandidate>(candidates: T[]): T[] {
       candidate.value,
       candidate.wavelengthNm,
       candidate.biasV,
+      candidate.frequencyHz,
       candidate.sourceLocation,
       "kind" in candidate ? candidate.kind : "",
     ].join("|");

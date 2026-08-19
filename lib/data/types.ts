@@ -88,6 +88,14 @@ export const EXTENDED_METRICS_REVIEW_STATUSES = [
 export type ExtendedMetricsReviewStatus =
   (typeof EXTENDED_METRICS_REVIEW_STATUSES)[number];
 
+export const FREQUENCY_MATCH_STATUSES = [
+  "matched",
+  "not_matched",
+  "not_established",
+  "not_applicable",
+] as const;
+export type FrequencyMatchStatus = (typeof FREQUENCY_MATCH_STATUSES)[number];
+
 export const RESPONSE_TIME_LIMITS = [
   "measured",
   "instrument_limited",
@@ -125,6 +133,7 @@ export const AMBER_REASONS = [
   "noise_method_not_reported",
   "above_blip_limit",
   "below_preamplifier_noise_floor",
+  "frequency_mismatch",
 ] as const;
 export type AmberReason = (typeof AMBER_REASONS)[number];
 
@@ -173,7 +182,9 @@ export interface Measurement {
   responsivity_temperature_k?: number | null;
   responsivity_source_location?: string | null;
   responsivity_extraction_method?: ExtendedMetricExtractionMethod | null;
+  responsivity_frequency_hz?: number | null;
   eqe_percent: number | null;
+  eqe_frequency_hz?: number | null;
   temperature_k: number | null;
   bias_v: number | null;
   measurement_frequency_hz: number | null;
@@ -232,7 +243,7 @@ export interface JoinedMeasurement {
 }
 
 export interface AtlasData extends AtlasEntities {
-  schema_version: 5;
+  schema_version: 6;
   /** Human-facing release identifier for reproducible exports and citations. */
   dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */

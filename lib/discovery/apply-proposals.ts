@@ -67,7 +67,9 @@ function measurementRow(measurement: Measurement): unknown[] {
     measurement.responsivity_temperature_k,
     measurement.responsivity_source_location,
     measurement.responsivity_extraction_method,
+    measurement.responsivity_frequency_hz,
     measurement.eqe_percent,
+    measurement.eqe_frequency_hz,
     measurement.temperature_k,
     measurement.bias_v,
     measurement.measurement_frequency_hz,
@@ -151,9 +153,12 @@ async function applyApprovedProposalsUnlocked(
   if (selected.length !== proposalIds.length)
     throw new Error("One or more proposal IDs were not found");
   for (const proposal of selected) {
-    if (proposal.status !== "approved")
+    if (
+      proposal.status !== "approved" &&
+      proposal.status !== "approved-provisional"
+    )
       throw new Error(
-        `${proposal.proposalId}: proposal must be explicitly approved before application`,
+        `${proposal.proposalId}: proposal must be explicitly approved or provisionally approved before application`,
       );
     if (
       proposal.scopeStatus !== "in-scope" ||
@@ -182,10 +187,17 @@ async function applyApprovedProposalsUnlocked(
       );
     if (doi) existingDois.add(doi);
   }
-  const reviewedMeasurements = selected.flatMap((proposal) =>
+  const publishedMeasurements = selected.flatMap((proposal) =>
     proposal.proposedMeasurements.map((measurement) => ({
       ...measurement,
-      curator_status: "reviewed" as const,
+      curator_status:
+        proposal.status === "approved-provisional"
+          ? ("pending_review" as const)
+          : ("reviewed" as const),
+      curator_notes:
+        proposal.status === "approved-provisional"
+          ? proposal.decisionNotes
+          : measurement.curator_notes,
       date_updated: (options.now ?? new Date()).toISOString().slice(0, 10),
     })),
   );
@@ -202,7 +214,7 @@ async function applyApprovedProposalsUnlocked(
     ]),
     measurements: serializeCsv(MEASUREMENT_CSV_COLUMNS, [
       ...rowsForColumns(measurementText, MEASUREMENT_CSV_COLUMNS),
-      ...reviewedMeasurements.map(measurementRow),
+      ...publishedMeasurements.map(measurementRow),
     ]),
   };
   const atlas = buildAtlasFromCsvTexts(nextTexts);

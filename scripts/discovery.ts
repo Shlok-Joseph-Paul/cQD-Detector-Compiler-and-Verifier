@@ -243,7 +243,11 @@ async function main(): Promise<void> {
       if (!dryRun) await writeProposalRegistry(proposalFile, next);
       const approvedCandidateIds = new Set(
         next.proposals
-          .filter((proposal) => proposal.status === "approved")
+          .filter(
+            (proposal) =>
+              proposal.status === "approved" ||
+              proposal.status === "approved-provisional",
+          )
           .map((proposal) => proposal.candidateId),
       );
       if (!dryRun) {
@@ -269,6 +273,7 @@ async function main(): Promise<void> {
         [
           "awaiting-approval",
           "approved",
+          "approved-provisional",
           "rejected",
           "needs-correction",
           "applied",
@@ -288,9 +293,16 @@ async function main(): Promise<void> {
     const proposalIds = explicit.length
       ? explicit
       : proposalRegistry.proposals
-          .filter((proposal) => proposal.status === "approved")
+          .filter(
+            (proposal) =>
+              proposal.status === "approved" ||
+              proposal.status === "approved-provisional",
+          )
           .map((proposal) => proposal.proposalId);
-    if (!proposalIds.length) throw new Error("No approved proposals selected");
+    if (!proposalIds.length)
+      throw new Error(
+        "No approved or provisionally approved proposals selected",
+      );
     printResult({
       ...(await applyApprovedProposals(root, proposalIds, { dryRun })),
       dryRun,
@@ -305,6 +317,7 @@ async function main(): Promise<void> {
         [
           "awaiting-approval",
           "approved",
+          "approved-provisional",
           "rejected",
           "needs-correction",
           "applied",

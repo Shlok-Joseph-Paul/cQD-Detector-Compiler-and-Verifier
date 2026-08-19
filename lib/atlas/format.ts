@@ -80,6 +80,8 @@ export const AMBER_REASON_LABELS: Record<string, string> = {
     "The reported detectivity appears substantially above a plausible BLIP limit and warrants manual review.",
   below_preamplifier_noise_floor:
     "Measured device noise was reported below the current preamplifier noise floor, limiting confidence in the absolute noise value.",
+  frequency_mismatch:
+    "Detectivity combines responsivity or EQE acquired at a different frequency from the noise value used in the calculation.",
 };
 
 function superscript(value: number): string {

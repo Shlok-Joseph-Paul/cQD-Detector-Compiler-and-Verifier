@@ -165,13 +165,16 @@ amber, and missing values remain null.
 There are two hard gates:
 
 1. A curator reviews the proposal in `/discovery`, selects `approved`,
-   `rejected`, or `needs-correction`, exports the proposal-decision CSV, and
-   imports it with the CLI. Only an in-scope proposal with a measurement can be
-   approved.
-2. `apply-approved` must be called with the approved proposal ID. It rejects
+   `approved-provisional`, `rejected`, or `needs-correction`, exports the
+   proposal-decision CSV, and imports it with the CLI. Only an in-scope proposal
+   with a measurement can be approved. `approved-provisional` also requires a
+   concise public explanation in `decision_notes`.
+2. `apply-approved` must be called with the approved or provisionally approved
+   proposal ID. It rejects
    duplicate atlas DOIs, validates the complete prospective dataset before any
-   tracked file is written, appends reviewed CSV rows, regenerates the atlas,
-   and marks the proposal applied.
+   tracked file is written, appends reviewed or pending-review CSV rows,
+   regenerates the atlas, and marks the proposal applied. Pending-review rows
+   remain visible but do not enter performance comparisons until resolved.
 
 After applying, run the full release checks before committing or deploying:
 

@@ -6,12 +6,38 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.12.0";
+export const DATASET_VERSION = "1.14.0";
 export const DATASET_RELEASE_DATE = "2026-08-19";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "Signal-noise frequency caution and InAs passivation",
+    summary:
+      "Adds three halide-passivated InAs CQD photodiodes and makes an explicit responsivity/EQE versus noise-frequency mismatch an amber condition.",
+    changes: [
+      "Added the Cl-, Br-, and I-passivated InAs CQD photodiodes from Lee et al. with their 980 nm measured-noise detectivity, EQE, calculated responsivity, and 90-10% fall times.",
+      "Recorded the 25 Hz optical chopping frequency for EQE and responsivity separately from the 10 kHz noise frequency used for D*.",
+      "Added an automatic amber reason when responsivity or EQE is acquired at a different frequency from the noise value used for D*; missing frequency evidence alone remains neutral.",
+      "Applied a curator-directed preamplifier-floor caution because the disconnected-device background spectrum falls below the SR570 preamplifier background noise.",
+    ],
+  },
+  {
+    version: "1.13.0",
+    date: DATASET_RELEASE_DATE,
+    title: "Provisional review workflow",
+    summary:
+      "Activates a public pending-review status for evidence-backed measurements that require a named human curation decision without redefining green or amber methodology flags.",
+    changes: [
+      "Added explicit provisional approval to the discovery decision workflow with a required public review explanation.",
+      "Displayed needs-human-review badges and explanations on provisional measurement and paper records.",
+      "Excluded provisional measurements from performance plots, paper maxima, rankings, and aggregate material summaries while retaining them in the searchable measurement index and exports.",
+      "Preserved every previously published measurement as reviewed; no historical paper reparsing or CSV migration was required.",
+    ],
+  },
+  {
+    version: "1.12.0",
     date: DATASET_RELEASE_DATE,
     title: "CQD phototransistor caution release",
     summary:

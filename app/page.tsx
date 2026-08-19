@@ -31,7 +31,7 @@ export default function Home() {
       <section className="atlas-hero">
         <div className="page-shell atlas-hero__grid">
           <div className="atlas-hero__copy">
-            <p className="eyebrow">Curator-reviewed literature data</p>
+            <p className="eyebrow">Curated literature data</p>
             <h1>Photodiode Atlas</h1>
             <p className="atlas-hero__lede">
               Compare reported colloidal quantum-dot and metal-halide perovskite
@@ -61,6 +61,7 @@ export default function Home() {
               <li>Each point is one reported photodetector measurement.</li>
               <li>Noise methodology stays attached to every D* value.</li>
               <li>Green and amber flags expose comparison caveats.</li>
+              <li>Provisional records name unresolved review questions.</li>
             </ul>
             <a href="/methodology">Review the curation policy →</a>
           </aside>
@@ -84,8 +85,8 @@ export default function Home() {
           </div>
         </div>
         <p className="page-shell atlas-hero__updated">
-          Dataset v{DATASET_VERSION} · Curator reviewed · Last updated{" "}
-          {formattedUpdate} · Paper → device → measurement provenance
+          Dataset v{DATASET_VERSION} · Reviewed and provisional records · Last
+          updated {formattedUpdate} · Paper → device → measurement provenance
         </p>
       </section>
 

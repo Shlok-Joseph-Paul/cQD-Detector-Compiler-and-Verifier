@@ -56,12 +56,19 @@ export function importProposalDecisionsCsv(
           `${proposal.proposalId}: an applied proposal cannot be reopened through CSV`,
         );
       if (
-        status === "approved" &&
+        (status === "approved" || status === "approved-provisional") &&
         (proposal.scopeStatus !== "in-scope" ||
           proposal.proposedMeasurements.length === 0)
       )
         throw new Error(
           `${proposal.proposalId}: only an in-scope proposal with measurements can be approved`,
+        );
+      if (
+        status === "approved-provisional" &&
+        !row[indexes.get("decision_notes")!]?.trim()
+      )
+        throw new Error(
+          `${proposal.proposalId}: provisional approval requires a public review explanation in decision_notes`,
         );
       return {
         ...proposal,

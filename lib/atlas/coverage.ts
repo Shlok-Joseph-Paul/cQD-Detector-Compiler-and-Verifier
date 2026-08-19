@@ -1,4 +1,5 @@
 import type { AtlasRecord } from "./types";
+import { reviewedRecords } from "./review.ts";
 
 export interface CoverageSlice {
   label: string;
@@ -15,7 +16,7 @@ export function maxDetectivityPerPaper(
 ): AtlasRecord[] {
   const bestByPaper = new Map<string, AtlasRecord>();
 
-  for (const record of records) {
+  for (const record of reviewedRecords(records)) {
     const current = bestByPaper.get(record.paper.paperId);
     if (
       !current ||

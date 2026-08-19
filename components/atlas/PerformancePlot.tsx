@@ -378,6 +378,7 @@ export function PerformancePlot({
   const [hoveredMeasurementId, setHoveredMeasurementId] = useState<string>();
   const validRecords = records.filter(
     (record) =>
+      record.measurement.curatorStatus === "reviewed" &&
       Number.isFinite(record.measurement.wavelengthNm) &&
       record.measurement.wavelengthNm > 0 &&
       Number.isFinite(record.measurement.detectivityJones) &&

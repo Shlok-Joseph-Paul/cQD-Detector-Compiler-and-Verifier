@@ -1,4 +1,5 @@
 import { serializeCsv } from "./csv.ts";
+import { deriveFrequencyMatchStatus } from "./frequency-match.ts";
 import { DATASET_VERSION } from "./releases.ts";
 import type { JoinedMeasurement } from "./types.ts";
 
@@ -27,10 +28,13 @@ export const ATLAS_EXPORT_COLUMNS = [
   "responsivity_temperature_k",
   "responsivity_source_location",
   "responsivity_extraction_method",
+  "responsivity_frequency_hz",
   "eqe_percent",
+  "eqe_frequency_hz",
   "temperature_k",
   "bias_v",
   "measurement_frequency_hz",
+  "frequency_match_status",
   "response_time_s",
   "rise_time_s",
   "fall_time_s",
@@ -110,10 +114,19 @@ export function exportJoinedMeasurementsCsv(
       measurement.responsivity_temperature_k,
       measurement.responsivity_source_location,
       measurement.responsivity_extraction_method,
+      measurement.responsivity_frequency_hz,
       measurement.eqe_percent,
+      measurement.eqe_frequency_hz,
       measurement.temperature_k,
       measurement.bias_v,
       measurement.measurement_frequency_hz,
+      deriveFrequencyMatchStatus({
+        measurementFrequencyHz: measurement.measurement_frequency_hz,
+        responsivityAW: measurement.responsivity_a_w,
+        responsivityFrequencyHz: measurement.responsivity_frequency_hz,
+        eqePercent: measurement.eqe_percent,
+        eqeFrequencyHz: measurement.eqe_frequency_hz,
+      }),
       measurement.response_time_s,
       measurement.rise_time_s,
       measurement.fall_time_s,

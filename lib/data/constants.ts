@@ -79,6 +79,11 @@ export const AMBER_REASON_DETAILS: Record<AmberReason, AmberReasonDetail> = {
     explanation:
       "Measured device noise was reported below the noise floor of the current preamplifier, limiting confidence in the absolute noise value.",
   },
+  frequency_mismatch: {
+    label: "Responsivity/EQE and noise frequency mismatch",
+    explanation:
+      "Detectivity combines responsivity or EQE acquired at a different frequency from the noise value used in the calculation, limiting direct comparability of the inputs.",
+  },
 };
 
 export function amberReasonsToExplanation(

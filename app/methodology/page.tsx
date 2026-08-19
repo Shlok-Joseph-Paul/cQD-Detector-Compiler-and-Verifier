@@ -27,8 +27,6 @@ const excludedRecords = [
 ];
 
 const greenCriteria = [
-  "A human curator has reviewed the record.",
-  "The value clearly belongs to an in-scope CQD or perovskite photodetector with a reviewed device class.",
   "Detectivity and wavelength are explicitly identifiable.",
   "The value does not use a shot-noise approximation.",
   "The value does not use a Johnson-noise-only approximation.",
@@ -37,6 +35,7 @@ const greenCriteria = [
   "No curator-applied caution identifies an unreported D* noise basis as material to interpretation.",
   "The reported detectivity does not appear substantially above a plausible BLIP limit.",
   "The measured device noise was not reported below the current preamplifier noise floor.",
+  "Responsivity or EQE was not acquired at a different frequency from the noise value used for D*.",
 ];
 
 const amberReasons = [
@@ -47,6 +46,7 @@ const amberReasons = [
   "A curator determined that the publication does not establish the D* noise basis at a critical operating point.",
   "The reported detectivity appears substantially above a plausible background-limited infrared photodetection (BLIP) limit and warrants manual review.",
   "The measured device noise was reported below the current preamplifier noise floor.",
+  "Responsivity or EQE was acquired at a different frequency from the noise value used for D*.",
 ];
 
 export default function MethodologyPage() {
@@ -262,6 +262,26 @@ export default function MethodologyPage() {
             </div>
           </section>
 
+          <section aria-labelledby="curation-status-heading">
+            <h2 id="curation-status-heading">Curation status</h2>
+            <p>
+              Curation status is independent of the green or amber measurement
+              flag. <strong>Reviewed</strong> means a human curator has
+              confirmed the Paper → Device → Measurement assignment.{" "}
+              <strong>Needs human review</strong> identifies a provisional
+              record whose reported value is sufficiently documented to remain
+              visible, but whose interpretation or assignment still has a named
+              unresolved question.
+            </p>
+            <p>
+              Every provisional record displays that question in its curator
+              note. Provisional measurements remain searchable and available in
+              the measurement index and data exports, but they are excluded from
+              performance plots, paper maxima, rankings, and aggregate material
+              summaries until a curator resolves them.
+            </p>
+          </section>
+
           <section aria-labelledby="flags-heading">
             <h2 id="flags-heading">Green and amber flags</h2>
             <p>
@@ -297,17 +317,23 @@ export default function MethodologyPage() {
               and a human-readable explanation. Shot-noise approximations,
               Johnson-noise-only approximations, lock-in-only noise
               measurements, and source-measure-unit-only noise acquisition are
-              always amber. Mixed FFT-plus-lock-in acquisition does not trigger
-              the lock-in-only rule. A source measure unit or parameter analyzer
-              used alongside a spectrum or dynamic-signal analyzer does not
-              trigger the source-measure-unit rule. A potential BLIP-limit
-              concern is applied by a curator only when the comparison is
-              straightforward and the reported value is clearly anomalous. A
-              curator may also apply amber when an unreported D* noise basis
-              materially limits interpretation at a critical operating point,
-              such as high reverse bias. This is not inferred automatically from
-              a missing field. An amber flag is never shown without an
-              explanation.
+              always amber. An explicit responsivity/EQE and noise-frequency
+              mismatch is also always amber. Mixed FFT-plus-lock-in acquisition
+              does not trigger the lock-in-only rule. A source measure unit or
+              parameter analyzer used alongside a spectrum or dynamic-signal
+              analyzer does not trigger the source-measure-unit rule. A
+              potential BLIP-limit concern is applied by a curator only when the
+              comparison is straightforward and the reported value is clearly
+              anomalous. A curator may also apply amber when an unreported D*
+              noise basis materially limits interpretation at a critical
+              operating point, such as high reverse bias. This is not inferred
+              automatically from a missing field. An amber flag is never shown
+              without an explanation.
+            </p>
+            <p>
+              A provisional record can be green or amber. Green means no amber
+              methodology caution currently applies; it does not mean the Paper
+              → Device → Measurement assignment has completed human review.
             </p>
           </section>
 
@@ -346,9 +372,17 @@ export default function MethodologyPage() {
               Responsivity, temporal response, explicit −3 dB bandwidth, and
               linear dynamic range are rechecked in both the main article and
               available Supporting Information. Each reported value retains its
-              own wavelength, bias, temperature, definition, and source location
-              where available because those conditions may differ from the
-              plotted D<sup>*</sup> operating point.
+              own wavelength, bias, temperature, frequency, definition, and
+              source location where available because those conditions may
+              differ from the plotted D<sup>*</sup> operating point.
+            </p>
+            <p>
+              When the source reports the optical modulation or chopping
+              frequency for responsivity or EQE, the atlas compares it with the
+              frequency used for noise/detectivity. Records are labeled as
+              frequency matched, frequency mismatched, or not established when
+              the evidence is incomplete. An explicit mismatch requires amber;
+              missing frequency evidence alone does not.
             </p>
             <p>
               Rise time, fall time, a general response time, and −3 dB bandwidth

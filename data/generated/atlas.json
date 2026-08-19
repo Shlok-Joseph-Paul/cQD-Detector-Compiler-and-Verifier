@@ -11261,7 +11261,7 @@
         "spectrum_analyzer"
       ],
       "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-      "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+      "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
       "curator_status": "reviewed",
@@ -11270,7 +11270,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained MAPbI3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-19"
     },
     {
       "measurement_id": "kim-2026-mapbi3-compressive-522-zero",
@@ -11316,7 +11316,7 @@
         "spectrum_analyzer"
       ],
       "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-      "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+      "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
       "curator_status": "reviewed",
@@ -11325,7 +11325,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-19"
     },
     {
       "measurement_id": "kim-2026-cspbbr3-unstrained-522-zero",
@@ -11371,7 +11371,7 @@
         "spectrum_analyzer"
       ],
       "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-      "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+      "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
       "curator_status": "reviewed",
@@ -11380,7 +11380,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained CsPbBr3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-19"
     },
     {
       "measurement_id": "kim-2026-cspbbr3-compressive-522-zero",
@@ -11426,7 +11426,7 @@
         "spectrum_analyzer"
       ],
       "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-      "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+      "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
       "curator_status": "reviewed",
@@ -11435,7 +11435,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-19"
     },
     {
       "measurement_id": "wang-2026-cspbibr2-control-435-zero-measured",
@@ -11482,7 +11482,7 @@
       ],
       "noise_instrument_details": "Figure 5c reports measured noise current at 0 V, but the supplied main article does not identify the noise-acquisition instrument.",
       "noise_instrument_source": "Main article PDF pp. 8-9, Figure 5c and Equation 4 discussion",
-      "detectivity_extraction_method": "graphically_extracted",
+      "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 8-9, Figure 5c-e and Equation 4 discussion",
       "curator_status": "reviewed",
       "flag": "green",
@@ -11490,7 +11490,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Only the measured-noise D* is retained; the shot-noise estimate is excluded by curator direction.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-19"
     },
     {
       "measurement_id": "wang-2026-cspbibr2-cdca-435-zero-measured",
@@ -11784,8 +11784,8 @@
       "responsivity_wavelength_nm": 400,
       "responsivity_bias_v": 0,
       "responsivity_temperature_k": null,
-      "responsivity_source_location": "Main article PDF pp. 11-12, Figure 4c and accompanying text",
-      "responsivity_extraction_method": "graphically_extracted",
+      "responsivity_source_location": "Main article PDF pp. 5-6, Figure 4c and accompanying text",
+      "responsivity_extraction_method": "directly_reported",
       "eqe_percent": null,
       "temperature_k": null,
       "bias_v": 0,
@@ -11809,7 +11809,7 @@
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": "20 log10(Pmax/Pmin)",
-      "linear_dynamic_range_source_location": "Main article PDF pp. 12-13, Figure 4f and Equation 2",
+      "linear_dynamic_range_source_location": "Main article PDF p. 6, Figure 4f and Equation 2",
       "linear_dynamic_range_extraction_method": "directly_reported",
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-08-17",
@@ -11819,9 +11819,9 @@
         "source_measure_unit"
       ],
       "noise_instrument_details": "Dark-current traces were recorded with an Agilent B1500A semiconductor parameter analyzer and transformed by FFT. The Keithley 2400 was used for I-V and imaging rather than noise acquisition.",
-      "noise_instrument_source": "Main article PDF p. 6, Section 2.5; pp. 12-13, Figure 4d-e and FFT discussion",
-      "detectivity_extraction_method": "graphically_extracted",
-      "source_location": "Main article PDF pp. 12-13, Figure 4d-e and accompanying text",
+      "noise_instrument_source": "Main article PDF p. 3, Section 2.5; p. 5, FFT discussion",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 5-6, Figure 4e and accompanying text",
       "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
@@ -11830,7 +11830,7 @@
       "amber_explanation": "Noise was derived from dark-current traces acquired by a semiconductor parameter analyzer.",
       "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered Spiro-OMeTAD control; the spectral panels do not independently restate the zero-bias condition.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-19"
     },
     {
       "measurement_id": "zhai-2026-cspbbr3-meop-dsf-500-zero-1hz",
@@ -11841,8 +11841,8 @@
       "responsivity_wavelength_nm": 500,
       "responsivity_bias_v": 0,
       "responsivity_temperature_k": null,
-      "responsivity_source_location": "Main article PDF pp. 11-12, Figure 4c and accompanying text",
-      "responsivity_extraction_method": "graphically_extracted",
+      "responsivity_source_location": "Main article PDF pp. 5-6, Figure 4c and accompanying text",
+      "responsivity_extraction_method": "directly_reported",
       "eqe_percent": null,
       "temperature_k": null,
       "bias_v": 0,
@@ -11853,7 +11853,7 @@
       "response_time_definition": "10-90% rise time and 90-10% fall time.",
       "response_time_wavelength_nm": null,
       "response_time_bias_v": 0,
-      "response_time_source_location": "Main article PDF pp. 12-13, Figure 4g and accompanying text",
+      "response_time_source_location": "Main article PDF p. 6, Figure 4g and accompanying text",
       "response_time_limit": "measured",
       "response_time_extraction_method": "directly_reported",
       "bandwidth_hz": null,
@@ -11866,7 +11866,7 @@
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": "20 log10(Pmax/Pmin)",
-      "linear_dynamic_range_source_location": "Main article PDF pp. 12-13, Figure 4f and Equation 2",
+      "linear_dynamic_range_source_location": "Main article PDF p. 6, Figure 4f and Equation 2",
       "linear_dynamic_range_extraction_method": "directly_reported",
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-08-17",
@@ -11876,9 +11876,9 @@
         "source_measure_unit"
       ],
       "noise_instrument_details": "Dark-current traces were recorded with an Agilent B1500A semiconductor parameter analyzer and transformed by FFT. The optimized device reports 1.0e-13 A Hz^-1/2 at 1 Hz. The Keithley 2400 was used for I-V and imaging rather than noise acquisition.",
-      "noise_instrument_source": "Main article PDF p. 6, Section 2.5; pp. 12-13, Figure 4d-e and FFT discussion",
-      "detectivity_extraction_method": "graphically_extracted",
-      "source_location": "Main article PDF pp. 12-13, Figure 4d-e and accompanying text",
+      "noise_instrument_source": "Main article PDF p. 3, Section 2.5; p. 5, FFT discussion",
+      "detectivity_extraction_method": "directly_reported",
+      "source_location": "Main article PDF pp. 5-6, Figure 4e and accompanying text",
       "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
@@ -11887,7 +11887,7 @@
       "amber_explanation": "Noise was derived from dark-current traces acquired by a semiconductor parameter analyzer.",
       "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered MeOP-DSF device; the spectral panels do not independently restate the zero-bias condition.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-19"
     },
     {
       "measurement_id": "li-2026-agbis2-ingaas-1900-zero",
@@ -25378,7 +25378,7 @@
           "spectrum_analyzer"
         ],
         "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-        "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+        "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
         "curator_status": "reviewed",
@@ -25387,7 +25387,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained MAPbI3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-19"
       }
     },
     {
@@ -25473,7 +25473,7 @@
           "spectrum_analyzer"
         ],
         "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-        "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+        "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
         "curator_status": "reviewed",
@@ -25482,7 +25482,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-19"
       }
     },
     {
@@ -25568,7 +25568,7 @@
           "spectrum_analyzer"
         ],
         "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-        "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+        "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
         "curator_status": "reviewed",
@@ -25577,7 +25577,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained CsPbBr3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-19"
       }
     },
     {
@@ -25663,7 +25663,7 @@
           "spectrum_analyzer"
         ],
         "noise_instrument_details": "Agilent 35670A dynamic signal analyzer with a Keithley 428 current amplifier. The Keithley 4200A-SCS was used for J-V and SCLC rather than noise acquisition.",
-        "noise_instrument_source": "Supporting Information DOCX, device characterization and noise-current measurement",
+        "noise_instrument_source": "Main article PDF p. 10, Section 4.3, Measurement and Characterization; Supporting Information DOCX, device characterization and noise-current measurement",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
         "curator_status": "reviewed",
@@ -25672,7 +25672,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-19"
       }
     },
     {
@@ -25768,7 +25768,7 @@
         ],
         "noise_instrument_details": "Figure 5c reports measured noise current at 0 V, but the supplied main article does not identify the noise-acquisition instrument.",
         "noise_instrument_source": "Main article PDF pp. 8-9, Figure 5c and Equation 4 discussion",
-        "detectivity_extraction_method": "graphically_extracted",
+        "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 8-9, Figure 5c-e and Equation 4 discussion",
         "curator_status": "reviewed",
         "flag": "green",
@@ -25776,7 +25776,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Only the measured-noise D* is retained; the shot-noise estimate is excluded by curator direction.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-19"
       }
     },
     {
@@ -26335,8 +26335,8 @@
         "responsivity_wavelength_nm": 400,
         "responsivity_bias_v": 0,
         "responsivity_temperature_k": null,
-        "responsivity_source_location": "Main article PDF pp. 11-12, Figure 4c and accompanying text",
-        "responsivity_extraction_method": "graphically_extracted",
+        "responsivity_source_location": "Main article PDF pp. 5-6, Figure 4c and accompanying text",
+        "responsivity_extraction_method": "directly_reported",
         "eqe_percent": null,
         "temperature_k": null,
         "bias_v": 0,
@@ -26360,7 +26360,7 @@
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": "20 log10(Pmax/Pmin)",
-        "linear_dynamic_range_source_location": "Main article PDF pp. 12-13, Figure 4f and Equation 2",
+        "linear_dynamic_range_source_location": "Main article PDF p. 6, Figure 4f and Equation 2",
         "linear_dynamic_range_extraction_method": "directly_reported",
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-08-17",
@@ -26370,9 +26370,9 @@
           "source_measure_unit"
         ],
         "noise_instrument_details": "Dark-current traces were recorded with an Agilent B1500A semiconductor parameter analyzer and transformed by FFT. The Keithley 2400 was used for I-V and imaging rather than noise acquisition.",
-        "noise_instrument_source": "Main article PDF p. 6, Section 2.5; pp. 12-13, Figure 4d-e and FFT discussion",
-        "detectivity_extraction_method": "graphically_extracted",
-        "source_location": "Main article PDF pp. 12-13, Figure 4d-e and accompanying text",
+        "noise_instrument_source": "Main article PDF p. 3, Section 2.5; p. 5, FFT discussion",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 5-6, Figure 4e and accompanying text",
         "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
@@ -26381,7 +26381,7 @@
         "amber_explanation": "Noise was derived from dark-current traces acquired by a semiconductor parameter analyzer.",
         "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered Spiro-OMeTAD control; the spectral panels do not independently restate the zero-bias condition.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-19"
       }
     },
     {
@@ -26436,8 +26436,8 @@
         "responsivity_wavelength_nm": 500,
         "responsivity_bias_v": 0,
         "responsivity_temperature_k": null,
-        "responsivity_source_location": "Main article PDF pp. 11-12, Figure 4c and accompanying text",
-        "responsivity_extraction_method": "graphically_extracted",
+        "responsivity_source_location": "Main article PDF pp. 5-6, Figure 4c and accompanying text",
+        "responsivity_extraction_method": "directly_reported",
         "eqe_percent": null,
         "temperature_k": null,
         "bias_v": 0,
@@ -26448,7 +26448,7 @@
         "response_time_definition": "10-90% rise time and 90-10% fall time.",
         "response_time_wavelength_nm": null,
         "response_time_bias_v": 0,
-        "response_time_source_location": "Main article PDF pp. 12-13, Figure 4g and accompanying text",
+        "response_time_source_location": "Main article PDF p. 6, Figure 4g and accompanying text",
         "response_time_limit": "measured",
         "response_time_extraction_method": "directly_reported",
         "bandwidth_hz": null,
@@ -26461,7 +26461,7 @@
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": "20 log10(Pmax/Pmin)",
-        "linear_dynamic_range_source_location": "Main article PDF pp. 12-13, Figure 4f and Equation 2",
+        "linear_dynamic_range_source_location": "Main article PDF p. 6, Figure 4f and Equation 2",
         "linear_dynamic_range_extraction_method": "directly_reported",
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-08-17",
@@ -26471,9 +26471,9 @@
           "source_measure_unit"
         ],
         "noise_instrument_details": "Dark-current traces were recorded with an Agilent B1500A semiconductor parameter analyzer and transformed by FFT. The optimized device reports 1.0e-13 A Hz^-1/2 at 1 Hz. The Keithley 2400 was used for I-V and imaging rather than noise acquisition.",
-        "noise_instrument_source": "Main article PDF p. 6, Section 2.5; pp. 12-13, Figure 4d-e and FFT discussion",
-        "detectivity_extraction_method": "graphically_extracted",
-        "source_location": "Main article PDF pp. 12-13, Figure 4d-e and accompanying text",
+        "noise_instrument_source": "Main article PDF p. 3, Section 2.5; p. 5, FFT discussion",
+        "detectivity_extraction_method": "directly_reported",
+        "source_location": "Main article PDF pp. 5-6, Figure 4e and accompanying text",
         "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
@@ -26482,7 +26482,7 @@
         "amber_explanation": "Noise was derived from dark-current traces acquired by a semiconductor parameter analyzer.",
         "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered MeOP-DSF device; the spectral panels do not independently restate the zero-bias condition.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-19"
       }
     },
     {

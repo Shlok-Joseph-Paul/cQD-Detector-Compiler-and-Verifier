@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.11.0";
-export const DATASET_RELEASE_DATE = "2026-08-18";
+export const DATASET_VERSION = "1.12.0";
+export const DATASET_RELEASE_DATE = "2026-08-19";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "CQD phototransistor caution release",
+    summary:
+      "Adds three curator-approved PbSe, Ag2Te, and InAs CQD phototransistor papers with four headline measurements and explicit shot-noise cautions.",
+    changes: [
+      "Added two PbSe CQD/IGZO devices spanning TBAI-exchanged 1064 nm detection and a larger MPA-exchanged 1550 nm device.",
+      "Added the Ag2Te CQD/ZnO 940 nm champion with its reported responsivity and 10-90% rise and 90-10% fall times.",
+      "Added the gradated-bandgap InAs CQD/ZnON 905 nm champion with its reported responsivity, EQE, and device-matched multi-second temporal response.",
+      "Marked all four measurements amber because D* was calculated from dark-current shot-noise approximations rather than measured total-noise spectra.",
+      "Held control devices, intensity sweeps, approximate bounds, aged-device values, and literature-comparison rows outside the approved headline set.",
+      "Preserved unavailable Supporting Information and conflicting summary values explicitly in source and curator notes.",
+    ],
+  },
+  {
+    version: "1.11.0",
+    date: "2026-08-18",
     title: "CQD interface and HgTe synthesis expansion",
     summary:
       "Adds five curator-approved PbS and HgTe CQD photodiode papers with device-resolved interface engineering, measured-noise provenance, and shot-noise cautions.",

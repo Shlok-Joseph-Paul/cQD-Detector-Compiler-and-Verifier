@@ -10,6 +10,7 @@ import {
 } from "../lib/atlas/coverage.ts";
 import {
   DEFAULT_ATLAS_FILTERS,
+  availableDetectorClasses,
   biasCondition,
   clearMetricFilters,
   countActiveFilters,
@@ -275,6 +276,34 @@ test("temperature and bias category boundaries include missing values", () => {
   assert.equal(biasCondition(0), "zero_bias");
   assert.equal(biasCondition(-0.5), "nonzero_bias");
   assert.equal(biasCondition(null), "not_reported");
+});
+
+test("graph detector choices are derived in canonical order", () => {
+  const phototransistor: AtlasRecord = {
+    ...recordWithMeasurement("phototransistor", {}),
+    device: {
+      ...recordWithMeasurement("phototransistor", {}).device,
+      detectorClass: "phototransistor",
+    },
+  };
+  const photoconductor: AtlasRecord = {
+    ...recordWithMeasurement("photoconductor", {}),
+    device: {
+      ...recordWithMeasurement("photoconductor", {}).device,
+      detectorClass: "photoconductor",
+    },
+  };
+
+  assert.deepEqual(
+    availableDetectorClasses([
+      phototransistor,
+      measuredRecord,
+      photoconductor,
+      measuredRecord,
+    ]),
+    ["photodiode", "photoconductor", "phototransistor"],
+  );
+  assert.deepEqual(availableDetectorClasses([]), []);
 });
 
 test("URL filter state round-trips and preserves unrelated parameters", () => {

@@ -3,7 +3,10 @@
 import { useDeferredValue, useMemo, useState } from "react";
 
 import type { JoinedMeasurement } from "@/lib/data/types";
-import { filterAtlasRecords } from "@/lib/atlas/filters";
+import {
+  availableDetectorClasses,
+  filterAtlasRecords,
+} from "@/lib/atlas/filters";
 import { normalizeJoinedMeasurement } from "@/lib/atlas/types";
 import type { AtlasFilterState, AtlasRecord } from "@/lib/atlas/types";
 
@@ -39,8 +42,24 @@ export function AtlasExplorer({
     lockedMaterial,
   );
   const deferredFilters = useDeferredValue(filters);
+  const detectorClasses = useMemo(
+    () => availableDetectorClasses(normalized),
+    [normalized],
+  );
   const filtered = useMemo(
     () => filterAtlasRecords(normalized, deferredFilters),
+    [normalized, deferredFilters],
+  );
+  const materialOptions = useMemo(
+    () =>
+      [
+        ...new Set(
+          filterAtlasRecords(normalized, {
+            ...deferredFilters,
+            material: "all",
+          }).map((record) => record.device.materialFamily),
+        ),
+      ].sort((left, right) => left.localeCompare(right)),
     [normalized, deferredFilters],
   );
   const [selectedMeasurementId, setSelectedMeasurementId] = useState<string>();
@@ -77,9 +96,18 @@ export function AtlasExplorer({
           plotY={filters.plotY}
           plotScope={filters.plotScope}
           detectorClass={filters.detectorClass}
+          detectorClasses={detectorClasses}
           activeMaterial={filters.material}
+          materialOptions={materialOptions}
           selectedMeasurementId={selectedMeasurementId}
           onConfigChange={(changes) => setFilters({ ...filters, ...changes })}
+          onDetectorClassChange={(detectorClass) =>
+            setFilters({
+              ...filters,
+              detectorClass,
+              material: lockedMaterial ?? "all",
+            })
+          }
           onMaterialFilter={
             lockedMaterial
               ? undefined

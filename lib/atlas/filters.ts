@@ -62,6 +62,14 @@ export const DEFAULT_ATLAS_FILTERS: AtlasFilterState = {
   tableView: "overview",
 };
 
+/** Detector classes present in a record set, kept in the canonical UI order. */
+export function availableDetectorClasses(
+  records: readonly AtlasRecord[],
+): DetectorClass[] {
+  const present = new Set(records.map((record) => record.device.detectorClass));
+  return DETECTOR_CLASSES.filter((detectorClass) => present.has(detectorClass));
+}
+
 const TEMPERATURE_CATEGORIES: readonly TemperatureCategory[] = [
   "below_room_temperature",
   "room_temperature",

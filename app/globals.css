@@ -901,6 +901,263 @@ select {
   font-size: 12px;
 }
 
+.performance-plot__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 11px 14px;
+  margin: 0 28px 16px;
+  padding: 13px 14px;
+  border: 1px solid #dce5e1;
+  border-radius: 7px;
+  background: #f6f8f7;
+}
+
+.plot-control-group {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.plot-control-group legend,
+.plot-control-select > span {
+  padding: 0;
+  color: #52615c;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.plot-segment {
+  display: inline-flex;
+  min-width: 0;
+}
+
+.plot-segment button,
+.plot-toolbar-button,
+.plot-download-menu summary,
+.plot-download-menu button,
+.plot-swap-axes,
+.plot-reset-view {
+  min-height: 32px;
+  padding: 6px 9px;
+  border: 1px solid #c7d2cd;
+  border-radius: 0;
+  background: #fff;
+  color: #31443d;
+  cursor: pointer;
+  font: 700 10.5px/1.15 var(--font-sans);
+}
+
+.plot-segment button {
+  border-right-width: 0;
+}
+
+.plot-segment button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.plot-segment button:last-child {
+  border-right-width: 1px;
+  border-radius: 0 4px 4px 0;
+}
+
+.plot-segment button:hover,
+.plot-toolbar-button:hover,
+.plot-download-menu summary:hover,
+.plot-download-menu button:hover:not(:disabled),
+.plot-swap-axes:hover,
+.plot-reset-view:hover {
+  border-color: var(--teal);
+  background: var(--teal-pale);
+  color: var(--teal-dark);
+}
+
+.plot-segment button[aria-pressed="true"] {
+  border-color: var(--teal-dark);
+  background: var(--teal-dark);
+  color: #fff;
+}
+
+.plot-segment button[aria-pressed="true"] + button {
+  border-left-color: var(--teal-dark);
+}
+
+.plot-detector-select {
+  display: none;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-dark);
+  background: #fff;
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.plot-toolbar-actions {
+  display: flex;
+  align-items: center;
+  align-self: end;
+  gap: 7px;
+  margin-left: auto;
+}
+
+.plot-toolbar-button,
+.plot-download-menu summary {
+  border-radius: 4px;
+}
+
+.plot-download-menu {
+  position: relative;
+}
+
+.plot-download-menu summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.plot-download-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.plot-download-menu summary::after {
+  margin-left: 6px;
+  content: "▾";
+}
+
+.plot-download-menu[open] summary {
+  border-color: var(--teal);
+  background: var(--teal-pale);
+  color: var(--teal-dark);
+}
+
+.plot-download-menu > div {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  right: 0;
+  display: grid;
+  min-width: 132px;
+  padding: 6px;
+  border: 1px solid var(--line-dark);
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgb(24 47 39 / 16%);
+}
+
+.plot-download-menu button {
+  border: 0;
+  text-align: left;
+}
+
+.plot-download-menu button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.plot-comparison-controls {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.1fr) minmax(170px, 1fr) auto minmax(
+      170px,
+      1fr
+    );
+  align-items: end;
+  gap: 10px;
+  margin: 0 28px 16px;
+  padding: 13px 14px;
+  border: 1px solid #c9ddd5;
+  border-radius: 7px;
+  background: var(--teal-pale);
+}
+
+.plot-control-select {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+}
+
+.plot-control-select select {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid #aebfb8;
+  background: #fff;
+  color: var(--ink);
+  font-size: 11px;
+}
+
+.plot-swap-axes {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 4px;
+  font-size: 17px;
+}
+
+.plot-settings-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 28px 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--line-dark);
+  border-radius: 7px;
+  background: var(--paper-deep);
+}
+
+.plot-settings-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: var(--ink);
+  font-size: 11px;
+}
+
+.plot-settings-toggle input {
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  accent-color: var(--teal);
+}
+
+.plot-settings-toggle span {
+  display: grid;
+  gap: 3px;
+}
+
+.plot-settings-toggle small {
+  color: var(--ink-soft);
+  font-size: 10px;
+}
+
+.plot-reset-view {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.plot-segment button:focus-visible,
+.plot-toolbar-button:focus-visible,
+.plot-download-menu summary:focus-visible,
+.plot-download-menu button:focus-visible,
+.plot-swap-axes:focus-visible,
+.plot-reset-view:focus-visible,
+.plot-control-select select:focus-visible,
+.plot-detector-select:focus-visible,
+.plot-material-filter > summary:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
 .performance-plot__actions {
   display: flex;
   flex-wrap: wrap;
@@ -952,7 +1209,7 @@ select {
 }
 
 .performance-plot__chart .recharts-cartesian-grid line {
-  stroke: #d6ddda;
+  stroke: #e4e9e6;
   stroke-width: 1;
 }
 
@@ -993,8 +1250,16 @@ select {
 
 .atlas-point {
   cursor: pointer;
+  filter: drop-shadow(0 0 1px rgb(255 255 255 / 90%));
   opacity: 1;
-  transition: opacity 140ms ease;
+  transition:
+    filter 140ms ease,
+    opacity 140ms ease;
+}
+
+.atlas-point--hovered,
+.atlas-point--selected {
+  filter: drop-shadow(0 0 4px rgb(11 102 87 / 40%));
 }
 
 .atlas-point--dimmed {
@@ -1029,27 +1294,6 @@ select {
   font-size: 11px;
 }
 
-.atlas-tooltip__headline {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  margin: 7px 0 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-}
-
-.atlas-tooltip__headline strong {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.atlas-tooltip__headline span {
-  color: var(--ink-soft);
-  font-weight: 750;
-}
-
 .atlas-tooltip__material {
   margin: 0;
   color: var(--teal);
@@ -1057,6 +1301,41 @@ select {
   font-weight: 750;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.atlas-tooltip__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 11px 0 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.atlas-tooltip__metrics > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px;
+}
+
+.atlas-tooltip__metrics > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.atlas-tooltip__metrics span {
+  color: var(--ink-soft);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.atlas-tooltip__metrics strong {
+  overflow-wrap: anywhere;
+  color: var(--teal-dark);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .atlas-tooltip dl {
@@ -1082,6 +1361,35 @@ select {
   margin: 1px 0 0;
 }
 
+.atlas-tooltip__status {
+  display: inline-flex;
+  padding: 2px 5px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.atlas-tooltip__status--green {
+  border-color: #8eb9a3;
+  background: var(--green-pale);
+  color: var(--green);
+}
+
+.atlas-tooltip__status--unverified {
+  border-color: #a5aaa5;
+  background: var(--unverified-pale);
+  color: var(--unverified);
+}
+
+.atlas-tooltip__status--amber {
+  border-color: #d1b16e;
+  background: var(--amber-pale);
+  color: #7b4b05;
+}
+
 .atlas-tooltip__warning {
   margin: 10px 0;
   padding: 8px;
@@ -1100,15 +1408,22 @@ select {
 }
 
 .atlas-tooltip__paper {
-  margin: 11px 0 5px;
+  margin: 6px 0 0;
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.3;
 }
 
 .atlas-tooltip small {
   color: var(--ink-soft);
+}
+
+.atlas-tooltip__instruction {
+  display: block;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
 }
 
 .performance-plot__meta {
@@ -1130,21 +1445,31 @@ select {
 .performance-plot__summary {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 18px;
   padding: 12px 0;
   border-bottom: 1px solid #edf0ee;
 }
 
-.performance-plot__summary span {
-  padding: 0 14px;
-  border-left: 1px solid #dfe5e2;
+.performance-plot__summary-primary,
+.performance-plot__summary-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+
+.performance-plot__summary-primary span {
+  padding-right: 11px;
+  border-right: 1px solid #dfe5e2;
   color: var(--ink-soft);
   font-size: 11px;
 }
 
-.performance-plot__summary span:first-child {
-  padding-left: 0;
-  border-left: 0;
+.performance-plot__summary-primary span:last-child {
+  padding-right: 0;
+  border-right: 0;
 }
 
 .performance-plot__summary strong {
@@ -1152,8 +1477,33 @@ select {
   font-size: 13px;
 }
 
-.performance-plot__summary .has-flags strong {
-  color: #a85b00;
+.plot-status-chip,
+.plot-summary-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 7px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 10px;
+}
+
+.plot-status-chip--amber {
+  border-color: #d5b77b;
+  background: var(--amber-pale);
+  color: #70460a;
+}
+
+.plot-status-chip--unverified {
+  border-color: #aeb2ae;
+  background: var(--unverified-pale);
+  color: var(--unverified);
+}
+
+.plot-summary-detail {
+  border-color: transparent;
+  color: var(--ink-soft);
+  cursor: help;
 }
 
 .plot-legend {
@@ -1164,14 +1514,95 @@ select {
 }
 
 .plot-legend__group {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.plot-legend__heading {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 7px 12px;
+}
+
+.plot-legend__heading small {
+  color: var(--ink-soft);
+  font-size: 9px;
+}
+
+.plot-material-filter {
+  min-width: 0;
+}
+
+.plot-material-filter > summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 7px 11px;
+  min-height: 32px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.plot-material-filter > summary::-webkit-details-marker {
+  display: none;
+}
+
+.plot-material-filter > summary:hover,
+.plot-material-filter[open] > summary {
+  border-color: var(--line-dark);
+  background: var(--paper-deep);
+}
+
+.plot-material-filter > summary::after {
+  grid-column: 4;
+  grid-row: 1;
+  color: var(--teal);
+  content: "▾";
+  font-size: 11px;
+}
+
+.plot-material-filter[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.plot-material-filter > summary strong {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plot-material-filter > summary strong i {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.plot-material-filter > summary small {
+  color: var(--ink-soft);
+  font-size: 9px;
+}
+
+.plot-material-filter > .plot-legend__materials {
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #e1e7e4;
+  border-radius: 5px;
+  background: #fbfcfb;
 }
 
 .plot-legend__title {
   flex: 0 0 auto;
-  padding-top: 2px;
   color: #52615c;
   font-size: 9px;
   font-weight: 800;
@@ -1212,6 +1643,11 @@ select {
 
 .plot-marker--circle {
   border-radius: 50%;
+}
+
+.plot-marker--square {
+  width: 9px;
+  height: 9px;
 }
 
 .plot-marker--diamond {
@@ -2436,7 +2872,8 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 2px 5px;
+  min-height: 28px;
+  padding: 3px 7px;
   border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
@@ -2446,9 +2883,23 @@ select {
 
 .plot-legend__materials > button:hover,
 .plot-legend__materials > button[aria-pressed="true"] {
-  border-color: var(--line-dark);
-  background: var(--paper-deep);
+  border-color: #8ca99d;
+  background: var(--teal-pale);
   color: var(--ink);
+}
+
+.plot-legend__materials > button[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 1px rgb(11 102 87 / 12%);
+}
+
+.plot-legend__materials > button b {
+  color: var(--teal);
+  font-size: 10px;
+}
+
+.plot-legend__materials > .plot-legend__all {
+  border-color: var(--line-dark);
+  background: #fff;
 }
 
 .atlas-explorer__visual {
@@ -3425,6 +3876,22 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .performance-plot__toolbar {
+    align-items: start;
+  }
+
+  .plot-toolbar-actions {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .plot-comparison-controls {
+    grid-template-columns: minmax(180px, 1.1fr) minmax(150px, 1fr) auto minmax(
+        150px,
+        1fr
+      );
+  }
+
   .atlas-filters__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3650,6 +4117,82 @@ select {
     padding-left: 16px;
   }
 
+  .performance-plot__toolbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-right: 16px;
+    margin-left: 16px;
+    padding: 12px;
+  }
+
+  .plot-control-group,
+  .plot-segment {
+    width: 100%;
+  }
+
+  .plot-segment button {
+    flex: 1 1 0;
+    min-height: 42px;
+    padding: 8px 7px;
+  }
+
+  .plot-detector-buttons {
+    display: none;
+  }
+
+  .plot-detector-select {
+    display: block;
+  }
+
+  .plot-toolbar-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .plot-toolbar-button,
+  .plot-download-menu summary {
+    min-height: 42px;
+  }
+
+  .plot-download-menu,
+  .plot-download-menu summary {
+    width: 100%;
+  }
+
+  .plot-download-menu > div {
+    right: 0;
+    left: auto;
+  }
+
+  .plot-comparison-controls {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    margin-right: 16px;
+    margin-left: 16px;
+    padding: 12px;
+  }
+
+  .plot-comparison-controls .plot-control-select:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .plot-control-select select,
+  .plot-swap-axes {
+    min-height: 42px;
+  }
+
+  .plot-settings-panel {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .plot-reset-view {
+    min-height: 40px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
   .performance-plot__actions {
     justify-content: flex-start;
   }
@@ -3659,9 +4202,27 @@ select {
     margin-left: 16px;
   }
 
-  .performance-plot__summary span {
-    padding-right: 9px;
-    padding-left: 9px;
+  .performance-plot__summary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .performance-plot__summary-status {
+    width: 100%;
+  }
+
+  .plot-material-filter > summary {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .plot-material-filter > summary small {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .plot-material-filter > summary::after {
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .plot-legend__group {

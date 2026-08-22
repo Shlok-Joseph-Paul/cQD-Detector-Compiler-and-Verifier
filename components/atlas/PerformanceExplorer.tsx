@@ -21,8 +21,6 @@ import {
   formatNoiseMethod,
   formatReviewStatus,
   formatWithUnit,
-  humanizeCode,
-  NOT_REPORTED,
 } from "@/lib/atlas/format";
 import { materialColor } from "@/lib/atlas/materials";
 import {
@@ -31,9 +29,6 @@ import {
   availablePlotPresets,
   formatMetricValue,
   ldrValuePrefix,
-  metricConditionSummary,
-  metricDefinitionSummary,
-  metricEvidenceSummary,
   metricLimitLabel,
   metricValue,
   recordsForPlotScope,
@@ -43,7 +38,6 @@ import {
   ATLAS_METRIC_KEYS,
   type AtlasFilterState,
   type AtlasMetricKey,
-  type AtlasPlotMode,
   type AtlasRecord,
   type DetectorClass,
 } from "@/lib/atlas/types";
@@ -59,9 +53,12 @@ type PlotConfiguration = Pick<
 export interface PerformanceExplorerProps extends PlotConfiguration {
   records: readonly AtlasRecord[];
   activeMaterial?: string;
+  materialOptions?: readonly string[];
   detectorClass: DetectorClass | "all";
+  detectorClasses: readonly DetectorClass[];
   selectedMeasurementId?: string;
   onConfigChange: (changes: Partial<PlotConfiguration>) => void;
+  onDetectorClassChange: (detectorClass: DetectorClass | "all") => void;
   onMaterialFilter?: (material: string) => void;
   onSelect: (record: AtlasRecord) => void;
 }
@@ -362,7 +359,6 @@ function AtlasPoint({
   const selected = measurement.measurementId === selectedMeasurementId;
   const hovered = measurement.measurementId === focusMeasurementId;
   const dimmed = Boolean(focusMeasurementId) && !hovered && !selected;
-  const isShotNoise = measurement.noiseMethod === "shot_noise_approximation";
   const isCaution = measurement.flag === "amber";
   const isUnverified = measurement.flag === "unverified";
   const stroke = isCaution ? "#9a4d06" : isUnverified ? "#686d68" : "#334b43";
@@ -379,12 +375,18 @@ function AtlasPoint({
   const common = {
     fill: datum.fill,
     stroke,
-    fillOpacity: hovered || selected ? 0.95 : 0.68,
+    fillOpacity: hovered || selected ? 1 : 0.82,
     strokeOpacity: 0.96,
-    strokeWidth: selected ? 3 : isCaution || isUnverified ? 2.4 : 1.35,
+    strokeWidth: selected ? 2.8 : isCaution || isUnverified ? 2.1 : 1.25,
     vectorEffect: "non-scaling-stroke" as const,
   };
-  const radius = hovered || selected ? 7 : 5.5;
+  const radius = isUnverified
+    ? hovered || selected
+      ? 6.75
+      : 5.25
+    : hovered || selected
+      ? 7.5
+      : 6;
 
   return (
     <g
@@ -420,21 +422,14 @@ function AtlasPoint({
         <circle
           cx={point.cx}
           cy={point.cy}
-          r="11"
+          r="12"
           fill="none"
-          stroke={stroke}
-          strokeWidth="1.5"
-          opacity="0.5"
+          stroke="#0b6657"
+          strokeWidth="2"
+          opacity="0.72"
         />
       ) : null}
-      {isShotNoise ? (
-        <path
-          d={`M ${point.cx} ${point.cy - radius} L ${point.cx + radius} ${
-            point.cy + radius * 0.8
-          } L ${point.cx - radius} ${point.cy + radius * 0.8} Z`}
-          {...common}
-        />
-      ) : isCaution ? (
+      {isCaution ? (
         <path
           d={`M ${point.cx} ${point.cy - radius} L ${point.cx + radius} ${
             point.cy
@@ -469,37 +464,6 @@ function AtlasPoint({
   );
 }
 
-function MetricEvidence({
-  record,
-  metric,
-}: {
-  record: AtlasRecord;
-  metric: AtlasMetricKey;
-}) {
-  const conditions = metricConditionSummary(record, metric);
-  const definition = metricDefinitionSummary(record, metric);
-  return (
-    <>
-      {metric !== "detectivity" ? (
-        <div>
-          <dt>{ATLAS_METRICS[metric].shortLabel} conditions</dt>
-          <dd>{conditions.length ? conditions.join(" · ") : NOT_REPORTED}</dd>
-        </div>
-      ) : null}
-      <div>
-        <dt>{ATLAS_METRICS[metric].shortLabel} evidence</dt>
-        <dd>{metricEvidenceSummary(record, metric)}</dd>
-      </div>
-      {definition ? (
-        <div>
-          <dt>{ATLAS_METRICS[metric].shortLabel} definition</dt>
-          <dd>{definition}</dd>
-        </div>
-      ) : null}
-    </>
-  );
-}
-
 function AtlasTooltip({
   active,
   payload,
@@ -516,13 +480,6 @@ function AtlasTooltip({
   const hasExtendedMetric = [xMetric, yMetric].some(
     (metric) => metric !== "wavelength" && metric !== "detectivity",
   );
-  const evidenceMetrics = [
-    ...new Set(
-      [xMetric, yMetric].map((metric) =>
-        metric === "wavelength" ? "detectivity" : metric,
-      ),
-    ),
-  ];
 
   return (
     <div className="atlas-tooltip">
@@ -530,19 +487,18 @@ function AtlasTooltip({
         <MaterialLabel value={device.materialFamily} /> ·{" "}
         {paper.publicationYear}
       </p>
-      <div className="atlas-tooltip__headline">
-        <strong>{formattedDatumMetric(datum.record, yMetric)}</strong>
-        <span>{formattedDatumMetric(datum.record, xMetric)}</span>
+      <p className="atlas-tooltip__paper">{paper.title}</p>
+      <div className="atlas-tooltip__metrics">
+        <div>
+          <span>{ATLAS_METRICS[yMetric].shortLabel}</span>
+          <strong>{formattedDatumMetric(datum.record, yMetric)}</strong>
+        </div>
+        <div>
+          <span>{ATLAS_METRICS[xMetric].shortLabel}</span>
+          <strong>{formattedDatumMetric(datum.record, xMetric)}</strong>
+        </div>
       </div>
-      <dl>
-        <div>
-          <dt>Y · {ATLAS_METRICS[yMetric].shortLabel}</dt>
-          <dd>{formattedDatumMetric(datum.record, yMetric)}</dd>
-        </div>
-        <div>
-          <dt>X · {ATLAS_METRICS[xMetric].shortLabel}</dt>
-          <dd>{formattedDatumMetric(datum.record, xMetric)}</dd>
-        </div>
+      <dl className="atlas-tooltip__conditions">
         {xMetric !== "wavelength" && yMetric !== "wavelength" ? (
           <div>
             <dt>D* wavelength</dt>
@@ -575,29 +531,19 @@ function AtlasTooltip({
         </div>
         <div>
           <dt>Review status</dt>
-          <dd>{formatReviewStatus(measurement.flag)}</dd>
+          <dd>
+            <span
+              className={`atlas-tooltip__status atlas-tooltip__status--${measurement.flag}`}
+            >
+              {formatReviewStatus(measurement.flag)}
+            </span>
+          </dd>
         </div>
-        <div>
-          <dt>Extended review</dt>
-          <dd>{humanizeCode(measurement.extendedMetricsReviewStatus)}</dd>
-        </div>
-        <div>
-          <dt>First author</dt>
-          <dd>{paper.firstAuthor || NOT_REPORTED}</dd>
-        </div>
-        {evidenceMetrics.map((metric) => (
-          <MetricEvidence key={metric} record={datum.record} metric={metric} />
-        ))}
       </dl>
       {hasExtendedMetric ? (
-        <small>
-          Extended metrics may come from a different operating point than the D*
-          record; compare the conditions and evidence above.
-        </small>
-      ) : null}
-      {hasExtendedMetric && measurement.extendedMetricsNotes ? (
         <p className="atlas-tooltip__metric-note">
-          {measurement.extendedMetricsNotes}
+          Extended metrics may come from a different operating point than this
+          D* record. Open the full record to compare conditions and evidence.
         </p>
       ) : null}
       {measurement.flag === "amber" ? (
@@ -608,8 +554,9 @@ function AtlasTooltip({
               "This record carries a methodological caution."}
         </p>
       ) : null}
-      <p className="atlas-tooltip__paper">{paper.title}</p>
-      <small>Select for device architecture and full provenance.</small>
+      <small className="atlas-tooltip__instruction">
+        Click for the full measurement record and provenance.
+      </small>
     </div>
   );
 }
@@ -626,43 +573,25 @@ function MarkerLegend() {
         Frequency unverified
       </span>
       <span>
-        <i className="plot-marker plot-marker--triangle" aria-hidden="true" />
-        Shot-noise estimate
-      </span>
-      <span>
         <i className="plot-marker plot-marker--diamond" aria-hidden="true" />
-        Other amber caution
+        Amber caution
       </span>
     </div>
   );
 }
 
-function PlotConfigurationPanel({
-  panelId,
-  plotMode,
+function MetricComparisonControls({
   plotX,
   plotY,
   supportedPresets,
   activePresetKey,
-  showNotableLabels,
-  canExport,
   onConfigChange,
-  onToggleLabels,
-  onExportCsv,
-  onExportPng,
 }: {
-  panelId: string;
-  plotMode: AtlasPlotMode;
   plotX: AtlasMetricKey;
   plotY: AtlasMetricKey;
   supportedPresets: readonly (typeof ATLAS_PLOT_PRESETS)[number][];
   activePresetKey: string;
-  showNotableLabels: boolean;
-  canExport: boolean;
   onConfigChange: (changes: Partial<PlotConfiguration>) => void;
-  onToggleLabels: () => void;
-  onExportCsv: () => void;
-  onExportPng: () => void;
 }) {
   const changeAxis = (axis: "plotX" | "plotY", value: AtlasMetricKey) => {
     if (axis === "plotX") {
@@ -678,105 +607,112 @@ function PlotConfigurationPanel({
 
   return (
     <div
-      id={panelId}
-      className="atlas-filters__advanced"
+      className="plot-comparison-controls"
       role="region"
-      aria-label="Plot configuration"
-      style={{
-        gridTemplateColumns: "repeat(auto-fit, minmax(175px, 1fr))",
-        margin: "0 28px 18px",
-      }}
+      aria-label="Metric comparison axes"
     >
-      {plotMode === "compare_metrics" ? (
-        <>
-          <label className="atlas-field">
-            <span>Tradeoff preset</span>
-            <select
-              value={activePresetKey}
-              onChange={(event) => {
-                const preset = supportedPresets.find(
-                  (candidate) => candidate.key === event.target.value,
-                );
-                if (preset) {
-                  onConfigChange({
-                    plotMode: "compare_metrics",
-                    plotX: preset.x,
-                    plotY: preset.y,
-                  });
-                }
-              }}
-            >
-              <option value="custom">Custom axes</option>
-              {supportedPresets.map((preset) => (
-                <option value={preset.key} key={preset.key}>
-                  {preset.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="atlas-field">
-            <span>X axis</span>
-            <select
-              value={plotX}
-              onChange={(event) =>
-                changeAxis("plotX", event.target.value as AtlasMetricKey)
-              }
-            >
-              {ATLAS_METRIC_KEYS.map((metric) => (
-                <option value={metric} key={metric}>
-                  {ATLAS_METRICS[metric].label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="atlas-field">
-            <span>Y axis</span>
-            <select
-              value={plotY}
-              onChange={(event) =>
-                changeAxis("plotY", event.target.value as AtlasMetricKey)
-              }
-            >
-              {ATLAS_METRIC_KEYS.map((metric) => (
-                <option value={metric} key={metric}>
-                  {ATLAS_METRICS[metric].label}
-                </option>
-              ))}
-            </select>
-          </label>
-        </>
-      ) : (
-        <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: 12 }}>
-          Performance map keeps wavelength on X and specific detectivity on Y.
-          Switch to Compare metrics to explore another tradeoff.
-        </p>
-      )}
-
-      <div
-        className="performance-plot__actions"
-        aria-label="Plot display and export actions"
-        style={{ alignItems: "end", justifyContent: "flex-start" }}
+      <label className="plot-control-select">
+        <span>Quick comparison</span>
+        <select
+          value={activePresetKey}
+          onChange={(event) => {
+            const preset = supportedPresets.find(
+              (candidate) => candidate.key === event.target.value,
+            );
+            if (preset) {
+              onConfigChange({
+                plotMode: "compare_metrics",
+                plotX: preset.x,
+                plotY: preset.y,
+              });
+            }
+          }}
+        >
+          <option value="custom">Custom axes</option>
+          {supportedPresets.map((preset) => (
+            <option value={preset.key} key={preset.key}>
+              {preset.label}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="plot-control-select">
+        <span>X axis</span>
+        <select
+          value={plotX}
+          onChange={(event) =>
+            changeAxis("plotX", event.target.value as AtlasMetricKey)
+          }
+        >
+          {ATLAS_METRIC_KEYS.map((metric) => (
+            <option value={metric} key={metric}>
+              {ATLAS_METRICS[metric].label}
+            </option>
+          ))}
+        </select>
+      </label>
+      <button
+        className="plot-swap-axes"
+        type="button"
+        aria-label={`Swap axes: put ${ATLAS_METRICS[plotY].label} on X and ${ATLAS_METRICS[plotX].label} on Y`}
+        title="Swap X and Y axes"
+        onClick={() => onConfigChange({ plotX: plotY, plotY: plotX })}
       >
-        <button
-          type="button"
-          aria-pressed={showNotableLabels}
-          onClick={onToggleLabels}
+        ⇄
+      </button>
+      <label className="plot-control-select">
+        <span>Y axis</span>
+        <select
+          value={plotY}
+          onChange={(event) =>
+            changeAxis("plotY", event.target.value as AtlasMetricKey)
+          }
         >
-          {showNotableLabels ? "Hide" : "Label"} notable points
-        </button>
-        <button type="button" disabled={!canExport} onClick={onExportCsv}>
-          Export CSV
-        </button>
-        <button type="button" disabled={!canExport} onClick={onExportPng}>
-          Export PNG
-        </button>
-        <button
-          type="button"
-          onClick={() => onConfigChange(DEFAULT_PLOT_CONFIGURATION)}
-        >
-          Reset plot
-        </button>
-      </div>
+          {ATLAS_METRIC_KEYS.map((metric) => (
+            <option value={metric} key={metric}>
+              {ATLAS_METRICS[metric].label}
+            </option>
+          ))}
+        </select>
+      </label>
+    </div>
+  );
+}
+
+function PlotSettingsPanel({
+  panelId,
+  showPointLabels,
+  onToggleLabels,
+  onReset,
+}: {
+  panelId: string;
+  showPointLabels: boolean;
+  onToggleLabels: () => void;
+  onReset: () => void;
+}) {
+  return (
+    <div
+      id={panelId}
+      className="plot-settings-panel"
+      role="region"
+      aria-label="Plot display settings"
+    >
+      <label className="plot-settings-toggle">
+        <input
+          type="checkbox"
+          checked={showPointLabels}
+          onChange={onToggleLabels}
+        />
+        <span>
+          <strong>Show point labels</strong>
+          <small>
+            Labels material leaders and measurements with evidence cautions.
+          </small>
+        </span>
+      </label>
+      <button className="plot-reset-view" type="button" onClick={onReset}>
+        Reset view
+      </button>
     </div>
   );
 }
@@ -788,16 +724,21 @@ export function PerformanceExplorer({
   plotY,
   plotScope,
   detectorClass,
+  detectorClasses,
   activeMaterial = "all",
+  materialOptions,
   selectedMeasurementId,
   onConfigChange,
+  onDetectorClassChange,
   onMaterialFilter,
   onSelect,
 }: PerformanceExplorerProps) {
   const chartRef = useRef<HTMLDivElement>(null);
-  const configPanelId = `performance-plot-config-${useId().replaceAll(":", "")}`;
+  const id = useId().replaceAll(":", "");
+  const configPanelId = `performance-plot-config-${id}`;
+  const scopeHelpId = `performance-plot-scope-help-${id}`;
   const [configOpen, setConfigOpen] = useState(false);
-  const [showNotableLabels, setShowNotableLabels] = useState(false);
+  const [showPointLabels, setShowPointLabels] = useState(false);
   const [hoveredMeasurementId, setHoveredMeasurementId] = useState<string>();
   const reducedMotion = usePrefersReducedMotion();
 
@@ -871,6 +812,9 @@ export function PerformanceExplorer({
       ].sort((left, right) => left.localeCompare(right)),
     [plottedRecords],
   );
+  const legendMaterials = onMaterialFilter
+    ? (materialOptions ?? materials)
+    : materials;
   const paperCount = new Set(
     plottedRecords.map((record) => record.paper.paperId),
   ).size;
@@ -880,7 +824,7 @@ export function PerformanceExplorer({
   const unverifiedCount = plottedRecords.filter(
     (record) => record.measurement.flag === "unverified",
   ).length;
-  const notableMeasurementIds = useMemo(() => {
+  const labeledMeasurementIds = useMemo(() => {
     const identifiers = new Set<string>();
     for (const material of materials) {
       const candidates = data.filter(
@@ -909,15 +853,19 @@ export function PerformanceExplorer({
     (hoveredIsPlotted ? hoveredMeasurementId : undefined) ??
     (selectedIsPlotted ? selectedMeasurementId : undefined);
   const scopeLabel =
-    plotScope === "paper_maxima" ? "Maximum D* per paper" : "All measurements";
+    plotScope === "paper_maxima" ? "Highest D* per paper" : "All measurements";
+  const detectorLabel =
+    detectorClass === "all"
+      ? "All detector types"
+      : `${formatDetectorClass(detectorClass)}s`;
   const title =
     plotMode === "performance_map"
-      ? "Detectivity across wavelength"
+      ? "D* vs wavelength"
       : `${ATLAS_METRICS[yMetric].shortLabel} vs ${ATLAS_METRICS[xMetric].shortLabel}`;
   const subtitle =
     plotMode === "performance_map"
-      ? `Specific detectivity versus operating wavelength · ${scopeLabel}`
-      : `${activePreset?.label ?? "Custom metric comparison"} · ${scopeLabel}`;
+      ? `Specific detectivity across operating wavelength · ${scopeLabel} · ${detectorLabel}`
+      : `${activePreset?.label ?? "Custom metric comparison"} · ${scopeLabel} · ${detectorLabel}`;
   const showWavelengthRegions = xMetric === "wavelength" && data.length > 0;
 
   const renderPoint = (point: ScatterPointItem) => (
@@ -928,8 +876,8 @@ export function PerformanceExplorer({
       selectedMeasurementId={selectedMeasurementId}
       focusMeasurementId={focusMeasurementId}
       showLabel={
-        showNotableLabels &&
-        notableMeasurementIds.has(
+        showPointLabels &&
+        labeledMeasurementIds.has(
           datumFromPoint(point)?.record.measurement.measurementId ?? "",
         )
       }
@@ -946,20 +894,54 @@ export function PerformanceExplorer({
     >
       <div className="performance-plot__heading">
         <div>
-          <p className="section-kicker">
-            {plotMode === "performance_map"
-              ? "Performance map"
-              : "Compare metrics"}
-          </p>
+          <p className="section-kicker">Atlas graph</p>
           <h2 id="performance-plot-title">{title}</h2>
           <p>{subtitle}</p>
         </div>
-        <div className="performance-plot__actions">
-          <div
-            role="group"
-            aria-label="Plot mode"
-            style={{ display: "inline-flex", gap: 4 }}
+      </div>
+
+      <div className="performance-plot__toolbar" aria-label="Graph controls">
+        <fieldset className="plot-control-group plot-control-group--detector">
+          <legend>Detector type</legend>
+          <div className="plot-segment plot-detector-buttons">
+            <button
+              type="button"
+              aria-pressed={detectorClass === "all"}
+              onClick={() => onDetectorClassChange("all")}
+            >
+              All
+            </button>
+            {detectorClasses.map((candidate) => (
+              <button
+                type="button"
+                aria-pressed={detectorClass === candidate}
+                onClick={() => onDetectorClassChange(candidate)}
+                key={candidate}
+              >
+                {formatDetectorClass(candidate)}
+              </button>
+            ))}
+          </div>
+          <select
+            className="plot-detector-select"
+            aria-label="Detector type"
+            value={detectorClass}
+            onChange={(event) =>
+              onDetectorClassChange(event.target.value as DetectorClass | "all")
+            }
           >
+            <option value="all">All detector types</option>
+            {detectorClasses.map((candidate) => (
+              <option value={candidate} key={candidate}>
+                {formatDetectorClass(candidate)}s
+              </option>
+            ))}
+          </select>
+        </fieldset>
+
+        <fieldset className="plot-control-group">
+          <legend>View</legend>
+          <div className="plot-segment">
             <button
               type="button"
               aria-pressed={plotMode === "performance_map"}
@@ -971,7 +953,7 @@ export function PerformanceExplorer({
                 })
               }
             >
-              Performance map
+              D* vs wavelength
             </button>
             <button
               type="button"
@@ -981,17 +963,19 @@ export function PerformanceExplorer({
               Compare metrics
             </button>
           </div>
-          <div
-            role="group"
-            aria-label="Measurement scope"
-            style={{ display: "inline-flex", gap: 4 }}
-          >
+        </fieldset>
+
+        <fieldset className="plot-control-group">
+          <legend>Data shown</legend>
+          <div className="plot-segment">
             <button
               type="button"
               aria-pressed={plotScope === "paper_maxima"}
+              aria-describedby={scopeHelpId}
+              title="Show one maximum-detectivity measurement from each paper."
               onClick={() => onConfigChange({ plotScope: "paper_maxima" })}
             >
-              Max D* per paper
+              Highest D* per paper
             </button>
             <button
               type="button"
@@ -1001,33 +985,68 @@ export function PerformanceExplorer({
               All measurements
             </button>
           </div>
+          <span className="sr-only" id={scopeHelpId}>
+            Highest D* per paper retains one maximum-detectivity measurement
+            from each paper.
+          </span>
+        </fieldset>
+
+        <div className="plot-toolbar-actions">
           <button
+            className="plot-toolbar-button"
             type="button"
             aria-expanded={configOpen}
             aria-controls={configPanelId}
             onClick={() => setConfigOpen((open) => !open)}
           >
-            {configOpen ? "Close" : "Configure"} plot
+            {configOpen ? "Close settings" : "Plot settings"}
           </button>
+          <details className="plot-download-menu">
+            <summary aria-label="Download graph data or image">
+              Download
+            </summary>
+            <div>
+              <button
+                type="button"
+                disabled={!plottedRecords.length}
+                onClick={() => downloadCsv(plottedRecords, xMetric, yMetric)}
+              >
+                CSV data
+              </button>
+              <button
+                type="button"
+                disabled={!plottedRecords.length}
+                onClick={() =>
+                  downloadPlotPng(chartRef.current, xMetric, yMetric)
+                }
+              >
+                PNG image
+              </button>
+            </div>
+          </details>
         </div>
       </div>
 
-      {configOpen ? (
-        <PlotConfigurationPanel
-          panelId={configPanelId}
-          plotMode={plotMode}
+      {plotMode === "compare_metrics" ? (
+        <MetricComparisonControls
           plotX={xMetric}
           plotY={yMetric}
           supportedPresets={supportedPresets}
           activePresetKey={activePreset?.key ?? "custom"}
-          showNotableLabels={showNotableLabels}
-          canExport={plottedRecords.length > 0}
           onConfigChange={onConfigChange}
-          onToggleLabels={() => setShowNotableLabels((shown) => !shown)}
-          onExportCsv={() => downloadCsv(plottedRecords, xMetric, yMetric)}
-          onExportPng={() =>
-            downloadPlotPng(chartRef.current, xMetric, yMetric)
-          }
+        />
+      ) : null}
+
+      {configOpen ? (
+        <PlotSettingsPanel
+          panelId={configPanelId}
+          showPointLabels={showPointLabels}
+          onToggleLabels={() => setShowPointLabels((shown) => !shown)}
+          onReset={() => {
+            onConfigChange(DEFAULT_PLOT_CONFIGURATION);
+            setShowPointLabels(false);
+            setConfigOpen(false);
+          }}
         />
       ) : null}
 
@@ -1044,73 +1063,123 @@ export function PerformanceExplorer({
           aria-label="Plot summary"
           aria-live="polite"
         >
-          <span>
-            <strong>{plottedRecords.length}</strong>{" "}
-            {plotScope === "paper_maxima"
-              ? "paper maxima plotted"
-              : "measurements plotted"}
-          </span>
-          <span>
-            <strong>{excluded}</strong> excluded
-          </span>
-          {provisionalCount ? (
+          <div className="performance-plot__summary-primary">
             <span>
-              <strong>{provisionalCount}</strong> provisional, not plotted
+              <strong>{plottedRecords.length}</strong>{" "}
+              {plotScope === "paper_maxima" ? "points" : "measurements"}
             </span>
-          ) : null}
-          <span>
-            <strong>{paperCount}</strong> papers
-          </span>
-          <span>
-            <strong>{materials.length}</strong> material classes
-          </span>
-          <span className={amberCount ? "has-flags" : undefined}>
-            <strong>{amberCount}</strong> amber
-          </span>
-          <span>
-            <strong>{unverifiedCount}</strong> unverified
-          </span>
+            <span>
+              <strong>{paperCount}</strong> papers
+            </span>
+            <span>
+              <strong>{materials.length}</strong> materials
+            </span>
+          </div>
+          <div className="performance-plot__summary-status">
+            {amberCount ? (
+              <span className="plot-status-chip plot-status-chip--amber">
+                <strong>{amberCount}</strong> amber
+              </span>
+            ) : null}
+            {unverifiedCount ? (
+              <span className="plot-status-chip plot-status-chip--unverified">
+                <strong>{unverifiedCount}</strong> unverified
+              </span>
+            ) : null}
+            {excluded ? (
+              <span
+                className="plot-summary-detail"
+                title="Excluded scoped records lack usable stored values for both axes or contain a non-positive value on a logarithmic axis."
+                aria-label={`${excluded} excluded. Scoped records may be excluded when they lack usable values for both axes or contain a non-positive value on a logarithmic axis.`}
+                tabIndex={0}
+              >
+                {excluded} excluded ⓘ
+              </span>
+            ) : null}
+            {provisionalCount ? (
+              <span
+                className="plot-summary-detail"
+                title="Provisional measurements are not included in the graph."
+                aria-label={`${provisionalCount} provisional measurements are not included in the graph.`}
+                tabIndex={0}
+              >
+                {provisionalCount} provisional ⓘ
+              </span>
+            ) : null}
+          </div>
         </div>
-        {excluded ? (
-          <p
-            style={{
-              margin: "0",
-              padding: "8px 0 0",
-              color: "var(--ink-soft)",
-              fontSize: 11,
-            }}
-          >
-            Excluded scoped records do not contain usable stored values for both
-            selected metrics, or contain a non-positive value on a logarithmic
-            axis.
-          </p>
-        ) : null}
         {plottedRecords.length ? (
           <div className="plot-legend">
-            <div className="plot-legend__group">
-              <span className="plot-legend__title">Material</span>
-              <div
-                className="plot-legend__materials"
-                aria-label="Material colors"
-              >
-                {materials.map((material) => {
-                  const active = activeMaterial === material;
-                  return onMaterialFilter ? (
-                    <button
-                      type="button"
-                      aria-pressed={active}
-                      onClick={() =>
-                        onMaterialFilter(active ? "all" : material)
-                      }
-                      key={material}
-                    >
-                      <i
-                        aria-hidden="true"
-                        style={{ backgroundColor: materialColor(material) }}
-                      />
-                      <MaterialLabel value={material} />
-                    </button>
-                  ) : (
+            {onMaterialFilter ? (
+              <details className="plot-material-filter">
+                <summary>
+                  <span className="plot-legend__title">Material filter</span>
+                  <strong>
+                    {activeMaterial === "all" ? (
+                      "All materials"
+                    ) : (
+                      <>
+                        <i
+                          aria-hidden="true"
+                          style={{
+                            backgroundColor: materialColor(activeMaterial),
+                          }}
+                        />
+                        <MaterialLabel value={activeMaterial} />
+                      </>
+                    )}
+                  </strong>
+                  <small>
+                    {legendMaterials.length} available · Select to filter
+                  </small>
+                </summary>
+                <div
+                  className="plot-legend__materials"
+                  aria-label="Material color filters"
+                >
+                  <button
+                    className="plot-legend__all"
+                    type="button"
+                    aria-pressed={activeMaterial === "all"}
+                    onClick={() => onMaterialFilter("all")}
+                  >
+                    {activeMaterial === "all" ? (
+                      <b aria-hidden="true">✓</b>
+                    ) : null}
+                    All materials
+                  </button>
+                  {legendMaterials.map((material) => {
+                    const active = activeMaterial === material;
+                    return (
+                      <button
+                        type="button"
+                        aria-pressed={active}
+                        onClick={() =>
+                          onMaterialFilter(active ? "all" : material)
+                        }
+                        key={material}
+                      >
+                        <i
+                          aria-hidden="true"
+                          style={{ backgroundColor: materialColor(material) }}
+                        />
+                        {active ? <b aria-hidden="true">✓</b> : null}
+                        <MaterialLabel value={material} />
+                      </button>
+                    );
+                  })}
+                </div>
+              </details>
+            ) : (
+              <div className="plot-legend__group">
+                <div className="plot-legend__heading">
+                  <span className="plot-legend__title">Material</span>
+                </div>
+                <div
+                  className="plot-legend__materials"
+                  aria-label="Material colors"
+                >
+                  {materials.map((material) => (
                     <span key={material}>
                       <i
                         aria-hidden="true"
@@ -1118,12 +1187,15 @@ export function PerformanceExplorer({
                       />
                       <MaterialLabel value={material} />
                     </span>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div className="plot-legend__group">
-              <span className="plot-legend__title">Noise / review</span>
+              <div className="plot-legend__heading">
+                <span className="plot-legend__title">Evidence shape</span>
+                <small>Color shows material; shape shows review status.</small>
+              </div>
               <MarkerLegend />
             </div>
           </div>
@@ -1143,9 +1215,8 @@ export function PerformanceExplorer({
         >
           <p className="sr-only">
             Color identifies material family. A square identifies an unverified
-            frequency match, a triangle identifies a shot-noise approximation
-            even when the record is amber, and a diamond identifies other amber
-            methodological cautions.
+            frequency match, and a diamond identifies an amber methodological
+            caution. The tooltip names the specific noise method and caution.
           </p>
           {showWavelengthRegions ? (
             <div className="performance-plot__region-labels" aria-hidden="true">
@@ -1187,7 +1258,7 @@ export function PerformanceExplorer({
                         x1={Math.max(region.start, xDomain.domain[0])}
                         x2={Math.min(region.end, xDomain.domain[1])}
                         fill={region.fill}
-                        fillOpacity={0.72}
+                        fillOpacity={0.52}
                         strokeOpacity={0}
                       />
                     ) : null,

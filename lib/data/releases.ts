@@ -23,6 +23,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
       "Reclassified the 159 published measurements as 77 amber, 57 unverified, and 25 green; among 88 papers with published measurements, precedence yields 38 amber, 32 unverified, and 18 green papers.",
       "Added unverified badges, filters, plot markers, table and paper styling, coverage counts, export support, validation rules, and importer normalization.",
       "Kept calculated shot- and Johnson-noise records outside the frequency-match test while retaining their existing amber cautions.",
+      "Redesigned the Atlas graph controls with a compact detector-type selector, clearer view and scope groups, responsive comparison controls, a collapsible material filter, streamlined summaries and tooltips, and balanced evidence markers.",
     ],
   },
   {

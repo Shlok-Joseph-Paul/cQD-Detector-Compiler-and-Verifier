@@ -16,7 +16,8 @@ versioned CSV.
 > synthetic dataset solely to exercise the interface. Every such row is labeled
 > **“Demonstration data—not a literature record.”** Synthetic titles, values,
 > and identifiers are not scientific citations and must not be treated as
-> published results. Green and amber flags on these rows are interface fixtures
+> published results. Green, unverified, and amber statuses on these rows are
+> interface fixtures
 > that exercise the documented rule engine; they do not assign scientific
 > status to synthetic measurements.
 
@@ -41,7 +42,7 @@ The atlas excludes:
 Photoconductive and transistor detectors are retained as separate classes
 because their gain, speed, noise, geometry, and bandwidth behavior can make D*
 fundamentally different from junction-photodiode measurements. Detector class
-alone never determines a green or amber flag. See the in-site
+alone never determines the green, unverified, or amber status. See the in-site
 [Methodology](./app/methodology/page.tsx) page for the complete inclusion,
 comparison, noise, missing-data, and flag policies.
 
@@ -65,16 +66,19 @@ A paper may therefore produce several points on the atlas. The central unit is
 the measurement—not a paper, a champion value selected by the atlas, or an
 average across devices.
 
-Only green and amber public flags are used. Amber does **not** mean a result is
-incorrect. It is required for a shot-noise approximation, a Johnson-noise-only
+Green, unverified, and amber public statuses are used, with precedence amber →
+unverified → green. Amber does **not** mean a result is incorrect. It is
+required for a shot-noise approximation, a Johnson-noise-only
 approximation, a lock-in amplifier used as the sole noise-acquisition method,
 or noise acquired by a source measure unit. A curator may also apply amber when an unreported D* noise basis materially
 limits interpretation at a critical operating point, or when reported D* is
 substantially above a plausible BLIP limit. These judgments are never inferred
 from a blank field; the BLIP comparison is made only when straightforward, and the
-atlas does not calculate BLIP limits automatically. Missing conditions remain
-visible as “Not reported” but do not change the flag. Every amber record must
-contain at least one machine-readable reason and a human-readable explanation.
+atlas does not calculate BLIP limits automatically. When measured- or
+unspecified-noise D* includes responsivity/EQE but the signal/noise frequency
+match cannot be established, the record is unverified rather than amber. Every
+amber record must contain at least one machine-readable reason and a
+human-readable explanation.
 
 The atlas reproduces published claims as documented. It does not independently
 repeat experiments, endorse reported values, calculate theoretical limits, or
@@ -86,7 +90,8 @@ curator. `pending_review` means the primary-source value is sufficiently
 documented to remain visible, but a named interpretation or assignment question
 is unresolved. Pending-review records require a public curator note and are
 excluded from performance plots, paper maxima, rankings, and material aggregates
-until resolved. This status is separate from green/amber methodology flags.
+until resolved. This curation status is separate from the
+green/unverified/amber evidence status.
 
 ## Technology
 
@@ -219,13 +224,14 @@ a guessed value as a substitute for missing information.
    source page/figure/table/supporting-information location, operating
    conditions, and curator notes. Preserve the source units in notes when a
    conversion is needed.
-7. **Apply flags.** Shot-noise approximations, Johnson-noise-only
+7. **Apply review status.** Shot-noise approximations, Johnson-noise-only
    approximations, lock-in-only noise acquisition, and source-measure-unit
    noise acquisition are always amber. A clearly
    anomalous value above a plausible BLIP limit may be marked amber after
    curator review. A lock-in used only for EQE or responsivity does not count as
-   a noise instrument. Other missing or incomplete fields do not affect the
-   flag.
+   a noise instrument. Use `unverified` when a measured- or unspecified-noise
+   D* record includes responsivity/EQE but the source does not establish the
+   signal/noise frequency match. Amber takes precedence over unverified.
 8. **Set curation status.** Use `reviewed` for fully confirmed assignments. Use
    `pending_review` only when the reported measurement is likely in scope but a
    specific interpretation or assignment question remains; record that question
@@ -244,9 +250,11 @@ other checks, it rejects:
 - non-positive detectivity or wavelength;
 - implausible publication years;
 - values outside a controlled vocabulary;
-- green shot-noise records;
+- green or unverified shot-noise records;
 - shot-noise records not marked amber; and
-- amber records without at least one reason and an explanation.
+- amber records without at least one reason and an explanation; and
+- green records whose applicable signal/noise frequency match is not
+  established.
 
 Do not hand-edit generated JSON to work around an error. Correct the source CSV
 and run validation again.
@@ -254,7 +262,7 @@ and run validation again.
 ## Site behavior
 
 The main atlas supports search and filters for detector class, material,
-wavelength, year, temperature category, bias condition, noise method, flag,
+wavelength, year, temperature category, bias condition, noise method, review status,
 and publication type.
 Filter state is represented in the URL where practical so a view can be shared.
 The plot and table consume the same filtered record set. CSV export includes
@@ -284,7 +292,8 @@ When reported, responsivity and EQE modulation frequencies are compared with
 the noise/detectivity frequency. The UI labels D* as frequency matched,
 frequency mismatched, or not established when the evidence is incomplete. An
 explicit mismatch is amber because D* combines signal and noise inputs acquired
-at different frequencies; missing frequency evidence alone remains neutral.
+at different frequencies; an applicable match that is not established is
+unverified unless another amber caution takes precedence.
 
 Unavailable optional values are displayed as **Not reported**, never as zero.
 Shot-noise-derived values receive a prominent badge. Each amber result exposes

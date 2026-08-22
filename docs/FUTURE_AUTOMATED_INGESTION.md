@@ -181,7 +181,7 @@ explicit. A curator must:
 4. check every numerical value, unit conversion, and operating condition;
 5. select the controlled noise method and extraction method;
 6. enter all applicable machine-readable amber reasons and explanatory notes;
-7. verify the green/amber methodology flag independently from reviewed or
+7. verify the green/unverified/amber evidence status independently from reviewed or
    pending-review curation status; and
 8. explicitly approve, reject, or return the proposal for more evidence.
 

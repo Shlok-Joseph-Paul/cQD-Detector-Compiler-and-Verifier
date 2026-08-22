@@ -24,7 +24,7 @@ export const NOISE_METHODS = [
 
 export type NoiseMethod = (typeof NOISE_METHODS)[number];
 export type NoiseInstrument = CanonicalNoiseInstrument;
-export type PublicFlag = "green" | "amber";
+export type PublicFlag = "green" | "unverified" | "amber";
 export type AtlasCuratorStatus = CuratorStatus;
 export type TemperatureCategory = CanonicalTemperatureCategory;
 export type BiasCondition = CanonicalBiasCondition;
@@ -304,9 +304,9 @@ function noiseMethodValue(source: UnknownRecord): NoiseMethod {
 }
 
 function flagValue(source: UnknownRecord): PublicFlag {
-  return textValue(source, ["flag"]).toLowerCase() === "green"
-    ? "green"
-    : "amber";
+  const value = textValue(source, ["flag"]).toLowerCase();
+  if (value === "green" || value === "unverified") return value;
+  return "amber";
 }
 
 /** Normalize either nested or flattened JoinedMeasurement records. */
@@ -459,6 +459,7 @@ export function normalizeJoinedMeasurement(
       biasV: nullableNumber(measurement, ["bias_v", "biasV"]),
       measurementFrequencyHz,
       frequencyMatchStatus: deriveFrequencyMatchStatus({
+        noiseMethod: noiseMethodValue(measurement),
         measurementFrequencyHz,
         responsivityAW,
         responsivityFrequencyHz,

@@ -121,6 +121,7 @@ export function exportJoinedMeasurementsCsv(
       measurement.bias_v,
       measurement.measurement_frequency_hz,
       deriveFrequencyMatchStatus({
+        noiseMethod: measurement.noise_method,
         measurementFrequencyHz: measurement.measurement_frequency_hz,
         responsivityAW: measurement.responsivity_a_w,
         responsivityFrequencyHz: measurement.responsivity_frequency_hz,

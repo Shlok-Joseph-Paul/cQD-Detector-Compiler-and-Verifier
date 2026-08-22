@@ -118,7 +118,7 @@ export type BandwidthLimit = (typeof BANDWIDTH_LIMITS)[number];
 export const CURATOR_STATUSES = ["reviewed", "pending_review"] as const;
 export type CuratorStatus = (typeof CURATOR_STATUSES)[number];
 
-export const FLAGS = ["green", "amber"] as const;
+export const FLAGS = ["green", "unverified", "amber"] as const;
 export type Flag = (typeof FLAGS)[number];
 
 /**
@@ -221,7 +221,7 @@ export interface Measurement {
   curator_status: CuratorStatus;
   flag: Flag;
   amber_reasons: AmberReason[];
-  /** Curator-written context. Required for amber records and null for green. */
+  /** Curator-written context. Required for amber; null otherwise. */
   amber_explanation: string | null;
   curator_notes: string | null;
   /** ISO 8601 calendar date (`YYYY-MM-DD`). */
@@ -243,7 +243,7 @@ export interface JoinedMeasurement {
 }
 
 export interface AtlasData extends AtlasEntities {
-  schema_version: 6;
+  schema_version: 7;
   /** Human-facing release identifier for reproducible exports and citations. */
   dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */

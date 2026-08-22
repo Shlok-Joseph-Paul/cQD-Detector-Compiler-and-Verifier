@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MaterialLabel } from "@/components/atlas";
 import { SiteShell } from "@/components/SiteShell";
 import { countBy, reportingCoverage } from "@/lib/atlas/coverage";
-import { formatNoiseMethod } from "@/lib/atlas/format";
+import { formatNoiseMethod, formatReviewStatus } from "@/lib/atlas/format";
 import { materialColor } from "@/lib/atlas/materials";
 import { normalizeJoinedMeasurement } from "@/lib/atlas/types";
 import { atlasData } from "@/lib/data";
@@ -26,6 +26,9 @@ export default function CoveragePage() {
   const noiseCoverage = countBy(records, (record) =>
     formatNoiseMethod(record.measurement.noiseMethod),
   );
+  const reviewCoverage = countBy(records, (record) =>
+    formatReviewStatus(record.measurement.flag),
+  );
   const yearCoverage = countBy(atlasData.papers, (paper) =>
     String(paper.publication_year),
   ).sort((left, right) => Number(left.label) - Number(right.label));
@@ -33,6 +36,22 @@ export default function CoveragePage() {
   const amberCount = records.filter(
     (record) => record.measurement.flag === "amber",
   ).length;
+  const unverifiedCount = records.filter(
+    (record) => record.measurement.flag === "unverified",
+  ).length;
+  const paperFlags = new Map<string, Set<string>>();
+  for (const record of records) {
+    const flags = paperFlags.get(record.paper.paperId) ?? new Set<string>();
+    flags.add(record.measurement.flag);
+    paperFlags.set(record.paper.paperId, flags);
+  }
+  const amberPaperCount = [...paperFlags.values()].filter((flags) =>
+    flags.has("amber"),
+  ).length;
+  const unverifiedPaperCount = [...paperFlags.values()].filter(
+    (flags) => !flags.has("amber") && flags.has("unverified"),
+  ).length;
+  const greenPaperCount = papers.size - amberPaperCount - unverifiedPaperCount;
   const measuredNoiseCount = records.filter(
     (record) => record.measurement.noiseMethod === "measured_noise",
   ).length;
@@ -186,12 +205,37 @@ export default function CoveragePage() {
             <p className="coverage-panel__footnote">
               {measuredNoiseCount} measurements use experimentally measured
               noise.
-              {amberCount
-                ? ` ${amberCount} records carry an amber caution.`
-                : ""}
               {pendingReviewCount
                 ? ` ${pendingReviewCount} provisional records require human review and are excluded from performance comparisons.`
                 : ""}
+            </p>
+          </section>
+
+          <section
+            className="coverage-panel"
+            aria-labelledby="review-coverage-heading"
+          >
+            <header>
+              <div>
+                <p className="section-kicker">Evidence status</p>
+                <h2 id="review-coverage-heading">Review status</h2>
+              </div>
+            </header>
+            <div className="coverage-list">
+              {reviewCoverage.map((slice) => (
+                <div key={slice.label}>
+                  <span>{slice.label}</span>
+                  <strong>{slice.count}</strong>
+                  <small>{slice.percent}%</small>
+                </div>
+              ))}
+            </div>
+            <p className="coverage-panel__footnote">
+              {amberCount} measurements are amber and {unverifiedCount} are
+              frequency-unverified. At paper level, precedence amber →
+              unverified → green yields {amberPaperCount} amber,{" "}
+              {unverifiedPaperCount} unverified, and {greenPaperCount} green
+              papers.
             </p>
           </section>
 
@@ -226,7 +270,7 @@ export default function CoveragePage() {
           </div>
           <p>
             The methodology explains inclusion boundaries, missing values, noise
-            classifications, and amber flags.
+            classifications, and review statuses.
           </p>
           <Link className="secondary-button" href="/methodology">
             Read methodology

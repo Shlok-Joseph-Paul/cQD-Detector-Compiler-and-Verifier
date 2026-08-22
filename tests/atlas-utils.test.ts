@@ -252,6 +252,18 @@ test("filters measurements across scientific and publication dimensions", () => 
     }).map((record) => record.device.technologyFamily),
     ["perovskite"],
   );
+
+  const unverifiedRecord = recordWithMeasurement("unverified", {
+    flag: "unverified",
+    frequencyMatchStatus: "not_established",
+  });
+  assert.deepEqual(
+    filterAtlasRecords([measuredRecord, unverifiedRecord], {
+      ...DEFAULT_ATLAS_FILTERS,
+      flag: "unverified",
+    }).map((record) => record.measurement.measurementId),
+    ["unverified"],
+  );
 });
 
 test("temperature and bias category boundaries include missing values", () => {

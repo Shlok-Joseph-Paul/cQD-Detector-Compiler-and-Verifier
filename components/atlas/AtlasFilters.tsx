@@ -14,6 +14,7 @@ import {
   BIAS_LABELS,
   DETECTOR_CLASS_LABELS,
   formatNoiseMethod,
+  formatReviewStatus,
   NOISE_METHOD_LABELS,
   TEMPERATURE_LABELS,
 } from "@/lib/atlas/format";
@@ -260,7 +261,7 @@ export function AtlasFilters({
   }
   if (filters.flag !== "all") {
     chips.push({
-      label: `${filters.flag === "green" ? "Green" : "Amber"} flag`,
+      label: `${formatReviewStatus(filters.flag)} status`,
       clear: () => update("flag", "all"),
     });
   }
@@ -676,7 +677,7 @@ export function AtlasFilters({
           </label>
 
           <label className="atlas-field" htmlFor={`${id}-flag`}>
-            <span>Documentation flag</span>
+            <span>Review status</span>
             <select
               id={`${id}-flag`}
               value={filters.flag}
@@ -684,8 +685,9 @@ export function AtlasFilters({
                 update("flag", event.target.value as PublicFlag | "all")
               }
             >
-              <option value="all">Green and amber</option>
+              <option value="all">All review statuses</option>
               <option value="green">Green</option>
+              <option value="unverified">Unverified</option>
               <option value="amber">Amber</option>
             </select>
           </label>

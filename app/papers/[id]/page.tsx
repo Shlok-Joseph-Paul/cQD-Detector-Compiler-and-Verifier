@@ -67,6 +67,9 @@ export default async function PaperPage({ params }: PageProps) {
   const amberCount = records.filter(
     (record) => record.measurement.flag === "amber",
   ).length;
+  const unverifiedCount = records.filter(
+    (record) => record.measurement.flag === "unverified",
+  ).length;
   const { doiUrl, sourceUrl } = publicationLinks(
     paper.doi,
     paper.publication_url,
@@ -157,8 +160,10 @@ export default async function PaperPage({ params }: PageProps) {
             {records.length === 1 ? "" : "s"} to {devices.length} distinct
             device{devices.length === 1 ? "" : "s"}.{" "}
             {amberCount
-              ? `${amberCount} measurement${amberCount === 1 ? " is" : "s are"} marked amber and retain an explanation below.`
-              : "All listed measurements currently carry a green review flag."}
+              ? `${amberCount} measurement${amberCount === 1 ? " is" : "s are"} amber.${unverifiedCount ? ` ${unverifiedCount} additional measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.` : ""}`
+              : unverifiedCount
+                ? `${unverifiedCount} measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.`
+                : "All listed measurements currently carry a green review status."}
           </p>
         </section>
 
@@ -276,7 +281,9 @@ export default async function PaperPage({ params }: PageProps) {
                           className={
                             record.measurement.flag === "amber"
                               ? "is-amber"
-                              : undefined
+                              : record.measurement.flag === "unverified"
+                                ? "is-unverified"
+                                : undefined
                           }
                           key={record.measurement.measurementId}
                         >

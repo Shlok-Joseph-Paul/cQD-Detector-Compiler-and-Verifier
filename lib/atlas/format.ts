@@ -3,10 +3,21 @@ import type {
   DetectorClass,
   NoiseInstrument,
   NoiseMethod,
+  PublicFlag,
   TemperatureCategory,
 } from "./types";
 
 export const NOT_REPORTED = "Not reported";
+
+export const REVIEW_STATUS_LABELS: Record<PublicFlag, string> = {
+  green: "Green",
+  unverified: "Unverified",
+  amber: "Amber",
+};
+
+export function formatReviewStatus(flag: PublicFlag): string {
+  return REVIEW_STATUS_LABELS[flag];
+}
 
 export const DETECTOR_CLASS_LABELS: Record<DetectorClass, string> = {
   photodiode: "Photodiode",

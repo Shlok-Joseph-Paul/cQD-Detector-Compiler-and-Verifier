@@ -58,3 +58,17 @@ test("responsivity is primary and EQE is used when responsivity is absent", () =
     "not_matched",
   );
 });
+
+test("calculated noise models are outside the frequency-match rule", () => {
+  assert.equal(
+    deriveFrequencyMatchStatus({
+      noiseMethod: "shot_noise_approximation",
+      measurementFrequencyHz: null,
+      responsivityAW: 0.2,
+      responsivityFrequencyHz: null,
+      eqePercent: null,
+      eqeFrequencyHz: null,
+    }),
+    "not_applicable",
+  );
+});

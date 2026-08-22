@@ -1,6 +1,7 @@
-import type { FrequencyMatchStatus } from "./types.ts";
+import type { FrequencyMatchStatus, NoiseMethod } from "./types.ts";
 
 export interface FrequencyMatchInput {
+  noiseMethod?: NoiseMethod | null;
   measurementFrequencyHz: number | null | undefined;
   responsivityAW: number | null | undefined;
   responsivityFrequencyHz: number | null | undefined;
@@ -18,12 +19,21 @@ function sameFrequency(left: number, right: number): boolean {
  * unestablished rather than being treated as a mismatch.
  */
 export function deriveFrequencyMatchStatus({
+  noiseMethod,
   measurementFrequencyHz,
   responsivityAW,
   responsivityFrequencyHz,
   eqePercent,
   eqeFrequencyHz,
 }: FrequencyMatchInput): FrequencyMatchStatus {
+  if (
+    noiseMethod != null &&
+    noiseMethod !== "measured_noise" &&
+    noiseMethod !== "unspecified"
+  ) {
+    return "not_applicable";
+  }
+
   const signalFrequency =
     responsivityAW != null
       ? responsivityFrequencyHz

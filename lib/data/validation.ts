@@ -19,6 +19,7 @@ import {
   type AmberReason,
   type AtlasEntities,
   type CsvSourceRows,
+  type Flag,
   type Measurement,
   type ValidationIssue,
   type ValidationResult,
@@ -102,6 +103,7 @@ export function deriveRequiredAmberReasons(
 
   if (
     deriveFrequencyMatchStatus({
+      noiseMethod: measurement.noise_method,
       measurementFrequencyHz: measurement.measurement_frequency_hz,
       responsivityAW: measurement.responsivity_a_w,
       responsivityFrequencyHz: measurement.responsivity_frequency_hz,
@@ -115,16 +117,38 @@ export function deriveRequiredAmberReasons(
   return uniqueReasons(reasons);
 }
 
+/** Minimum public review status required by the record's evidence. */
+export function deriveRequiredReviewFlag(measurement: Measurement): Flag {
+  if (deriveRequiredAmberReasons(measurement).length > 0) return "amber";
+  const frequencyStatus = deriveFrequencyMatchStatus({
+    noiseMethod: measurement.noise_method,
+    measurementFrequencyHz: measurement.measurement_frequency_hz,
+    responsivityAW: measurement.responsivity_a_w,
+    responsivityFrequencyHz: measurement.responsivity_frequency_hz,
+    eqePercent: measurement.eqe_percent,
+    eqeFrequencyHz: measurement.eqe_frequency_hz,
+  });
+  return frequencyStatus === "not_established" ? "unverified" : "green";
+}
+
 /**
  * Apply non-negotiable amber rules to an in-memory measurement. This is useful
  * for review tools; CSV validation remains strict so accidental green flags are
  * still surfaced to curators rather than silently hidden.
  */
-export function applyAutomaticAmberRules(
+export function applyAutomaticReviewRules(
   measurement: Measurement,
 ): Measurement {
   const requiredReasons = deriveRequiredAmberReasons(measurement);
-  if (requiredReasons.length === 0) return { ...measurement };
+  if (requiredReasons.length === 0) {
+    if (measurement.flag === "amber") return { ...measurement };
+    return {
+      ...measurement,
+      flag: deriveRequiredReviewFlag(measurement),
+      amber_reasons: [],
+      amber_explanation: null,
+    };
+  }
 
   const amber_reasons = uniqueReasons([
     ...measurement.amber_reasons,
@@ -139,6 +163,9 @@ export function applyAutomaticAmberRules(
       amberReasonsToExplanation(amber_reasons),
   };
 }
+
+/** Backward-compatible name for callers that predate the unverified status. */
+export const applyAutomaticAmberRules = applyAutomaticReviewRules;
 
 function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -1145,19 +1172,47 @@ export function validateAtlasEntities(
       measurement as unknown as Measurement,
     );
     const flag = measurement.flag;
+    const requiredFlag = deriveRequiredReviewFlag(
+      measurement as unknown as Measurement,
+    );
     const reasons = Array.isArray(measurement.amber_reasons)
       ? measurement.amber_reasons.filter((reason): reason is AmberReason =>
           isAmberReason(reason),
         )
       : [];
 
-    if (flag === "green" && requiredReasons.length > 0) {
+    if (flag !== "amber" && requiredReasons.length > 0) {
       issues.push({
         entity: "measurements",
         row,
         field: "flag",
-        code: "green_requirements",
-        message: `Green criteria are not met; required amber reasons: ${requiredReasons.join(", ")}.`,
+        code:
+          flag === "green" ? "green_requirements" : "unverified_requirements",
+        message: `${String(flag)} criteria are not met; required amber reasons: ${requiredReasons.join(", ")}.`,
+        value: flag,
+      });
+    }
+    if (flag === "green" && requiredFlag === "unverified") {
+      issues.push({
+        entity: "measurements",
+        row,
+        field: "flag",
+        code: "frequency_evidence_unverified",
+        message:
+          "A measured- or unspecified-noise D* record with responsivity/EQE must be unverified when the signal/noise frequency match is not established.",
+        value: flag,
+      });
+    }
+    if (flag === "unverified" && requiredFlag !== "unverified") {
+      issues.push({
+        entity: "measurements",
+        row,
+        field: "flag",
+        code: "unverified_requirements",
+        message:
+          requiredFlag === "amber"
+            ? "Amber takes precedence over unverified when a methodological caution applies."
+            : "Unverified is reserved for records whose signal/noise frequency match is not established.",
         value: flag,
       });
     }
@@ -1199,14 +1254,14 @@ export function validateAtlasEntities(
         });
       }
     }
-    if (flag === "green") {
+    if (flag === "green" || flag === "unverified") {
       if (reasons.length > 0) {
         issues.push({
           entity: "measurements",
           row,
           field: "amber_reasons",
-          code: "green_has_amber_reasons",
-          message: "A green record cannot contain amber reasons.",
+          code: "non_amber_has_amber_reasons",
+          message: "A green or unverified record cannot contain amber reasons.",
           value: measurement.amber_reasons,
         });
       }
@@ -1215,8 +1270,9 @@ export function validateAtlasEntities(
           entity: "measurements",
           row,
           field: "amber_explanation",
-          code: "green_has_amber_explanation",
-          message: "A green record must use a blank (null) amber explanation.",
+          code: "non_amber_has_amber_explanation",
+          message:
+            "A green or unverified record must use a blank (null) amber explanation.",
           value: measurement.amber_explanation,
         });
       }

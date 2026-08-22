@@ -5,6 +5,7 @@ import type {
   NoiseInstrument,
   Paper,
 } from "../data/types.ts";
+import { applyAutomaticReviewRules } from "../data/validation.ts";
 import type { DiscoveryCandidate } from "./types.ts";
 import { candidateTechnologyFamilies } from "./profiles.ts";
 import type {
@@ -757,89 +758,92 @@ export function extractStagedProposal(
         ? `Automatic caution: ${noise.amberReasons.join(", ")}. Confirm from the cited noise-method evidence before approval.`
         : null;
       const index = proposedMeasurements.length + 1;
-      proposedMeasurements.push({
-        measurement_id: `measurement-${paperKey}-${index}`,
-        device_id: deviceId,
-        wavelength_nm: wavelengthNm,
-        detectivity_jones: detectivity,
-        responsivity_a_w: selectedResponsivity,
-        responsivity_wavelength_nm:
-          responsivityCandidate?.wavelengthNm ??
-          (selectedResponsivity != null ? wavelengthNm : null),
-        responsivity_bias_v:
-          responsivityCandidate?.biasV ??
-          (selectedResponsivity != null ? bias : null),
-        responsivity_temperature_k: responsivityCandidate?.temperatureK ?? null,
-        responsivity_source_location:
-          responsivityCandidate?.sourceLocation ??
-          (selectedResponsivity != null ? pageLocation(page) : null),
-        responsivity_extraction_method:
-          selectedResponsivity != null ? "directly_reported" : "not_reported",
-        responsivity_frequency_hz: responsivityCandidate?.frequencyHz ?? null,
-        eqe_percent: eqe,
-        eqe_frequency_hz: null,
-        temperature_k: temperature,
-        bias_v: bias,
-        measurement_frequency_hz: frequency,
-        response_time_s: responseCandidate?.value ?? null,
-        rise_time_s: riseCandidate?.value ?? null,
-        fall_time_s: fallCandidate?.value ?? null,
-        response_time_definition: temporalDefinition,
-        response_time_wavelength_nm:
-          responseCandidate?.wavelengthNm ??
-          riseCandidate?.wavelengthNm ??
-          fallCandidate?.wavelengthNm ??
-          null,
-        response_time_bias_v:
-          responseCandidate?.biasV ??
-          riseCandidate?.biasV ??
-          fallCandidate?.biasV ??
-          null,
-        response_time_source_location: temporalSource,
-        response_time_limit:
-          responseCandidate?.limit ??
-          riseCandidate?.limit ??
-          fallCandidate?.limit ??
-          "not_reported",
-        response_time_extraction_method: temporalSource
-          ? "directly_reported"
-          : "not_reported",
-        bandwidth_hz: bandwidthCandidate?.value ?? null,
-        bandwidth_bias_v: bandwidthCandidate?.biasV ?? null,
-        bandwidth_source_location: bandwidthCandidate?.sourceLocation ?? null,
-        bandwidth_limit: bandwidthCandidate?.limit ?? "not_reported",
-        bandwidth_extraction_method: bandwidthCandidate
-          ? "directly_reported"
-          : "not_reported",
-        linear_dynamic_range_db:
-          ldrCandidate?.units === "dB" ? ldrCandidate.value : null,
-        linear_dynamic_range_min: ldrCandidate?.minimum ?? null,
-        linear_dynamic_range_max: ldrCandidate?.maximum ?? null,
-        linear_dynamic_range_units: ldrCandidate?.units ?? null,
-        linear_dynamic_range_definition: ldrCandidate?.definition ?? null,
-        linear_dynamic_range_source_location:
-          ldrCandidate?.sourceLocation ?? null,
-        linear_dynamic_range_extraction_method: ldrCandidate
-          ? "directly_reported"
-          : "not_reported",
-        extended_metrics_review_status: "needs_review",
-        extended_metrics_review_date: now.toISOString().slice(0, 10),
-        extended_metrics_notes:
-          "Automatically extracted from the supplied article and available Supporting Information; curator approval is required before publication.",
-        noise_method: noise.method,
-        noise_instruments: noise.instruments,
-        noise_instrument_details: noise.details,
-        noise_instrument_source: noise.source,
-        detectivity_extraction_method: "directly_reported",
-        source_location: pageLocation(page),
-        curator_status: "pending_review",
-        flag: noise.amberReasons.length ? "amber" : "green",
-        amber_reasons: noise.amberReasons,
-        amber_explanation: amberExplanation,
-        curator_notes: `Automatically staged evidence: ${snippet}`,
-        date_added: now.toISOString().slice(0, 10),
-        date_updated: now.toISOString().slice(0, 10),
-      });
+      proposedMeasurements.push(
+        applyAutomaticReviewRules({
+          measurement_id: `measurement-${paperKey}-${index}`,
+          device_id: deviceId,
+          wavelength_nm: wavelengthNm,
+          detectivity_jones: detectivity,
+          responsivity_a_w: selectedResponsivity,
+          responsivity_wavelength_nm:
+            responsivityCandidate?.wavelengthNm ??
+            (selectedResponsivity != null ? wavelengthNm : null),
+          responsivity_bias_v:
+            responsivityCandidate?.biasV ??
+            (selectedResponsivity != null ? bias : null),
+          responsivity_temperature_k:
+            responsivityCandidate?.temperatureK ?? null,
+          responsivity_source_location:
+            responsivityCandidate?.sourceLocation ??
+            (selectedResponsivity != null ? pageLocation(page) : null),
+          responsivity_extraction_method:
+            selectedResponsivity != null ? "directly_reported" : "not_reported",
+          responsivity_frequency_hz: responsivityCandidate?.frequencyHz ?? null,
+          eqe_percent: eqe,
+          eqe_frequency_hz: null,
+          temperature_k: temperature,
+          bias_v: bias,
+          measurement_frequency_hz: frequency,
+          response_time_s: responseCandidate?.value ?? null,
+          rise_time_s: riseCandidate?.value ?? null,
+          fall_time_s: fallCandidate?.value ?? null,
+          response_time_definition: temporalDefinition,
+          response_time_wavelength_nm:
+            responseCandidate?.wavelengthNm ??
+            riseCandidate?.wavelengthNm ??
+            fallCandidate?.wavelengthNm ??
+            null,
+          response_time_bias_v:
+            responseCandidate?.biasV ??
+            riseCandidate?.biasV ??
+            fallCandidate?.biasV ??
+            null,
+          response_time_source_location: temporalSource,
+          response_time_limit:
+            responseCandidate?.limit ??
+            riseCandidate?.limit ??
+            fallCandidate?.limit ??
+            "not_reported",
+          response_time_extraction_method: temporalSource
+            ? "directly_reported"
+            : "not_reported",
+          bandwidth_hz: bandwidthCandidate?.value ?? null,
+          bandwidth_bias_v: bandwidthCandidate?.biasV ?? null,
+          bandwidth_source_location: bandwidthCandidate?.sourceLocation ?? null,
+          bandwidth_limit: bandwidthCandidate?.limit ?? "not_reported",
+          bandwidth_extraction_method: bandwidthCandidate
+            ? "directly_reported"
+            : "not_reported",
+          linear_dynamic_range_db:
+            ldrCandidate?.units === "dB" ? ldrCandidate.value : null,
+          linear_dynamic_range_min: ldrCandidate?.minimum ?? null,
+          linear_dynamic_range_max: ldrCandidate?.maximum ?? null,
+          linear_dynamic_range_units: ldrCandidate?.units ?? null,
+          linear_dynamic_range_definition: ldrCandidate?.definition ?? null,
+          linear_dynamic_range_source_location:
+            ldrCandidate?.sourceLocation ?? null,
+          linear_dynamic_range_extraction_method: ldrCandidate
+            ? "directly_reported"
+            : "not_reported",
+          extended_metrics_review_status: "needs_review",
+          extended_metrics_review_date: now.toISOString().slice(0, 10),
+          extended_metrics_notes:
+            "Automatically extracted from the supplied article and available Supporting Information; curator approval is required before publication.",
+          noise_method: noise.method,
+          noise_instruments: noise.instruments,
+          noise_instrument_details: noise.details,
+          noise_instrument_source: noise.source,
+          detectivity_extraction_method: "directly_reported",
+          source_location: pageLocation(page),
+          curator_status: "pending_review",
+          flag: noise.amberReasons.length ? "amber" : "green",
+          amber_reasons: noise.amberReasons,
+          amber_explanation: amberExplanation,
+          curator_notes: `Automatically staged evidence: ${snippet}`,
+          date_added: now.toISOString().slice(0, 10),
+          date_updated: now.toISOString().slice(0, 10),
+        }),
+      );
       evidence.push({
         field: `measurement-${index}.detectivity_jones+wavelength_nm`,
         page: page.page,

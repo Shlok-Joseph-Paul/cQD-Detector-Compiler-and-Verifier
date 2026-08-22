@@ -60,7 +60,9 @@ export default function Home() {
             <ul>
               <li>Each point is one reported photodetector measurement.</li>
               <li>Noise methodology stays attached to every D* value.</li>
-              <li>Green and amber flags expose comparison caveats.</li>
+              <li>
+                Green, unverified, and amber statuses expose evidence limits.
+              </li>
               <li>Provisional records name unresolved review questions.</li>
             </ul>
             <a href="/methodology">Review the curation policy →</a>

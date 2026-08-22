@@ -1,11 +1,11 @@
-import { formatAmberReason } from "@/lib/atlas/format";
+import { formatAmberReason, formatReviewStatus } from "@/lib/atlas/format";
 import type { AtlasMeasurement } from "@/lib/atlas/types";
 
 export function FlagBadge({ flag }: Pick<AtlasMeasurement, "flag">) {
   return (
     <span className={`atlas-badge atlas-badge--${flag}`}>
       <span className="atlas-badge__dot" aria-hidden="true" />
-      {flag === "green" ? "Green" : "Amber"}
+      {formatReviewStatus(flag)}
     </span>
   );
 }
@@ -45,7 +45,7 @@ export function FrequencyMatchBadge({
     not_established: {
       label: "Frequency match not established",
       title:
-        "The source does not provide enough frequency information to compare responsivity/EQE with D*. Missing evidence alone does not change the green/amber classification.",
+        "The source does not provide enough frequency information to compare responsivity/EQE with the noise value used for D*. Without an amber caution, this produces an unverified review status.",
     },
   }[measurement.frequencyMatchStatus];
 

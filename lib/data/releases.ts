@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.14.0";
-export const DATASET_RELEASE_DATE = "2026-08-19";
+export const DATASET_VERSION = "1.15.0";
+export const DATASET_RELEASE_DATE = "2026-08-22";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Frequency-evidence review status",
+    summary:
+      "Adds a grey unverified category for measured-noise D* records whose responsivity/EQE and noise frequency match cannot be established.",
+    changes: [
+      "Introduced green, unverified, and amber evidence statuses with precedence amber → unverified → green.",
+      "Rechecked incomplete frequency evidence across the current corpus and backfilled eight source-supported frequency matches.",
+      "Confirmed Sun et al. as an amber frequency mismatch: 25 Hz responsivity/EQE versus the 500 kHz measured-noise value used for D*.",
+      "Reclassified the 159 published measurements as 77 amber, 57 unverified, and 25 green; among 88 papers with published measurements, precedence yields 38 amber, 32 unverified, and 18 green papers.",
+      "Added unverified badges, filters, plot markers, table and paper styling, coverage counts, export support, validation rules, and importer normalization.",
+      "Kept calculated shot- and Johnson-noise records outside the frequency-match test while retaining their existing amber cautions.",
+    ],
+  },
+  {
+    version: "1.14.0",
+    date: "2026-08-19",
     title: "Signal-noise frequency caution and InAs passivation",
     summary:
       "Adds three halide-passivated InAs CQD photodiodes and makes an explicit responsivity/EQE versus noise-frequency mismatch an amber condition.",

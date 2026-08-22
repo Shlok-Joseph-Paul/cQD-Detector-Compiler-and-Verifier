@@ -19,6 +19,7 @@ import { maxDetectivityPerPaper } from "@/lib/atlas/coverage";
 import {
   formatAmberReason,
   formatNoiseMethod,
+  formatReviewStatus,
   formatScientific,
   formatWithUnit,
   NOT_REPORTED,
@@ -212,7 +213,8 @@ function AtlasPoint({
   const dimmed = Boolean(hoveredMeasurementId) && !hovered;
   const isShotNoise = measurement.noiseMethod === "shot_noise_approximation";
   const isCaution = measurement.flag === "amber";
-  const stroke = isCaution ? "#9a4d06" : "#334b43";
+  const isUnverified = measurement.flag === "unverified";
+  const stroke = isCaution ? "#9a4d06" : isUnverified ? "#686d68" : "#334b43";
   const accessibleLabel = `${device.materialFamily}, ${formatWithUnit(
     measurement.wavelengthNm,
     "nanometers",
@@ -225,7 +227,7 @@ function AtlasPoint({
     stroke,
     fillOpacity: hovered ? 0.95 : 0.7,
     strokeOpacity: 0.96,
-    strokeWidth: selected ? 3 : isCaution ? 2.5 : 1.35,
+    strokeWidth: selected ? 3 : isCaution || isUnverified ? 2.5 : 1.35,
     vectorEffect: "non-scaling-stroke" as const,
   };
   const radius = hovered || selected ? 7 : 5.5;
@@ -276,6 +278,15 @@ function AtlasPoint({
           d={`M ${point.cx} ${point.cy - radius} L ${point.cx + radius} ${
             point.cy + radius * 0.8
           } L ${point.cx - radius} ${point.cy + radius * 0.8} Z`}
+          {...common}
+        />
+      ) : isUnverified ? (
+        <rect
+          x={point.cx - radius}
+          y={point.cy - radius}
+          width={radius * 2}
+          height={radius * 2}
+          rx="1"
           {...common}
         />
       ) : (
@@ -329,8 +340,8 @@ function AtlasTooltip({ active, payload }: TooltipContentProps) {
           <dd>{formatNoiseMethod(measurement.noiseMethod)}</dd>
         </div>
         <div>
-          <dt>Flag</dt>
-          <dd>{measurement.flag === "green" ? "Green" : "Amber"}</dd>
+          <dt>Review status</dt>
+          <dd>{formatReviewStatus(measurement.flag)}</dd>
         </div>
       </dl>
       {measurement.flag === "amber" && measurement.amberReasons.length ? (
@@ -351,7 +362,11 @@ function MarkerLegend() {
     <div className="plot-legend__markers" aria-label="Plot marker legend">
       <span>
         <i className="plot-marker plot-marker--circle" aria-hidden="true" />
-        Measured noise
+        Green
+      </span>
+      <span>
+        <i className="plot-marker plot-marker--square" aria-hidden="true" />
+        Frequency unverified
       </span>
       <span>
         <i className="plot-marker plot-marker--triangle" aria-hidden="true" />
@@ -414,8 +429,11 @@ export function PerformancePlot({
   const paperCount = new Set(
     plottedRecords.map((record) => record.paper.paperId),
   ).size;
-  const flaggedCount = plottedRecords.filter(
+  const amberCount = plottedRecords.filter(
     (record) => record.measurement.flag === "amber",
+  ).length;
+  const unverifiedCount = plottedRecords.filter(
+    (record) => record.measurement.flag === "unverified",
   ).length;
   const notableMeasurementIds = new Set<string>();
   for (const material of materials) {
@@ -430,7 +448,7 @@ export function PerformancePlot({
     notableMeasurementIds.add(highest.measurement.measurementId);
   }
   for (const record of plottedRecords) {
-    if (record.measurement.flag === "amber") {
+    if (record.measurement.flag !== "green") {
       notableMeasurementIds.add(record.measurement.measurementId);
     }
   }
@@ -503,8 +521,11 @@ export function PerformancePlot({
           <span>
             <strong>{materials.length}</strong> material classes
           </span>
-          <span className={flaggedCount ? "has-flags" : undefined}>
-            <strong>{flaggedCount}</strong> flagged
+          <span className={amberCount ? "has-flags" : undefined}>
+            <strong>{amberCount}</strong> amber
+          </span>
+          <span>
+            <strong>{unverifiedCount}</strong> unverified
           </span>
         </div>
         <div className="plot-legend">

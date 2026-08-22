@@ -262,6 +262,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                 const expanded =
                   expandedMeasurementId === measurement.measurementId;
                 const amber = measurement.flag === "amber";
+                const unverified = measurement.flag === "unverified";
                 const detailsId = `${measurement.measurementId}-details`;
                 return (
                   <Fragment key={measurement.measurementId}>
@@ -269,6 +270,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                       className={[
                         expanded ? "is-expanded" : "",
                         amber ? "is-amber" : "",
+                        unverified ? "is-unverified" : "",
                       ]
                         .filter(Boolean)
                         .join(" ")}
@@ -346,7 +348,11 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                     {expanded ? (
                       <tr
                         className={`measurement-table__details-row${
-                          amber ? " is-amber" : ""
+                          amber
+                            ? " is-amber"
+                            : unverified
+                              ? " is-unverified"
+                              : ""
                         }`}
                       >
                         <td colSpan={11} id={detailsId}>

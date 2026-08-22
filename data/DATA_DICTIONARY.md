@@ -137,9 +137,9 @@ correction and cannot be published without a valid class.
 | `detectivity_extraction_method`          | enum                | yes         | `directly_reported`, `calculated_from_reported_values`, `graphically_extracted`, or `unspecified`.              |
 | `source_location`                        | text                | no          | Page, figure, table, or supporting-information location.                                                        |
 | `curator_status`                         | enum                | yes         | `reviewed` or `pending_review`. Pending records remain visible but are excluded from performance comparisons.   |
-| `flag`                                   | enum                | yes         | Public status: only `green` or `amber`.                                                                         |
-| `amber_reasons`                          | pipe-separated enum | conditional | One or more reason keys for every amber record; blank for green.                                                |
-| `amber_explanation`                      | text                | conditional | Human-readable context required for amber; blank for green.                                                     |
+| `flag`                                   | enum                | yes         | Public status: `green`, `unverified`, or `amber`; precedence is amber → unverified → green.                     |
+| `amber_reasons`                          | pipe-separated enum | conditional | One or more reason keys for every amber record; blank for green and unverified.                                 |
+| `amber_explanation`                      | text                | conditional | Human-readable context required for amber; blank for green and unverified.                                      |
 | `curator_notes`                          | text                | conditional | Measurement-specific notes. Required for `pending_review` as the public explanation of the unresolved question. |
 | `date_added`                             | ISO date            | yes         | `YYYY-MM-DD`.                                                                                                   |
 | `date_updated`                           | ISO date            | yes         | `YYYY-MM-DD`, not earlier than `date_added`.                                                                    |
@@ -173,7 +173,9 @@ associated with noise/detectivity. Equal reported frequencies display
 **Frequency-mismatched D\***. Missing frequency evidence is labeled
 **Frequency match not established**, not as a mismatch. An explicit mismatch
 requires amber because the D* calculation combines signal and noise inputs from
-different frequencies. Missing frequency evidence alone remains neutral.
+different frequencies. An applicable match that is not established requires
+`unverified`, unless an independent amber caution takes precedence. Frequency
+matching is not applied to calculated noise models.
 
 Extended-metric extraction methods are `directly_reported`,
 `graphically_extracted`, `calculated_from_reported_values`, `not_reported`, and
@@ -186,7 +188,7 @@ Response-time limits are `measured`, `instrument_limited`, `source_limited`,
 time, and -3 dB bandwidth are not silently converted into one another. The
 highest tested modulation frequency is not a -3 dB bandwidth unless the source
 explicitly identifies it as such. Missing extended metrics do not affect the
-green/amber flag.
+green/unverified/amber status.
 
 ### Noise instruments
 
@@ -218,7 +220,7 @@ ranges.
 `not_reported` and `not_applicable` cannot be combined with another instrument.
 Every shot-noise- or Johnson-noise-approximation record must use
 `not_applicable`. A missing or
-unreported instrument does not change the green/amber flag. A lock-in counts
+unreported instrument does not independently change review status. A lock-in counts
 only when it acquired noise; lock-ins used only for EQE, responsivity, or other
 optical characterization are excluded from `noise_instruments`.
 
@@ -246,13 +248,14 @@ automatic reasons. An explicit responsivity/EQE and noise-frequency mismatch
 automatically requires `frequency_mismatch`. `noise_method_not_reported`, `above_blip_limit`,
 and `below_preamplifier_noise_floor` are curator-applied judgments; the atlas does
 not attempt an automatic BLIP calculation or infer instrument noise floors. Missing
-area, temperature, bias, missing frequency evidence, source location, graphical extraction,
+area, temperature, bias, source location, graphical extraction,
 calculated values, preprint status, or incomplete conditions do not independently
-trigger amber. An unreported noise method remains neutral unless a curator records
-why the omission is material at the cited operating point. A green record contains no amber reason or
-explanation. Green is a measurement-methodology flag—not a review status, an
-endorsement, or an independent reproduction of the result. A `pending_review`
-record may therefore be green or amber.
+trigger amber. Missing applicable frequency evidence instead requires
+`unverified`. An unreported noise method remains non-amber unless a curator
+records why the omission is material at the cited operating point. Green and
+unverified records contain no amber reason or explanation. These categories are
+evidence statuses—not endorsements or independent reproductions of the result.
+A `pending_review` record may therefore be green, unverified, or amber.
 
 ## Validation and generation
 

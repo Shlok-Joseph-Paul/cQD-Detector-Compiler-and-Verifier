@@ -1,7 +1,7 @@
 {
-  "schema_version": 6,
-  "dataset_version": "1.14.0",
-  "generated_at": "2026-08-19T00:00:00.000Z",
+  "schema_version": 7,
+  "dataset_version": "1.15.0",
+  "generated_at": "2026-08-22T00:00:00.000Z",
   "papers": [
     {
       "paper_id": "xu-2022-pbs-si-heterojunction",
@@ -4939,7 +4939,7 @@
       "responsivity_temperature_k": 300,
       "responsivity_source_location": "PDF p. 5, Figure 4c",
       "responsivity_extraction_method": "graphically_extracted",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 1,
       "eqe_percent": null,
       "eqe_frequency_hz": null,
       "temperature_k": null,
@@ -4983,7 +4983,7 @@
       "amber_explanation": null,
       "curator_notes": "Approximate values read near the SWIR maximum of the champion-device curves.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "song-2024-ag-hgte-m1",
@@ -5035,12 +5035,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main PDF p. 5; Supporting Information pp. 17 and 21, Figure S16 and Table S1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Temperature mismatch in the published detectivity calculation: the main text reports D*=1.15e11 Jones using responsivity 0.58 A/W at 130 K, area 1.05 mm2, and noise density 0.5 pA Hz^-1/2, while Supporting Figure S16 states that the noise spectrum was acquired at 78 K. Supporting Table S1 separately lists this work at 3.3 µm, 78 K, approximately 1.2e11 Jones, and 0.3 A/W. The main-text champion claim is preserved, with the non-co-located noise and responsivity temperatures disclosed.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "dang-2023-grid-m1",
@@ -5149,12 +5149,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 7-8, Figure 4B and caption; p. 11 noise methods",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "The 10 ns speed result was measured separately at 850 nm and is not transferred to this row.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "paul-2025-m1",
@@ -5499,12 +5499,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 5, Figure 4f and accompanying text; p. 6 conclusion",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "D* uses the measured noise current at 500 Hz and a 1 Hz noise-equivalent bandwidth.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "wang-2024-m1",
@@ -5556,12 +5556,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 5, Figure 3d-f and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Peak broadband D* and responsivity near the 1700 nm excitonic response.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "rastogi-2022-m1",
@@ -5574,7 +5574,7 @@
       "responsivity_temperature_k": 300,
       "responsivity_source_location": "PDF pp. 1-2 and Figure 4a",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 1000,
       "eqe_percent": null,
       "eqe_frequency_hz": null,
       "temperature_k": 300,
@@ -5616,9 +5616,9 @@
       "flag": "green",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Room-temperature result; the main article does not specify the underlying noise-acquisition method.",
+      "curator_notes": "Room-temperature result; the main article does not specify the noise-acquisition instrument. The 1 kHz responsivity-frequency field records the paper's explicitly stated D* modulation condition; the signal and noise frequencies are not restated separately.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "rastogi-2022-m2",
@@ -5688,12 +5688,12 @@
       "responsivity_temperature_k": 300,
       "responsivity_source_location": "Supporting Information PDF p. 20, Table S4",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 25,
       "eqe_percent": null,
       "eqe_frequency_hz": null,
       "temperature_k": 300,
       "bias_v": 0,
-      "measurement_frequency_hz": null,
+      "measurement_frequency_hz": 25,
       "response_time_s": null,
       "rise_time_s": null,
       "fall_time_s": 0.000023,
@@ -5730,9 +5730,9 @@
       "flag": "green",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "The methods use noise at 25 Hz while the result paragraph states 140 Hz; frequency is left blank rather than choosing between the conflicting statements.",
+      "curator_notes": "Source recheck on 2026-08-22: the spectral photoresponse was acquired with light chopped at 25 Hz, and the measured 25 Hz noise value was used for D*. The separate 140 Hz statement does not define the retained D* calculation.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "yu-2024-hgte-me4pacz-m1",
@@ -5784,12 +5784,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Room-temperature peak result; fall time is 6.35 µs, and numerical temperature and active area are not stated.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "yu-2024-hgte-bare-m1",
@@ -5841,12 +5841,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Room-temperature peak result; fall time is 65.71 µs, and numerical temperature and active area are not stated.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "wang-2023-pbs-oxidized-m1",
@@ -6187,12 +6187,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 2-4, Figures 1-2 and conclusion",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Noise was measured with a spectrum analyzer and was approximately frequency-independent; reported fall time is 1.4 µs.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "ahn-2024-ag2te-mpa-1550",
@@ -6244,12 +6244,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Measured-noise D* at 10 kHz; the separately reported 72 ns result belongs to a 0.009 cm2 device and is not transferred to this row.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "ahn-2024-ag2te-mpa-2004",
@@ -6301,12 +6301,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Zero-bias noise was used for the 2004 nm D* because of low signal-to-noise ratio under bias; the 72 ns result belongs to a separate smaller-area device.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "peng-2024-insb-inp-m1",
@@ -6359,12 +6359,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figures 3-4 and device methods",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "The 70 ns response belongs to a separate 0.09 mm2 device; this row uses the 3.14 mm2 detectivity device and its corresponding 1.65 µs fall time and 850 kHz bandwidth.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "muhammad-2023-insb-m1",
@@ -6474,12 +6474,12 @@
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 4, Figure 3b-c and accompanying text; PDF p. 8 methods",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approximate spectral maximum read near 1380 nm; the paper directly reports a maximum of about 3e12 Jones at 20 kHz and room temperature. Fall time is 3.3 µs.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "wang-2024-ag2te-1520-m1",
@@ -6532,12 +6532,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 4 and Supplementary Figure 13",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Responsivity is reported only as greater than 0.1 A/W and is left blank rather than encoded as an exact value.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-pin-1500",
@@ -6589,12 +6589,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-pin-1900",
@@ -6646,12 +6646,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-pin-2500",
@@ -6703,12 +6703,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-pin-3600",
@@ -6760,12 +6760,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-nip-1500",
@@ -6817,12 +6817,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-nip-1900",
@@ -6874,12 +6874,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-nip-2500",
@@ -6931,12 +6931,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "chen-2023-hgte-nip-3600",
@@ -6988,12 +6988,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "xue-2023-hgte-gradient-80k",
@@ -7045,12 +7045,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3 and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "The paper reports EQE greater than 77%; it is retained as an inequality in notes rather than entered as an exact EQE value.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "xue-2023-hgte-gradient-200k",
@@ -7102,12 +7102,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Table 1 uses an approximately 4400 nm nominal wavelength for the temperature series.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "xue-2023-hgte-gradient-280k",
@@ -7159,12 +7159,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Table 1 uses an approximately 4400 nm nominal wavelength for the temperature series.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "xue-2023-hgte-gradient-300k",
@@ -7216,12 +7216,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-7, Figure 3h and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Room-temperature spectral edge and measured-noise detectivity.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "siddik-2025-inas-max",
@@ -7273,12 +7273,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz. The E4727B is classified as the noise-acquisition instrument; the accompanying B1500 is not classified as an independent noise-acquisition method.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "sheikh-2024-inas-znse-max",
@@ -7330,12 +7330,12 @@
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 6, Figure 5a-c and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Maximum reported D*; the peak wavelength is identified from the plotted spectral response. The response-time field records the reported fall time.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "sun-2022-inas-max",
@@ -7348,9 +7348,9 @@
       "responsivity_temperature_k": null,
       "responsivity_source_location": "PDF pp. 2 and 6, Figure 4",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 25,
       "eqe_percent": 30,
-      "eqe_frequency_hz": null,
+      "eqe_frequency_hz": 25,
       "temperature_k": null,
       "bias_v": null,
       "measurement_frequency_hz": 500000,
@@ -7387,12 +7387,14 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF pp. 5-6, Figure 4c-d and accompanying text; PDF p. 8 noise methods",
       "curator_status": "reviewed",
-      "flag": "green",
-      "amber_reasons": [],
-      "amber_explanation": null,
-      "curator_notes": "Maximum reported D*; the separately reported 2 ns response at 850 nm is not transferred to this record.",
+      "flag": "amber",
+      "amber_reasons": [
+        "frequency_mismatch"
+      ],
+      "amber_explanation": "Detectivity combines responsivity or EQE acquired at a different frequency from the noise value used in the calculation, limiting direct comparability of the inputs.",
+      "curator_notes": "Maximum reported D*. Methods report EQE/IQE with 25 Hz chopped light, while the measured noise value used for D* is reported at 500 kHz. The separately reported 2 ns response at 850 nm is not transferred to this record.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-798a7e0d2116-1",
@@ -7444,12 +7446,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF page 5",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Automatically staged evidence: with the dark current in Fig. 3(d). And the noise current of the optimized device measured at 0 V was 4 × 10−13 A/Hz0.5 at 1 Hz, which was used in the calculation of D*. The optimized device achieved a responsivity of 0.22 A/W at 1540 nm under zero bias (Fig. S19 in the ESM), corresponding to a D* of 2.3 × 1011 Jones…",
       "date_added": "2026-07-20",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "lee-2026-hgcdse-qd2-50khz",
@@ -7855,12 +7857,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Noise-current density is 1.0e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "huang-2026-cdte-hgte-untreated-1600",
@@ -7912,12 +7914,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Noise-current density is 1.3e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "xia-2025-pbse-1640",
@@ -7969,12 +7971,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 4-6, Figure 3e-f",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Bias and numeric temperature are not explicitly assigned to this spectral D* record.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "xia-2025-pbse-2360",
@@ -8026,12 +8028,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 6, Figure 3i; Supporting Information Figure S19",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Noise-current density is 4.16e-13 A Hz^-1/2 at 500 Hz and zero bias. The result is described as room temperature; no numeric temperature is assigned.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "hu-2025-hgte-dh-1600",
@@ -8083,12 +8085,12 @@
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "Main article PDF pp. 5-8, Figure 3f-i and Device Measurements",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "The 1600 nm position of the reported maximum was confirmed from Figure 3g. Measurements are described as room temperature; no numeric temperature is assigned. Bias is left blank because it is not unambiguously assigned to the D* spectrum. The response-time field records the 579 ns fall time.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "tran-2026-cd3p2-homojunction-1100",
@@ -8372,12 +8374,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 5-6, Figure 3d-i",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "The paper associates the FPA detectivity with a 2.5 um cutoff and reports responsivity at 2.5 um; the D* calculation uses calibrated blackbody illumination and system-level FPA noise rather than an explicitly stated monochromatic 2500 nm noise measurement. Reported values are approximately 3e10 Jones 0.4 +/- 0.04 A/W and 25 +/- 2% EQE at room temperature.",
       "date_added": "2026-07-19",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "deng-2026-pbs-1500-1330",
@@ -8429,12 +8431,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 5, Figure 3c and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "The main results report 2.6e12 Jones; a negative-exponent value in the conclusion is treated as a typographical error. The Keithley 2400 was used for J-V characterization, not noise acquisition.",
       "date_added": "2026-07-20",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "deng-2026-pbs-50-1330",
@@ -8486,12 +8488,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 5-6, Figure 3c-e and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "The paper states that EQE remains unchanged when the contact diameter decreases to 50 um. The 2 ns decay is assigned to the QDPD; the >100 MHz bandwidth and 11.7/6.5 ns transients belong to QDLED operation and are excluded.",
       "date_added": "2026-07-20",
-      "date_updated": "2026-07-20"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "leemans-2022-inasp-1140",
@@ -8720,12 +8722,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 5-6, Figure 3c and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Champion H-SC@60 °C device only. D* uses measured 1 Hz zero-bias noise. Stored 2.5e11 from the approximately/exceeding reported value; LDR stored as 97 dB with the reported >97 dB bound preserved. The 60 °C value is fabrication temperature, not operating temperature.",
       "date_added": "2026-07-21",
-      "date_updated": "2026-07-21"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-05e0a265ba8c-1",
@@ -8777,12 +8779,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main PDF page 6",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "At -0.3 V and 1 µW cm^-2, R = 66.7 A/W and measured-noise D* = 1.3 × 10^11 Jones.",
       "date_added": "2026-07-21",
-      "date_updated": "2026-07-21"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-05e0a265ba8c-2",
@@ -8834,12 +8836,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main PDF page 6",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "At -0.3 V and 1 µW cm^-2, R = 77.0 A/W and measured-noise D* = 1.5 × 10^11 Jones.",
       "date_added": "2026-07-21",
-      "date_updated": "2026-07-21"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-ffcc0c4eac37-1",
@@ -9009,12 +9011,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF page 7",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "BA n=5 noise 5.5 × 10^-15 A Hz^-1/2 over 1–100 Hz. The ≈2 × 10^14 Jones shot-noise estimate is held pending device-resolved SI evidence.",
       "date_added": "2026-07-21",
-      "date_updated": "2026-07-21"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-c533f3ba2a4a-2",
@@ -9066,12 +9068,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF page 7",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "BA n=4 noise 6.5 × 10^-15 A Hz^-1/2 over 1–100 Hz. The ≈2 × 10^14 Jones shot-noise estimate is held pending device-resolved SI evidence.",
       "date_added": "2026-07-21",
-      "date_updated": "2026-07-21"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "dou-2014-pd3-550-zero",
@@ -9418,12 +9420,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF page 6, Fig. 4 and accompanying text; PDF page 8, PPD characterization",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Measured-noise D* maximum at 940 nm and −0.5 V. No single measurement frequency is assigned because the reported noise spectrum spans 1–100 Hz. This row remains green; the atlas has no evidence-supported amber reason for it.",
       "date_added": "2026-08-02",
-      "date_updated": "2026-08-02"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-b0fdb518c75e-3",
@@ -9554,7 +9556,7 @@
       "responsivity_temperature_k": 298.15,
       "responsivity_source_location": "Main article PDF p. 4, Figure 2d and accompanying text",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 70,
       "eqe_percent": null,
       "eqe_frequency_hz": null,
       "temperature_k": 298.15,
@@ -9598,7 +9600,7 @@
       "amber_explanation": null,
       "curator_notes": "D* is plotted at -0.1 V, while the reported 0.37 A/W responsivity is derived from the zero-bias EQE spectrum; the metric-specific bias fields preserve this difference. Keithley 2601 was used for J-V measurements, not noise acquisition.",
       "date_added": "2026-08-03",
-      "date_updated": "2026-08-03"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "yang-2019-cs2agbibr6-445",
@@ -9768,12 +9770,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 6, Figure 4e–f and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Curator directed that the reported maximum be recorded at 1600 nm. The separately reported responsivity maximum is 0.76 A/W at 1610 nm.",
       "date_added": "2026-08-11",
-      "date_updated": "2026-08-11"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "di-2024-mxene-pbs-940-zero-10khz",
@@ -10177,12 +10179,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 6, Figure 4d",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-12. Modeled intrinsic detectivity up to 30× higher and modeled LDR above 200 dB are excluded.",
       "date_added": "2026-08-12",
-      "date_updated": "2026-08-12"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "yan-2025-famacs-tgti-635-zero",
@@ -10234,12 +10236,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 6, Figure 4d",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-12. Modeled intrinsic detectivity up to 30× higher and modeled LDR above 200 dB are excluded.",
       "date_added": "2026-08-12",
-      "date_updated": "2026-08-12"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "yan-2025-famacs-tgtib-635-zero",
@@ -10291,12 +10293,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 6, Figure 4d",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-12. Modeled intrinsic detectivity up to 30× higher and modeled LDR above 200 dB are excluded.",
       "date_added": "2026-08-12",
-      "date_updated": "2026-08-12"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "kim-2023-mapbi3-pmma-700-zero",
@@ -11583,12 +11585,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained MAPbI3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-19"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "kim-2026-mapbi3-compressive-522-zero",
@@ -11640,12 +11642,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-19"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "kim-2026-cspbbr3-unstrained-522-zero",
@@ -11697,12 +11699,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained CsPbBr3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-19"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "kim-2026-cspbbr3-compressive-522-zero",
@@ -11754,12 +11756,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-19"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "wang-2026-cspbibr2-control-435-zero-measured",
@@ -11811,12 +11813,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 8-9, Figure 5c-e and Equation 4 discussion",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Only the measured-noise D* is retained; the shot-noise estimate is excluded by curator direction.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-19"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "wang-2026-cspbibr2-cdca-435-zero-measured",
@@ -11868,12 +11870,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 8-9, Figure 5c-e and Equation 4 discussion",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Only the measured-noise D* is retained; the shot-noise estimate is excluded by curator direction.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "kim-2026-facspbi3-fecx-control-680-zero",
@@ -12338,12 +12340,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 6-8, Figure 4d-e and Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Two-terminal zero-bias photovoltaic heterojunction; interfacial photogating explains gain but the detector is not operated as a transistor.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-e257c959decc-1",
@@ -12395,12 +12397,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF page 4, Figure 3(g); PDF page 5, paragraph 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Primary result for the patterned, post-ligand-exchanged device: R = 0.11 A W−1 and D* = 1.81 × 10^11 Jones at 450 nm and 3.0 V. The paper calls D* calculated but does not disclose the noise basis or noise-acquisition instrument in the available main article.",
       "date_added": "2026-08-13",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-1ebdaa0619e8-1",
@@ -12452,12 +12454,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF page 6, paragraph 2; PDF page 7, Table 1",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved PM7:Y6 (1:1.2) POH device. Measured-noise D* = 4.7 × 10^12 Jones at 840 nm, −0.5 V, and 200 Hz; noise current density is 2 × 10^−14 A Hz^−1/2. All measurements were performed at room temperature, but no exact temperature in kelvin is reported.",
       "date_added": "2026-08-12",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-063b84676a07-1",
@@ -12509,12 +12511,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF pp. 6-7, Figure 4d-f and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. Hybrid-passivated HgTe device. The 185 nA cm^-2 dark-current density is reported separately at -0.1 V and is not treated as the zero-bias D* condition.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-e8d3fafe47ed-1",
@@ -12566,12 +12568,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article PDF p. 9, Figure 5d-e and accompanying text",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-17. HIES-modified PbS CQD/JD40-BDD20 hybrid device at room temperature; exact kelvin value and active area are not reported in the supplied main article.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "measurement-e8d3fafe47ed-2",
@@ -12641,7 +12643,7 @@
       "responsivity_temperature_k": null,
       "responsivity_source_location": "Main article PDF pp. 3-5, Figure 3f and accompanying text",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 1000,
       "eqe_percent": 76,
       "eqe_frequency_hz": null,
       "temperature_k": null,
@@ -12687,7 +12689,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved and explicitly marked green by Shlok on 2026-08-17 under the mixed-instrument policy: the noise chain includes a dynamic signal analyzer, so accompanying parameter-analyzer acquisition does not trigger automatic amber. The 10 nA cm^-2 dark-current density is separately reported at -0.1 V.",
       "date_added": "2026-08-17",
-      "date_updated": "2026-08-17"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "ackerman-2018-hgte-mwir-5000-85k",
@@ -12700,7 +12702,7 @@
       "responsivity_temperature_k": 85,
       "responsivity_source_location": "Main article PDF p. 6, Figure 5c and accompanying text",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 500,
       "eqe_percent": 32,
       "eqe_frequency_hz": null,
       "temperature_k": 85,
@@ -12744,7 +12746,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-18. Champion interference-enhanced device only; lower-D* non-interference and temperature-series values are excluded. The plotted wavelength is the detector cutoff and is not a monochromatic D* excitation wavelength.",
       "date_added": "2026-08-18",
-      "date_updated": "2026-08-18"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "zhang-2026-pbs-homojunction-3p6nm-450-1v",
@@ -13148,12 +13150,12 @@
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main article Figure 2c and accompanying detectivity discussion; Supporting Information Figure S3",
       "curator_status": "reviewed",
-      "flag": "green",
+      "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-18. The 532 nm temporal test is stored separately from the 1350 nm D* condition.",
       "date_added": "2026-08-18",
-      "date_updated": "2026-08-18"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "lim-2026-pbs-cpe-control-900",
@@ -13402,9 +13404,9 @@
       "responsivity_temperature_k": null,
       "responsivity_source_location": "Main article PDF pp. 8-9, Figure 6g and Section 3.5",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 130,
       "eqe_percent": 50,
-      "eqe_frequency_hz": null,
+      "eqe_frequency_hz": 130,
       "temperature_k": null,
       "bias_v": 0,
       "measurement_frequency_hz": 130,
@@ -13446,7 +13448,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-18. Room temperature is stated without an exact kelvin value. D* uses measured noise, device area 0.09 cm2, and 1 Hz noise-equivalent bandwidth.",
       "date_added": "2026-08-18",
-      "date_updated": "2026-08-18"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "wang-2026-hgte-cdhgte-etl-1560-zero",
@@ -13459,9 +13461,9 @@
       "responsivity_temperature_k": null,
       "responsivity_source_location": "Main article PDF pp. 7-8, Figure 5e and Section 3.4",
       "responsivity_extraction_method": "directly_reported",
-      "responsivity_frequency_hz": null,
+      "responsivity_frequency_hz": 130,
       "eqe_percent": 50.2,
-      "eqe_frequency_hz": null,
+      "eqe_frequency_hz": 130,
       "temperature_k": null,
       "bias_v": 0,
       "measurement_frequency_hz": 130,
@@ -13503,7 +13505,7 @@
       "amber_explanation": null,
       "curator_notes": "Approved by Shlok on 2026-08-18. Room temperature is stated without an exact kelvin value. D* uses measured noise, device area 0.09 cm2, and 1 Hz noise-equivalent bandwidth.",
       "date_added": "2026-08-18",
-      "date_updated": "2026-08-18"
+      "date_updated": "2026-08-22"
     },
     {
       "measurement_id": "wen-2025-pbse-igzo-tbai-1064",
@@ -14384,7 +14386,7 @@
         "responsivity_temperature_k": 300,
         "responsivity_source_location": "PDF p. 5, Figure 4c",
         "responsivity_extraction_method": "graphically_extracted",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 1,
         "eqe_percent": null,
         "eqe_frequency_hz": null,
         "temperature_k": null,
@@ -14428,7 +14430,7 @@
         "amber_explanation": null,
         "curator_notes": "Approximate values read near the SWIR maximum of the champion-device curves.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -14530,12 +14532,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main PDF p. 5; Supporting Information pp. 17 and 21, Figure S16 and Table S1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Temperature mismatch in the published detectivity calculation: the main text reports D*=1.15e11 Jones using responsivity 0.58 A/W at 130 K, area 1.05 mm2, and noise density 0.5 pA Hz^-1/2, while Supporting Figure S16 states that the noise spectrum was acquired at 78 K. Supporting Table S1 separately lists this work at 3.3 µm, 78 K, approximately 1.2e11 Jones, and 0.3 A/W. The main-text champion claim is preserved, with the non-co-located noise and responsivity temperatures disclosed.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -14740,12 +14742,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 7-8, Figure 4B and caption; p. 11 noise methods",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "The 10 ns speed result was measured separately at 850 nm and is not transferred to this row.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -15372,12 +15374,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 5, Figure 4f and accompanying text; p. 6 conclusion",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "D* uses the measured noise current at 500 Hz and a 1 Hz noise-equivalent bandwidth.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -15474,12 +15476,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 5, Figure 3d-f and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Peak broadband D* and responsivity near the 1700 nm excitonic response.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -15547,7 +15549,7 @@
         "responsivity_temperature_k": 300,
         "responsivity_source_location": "PDF pp. 1-2 and Figure 4a",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 1000,
         "eqe_percent": null,
         "eqe_frequency_hz": null,
         "temperature_k": 300,
@@ -15589,9 +15591,9 @@
         "flag": "green",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Room-temperature result; the main article does not specify the underlying noise-acquisition method.",
+        "curator_notes": "Room-temperature result; the main article does not specify the noise-acquisition instrument. The 1 kHz responsivity-frequency field records the paper's explicitly stated D* modulation condition; the signal and noise frequencies are not restated separately.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -15757,12 +15759,12 @@
         "responsivity_temperature_k": 300,
         "responsivity_source_location": "Supporting Information PDF p. 20, Table S4",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 25,
         "eqe_percent": null,
         "eqe_frequency_hz": null,
         "temperature_k": 300,
         "bias_v": 0,
-        "measurement_frequency_hz": null,
+        "measurement_frequency_hz": 25,
         "response_time_s": null,
         "rise_time_s": null,
         "fall_time_s": 0.000023,
@@ -15799,9 +15801,9 @@
         "flag": "green",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "The methods use noise at 25 Hz while the result paragraph states 140 Hz; frequency is left blank rather than choosing between the conflicting statements.",
+        "curator_notes": "Source recheck on 2026-08-22: the spectral photoresponse was acquired with light chopped at 25 Hz, and the measured 25 Hz noise value was used for D*. The separate 140 Hz statement does not define the retained D* calculation.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -15898,12 +15900,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Room-temperature peak result; fall time is 6.35 µs, and numerical temperature and active area are not stated.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -16000,12 +16002,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 4-6, Figure 4c-f and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Room-temperature peak result; fall time is 65.71 µs, and numerical temperature and active area are not stated.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -16604,12 +16606,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 2-4, Figures 1-2 and conclusion",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Noise was measured with a spectrum analyzer and was approximately frequency-independent; reported fall time is 1.4 µs.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -16709,12 +16711,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Measured-noise D* at 10 kHz; the separately reported 72 ns result belongs to a 0.009 cm2 device and is not transferred to this row.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -16814,12 +16816,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-6, Figure 4 and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Zero-bias noise was used for the 2004 nm D* because of low signal-to-noise ratio under bias; the 72 ns result belongs to a separate smaller-area device.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -16913,12 +16915,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figures 3-4 and device methods",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "The 70 ns response belongs to a separate 0.09 mm2 device; this row uses the 3.14 mm2 detectivity device and its corresponding 1.65 µs fall time and 850 kHz bandwidth.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17120,12 +17122,12 @@
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 4, Figure 3b-c and accompanying text; PDF p. 8 methods",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approximate spectral maximum read near 1380 nm; the paper directly reports a maximum of about 3e12 Jones at 20 kHz and room temperature. Fall time is 3.3 µs.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17221,12 +17223,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 4 and Supplementary Figure 13",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Responsivity is reported only as greater than 0.1 A/W and is left blank rather than encoded as an exact value.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17319,12 +17321,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17417,12 +17419,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17515,12 +17517,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17613,12 +17615,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-7, Figures 2-3 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Measured noise is close to but several-fold larger than calculated Johnson noise; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17711,12 +17713,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17809,12 +17811,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -17907,12 +17909,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18005,12 +18007,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 4 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Inverted n-i-p homojunction; exact measurement frequency is not reported.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18103,12 +18105,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3 and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "The paper reports EQE greater than 77%; it is retained as an inequality in notes rather than entered as an exact EQE value.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18201,12 +18203,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Table 1 uses an approximately 4400 nm nominal wavelength for the temperature series.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18299,12 +18301,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3f and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Table 1 uses an approximately 4400 nm nominal wavelength for the temperature series.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18397,12 +18399,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-7, Figure 3h and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Room-temperature spectral edge and measured-noise detectivity.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18500,12 +18502,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 3-4, Figure 2e-f and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Maximum reported D*; the measured-noise result approaches 2.5e11 Jones at frequencies at or above 500 Hz. The E4727B is classified as the noise-acquisition instrument; the accompanying B1500 is not classified as an independent noise-acquisition method.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18609,12 +18611,12 @@
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 6, Figure 5a-c and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Maximum reported D*; the peak wavelength is identified from the plotted spectral response. The response-time field records the reported fall time.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18684,9 +18686,9 @@
         "responsivity_temperature_k": null,
         "responsivity_source_location": "PDF pp. 2 and 6, Figure 4",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 25,
         "eqe_percent": 30,
-        "eqe_frequency_hz": null,
+        "eqe_frequency_hz": 25,
         "temperature_k": null,
         "bias_v": null,
         "measurement_frequency_hz": 500000,
@@ -18723,12 +18725,14 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF pp. 5-6, Figure 4c-d and accompanying text; PDF p. 8 noise methods",
         "curator_status": "reviewed",
-        "flag": "green",
-        "amber_reasons": [],
-        "amber_explanation": null,
-        "curator_notes": "Maximum reported D*; the separately reported 2 ns response at 850 nm is not transferred to this record.",
+        "flag": "amber",
+        "amber_reasons": [
+          "frequency_mismatch"
+        ],
+        "amber_explanation": "Detectivity combines responsivity or EQE acquired at a different frequency from the noise value used in the calculation, limiting direct comparability of the inputs.",
+        "curator_notes": "Maximum reported D*. Methods report EQE/IQE with 25 Hz chopped light, while the measured noise value used for D* is reported at 500 kHz. The separately reported 2 ns response at 850 nm is not transferred to this record.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -18822,12 +18826,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF page 5",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Automatically staged evidence: with the dark current in Fig. 3(d). And the noise current of the optimized device measured at 0 V was 4 × 10−13 A/Hz0.5 at 1 Hz, which was used in the calculation of D*. The optimized device achieved a responsivity of 0.22 A/W at 1540 nm under zero bias (Fig. S19 in the ESM), corresponding to a D* of 2.3 × 1011 Jones…",
         "date_added": "2026-07-20",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -19529,12 +19533,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Noise-current density is 1.0e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -19630,12 +19634,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 6-7, Figure 4d-f",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Noise-current density is 1.3e-13 A Hz^-1/2 at 500 Hz. Measurements are described as room temperature; no numeric temperature is assigned.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -19730,12 +19734,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 4-6, Figure 3e-f",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Bias and numeric temperature are not explicitly assigned to this spectral D* record.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -19830,12 +19834,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 6, Figure 3i; Supporting Information Figure S19",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Noise-current density is 4.16e-13 A Hz^-1/2 at 500 Hz and zero bias. The result is described as room temperature; no numeric temperature is assigned.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -19935,12 +19939,12 @@
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "Main article PDF pp. 5-8, Figure 3f-i and Device Measurements",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "The 1600 nm position of the reported maximum was confirmed from Figure 3g. Measurements are described as room temperature; no numeric temperature is assigned. Bias is left blank because it is not unambiguously assigned to the D* spectrum. The response-time field records the 579 ns fall time.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -20445,12 +20449,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 5-6, Figure 3d-i",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "The paper associates the FPA detectivity with a 2.5 um cutoff and reports responsivity at 2.5 um; the D* calculation uses calibrated blackbody illumination and system-level FPA noise rather than an explicitly stated monochromatic 2500 nm noise measurement. Reported values are approximately 3e10 Jones 0.4 +/- 0.04 A/W and 25 +/- 2% EQE at room temperature.",
         "date_added": "2026-07-19",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -20551,12 +20555,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 5, Figure 3c and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "The main results report 2.6e12 Jones; a negative-exponent value in the conclusion is treated as a typographical error. The Keithley 2400 was used for J-V characterization, not noise acquisition.",
         "date_added": "2026-07-20",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -20657,12 +20661,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 5-6, Figure 3c-e and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "The paper states that EQE remains unchanged when the contact diameter decreases to 50 um. The 2 ns decay is assigned to the QDPD; the >100 MHz bandwidth and 11.7/6.5 ns transients belong to QDLED operation and are excluded.",
         "date_added": "2026-07-20",
-        "date_updated": "2026-07-20"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -21075,12 +21079,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 5-6, Figure 3c and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Champion H-SC@60 °C device only. D* uses measured 1 Hz zero-bias noise. Stored 2.5e11 from the approximately/exceeding reported value; LDR stored as 97 dB with the reported >97 dB bound preserved. The 60 °C value is fabrication temperature, not operating temperature.",
         "date_added": "2026-07-21",
-        "date_updated": "2026-07-21"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -21183,12 +21187,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main PDF page 6",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "At -0.3 V and 1 µW cm^-2, R = 66.7 A/W and measured-noise D* = 1.3 × 10^11 Jones.",
         "date_added": "2026-07-21",
-        "date_updated": "2026-07-21"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -21291,12 +21295,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main PDF page 6",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "At -0.3 V and 1 µW cm^-2, R = 77.0 A/W and measured-noise D* = 1.5 × 10^11 Jones.",
         "date_added": "2026-07-21",
-        "date_updated": "2026-07-21"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -21607,12 +21611,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF page 7",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "BA n=5 noise 5.5 × 10^-15 A Hz^-1/2 over 1–100 Hz. The ≈2 × 10^14 Jones shot-noise estimate is held pending device-resolved SI evidence.",
         "date_added": "2026-07-21",
-        "date_updated": "2026-07-21"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -21707,12 +21711,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF page 7",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "BA n=4 noise 6.5 × 10^-15 A Hz^-1/2 over 1–100 Hz. The ≈2 × 10^14 Jones shot-noise estimate is held pending device-resolved SI evidence.",
         "date_added": "2026-07-21",
-        "date_updated": "2026-07-21"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -22326,12 +22330,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF page 6, Fig. 4 and accompanying text; PDF page 8, PPD characterization",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Measured-noise D* maximum at 940 nm and −0.5 V. No single measurement frequency is assigned because the reported noise spectrum spans 1–100 Hz. This row remains green; the atlas has no evidence-supported amber reason for it.",
         "date_added": "2026-08-02",
-        "date_updated": "2026-08-02"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -22601,7 +22605,7 @@
         "responsivity_temperature_k": 298.15,
         "responsivity_source_location": "Main article PDF p. 4, Figure 2d and accompanying text",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 70,
         "eqe_percent": null,
         "eqe_frequency_hz": null,
         "temperature_k": 298.15,
@@ -22645,7 +22649,7 @@
         "amber_explanation": null,
         "curator_notes": "D* is plotted at -0.1 V, while the reported 0.37 A/W responsivity is derived from the zero-bias EQE spectrum; the metric-specific bias fields preserve this difference. Keithley 2601 was used for J-V measurements, not noise acquisition.",
         "date_added": "2026-08-03",
-        "date_updated": "2026-08-03"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -22951,12 +22955,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 6, Figure 4e–f and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Curator directed that the reported maximum be recorded at 1600 nm. The separately reported responsivity maximum is 0.76 A/W at 1610 nm.",
         "date_added": "2026-08-11",
-        "date_updated": "2026-08-11"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -23704,12 +23708,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 6, Figure 4d",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-12. Modeled intrinsic detectivity up to 30× higher and modeled LDR above 200 dB are excluded.",
         "date_added": "2026-08-12",
-        "date_updated": "2026-08-12"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -23805,12 +23809,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 6, Figure 4d",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-12. Modeled intrinsic detectivity up to 30× higher and modeled LDR above 200 dB are excluded.",
         "date_added": "2026-08-12",
-        "date_updated": "2026-08-12"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -23906,12 +23910,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 6, Figure 4d",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-12. Modeled intrinsic detectivity up to 30× higher and modeled LDR above 200 dB are excluded.",
         "date_added": "2026-08-12",
-        "date_updated": "2026-08-12"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -26192,12 +26196,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained MAPbI3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-19"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -26289,12 +26293,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-19"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -26386,12 +26390,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 3, Figure 1h and detectivity discussion",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Self-powered unstrained CsPbBr3 maximum at 522 nm. Responsivity and D* correspond to the lowest reported illumination intensity of 0.57 mW cm^-2.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-19"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -26483,12 +26487,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 4-5, Figure 2c-d and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Maximum compressive strain is -0.68%. The main discussion associates the strain-dependent R and D* with 16.73 mW cm^-2, while Supporting Table S2 lists 0.57 mW cm^-2; the discrepancy is disclosed rather than resolved.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-19"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -26589,12 +26593,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 8-9, Figure 5c-e and Equation 4 discussion",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Only the measured-noise D* is retained; the shot-noise estimate is excluded by curator direction.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-19"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -26695,12 +26699,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 8-9, Figure 5c-e and Equation 4 discussion",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Only the measured-noise D* is retained; the shot-noise estimate is excluded by curator direction.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -27518,12 +27522,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 6-8, Figure 4d-e and Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Two-terminal zero-bias photovoltaic heterojunction; interfacial photogating explains gain but the detector is not operated as a transistor.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -27622,12 +27626,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF page 4, Figure 3(g); PDF page 5, paragraph 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Primary result for the patterned, post-ligand-exchanged device: R = 0.11 A W−1 and D* = 1.81 × 10^11 Jones at 450 nm and 3.0 V. The paper calls D* calculated but does not disclose the noise basis or noise-acquisition instrument in the available main article.",
         "date_added": "2026-08-13",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -27726,12 +27730,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF page 6, paragraph 2; PDF page 7, Table 1",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved PM7:Y6 (1:1.2) POH device. Measured-noise D* = 4.7 × 10^12 Jones at 840 nm, −0.5 V, and 200 Hz; noise current density is 2 × 10^−14 A Hz^−1/2. All measurements were performed at room temperature, but no exact temperature in kelvin is reported.",
         "date_added": "2026-08-12",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -27827,12 +27831,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF pp. 6-7, Figure 4d-f and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. Hybrid-passivated HgTe device. The 185 nA cm^-2 dark-current density is reported separately at -0.1 V and is not treated as the zero-bias D* condition.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -27929,12 +27933,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article PDF p. 9, Figure 5d-e and accompanying text",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-17. HIES-modified PbS CQD/JD40-BDD20 hybrid device at room temperature; exact kelvin value and active area are not reported in the supplied main article.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -28097,7 +28101,7 @@
         "responsivity_temperature_k": null,
         "responsivity_source_location": "Main article PDF pp. 3-5, Figure 3f and accompanying text",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 1000,
         "eqe_percent": 76,
         "eqe_frequency_hz": null,
         "temperature_k": null,
@@ -28143,7 +28147,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved and explicitly marked green by Shlok on 2026-08-17 under the mixed-instrument policy: the noise chain includes a dynamic signal analyzer, so accompanying parameter-analyzer acquisition does not trigger automatic amber. The 10 nA cm^-2 dark-current density is separately reported at -0.1 V.",
         "date_added": "2026-08-17",
-        "date_updated": "2026-08-17"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -28194,7 +28198,7 @@
         "responsivity_temperature_k": 85,
         "responsivity_source_location": "Main article PDF p. 6, Figure 5c and accompanying text",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 500,
         "eqe_percent": 32,
         "eqe_frequency_hz": null,
         "temperature_k": 85,
@@ -28238,7 +28242,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-18. Champion interference-enhanced device only; lower-D* non-interference and temperature-series values are excluded. The plotted wavelength is the detector cutoff and is not a monochromatic D* excitation wavelength.",
         "date_added": "2026-08-18",
-        "date_updated": "2026-08-18"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -28952,12 +28956,12 @@
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main article Figure 2c and accompanying detectivity discussion; Supporting Information Figure S3",
         "curator_status": "reviewed",
-        "flag": "green",
+        "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-18. The 532 nm temporal test is stored separately from the 1350 nm D* condition.",
         "date_added": "2026-08-18",
-        "date_updated": "2026-08-18"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -29424,9 +29428,9 @@
         "responsivity_temperature_k": null,
         "responsivity_source_location": "Main article PDF pp. 8-9, Figure 6g and Section 3.5",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 130,
         "eqe_percent": 50,
-        "eqe_frequency_hz": null,
+        "eqe_frequency_hz": 130,
         "temperature_k": null,
         "bias_v": 0,
         "measurement_frequency_hz": 130,
@@ -29468,7 +29472,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-18. Room temperature is stated without an exact kelvin value. D* uses measured noise, device area 0.09 cm2, and 1 Hz noise-equivalent bandwidth.",
         "date_added": "2026-08-18",
-        "date_updated": "2026-08-18"
+        "date_updated": "2026-08-22"
       }
     },
     {
@@ -29523,9 +29527,9 @@
         "responsivity_temperature_k": null,
         "responsivity_source_location": "Main article PDF pp. 7-8, Figure 5e and Section 3.4",
         "responsivity_extraction_method": "directly_reported",
-        "responsivity_frequency_hz": null,
+        "responsivity_frequency_hz": 130,
         "eqe_percent": 50.2,
-        "eqe_frequency_hz": null,
+        "eqe_frequency_hz": 130,
         "temperature_k": null,
         "bias_v": 0,
         "measurement_frequency_hz": 130,
@@ -29567,7 +29571,7 @@
         "amber_explanation": null,
         "curator_notes": "Approved by Shlok on 2026-08-18. Room temperature is stated without an exact kelvin value. D* uses measured noise, device area 0.09 cm2, and 1 Hz noise-equivalent bandwidth.",
         "date_added": "2026-08-18",
-        "date_updated": "2026-08-18"
+        "date_updated": "2026-08-22"
       }
     },
     {

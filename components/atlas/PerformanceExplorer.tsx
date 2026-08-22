@@ -19,6 +19,7 @@ import {
   formatAmberReason,
   formatDetectorClass,
   formatNoiseMethod,
+  formatReviewStatus,
   formatWithUnit,
   humanizeCode,
   NOT_REPORTED,
@@ -363,23 +364,24 @@ function AtlasPoint({
   const dimmed = Boolean(focusMeasurementId) && !hovered && !selected;
   const isShotNoise = measurement.noiseMethod === "shot_noise_approximation";
   const isCaution = measurement.flag === "amber";
-  const stroke = isCaution ? "#9a4d06" : "#334b43";
+  const isUnverified = measurement.flag === "unverified";
+  const stroke = isCaution ? "#9a4d06" : isUnverified ? "#686d68" : "#334b43";
   const accessibleLabel = `${device.materialFamily}; ${ATLAS_METRICS[yMetric].label}: ${formattedDatumMetric(
     datum.record,
     yMetric,
   )}; ${ATLAS_METRICS[xMetric].label}: ${formattedDatumMetric(
     datum.record,
     xMetric,
-  )}; ${formatNoiseMethod(measurement.noiseMethod)}; ${
-    isCaution ? "amber methodological caution" : "green review flag"
-  }; ${paper.title}`;
+  )}; ${formatNoiseMethod(measurement.noiseMethod)}; ${formatReviewStatus(
+    measurement.flag,
+  )} review status; ${paper.title}`;
   const activate = () => onSelect(datum.record);
   const common = {
     fill: datum.fill,
     stroke,
     fillOpacity: hovered || selected ? 0.95 : 0.68,
     strokeOpacity: 0.96,
-    strokeWidth: selected ? 3 : isCaution ? 2.4 : 1.35,
+    strokeWidth: selected ? 3 : isCaution || isUnverified ? 2.4 : 1.35,
     vectorEffect: "non-scaling-stroke" as const,
   };
   const radius = hovered || selected ? 7 : 5.5;
@@ -439,6 +441,15 @@ function AtlasPoint({
           } L ${point.cx} ${point.cy + radius} L ${
             point.cx - radius
           } ${point.cy} Z`}
+          {...common}
+        />
+      ) : isUnverified ? (
+        <rect
+          x={point.cx - radius}
+          y={point.cy - radius}
+          width={radius * 2}
+          height={radius * 2}
+          rx="1"
           {...common}
         />
       ) : (
@@ -563,6 +574,10 @@ function AtlasTooltip({
           <dd>{formatNoiseMethod(measurement.noiseMethod)}</dd>
         </div>
         <div>
+          <dt>Review status</dt>
+          <dd>{formatReviewStatus(measurement.flag)}</dd>
+        </div>
+        <div>
           <dt>Extended review</dt>
           <dd>{humanizeCode(measurement.extendedMetricsReviewStatus)}</dd>
         </div>
@@ -604,7 +619,11 @@ function MarkerLegend() {
     <div className="plot-legend__markers" aria-label="Plot marker legend">
       <span>
         <i className="plot-marker plot-marker--circle" aria-hidden="true" />
-        Green / non-shot-noise
+        Green
+      </span>
+      <span>
+        <i className="plot-marker plot-marker--square" aria-hidden="true" />
+        Frequency unverified
       </span>
       <span>
         <i className="plot-marker plot-marker--triangle" aria-hidden="true" />
@@ -855,8 +874,11 @@ export function PerformanceExplorer({
   const paperCount = new Set(
     plottedRecords.map((record) => record.paper.paperId),
   ).size;
-  const flaggedCount = plottedRecords.filter(
+  const amberCount = plottedRecords.filter(
     (record) => record.measurement.flag === "amber",
+  ).length;
+  const unverifiedCount = plottedRecords.filter(
+    (record) => record.measurement.flag === "unverified",
   ).length;
   const notableMeasurementIds = useMemo(() => {
     const identifiers = new Set<string>();
@@ -871,7 +893,7 @@ export function PerformanceExplorer({
       identifiers.add(highest.record.measurement.measurementId);
     }
     for (const record of plottedRecords) {
-      if (record.measurement.flag === "amber") {
+      if (record.measurement.flag !== "green") {
         identifiers.add(record.measurement.measurementId);
       }
     }
@@ -1042,8 +1064,11 @@ export function PerformanceExplorer({
           <span>
             <strong>{materials.length}</strong> material classes
           </span>
-          <span className={flaggedCount ? "has-flags" : undefined}>
-            <strong>{flaggedCount}</strong> flagged
+          <span className={amberCount ? "has-flags" : undefined}>
+            <strong>{amberCount}</strong> amber
+          </span>
+          <span>
+            <strong>{unverifiedCount}</strong> unverified
           </span>
         </div>
         {excluded ? (
@@ -1117,9 +1142,10 @@ export function PerformanceExplorer({
           }. Use Tab to focus individual points.`}
         >
           <p className="sr-only">
-            Color identifies material family. A triangle identifies a shot-noise
-            approximation even when the record is amber; a diamond identifies
-            other amber methodological cautions.
+            Color identifies material family. A square identifies an unverified
+            frequency match, a triangle identifies a shot-noise approximation
+            even when the record is amber, and a diamond identifies other amber
+            methodological cautions.
           </p>
           {showWavelengthRegions ? (
             <div className="performance-plot__region-labels" aria-hidden="true">

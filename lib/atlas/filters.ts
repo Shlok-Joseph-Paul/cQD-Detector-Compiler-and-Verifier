@@ -73,7 +73,7 @@ const BIAS_CONDITIONS: readonly BiasCondition[] = [
   "nonzero_bias",
   "not_reported",
 ];
-const FLAGS: readonly PublicFlag[] = ["green", "amber"];
+const FLAGS: readonly PublicFlag[] = ["green", "unverified", "amber"];
 const PUBLICATION_FILTERS: readonly PublicationFilter[] = [
   "peer_reviewed",
   "preprint",

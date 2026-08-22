@@ -35,7 +35,13 @@ const greenCriteria = [
   "No curator-applied caution identifies an unreported D* noise basis as material to interpretation.",
   "The reported detectivity does not appear substantially above a plausible BLIP limit.",
   "The measured device noise was not reported below the current preamplifier noise floor.",
-  "Responsivity or EQE was not acquired at a different frequency from the noise value used for D*.",
+  "When D* combines measured or unspecified noise with responsivity/EQE, the signal and noise frequencies are both known and matched.",
+];
+
+const unverifiedCriteria = [
+  "D* combines measured or unspecified noise with a reported responsivity/EQE value.",
+  "The source does not establish both the signal frequency and the noise frequency needed to verify a match.",
+  "No amber methodological caution applies; amber takes precedence when it does.",
 ];
 
 const amberReasons = [
@@ -101,7 +107,7 @@ export default function MethodologyPage() {
               benchmarking because internal gain, carrier lifetime, transit
               time, bias-dependent noise, geometry, and bandwidth normalization
               can make cross-class D* comparisons misleading. Detector class
-              alone does not determine green or amber status.
+              alone does not determine review status.
             </p>
           </section>
 
@@ -150,7 +156,7 @@ export default function MethodologyPage() {
               been checked, while <q>Not used</q> preserves an explicit
               statement that the device avoids ligand exchange. Ambiguous
               assignments and unavailable sources remain explicit and do not
-              affect the green or amber measurement flag.
+              affect the measurement review status.
             </p>
           </section>
 
@@ -233,7 +239,7 @@ export default function MethodologyPage() {
               instrument, the field remains <q>Not reported</q>. For a modeled
               shot-noise approximation, the instrument field is marked
               <q>Not applicable</q>. Neither status independently changes the
-              green or amber flag.
+              review status.
             </p>
 
             <h3>Why shot-noise estimates are marked separately</h3>
@@ -265,9 +271,9 @@ export default function MethodologyPage() {
           <section aria-labelledby="curation-status-heading">
             <h2 id="curation-status-heading">Curation status</h2>
             <p>
-              Curation status is independent of the green or amber measurement
-              flag. <strong>Reviewed</strong> means a human curator has
-              confirmed the Paper → Device → Measurement assignment.{" "}
+              Curation status is independent of the green, unverified, or amber
+              measurement status. <strong>Reviewed</strong> means a human
+              curator has confirmed the Paper → Device → Measurement assignment.{" "}
               <strong>Needs human review</strong> identifies a provisional
               record whose reported value is sufficiently documented to remain
               visible, but whose interpretation or assignment still has a named
@@ -283,10 +289,11 @@ export default function MethodologyPage() {
           </section>
 
           <section aria-labelledby="flags-heading">
-            <h2 id="flags-heading">Green and amber flags</h2>
+            <h2 id="flags-heading">Green, unverified, and amber status</h2>
             <p>
               Flags communicate documentation and comparability, not a ranking
-              of scientific quality. Only two public levels are used.
+              of scientific quality. Three public levels are used, with
+              precedence amber → unverified → green.
             </p>
 
             <div className="flag-policy-grid">
@@ -295,6 +302,18 @@ export default function MethodologyPage() {
                 <p>A record is green only when every criterion below is met.</p>
                 <ul>
                   {greenCriteria.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+              <article className="flag-policy flag-policy-unverified">
+                <h3>Unverified</h3>
+                <p>
+                  A record is unverified when frequency compatibility cannot be
+                  established from the source.
+                </p>
+                <ul>
+                  {unverifiedCriteria.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
@@ -312,6 +331,14 @@ export default function MethodologyPage() {
               </article>
             </div>
 
+            <p>
+              Unverified is not an amber reason and does not assert that the
+              frequencies differ. It records insufficient evidence to verify
+              that the responsivity/EQE and sampled-noise inputs are directly
+              comparable. Calculated shot- and Johnson-noise records do not use
+              this frequency test; they remain amber under their applicable
+              modeled-noise cautions.
+            </p>
             <p>
               Every amber record carries at least one machine-readable reason
               and a human-readable explanation. Shot-noise approximations,
@@ -331,9 +358,9 @@ export default function MethodologyPage() {
               without an explanation.
             </p>
             <p>
-              A provisional record can be green or amber. Green means no amber
-              methodology caution currently applies; it does not mean the Paper
-              → Device → Measurement assignment has completed human review.
+              A provisional record can be green, unverified, or amber. These
+              evidence statuses do not mean the Paper → Device → Measurement
+              assignment has completed human review.
             </p>
           </section>
 
@@ -345,8 +372,9 @@ export default function MethodologyPage() {
               Information absent from the publication is stored as a null value
               and displayed as <q>Not reported</q>. It is never converted to
               zero, guessed from an unrelated condition, or silently backfilled.
-              Missing conditions—such as bias, temperature, frequency, or
-              area—do not by themselves trigger an amber flag.
+              Missing conditions—such as bias, temperature, or area—do not by
+              themselves trigger amber. Missing signal/noise frequency evidence
+              produces an unverified status when that comparison applies.
             </p>
             <p>
               A value read from a plot is labeled as graphically extracted. Its
@@ -381,8 +409,9 @@ export default function MethodologyPage() {
               frequency for responsivity or EQE, the atlas compares it with the
               frequency used for noise/detectivity. Records are labeled as
               frequency matched, frequency mismatched, or not established when
-              the evidence is incomplete. An explicit mismatch requires amber;
-              missing frequency evidence alone does not.
+              the evidence is incomplete. An explicit mismatch requires amber; a
+              match that cannot be established produces unverified unless an
+              independent amber caution takes precedence.
             </p>
             <p>
               Rise time, fall time, a general response time, and −3 dB bandwidth
@@ -399,7 +428,8 @@ export default function MethodologyPage() {
               metric was absent. <q>Not checked</q> means the focused review has
               not yet been completed, while <q>Source unavailable</q> means the
               article or required Supporting Information could not be inspected.
-              None of these statuses changes the green or amber flag.
+              None of these extended-metric review statuses changes the
+              green/unverified/amber evidence status.
             </p>
           </section>
 

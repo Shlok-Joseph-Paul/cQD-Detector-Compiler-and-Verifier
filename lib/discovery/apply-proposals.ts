@@ -8,6 +8,7 @@ import {
   PAPER_CSV_COLUMNS,
 } from "../data/parse.ts";
 import type { Measurement, Paper } from "../data/types.ts";
+import { applyAutomaticReviewRules } from "../data/validation.ts";
 import type { ProposedDevice } from "./proposal-types.ts";
 import { normalizeDoi } from "./normalize.ts";
 import { readCandidateRegistry, writeCandidateRegistry } from "./pipeline.ts";
@@ -188,18 +189,20 @@ async function applyApprovedProposalsUnlocked(
     if (doi) existingDois.add(doi);
   }
   const publishedMeasurements = selected.flatMap((proposal) =>
-    proposal.proposedMeasurements.map((measurement) => ({
-      ...measurement,
-      curator_status:
-        proposal.status === "approved-provisional"
-          ? ("pending_review" as const)
-          : ("reviewed" as const),
-      curator_notes:
-        proposal.status === "approved-provisional"
-          ? proposal.decisionNotes
-          : measurement.curator_notes,
-      date_updated: (options.now ?? new Date()).toISOString().slice(0, 10),
-    })),
+    proposal.proposedMeasurements.map((measurement) =>
+      applyAutomaticReviewRules({
+        ...measurement,
+        curator_status:
+          proposal.status === "approved-provisional"
+            ? ("pending_review" as const)
+            : ("reviewed" as const),
+        curator_notes:
+          proposal.status === "approved-provisional"
+            ? proposal.decisionNotes
+            : measurement.curator_notes,
+        date_updated: (options.now ?? new Date()).toISOString().slice(0, 10),
+      }),
+    ),
   );
   const nextTexts = {
     papers: serializeCsv(PAPER_CSV_COLUMNS, [

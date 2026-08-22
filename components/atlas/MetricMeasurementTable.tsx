@@ -551,7 +551,7 @@ function OverviewCells({ record }: { record: AtlasRecord }) {
           maximumFractionDigits: 4,
         })}
       </td>
-      <td data-label="Review flag" className="measurement-table__review-cell">
+      <td data-label="Review status" className="measurement-table__review-cell">
         <FlagBadge flag={measurement.flag} />
         <FrequencyMatchBadge measurement={measurement} />
         <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
@@ -767,7 +767,7 @@ function TableHeaders({
           </th>
           <th scope="col">Temperature</th>
           <th scope="col">Bias</th>
-          <th scope="col">Review flag</th>
+          <th scope="col">Review status</th>
         </>
       ) : null}
       {view === "optical" ? (
@@ -1123,6 +1123,7 @@ export function MetricMeasurementTable({
                   const expanded =
                     expandedMeasurementId === measurement.measurementId;
                   const amber = measurement.flag === "amber";
+                  const unverified = measurement.flag === "unverified";
                   const detailsId = `measurement-details-${index}-${measurement.measurementId.replace(
                     /[^a-zA-Z0-9_-]/g,
                     "-",
@@ -1133,6 +1134,7 @@ export function MetricMeasurementTable({
                         className={[
                           expanded ? "is-expanded" : "",
                           amber ? "is-amber" : "",
+                          unverified ? "is-unverified" : "",
                         ]
                           .filter(Boolean)
                           .join(" ")}
@@ -1163,7 +1165,11 @@ export function MetricMeasurementTable({
                       {expanded ? (
                         <tr
                           className={`measurement-table__details-row${
-                            amber ? " is-amber" : ""
+                            amber
+                              ? " is-amber"
+                              : unverified
+                                ? " is-unverified"
+                                : ""
                           }`}
                         >
                           <td colSpan={8} id={detailsId}>

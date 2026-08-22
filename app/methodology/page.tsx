@@ -64,13 +64,29 @@ export default function MethodologyPage() {
             <p className="eyebrow">Methods &amp; inclusion policy</p>
             <h1>How records enter the atlas</h1>
             <p className="prose-lede">
-              The Photodiode Atlas is a curated index of published specific
-              detectivity measurements for colloidal quantum-dot and
-              metal-halide perovskite photodiodes, photoconductors, and
-              phototransistors. Its unit of comparison is a measurement, with
-              the publication and device context preserved around it.
+              A concise guide to what the Atlas includes, how measurements are
+              structured, and why a result is labeled green, frequency
+              unverified, or amber.
             </p>
           </header>
+
+          <div
+            className="methodology-at-a-glance"
+            aria-label="Methodology summary"
+          >
+            <div>
+              <span>Scope</span>
+              <strong>CQD and perovskite detectors</strong>
+            </div>
+            <div>
+              <span>Compared as</span>
+              <strong>Individual measurements</strong>
+            </div>
+            <div>
+              <span>Evidence labels</span>
+              <strong>Green · Unverified · Amber</strong>
+            </div>
+          </div>
 
           <section aria-labelledby="scope-heading">
             <h2 id="scope-heading">Scientific scope</h2>
@@ -213,57 +229,37 @@ export default function MethodologyPage() {
               </div>
             </dl>
 
-            <h3>Noise acquisition instruments</h3>
-            <p>
-              The atlas separately records how an experimental noise signal was
-              acquired. Controlled instrument classes include spectrum or signal
-              analyzers, lock-in amplifiers operating in noise mode,
-              oscilloscope or transient-current FFT methods, and dedicated noise
-              analyzers. A preamplifier and model number are retained in the
-              instrument-chain details when the source reports them.
-            </p>
-            <p>
-              A lock-in amplifier is classified here only when the publication
-              explicitly uses it to acquire noise or a noise spectrum. A lock-in
-              used solely for responsivity, EQE, or photocurrent measurements is
-              not reported as a noise instrument. Likewise, a source measure
-              unit is classified only when the source explicitly includes it in
-              the noise-acquisition chain, even alongside a dedicated noise
-              analyzer—not when it merely supplies bias, records J–V data, or
-              measures responsivity/EQE.
-            </p>
-            <p>
-              Some publications combine acquisition methods across frequency
-              ranges; those records retain every reported method. If measured
-              noise is shown but the supplied article does not identify the
-              instrument, the field remains <q>Not reported</q>. For a modeled
-              shot-noise approximation, the instrument field is marked
-              <q>Not applicable</q>. Neither status independently changes the
-              review status.
-            </p>
+            <details className="methodology-detail">
+              <summary>Noise-acquisition instrument rules</summary>
+              <div>
+                <p>
+                  The Atlas records spectrum or signal analyzers, lock-in
+                  amplifiers operating in noise mode, oscilloscope or
+                  transient-current FFT methods, dedicated noise analyzers, and
+                  reported preamplifier details.
+                </p>
+                <p>
+                  A lock-in or source measure unit is counted only when the
+                  source explicitly includes it in the noise-acquisition chain,
+                  not when it merely supplies bias or measures responsivity,
+                  EQE, photocurrent, or J–V data. Mixed workflows retain every
+                  reported method. <q>Not reported</q> and <q>Not applicable</q>
+                  do not independently change review status.
+                </p>
+              </div>
+            </details>
 
-            <h3>Why shot-noise estimates are marked separately</h3>
-            <p>
-              In a common approximation, the shot-noise current spectral density
-              is estimated from dark current as √(2qI<sub>dark</sub>), and this
-              modeled noise is used with responsivity and detector area to
-              obtain D<sup>*</sup>. The approximation can be informative, but it
-              may omit 1/f noise, generation–recombination noise, readout noise,
-              and other device-specific contributions. It is therefore not
-              automatically comparable to a value derived from a measured
-              total-noise spectrum.
-            </p>
             <div
               className="callout callout-amber"
               role="note"
               aria-label="Shot-noise interpretation note"
             >
-              <strong>Interpret with caution.</strong>
+              <strong>Why modeled shot noise is amber.</strong>
               <p>
-                Detectivity was calculated using a shot-noise approximation
-                rather than a measured total-noise spectrum. This label does not
-                state that the result is incorrect; it identifies a
-                methodological difference that matters when comparing records.
+                Estimating noise from √(2qI<sub>dark</sub>) may omit 1/f,
+                generation–recombination, readout, and other device-specific
+                noise. Amber does not say the result is incorrect; it marks a
+                comparability difference from measured total noise.
               </p>
             </div>
           </section>
@@ -299,35 +295,24 @@ export default function MethodologyPage() {
             <div className="flag-policy-grid">
               <article className="flag-policy flag-policy-green">
                 <h3>Green</h3>
-                <p>A record is green only when every criterion below is met.</p>
-                <ul>
-                  {greenCriteria.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <p>
+                  No defined methodological caution applies, and any relevant
+                  signal/noise frequencies are known and matched.
+                </p>
               </article>
               <article className="flag-policy flag-policy-unverified">
                 <h3>Unverified</h3>
                 <p>
-                  A record is unverified when frequency compatibility cannot be
-                  established from the source.
+                  Measured or unspecified noise is used, but the source does not
+                  establish the frequencies needed to verify compatibility.
                 </p>
-                <ul>
-                  {unverifiedCriteria.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
               </article>
               <article className="flag-policy flag-policy-amber">
                 <h3>Amber</h3>
                 <p>
-                  A record is amber when one or more caution conditions apply.
+                  A defined caution applies, such as modeled noise, a limited
+                  acquisition method, or an explicit frequency mismatch.
                 </p>
-                <ul>
-                  {amberReasons.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
               </article>
             </div>
 
@@ -339,35 +324,39 @@ export default function MethodologyPage() {
               this frequency test; they remain amber under their applicable
               modeled-noise cautions.
             </p>
-            <p>
-              Every amber record carries at least one machine-readable reason
-              and a human-readable explanation. Shot-noise approximations,
-              Johnson-noise-only approximations, lock-in-only noise
-              measurements, and source-measure-unit-only noise acquisition are
-              always amber. An explicit responsivity/EQE and noise-frequency
-              mismatch is also always amber. Mixed FFT-plus-lock-in acquisition
-              does not trigger the lock-in-only rule. A source measure unit or
-              parameter analyzer used alongside a spectrum or dynamic-signal
-              analyzer does not trigger the source-measure-unit rule. A
-              potential BLIP-limit concern is applied by a curator only when the
-              comparison is straightforward and the reported value is clearly
-              anomalous. A curator may also apply amber when an unreported D*
-              noise basis materially limits interpretation at a critical
-              operating point, such as high reverse bias. This is not inferred
-              automatically from a missing field. An amber flag is never shown
-              without an explanation.
-            </p>
-            <p>
-              A provisional record can be green, unverified, or amber. These
-              evidence statuses do not mean the Paper → Device → Measurement
-              assignment has completed human review.
-            </p>
+            <details className="methodology-detail">
+              <summary>View the complete status rules</summary>
+              <div className="methodology-rule-columns">
+                <section>
+                  <h3>Green requirements</h3>
+                  <ul>
+                    {greenCriteria.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <h3>Unverified requirements</h3>
+                  <ul>
+                    {unverifiedCriteria.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <h3>Amber reasons</h3>
+                  <ul>
+                    {amberReasons.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            </details>
           </section>
 
-          <section aria-labelledby="missing-heading">
-            <h2 id="missing-heading">
-              Missing and graphically extracted values
-            </h2>
+          <section aria-labelledby="values-heading">
+            <h2 id="values-heading">How values are handled</h2>
             <p>
               Information absent from the publication is stored as a null value
               and displayed as <q>Not reported</q>. It is never converted to
@@ -392,45 +381,28 @@ export default function MethodologyPage() {
               stated by the publication. This provenance alone does not trigger
               an amber flag.
             </p>
-          </section>
-
-          <section aria-labelledby="extended-metrics-heading">
-            <h2 id="extended-metrics-heading">Extended performance metrics</h2>
-            <p>
-              Responsivity, temporal response, explicit −3 dB bandwidth, and
-              linear dynamic range are rechecked in both the main article and
-              available Supporting Information. Each reported value retains its
-              own wavelength, bias, temperature, frequency, definition, and
-              source location where available because those conditions may
-              differ from the plotted D<sup>*</sup> operating point.
-            </p>
-            <p>
-              When the source reports the optical modulation or chopping
-              frequency for responsivity or EQE, the atlas compares it with the
-              frequency used for noise/detectivity. Records are labeled as
-              frequency matched, frequency mismatched, or not established when
-              the evidence is incomplete. An explicit mismatch requires amber; a
-              match that cannot be established produces unverified unless an
-              independent amber caution takes precedence.
-            </p>
-            <p>
-              Rise time, fall time, a general response time, and −3 dB bandwidth
-              are stored separately and are not converted into one another
-              unless the source itself reports that calculation. The highest
-              tested modulation frequency is not treated as bandwidth without an
-              explicit −3 dB definition. Likewise, an LDR value or optical input
-              range is recorded only when the publication identifies a linear
-              dynamic range; a near-unity power-law slope alone is not
-              sufficient.
-            </p>
-            <p>
-              <q>Not reported</q> means a source check was completed and the
-              metric was absent. <q>Not checked</q> means the focused review has
-              not yet been completed, while <q>Source unavailable</q> means the
-              article or required Supporting Information could not be inspected.
-              None of these extended-metric review statuses changes the
-              green/unverified/amber evidence status.
-            </p>
+            <details className="methodology-detail">
+              <summary>Extended performance-metric rules</summary>
+              <div>
+                <p>
+                  Responsivity, response time, explicit −3 dB bandwidth, and LDR
+                  retain their own wavelength, bias, temperature, frequency,
+                  definition, and source location because these may differ from
+                  the plotted D<sup>*</sup> operating point.
+                </p>
+                <p>
+                  Rise time, fall time, general response time, and bandwidth are
+                  stored separately. Tested modulation frequency is not treated
+                  as bandwidth without an explicit −3 dB definition, and LDR
+                  requires a source-identified linear range.
+                </p>
+                <p>
+                  <q>Not reported</q>, <q>Not checked</q>, and
+                  <q>Source unavailable</q> describe review coverage; they do
+                  not change green, unverified, or amber status.
+                </p>
+              </div>
+            </details>
           </section>
 
           <section aria-labelledby="curation-heading">

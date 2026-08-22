@@ -24,6 +24,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
       "Added unverified badges, filters, plot markers, table and paper styling, coverage counts, export support, validation rules, and importer normalization.",
       "Kept calculated shot- and Johnson-noise records outside the frequency-match test while retaining their existing amber cautions.",
       "Redesigned the Atlas graph controls with a compact detector-type selector, clearer view and scope groups, responsive comparison controls, a collapsible material filter, streamlined summaries and tooltips, and balanced evidence markers.",
+      "Simplified the methodology page with a concise at-a-glance summary, compact evidence-status explanations, expandable technical rules, and restored recommended measurement-guidance papers in the sidebar.",
     ],
   },
   {

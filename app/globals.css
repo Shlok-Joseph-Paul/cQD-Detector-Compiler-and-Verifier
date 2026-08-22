@@ -5232,6 +5232,110 @@ select {
   }
 }
 
+.methodology-at-a-glance {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 30px 0 0;
+  border: 1px solid var(--line-dark);
+  background: var(--line-dark);
+}
+
+.methodology-at-a-glance > div {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 14px;
+  background: var(--surface);
+}
+
+.methodology-at-a-glance span {
+  color: var(--ink-soft);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.methodology-at-a-glance strong {
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.methodology-detail {
+  margin: 22px 0;
+  border: 1px solid var(--line-dark);
+  background: var(--surface);
+}
+
+.methodology-detail summary {
+  position: relative;
+  padding: 15px 46px 15px 17px;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  list-style: none;
+}
+
+.methodology-detail summary::-webkit-details-marker {
+  display: none;
+}
+
+.methodology-detail summary::after {
+  position: absolute;
+  top: 50%;
+  right: 17px;
+  color: var(--teal);
+  content: "+";
+  font-size: 18px;
+  font-weight: 500;
+  transform: translateY(-50%);
+}
+
+.methodology-detail[open] summary {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-deep);
+}
+
+.methodology-detail[open] summary::after {
+  content: "−";
+}
+
+.methodology-detail > div {
+  padding: 3px 18px 18px;
+}
+
+.methodology-rule-columns {
+  display: grid;
+  gap: 0;
+}
+
+.methodology-rule-columns > section {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.methodology-rule-columns > section:last-child {
+  border-bottom: 0;
+}
+
+.methodology-rule-columns h3 {
+  margin-top: 0;
+}
+
+.methodology-rule-columns li {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 620px) {
+  .methodology-at-a-glance {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

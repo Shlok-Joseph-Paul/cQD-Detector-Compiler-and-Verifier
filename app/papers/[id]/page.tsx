@@ -24,6 +24,7 @@ import {
 import { reviewedRecords } from "@/lib/atlas/review";
 import { normalizeJoinedMeasurement } from "@/lib/atlas/types";
 import { atlasData } from "@/lib/data";
+import { journalMetricFor } from "@/lib/data/journals";
 
 type PageProps = { params: Promise<{ id: string }> };
 
@@ -74,6 +75,7 @@ export default async function PaperPage({ params }: PageProps) {
     paper.doi,
     paper.publication_url,
   );
+  const journalMetric = journalMetricFor(paper.journal);
 
   return (
     <SiteShell>
@@ -98,6 +100,23 @@ export default async function PaperPage({ params }: PageProps) {
             <p className="paper-hero__citation">
               {paper.journal || NOT_REPORTED} · {paper.publication_year} ·{" "}
               {paper.peer_reviewed ? "Peer reviewed" : "Not peer reviewed"}
+              {journalMetric && journalMetric.impact_factor !== null ? (
+                <>
+                  {" "}
+                  ·{" "}
+                  <a
+                    href={journalMetric.source_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={`Source for the ${journalMetric.impact_factor_year} Journal Impact Factor`}
+                  >
+                    {journalMetric.impact_factor_year} JIF{" "}
+                    {journalMetric.impact_factor.toFixed(1)}
+                  </a>
+                </>
+              ) : journalMetric?.note ? (
+                <> · JIF not applicable</>
+              ) : null}
             </p>
             <div className="paper-hero__actions">
               {doiUrl ? (

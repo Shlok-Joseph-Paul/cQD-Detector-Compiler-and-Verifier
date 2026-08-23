@@ -182,6 +182,8 @@ Editable source files:
 - `data/papers.csv`
 - `data/devices.csv`
 - `data/measurements.csv`
+- `data/journal_metrics.json` — current journal-level Journal Impact Factors,
+  metric years, source links, and verification dates
 
 Supporting files:
 

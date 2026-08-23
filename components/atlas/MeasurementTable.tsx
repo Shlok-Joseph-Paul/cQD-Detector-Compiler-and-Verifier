@@ -19,6 +19,7 @@ import type {
   AtlasSortState,
 } from "@/lib/atlas/types";
 import { DATASET_VERSION } from "@/lib/data";
+import { journalMetricFor } from "@/lib/data/journals";
 
 import { AmberReasons, FlagBadge, ShotNoiseBadge } from "./AtlasBadges";
 import { MaterialLabel } from "./MaterialLabel";
@@ -256,6 +257,7 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
           <tbody>
             {sorted.length ? (
               sorted.map(({ paper, device, measurement }) => {
+                const journalMetric = journalMetricFor(paper.journal);
                 const detailHref = `/measurements/${encodeURIComponent(
                   measurement.measurementId,
                 )}`;
@@ -342,6 +344,25 @@ export function MeasurementTable({ records }: MeasurementTableProps) {
                         <small>
                           {paper.firstAuthor || NOT_REPORTED},{" "}
                           {paper.publicationYear}
+                          <br />
+                          {paper.journal || NOT_REPORTED}
+                          {journalMetric &&
+                          journalMetric.impact_factor !== null ? (
+                            <>
+                              {" "}
+                              ·{" "}
+                              <a
+                                href={journalMetric.source_url}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {journalMetric.impact_factor_year} JIF{" "}
+                                {journalMetric.impact_factor.toFixed(1)}
+                              </a>
+                            </>
+                          ) : journalMetric?.note ? (
+                            <> · JIF not applicable</>
+                          ) : null}
                         </small>
                       </td>
                     </tr>

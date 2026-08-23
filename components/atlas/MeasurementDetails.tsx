@@ -14,6 +14,7 @@ import {
   publicationLinks,
 } from "@/lib/atlas/format";
 import type { AtlasRecord } from "@/lib/atlas/types";
+import { journalMetricFor } from "@/lib/data/journals";
 
 import {
   AmberReasons,
@@ -88,6 +89,7 @@ export function MeasurementDetails({
     paper.doi,
     paper.publicationUrl,
   );
+  const journalMetric = journalMetricFor(paper.journal);
   const measurementUrl = `/measurements/${encodeURIComponent(measurement.measurementId)}`;
   const resolvedHeadingLevel = headingLevel ?? (variant === "full" ? 1 : 3);
   const sectionHeadingLevel = Math.min(resolvedHeadingLevel + 1, 4) as
@@ -359,6 +361,22 @@ export function MeasurementDetails({
           <dl className="measurement-details__grid">
             <Detail label="Authors">{formatAuthors(paper.authors)}</Detail>
             <Detail label="Journal">{optionalText(paper.journal)}</Detail>
+            <Detail label="Journal impact factor">
+              {journalMetric && journalMetric.impact_factor !== null ? (
+                <a
+                  href={journalMetric.source_url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {journalMetric.impact_factor.toFixed(1)} (
+                  {journalMetric.impact_factor_year} JIF)
+                </a>
+              ) : journalMetric?.note ? (
+                "Not applicable"
+              ) : (
+                NOT_REPORTED
+              )}
+            </Detail>
             <Detail label="Publication year">
               {formatNumber(paper.publicationYear, {
                 useGrouping: false,

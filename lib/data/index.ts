@@ -5,6 +5,7 @@ export * from "./export.ts";
 export * from "./filter.ts";
 export * from "./format.ts";
 export * from "./generated.ts";
+export * from "./journals.ts";
 export * from "./parse.ts";
 export * from "./releases.ts";
 export * from "./types.ts";

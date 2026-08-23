@@ -1,5 +1,6 @@
 import { ATLAS_EXPORT_COLUMNS } from "../data/export.ts";
 import { DATASET_VERSION } from "../data/releases.ts";
+import { journalMetricFor } from "../data/journals.ts";
 import type { AtlasRecord } from "./types";
 
 function csvCell(value: string | number | null): string {
@@ -16,6 +17,7 @@ function csvCell(value: string | number | null): string {
 export const ATLAS_CSV_COLUMNS = ATLAS_EXPORT_COLUMNS;
 
 function csvRow(record: AtlasRecord): Array<string | number | null> {
+  const journalMetric = journalMetricFor(record.paper.journal);
   return [
     record.measurement.measurementId,
     record.paper.paperId,
@@ -89,6 +91,9 @@ function csvRow(record: AtlasRecord): Array<string | number | null> {
     record.paper.authors.join("|"),
     record.paper.firstAuthor,
     record.paper.journal,
+    journalMetric?.impact_factor ?? null,
+    journalMetric?.impact_factor_year ?? null,
+    journalMetric?.source_url ?? null,
     record.paper.publicationYear,
     record.paper.doi,
     record.paper.publicationUrl,

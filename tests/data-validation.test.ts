@@ -15,6 +15,7 @@ import {
   validateAtlasEntities,
 } from "../lib/data/validation.ts";
 import { DATASET_VERSION } from "../lib/data/releases.ts";
+import { journalMetricFor, journalMetrics } from "../lib/data/journals.ts";
 
 const paper: Paper = {
   paper_id: "paper-1",
@@ -192,6 +193,27 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     ).length,
     19,
   );
+});
+
+test("journal metrics cover every journal in the published atlas", async () => {
+  const papers = parseCsv(
+    await readFile(new URL("../data/papers.csv", import.meta.url), "utf8"),
+  );
+  const journalIndex = papers.headers.indexOf("journal");
+  assert.notEqual(journalIndex, -1);
+  const journals = new Set(papers.rows.map((row) => row.fields[journalIndex]));
+
+  assert.equal(journalMetrics.length, journals.size);
+  for (const journal of journals) {
+    const metric = journalMetricFor(journal);
+    assert.ok(metric, `Missing journal metric for ${journal}`);
+    assert.match(metric.source_url, /^https:\/\//);
+    assert.match(metric.verified_on, /^\d{4}-\d{2}-\d{2}$/);
+    if (metric.impact_factor !== null) {
+      assert.ok(metric.impact_factor > 0);
+      assert.equal(metric.impact_factor_year, 2025);
+    }
+  }
 });
 
 test("detector class is required and accepts only the canonical device classes", () => {

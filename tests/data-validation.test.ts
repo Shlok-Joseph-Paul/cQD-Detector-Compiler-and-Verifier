@@ -97,12 +97,12 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 7);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 180);
+  assert.equal(atlas.measurements.length, 185);
   assert.equal(atlas.records.length, atlas.measurements.length);
   assert.equal(
     atlas.devices.filter((record) => record.detector_class === "photoconductor")
       .length,
-    4,
+    5,
   );
   const preprintRecords = atlas.records.filter(
     ({ paper: source }) => source.publication_type === "preprint",
@@ -124,7 +124,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const greenRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "green",
   );
-  assert.equal(unverifiedRecords.length, 68);
+  assert.equal(unverifiedRecords.length, 73);
   assert.equal(greenRecords.length, 25);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -184,7 +184,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     [...flagsByPaper.values()].filter(
       (flags) => !flags.has("amber") && flags.has("unverified"),
     ).length,
-    38,
+    41,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(

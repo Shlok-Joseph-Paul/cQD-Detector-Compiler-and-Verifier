@@ -6,12 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.18.0";
+export const DATASET_VERSION = "1.19.0";
 export const DATASET_RELEASE_DATE = "2026-08-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "Measured-noise perovskite detector expansion",
+    summary:
+      "Adds three perovskite detector papers with five high-confidence measured-noise measurements while withholding internally conflicting values.",
+    changes: [
+      "Added three papers, five devices, and five measurements spanning an individual MAPbBr3 nanoplate photoconductor, three SAM-engineered CsFAMA photodiodes, and a 3D/2D/3D pBp perovskite photodiode.",
+      "Published all five measurements as unverified because the sources report measured noise but do not establish the responsivity or EQE acquisition frequency needed to confirm compatibility with the D* noise value.",
+      "Recorded FFT-based dark-current noise for Mei et al., oscilloscope-FFT noise acquisition for all three Angela et al. devices, and directly measured 100 Hz noise with an unreported acquisition instrument for Ma et al.",
+      "Captured directly reported responsivity, EQE, rise and fall times, the source-calculated Mei bandwidth, measured Ma cutoff frequency, and source-supported LDR values with operating-condition evidence.",
+      "Excluded Angela et al. cutoff frequencies because they exceed the main article's stated measurement sweep, excluded Ma et al.'s internally inconsistent LDR, and withheld Shan et al. because the source conflicts over the wavelength of its headline D* value.",
+      "Did not classify Keithley instruments used only for I-V characterization as noise acquisition and did not mark measured-noise records amber merely because shot noise was reported to dominate.",
+    ],
+  },
+  {
+    version: "1.18.0",
     date: DATASET_RELEASE_DATE,
     title: "Perovskite device and DDAB passivation expansion",
     summary:

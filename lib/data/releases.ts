@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.17.0";
+export const DATASET_VERSION = "1.18.0";
 export const DATASET_RELEASE_DATE = "2026-08-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Perovskite device and DDAB passivation expansion",
+    summary:
+      "Adds two perovskite detector papers with six directly reported measurements while excluding conflicting and weakly assigned values.",
+    changes: [
+      "Added two papers, six devices, and six measurements spanning triple-cation MSM control and plasmonic detectors plus three FAPbBr3 perovskite-QD ligand conditions.",
+      "Published the three Sadath et al. measurements as amber because D* uses a dark-current shot-noise approximation rather than measured total noise.",
+      "Published the three Hung et al. 530 nm measurements as unverified because the source does not establish the responsivity/EQE and noise frequencies used for D*.",
+      "Captured directly reported responsivity, EQE, rise and fall times, explicit -3 dB cutoff frequencies, LDR, device area, and solution-phase DDAB ligand treatment with source-specific evidence.",
+      "Excluded the conflicting 7.93e12 versus 7.98e12 Jones DDAB*2 result, all 350 nm rows without sufficient signal-condition evidence, and the internally inconsistent Sadath control-1 fall time.",
+      "Recognized the COTIC-4Cl paper as already present from v1.17.0 and did not create duplicate paper, device, or measurement records.",
+    ],
+  },
+  {
+    version: "1.17.0",
+    date: "2026-08-23",
     title: "High-confidence ligand and detector expansion",
     summary:
       "Adds four detector papers with eight directly reported measurements, conservative uncertainty handling, and current noise-frequency evidence labels.",

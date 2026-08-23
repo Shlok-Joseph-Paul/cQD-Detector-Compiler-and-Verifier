@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.15.0";
-export const DATASET_RELEASE_DATE = "2026-08-22";
+export const DATASET_VERSION = "1.16.0";
+export const DATASET_RELEASE_DATE = "2026-08-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "InSb and Ag2Te measured-noise expansion",
+    summary:
+      "Adds four CQD detector papers with device-resolved measured-noise provenance and frequency-unverified evidence status.",
+    changes: [
+      "Added four papers, five devices, and seven measurements spanning ME-passivated InSb photodiodes, an HCl-treated InSb MWIR photoconductor, a Cl/I-Ag2Te ink photodiode, and Bi-doped and undoped Ag2Te photodiodes.",
+      "Recorded measured-noise values and acquisition chains, including the SR570/SR785 spectrum-analyzer workflow and the LFN-1000 dedicated noise system; source-measure units used only for J-V characterization were not classified as noise acquisition.",
+      "Captured reported responsivity, EQE, temporal response, explicit -3 dB bandwidth, and LDR while preserving unavailable Supporting Information and operating-condition ambiguities.",
+      "Published all seven measurements as unverified rather than amber because the sources do not establish the responsivity/EQE versus noise-frequency pairing and do not report an explicit mismatch or modeled-noise caution.",
+      "Added the Liu et al. InSb device under the photoconductor detector class so it remains distinct from junction-photodiode comparisons.",
+    ],
+  },
+  {
+    version: "1.15.0",
+    date: "2026-08-22",
     title: "Frequency-evidence review status",
     summary:
       "Adds a grey unverified category for measured-noise D* records whose responsivity/EQE and noise frequency match cannot be established.",
@@ -42,7 +56,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.13.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-22",
     title: "Provisional review workflow",
     summary:
       "Activates a public pending-review status for evidence-backed measurements that require a named human curation decision without redefining green or amber methodology flags.",
@@ -55,7 +69,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.12.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-22",
     title: "CQD phototransistor caution release",
     summary:
       "Adds three curator-approved PbSe, Ag2Te, and InAs CQD phototransistor papers with four headline measurements and explicit shot-noise cautions.",
@@ -85,7 +99,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.10.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-22",
     title: "PbS homojunction champion addition",
     summary:
       "Adds the curator-selected highest-detectivity PbS CQD homojunction device with explicit shot-noise and operating-mode cautions.",
@@ -99,7 +113,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.9.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-22",
     title: "Measured-noise SWIR photodiode expansion",
     summary:
       "Adds three curator-approved HgTe, PbS, and Sn–Pb photodiode papers and refines green eligibility for mixed noise-acquisition chains.",
@@ -113,7 +127,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.8.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-22",
     title: "Six-paper detector expansion",
     summary:
       "Adds six curator-approved CQD and metal-halide perovskite detector papers with device-resolved performance, noise-method evidence, and review cautions.",

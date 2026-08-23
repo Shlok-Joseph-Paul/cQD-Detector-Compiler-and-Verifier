@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.16.0";
+export const DATASET_VERSION = "1.17.0";
 export const DATASET_RELEASE_DATE = "2026-08-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "High-confidence ligand and detector expansion",
+    summary:
+      "Adds four detector papers with eight directly reported measurements, conservative uncertainty handling, and current noise-frequency evidence labels.",
+    changes: [
+      "Added four papers, five devices, and eight measurements spanning 2-PCA-passivated PbS, COTIC-4Cl-modified and control perovskite photodiodes, synthesis-native-ligand HgTe, and multiple-injection-grown PbS.",
+      "Retained only directly reported or tabulated D* values; excluded graph-estimated PbS controls, graph-only HgTe temperature and bias points, unavailable 2-MPY results, and device-specific bandwidth or LDR assignments that were not sufficiently precise.",
+      "Published six dark-current shot-noise D* measurements as amber and the all-FMT HgTe measurement as amber because a lock-in amplifier was the sole classified noise-acquisition instrument.",
+      "Published the measured-noise 2-PCA PbS result as unverified because the source reports 500 Hz noise but does not establish the responsivity or EQE acquisition frequency.",
+      "Captured directly reported responsivity, EQE, rise and fall times, perovskite TPC response, explicit -3 dB cutoff frequencies, and LDR with metric-specific source locations while preserving unavailable Supporting Information.",
+    ],
+  },
+  {
+    version: "1.16.0",
+    date: "2026-08-23",
     title: "InSb and Ag2Te measured-noise expansion",
     summary:
       "Adds four CQD detector papers with device-resolved measured-noise provenance and frequency-unverified evidence status.",

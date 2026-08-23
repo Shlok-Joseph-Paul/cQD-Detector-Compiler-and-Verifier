@@ -6,12 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.19.0";
+export const DATASET_VERSION = "1.20.0";
 export const DATASET_RELEASE_DATE = "2026-08-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "PbS, InAs, and HgTe detector expansion",
+    summary:
+      "Adds three CQD detector papers with four conservatively curated measured-noise measurements and device-specific extended metrics.",
+    changes: [
+      "Added three papers, three devices, and four measurements spanning a multi-interface-engineered PbS photodiode, an SnBr2-passivated InAs photodiode, and a room-temperature HgTe photoconductor.",
+      "Recorded the Gong and Xia noise workflows as source-measure-unit acquisition and published those measurements as amber under the automatic parameter-analyzer caution.",
+      "Published the two Jung measurements as green because EQE, measured noise, and D* are explicitly described at 300 Hz; the unavailable Supporting Information leaves the acquisition instrument unreported without independently triggering amber.",
+      "Captured directly reported responsivity, EQE, temporal response, the Gong 1100 nm bandwidth lower bound, and reported LDR values; calculated only the Jung -0.5 V responsivity from its reported EQE and wavelength.",
+      "Withheld Xia's conflicting fall time, unstated response-test bias, non-D* wavelength results, and all values whose device or operating-point assignment was not established.",
+      "Preserved inaccessible Supporting Information as source unavailable and excluded SnCl2, zero-bias, and comparison-table values without a matching reported D* measurement.",
+    ],
+  },
+  {
+    version: "1.19.0",
     date: DATASET_RELEASE_DATE,
     title: "Measured-noise perovskite detector expansion",
     summary:

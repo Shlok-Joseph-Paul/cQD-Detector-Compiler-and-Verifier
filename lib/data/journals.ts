@@ -1,6 +1,4 @@
-import journalMetricsJson from "../../data/journal_metrics.json" with {
-  type: "json",
-};
+import journalMetricsJson from "../../data/journal_metrics.json" with { type: "json" };
 
 export interface JournalMetric {
   journal: string;

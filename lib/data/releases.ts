@@ -6,12 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.20.0";
+export const DATASET_VERSION = "1.21.0";
 export const DATASET_RELEASE_DATE = "2026-08-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
+    date: DATASET_RELEASE_DATE,
+    title: "Layered perovskite and planar-cation PbS expansion",
+    summary:
+      "Adds two measured-noise photodiodes with frequency-evidence-aware status and device-specific extended metrics.",
+    changes: [
+      "Added the optimized layered-perovskite photodiode from Li et al. and the EMI+-passivated PbS CQD photodiode from Liu et al.",
+      "Published both measurements as unverified because their responsivity or EQE acquisition frequency is not reported, so compatibility with the 1 kHz and 500 Hz noise values cannot be established.",
+      "Recorded spectrum-analyzer noise acquisition for Li et al.; its lock-in amplifier acquired EQE only and is not classified as a noise instrument.",
+      "Preserved Liu et al.'s results-text lock-in description together with the Experimental Section's dynamic-signal-analyzer and current-preamplifier chain, avoiding a lock-in-only amber classification.",
+      "Captured reported responsivity, temporal response, explicit -3 dB bandwidth, LDR, device architecture, and EMI+/halide/EDT ligand-processing evidence with exact source locations.",
+      "Excluded comparison devices without independently supported numerical D* points and did not reinterpret a highest-tested 1 MHz modulation rate as detector bandwidth.",
+    ],
+  },
+  {
+    version: "1.20.0",
     date: DATASET_RELEASE_DATE,
     title: "PbS, InAs, and HgTe detector expansion",
     summary:

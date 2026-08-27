@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.21.0";
-export const DATASET_RELEASE_DATE = "2026-08-23";
+export const DATASET_VERSION = "1.22.0";
+export const DATASET_RELEASE_DATE = "2026-08-26";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "AgBiS2 charge-transfer and MXene expansion",
+    summary:
+      "Adds device-resolved modeled- and measured-noise AgBiS2 results and completes the existing ZnO/MXene photodiode record under the frequency-evidence policy.",
+    changes: [
+      "Added the control and hybrid charge-transfer-layer AgBiS2 photodiodes from Kong et al. with four distinct 1000 nm measured- and shot-noise D* records.",
+      "Marked Kong et al.'s two shot-noise estimates amber and published its two measured-noise values as unverified because the responsivity frequency and the particular noise-spectrum frequency used for D* are not established.",
+      "Reprocessed the Pi et al. ZnO/MXene AgBiS2 device with its reported active area, ligand-exchange procedure, responsivity, EQE, temporal response, and LDR evidence.",
+      "Added Pi et al.'s source-supported 375, 660, and graphically extracted 850 nm points, and reclassified all four Pi measurements as unverified because their responsivity/EQE versus noise-frequency pairing is not established.",
+      "Resolved Pi et al.'s internally inconsistent 375 nm summary value in favor of the mutually supporting detailed results, Figure 4d, and Supporting Information Table S1 value of 1.6e12 Jones.",
+      "Recorded the Kong hybrid device's 808 nm rise/fall response and graphically extracted linear input range without treating it as a reported dB LDR or explicit -3 dB bandwidth.",
+    ],
+  },
+  {
+    version: "1.21.0",
+    date: "2026-08-23",
     title: "Layered perovskite and planar-cation PbS expansion",
     summary:
       "Adds two measured-noise photodiodes with frequency-evidence-aware status and device-specific extended metrics.",

@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.22.0";
-export const DATASET_RELEASE_DATE = "2026-08-26";
+export const DATASET_VERSION = "1.23.0";
+export const DATASET_RELEASE_DATE = "2026-08-27";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "CsPbBr3 noise-floor re-audit",
+    summary:
+      "Re-audits the Wang et al. sensitized heterojunction against the stated analyzer floor and adds its two additional device-resolved results for review.",
+    changes: [
+      "Retained the published Device I 2.0e12-Jones claim but marked it amber and pending review because its 3.08e-16 A Hz^-1/2 noise value is about 10500 times below the LFN-1000 manufacturer's listed system floor in power spectral density.",
+      "Recorded the second mismatch between the Figure 4d lower frequency of 0.01 Hz and the analyzer's nominal 0.1 Hz lower limit; no custom frontend, background subtraction, or cross-correlation method is disclosed.",
+      "Added the directly reported 65.2 µm2 photoactive overlap as 6.52e-7 cm2 and confirmed that the source's area, responsivity, and noise value reproduce its stated D* arithmetic.",
+      "Added the graph-labeled Device II and Device III 405 nm zero-bias results as pending-review measurements while preserving their unresolved device-specific noise basis and unavailable Supporting Information.",
+      "Recorded the internal Device II responsivity/EQE inconsistency and continued to exclude the non-perovskite bare controls and the 635 nm result without a matching D* value.",
+    ],
+  },
+  {
+    version: "1.22.0",
+    date: "2026-08-26",
     title: "AgBiS2 charge-transfer and MXene expansion",
     summary:
       "Adds device-resolved modeled- and measured-noise AgBiS2 results and completes the existing ZnO/MXene photodiode record under the frequency-evidence policy.",
@@ -42,7 +56,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.20.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-26",
     title: "PbS, InAs, and HgTe detector expansion",
     summary:
       "Adds three CQD detector papers with four conservatively curated measured-noise measurements and device-specific extended metrics.",
@@ -57,7 +71,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.19.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-26",
     title: "Measured-noise perovskite detector expansion",
     summary:
       "Adds three perovskite detector papers with five high-confidence measured-noise measurements while withholding internally conflicting values.",
@@ -72,7 +86,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
   },
   {
     version: "1.18.0",
-    date: DATASET_RELEASE_DATE,
+    date: "2026-08-26",
     title: "Perovskite device and DDAB passivation expansion",
     summary:
       "Adds two perovskite detector papers with six directly reported measurements while excluding conflicting and weakly assigned values.",

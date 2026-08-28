@@ -1,11 +1,8 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { MaterialLabel } from "@/components/atlas";
+import { MaterialsOverview } from "@/components/atlas";
 import { SiteShell } from "@/components/SiteShell";
-import { formatScientific } from "@/lib/atlas/format";
-import { materialColor, summarizeMaterials } from "@/lib/atlas/materials";
+import { summarizeMaterials } from "@/lib/atlas/materials";
 import { normalizeJoinedMeasurement } from "@/lib/atlas/types";
 import { atlasData } from "@/lib/data";
 
@@ -33,67 +30,10 @@ export default function MaterialsPage() {
         </div>
       </section>
 
-      <section
-        className="page-shell material-grid"
-        aria-label="Material families"
-      >
-        {summaries.length ? (
-          summaries.map((summary) => (
-            <Link
-              className="material-card"
-              href={`/materials/${encodeURIComponent(summary.material)}`}
-              key={summary.material}
-              style={
-                {
-                  "--material-color": materialColor(summary.material),
-                } as CSSProperties
-              }
-            >
-              <div className="material-card__header">
-                <h2>
-                  <MaterialLabel value={summary.material} />
-                </h2>
-                <span aria-hidden="true">↗</span>
-              </div>
-              <dl className="material-card__metrics">
-                <div>
-                  <dt>Papers</dt>
-                  <dd>{summary.paperCount}</dd>
-                </div>
-                <div>
-                  <dt>Measurements</dt>
-                  <dd>{summary.measurementCount}</dd>
-                </div>
-                <div className="material-card__wide">
-                  <dt>Wavelength range</dt>
-                  <dd>
-                    {summary.wavelengthMinNm.toLocaleString()}–
-                    {summary.wavelengthMaxNm.toLocaleString()} nm
-                  </dd>
-                </div>
-                <div className="material-card__wide">
-                  <dt>Highest curated D*</dt>
-                  <dd>
-                    {formatScientific(summary.highestDetectivityJones)} Jones
-                  </dd>
-                </div>
-              </dl>
-              <div
-                className="noise-split"
-                aria-label="Noise method percentages"
-              >
-                <div>
-                  <span>Measured noise</span>
-                  <strong>{summary.measuredNoisePercent.toFixed(0)}%</strong>
-                </div>
-                <div>
-                  <span>Shot-noise estimate</span>
-                  <strong>{summary.shotNoisePercent.toFixed(0)}%</strong>
-                </div>
-              </div>
-            </Link>
-          ))
-        ) : (
+      {summaries.length ? <MaterialsOverview summaries={summaries} /> : null}
+
+      {!summaries.length ? (
+        <section className="page-shell material-grid">
           <div className="empty-state">
             <h2>No materials yet</h2>
             <p>
@@ -101,8 +41,8 @@ export default function MaterialsPage() {
               files to populate this index.
             </p>
           </div>
-        )}
-      </section>
+        </section>
+      ) : null}
     </SiteShell>
   );
 }

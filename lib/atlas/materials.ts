@@ -49,6 +49,10 @@ export interface MaterialSummary {
   material: string;
   paperCount: number;
   measurementCount: number;
+  greenPaperCount: number;
+  unverifiedPaperCount: number;
+  amberPaperCount: number;
+  frequencyMismatchPaperCount: number;
   wavelengthMinNm: number;
   wavelengthMaxNm: number;
   highestDetectivityJones: number;
@@ -70,6 +74,23 @@ export function summarizeMaterials(
 
   return [...groups.entries()]
     .map(([material, measurements]) => {
+      const papers = new Map<string, AtlasRecord[]>();
+      for (const record of measurements) {
+        const paperMeasurements = papers.get(record.paper.paperId) ?? [];
+        paperMeasurements.push(record);
+        papers.set(record.paper.paperId, paperMeasurements);
+      }
+
+      const paperStatuses = [...papers.values()].map((paperMeasurements) => {
+        const flags = new Set(
+          paperMeasurements.map((record) => record.measurement.flag),
+        );
+        return flags.has("amber")
+          ? "amber"
+          : flags.has("unverified")
+            ? "unverified"
+            : "green";
+      });
       const wavelengths = measurements
         .map((record) => record.measurement.wavelengthNm)
         .filter(Number.isFinite);
@@ -82,9 +103,22 @@ export function summarizeMaterials(
 
       return {
         material,
-        paperCount: new Set(measurements.map((record) => record.paper.paperId))
-          .size,
+        paperCount: papers.size,
         measurementCount: count,
+        greenPaperCount: paperStatuses.filter((status) => status === "green")
+          .length,
+        unverifiedPaperCount: paperStatuses.filter(
+          (status) => status === "unverified",
+        ).length,
+        amberPaperCount: paperStatuses.filter((status) => status === "amber")
+          .length,
+        frequencyMismatchPaperCount: [...papers.values()].filter(
+          (paperMeasurements) =>
+            paperMeasurements.some(
+              (record) =>
+                record.measurement.frequencyMatchStatus === "not_matched",
+            ),
+        ).length,
         wavelengthMinNm: Math.min(...wavelengths),
         wavelengthMaxNm: Math.max(...wavelengths),
         highestDetectivityJones: Math.max(...detectivities),

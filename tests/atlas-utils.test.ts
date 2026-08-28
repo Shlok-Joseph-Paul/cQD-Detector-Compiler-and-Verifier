@@ -511,12 +511,36 @@ test("material summaries count unique papers and noise-method shares", () => {
     material: "PbS",
     paperCount: 1,
     measurementCount: 2,
+    greenPaperCount: 1,
+    unverifiedPaperCount: 0,
+    amberPaperCount: 0,
+    frequencyMismatchPaperCount: 0,
     wavelengthMinNm: 1000,
     wavelengthMaxNm: 1200,
     highestDetectivityJones: 2e12,
     measuredNoisePercent: 100,
     shotNoisePercent: 0,
   });
+
+  const cautiousMeasurement: AtlasRecord = {
+    ...duplicateMeasurement,
+    measurement: {
+      ...duplicateMeasurement.measurement,
+      measurementId: "measurement-4",
+      flag: "amber",
+      frequencyMatchStatus: "not_matched",
+      amberReasons: ["frequency_mismatch"],
+    },
+  };
+  const cautiousPbs = summarizeMaterials([
+    measuredRecord,
+    duplicateMeasurement,
+    cautiousMeasurement,
+  ])[0];
+  assert.equal(cautiousPbs.paperCount, 1);
+  assert.equal(cautiousPbs.greenPaperCount, 0);
+  assert.equal(cautiousPbs.amberPaperCount, 1);
+  assert.equal(cautiousPbs.frequencyMismatchPaperCount, 1);
 
   const provisional = recordWithMeasurement("provisional-material", {
     curatorStatus: "pending_review",

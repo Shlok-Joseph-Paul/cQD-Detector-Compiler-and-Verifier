@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.23.0";
+export const DATASET_VERSION = "1.23.1";
 export const DATASET_RELEASE_DATE = "2026-08-27";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Rastogi frequency and ligand re-audit",
+    summary:
+      "Corrects the existing CdSe/HgTe/Ag2Te photodiode record without adding a duplicate paper or measurement.",
+    changes: [
+      "Reclassified the device ligand workflow as mixed to preserve the reported solution-phase CdSe and HgTe ink treatments together with the solid-state HgCl2 and EDT film treatments.",
+      "Removed TOP as an asserted native surface ligand because the supplied article establishes it as a precursor rather than assigning it as the device inks' native ligand.",
+      "Linked the 0.80 A/W responsivity explicitly to 1550 nm and zero bias while clearing an inferred 1 kHz responsivity frequency that the source does not independently report.",
+      "Changed the room-temperature D* record from green to unverified because its attached responsivity frequency cannot be matched to the unspecified noise basis; the 200 K record remains green because no responsivity or EQE is assigned to it.",
+      "Marked Supporting-Information-dependent bandwidth and LDR coverage as source unavailable and retained the 200-700 ns pixel-size-dependent temporal response as ambiguous rather than assigning it to either D* row.",
+    ],
+  },
+  {
+    version: "1.23.0",
+    date: "2026-08-27",
     title: "CsPbBr3 noise-floor re-audit",
     summary:
       "Re-audits the Wang et al. sensitized heterojunction against the stated analyzer floor and adds its two additional device-resolved results for review.",

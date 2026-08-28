@@ -22,6 +22,8 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
       "Added the directly reported 65.2 µm2 photoactive overlap as 6.52e-7 cm2 and confirmed that the source's area, responsivity, and noise value reproduce its stated D* arithmetic.",
       "Added the graph-labeled Device II and Device III 405 nm zero-bias results as pending-review measurements while preserving their unresolved device-specific noise basis and unavailable Supporting Information.",
       "Recorded the internal Device II responsivity/EQE inconsistency and continued to exclude the non-perovskite bare controls and the 635 nm result without a matching D* value.",
+      "Redesigned the Materials page with a top-ten stacked paper-coverage chart and a sortable all-material index showing paper-level green, unverified, amber, and frequency-mismatch counts.",
+      "Applied the existing amber → unverified → green precedence within each material and paper so the status columns reconcile with unique-paper totals; frequency mismatch remains a separately sortable subset of amber.",
     ],
   },
   {

@@ -98,6 +98,14 @@
     "verified_on": "2026-08-23"
   },
   {
+    "journal": "Applied Surface Science",
+    "impact_factor": null,
+    "impact_factor_year": null,
+    "source_url": "https://www.sciencedirect.com/journal/applied-surface-science",
+    "verified_on": "2026-08-29",
+    "note": "The publisher page displays a current impact factor but does not label it as the 2025 Journal Impact Factor; the atlas leaves the year-specific value unreported."
+  },
+  {
     "journal": "Chemical Engineering Journal",
     "impact_factor": 12.5,
     "impact_factor_year": 2025,
@@ -198,6 +206,14 @@
     "impact_factor_year": 2025,
     "source_url": "https://www.mdpi.com/journal/nanomaterials/imprint",
     "verified_on": "2026-08-23"
+  },
+  {
+    "journal": "Nanoscale",
+    "impact_factor": null,
+    "impact_factor_year": null,
+    "source_url": "https://www.rsc.org/journals-books-databases/about-journals/nanoscale/",
+    "verified_on": "2026-08-29",
+    "note": "The publisher currently identifies its displayed 5.1 metric as the 2024 Journal Impact Factor; the atlas leaves the 2025 value unreported."
   },
   {
     "journal": "National Science Review",

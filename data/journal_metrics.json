@@ -178,6 +178,14 @@
     "note": "2025 JIF from the June 2026 JCR release; the publisher metric widget may lag the latest release."
   },
   {
+    "journal": "Nano Energy",
+    "impact_factor": null,
+    "impact_factor_year": null,
+    "source_url": "https://www.sciencedirect.com/journal/nano-energy",
+    "verified_on": "2026-08-29",
+    "note": "The publisher currently displays a 17.1 Impact Factor but does not label its metric year; the atlas leaves the 2025 value unreported."
+  },
+  {
     "journal": "Nano Letters",
     "impact_factor": 9.1,
     "impact_factor_year": 2025,

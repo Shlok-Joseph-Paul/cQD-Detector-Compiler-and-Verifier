@@ -55,7 +55,7 @@ export default async function PaperPage({ params }: PageProps) {
     .map(normalizeJoinedMeasurement);
   const devices = atlasData.devices.filter((device) => device.paper_id === id);
   const materials = [
-    ...new Set(records.map((record) => record.device.materialFamily)),
+    ...new Set(devices.map((device) => device.material_family)),
   ];
   const confirmedRecords = reviewedRecords(records);
   const highestDetectivity = confirmedRecords.length
@@ -178,11 +178,13 @@ export default async function PaperPage({ params }: PageProps) {
             The atlas links {records.length} reported measurement
             {records.length === 1 ? "" : "s"} to {devices.length} distinct
             device{devices.length === 1 ? "" : "s"}.{" "}
-            {amberCount
-              ? `${amberCount} measurement${amberCount === 1 ? " is" : "s are"} amber.${unverifiedCount ? ` ${unverifiedCount} additional measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.` : ""}`
-              : unverifiedCount
-                ? `${unverifiedCount} measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.`
-                : "All listed measurements currently carry a green review status."}
+            {!records.length
+              ? "Device metadata is retained, but no wavelength-resolved measurements are included. See the paper notes for the reporting limitations."
+              : amberCount
+                ? `${amberCount} measurement${amberCount === 1 ? " is" : "s are"} amber.${unverifiedCount ? ` ${unverifiedCount} additional measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.` : ""}`
+                : unverifiedCount
+                  ? `${unverifiedCount} measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.`
+                  : "All listed measurements currently carry a green review status."}
           </p>
         </section>
 
@@ -295,6 +297,14 @@ export default async function PaperPage({ params }: PageProps) {
                       </tr>
                     </thead>
                     <tbody>
+                      {deviceRecords.length === 0 ? (
+                        <tr>
+                          <td colSpan={6}>
+                            No wavelength-resolved measurements are included for
+                            this device. See the paper notes below.
+                          </td>
+                        </tr>
+                      ) : null}
                       {deviceRecords.map((record) => (
                         <tr
                           className={

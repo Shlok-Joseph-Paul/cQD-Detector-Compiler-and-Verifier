@@ -130,8 +130,32 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   assert.equal(
     atlas.devices.filter((record) => record.detector_class === "photoconductor")
       .length,
-    8,
+    10,
   );
+  const kimPaperId = "kim-2022-peai-deformable-perovskite";
+  const kimPaper = atlas.papers.find(
+    (source) => source.paper_id === kimPaperId,
+  );
+  assert.equal(kimPaper?.doi, "10.1021/acsami.2c03089");
+  assert.match(kimPaper?.notes ?? "", /broadband AM1.5G/);
+  assert.match(kimPaper?.notes ?? "", /shot-noise approximation/);
+  const kimDevices = atlas.devices.filter(
+    (source) => source.paper_id === kimPaperId,
+  );
+  assert.deepEqual(kimDevices.map((source) => source.device_id).sort(), [
+    `${kimPaperId}-peai`,
+    `${kimPaperId}-pristine`,
+  ]);
+  for (const source of kimDevices) {
+    assert.equal(source.technology_family, "perovskite");
+    assert.equal(source.detector_class, "photoconductor");
+    assert.equal(source.active_area_cm2, 0.0011);
+    assert.equal(source.ligand_exchange_status, "not_applicable");
+    assert.equal(
+      atlas.measurements.some((point) => point.device_id === source.device_id),
+      false,
+    );
+  }
   const preprintRecords = atlas.records.filter(
     ({ paper: source }) => source.publication_type === "preprint",
   );

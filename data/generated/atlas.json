@@ -3045,6 +3045,26 @@
       "publication_type": "journal_article",
       "peer_reviewed": true,
       "notes": "ACS Applied Materials & Interfaces 18 (2026), 49699-49709; published 2026-09-03. Main PDF and matching local SI DOCX checked. Two quantitative MSM photoconductor variants (B and C); bare HgSe device A is a nonresponsive control with NA R/D* in Table S2. User explicitly requests amber because Fig. S8 noise measurement is questionable. Published D* uses a shot-noise model independently requiring amber. Fig. S8 has a near-50 Hz peak despite a 55 Hz caption, mentions 220 V instead of the -0.01 V performance bias, and omits acquisition/normalization details. No allegation of misconduct or corrected D* is proposed."
+    },
+    {
+      "paper_id": "kim-2022-peai-deformable-perovskite",
+      "title": "Engineered Surface Halide Defects by Two-Dimensional Perovskite Passivation for Deformable Intelligent Photodetectors",
+      "authors": [
+        "Taehee Kim",
+        "Seongsik Jeong",
+        "Kyeong-Hwan Kim",
+        "Hyunseok Shim",
+        "Dongho Kim",
+        "Hae-Jin Kim"
+      ],
+      "first_author": "Taehee Kim",
+      "journal": "ACS Applied Materials & Interfaces",
+      "publication_year": 2022,
+      "doi": "10.1021/acsami.2c03089",
+      "publication_url": "https://doi.org/10.1021/acsami.2c03089",
+      "publication_type": "journal_article",
+      "peer_reviewed": true,
+      "notes": "ACS Applied Materials & Interfaces 14 (2022), 26004-26013; published 2022-05-23. Main article and 14-page official ACS Figshare SI checked. Flexible planar mixed-halide perovskite photoconductors, pristine and PEAI-passivated. Table 2 contains ten directly reported R/D* pairs under broadband AM1.5G illumination at 1 mW/cm2, not a stated monochromatic wavelength. All ten measurement candidates are held outside importable records because the atlas requires wavelength_nm. D* uses a shot-noise approximation and warrants amber. FA:MA ratio is not numerically specified. Paper and device metadata retained; all ten broadband measurement candidates withheld from wavelength-based performance plots."
     }
   ],
   "devices": [
@@ -6847,6 +6867,44 @@
       "ligand_exchange_conditions": "Spin-coat 200 uL CQD dispersion at 1500 rpm for 30 s onto the bottom Au electrode; immerse film in EDT:HCl:IPA (1:1:50 by volume) for 30 s; spin-wash three times with IPA; evaporate top Au electrode. Device fabrication is in ambient air. No ligand-reagent stock molarity is supplied.",
       "ligand_exchange_source_location": "am-2026-133252.pdf, PDF p. 9 (49707), Device Fabrication; am-2026-133252_si_001.docx, ligand-exchange discussion and Fig. S3 (rendered pp. 6-7)",
       "device_notes": "Source device C. Core diameter 13 nm; shell thickness 5 nm; active-film thickness 1 um, main PDF p. 6 (49704). Symmetric Au contacts and approximately linear I-V in Fig. 4 support photoconductor classification, not photodiode. The approximately 0.04 cm2 in main PDF p. 9 is described as effective illumination area, not unambiguously the active electrode-overlap area; active_area_cm2 is therefore left blank. SI describes OA/OLA-to-EDT exchange and also discusses DPE coordination after shell growth; no unsupported pre-deposition exchange is assigned."
+    },
+    {
+      "device_id": "kim-2022-peai-deformable-perovskite-pristine",
+      "paper_id": "kim-2022-peai-deformable-perovskite",
+      "technology_family": "perovskite",
+      "detector_class": "photoconductor",
+      "material_family": "FAMAPb(Br0.4I0.6)3",
+      "material_composition": "Pristine mixed-cation, mixed-halide FAMAPb(Br0.4I0.6)3 film; exact FA:MA ratio not stated",
+      "device_architecture": "Flexible planar two-terminal photoconductor; 75 um electrode separation, 1.5 mm channel width; 10 x 10 array architecture",
+      "device_stack": "Released polyimide substrate / patterned Cr (10 nm)/Au (100 nm) source and drain contacts with insulating PI crossover layer / lateral FAMAPb(Br0.4I0.6)3 bridge",
+      "active_area_cm2": 0.0011,
+      "ligand_exchange_status": "not_applicable",
+      "ligand_exchange_type": null,
+      "ligand_exchange_chemicals": null,
+      "native_ligands": null,
+      "ligand_exchange_target": null,
+      "ligand_exchange_conditions": null,
+      "ligand_exchange_source_location": null,
+      "device_notes": "Precursor FAI/PbI2/MABr/PbBr2 in DMSO:DMF 1:4 (w/w), stirred 10 min and filtered through 0.45 um PTFE. Coat 40 uL at 1000 rpm for 10 s then 6000 rpm for 20 s; add 0.2 mL chlorobenzene in the second step; anneal 100 C for 20 min. Main PDF p. 2, section 2.1. No PEAI surface post-treatment; pristine is the comparison device, not a native-ligand CQD control. Planar geometry and no gate or junction support photoconductor classification, main PDF pp. 3, 5-6, section 2.4 and Fig. 4; SI pp. 5-6, Figs. S4-S5. Active area directly reported as 0.11 mm2 = 0.0011 cm2; do not substitute the 100-pixel array footprint or recalculate the rounded area from channel dimensions. Main section 2.4 gives 3 um PI; SI Fig. S5 labels 2 um, so substrate thickness is left unresolved. Glass is a temporary fabrication carrier; final array is detached. SI Fig. S8 is a cross-section of films on glass, not proof of identical thickness in the flexible detector. No single active-film thickness is selected."
+    },
+    {
+      "device_id": "kim-2022-peai-deformable-perovskite-peai",
+      "paper_id": "kim-2022-peai-deformable-perovskite",
+      "technology_family": "perovskite",
+      "detector_class": "photoconductor",
+      "material_family": "FAMAPb(Br0.4I0.6)3",
+      "material_composition": "FAMAPb(Br0.4I0.6)3 film with PEAI-derived low-n 2D perovskite surface passivation; exact FA:MA ratio not stated",
+      "device_architecture": "Flexible planar two-terminal photoconductor; 75 um electrode separation, 1.5 mm channel width; 10 x 10 array architecture",
+      "device_stack": "Released polyimide substrate / patterned Cr (10 nm)/Au (100 nm) source and drain contacts with insulating PI crossover layer / lateral FAMAPb(Br0.4I0.6)3 bridge / PEAI-derived 2D perovskite surface layer",
+      "active_area_cm2": 0.0011,
+      "ligand_exchange_status": "not_applicable",
+      "ligand_exchange_type": null,
+      "ligand_exchange_chemicals": null,
+      "native_ligands": null,
+      "ligand_exchange_target": null,
+      "ligand_exchange_conditions": null,
+      "ligand_exchange_source_location": null,
+      "device_notes": "Precursor FAI/PbI2/MABr/PbBr2 in DMSO:DMF 1:4 (w/w), stirred 10 min and filtered through 0.45 um PTFE. Coat 40 uL at 1000 rpm for 10 s then 6000 rpm for 20 s; add 0.2 mL chlorobenzene in the second step; anneal 100 C for 20 min. Main PDF p. 2, section 2.1. Surface post-treatment: deposit 0.1 mL of 2 mM phenylethylammonium iodide (PEAI) in isopropanol, spin 1000 rpm for 40 s, then anneal 100 C for 10 min. This forms a 2D surface layer; it is not assigned as CQD ligand exchange. The source suggests n=1 or at most 2 from structural/optical evidence, rather than a quantitatively resolved phase mixture. Planar geometry and no gate or junction support photoconductor classification, main PDF pp. 3, 5-6, section 2.4 and Fig. 4; SI pp. 5-6, Figs. S4-S5. Active area directly reported as 0.11 mm2 = 0.0011 cm2; do not substitute the 100-pixel array footprint or recalculate the rounded area from channel dimensions. Main section 2.4 gives 3 um PI; SI Fig. S5 labels 2 um, so substrate thickness is left unresolved. Glass is a temporary fabrication carrier; final array is detached. SI Fig. S8 is a cross-section of films on glass, not proof of identical thickness in the flexible detector. No single active-film thickness is selected."
     }
   ],
   "measurements": [

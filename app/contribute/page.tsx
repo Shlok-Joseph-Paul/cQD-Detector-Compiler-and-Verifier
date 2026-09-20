@@ -195,6 +195,22 @@ export default function ContributePage() {
               </div>
             </div>
           </section>
+          <figure className="curator-quote">
+            <blockquote>
+              <p>
+                It is not the critic who counts; not the man who points out how
+                the strong man stumbles or where the doer of deeds could have
+                done them better. The credit belongs to the man who is actually
+                in the arena, whose face is marred by dust and sweat and blood;
+                who strives valiantly; who errs, who comes short again and again,
+                because there is no effort without error and shortcoming…
+              </p>
+            </blockquote>
+            <figcaption>
+              — Theodore Roosevelt
+              <cite>“The Man in the Arena”</cite>
+            </figcaption>
+          </figure>
         </aside>
       </div>
     </SiteShell>

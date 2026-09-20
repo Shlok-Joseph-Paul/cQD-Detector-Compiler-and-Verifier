@@ -2453,6 +2453,40 @@ select {
   gap: 14px;
 }
 
+.prose-page .contribute-sidebar {
+  position: static;
+}
+
+.curator-quote {
+  margin: 16px 0 0;
+  padding-left: 20px;
+  border-left: 2px solid var(--sage);
+}
+
+.curator-quote blockquote {
+  margin: 0;
+}
+
+.prose-page .curator-quote p {
+  margin: 0 0 18px;
+  color: var(--ink-soft);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.75;
+}
+
+.curator-quote figcaption {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.curator-quote cite {
+  display: block;
+  color: var(--ink-soft);
+}
+
 .contribute-sidebar .contribution-callout {
   margin: 0;
 }

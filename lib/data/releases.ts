@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.23.1";
-export const DATASET_RELEASE_DATE = "2026-08-27";
+export const DATASET_VERSION = "1.24.0";
+export const DATASET_RELEASE_DATE = "2026-09-21";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "CuOx and quantum-funnel PbS photodiodes",
+    summary:
+      "Adds four approved PbS photodiodes from Yu et al. (2016) and Kim et al. (2015), preserving reported values and noise-method cautions.",
+    changes: [
+      "Added two papers, four devices, and four measurements: unpassivated and PVP-passivated CuOx PbS at 1010 nm and -1 V, and ungraded control and graded quantum-funnel PbS at 640 nm and zero bias.",
+      "Marked the Yu 4.6e12- and 1e13-Jones values as shot-noise-derived and amber; preserved the 15% unpassivated EQE, 9/10 microsecond rise/fall times, and author-calculated 17 kHz bandwidth.",
+      "Preserved the Kim 8.9e12- and 2.4e13-Jones values as measured-noise D*, with 0.2/0.3 A/W responsivity, 0.6/1.2 MHz bandwidth, and reported NEP of 2e-11/1e-11 W Hz^-1/2 in measurement notes.",
+      "Retained both Kim measurements as amber with sole-SR830-lock-in noise acquisition; kept the noise measurement frequency null and explicitly unknown rather than substituting bandwidth or EQE frequency.",
+      "Left unprovided values blank, preserved metric-specific source locations, and excluded additional devices or operating points outside the approved four-row summary.",
+    ],
+  },
+  {
+    version: "1.23.1",
+    date: "2026-08-27",
     title: "Rastogi frequency and ligand re-audit",
     summary:
       "Corrects the existing CdSe/HgTe/Ag2Te photodiode record without adding a duplicate paper or measurement.",

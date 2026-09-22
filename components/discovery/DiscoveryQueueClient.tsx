@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { formatDetectorClass } from "@/lib/atlas/format";
 import type {
   DiscoveryCandidate,
@@ -45,16 +45,40 @@ function countBy(values: string[]): Array<[string, number]> {
 }
 
 export function DiscoveryQueueClient({
-  candidates,
   proposals,
 }: {
-  candidates: DiscoveryCandidate[];
   proposals: StagedPaperProposal[];
 }) {
+  const [candidates, setCandidates] = useState<DiscoveryCandidate[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [loadAttempt, setLoadAttempt] = useState(0);
+  useEffect(() => {
+    const controller = new AbortController();
+    setLoading(true);
+    setLoadError(false);
+    fetch("/api/discovery", { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error("Discovery unavailable");
+        return response.json();
+      })
+      .then((records: DiscoveryCandidate[]) => {
+        setCandidates(records);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) {
+          setLoadError(true);
+          setLoading(false);
+        }
+      });
+    return () => controller.abort();
+  }, [loadAttempt]);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<ScreeningStatus | "all">("all");
   const [material, setMaterial] = useState("all");
   const [sort, setSort] = useState("score-desc");
+  const [visibleCount, setVisibleCount] = useState(25);
   const [decisions, setDecisions] = useState<Record<string, LocalDecision>>(
     () => {
       if (typeof window === "undefined") return {};
@@ -587,13 +611,14 @@ export function DiscoveryQueueClient({
           <div>
             <p className="section-kicker">Human screening</p>
             <h2>Candidate registry</h2>
-            <p>{filtered.length} shown</p>
+            <p>{Math.min(visibleCount, filtered.length)} of {filtered.length} matching candidates shown</p>
           </div>
           <div className="discovery-toolbar__actions">
             <button
               className="primary-button"
               type="button"
               onClick={exportDecisions}
+              disabled={loading || loadError}
             >
               Export screening CSV
             </button>
@@ -610,7 +635,10 @@ export function DiscoveryQueueClient({
             <input
               type="search"
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={(event) => {
+                setSearch(event.target.value);
+                setVisibleCount(25);
+              }}
               placeholder="Title, DOI, author, abstract…"
             />
           </label>
@@ -618,9 +646,10 @@ export function DiscoveryQueueClient({
             Status
             <select
               value={status}
-              onChange={(event) =>
-                setStatus(event.target.value as typeof status)
-              }
+              onChange={(event) => {
+                setStatus(event.target.value as typeof status);
+                setVisibleCount(25);
+              }}
             >
               <option value="all">All statuses</option>
               {statuses.map((value) => (
@@ -634,7 +663,10 @@ export function DiscoveryQueueClient({
             Material
             <select
               value={material}
-              onChange={(event) => setMaterial(event.target.value)}
+              onChange={(event) => {
+                setMaterial(event.target.value);
+                setVisibleCount(25);
+              }}
             >
               <option value="all">All materials</option>
               {materials.map((value) => (
@@ -648,7 +680,10 @@ export function DiscoveryQueueClient({
             Sort
             <select
               value={sort}
-              onChange={(event) => setSort(event.target.value)}
+              onChange={(event) => {
+                setSort(event.target.value);
+                setVisibleCount(25);
+              }}
             >
               <option value="score-desc">Score, high to low</option>
               <option value="score-asc">Score, low to high</option>
@@ -658,7 +693,7 @@ export function DiscoveryQueueClient({
           </label>
         </div>
         <div className="discovery-cards">
-          {filtered.map((candidate) => (
+          {filtered.slice(0, visibleCount).map((candidate) => (
             <article className="discovery-card" key={candidate.candidateId}>
               <div className="discovery-card__score">
                 <strong>{candidate.relevanceScore}</strong>
@@ -803,7 +838,14 @@ export function DiscoveryQueueClient({
               </div>
             </article>
           ))}
-          {!filtered.length && (
+          {loading && <p role="status">Loading discovery candidates…</p>}
+          {loadError && (
+            <div role="alert">
+              <p>Discovery candidates could not be loaded.</p>
+              <button type="button" className="secondary-button" onClick={() => setLoadAttempt((attempt) => attempt + 1)}>Try again</button>
+            </div>
+          )}
+          {!loading && !loadError && !filtered.length && (
             <div className="discovery-empty">
               <h3>No candidates match these filters.</h3>
               <p>
@@ -813,6 +855,15 @@ export function DiscoveryQueueClient({
             </div>
           )}
         </div>
+        {visibleCount < filtered.length && (
+          <button
+            className="secondary-button"
+            type="button"
+            onClick={() => setVisibleCount((count) => count + 25)}
+          >
+            Show more candidates
+          </button>
+        )}
       </section>
     </>
   );

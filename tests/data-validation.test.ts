@@ -98,7 +98,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 8);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 300);
+  assert.equal(atlas.measurements.length, 309);
   assert.equal(atlas.records.length, atlas.measurements.length);
   const pendingImportPaperIds = new Set([
     "ma-2026-pbs-homogeneous-energy",
@@ -233,14 +233,14 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 163);
+  assert.equal(amberRecords.length, 164);
   const unverifiedRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "unverified",
   );
   const greenRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "green",
   );
-  assert.equal(unverifiedRecords.length, 100);
+  assert.equal(unverifiedRecords.length, 102);
   assert.equal(greenRecords.length, 31);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -270,7 +270,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("lock_in_only_noise_measurement"),
     ).length,
-    22,
+    23,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -294,13 +294,13 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   }
   assert.equal(
     [...flagsByPaper.values()].filter((flags) => flags.has("amber")).length,
-    64,
+    65,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(
       (flags) => !flags.has("amber") && flags.has("unverified"),
     ).length,
-    53,
+    54,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(

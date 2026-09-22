@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.26.0";
+export const DATASET_VERSION = "1.27.0";
 export const DATASET_RELEASE_DATE = "2026-09-22";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Ag2Te ligand and thickness comparison records",
+    summary:
+      "Adds nine user-approved provisional measurements from Yuan and Sharma, with device-specific ligand treatments and explicit evidence limitations.",
+    changes: [
+      "Added two papers, nine devices, and nine pending-review measurements, bringing the atlas to 142 papers, 232 devices, and 309 measurements.",
+      "Added Yuan's ZnI2-assisted and AgI-control measured-noise records at 1550 nm and -0.3 V, plus the smaller-dot 1350 nm responsivity/EQE result; retained unverified frequency status and labeled the control D* as graphically extracted.",
+      "Preserved Yuan's conflicting rise/fall assignments as ambiguous, with the figure-based values and prose discrepancy visible in curator notes; retained separate wavelength and bias conditions for bandwidth and LDR.",
+      "Added Sharma's EDT, MPA, and TBAI ligand/thickness series, including the 196 nm device's 1.3e9-Jones result and 29.4/49.5 microsecond rise/fall times; marked its lock-in-only noise acquisition amber.",
+      "Kept all nine new measurements pending review and excluded from performance comparisons; recorded unavailable supplements, graphical uncertainty, and unresolved operating conditions without filling missing values.",
+      "Kept Li's Ag2Se conference proceedings paper outside the published dataset because the current publication-type schema cannot represent it accurately.",
+    ],
+  },
+  {
+    version: "1.26.0",
+    date: "2026-09-22",
     title: "Manders, Maulu, and Jagtap photodiodes",
     summary:
       "Adds six approved measurements from three PbS and HgTe photodiode papers, with measured-noise evidence and separately qualified optical and speed results.",

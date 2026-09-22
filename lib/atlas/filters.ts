@@ -480,7 +480,8 @@ export function serializeAtlasFilters(
 ): URLSearchParams {
   const params = new URLSearchParams(existing);
   setOrDelete(params, "q", filters.search.trim());
-  setOrDelete(params, "detector", filters.detectorClass);
+  // Keep an explicit "all" choice when the explorer starts with a narrower default.
+  params.set("detector", filters.detectorClass);
   setOrDelete(params, "technology", filters.technology);
   setOrDelete(params, "material", filters.material);
   setOrDelete(params, "wavelengthMin", filters.wavelengthMin);

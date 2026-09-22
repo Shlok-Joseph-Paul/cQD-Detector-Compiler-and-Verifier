@@ -33,9 +33,10 @@ export function AtlasExplorer({
     () => records.map(normalizeJoinedMeasurement),
     [records],
   );
-  const initialFilters: Partial<AtlasFilterState> | undefined = initialMaterial
-    ? { material: initialMaterial }
-    : undefined;
+  const initialFilters: Partial<AtlasFilterState> = {
+    detectorClass: mode === "full" ? "photodiode" : "all",
+    ...(initialMaterial ? { material: initialMaterial } : {}),
+  };
   const lockedMaterial = mode === "material" ? initialMaterial : undefined;
   const { filters, setFilters, resetFilters } = useUrlAtlasFilters(
     initialFilters,

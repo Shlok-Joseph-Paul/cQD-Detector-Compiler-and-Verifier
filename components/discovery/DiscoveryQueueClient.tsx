@@ -55,8 +55,6 @@ export function DiscoveryQueueClient({
   const [loadAttempt, setLoadAttempt] = useState(0);
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
-    setLoadError(false);
     fetch("/api/discovery", { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Discovery unavailable");
@@ -611,7 +609,10 @@ export function DiscoveryQueueClient({
           <div>
             <p className="section-kicker">Human screening</p>
             <h2>Candidate registry</h2>
-            <p>{Math.min(visibleCount, filtered.length)} of {filtered.length} matching candidates shown</p>
+            <p>
+              {Math.min(visibleCount, filtered.length)} of {filtered.length}{" "}
+              matching candidates shown
+            </p>
           </div>
           <div className="discovery-toolbar__actions">
             <button
@@ -842,7 +843,17 @@ export function DiscoveryQueueClient({
           {loadError && (
             <div role="alert">
               <p>Discovery candidates could not be loaded.</p>
-              <button type="button" className="secondary-button" onClick={() => setLoadAttempt((attempt) => attempt + 1)}>Try again</button>
+              <button
+                type="button"
+                className="secondary-button"
+                onClick={() => {
+                  setLoading(true);
+                  setLoadError(false);
+                  setLoadAttempt((attempt) => attempt + 1);
+                }}
+              >
+                Try again
+              </button>
             </div>
           )}
           {!loading && !loadError && !filtered.length && (

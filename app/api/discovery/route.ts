@@ -6,10 +6,12 @@ import type { CandidateRegistry } from "@/lib/discovery/types";
 let candidatesJson: string | undefined;
 
 export function GET() {
-  candidatesJson ??= JSON.stringify(filterPublicDiscoveryCandidates(
-    (registry as CandidateRegistry).candidates,
-    atlasData.papers,
-  ));
+  candidatesJson ??= JSON.stringify(
+    filterPublicDiscoveryCandidates(
+      (registry as CandidateRegistry).candidates,
+      atlasData.papers,
+    ),
+  );
   return new Response(candidatesJson, {
     headers: {
       "Content-Type": "application/json",

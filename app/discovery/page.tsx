@@ -3,9 +3,7 @@ import proposalRegistry from "@/data/discovery/proposals.json";
 import { DiscoveryQueueClient } from "@/components/discovery/DiscoveryQueueClient";
 import { SiteShell } from "@/components/SiteShell";
 import { atlasData } from "@/lib/data/generated";
-import {
-  filterPublicDiscoveryProposals,
-} from "@/lib/discovery/public-queue";
+import { filterPublicDiscoveryProposals } from "@/lib/discovery/public-queue";
 import type { ProposalRegistry } from "@/lib/discovery/proposal-types";
 
 export const metadata: Metadata = {

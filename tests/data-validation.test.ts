@@ -98,8 +98,44 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 8);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 290);
+  assert.equal(atlas.measurements.length, 300);
   assert.equal(atlas.records.length, atlas.measurements.length);
+  const pendingImportPaperIds = new Set([
+    "ma-2026-pbs-homogeneous-energy",
+    "zeng-2025-pbs-cellulose",
+    "xia-2026-pbs-monomer",
+    "chen-2020-pbs-spray",
+  ]);
+  const pendingImport = atlas.records.filter(({ paper: source }) =>
+    pendingImportPaperIds.has(source.paper_id),
+  );
+  assert.equal(pendingImport.length, 10);
+  assert.equal(
+    new Set(pendingImport.map(({ device }) => device.device_id)).size,
+    8,
+  );
+  assert.ok(
+    pendingImport.every(
+      ({ measurement: point }) =>
+        point.curator_status === "pending_review" && point.curator_notes,
+    ),
+  );
+  assert.equal(
+    pendingImport.filter(({ measurement: point }) => point.flag === "amber")
+      .length,
+    5,
+  );
+  const sprayStudy = pendingImport.filter(
+    ({ paper: source }) => source.paper_id === "chen-2020-pbs-spray",
+  );
+  assert.equal(sprayStudy.length, 4);
+  for (const { device: importedDevice, measurement: point } of sprayStudy) {
+    assert.equal(importedDevice.detector_class, "photoconductor");
+    assert.equal(point.noise_method, "measured_noise");
+    assert.deepEqual(point.noise_instruments, ["lock_in_amplifier"]);
+    assert.deepEqual(point.amber_reasons, ["lock_in_only_noise_measurement"]);
+    assert.equal(point.measurement_frequency_hz, null);
+  }
   const newDeviceIds = new Set([
     "manders-2014-pbs-nio-zno-double-heterojunction",
     "maulu-2016-pbs-doctor-blading-mpa-schottky",
@@ -158,7 +194,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   assert.equal(
     atlas.devices.filter((record) => record.detector_class === "photoconductor")
       .length,
-    10,
+    12,
   );
   const kimPaperId = "kim-2022-peai-deformable-perovskite";
   const kimPaper = atlas.papers.find(
@@ -197,20 +233,20 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 158);
+  assert.equal(amberRecords.length, 163);
   const unverifiedRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "unverified",
   );
   const greenRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "green",
   );
-  assert.equal(unverifiedRecords.length, 95);
+  assert.equal(unverifiedRecords.length, 100);
   assert.equal(greenRecords.length, 31);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
     ).length,
-    106,
+    107,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -234,7 +270,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("lock_in_only_noise_measurement"),
     ).length,
-    18,
+    22,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -258,13 +294,13 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   }
   assert.equal(
     [...flagsByPaper.values()].filter((flags) => flags.has("amber")).length,
-    62,
+    64,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(
       (flags) => !flags.has("amber") && flags.has("unverified"),
     ).length,
-    51,
+    53,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(

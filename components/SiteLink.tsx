@@ -11,7 +11,12 @@ const prefetchedPages = new Set([
 
 /** Prefetch the small navigation pages without downloading every atlas record. */
 export default function SiteLink({ href, ...props }: ComponentProps<"a">) {
-  if (!href || !href.startsWith("/") || href.startsWith("//") || props.download) {
+  if (
+    !href ||
+    !href.startsWith("/") ||
+    href.startsWith("//") ||
+    props.download
+  ) {
     return <a href={href} {...props} />;
   }
   return <Link href={href} prefetch={prefetchedPages.has(href)} {...props} />;

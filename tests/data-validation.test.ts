@@ -98,8 +98,36 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 8);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 284);
+  assert.equal(atlas.measurements.length, 290);
   assert.equal(atlas.records.length, atlas.measurements.length);
+  const newDeviceIds = new Set([
+    "manders-2014-pbs-nio-zno-double-heterojunction",
+    "maulu-2016-pbs-doctor-blading-mpa-schottky",
+    "jagtap-2018-hgte-unipolar-barrier-generation2",
+  ]);
+  const newPoints = atlas.measurements.filter((point) =>
+    newDeviceIds.has(point.device_id),
+  );
+  assert.equal(newPoints.length, 6);
+  assert.ok(newPoints.every((point) => point.curator_status === "reviewed"));
+  const newDStar = newPoints.filter(
+    (point) => point.detectivity_jones !== null,
+  );
+  assert.equal(newDStar.length, 2);
+  assert.ok(newDStar.every((point) => point.noise_method === "measured_noise"));
+  assert.ok(newDStar.every((point) => point.flag === "unverified"));
+  const maulu = newPoints.find((point) => point.device_id.startsWith("maulu-"));
+  assert.equal(maulu?.detectivity_jones, null);
+  assert.equal(maulu?.response_time_s, 135e-6);
+  assert.equal(maulu?.response_time_wavelength_nm, 1550);
+  assert.equal(maulu?.response_time_bias_v, 0);
+  const jagtap = newPoints.find((point) =>
+    point.device_id.startsWith("jagtap-"),
+  );
+  assert.equal(jagtap?.detectivity_jones, null);
+  assert.equal(jagtap?.wavelength_nm, 1550);
+  assert.equal(jagtap?.bandwidth_hz, 10000);
+  assert.equal(jagtap?.bandwidth_limit, "lower_bound");
   const approvedPaperIds = new Set([
     "wei-2026-pbs-ligand-engineering",
     "chen-2026-inas-inf3",
@@ -176,7 +204,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const greenRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "green",
   );
-  assert.equal(unverifiedRecords.length, 93);
+  assert.equal(unverifiedRecords.length, 95);
   assert.equal(greenRecords.length, 31);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -236,7 +264,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     [...flagsByPaper.values()].filter(
       (flags) => !flags.has("amber") && flags.has("unverified"),
     ).length,
-    50,
+    51,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(

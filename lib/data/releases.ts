@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.25.1";
+export const DATASET_VERSION = "1.26.0";
 export const DATASET_RELEASE_DATE = "2026-09-22";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Manders, Maulu, and Jagtap photodiodes",
+    summary:
+      "Adds six approved measurements from three PbS and HgTe photodiode papers, with measured-noise evidence and separately qualified optical and speed results.",
+    changes: [
+      "Added three papers, three devices, and six reviewed measurements, bringing the atlas to 136 papers, 215 devices, and 290 measurements.",
+      "Added Manders' measured-noise D* values of 1.2e12 Jones at 600 nm and 1.1e12 Jones at 1135 nm, both at -1 V; retained unverified frequency-match status and the distinct 1130 nm responsivity condition.",
+      "Preserved Manders' separate 575/1130 nm EQE rows, 67 dB LDR, and author-derived -3 dB bandwidth above 36 kHz with its illumination conditions and lower-bound qualifier.",
+      "Added Maulu's 0.26 A/W responsivity and 22% EQE at 1460 nm, with a separately conditioned 135 microsecond exponential response constant at 1550 nm and zero bias.",
+      "Added Jagtap's 1550 nm speed result as a performance-only row with a setup-limited -3 dB bandwidth above 10 kHz; did not substitute its absorber cutoff as a D* measurement wavelength.",
+      "Kept the Maulu and Jagtap detectivity claims outside the measurement dataset pending their named attribution and normalization questions; all unsupported values remain blank.",
+    ],
+  },
+  {
+    version: "1.25.1",
+    date: "2026-09-22",
     title: "Photodiode defaults and a white performance graph",
     summary:
       "Starts the main performance graph with photodiodes selected and removes colored wavelength backgrounds while preserving the linear wavelength axis.",

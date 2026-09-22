@@ -55,7 +55,7 @@ export interface MaterialSummary {
   frequencyMismatchPaperCount: number;
   wavelengthMinNm: number;
   wavelengthMaxNm: number;
-  highestDetectivityJones: number;
+  highestDetectivityJones: number | null;
   measuredNoisePercent: number;
   shotNoisePercent: number;
 }
@@ -81,23 +81,34 @@ export function summarizeMaterials(
         papers.set(record.paper.paperId, paperMeasurements);
       }
 
-      const paperStatuses = [...papers.values()].map((paperMeasurements) => {
-        const flags = new Set(
-          paperMeasurements.map((record) => record.measurement.flag),
-        );
-        return flags.has("amber")
-          ? "amber"
-          : flags.has("unverified")
-            ? "unverified"
-            : "green";
-      });
+      const dStarMeasurements = measurements.filter(
+        (record) => record.measurement.detectivityJones !== null,
+      );
+      const dStarPapers = new Map<string, AtlasRecord[]>();
+      for (const record of dStarMeasurements) {
+        const paperMeasurements = dStarPapers.get(record.paper.paperId) ?? [];
+        paperMeasurements.push(record);
+        dStarPapers.set(record.paper.paperId, paperMeasurements);
+      }
+      const paperStatuses = [...dStarPapers.values()].map(
+        (paperMeasurements) => {
+          const flags = new Set(
+            paperMeasurements.map((record) => record.measurement.flag),
+          );
+          return flags.has("amber")
+            ? "amber"
+            : flags.has("unverified")
+              ? "unverified"
+              : "green";
+        },
+      );
       const wavelengths = measurements
         .map((record) => record.measurement.wavelengthNm)
         .filter(Number.isFinite);
-      const detectivities = measurements
+      const detectivities = dStarMeasurements
         .map((record) => record.measurement.detectivityJones)
-        .filter(Number.isFinite);
-      const count = measurements.length;
+        .filter((value): value is number => value !== null);
+      const count = dStarMeasurements.length;
       const percent = (matching: number) =>
         count === 0 ? 0 : (matching / count) * 100;
 
@@ -112,7 +123,7 @@ export function summarizeMaterials(
         ).length,
         amberPaperCount: paperStatuses.filter((status) => status === "amber")
           .length,
-        frequencyMismatchPaperCount: [...papers.values()].filter(
+        frequencyMismatchPaperCount: [...dStarPapers.values()].filter(
           (paperMeasurements) =>
             paperMeasurements.some(
               (record) =>
@@ -121,14 +132,15 @@ export function summarizeMaterials(
         ).length,
         wavelengthMinNm: Math.min(...wavelengths),
         wavelengthMaxNm: Math.max(...wavelengths),
-        highestDetectivityJones: Math.max(...detectivities),
+        highestDetectivityJones:
+          detectivities.length > 0 ? Math.max(...detectivities) : null,
         measuredNoisePercent: percent(
-          measurements.filter((record) =>
+          dStarMeasurements.filter((record) =>
             isMeasuredNoiseMethod(record.measurement.noiseMethod),
           ).length,
         ),
         shotNoisePercent: percent(
-          measurements.filter(
+          dStarMeasurements.filter(
             (record) =>
               record.measurement.noiseMethod === "shot_noise_approximation",
           ).length,

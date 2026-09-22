@@ -91,6 +91,7 @@ export function MeasurementDetails({
   );
   const journalMetric = journalMetricFor(paper.journal);
   const measurementUrl = `/measurements/${encodeURIComponent(measurement.measurementId)}`;
+  const hasDetectivity = measurement.detectivityJones !== null;
   const resolvedHeadingLevel = headingLevel ?? (variant === "full" ? 1 : 3);
   const sectionHeadingLevel = Math.min(resolvedHeadingLevel + 1, 4) as
     2 | 3 | 4;
@@ -112,10 +113,14 @@ export function MeasurementDetails({
             </Link>
           </SemanticHeading>
           <div className="measurement-details__badges">
-            <FlagBadge flag={measurement.flag} />
-            <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
-            <FrequencyMatchBadge measurement={measurement} />
-            <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
+            {hasDetectivity ? (
+              <>
+                <FlagBadge flag={measurement.flag} />
+                <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
+                <FrequencyMatchBadge measurement={measurement} />
+                <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
+              </>
+            ) : null}
           </div>
         </div>
         {onClose ? (
@@ -134,7 +139,9 @@ export function MeasurementDetails({
         <div>
           <span>Specific detectivity, D*</span>
           <strong>
-            {formatScientific(measurement.detectivityJones)} Jones
+            {hasDetectivity
+              ? `${formatScientific(measurement.detectivityJones)} Jones`
+              : NOT_REPORTED}
           </strong>
         </div>
         <div>
@@ -147,11 +154,18 @@ export function MeasurementDetails({
         </div>
       </div>
 
-      <AmberReasons measurement={measurement} compact={variant === "summary"} />
-      <ProvisionalNotice
-        measurement={measurement}
-        compact={variant === "summary"}
-      />
+      {hasDetectivity ? (
+        <>
+          <AmberReasons
+            measurement={measurement}
+            compact={variant === "summary"}
+          />
+          <ProvisionalNotice
+            measurement={measurement}
+            compact={variant === "summary"}
+          />
+        </>
+      ) : null}
 
       <dl className="measurement-details__grid">
         <Detail label="Absorber material">
@@ -172,22 +186,26 @@ export function MeasurementDetails({
           {device.deviceArchitecture || NOT_REPORTED}
         </Detail>
         <Detail label="Layer stack">{optionalText(device.deviceStack)}</Detail>
-        <Detail label="Temperature">
-          {formatWithUnit(measurement.temperatureK, "K", {
-            maximumFractionDigits: 2,
-          })}
-        </Detail>
-        <Detail label="Applied bias">
-          {formatWithUnit(measurement.biasV, "V", {
-            maximumFractionDigits: 4,
-          })}
-        </Detail>
-        <Detail label="Noise method">
-          {formatNoiseMethod(measurement.noiseMethod)}
-        </Detail>
-        <Detail label="Noise instrument">
-          {formatNoiseInstruments(measurement.noiseInstruments)}
-        </Detail>
+        {hasDetectivity ? (
+          <>
+            <Detail label="Temperature">
+              {formatWithUnit(measurement.temperatureK, "K", {
+                maximumFractionDigits: 2,
+              })}
+            </Detail>
+            <Detail label="Applied bias">
+              {formatWithUnit(measurement.biasV, "V", {
+                maximumFractionDigits: 4,
+              })}
+            </Detail>
+            <Detail label="Noise method">
+              {formatNoiseMethod(measurement.noiseMethod)}
+            </Detail>
+            <Detail label="Noise instrument">
+              {formatNoiseInstruments(measurement.noiseInstruments)}
+            </Detail>
+          </>
+        ) : null}
         <Detail label="First author">
           {paper.firstAuthor || NOT_REPORTED}
         </Detail>
@@ -261,14 +279,18 @@ export function MeasurementDetails({
                     )} ${measurement.linearDynamicRangeUnits ?? ""}`.trim()
                   : extendedMissing(measurement.extendedMetricsReviewStatus)}
             </Detail>
-            <Detail label="Measurement frequency">
-              {formatWithUnit(measurement.measurementFrequencyHz, "Hz", {
-                maximumSignificantDigits: 5,
-              })}
-            </Detail>
-            <Detail label="Frequency comparison">
-              <FrequencyMatchBadge measurement={measurement} />
-            </Detail>
+            {hasDetectivity ? (
+              <>
+                <Detail label="Measurement frequency">
+                  {formatWithUnit(measurement.measurementFrequencyHz, "Hz", {
+                    maximumSignificantDigits: 5,
+                  })}
+                </Detail>
+                <Detail label="Frequency comparison">
+                  <FrequencyMatchBadge measurement={measurement} />
+                </Detail>
+              </>
+            ) : null}
             <Detail label="Responsivity conditions">
               {[
                 formatWithUnit(measurement.responsivityWavelengthNm, "nm"),
@@ -330,23 +352,27 @@ export function MeasurementDetails({
             <Detail label="Extended-metrics review">
               {humanizeCode(measurement.extendedMetricsReviewStatus)}
             </Detail>
-            <Detail label="Noise instrument chain">
-              {optionalText(measurement.noiseInstrumentDetails)}
-            </Detail>
-            <Detail label="Instrument evidence">
-              {optionalText(measurement.noiseInstrumentSource)}
-            </Detail>
-            <Detail label="Detectivity extraction">
-              {optionalText(measurement.detectivityExtractionMethod)}
-            </Detail>
-            <Detail label="Source location">
-              {optionalText(measurement.sourceLocation)}
-            </Detail>
-            <Detail label="Curator status">
-              {measurement.curatorStatus
-                ? humanizeCode(measurement.curatorStatus)
-                : NOT_REPORTED}
-            </Detail>
+            {hasDetectivity ? (
+              <>
+                <Detail label="Noise instrument chain">
+                  {optionalText(measurement.noiseInstrumentDetails)}
+                </Detail>
+                <Detail label="Instrument evidence">
+                  {optionalText(measurement.noiseInstrumentSource)}
+                </Detail>
+                <Detail label="Detectivity extraction">
+                  {optionalText(measurement.detectivityExtractionMethod)}
+                </Detail>
+                <Detail label="Source location">
+                  {optionalText(measurement.sourceLocation)}
+                </Detail>
+                <Detail label="Curator status">
+                  {measurement.curatorStatus
+                    ? humanizeCode(measurement.curatorStatus)
+                    : NOT_REPORTED}
+                </Detail>
+              </>
+            ) : null}
             <Detail label="Record identifier">
               {measurement.measurementId}
             </Detail>

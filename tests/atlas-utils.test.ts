@@ -1014,6 +1014,51 @@ test("preset availability and plot scope follow the current scientific record se
   );
 });
 
+test("performance-only rows participate in non-D* plots but not D* maxima", () => {
+  const performanceOnly = recordWithMeasurement("performance-only", {
+    detectivityJones: null,
+    responsivityAW: 0.8,
+    noiseMethod: null,
+    noiseInstruments: [],
+    detectivityExtractionMethod: null,
+    sourceLocation: null,
+    flag: null,
+    frequencyMatchStatus: "not_applicable",
+  });
+  assert.deepEqual(
+    recordsForPlotScope([measuredRecord, performanceOnly], "paper_maxima").map(
+      (record) => record.measurement.measurementId,
+    ),
+    ["measurement-1"],
+  );
+  assert.deepEqual(
+    recordsForPlotScope(
+      [measuredRecord, performanceOnly],
+      "paper_maxima",
+      "responsivity",
+    ).map((record) => record.measurement.measurementId),
+    ["performance-only"],
+  );
+  assert.deepEqual(
+    recordsWithMetricPair(
+      [performanceOnly],
+      "wavelength",
+      "responsivity",
+    ).plotted.map((record) => record.measurement.measurementId),
+    ["performance-only"],
+  );
+
+  const exported = parseCsv(atlasRecordsToCsv([performanceOnly]));
+  const detectivityIndex = exported.headers.indexOf("detectivity_jones");
+  const noiseIndex = exported.headers.indexOf("noise_method");
+  const flagIndex = exported.headers.indexOf("flag");
+  const frequencyIndex = exported.headers.indexOf("frequency_match_status");
+  assert.equal(exported.rows[0].fields[detectivityIndex], "");
+  assert.equal(exported.rows[0].fields[noiseIndex], "");
+  assert.equal(exported.rows[0].fields[flagIndex], "");
+  assert.equal(exported.rows[0].fields[frequencyIndex], "not_applicable");
+});
+
 test("detector-class filtering is shared by plot scope, active counts, and CSV export", () => {
   const photodiode = recordWithMeasurement("detector-diode", {
     detectivityJones: 3e12,

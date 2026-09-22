@@ -88,61 +88,69 @@ correction and cannot be published without a valid class.
 
 ## `measurements.csv`
 
-| Column                                   | Type                | Required    | Meaning                                                                                                         |
-| ---------------------------------------- | ------------------- | ----------- | --------------------------------------------------------------------------------------------------------------- |
-| `measurement_id`                         | identifier          | yes         | Stable, unique identifier for one plotted measurement.                                                          |
-| `device_id`                              | identifier          | yes         | Existing parent `device_id`.                                                                                    |
-| `wavelength_nm`                          | positive number     | yes         | Wavelength associated with the detectivity value, in nm.                                                        |
-| `detectivity_jones`                      | positive number     | yes         | Reported specific detectivity in Jones. Scientific notation such as `2.4e11` is accepted.                       |
-| `responsivity_a_w`                       | nonnegative number  | no          | Responsivity in A/W.                                                                                            |
-| `responsivity_wavelength_nm`             | positive number     | no          | Wavelength of the responsivity value; may differ from the D* wavelength.                                        |
-| `responsivity_bias_v`                    | number              | no          | Bias used for the responsivity value.                                                                           |
-| `responsivity_temperature_k`             | positive number     | no          | Temperature used for the responsivity value.                                                                    |
-| `responsivity_source_location`           | text                | no          | Exact main-article or Supporting Information evidence location.                                                 |
-| `responsivity_extraction_method`         | enum                | conditional | Extended-metric extraction classification.                                                                      |
-| `responsivity_frequency_hz`              | positive number     | no          | Optical modulation or chopping frequency used for the recorded responsivity.                                    |
-| `eqe_percent`                            | nonnegative number  | no          | External quantum efficiency in percent.                                                                         |
-| `eqe_frequency_hz`                       | positive number     | no          | Optical modulation or chopping frequency used for the recorded EQE.                                             |
-| `temperature_k`                          | positive number     | no          | Operating temperature in kelvin.                                                                                |
-| `bias_v`                                 | number              | no          | Applied bias in volts; zero is a reported zero-bias measurement, while blank means missing.                     |
-| `measurement_frequency_hz`               | positive number     | no          | Frequency at which noise/detectivity was evaluated.                                                             |
-| `response_time_s`                        | positive number     | no          | Response time in seconds.                                                                                       |
-| `rise_time_s`                            | positive number     | no          | Explicitly reported rise time in seconds.                                                                       |
-| `fall_time_s`                            | positive number     | no          | Explicitly reported fall time in seconds.                                                                       |
-| `response_time_definition`               | text                | no          | Reported threshold convention or temporal definition.                                                           |
-| `response_time_wavelength_nm`            | positive number     | no          | Illumination wavelength for the temporal response.                                                              |
-| `response_time_bias_v`                   | number              | no          | Bias used for the temporal response.                                                                            |
-| `response_time_source_location`          | text                | no          | Exact source location for response, rise, and fall times.                                                       |
-| `response_time_limit`                    | enum                | no          | Whether the value is measured, limited, or a bound.                                                             |
-| `response_time_extraction_method`        | enum                | conditional | Extended-metric extraction classification.                                                                      |
-| `bandwidth_hz`                           | positive number     | no          | Explicit -3 dB bandwidth in hertz.                                                                              |
-| `bandwidth_bias_v`                       | number              | no          | Bias used for the explicit -3 dB bandwidth.                                                                     |
-| `bandwidth_source_location`              | text                | no          | Exact source location for the explicit -3 dB bandwidth.                                                         |
-| `bandwidth_limit`                        | enum                | conditional | `measured`, `instrument_limited`, `upper_bound`, `lower_bound`, or `not_reported`.                              |
-| `bandwidth_extraction_method`            | enum                | conditional | Extended-metric extraction classification.                                                                      |
-| `linear_dynamic_range_db`                | nonnegative number  | no          | Explicitly reported detector linear dynamic range in dB.                                                        |
-| `linear_dynamic_range_min`               | number              | no          | Lower bound of a reported linear optical-input range.                                                           |
-| `linear_dynamic_range_max`               | number              | no          | Upper bound of a reported linear optical-input range.                                                           |
-| `linear_dynamic_range_units`             | text                | conditional | Units for LDR range bounds; required when either bound is present.                                              |
-| `linear_dynamic_range_definition`        | text                | no          | Source definition or logarithmic convention.                                                                    |
-| `linear_dynamic_range_source_location`   | text                | no          | Exact source location for LDR evidence.                                                                         |
-| `linear_dynamic_range_extraction_method` | enum                | conditional | Extended-metric extraction classification.                                                                      |
-| `extended_metrics_review_status`         | enum                | no          | `not_checked`, `checked`, `source_unavailable`, or `needs_review`.                                              |
-| `extended_metrics_review_date`           | ISO date            | conditional | Required after a source check; blank while `not_checked`.                                                       |
-| `extended_metrics_notes`                 | text                | no          | Matching, limitation, and ambiguity notes for the extended-metric pass.                                         |
-| `noise_method`                           | enum                | yes         | Controlled noise classification listed below.                                                                   |
-| `noise_instruments`                      | pipe-separated enum | yes         | Instrument class or classes used to acquire noise; controlled vocabulary below.                                 |
-| `noise_instrument_details`               | text                | no          | Reported model and acquisition-chain details; never inferred from an unrelated measurement.                     |
-| `noise_instrument_source`                | text                | no          | Page, figure, section, or supporting-information location for the instrument evidence.                          |
-| `detectivity_extraction_method`          | enum                | yes         | `directly_reported`, `calculated_from_reported_values`, `graphically_extracted`, or `unspecified`.              |
-| `source_location`                        | text                | no          | Page, figure, table, or supporting-information location.                                                        |
-| `curator_status`                         | enum                | yes         | `reviewed` or `pending_review`. Pending records remain visible but are excluded from performance comparisons.   |
-| `flag`                                   | enum                | yes         | Public status: `green`, `unverified`, or `amber`; precedence is amber → unverified → green.                     |
-| `amber_reasons`                          | pipe-separated enum | conditional | One or more reason keys for every amber record; blank for green and unverified.                                 |
-| `amber_explanation`                      | text                | conditional | Human-readable context required for amber; blank for green and unverified.                                      |
-| `curator_notes`                          | text                | conditional | Measurement-specific notes. Required for `pending_review` as the public explanation of the unresolved question. |
-| `date_added`                             | ISO date            | yes         | `YYYY-MM-DD`.                                                                                                   |
-| `date_updated`                           | ISO date            | yes         | `YYYY-MM-DD`, not earlier than `date_added`.                                                                    |
+| Column                                   | Type                | Required    | Meaning                                                                                                                                   |
+| ---------------------------------------- | ------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `measurement_id`                         | identifier          | yes         | Stable, unique identifier for one plotted measurement.                                                                                    |
+| `device_id`                              | identifier          | yes         | Existing parent `device_id`.                                                                                                              |
+| `wavelength_nm`                          | positive number     | yes         | Primary wavelength for the record, in nm; the D* wavelength when D* is present.                                                           |
+| `detectivity_jones`                      | positive number     | conditional | Reported specific detectivity in Jones. May be blank only for a performance-only row containing another supported metric.                 |
+| `responsivity_a_w`                       | nonnegative number  | no          | Responsivity in A/W.                                                                                                                      |
+| `responsivity_wavelength_nm`             | positive number     | no          | Wavelength of the responsivity value; may differ from the D* wavelength.                                                                  |
+| `responsivity_bias_v`                    | number              | no          | Bias used for the responsivity value.                                                                                                     |
+| `responsivity_temperature_k`             | positive number     | no          | Temperature used for the responsivity value.                                                                                              |
+| `responsivity_source_location`           | text                | no          | Exact main-article or Supporting Information evidence location.                                                                           |
+| `responsivity_extraction_method`         | enum                | conditional | Extended-metric extraction classification.                                                                                                |
+| `responsivity_frequency_hz`              | positive number     | no          | Optical modulation or chopping frequency used for the recorded responsivity.                                                              |
+| `eqe_percent`                            | nonnegative number  | no          | External quantum efficiency in percent.                                                                                                   |
+| `eqe_frequency_hz`                       | positive number     | no          | Optical modulation or chopping frequency used for the recorded EQE.                                                                       |
+| `temperature_k`                          | positive number     | no          | Operating temperature in kelvin.                                                                                                          |
+| `bias_v`                                 | number              | no          | Applied bias in volts; zero is a reported zero-bias measurement, while blank means missing.                                               |
+| `measurement_frequency_hz`               | positive number     | no          | Frequency at which noise/detectivity was evaluated.                                                                                       |
+| `response_time_s`                        | positive number     | no          | Response time in seconds.                                                                                                                 |
+| `rise_time_s`                            | positive number     | no          | Explicitly reported rise time in seconds.                                                                                                 |
+| `fall_time_s`                            | positive number     | no          | Explicitly reported fall time in seconds.                                                                                                 |
+| `response_time_definition`               | text                | no          | Reported threshold convention or temporal definition.                                                                                     |
+| `response_time_wavelength_nm`            | positive number     | no          | Illumination wavelength for the temporal response.                                                                                        |
+| `response_time_bias_v`                   | number              | no          | Bias used for the temporal response.                                                                                                      |
+| `response_time_source_location`          | text                | no          | Exact source location for response, rise, and fall times.                                                                                 |
+| `response_time_limit`                    | enum                | no          | Whether the value is measured, limited, or a bound.                                                                                       |
+| `response_time_extraction_method`        | enum                | conditional | Extended-metric extraction classification.                                                                                                |
+| `bandwidth_hz`                           | positive number     | no          | Explicit -3 dB bandwidth in hertz.                                                                                                        |
+| `bandwidth_bias_v`                       | number              | no          | Bias used for the explicit -3 dB bandwidth.                                                                                               |
+| `bandwidth_source_location`              | text                | no          | Exact source location for the explicit -3 dB bandwidth.                                                                                   |
+| `bandwidth_limit`                        | enum                | conditional | `measured`, `instrument_limited`, `upper_bound`, `lower_bound`, or `not_reported`.                                                        |
+| `bandwidth_extraction_method`            | enum                | conditional | Extended-metric extraction classification.                                                                                                |
+| `linear_dynamic_range_db`                | nonnegative number  | no          | Explicitly reported detector linear dynamic range in dB.                                                                                  |
+| `linear_dynamic_range_min`               | number              | no          | Lower bound of a reported linear optical-input range.                                                                                     |
+| `linear_dynamic_range_max`               | number              | no          | Upper bound of a reported linear optical-input range.                                                                                     |
+| `linear_dynamic_range_units`             | text                | conditional | Units for LDR range bounds; required when either bound is present.                                                                        |
+| `linear_dynamic_range_definition`        | text                | no          | Source definition or logarithmic convention.                                                                                              |
+| `linear_dynamic_range_source_location`   | text                | no          | Exact source location for LDR evidence.                                                                                                   |
+| `linear_dynamic_range_extraction_method` | enum                | conditional | Extended-metric extraction classification.                                                                                                |
+| `extended_metrics_review_status`         | enum                | no          | `not_checked`, `checked`, `source_unavailable`, or `needs_review`.                                                                        |
+| `extended_metrics_review_date`           | ISO date            | conditional | Required after a source check; blank while `not_checked`.                                                                                 |
+| `extended_metrics_notes`                 | text                | no          | Matching, limitation, and ambiguity notes for the extended-metric pass.                                                                   |
+| `noise_method`                           | enum                | conditional | Controlled noise classification listed below; required with D* and blank without D*.                                                      |
+| `noise_instruments`                      | pipe-separated enum | conditional | Instrument class or classes used to acquire noise; required with D* and blank without D*.                                                 |
+| `noise_instrument_details`               | text                | no          | Reported model and acquisition-chain details; never inferred from an unrelated measurement.                                               |
+| `noise_instrument_source`                | text                | no          | Page, figure, section, or supporting-information location for the instrument evidence.                                                    |
+| `detectivity_extraction_method`          | enum                | conditional | Required with D* and blank without D*: `directly_reported`, `calculated_from_reported_values`, `graphically_extracted`, or `unspecified`. |
+| `source_location`                        | text                | conditional | D* page, figure, table, or supporting-information location; blank on a performance-only row.                                              |
+| `curator_status`                         | enum                | yes         | `reviewed` or `pending_review`. Pending records remain visible but are excluded from performance comparisons.                             |
+| `flag`                                   | enum                | conditional | Required with D*: `green`, `unverified`, or `amber`; blank without D*.                                                                    |
+| `amber_reasons`                          | pipe-separated enum | conditional | One or more reason keys for every amber record; blank for green and unverified.                                                           |
+| `amber_explanation`                      | text                | conditional | Human-readable context required for amber; blank for green and unverified.                                                                |
+| `curator_notes`                          | text                | conditional | Measurement-specific notes. Required for `pending_review` as the public explanation of the unresolved question.                           |
+| `date_added`                             | ISO date            | yes         | `YYYY-MM-DD`.                                                                                                                             |
+| `date_updated`                           | ISO date            | yes         | `YYYY-MM-DD`, not earlier than `date_added`.                                                                                              |
+
+A performance-only measurement must contain at least one responsivity, EQE,
+response/rise/fall time, bandwidth, or linear-dynamic-range value. It must leave
+`temperature_k`, `bias_v`, `measurement_frequency_hz`, every noise field,
+`detectivity_extraction_method`, `source_location`, `flag`, `amber_reasons`, and
+`amber_explanation` blank. Metric-specific conditions and source fields remain
+available. Such rows are exported with blank D*/noise/status cells and
+`frequency_match_status=not_applicable`.
 
 ### Noise methods
 

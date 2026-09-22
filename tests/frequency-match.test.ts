@@ -72,3 +72,17 @@ test("calculated noise models are outside the frequency-match rule", () => {
     "not_applicable",
   );
 });
+
+test("performance-only records are outside the D* frequency-match rule", () => {
+  assert.equal(
+    deriveFrequencyMatchStatus({
+      noiseMethod: null,
+      measurementFrequencyHz: null,
+      responsivityAW: 0.75,
+      responsivityFrequencyHz: 260,
+      eqePercent: 42,
+      eqeFrequencyHz: 260,
+    }),
+    "not_applicable",
+  );
+});

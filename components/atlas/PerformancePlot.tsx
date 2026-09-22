@@ -145,9 +145,9 @@ function plotDomain(records: readonly AtlasRecord[]): {
   yTicks: number[];
 } {
   const wavelengths = records.map((record) => record.measurement.wavelengthNm);
-  const detectivities = records.map(
-    (record) => record.measurement.detectivityJones,
-  );
+  const detectivities = records
+    .map((record) => record.measurement.detectivityJones)
+    .filter((value): value is number => value !== null);
   const xMin = Math.min(...wavelengths);
   const xMax = Math.max(...wavelengths);
   const xPadding =
@@ -397,7 +397,7 @@ export function PerformancePlot({
       Number.isFinite(record.measurement.wavelengthNm) &&
       record.measurement.wavelengthNm > 0 &&
       Number.isFinite(record.measurement.detectivityJones) &&
-      record.measurement.detectivityJones > 0,
+      (record.measurement.detectivityJones ?? -Infinity) > 0,
   );
 
   if (!validRecords.length) {
@@ -419,7 +419,7 @@ export function PerformancePlot({
   const domain = plotDomain(plottedRecords);
   const data: PlotDatum[] = plottedRecords.map((record) => ({
     wavelength: record.measurement.wavelengthNm,
-    detectivity: record.measurement.detectivityJones,
+    detectivity: record.measurement.detectivityJones as number,
     fill: materialColor(record.device.materialFamily),
     record,
   }));
@@ -441,7 +441,8 @@ export function PerformancePlot({
       (record) => record.device.materialFamily === material,
     );
     const highest = candidates.reduce((best, record) =>
-      record.measurement.detectivityJones > best.measurement.detectivityJones
+      (record.measurement.detectivityJones ?? -Infinity) >
+      (best.measurement.detectivityJones ?? -Infinity)
         ? record
         : best,
     );

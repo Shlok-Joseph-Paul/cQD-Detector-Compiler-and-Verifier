@@ -15,8 +15,8 @@ export const REVIEW_STATUS_LABELS: Record<PublicFlag, string> = {
   amber: "Amber",
 };
 
-export function formatReviewStatus(flag: PublicFlag): string {
-  return REVIEW_STATUS_LABELS[flag];
+export function formatReviewStatus(flag: PublicFlag | null): string {
+  return flag == null ? "Not applicable" : REVIEW_STATUS_LABELS[flag];
 }
 
 export const DETECTOR_CLASS_LABELS: Record<DetectorClass, string> = {
@@ -145,8 +145,10 @@ export function formatWithUnit(
   return formatted === NOT_REPORTED ? formatted : `${formatted} ${unit}`;
 }
 
-export function formatNoiseMethod(method: NoiseMethod): string {
-  return NOISE_METHOD_LABELS[method] ?? humanizeCode(method);
+export function formatNoiseMethod(method: NoiseMethod | null): string {
+  return method == null
+    ? NOT_REPORTED
+    : (NOISE_METHOD_LABELS[method] ?? humanizeCode(method));
 }
 
 export function formatNoiseInstruments(

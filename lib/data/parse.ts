@@ -600,7 +600,7 @@ function parseMeasurements(source: string): ParsedEntity<Measurement> {
       measurement_id: read.requiredString("measurement_id"),
       device_id: read.requiredString("device_id"),
       wavelength_nm: read.requiredNumber("wavelength_nm"),
-      detectivity_jones: read.requiredNumber("detectivity_jones"),
+      detectivity_jones: read.nullableNumber("detectivity_jones"),
       responsivity_a_w: read.nullableNumber("responsivity_a_w"),
       responsivity_wavelength_nm: read.optionalNumber(
         "responsivity_wavelength_nm",
@@ -678,20 +678,21 @@ function parseMeasurements(source: string): ParsedEntity<Measurement> {
         "extended_metrics_review_date",
       ),
       extended_metrics_notes: read.optionalString("extended_metrics_notes"),
-      noise_method: read.oneOf("noise_method", NOISE_METHODS),
+      noise_method: read.optionalOneOf("noise_method", NOISE_METHODS) ?? null,
       noise_instruments: read.list(
         "noise_instruments",
         NOISE_INSTRUMENTS,
       ) as NoiseInstrument[],
       noise_instrument_details: read.nullableString("noise_instrument_details"),
       noise_instrument_source: read.nullableString("noise_instrument_source"),
-      detectivity_extraction_method: read.oneOf(
-        "detectivity_extraction_method",
-        DETECTIVITY_EXTRACTION_METHODS,
-      ),
+      detectivity_extraction_method:
+        read.optionalOneOf(
+          "detectivity_extraction_method",
+          DETECTIVITY_EXTRACTION_METHODS,
+        ) ?? null,
       source_location: read.nullableString("source_location"),
       curator_status: read.oneOf("curator_status", CURATOR_STATUSES),
-      flag: read.oneOf("flag", FLAGS),
+      flag: read.optionalOneOf("flag", FLAGS) ?? null,
       amber_reasons: read.list("amber_reasons", AMBER_REASONS) as AmberReason[],
       amber_explanation: read.nullableString("amber_explanation"),
       curator_notes: read.nullableString("curator_notes"),

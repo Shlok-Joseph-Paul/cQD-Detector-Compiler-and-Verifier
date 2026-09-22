@@ -357,6 +357,7 @@ function definitionLine(label: string, value: string | null): ReactNode {
 }
 
 function DstarConditions({ measurement }: { measurement: AtlasMeasurement }) {
+  if (measurement.detectivityJones === null) return null;
   return conditionLine("D* row", [
     conditionValue("λ", measurement.wavelengthNm, "nm", 2),
     conditionValue("bias", measurement.biasV, "V", 4),
@@ -850,6 +851,7 @@ function TableHeaders({
 
 function DetailsContent({ record }: { record: AtlasRecord }) {
   const { device, measurement } = record;
+  const hasDetectivity = measurement.detectivityJones !== null;
   const detailHref = `/measurements/${encodeURIComponent(
     measurement.measurementId,
   )}`;
@@ -883,18 +885,20 @@ function DetailsContent({ record }: { record: AtlasRecord }) {
           <span>Active area</span>
           <strong>{formatWithUnit(device.activeAreaCm2, "cm²")}</strong>
         </div>
-        <div>
-          <span>D* conditions</span>
-          <strong>
-            {[
-              conditionValue("λ", measurement.wavelengthNm, "nm", 2),
-              conditionValue("bias", measurement.biasV, "V", 4),
-              conditionValue("T", measurement.temperatureK, "K", 2),
-            ]
-              .filter(Boolean)
-              .join(" · ")}
-          </strong>
-        </div>
+        {hasDetectivity ? (
+          <div>
+            <span>D* conditions</span>
+            <strong>
+              {[
+                conditionValue("λ", measurement.wavelengthNm, "nm", 2),
+                conditionValue("bias", measurement.biasV, "V", 4),
+                conditionValue("T", measurement.temperatureK, "K", 2),
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </strong>
+          </div>
+        ) : null}
         <div>
           <span>Responsivity evidence</span>
           <strong>
@@ -931,20 +935,24 @@ function DetailsContent({ record }: { record: AtlasRecord }) {
             )}
           </strong>
         </div>
-        <div>
-          <span>D* extraction / source</span>
-          <strong>
-            {extractionMethodLabel(measurement.detectivityExtractionMethod)} ·{" "}
-            {measurement.sourceLocation || NOT_REPORTED}
-          </strong>
-        </div>
-        <div>
-          <span>Noise instrument chain</span>
-          <strong>
-            {measurement.noiseInstrumentDetails ||
-              formatNoiseInstruments(measurement.noiseInstruments)}
-          </strong>
-        </div>
+        {hasDetectivity ? (
+          <>
+            <div>
+              <span>D* extraction / source</span>
+              <strong>
+                {extractionMethodLabel(measurement.detectivityExtractionMethod)}{" "}
+                · {measurement.sourceLocation || NOT_REPORTED}
+              </strong>
+            </div>
+            <div>
+              <span>Noise instrument chain</span>
+              <strong>
+                {measurement.noiseInstrumentDetails ||
+                  formatNoiseInstruments(measurement.noiseInstruments)}
+              </strong>
+            </div>
+          </>
+        ) : null}
         <div>
           <span>Extended-metrics review</span>
           <strong>
@@ -959,14 +967,18 @@ function DetailsContent({ record }: { record: AtlasRecord }) {
         </div>
       </div>
       <div className="measurement-table__details-actions">
-        <div>
-          <FlagBadge flag={measurement.flag} />
-          <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
-          <FrequencyMatchBadge measurement={measurement} />
-          <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
-        </div>
-        <AmberReasons measurement={measurement} compact />
-        <ProvisionalNotice measurement={measurement} compact />
+        {hasDetectivity ? (
+          <>
+            <div>
+              <FlagBadge flag={measurement.flag} />
+              <ShotNoiseBadge noiseMethod={measurement.noiseMethod} />
+              <FrequencyMatchBadge measurement={measurement} />
+              <ProvisionalBadge curatorStatus={measurement.curatorStatus} />
+            </div>
+            <AmberReasons measurement={measurement} compact />
+            <ProvisionalNotice measurement={measurement} compact />
+          </>
+        ) : null}
         <Link href={detailHref}>View complete record →</Link>
       </div>
     </>
@@ -984,9 +996,18 @@ export function MetricMeasurementTable({
   const activeSort = VIEW_SORT_KEYS[activeView].includes(sort.key)
     ? sort
     : DEFAULT_SORT[activeView];
+  const recordsInView = useMemo(
+    () =>
+      activeView === "overview" || activeView === "methods"
+        ? records.filter(
+            (record) => record.measurement.detectivityJones !== null,
+          )
+        : [...records],
+    [activeView, records],
+  );
   const sorted = useMemo(
-    () => sortAtlasRecords(records, activeSort),
-    [records, activeSort],
+    () => sortAtlasRecords(recordsInView, activeSort),
+    [recordsInView, activeSort],
   );
   const currentViewOption = TABLE_VIEWS.find(
     (option) => option.value === activeView,
@@ -1031,9 +1052,12 @@ export function MetricMeasurementTable({
           <p className="section-kicker">Curated records</p>
           <h2 id="measurement-table-title">Measurement index</h2>
           <p>
-            {records.length} filtered{" "}
-            {records.length === 1 ? "record" : "records"}; expand a row for
-            device and provenance details.
+            {sorted.length} filtered{" "}
+            {sorted.length === 1 ? "record" : "records"}
+            {sorted.length !== records.length
+              ? ` (${records.length - sorted.length} performance-only ${records.length - sorted.length === 1 ? "record" : "records"} excluded from this D* view)`
+              : ""}
+            ; expand a row for device and provenance details.
           </p>
           <p className="measurement-table-section__audit-note">
             Missing metrics retain their review state; unchecked and unavailable

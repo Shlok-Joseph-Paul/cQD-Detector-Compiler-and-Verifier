@@ -58,7 +58,11 @@ export default async function MaterialDetailPage({ params }: PageProps) {
             {summary.paperCount === 1 ? "" : "s"}, spanning{" "}
             {summary.wavelengthMinNm.toLocaleString()}–
             {summary.wavelengthMaxNm.toLocaleString()} nm. Its highest listed D*
-            is {formatScientific(summary.highestDetectivityJones)} Jones.
+            is{" "}
+            {summary.highestDetectivityJones === null
+              ? "not reported"
+              : `${formatScientific(summary.highestDetectivityJones)} Jones`}
+            .
           </p>
         </div>
       </section>

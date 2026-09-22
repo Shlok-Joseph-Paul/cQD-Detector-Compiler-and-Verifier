@@ -57,11 +57,14 @@ export default async function PaperPage({ params }: PageProps) {
   const materials = [
     ...new Set(devices.map((device) => device.material_family)),
   ];
-  const confirmedRecords = reviewedRecords(records);
-  const highestDetectivity = confirmedRecords.length
+  const dStarRecords = records.filter(
+    (record) => record.measurement.detectivityJones !== null,
+  );
+  const confirmedDStarRecords = reviewedRecords(dStarRecords);
+  const highestDetectivity = confirmedDStarRecords.length
     ? Math.max(
-        ...confirmedRecords.map(
-          (record) => record.measurement.detectivityJones,
+        ...confirmedDStarRecords.map(
+          (record) => record.measurement.detectivityJones as number,
         ),
       )
     : null;
@@ -159,7 +162,9 @@ export default async function PaperPage({ params }: PageProps) {
               <dt>Highest D*</dt>
               <dd>
                 {highestDetectivity === null
-                  ? "Pending review"
+                  ? dStarRecords.length > 0
+                    ? "Pending review"
+                    : "Not reported"
                   : formatScientific(highestDetectivity)}
               </dd>
             </div>
@@ -178,13 +183,15 @@ export default async function PaperPage({ params }: PageProps) {
             The atlas links {records.length} reported measurement
             {records.length === 1 ? "" : "s"} to {devices.length} distinct
             device{devices.length === 1 ? "" : "s"}.{" "}
-            {!records.length
-              ? "Device metadata is retained, but no wavelength-resolved measurements are included. See the paper notes for the reporting limitations."
+            {dStarRecords.length === 0
+              ? records.length > 0
+                ? "The listed operating points are performance-only and intentionally carry no D* evidence status."
+                : "No measurement row is listed because the source does not establish a securely attributable operating point for the headline D*."
               : amberCount
                 ? `${amberCount} measurement${amberCount === 1 ? " is" : "s are"} amber.${unverifiedCount ? ` ${unverifiedCount} additional measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.` : ""}`
                 : unverifiedCount
                   ? `${unverifiedCount} measurement${unverifiedCount === 1 ? " is" : "s are"} unverified because the signal/noise frequency match is not established.`
-                  : "All listed measurements currently carry a green review status."}
+                  : "All listed D* measurements currently carry a green review status."}
           </p>
         </section>
 
@@ -279,94 +286,148 @@ export default async function PaperPage({ params }: PageProps) {
                   </div>
                 </dl>
 
-                <div
-                  className="paper-measurements__scroll"
-                  role="region"
-                  aria-label={`Measurements for ${device.device_id}`}
-                  tabIndex={0}
-                >
-                  <table className="paper-measurements">
-                    <thead>
-                      <tr>
-                        <th scope="col">Wavelength</th>
-                        <th scope="col">Detectivity</th>
-                        <th scope="col">Conditions</th>
-                        <th scope="col">Noise basis</th>
-                        <th scope="col">Review</th>
-                        <th scope="col">Source</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {deviceRecords.length === 0 ? (
+                {deviceRecords.length ? (
+                  <div
+                    className="paper-measurements__scroll"
+                    role="region"
+                    aria-label={`Measurements for ${device.device_id}`}
+                    tabIndex={0}
+                  >
+                    <table className="paper-measurements">
+                      <thead>
                         <tr>
-                          <td colSpan={6}>
-                            No wavelength-resolved measurements are included for
-                            this device. See the paper notes below.
-                          </td>
+                          <th scope="col">Wavelength</th>
+                          <th scope="col">Detectivity</th>
+                          <th scope="col">Responsivity</th>
+                          <th scope="col">EQE</th>
+                          <th scope="col">Rise / fall</th>
+                          <th scope="col">Conditions</th>
+                          <th scope="col">Noise basis</th>
+                          <th scope="col">Review</th>
+                          <th scope="col">Source</th>
                         </tr>
-                      ) : null}
-                      {deviceRecords.map((record) => (
-                        <tr
-                          className={
-                            record.measurement.flag === "amber"
-                              ? "is-amber"
-                              : record.measurement.flag === "unverified"
-                                ? "is-unverified"
-                                : undefined
-                          }
-                          key={record.measurement.measurementId}
-                        >
-                          <td>
-                            <Link
-                              href={`/measurements/${encodeURIComponent(record.measurement.measurementId)}`}
-                            >
+                      </thead>
+                      <tbody>
+                        {deviceRecords.map((record) => (
+                          <tr
+                            className={
+                              record.measurement.flag === "amber"
+                                ? "is-amber"
+                                : record.measurement.flag === "unverified"
+                                  ? "is-unverified"
+                                  : undefined
+                            }
+                            key={record.measurement.measurementId}
+                          >
+                            <td>
+                              <Link
+                                href={`/measurements/${encodeURIComponent(record.measurement.measurementId)}`}
+                              >
+                                {formatWithUnit(
+                                  record.measurement.wavelengthNm,
+                                  "nm",
+                                )}
+                              </Link>
+                            </td>
+                            <td>
+                              {record.measurement.detectivityJones === null
+                                ? NOT_REPORTED
+                                : `${formatScientific(record.measurement.detectivityJones)} Jones`}
+                            </td>
+                            <td>
                               {formatWithUnit(
-                                record.measurement.wavelengthNm,
-                                "nm",
+                                record.measurement.responsivityAW,
+                                "A W⁻¹",
                               )}
-                            </Link>
-                          </td>
-                          <td>
-                            {formatScientific(
-                              record.measurement.detectivityJones,
-                            )}{" "}
-                            Jones
-                          </td>
-                          <td>
-                            {formatWithUnit(
-                              record.measurement.temperatureK,
-                              "K",
-                            )}{" "}
-                            · {formatWithUnit(record.measurement.biasV, "V")}
-                          </td>
-                          <td>
-                            {formatNoiseMethod(record.measurement.noiseMethod)}
-                            <small className="paper-measurements__instrument">
-                              {formatNoiseInstruments(
-                                record.measurement.noiseInstruments,
+                            </td>
+                            <td>
+                              {formatWithUnit(
+                                record.measurement.eqePercent,
+                                "%",
                               )}
-                            </small>
-                            <ShotNoiseBadge
-                              noiseMethod={record.measurement.noiseMethod}
-                            />
-                          </td>
-                          <td>
-                            <FlagBadge flag={record.measurement.flag} />
-                            <FrequencyMatchBadge
-                              measurement={record.measurement}
-                            />
-                            <ProvisionalBadge
-                              curatorStatus={record.measurement.curatorStatus}
-                            />
-                          </td>
-                          <td>
-                            {record.measurement.sourceLocation || NOT_REPORTED}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                            </td>
+                            <td>
+                              {formatWithUnit(
+                                record.measurement.riseTimeS,
+                                "s",
+                              )}{" "}
+                              /{" "}
+                              {formatWithUnit(
+                                record.measurement.fallTimeS,
+                                "s",
+                              )}
+                            </td>
+                            <td>
+                              {record.measurement.detectivityJones === null ? (
+                                NOT_REPORTED
+                              ) : (
+                                <>
+                                  {formatWithUnit(
+                                    record.measurement.temperatureK,
+                                    "K",
+                                  )}{" "}
+                                  ·{" "}
+                                  {formatWithUnit(
+                                    record.measurement.biasV,
+                                    "V",
+                                  )}
+                                </>
+                              )}
+                            </td>
+                            <td>
+                              {record.measurement.detectivityJones === null ? (
+                                NOT_REPORTED
+                              ) : (
+                                <>
+                                  {formatNoiseMethod(
+                                    record.measurement.noiseMethod,
+                                  )}
+                                  <small className="paper-measurements__instrument">
+                                    {formatNoiseInstruments(
+                                      record.measurement.noiseInstruments,
+                                    )}
+                                  </small>
+                                  <ShotNoiseBadge
+                                    noiseMethod={record.measurement.noiseMethod}
+                                  />
+                                </>
+                              )}
+                            </td>
+                            <td>
+                              {record.measurement.detectivityJones === null ? (
+                                NOT_REPORTED
+                              ) : (
+                                <>
+                                  <FlagBadge flag={record.measurement.flag} />
+                                  <FrequencyMatchBadge
+                                    measurement={record.measurement}
+                                  />
+                                  <ProvisionalBadge
+                                    curatorStatus={
+                                      record.measurement.curatorStatus
+                                    }
+                                  />
+                                </>
+                              )}
+                            </td>
+                            <td>
+                              {record.measurement.sourceLocation ||
+                                record.measurement.responsivitySourceLocation ||
+                                record.measurement.responseTimeSourceLocation ||
+                                NOT_REPORTED}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <p className="paper-device__notes">
+                    No measurement row is published because the available source
+                    does not securely assign the headline D* to a complete
+                    operating point.
+                  </p>
+                )}
                 {device.device_notes ? (
                   <p className="paper-device__notes">
                     <strong>Device notes:</strong> {device.device_notes}

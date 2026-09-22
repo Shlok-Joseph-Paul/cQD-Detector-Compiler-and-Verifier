@@ -13,7 +13,7 @@ const includedRecords = [
   "Experimental solution-processed colloidal quantum-dot photodiodes, photoconductors, and phototransistors.",
   "Experimental metal-halide perovskite photodiodes, photoconductors, and phototransistors, including 3D, 2D, quasi-2D, mixed-halide, lead, tin, and lead-free absorbers.",
   "Peer-reviewed primary papers and clearly identified preprints.",
-  "Measurements for which a specific detectivity and measurement wavelength can be identified.",
+  "D* measurements for which a specific detectivity and wavelength can be identified, plus performance-only rows with securely attributable responsivity, EQE, speed, bandwidth, or linearity.",
   "Distinct operating points from the same device when the publication reports them separately.",
 ];
 
@@ -93,9 +93,12 @@ export default function MethodologyPage() {
             <p>
               An in-scope device is an experimental photodiode, photoconductor,
               or phototransistor whose absorber is either solution-processed
-              colloidal quantum dots or a metal-halide perovskite. A record must
-              report specific detectivity, D<sup>*</sup>, in Jones (cm Hz
-              <sup>1/2</sup> W<sup>−1</sup>).
+              colloidal quantum dots or a metal-halide perovskite. The primary
+              measurement model reports specific detectivity, D<sup>*</sup>, in
+              Jones (cm Hz<sup>1/2</sup> W<sup>−1</sup>) at an identifiable
+              wavelength. A performance-only row may instead preserve a secure
+              responsivity, EQE, temporal-response, bandwidth, or linearity
+              result when no D* is established for that operating point.
             </p>
 
             <div className="method-grid">
@@ -144,10 +147,19 @@ export default function MethodologyPage() {
                 method.
               </li>
               <li>
-                <strong>Measurement</strong> stores one reported D<sup>*</sup>
-                value and its operating conditions.
+                <strong>Measurement</strong> stores either one reported D
+                <sup>*</sup> value and its operating/noise provenance or a
+                performance-only set of non-D* metrics and metric-specific
+                provenance.
               </li>
             </ol>
+            <p>
+              Performance-only rows leave all D*-specific conditions, noise
+              provenance, extraction fields, and green/unverified/amber status
+              blank. They appear in applicable optical and speed views, but not
+              in D* plots, rankings, methods tables, noise summaries, or status
+              summaries.
+            </p>
             <p>
               Consequently, several points can legitimately link to the same
               paper or device. Each point on the performance map represents one
@@ -289,7 +301,9 @@ export default function MethodologyPage() {
             <p>
               Flags communicate documentation and comparability, not a ranking
               of scientific quality. Three public levels are used, with
-              precedence amber → unverified → green.
+              precedence amber → unverified → green. These levels apply only to
+              records that report D*; performance-only rows carry no D* evidence
+              status.
             </p>
 
             <div className="flag-policy-grid">

@@ -175,7 +175,8 @@ export interface Measurement {
   measurement_id: string;
   device_id: string;
   wavelength_nm: number;
-  detectivity_jones: number;
+  /** Null for performance-only records that intentionally omit D*. */
+  detectivity_jones: number | null;
   responsivity_a_w: number | null;
   responsivity_wavelength_nm?: number | null;
   responsivity_bias_v?: number | null;
@@ -212,14 +213,16 @@ export interface Measurement {
   extended_metrics_review_status?: ExtendedMetricsReviewStatus;
   extended_metrics_review_date?: string | null;
   extended_metrics_notes?: string | null;
-  noise_method: NoiseMethod;
+  /** D*-specific provenance; null when detectivity_jones is null. */
+  noise_method: NoiseMethod | null;
   noise_instruments: NoiseInstrument[];
   noise_instrument_details: string | null;
   noise_instrument_source: string | null;
-  detectivity_extraction_method: DetectivityExtractionMethod;
+  detectivity_extraction_method: DetectivityExtractionMethod | null;
   source_location: string | null;
   curator_status: CuratorStatus;
-  flag: Flag;
+  /** Public D* evidence status; null for performance-only records. */
+  flag: Flag | null;
   amber_reasons: AmberReason[];
   /** Curator-written context. Required for amber; null otherwise. */
   amber_explanation: string | null;
@@ -243,7 +246,7 @@ export interface JoinedMeasurement {
 }
 
 export interface AtlasData extends AtlasEntities {
-  schema_version: 7;
+  schema_version: 8;
   /** Human-facing release identifier for reproducible exports and citations. */
   dataset_version: string;
   /** Deterministic ISO timestamp derived from the latest `date_updated`. */

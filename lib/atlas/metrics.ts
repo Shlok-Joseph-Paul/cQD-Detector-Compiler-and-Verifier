@@ -183,9 +183,27 @@ export function recordsWithMetricPair(
 export function recordsForPlotScope(
   records: readonly AtlasRecord[],
   scope: AtlasPlotScope,
+  metric: AtlasMetricKey = "detectivity",
 ): AtlasRecord[] {
   const reviewed = reviewedRecords(records);
-  return scope === "paper_maxima" ? maxDetectivityPerPaper(reviewed) : reviewed;
+  if (scope === "all_measurements") return reviewed;
+  if (metric === "detectivity") return maxDetectivityPerPaper(reviewed);
+
+  const bestByPaper = new Map<string, AtlasRecord>();
+  for (const record of reviewed) {
+    const value = metricValue(record, metric);
+    if (!isPlottableMetricValue(value, metric)) continue;
+    const current = bestByPaper.get(record.paper.paperId);
+    const currentValue = current ? metricValue(current, metric) : null;
+    if (
+      !current ||
+      !isPlottableMetricValue(currentValue, metric) ||
+      value > currentValue
+    ) {
+      bestByPaper.set(record.paper.paperId, record);
+    }
+  }
+  return [...bestByPaper.values()];
 }
 
 export function availablePlotPresets(records: readonly AtlasRecord[]) {

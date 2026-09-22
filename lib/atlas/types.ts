@@ -97,7 +97,7 @@ export interface AtlasMeasurement {
   measurementId: string;
   deviceId: string;
   wavelengthNm: number;
-  detectivityJones: number;
+  detectivityJones: number | null;
   responsivityAW: number | null;
   responsivityWavelengthNm: number | null;
   responsivityBiasV: number | null;
@@ -135,14 +135,14 @@ export interface AtlasMeasurement {
   extendedMetricsReviewStatus: string;
   extendedMetricsReviewDate: string | null;
   extendedMetricsNotes: string | null;
-  noiseMethod: NoiseMethod;
+  noiseMethod: NoiseMethod | null;
   noiseInstruments: NoiseInstrument[];
   noiseInstrumentDetails: string | null;
   noiseInstrumentSource: string | null;
   detectivityExtractionMethod: string | null;
   sourceLocation: string | null;
   curatorStatus: AtlasCuratorStatus;
-  flag: PublicFlag;
+  flag: PublicFlag | null;
   amberReasons: string[];
   amberExplanation: string | null;
   curatorNotes: string | null;
@@ -296,17 +296,19 @@ function section(root: UnknownRecord, key: string): UnknownRecord {
   return isRecord(nested) ? nested : root;
 }
 
-function noiseMethodValue(source: UnknownRecord): NoiseMethod {
+function noiseMethodValue(source: UnknownRecord): NoiseMethod | null {
   const candidate = textValue(source, ["noise_method", "noiseMethod"]);
   return NOISE_METHODS.includes(candidate as NoiseMethod)
     ? (candidate as NoiseMethod)
-    : "unspecified";
+    : null;
 }
 
-function flagValue(source: UnknownRecord): PublicFlag {
+function flagValue(source: UnknownRecord): PublicFlag | null {
   const value = textValue(source, ["flag"]).toLowerCase();
-  if (value === "green" || value === "unverified") return value;
-  return "amber";
+  if (value === "green" || value === "unverified" || value === "amber") {
+    return value;
+  }
+  return null;
 }
 
 /** Normalize either nested or flattened JoinedMeasurement records. */
@@ -424,7 +426,7 @@ export function normalizeJoinedMeasurement(
       ]),
       deviceId: textValue(measurement, ["device_id", "deviceId"]),
       wavelengthNm: numberValue(measurement, ["wavelength_nm", "wavelengthNm"]),
-      detectivityJones: numberValue(measurement, [
+      detectivityJones: nullableNumber(measurement, [
         "detectivity_jones",
         "detectivityJones",
       ]),

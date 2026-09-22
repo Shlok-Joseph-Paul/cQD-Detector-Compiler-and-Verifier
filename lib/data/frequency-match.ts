@@ -26,8 +26,10 @@ export function deriveFrequencyMatchStatus({
   eqePercent,
   eqeFrequencyHz,
 }: FrequencyMatchInput): FrequencyMatchStatus {
+  if (noiseMethod === null) return "not_applicable";
+
   if (
-    noiseMethod != null &&
+    noiseMethod !== undefined &&
     noiseMethod !== "measured_noise" &&
     noiseMethod !== "unspecified"
   ) {

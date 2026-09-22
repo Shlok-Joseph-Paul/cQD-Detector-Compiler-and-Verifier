@@ -17,32 +17,37 @@ export const metadata: Metadata = {
 
 export default function CoveragePage() {
   const records = atlasData.records.map(normalizeJoinedMeasurement);
-  const papers = new Set(records.map((record) => record.paper.paperId));
-  const devices = new Set(records.map((record) => record.device.deviceId));
+  const papers = new Set(atlasData.papers.map((paper) => paper.paper_id));
+  const devices = new Set(atlasData.devices.map((device) => device.device_id));
+  const dStarRecords = records.filter(
+    (record) => record.measurement.detectivityJones !== null,
+  );
   const materialCoverage = countBy(
     records,
     (record) => record.device.materialFamily,
   );
-  const noiseCoverage = countBy(records, (record) =>
+  const noiseCoverage = countBy(dStarRecords, (record) =>
     formatNoiseMethod(record.measurement.noiseMethod),
   );
-  const reviewCoverage = countBy(records, (record) =>
+  const reviewCoverage = countBy(dStarRecords, (record) =>
     formatReviewStatus(record.measurement.flag),
   );
   const yearCoverage = countBy(atlasData.papers, (paper) =>
     String(paper.publication_year),
   ).sort((left, right) => Number(left.label) - Number(right.label));
   const completeness = reportingCoverage(records);
-  const amberCount = records.filter(
+  const amberCount = dStarRecords.filter(
     (record) => record.measurement.flag === "amber",
   ).length;
-  const unverifiedCount = records.filter(
+  const unverifiedCount = dStarRecords.filter(
     (record) => record.measurement.flag === "unverified",
   ).length;
   const paperFlags = new Map<string, Set<string>>();
-  for (const record of records) {
+  for (const record of dStarRecords) {
     const flags = paperFlags.get(record.paper.paperId) ?? new Set<string>();
-    flags.add(record.measurement.flag);
+    if (record.measurement.flag !== null) {
+      flags.add(record.measurement.flag);
+    }
     paperFlags.set(record.paper.paperId, flags);
   }
   const amberPaperCount = [...paperFlags.values()].filter((flags) =>
@@ -51,18 +56,19 @@ export default function CoveragePage() {
   const unverifiedPaperCount = [...paperFlags.values()].filter(
     (flags) => !flags.has("amber") && flags.has("unverified"),
   ).length;
-  const greenPaperCount = papers.size - amberPaperCount - unverifiedPaperCount;
-  const measuredNoiseCount = records.filter(
+  const greenPaperCount =
+    paperFlags.size - amberPaperCount - unverifiedPaperCount;
+  const measuredNoiseCount = dStarRecords.filter(
     (record) => record.measurement.noiseMethod === "measured_noise",
   ).length;
   const pendingReviewCount = records.filter(
     (record) => record.measurement.curatorStatus === "pending_review",
   ).length;
   const latestYear = Math.max(
-    ...records.map((record) => record.paper.publicationYear),
+    ...atlasData.papers.map((paper) => paper.publication_year),
   );
   const earliestYear = Math.min(
-    ...records.map((record) => record.paper.publicationYear),
+    ...atlasData.papers.map((paper) => paper.publication_year),
   );
 
   return (

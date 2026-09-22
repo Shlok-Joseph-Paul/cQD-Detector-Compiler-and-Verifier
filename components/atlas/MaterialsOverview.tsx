@@ -35,7 +35,7 @@ const DEFAULT_SORT: MaterialSortState = {
 function sortValue(
   summary: MaterialSummary,
   key: MaterialSortKey,
-): string | number {
+): string | number | null {
   switch (key) {
     case "material":
       return summary.material;
@@ -72,7 +72,7 @@ function sortSummaries(
             numeric: true,
             sensitivity: "base",
           })
-        : Number(leftValue) - Number(rightValue);
+        : Number(leftValue ?? -Infinity) - Number(rightValue ?? -Infinity);
 
     return comparison === 0
       ? left.material.localeCompare(right.material, undefined, {
@@ -166,7 +166,8 @@ function TopMaterialsChart({
           <h2 id="materials-chart-title">Most-studied materials</h2>
           <p>
             Top ten absorber families by unique papers. Status uses the most
-            cautious reviewed measurement in each paper.
+            cautious reviewed D* measurement in each paper; performance-only
+            papers leave the corresponding bar segment unfilled.
           </p>
         </div>
         <div
@@ -195,7 +196,7 @@ function TopMaterialsChart({
               <Link
                 className="materials-chart__row"
                 href={`/materials/${encodeURIComponent(summary.material)}`}
-                aria-label={`${summary.material}: ${paperLabel}; ${summary.greenPaperCount} green, ${summary.unverifiedPaperCount} unverified, and ${summary.amberPaperCount} amber`}
+                aria-label={`${summary.material}: ${paperLabel}; ${summary.greenPaperCount} green, ${summary.unverifiedPaperCount} unverified, ${summary.amberPaperCount} amber, and ${summary.paperCount - summary.greenPaperCount - summary.unverifiedPaperCount - summary.amberPaperCount} without a D* status`}
               >
                 <span className="materials-chart__label">
                   <MaterialLabel value={summary.material} />
@@ -280,7 +281,8 @@ export function MaterialsOverview({
           </div>
           <p>
             {summaries.length} materials. Frequency mismatch is an overlapping
-            subset of amber, not a separate review status.
+            subset of amber, not a separate review status. Evidence-status
+            counts exclude performance-only papers.
           </p>
         </div>
 
@@ -415,7 +417,9 @@ export function MaterialsOverview({
                     data-label="Highest D*"
                     className="materials-table__detectivity"
                   >
-                    {formatScientific(summary.highestDetectivityJones)} Jones
+                    {summary.highestDetectivityJones === null
+                      ? "Not reported"
+                      : `${formatScientific(summary.highestDetectivityJones)} Jones`}
                   </td>
                 </tr>
               ))}

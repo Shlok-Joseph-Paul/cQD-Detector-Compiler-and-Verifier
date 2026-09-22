@@ -415,8 +415,9 @@ export function DiscoveryQueueClient({
                             <strong>{measurement.wavelength_nm} nm</strong>
                             <span>
                               D*{" "}
-                              {measurement.detectivity_jones.toExponential(2)}{" "}
-                              Jones
+                              {measurement.detectivity_jones == null
+                                ? "Not reported"
+                                : `${measurement.detectivity_jones.toExponential(2)} Jones`}
                             </span>
                             <span>
                               {measurement.flag} · {measurement.noise_method}

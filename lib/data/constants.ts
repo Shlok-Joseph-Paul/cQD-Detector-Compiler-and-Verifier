@@ -18,7 +18,7 @@ export const NOISE_METHOD_LABELS: Record<NoiseMethod, string> = {
 };
 
 /** True only when a source explicitly reports experimentally measured noise. */
-export function isMeasuredNoiseMethod(method: NoiseMethod): boolean {
+export function isMeasuredNoiseMethod(method: NoiseMethod | null): boolean {
   return method === "measured_noise";
 }
 

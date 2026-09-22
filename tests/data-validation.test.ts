@@ -96,9 +96,9 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     readFile(new URL("measurements.csv", dataDirectory), "utf8"),
   ]);
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
-  assert.equal(atlas.schema_version, 7);
+  assert.equal(atlas.schema_version, 8);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 280);
+  assert.equal(atlas.measurements.length, 284);
   assert.equal(atlas.records.length, atlas.measurements.length);
   const approvedPaperIds = new Set([
     "wei-2026-pbs-ligand-engineering",
@@ -115,7 +115,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   );
   for (const { paper: source, measurement: point } of approvedRecords) {
     assert.equal(point.curator_status, "reviewed");
-    assert.ok(point.detectivity_jones > 0);
+    assert.ok(point.detectivity_jones !== null && point.detectivity_jones > 0);
     assert.equal(point.flag, "amber");
     assert.equal(point.noise_method, "shot_noise_approximation");
     assert.deepEqual(point.noise_instruments, ["not_applicable"]);
@@ -169,7 +169,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 156);
+  assert.equal(amberRecords.length, 158);
   const unverifiedRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "unverified",
   );
@@ -182,7 +182,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
     ).length,
-    104,
+    106,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -225,12 +225,12 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const flagsByPaper = new Map<string, Set<string>>();
   for (const record of atlas.records) {
     const flags = flagsByPaper.get(record.paper.paper_id) ?? new Set<string>();
-    flags.add(record.measurement.flag);
+    if (record.measurement.flag !== null) flags.add(record.measurement.flag);
     flagsByPaper.set(record.paper.paper_id, flags);
   }
   assert.equal(
     [...flagsByPaper.values()].filter((flags) => flags.has("amber")).length,
-    61,
+    62,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(
@@ -240,7 +240,8 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   );
   assert.equal(
     [...flagsByPaper.values()].filter(
-      (flags) => !flags.has("amber") && !flags.has("unverified"),
+      (flags) =>
+        !flags.has("amber") && !flags.has("unverified") && flags.has("green"),
     ).length,
     18,
   );
@@ -649,5 +650,43 @@ test("CSV conversion errors identify both the physical row and field", () => {
       assert.match(error.message, /finite number/);
       return true;
     },
+  );
+});
+
+test("performance-only rows require a metric and forbid D* provenance", () => {
+  const valid = entities({
+    detectivity_jones: null,
+    responsivity_a_w: 0.75,
+    temperature_k: null,
+    bias_v: null,
+    measurement_frequency_hz: null,
+    noise_method: null,
+    noise_instruments: [],
+    noise_instrument_details: null,
+    noise_instrument_source: null,
+    detectivity_extraction_method: null,
+    source_location: null,
+    flag: null,
+  });
+  assert.equal(validateAtlasEntities(valid).valid, true);
+
+  const noMetric = entities({
+    ...valid.measurements[0],
+    responsivity_a_w: null,
+  });
+  assert.ok(
+    validateAtlasEntities(noMetric).issues.some(
+      (problem) => problem.code === "performance_metric_required",
+    ),
+  );
+
+  const fakeStatus = entities({
+    ...valid.measurements[0],
+    flag: "green",
+  });
+  assert.ok(
+    validateAtlasEntities(fakeStatus).issues.some(
+      (problem) => problem.code === "dstar_provenance_without_dstar",
+    ),
   );
 });

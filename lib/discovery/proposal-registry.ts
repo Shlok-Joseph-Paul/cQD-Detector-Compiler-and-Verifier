@@ -40,7 +40,10 @@ export function validateProposal(proposal: StagedPaperProposal): string[] {
       errors.push(`${measurement.measurement_id}: unknown device`);
     if (!(measurement.wavelength_nm > 0))
       errors.push(`${measurement.measurement_id}: wavelength must be positive`);
-    if (!(measurement.detectivity_jones > 0))
+    if (
+      measurement.detectivity_jones === null ||
+      !(measurement.detectivity_jones > 0)
+    )
       errors.push(
         `${measurement.measurement_id}: detectivity must be positive`,
       );

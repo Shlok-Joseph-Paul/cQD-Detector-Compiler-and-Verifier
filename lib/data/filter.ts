@@ -99,7 +99,7 @@ export function filterAtlasRecords(
 function sortValue(
   record: JoinedMeasurement,
   field: AtlasSortField,
-): number | string {
+): number | string | null {
   switch (field) {
     case "detectivity_jones":
       return record.measurement.detectivity_jones;
@@ -123,6 +123,10 @@ export function sortAtlasRecords(
     .sort((left, right) => {
       const leftValue = sortValue(left.record, field);
       const rightValue = sortValue(right.record, field);
+      if (leftValue === null && rightValue === null)
+        return left.index - right.index;
+      if (leftValue === null) return 1;
+      if (rightValue === null) return -1;
       const comparison =
         typeof leftValue === "number" && typeof rightValue === "number"
           ? leftValue - rightValue
@@ -156,7 +160,7 @@ export interface MaterialSummary {
   measurement_count: number;
   wavelength_min_nm: number;
   wavelength_max_nm: number;
-  highest_detectivity_jones: number;
+  highest_detectivity_jones: number | null;
   measured_noise_percent: number;
   shot_noise_percent: number;
 }
@@ -176,14 +180,17 @@ export function summarizeMaterials(
       const wavelengths = materialRecords.map(
         (record) => record.measurement.wavelength_nm,
       );
-      const detectivities = materialRecords.map(
-        (record) => record.measurement.detectivity_jones,
+      const dStarRecords = materialRecords.filter(
+        (record) => record.measurement.detectivity_jones !== null,
       );
-      const denominator = materialRecords.length;
-      const measuredCount = materialRecords.filter((record) =>
+      const detectivities = dStarRecords.map(
+        (record) => record.measurement.detectivity_jones as number,
+      );
+      const denominator = dStarRecords.length;
+      const measuredCount = dStarRecords.filter((record) =>
         isMeasuredNoiseMethod(record.measurement.noise_method),
       ).length;
-      const shotCount = materialRecords.filter(
+      const shotCount = dStarRecords.filter(
         (record) =>
           record.measurement.noise_method === "shot_noise_approximation",
       ).length;
@@ -192,12 +199,15 @@ export function summarizeMaterials(
         paper_count: new Set(
           materialRecords.map((record) => record.paper.paper_id),
         ).size,
-        measurement_count: denominator,
+        measurement_count: materialRecords.length,
         wavelength_min_nm: Math.min(...wavelengths),
         wavelength_max_nm: Math.max(...wavelengths),
-        highest_detectivity_jones: Math.max(...detectivities),
-        measured_noise_percent: (measuredCount / denominator) * 100,
-        shot_noise_percent: (shotCount / denominator) * 100,
+        highest_detectivity_jones:
+          detectivities.length > 0 ? Math.max(...detectivities) : null,
+        measured_noise_percent:
+          denominator === 0 ? 0 : (measuredCount / denominator) * 100,
+        shot_noise_percent:
+          denominator === 0 ? 0 : (shotCount / denominator) * 100,
       };
     })
     .sort((left, right) =>

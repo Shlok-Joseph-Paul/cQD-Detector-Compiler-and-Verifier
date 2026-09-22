@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.24.0";
+export const DATASET_VERSION = "1.25.0";
 export const DATASET_RELEASE_DATE = "2026-09-21";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Ag2Se performance records and CuSCN PbS review candidates",
+    summary:
+      "Adds two approved Ag2Se performance-only measurements and two shot-noise PbS detectivity candidates with an explicit attribution review hold.",
+    changes: [
+      "Added two papers, six device variants, and four measurements from Graddage et al. and Ka et al. (2020).",
+      "Enabled performance-only records across validation, optical and speed views, exports, paper pages, and coverage without inventing D* values or evidence flags.",
+      "Preserved Ag2Se responsivity of 0.00417 A/W at 1200 nm, instrument-limited 0.21/0.24 s rise/fall times, and the no-HTL control EQE of 0.08% at 1100 nm; bias remains unknown.",
+      "Retained Ka's prose-reported 5e10/7e10-Jones CuSCN/Ag and CuSCN/Au values near 1250 nm and -1 V as amber shot-noise estimates pending review because Figure 5b reverses the NIR curve ordering.",
+      "Kept pending-review detectivities out of rankings and performance plots, preserved unavailable supplements, and left all unsupported metrics blank.",
+    ],
+  },
+  {
+    version: "1.24.0",
+    date: "2026-09-21",
     title: "CuOx and quantum-funnel PbS photodiodes",
     summary:
       "Adds four approved PbS photodiodes from Yu et al. (2016) and Kim et al. (2015), preserving reported values and noise-method cautions.",

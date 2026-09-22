@@ -573,7 +573,7 @@ function summaryMarkdown(review: InboxReviewPackage): string {
     ? proposal.proposedMeasurements
         .map(
           (measurement) =>
-            `- ${measurement.measurement_id}: ${measurement.wavelength_nm} nm, D* ${measurement.detectivity_jones.toExponential(3)} Jones, ${measurement.noise_method}, ${measurement.source_location ?? "source location missing"}`,
+            `- ${measurement.measurement_id}: ${measurement.wavelength_nm} nm, D* ${measurement.detectivity_jones?.toExponential(3) ?? "not reported"} Jones, ${measurement.noise_method ?? "noise method not reported"}, ${measurement.source_location ?? "source location missing"}`,
         )
         .join("\n")
     : "- No measurement candidates were extracted.";

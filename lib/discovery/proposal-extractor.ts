@@ -658,6 +658,7 @@ export function extractStagedProposal(
       const existing = proposedMeasurements.some(
         (measurement) =>
           measurement.wavelength_nm === wavelengthNm &&
+          measurement.detectivity_jones !== null &&
           Math.abs(measurement.detectivity_jones - detectivity) / detectivity <
             1e-9,
       );

@@ -36,7 +36,7 @@ function csvRow(record: AtlasRecord): Array<string | number | null> {
     record.device.ligandExchangeConditions,
     record.device.ligandExchangeSourceLocation,
     record.measurement.wavelengthNm,
-    record.measurement.detectivityJones.toExponential(),
+    record.measurement.detectivityJones?.toExponential() ?? null,
     record.measurement.responsivityAW,
     record.measurement.responsivityWavelengthNm,
     record.measurement.responsivityBiasV,

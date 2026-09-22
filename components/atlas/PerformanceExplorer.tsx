@@ -359,18 +359,22 @@ function AtlasPoint({
   const selected = measurement.measurementId === selectedMeasurementId;
   const hovered = measurement.measurementId === focusMeasurementId;
   const dimmed = Boolean(focusMeasurementId) && !hovered && !selected;
+  const hasDetectivity = measurement.detectivityJones !== null;
   const isCaution = measurement.flag === "amber";
   const isUnverified = measurement.flag === "unverified";
   const stroke = isCaution ? "#9a4d06" : isUnverified ? "#686d68" : "#334b43";
+  const evidenceLabel = hasDetectivity
+    ? `; ${formatNoiseMethod(measurement.noiseMethod)}; ${formatReviewStatus(
+        measurement.flag,
+      )} review status`
+    : "; performance-only record";
   const accessibleLabel = `${device.materialFamily}; ${ATLAS_METRICS[yMetric].label}: ${formattedDatumMetric(
     datum.record,
     yMetric,
   )}; ${ATLAS_METRICS[xMetric].label}: ${formattedDatumMetric(
     datum.record,
     xMetric,
-  )}; ${formatNoiseMethod(measurement.noiseMethod)}; ${formatReviewStatus(
-    measurement.flag,
-  )} review status; ${paper.title}`;
+  )}${evidenceLabel}; ${paper.title}`;
   const activate = () => onSelect(datum.record);
   const common = {
     fill: datum.fill,
@@ -390,7 +394,7 @@ function AtlasPoint({
 
   return (
     <g
-      className={`atlas-point atlas-point--${measurement.flag}${
+      className={`atlas-point atlas-point--${measurement.flag ?? "performance-only"}${
         selected ? " atlas-point--selected" : ""
       }${hovered ? " atlas-point--hovered" : ""}${
         dimmed ? " atlas-point--dimmed" : ""
@@ -429,7 +433,14 @@ function AtlasPoint({
           opacity="0.72"
         />
       ) : null}
-      {isCaution ? (
+      {!hasDetectivity ? (
+        <path
+          d={`M ${point.cx} ${point.cy - radius} L ${point.cx + radius} ${
+            point.cy + radius
+          } L ${point.cx - radius} ${point.cy + radius} Z`}
+          {...common}
+        />
+      ) : isCaution ? (
         <path
           d={`M ${point.cx} ${point.cy - radius} L ${point.cx + radius} ${
             point.cy
@@ -477,6 +488,7 @@ function AtlasTooltip({
   const datum = payload[0]?.payload as PlotDatum | undefined;
   if (!datum?.record) return null;
   const { paper, device, measurement } = datum.record;
+  const hasDetectivity = measurement.detectivityJones !== null;
   const hasExtendedMetric = [xMetric, yMetric].some(
     (metric) => metric !== "wavelength" && metric !== "detectivity",
   );
@@ -499,7 +511,9 @@ function AtlasTooltip({
         </div>
       </div>
       <dl className="atlas-tooltip__conditions">
-        {xMetric !== "wavelength" && yMetric !== "wavelength" ? (
+        {hasDetectivity &&
+        xMetric !== "wavelength" &&
+        yMetric !== "wavelength" ? (
           <div>
             <dt>D* wavelength</dt>
             <dd>{formatWithUnit(measurement.wavelengthNm, "nm")}</dd>
@@ -509,14 +523,18 @@ function AtlasTooltip({
           <dt>Detector class</dt>
           <dd>{formatDetectorClass(device.detectorClass)}</dd>
         </div>
-        <div>
-          <dt>D* bias</dt>
-          <dd>{formatWithUnit(measurement.biasV, "V")}</dd>
-        </div>
-        <div>
-          <dt>D* temperature</dt>
-          <dd>{formatWithUnit(measurement.temperatureK, "K")}</dd>
-        </div>
+        {hasDetectivity ? (
+          <>
+            <div>
+              <dt>D* bias</dt>
+              <dd>{formatWithUnit(measurement.biasV, "V")}</dd>
+            </div>
+            <div>
+              <dt>D* temperature</dt>
+              <dd>{formatWithUnit(measurement.temperatureK, "K")}</dd>
+            </div>
+          </>
+        ) : null}
         <div>
           <dt>Device active area</dt>
           <dd>
@@ -525,22 +543,26 @@ function AtlasTooltip({
             })}
           </dd>
         </div>
-        <div>
-          <dt>Noise</dt>
-          <dd>{formatNoiseMethod(measurement.noiseMethod)}</dd>
-        </div>
-        <div>
-          <dt>Review status</dt>
-          <dd>
-            <span
-              className={`atlas-tooltip__status atlas-tooltip__status--${measurement.flag}`}
-            >
-              {formatReviewStatus(measurement.flag)}
-            </span>
-          </dd>
-        </div>
+        {hasDetectivity ? (
+          <>
+            <div>
+              <dt>Noise</dt>
+              <dd>{formatNoiseMethod(measurement.noiseMethod)}</dd>
+            </div>
+            <div>
+              <dt>Review status</dt>
+              <dd>
+                <span
+                  className={`atlas-tooltip__status atlas-tooltip__status--${measurement.flag}`}
+                >
+                  {formatReviewStatus(measurement.flag)}
+                </span>
+              </dd>
+            </div>
+          </>
+        ) : null}
       </dl>
-      {hasExtendedMetric ? (
+      {hasExtendedMetric && hasDetectivity ? (
         <p className="atlas-tooltip__metric-note">
           Extended metrics may come from a different operating point than this
           D* record. Open the full record to compare conditions and evidence.
@@ -561,7 +583,11 @@ function AtlasTooltip({
   );
 }
 
-function MarkerLegend() {
+function MarkerLegend({
+  showPerformanceOnly,
+}: {
+  showPerformanceOnly: boolean;
+}) {
   return (
     <div className="plot-legend__markers" aria-label="Plot marker legend">
       <span>
@@ -576,6 +602,12 @@ function MarkerLegend() {
         <i className="plot-marker plot-marker--diamond" aria-hidden="true" />
         Amber caution
       </span>
+      {showPerformanceOnly ? (
+        <span>
+          <i className="plot-marker plot-marker--triangle" aria-hidden="true" />
+          Performance-only
+        </span>
+      ) : null}
     </div>
   );
 }
@@ -753,8 +785,8 @@ export function PerformanceExplorer({
       : requestedYMetric;
 
   const recordsInScope = useMemo(
-    () => recordsForPlotScope(records, plotScope),
-    [records, plotScope],
+    () => recordsForPlotScope(records, plotScope, yMetric),
+    [records, plotScope, yMetric],
   );
   const provisionalCount = useMemo(
     () =>
@@ -837,7 +869,10 @@ export function PerformanceExplorer({
       identifiers.add(highest.record.measurement.measurementId);
     }
     for (const record of plottedRecords) {
-      if (record.measurement.flag !== "green") {
+      if (
+        record.measurement.flag !== null &&
+        record.measurement.flag !== "green"
+      ) {
         identifiers.add(record.measurement.measurementId);
       }
     }
@@ -852,8 +887,11 @@ export function PerformanceExplorer({
   const focusMeasurementId =
     (hoveredIsPlotted ? hoveredMeasurementId : undefined) ??
     (selectedIsPlotted ? selectedMeasurementId : undefined);
+  const scopeMetric = ATLAS_METRICS[yMetric].shortLabel;
   const scopeLabel =
-    plotScope === "paper_maxima" ? "Highest D* per paper" : "All measurements";
+    plotScope === "paper_maxima"
+      ? `Highest ${scopeMetric} per paper`
+      : "All measurements";
   const detectorLabel =
     detectorClass === "all"
       ? "All detector types"
@@ -972,10 +1010,10 @@ export function PerformanceExplorer({
               type="button"
               aria-pressed={plotScope === "paper_maxima"}
               aria-describedby={scopeHelpId}
-              title="Show one maximum-detectivity measurement from each paper."
+              title={`Show one maximum-${scopeMetric} measurement from each paper.`}
               onClick={() => onConfigChange({ plotScope: "paper_maxima" })}
             >
-              Highest D* per paper
+              Highest {scopeMetric} per paper
             </button>
             <button
               type="button"
@@ -986,8 +1024,8 @@ export function PerformanceExplorer({
             </button>
           </div>
           <span className="sr-only" id={scopeHelpId}>
-            Highest D* per paper retains one maximum-detectivity measurement
-            from each paper.
+            Highest {scopeMetric} per paper retains one maximum-{scopeMetric}
+            measurement from each paper.
           </span>
         </fieldset>
 
@@ -1194,9 +1232,13 @@ export function PerformanceExplorer({
             <div className="plot-legend__group">
               <div className="plot-legend__heading">
                 <span className="plot-legend__title">Evidence shape</span>
-                <small>Color shows material; shape shows review status.</small>
+                <small>Color shows material; shape shows evidence scope.</small>
               </div>
-              <MarkerLegend />
+              <MarkerLegend
+                showPerformanceOnly={plottedRecords.some(
+                  (record) => record.measurement.detectivityJones === null,
+                )}
+              />
             </div>
           </div>
         ) : null}
@@ -1216,7 +1258,8 @@ export function PerformanceExplorer({
           <p className="sr-only">
             Color identifies material family. A square identifies an unverified
             frequency match, and a diamond identifies an amber methodological
-            caution. The tooltip names the specific noise method and caution.
+            caution. A triangle identifies a performance-only row. For D* rows,
+            the tooltip names the specific noise method and caution.
           </p>
           {showWavelengthRegions ? (
             <div className="performance-plot__region-labels" aria-hidden="true">

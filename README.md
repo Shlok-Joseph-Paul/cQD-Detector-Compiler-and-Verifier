@@ -24,9 +24,12 @@ versioned CSV.
 ## Scientific scope
 
 The atlas includes experimental CQD and metal-halide perovskite photodiodes,
-photoconductors, and phototransistors with a reported specific detectivity in
-Jones and an identifiable measurement wavelength. Peer-reviewed papers and
-clearly labeled preprints are supported. Detector class is stored per device;
+photoconductors, and phototransistors. Its primary records pair a reported
+specific detectivity in Jones with an identifiable wavelength. A conservative
+performance-only record may instead preserve securely attributable
+responsivity, EQE, temporal response, bandwidth, or linearity when D* is not
+reported for that operating point. Peer-reviewed papers and clearly labeled
+preprints are supported. Detector class is stored per device;
 the combined view is available, but class-specific filtering is recommended
 for benchmarking because gain and normalization assumptions can differ.
 
@@ -58,16 +61,17 @@ Paper 1 ──► many Devices 1 ──► many Measurements
 - **Device** holds detector class, technology family, absorber material,
   composition, architecture, stack, active area, and evidence-linked
   ligand-exchange method.
-- **Measurement** holds one D<sup>*</sup> value, wavelength, operating
-  conditions, noise method, acquisition instrument chain, provenance, and
-  curation status.
+- **Measurement** holds either one D<sup>_</sup> value and its operating/noise
+  provenance or a performance-only set of non-D_ metrics with metric-specific
+  conditions and provenance.
 
 A paper may therefore produce several points on the atlas. The central unit is
 the measurement—not a paper, a champion value selected by the atlas, or an
 average across devices.
 
-Green, unverified, and amber public statuses are used, with precedence amber →
-unverified → green. Amber does **not** mean a result is incorrect. It is
+Green, unverified, and amber public statuses apply only to rows with D*, with
+precedence amber → unverified → green. Performance-only rows have no D* evidence
+status. Amber does **not** mean a result is incorrect. It is
 required for a shot-noise approximation, a Johnson-noise-only
 approximation, a lock-in amplifier used as the sole noise-acquisition method,
 or noise acquired by a source measure unit. A curator may also apply amber when an unreported D* noise basis materially
@@ -206,7 +210,9 @@ a guessed value as a substitute for missing information.
    the atlas to confirm there are no orphaned rows.
 2. **Confirm scope and provenance.** Work from the original paper, not a value
    repeated in a review or comparison table. Confirm that it is an experimental
-   supported photodetector and that D<sup>*</sup> and wavelength are identifiable.
+   supported photodetector. For a D* row, D<sup>_</sup> and wavelength must be
+   identifiable; for a performance-only row, at least one non-D_ metric and its
+   device assignment must be secure.
 3. **Add one paper row.** In `data/papers.csv`, assign a unique `paper_id` and
    enter the title, full author list, first author, journal, publication year,
    DOI/link, publication type, peer-review status, and notes. Do not include a
@@ -220,7 +226,8 @@ a guessed value as a substitute for missing information.
 5. **Add each measurement.** In `data/measurements.csv`, assign a unique
    `measurement_id` and reference its `device_id`. Create separate rows for
    distinct reported wavelengths, biases, temperatures, frequencies, devices,
-   or noise methods.
+   or noise methods. A performance-only row leaves `detectivity_jones` and all
+   D*-specific noise, extraction, source, and flag fields blank.
 6. **Capture method and provenance.** Record the controlled `noise_method`,
    noise-instrument classification and evidence, detectivity extraction method,
    source page/figure/table/supporting-information location, operating
@@ -269,8 +276,10 @@ and publication type.
 Filter state is represented in the URL where practical so a view can be shared.
 The plot and table consume the same filtered record set. CSV export includes
 that current set rather than silently exporting the full dataset. The plot can
-also be reduced to the single highest-D* measurement from each filtered paper,
-while leaving the full table available below.
+also be reduced to the highest plotted y-metric from each filtered paper. Rows
+without D* are excluded from the D* map, overview, methods, rankings, noise
+summaries, and green/unverified/amber summaries, but remain available in
+applicable responsivity, EQE, and speed views.
 
 The table reports the noise-acquisition instrument class for each measurement.
 Expanding a row reveals the reported instrument chain and the exact source

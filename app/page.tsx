@@ -5,12 +5,10 @@ import { atlasData, DATASET_VERSION } from "@/lib/data";
 
 export default function Home() {
   const records = atlasData.records.map(normalizeJoinedMeasurement);
-  const paperCount = new Set(records.map((record) => record.paper.paperId))
-    .size;
-  const deviceCount = new Set(records.map((record) => record.device.deviceId))
-    .size;
+  const paperCount = atlasData.papers.length;
+  const deviceCount = atlasData.devices.length;
   const materialCount = new Set(
-    records.map((record) => record.device.materialFamily),
+    atlasData.devices.map((device) => device.material_family),
   ).size;
   const latestUpdate = records
     .map((record) => record.measurement.dateUpdated)
@@ -35,7 +33,7 @@ export default function Home() {
             <h1>Photodiode Atlas</h1>
             <p className="atlas-hero__lede">
               Compare reported colloidal quantum-dot and metal-halide perovskite
-              photodiodes across materials, wavelengths, and measurement
+              photodetectors across materials, wavelengths, and measurement
               methods.
             </p>
             <div className="atlas-hero__actions">
@@ -58,7 +56,7 @@ export default function Home() {
               Built for scientific comparison
             </p>
             <ul>
-              <li>Each point is one reported photodetector measurement.</li>
+              <li>Each point is one reported photodetector operating point.</li>
               <li>Noise methodology stays attached to every D* value.</li>
               <li>
                 Green, unverified, and amber statuses expose evidence limits.
@@ -100,7 +98,8 @@ export default function Home() {
           </div>
           <p>
             Filter the map and table together. Select any point to inspect its
-            device, operating conditions, noise method, and source.
+            device, operating conditions, D* evidence when applicable, and
+            source.
           </p>
         </div>
         <AtlasExplorer records={atlasData.records} mode="full" />

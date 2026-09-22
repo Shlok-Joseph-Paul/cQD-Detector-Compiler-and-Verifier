@@ -2,6 +2,7 @@ import { formatAmberReason, formatReviewStatus } from "@/lib/atlas/format";
 import type { AtlasMeasurement } from "@/lib/atlas/types";
 
 export function FlagBadge({ flag }: Pick<AtlasMeasurement, "flag">) {
+  if (flag === null) return null;
   return (
     <span className={`atlas-badge atlas-badge--${flag}`}>
       <span className="atlas-badge__dot" aria-hidden="true" />

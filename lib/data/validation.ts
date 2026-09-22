@@ -77,6 +77,8 @@ function isAmberReason(value: unknown): value is AmberReason {
 export function deriveRequiredAmberReasons(
   measurement: Measurement,
 ): AmberReason[] {
+  if (measurement.detectivity_jones == null) return [];
+
   const reasons: AmberReason[] = [];
   const instruments = Array.isArray(measurement.noise_instruments)
     ? measurement.noise_instruments
@@ -118,7 +120,10 @@ export function deriveRequiredAmberReasons(
 }
 
 /** Minimum public review status required by the record's evidence. */
-export function deriveRequiredReviewFlag(measurement: Measurement): Flag {
+export function deriveRequiredReviewFlag(
+  measurement: Measurement,
+): Flag | null {
+  if (measurement.detectivity_jones == null) return null;
   if (deriveRequiredAmberReasons(measurement).length > 0) return "amber";
   const frequencyStatus = deriveFrequencyMatchStatus({
     noiseMethod: measurement.noise_method,
@@ -139,6 +144,8 @@ export function deriveRequiredReviewFlag(measurement: Measurement): Flag {
 export function applyAutomaticReviewRules(
   measurement: Measurement,
 ): Measurement {
+  if (measurement.detectivity_jones == null) return { ...measurement };
+
   const requiredReasons = deriveRequiredAmberReasons(measurement);
   if (requiredReasons.length === 0) {
     if (measurement.flag === "amber") return { ...measurement };
@@ -507,8 +514,12 @@ function validateMeasurement(
     positive: true,
   });
   validateNumber(measurement.detectivity_jones, "detectivity_jones", add, {
+    nullable: true,
     positive: true,
   });
+  const hasDetectivity =
+    typeof measurement.detectivity_jones === "number" &&
+    Number.isFinite(measurement.detectivity_jones);
   validateNumber(measurement.responsivity_a_w, "responsivity_a_w", add, {
     nullable: true,
     nonnegative: true,
@@ -836,10 +847,15 @@ function validateMeasurement(
       "LDR range bounds require their reported units.",
     );
   }
-  validateEnum(measurement.noise_method, "noise_method", NOISE_METHODS, add);
+  validateOptionalNullableEnum(
+    measurement.noise_method,
+    "noise_method",
+    NOISE_METHODS,
+    add,
+  );
   if (
     !Array.isArray(measurement.noise_instruments) ||
-    measurement.noise_instruments.length === 0
+    (hasDetectivity && measurement.noise_instruments.length === 0)
   ) {
     add(
       "noise_instruments",
@@ -847,7 +863,7 @@ function validateMeasurement(
       "Provide at least one noise-instrument classification.",
       measurement.noise_instruments,
     );
-  } else {
+  } else if (Array.isArray(measurement.noise_instruments)) {
     const instruments = measurement.noise_instruments;
     for (const instrument of instruments) {
       validateEnum(instrument, "noise_instruments", NOISE_INSTRUMENTS, add);
@@ -902,7 +918,7 @@ function validateMeasurement(
     "noise_instrument_source",
     add,
   );
-  validateEnum(
+  validateOptionalNullableEnum(
     measurement.detectivity_extraction_method,
     "detectivity_extraction_method",
     DETECTIVITY_EXTRACTION_METHODS,
@@ -926,7 +942,7 @@ function validateMeasurement(
       "A pending-review measurement requires a public explanation of the unresolved question.",
     );
   }
-  validateEnum(measurement.flag, "flag", FLAGS, add);
+  validateOptionalNullableEnum(measurement.flag, "flag", FLAGS, add);
   if (!Array.isArray(measurement.amber_reasons)) {
     add(
       "amber_reasons",
@@ -959,6 +975,94 @@ function validateMeasurement(
     add,
   );
   validateNullableString(measurement.curator_notes, "curator_notes", add);
+
+  if (hasDetectivity) {
+    const requiredDStarFields: Array<[string, unknown]> = [
+      ["noise_method", measurement.noise_method],
+      [
+        "detectivity_extraction_method",
+        measurement.detectivity_extraction_method,
+      ],
+      ["flag", measurement.flag],
+    ];
+    for (const [field, value] of requiredDStarFields) {
+      if (value == null) {
+        add(
+          field,
+          "required_for_dstar",
+          `${field} is required when D* is reported.`,
+          value,
+        );
+      }
+    }
+  } else {
+    const hasPerformanceMetric = [
+      measurement.responsivity_a_w,
+      measurement.eqe_percent,
+      measurement.response_time_s,
+      measurement.rise_time_s,
+      measurement.fall_time_s,
+      measurement.bandwidth_hz,
+      measurement.linear_dynamic_range_db,
+      measurement.linear_dynamic_range_min,
+      measurement.linear_dynamic_range_max,
+    ].some((value) => typeof value === "number" && Number.isFinite(value));
+    if (!hasPerformanceMetric) {
+      add(
+        "detectivity_jones",
+        "performance_metric_required",
+        "A record without D* must report at least one responsivity, EQE, temporal-response, bandwidth, or linear-dynamic-range metric.",
+      );
+    }
+
+    const dStarOnlyFields: Array<[string, unknown]> = [
+      ["temperature_k", measurement.temperature_k],
+      ["bias_v", measurement.bias_v],
+      ["measurement_frequency_hz", measurement.measurement_frequency_hz],
+      ["noise_method", measurement.noise_method],
+      ["noise_instrument_details", measurement.noise_instrument_details],
+      ["noise_instrument_source", measurement.noise_instrument_source],
+      [
+        "detectivity_extraction_method",
+        measurement.detectivity_extraction_method,
+      ],
+      ["source_location", measurement.source_location],
+      ["flag", measurement.flag],
+      ["amber_explanation", measurement.amber_explanation],
+    ];
+    for (const [field, value] of dStarOnlyFields) {
+      if (value != null) {
+        add(
+          field,
+          "dstar_provenance_without_dstar",
+          `${field} must be blank on a performance-only record without D*.`,
+          value,
+        );
+      }
+    }
+    if (
+      Array.isArray(measurement.noise_instruments) &&
+      measurement.noise_instruments.length > 0
+    ) {
+      add(
+        "noise_instruments",
+        "dstar_provenance_without_dstar",
+        "Noise instruments must be blank on a performance-only record without D*.",
+        measurement.noise_instruments,
+      );
+    }
+    if (
+      Array.isArray(measurement.amber_reasons) &&
+      measurement.amber_reasons.length > 0
+    ) {
+      add(
+        "amber_reasons",
+        "dstar_provenance_without_dstar",
+        "Amber reasons must be blank on a performance-only record without D*.",
+        measurement.amber_reasons,
+      );
+    }
+  }
   if (!isIsoDate(measurement.date_added)) {
     add(
       "date_added",
@@ -1167,6 +1271,8 @@ export function validateAtlasEntities(
       });
       continue;
     }
+
+    if (measurement.detectivity_jones == null) continue;
 
     const requiredReasons = deriveRequiredAmberReasons(
       measurement as unknown as Measurement,

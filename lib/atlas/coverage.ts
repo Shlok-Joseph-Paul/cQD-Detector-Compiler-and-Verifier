@@ -17,10 +17,12 @@ export function maxDetectivityPerPaper(
   const bestByPaper = new Map<string, AtlasRecord>();
 
   for (const record of reviewedRecords(records)) {
+    const detectivity = record.measurement.detectivityJones;
+    if (detectivity == null) continue;
     const current = bestByPaper.get(record.paper.paperId);
     if (
       !current ||
-      record.measurement.detectivityJones > current.measurement.detectivityJones
+      detectivity > (current.measurement.detectivityJones ?? -Infinity)
     ) {
       bestByPaper.set(record.paper.paperId, record);
     }
@@ -52,43 +54,54 @@ export function countBy<T>(
 }
 
 export function reportingCoverage(records: readonly AtlasRecord[]) {
+  const dStarRecords = records.filter(
+    (record) => record.measurement.detectivityJones !== null,
+  );
   const fields = [
     {
       label: "Temperature",
-      reported: records.filter(
+      records: dStarRecords,
+      reported: dStarRecords.filter(
         (record) => record.measurement.temperatureK !== null,
       ).length,
     },
     {
       label: "Applied bias",
-      reported: records.filter((record) => record.measurement.biasV !== null)
-        .length,
+      records: dStarRecords,
+      reported: dStarRecords.filter(
+        (record) => record.measurement.biasV !== null,
+      ).length,
     },
     {
       label: "Active area",
+      records,
       reported: records.filter((record) => record.device.activeAreaCm2 !== null)
         .length,
     },
     {
       label: "Noise frequency",
-      reported: records.filter(
+      records: dStarRecords,
+      reported: dStarRecords.filter(
         (record) => record.measurement.measurementFrequencyHz !== null,
       ).length,
     },
     {
       label: "Responsivity",
+      records,
       reported: records.filter(
         (record) => record.measurement.responsivityAW !== null,
       ).length,
     },
     {
       label: "EQE",
+      records,
       reported: records.filter(
         (record) => record.measurement.eqePercent !== null,
       ).length,
     },
     {
       label: "Any temporal response",
+      records,
       reported: records.filter(
         (record) =>
           record.measurement.responseTimeS !== null ||
@@ -98,24 +111,28 @@ export function reportingCoverage(records: readonly AtlasRecord[]) {
     },
     {
       label: "Rise time",
+      records,
       reported: records.filter(
         (record) => record.measurement.riseTimeS !== null,
       ).length,
     },
     {
       label: "Fall time",
+      records,
       reported: records.filter(
         (record) => record.measurement.fallTimeS !== null,
       ).length,
     },
     {
       label: "Explicit −3 dB bandwidth",
+      records,
       reported: records.filter(
         (record) => record.measurement.bandwidthHz !== null,
       ).length,
     },
     {
       label: "Linear dynamic range",
+      records,
       reported: records.filter(
         (record) =>
           record.measurement.linearDynamicRangeDb !== null ||
@@ -125,6 +142,7 @@ export function reportingCoverage(records: readonly AtlasRecord[]) {
     },
     {
       label: "Extended-metrics review complete",
+      records,
       reported: records.filter(
         (record) =>
           record.measurement.extendedMetricsReviewStatus === "checked",
@@ -133,8 +151,9 @@ export function reportingCoverage(records: readonly AtlasRecord[]) {
   ];
 
   return fields.map((field) => ({
-    ...field,
-    total: records.length,
-    percent: percentage(field.reported, records.length),
+    label: field.label,
+    reported: field.reported,
+    total: field.records.length,
+    percent: percentage(field.reported, field.records.length),
   }));
 }

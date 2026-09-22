@@ -6,13 +6,26 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.25.0";
-export const DATASET_RELEASE_DATE = "2026-09-21";
+export const DATASET_VERSION = "1.25.1";
+export const DATASET_RELEASE_DATE = "2026-09-22";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Photodiode defaults and a white performance graph",
+    summary:
+      "Starts the main performance graph with photodiodes selected and removes colored wavelength backgrounds while preserving the linear wavelength axis.",
+    changes: [
+      "Set the main-page detector filter to Photodiodes by default; users can select another detector type or All, and explicit selections persist in reloads and shared links.",
+      "Removed the blue, purple, and yellow wavelength-region bands from performance graphs, leaving a white background with the existing points, grid, labels, and controls.",
+      "Retained a linear measurement-wavelength x-axis and logarithmic D* y-axis; the temporary logarithmic wavelength preview was not published.",
+      "Preserved all scientific records, reported values, missing fields, evidence flags, and pending-review holds from v1.25.0.",
+    ],
+  },
+  {
+    version: "1.25.0",
+    date: "2026-09-21",
     title: "Ag2Se performance records and CuSCN PbS review candidates",
     summary:
       "Adds two approved Ag2Se performance-only measurements and two shot-noise PbS detectivity candidates with an explicit attribution review hold.",

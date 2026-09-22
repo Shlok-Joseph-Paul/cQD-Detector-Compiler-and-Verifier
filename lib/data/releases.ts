@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.27.0";
+export const DATASET_VERSION = "1.28.0";
 export const DATASET_RELEASE_DATE = "2026-09-22";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "PbSe photoconductor candidates and etched photodiode performance",
+    summary:
+      "Adds Wang's provisional size- and area-resolved PbSe photoconductor results and Chang's etched PbSe photodiode performance, with explicit source limitations.",
+    changes: [
+      "Added two papers, fifteen devices, and fifteen measurements, bringing the live atlas to 148 papers, 259 devices, and 340 measurements; Chang's locally reviewed record was not previously in the live dataset.",
+      "Added thirteen Wang standalone D* candidates across 1200, 1550, 2000, and 2400 nm: five directly reported TBAI/EDT values and eight approximate graphical area-variant values.",
+      "Marked all thirteen Wang D* records amber for shot-noise approximation and pending review because the printed equation's area/noise normalization needs clarification; pending entries remain excluded from performance comparisons and rankings.",
+      "Preserved Wang's 99/146 microsecond rise/fall times at 1900 nm and +3 V as a separate pending-review performance record because the source does not identify its active-area variant.",
+      "Added Chang's reviewed performance-only record with 0.75 A/W responsivity and 42% EQE at 2200 nm, -1 V and 260 Hz, plus 32/47 microsecond self-driven rise/fall times; clarified the 10-90% and 90-10% threshold convention as visually inferred from Figure 3e.",
+      "Withheld Wang's photovoltaic metric wavelength and FPA detectivity normalization pending supplementary evidence; preserved unknown temperatures, D* biases, noise frequencies, bandwidth and LDR without inventing values.",
+    ],
+  },
+  {
+    version: "1.27.0",
+    date: "2026-09-22",
     title: "Ag2Te ligand and thickness comparison records",
     summary:
       "Adds nine user-approved provisional measurements from Yuan and Sharma, with device-specific ligand treatments and explicit evidence limitations.",

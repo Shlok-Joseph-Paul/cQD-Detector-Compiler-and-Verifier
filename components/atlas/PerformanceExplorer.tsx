@@ -3,7 +3,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import {
   CartesianGrid,
-  ReferenceArea,
   ResponsiveContainer,
   Scatter,
   ScatterChart,
@@ -98,9 +97,9 @@ const SUPERSCRIPT_DIGITS: Record<string, string> = {
 };
 
 const WAVELENGTH_REGIONS = [
-  { label: "NIR", start: 700, end: 1000, fill: "#eef6f8" },
-  { label: "SWIR", start: 1000, end: 2500, fill: "#f5f2fa" },
-  { label: "MWIR", start: 3000, end: 5000, fill: "#faf4ea" },
+  { label: "NIR", start: 700, end: 1000 },
+  { label: "SWIR", start: 1000, end: 2500 },
+  { label: "MWIR", start: 3000, end: 5000 },
 ] as const;
 
 function superscript(value: number): string {
@@ -1292,21 +1291,6 @@ export function PerformanceExplorer({
           ) : null}
           <ResponsiveContainer width="100%" height={560} minWidth={280}>
             <ScatterChart margin={{ top: 34, right: 42, bottom: 38, left: 18 }}>
-              {showWavelengthRegions
-                ? WAVELENGTH_REGIONS.map((region) =>
-                    region.end >= xDomain.domain[0] &&
-                    region.start <= xDomain.domain[1] ? (
-                      <ReferenceArea
-                        key={region.label}
-                        x1={Math.max(region.start, xDomain.domain[0])}
-                        x2={Math.min(region.end, xDomain.domain[1])}
-                        fill={region.fill}
-                        fillOpacity={0.52}
-                        strokeOpacity={0}
-                      />
-                    ) : null,
-                  )
-                : null}
               <CartesianGrid strokeDasharray="1 0" vertical={false} />
               <XAxis
                 type="number"

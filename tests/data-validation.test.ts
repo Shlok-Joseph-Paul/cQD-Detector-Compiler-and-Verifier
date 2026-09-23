@@ -98,7 +98,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 8);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 398);
+  assert.equal(atlas.measurements.length, 405);
   assert.equal(atlas.records.length, atlas.measurements.length);
   const pendingImportPaperIds = new Set([
     "ma-2026-pbs-homogeneous-energy",
@@ -233,20 +233,20 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const amberRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "amber",
   );
-  assert.equal(amberRecords.length, 196);
+  assert.equal(amberRecords.length, 199);
   const unverifiedRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "unverified",
   );
   const greenRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "green",
   );
-  assert.equal(unverifiedRecords.length, 110);
-  assert.equal(greenRecords.length, 32);
+  assert.equal(unverifiedRecords.length, 111);
+  assert.equal(greenRecords.length, 33);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("shot_noise_approximation"),
     ).length,
-    134,
+    136,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -270,7 +270,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     amberRecords.filter(({ measurement }) =>
       measurement.amber_reasons.includes("lock_in_only_noise_measurement"),
     ).length,
-    25,
+    26,
   );
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -294,13 +294,13 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   }
   assert.equal(
     [...flagsByPaper.values()].filter((flags) => flags.has("amber")).length,
-    73,
+    75,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(
       (flags) => !flags.has("amber") && flags.has("unverified"),
     ).length,
-    58,
+    59,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(

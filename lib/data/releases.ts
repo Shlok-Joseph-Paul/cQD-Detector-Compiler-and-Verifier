@@ -6,13 +6,28 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.30.0";
+export const DATASET_VERSION = "1.31.0";
 export const DATASET_RELEASE_DATE = "2026-09-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Interface-engineered perovskite photodiode records",
+    summary:
+      "Adds approved Li, Ji, and Perini paper records with device-specific performance and explicit noise-method and source limitations.",
+    changes: [
+      "Added three papers, five devices, and seven provisional measurements, bringing the atlas to 160 papers, 309 devices, and 405 measurements.",
+      "Added Li's reference and modified SnO2 photodiodes with approximate spectral wavelength pairing and amber shot-noise-based detectivity.",
+      "Added Ji's 532 nm dual-passivated 2D perovskite result, 33/564 ns rise/fall times, and 160 dB LDR; explicitly classified SR865A lock-in noise acquisition as amber.",
+      "Preserved Ji's final journal year 2023 and online-first year 2022 as separate bibliographic facts.",
+      "Added Perini's measured-noise lower and modeled-noise upper apparent-detectivity estimates separately, preserving their limitations and different signal/noise biases, plus 123 dB apparent LDR and the AZO reference responsivity.",
+      "Retained all seven rows as pending scientific review; excluded unresolved candidates, including bandwidth values lacking an attributable measurement wavelength.",
+    ],
+  },
+  {
+    version: "1.30.0",
+    date: "2026-09-23",
     title: "Mixed tin-lead and NiOx perovskite photodiode records",
     summary:
       "Adds the approved Liu 2023, Afzal 2021, and Liu 2015 papers with device-specific optical performance, timing, and transparent noise-method and source-conflict notes.",

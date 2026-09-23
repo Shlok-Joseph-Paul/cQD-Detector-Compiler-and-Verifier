@@ -128,6 +128,14 @@
     "verified_on": "2026-08-23"
   },
   {
+    "journal": "EES Solar",
+    "impact_factor": null,
+    "impact_factor_year": null,
+    "source_url": "https://www.rsc.org/publishing/journals/ees-solar",
+    "verified_on": "2026-09-23",
+    "note": "The Royal Society of Chemistry journal page lists Journal Impact Factor as N/A."
+  },
+  {
     "journal": "IEEE Transactions on Electron Devices",
     "impact_factor": 3.6,
     "impact_factor_year": 2025,

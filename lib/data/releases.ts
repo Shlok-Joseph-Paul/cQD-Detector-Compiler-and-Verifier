@@ -6,13 +6,30 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.29.0";
-export const DATASET_RELEASE_DATE = "2026-09-22";
+export const DATASET_VERSION = "1.30.0";
+export const DATASET_RELEASE_DATE = "2026-09-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Mixed tin-lead and NiOx perovskite photodiode records",
+    summary:
+      "Adds the approved Liu 2023, Afzal 2021, and Liu 2015 papers with device-specific optical performance, timing, and transparent noise-method and source-conflict notes.",
+    changes: [
+      "Added three papers, seven device variants, and twenty-one provisional measurement rows, bringing the atlas to 154 papers, 283 devices, and 374 measurements.",
+      "Added Liu 2023's rigid TAH, rigid control, and flexible mixed tin-lead devices, including the 1.8e12-Jones peak, 94/97 ns timing at 450 nm, and the flexible device's explicit 313 kHz cutoff.",
+      "Preserved Liu 2023's conflicting introductory D* claim separately from the detailed results and left spectral active area unassigned where only timing-device area was established.",
+      "Added Afzal 2021's NiOx results at 532, 594, and 633 nm at both 0 and -1 V using the main paper and publisher supplement, plus PEDOT:PSS reference results and device-specific rise/fall times.",
+      "Retained the reported responsivity/EQE inconsistencies and main-versus-supplement differences in Afzal's records without silently correcting published numbers.",
+      "Added Liu 2015's TiO2 and TiO2/PC61BM 500 nm results with unknown spectral bias left blank; kept LDR >100 dB as a bound and excluded modeled carrier transit times from measured response.",
+      "Distinguished four measured-noise D* records from eight shot-noise estimates and nine performance-only rows; optical-only lock-in and I-V instruments are not classified as noise acquisition hardware.",
+      "Kept all twenty-one new measurement rows pending scientific review and excluded from performance comparisons and rankings while preserving their source limitations.",
+    ],
+  },
+  {
+    version: "1.29.0",
+    date: "2026-09-22",
     title: "Perovskite hybrid and ultrafast photodiode source records",
     summary:
       "Adds the approved Shen 2017, Li 2019, and Shen 2016 papers with device-specific optical results, measured- versus modeled-noise distinctions, and timing source notes.",

@@ -1,0 +1,59 @@
+[
+  {
+    "paper_id": "liu-2023-tah-mixed-sn-pb",
+    "device_id": "liu-2023-tah-mixed-sn-pb-rigid-tah",
+    "metric": "detectivity",
+    "value": 2500000000000.0,
+    "wavelength_nm": 940,
+    "source": "Advanced Science - 2022 - Liu - Highly Efficient and Stable Self\u2010Powered Mixed Tin\u2010Lead Perovskite Photodetector Used in.pdf p. 2 introduction",
+    "reason": "Conflicts with abstract and detailed results maximum 1.8e12 Jones at 840 nm. Kept as conflicting evidence, not a second validated operating point."
+  },
+  {
+    "paper_id": "liu-2023-tah-mixed-sn-pb",
+    "device_id": "liu-2023-tah-mixed-sn-pb-rigid-tah",
+    "metric": "detectivity_lower_bound",
+    "value": 1200000000000.0,
+    "range_nm": [500, 950],
+    "relation": ">",
+    "source": "Advanced Science - 2022 - Liu - Highly Efficient and Stable Self\u2010Powered Mixed Tin\u2010Lead Perovskite Photodetector Used in.pdf p. 7",
+    "reason": "Broad spectral bound; no equality or arbitrary wavelength generated."
+  },
+  {
+    "paper_id": "liu-2015-perovskite-hybrid",
+    "metric": "linear_dynamic_range_db",
+    "value": 100,
+    "relation": ">",
+    "source": "c5tc00673b.pdf PDF p. 5 Figure 2b discussion",
+    "definition": "20 log10(Jph at 1 mW/cm2 / Jdark)",
+    "reason": "Schema scalar has no bound qualifier; preserve >100 dB, not exact 100 dB.",
+    "device_id": "liu-2015-perovskite-hybrid-tio2-pc61bm"
+  },
+  {
+    "paper_id": "liu-2015-perovskite-hybrid",
+    "metric": "model_transit_time_s",
+    "values": [5e-7, 1e-12],
+    "source": "c5tc00673b.pdf PDF pp. 5-6 transit model",
+    "reason": "Estimated P3HT/perovskite carrier transit contributions; not measured detector response."
+  },
+  {
+    "paper_id": "afzal-2021-niox-perovskite",
+    "device_id": "afzal-2021-niox-perovskite-pedot-pss",
+    "metric": "responsivity_graphical_candidates",
+    "source": "s41598-020-80640-3.pdf p. 8 Figure 6a",
+    "reason": "Reference 532/633 nm bars not quantitatively digitized; keep off numerical records pending graph extraction. Textual 594 nm value entered."
+  },
+  {
+    "paper_id": "afzal-2021-niox-perovskite",
+    "metric": "intensity_dependent_graph_series",
+    "source": "s41598-020-80640-3.pdf p. 7 Figure 5",
+    "reason": "Continuous graph series not digitized; maximum reported R/D* values captured. Inconsistent W/cm2 versus mW/cm2 axis labels prohibit assumed common intensity."
+  },
+  {
+    "paper_id": "liu-2023-tah-mixed-sn-pb",
+    "metric": "active_area_cm2",
+    "device_id": "liu-2023-tah-mixed-sn-pb-rigid-tah",
+    "value": 0.107,
+    "source": "Advanced Science - 2022 - Liu - Highly Efficient and Stable Self\u2010Powered Mixed Tin\u2010Lead Perovskite Photodetector Used in.pdf p. 8 timing discussion",
+    "reason": "Explicit timing-device area only; spectral area match unproven. Retained in device and timing notes, shared area field blank."
+  }
+]

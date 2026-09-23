@@ -1,0 +1,74 @@
+[
+  {
+    "measurement_id": "liu-2023-tah-mixed-sn-pb-rigid-tah-840",
+    "reported_eqe_percent": 75.4,
+    "eqe_percent_from_reported_R": 75.2761,
+    "difference_percentage_points": -0.1239,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "afzal-2021-niox-perovskite-niox-532-0v",
+    "reported_eqe_percent": 76,
+    "eqe_percent_from_reported_R": 79.238,
+    "difference_percentage_points": 3.238,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "afzal-2021-niox-perovskite-niox-594-0v",
+    "reported_eqe_percent": 76,
+    "eqe_percent_from_reported_R": 75.1419,
+    "difference_percentage_points": -0.8581,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "afzal-2021-niox-perovskite-niox-633-0v",
+    "reported_eqe_percent": 70,
+    "eqe_percent_from_reported_R": 64.6363,
+    "difference_percentage_points": -5.3637,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "afzal-2021-niox-perovskite-niox-532-minus1v",
+    "reported_eqe_percent": 78,
+    "eqe_percent_from_reported_R": 102.5433,
+    "difference_percentage_points": 24.5433,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "afzal-2021-niox-perovskite-niox-594-minus1v",
+    "reported_eqe_percent": 77,
+    "eqe_percent_from_reported_R": 89.3354,
+    "difference_percentage_points": 12.3354,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "afzal-2021-niox-perovskite-niox-633-minus1v",
+    "reported_eqe_percent": 76,
+    "eqe_percent_from_reported_R": 85.3983,
+    "difference_percentage_points": 9.3983,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "liu-2015-perovskite-hybrid-tio2-500",
+    "reported_eqe_percent": 62,
+    "eqe_percent_from_reported_R": 61.9921,
+    "difference_percentage_points": -0.0079,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  },
+  {
+    "measurement_id": "liu-2015-perovskite-hybrid-tio2-pc61bm-500",
+    "reported_eqe_percent": 84,
+    "eqe_percent_from_reported_R": 84.0613,
+    "difference_percentage_points": 0.0613,
+    "formula": "EQE(%) = 100 * R(A/W) * 1239.841984 / wavelength(nm)",
+    "purpose": "Diagnostic consistency check only; never replaces reported values."
+  }
+]

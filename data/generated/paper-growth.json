@@ -1,0 +1,20 @@
+{
+  "as_of": "2026-09-23",
+  "points": [
+    {
+      "month": "2026-07",
+      "papers": 44,
+      "source_commit": "595918aaec9dba88b3b4d2fc425f2f3c395132c9"
+    },
+    {
+      "month": "2026-08",
+      "papers": 125,
+      "source_commit": "c508178ea7c9416ef36b5833ca002eec6b3b5541"
+    },
+    {
+      "month": "2026-09",
+      "papers": 157,
+      "source_commit": null
+    }
+  ]
+}

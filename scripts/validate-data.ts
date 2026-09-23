@@ -2,6 +2,7 @@
 
 import { fileURLToPath } from "node:url";
 import { generateAtlasFile } from "../lib/data/node.ts";
+import { updatePaperGrowth } from "./paper-growth.ts";
 import {
   DataValidationError,
   formatValidationIssues,
@@ -33,6 +34,13 @@ if (unknownArguments.length > 0 || argumentsSet.size > 1) {
 
   try {
     const atlas = await generateAtlasFile({ dataDirectory, outputFile, mode });
+    await updatePaperGrowth(
+      projectRoot,
+      atlas.papers.filter((paper) => paper.publication_type !== "demonstration")
+        .length,
+      atlas.generated_at,
+      mode,
+    );
     const action =
       mode === "write"
         ? "validated and generated"

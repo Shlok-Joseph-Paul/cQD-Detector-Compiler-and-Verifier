@@ -3744,6 +3744,53 @@ select {
 }
 
 /* Dataset releases */
+.paper-growth {
+  margin: 0 0 32px;
+  padding: clamp(16px, 3vw, 28px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.paper-growth > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.paper-growth h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 500;
+}
+
+.paper-growth__total {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.paper-growth__total strong {
+  margin-right: 6px;
+  color: var(--teal);
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-growth__plot {
+  min-width: 0;
+  margin-top: 12px;
+}
+
+.paper-growth__note {
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
 .release-current {
   display: grid;
 }

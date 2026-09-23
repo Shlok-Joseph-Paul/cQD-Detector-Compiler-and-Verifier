@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { DatasetDownloadButton } from "@/components/DatasetDownloadButton";
+import { PaperGrowthChart } from "@/components/PaperGrowthChart";
 import { SiteShell } from "@/components/SiteShell";
 import { atlasData, DATASET_RELEASES, DATASET_VERSION } from "@/lib/data";
 
@@ -41,6 +42,8 @@ export default function ReleasesPage() {
             </small>
           </aside>
         </header>
+
+        <PaperGrowthChart />
 
         <section
           className="release-citation"

@@ -424,8 +424,9 @@ export default async function PaperPage({ params }: PageProps) {
                 ) : (
                   <p className="paper-device__notes">
                     No measurement row is published because the available source
-                    does not securely assign the headline D* to a complete
-                    operating point.
+                    does not securely assign the reported performance to the
+                    operating conditions required by the atlas. See the device
+                    notes for retained source results.
                   </p>
                 )}
                 {device.device_notes ? (

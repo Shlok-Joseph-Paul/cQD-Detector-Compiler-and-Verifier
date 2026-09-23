@@ -1,0 +1,55 @@
+[
+  {
+    "paper_id": "shen-2017-perovskite-polymer",
+    "device_id": "shen-2017-perovskite-polymer-spectral",
+    "metric": "detectivity_jones",
+    "relation": "greater_than",
+    "value": 100000000000.0,
+    "wavelength_nm": 900,
+    "wavelength_qualifier": "about",
+    "bias_v": -0.1,
+    "noise_method": "measured_noise",
+    "noise_instruments": "spectrum_analyzer",
+    "noise_instrument_details": "FFT signal analyzer and current preamplifier; models unspecified. Noise reported 3.48e-13 A Hz^-1/2.",
+    "source_location": "c6mh00508j.pdf p. 3 text; p. 4 Figure 2b",
+    "extraction_method": "directly_reported",
+    "reason_held": "Numeric atlas D* field does not support a lower-bound operator. Figure near 900 nm is around 1e11 and varies across NIR peak; preserve textual bound rather than inventing equality or exact peak wavelength.",
+    "frequency_match_status": "not_established",
+    "proposed_flag_if_supported": "unverified"
+  },
+  {
+    "paper_id": "shen-2017-perovskite-polymer",
+    "metric": "minimum_detectable_irradiance",
+    "value": 1.05e-11,
+    "units": "W/cm2",
+    "wavelength_nm": 890,
+    "frequency_hz": 35,
+    "source_location": "c6mh00508j.pdf p. 3 text; p. 4 Figure 2c",
+    "reason_held": "Reported irradiance threshold is not normalized total-power NEP in W Hz^-1/2. Calculated 5 pW/cm2 value also is not imported as experimental D*."
+  },
+  {
+    "paper_id": "li-2019-perovskite-swnt",
+    "metric": "linear_dynamic_range",
+    "source_location": "an9b00911 (1).pdf p. 5 Eq. 3",
+    "extraction_method": "ambiguous",
+    "reason_held": "Equation 20log(Pupper/Plower) given, but no secure linear-range endpoints or numerical LDR. Do not infer LDR from full nonlinear intensity sweep."
+  },
+  {
+    "paper_id": "li-2019-perovskite-swnt",
+    "metric": "control_and_bias_variants",
+    "source_location": "Main article references SI Figures S4-S8",
+    "reason_held": "Pristine perovskite control, concentration variants and -0.5 V detectivity require unavailable SI for condition-resolved values."
+  },
+  {
+    "paper_id": "shen-2017-perovskite-polymer",
+    "metric": "additional_graphical_controls",
+    "source_location": "Figures 2a and 3d",
+    "reason_held": "Additional BHJ-ratio EQE and area-dependent visible-response points remain graphical; intermediate areas and values lack secure textual pairing. Pure-polymer controls excluded from current CQD/perovskite scope."
+  },
+  {
+    "paper_id": "shen-2016-mapbi3-ultrafast",
+    "metric": "excluded_model_and_application_values",
+    "source_location": "pp. 3-6; Figures 3-5; SI references",
+    "reason_held": "Calculated 0.65 ns and transit/RC models are not experimental response times. TRPL material lifetimes are sample lifetimes, not detector response. Temperature/intensity/bias curves lacking secure numeric point assignments are not guessed."
+  }
+]

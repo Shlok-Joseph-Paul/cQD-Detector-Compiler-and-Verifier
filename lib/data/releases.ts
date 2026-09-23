@@ -6,13 +6,29 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.28.0";
+export const DATASET_VERSION = "1.29.0";
 export const DATASET_RELEASE_DATE = "2026-09-22";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Perovskite hybrid and ultrafast photodiode source records",
+    summary:
+      "Adds the approved Shen 2017, Li 2019, and Shen 2016 papers with device-specific optical results, measured- versus modeled-noise distinctions, and timing source notes.",
+    changes: [
+      "Added three papers, seventeen device variants, and thirteen provisional measurement rows, bringing the atlas to 151 papers, 276 devices, and 353 measurements.",
+      "Added Shen 2017 perovskite/polymer EQE-derived responsivity, 95 dB LDR, and seven area- and wavelength-resolved response records, including three ultraviolet values from the publisher supplement.",
+      "Preserved Shen 2017's greater-than-1e11-Jones NIR detectivity claim as a bound in the paper notes instead of inventing an equality D* value.",
+      "Added Li 2019's 550 and 1080 nm D* estimates with shot-noise amber status and separately conditioned responsivity; retained the ITO/Al versus FTO/Au electrode conflict and documented the SR830 corroborating noise measurement.",
+      "Added Shen 2016's 7.8e12-Jones peak, 0.47 A/W responsivity and 93 dB LDR with unverified frequency matching and the unresolved printed-noise versus plotted-noise discrepancy.",
+      "Published all twelve timing candidates without securely assigned wavelengths in their device notes, including the instrument-limited 0.95 ns result; retained structured source evidence without inserting guessed wavelength values or treating oscilloscope bandwidth as detector bandwidth.",
+      "Kept all thirteen new measurement rows pending review, as approved, so unresolved claims do not enter performance comparisons or rankings.",
+    ],
+  },
+  {
+    version: "1.28.0",
+    date: "2026-09-22",
     title: "PbSe photoconductor candidates and etched photodiode performance",
     summary:
       "Adds Wang's provisional size- and area-resolved PbSe photoconductor results and Chang's etched PbSe photodiode performance, with explicit source limitations.",

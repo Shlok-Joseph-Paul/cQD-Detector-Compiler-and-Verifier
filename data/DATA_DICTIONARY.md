@@ -278,3 +278,7 @@ The first command validates and deterministically regenerates
 `data/generated/atlas.json`. `--check` performs no writes and fails when the
 generated JSON does not exactly match the CSV sources. Errors name the CSV,
 source row, and field.
+
+### Explicit curator green approvals
+
+A curator may explicitly approve green status for a reviewed measured-noise record whose frequency match remains unestablished. Such approval is recorded in `data/curator-green-approvals.json`, tied to the exact measurement and operating values, with its reason repeated in public curator notes. It does not fill missing frequencies or assert a match. Mandatory amber reasons, including an explicit frequency mismatch, still take precedence. Changes to the approved values invalidate the exception until reviewed again.

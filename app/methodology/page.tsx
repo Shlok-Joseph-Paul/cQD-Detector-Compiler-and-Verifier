@@ -369,6 +369,13 @@ export default function MethodologyPage() {
             </details>
           </section>
 
+          <p className="callout">
+            A documented curator approval may retain green status for a specific
+            reviewed measurement whose frequency match remains unestablished.
+            The public curator note identifies the decision; missing frequencies
+            remain unknown. Mandatory amber cautions still take precedence.
+          </p>
+
           <section aria-labelledby="values-heading">
             <h2 id="values-heading">How values are handled</h2>
             <p>

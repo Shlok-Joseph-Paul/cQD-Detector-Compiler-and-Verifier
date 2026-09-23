@@ -98,7 +98,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const atlas = buildAtlasFromCsvTexts({ papers, devices, measurements });
   assert.equal(atlas.schema_version, 8);
   assert.equal(atlas.dataset_version, DATASET_VERSION);
-  assert.equal(atlas.measurements.length, 405);
+  assert.equal(atlas.measurements.length, 404);
   assert.equal(atlas.records.length, atlas.measurements.length);
   const pendingImportPaperIds = new Set([
     "ma-2026-pbs-homogeneous-energy",
@@ -240,7 +240,7 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   const greenRecords = atlas.records.filter(
     ({ measurement: point }) => point.flag === "green",
   );
-  assert.equal(unverifiedRecords.length, 111);
+  assert.equal(unverifiedRecords.length, 110);
   assert.equal(greenRecords.length, 33);
   assert.equal(
     amberRecords.filter(({ measurement }) =>
@@ -300,14 +300,14 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
     [...flagsByPaper.values()].filter(
       (flags) => !flags.has("amber") && flags.has("unverified"),
     ).length,
-    59,
+    58,
   );
   assert.equal(
     [...flagsByPaper.values()].filter(
       (flags) =>
         !flags.has("amber") && !flags.has("unverified") && flags.has("green"),
     ).length,
-    18,
+    19,
   );
 });
 

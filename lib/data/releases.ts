@@ -6,13 +6,26 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.31.0";
+export const DATASET_VERSION = "1.31.1";
 export const DATASET_RELEASE_DATE = "2026-09-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Curator review of Li, Ji, and Perini photodiodes",
+    summary:
+      "Applies the curator's wavelength, timing, noise-status, and lower-detectivity decisions so the three papers enter the performance graph.",
+    changes: [
+      "Confirmed Li's two 700 nm measurements; retained amber shot-noise status.",
+      "Confirmed Ji's 33 ns rise and 564 ns fall times; retained amber lock-in noise status and added the curator's concern that the noise measurement looks very odd.",
+      "Accepted Perini's lower apparent D* of 1.2e12 Jones at 700 nm and removed the upper estimate. Recorded explicit curator-approved green status while retaining unknown frequency matching and the apparent-D* qualification.",
+      "Marked the four accepted D* measurements reviewed; kept the two unrelated Perini performance-only rows provisional. The dataset contains 160 papers, 309 devices, and 404 measurements.",
+    ],
+  },
+  {
+    version: "1.31.0",
+    date: "2026-09-23",
     title: "Interface-engineered perovskite photodiode records",
     summary:
       "Adds approved Li, Ji, and Perini paper records with device-specific performance and explicit noise-method and source limitations.",

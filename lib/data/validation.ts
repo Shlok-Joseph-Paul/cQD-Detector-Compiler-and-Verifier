@@ -1,3 +1,4 @@
+import { hasCuratorGreenApproval } from "./curator-approvals.ts";
 import { amberReasonsToExplanation } from "./constants.ts";
 import { deriveFrequencyMatchStatus } from "./frequency-match.ts";
 import {
@@ -133,6 +134,12 @@ export function deriveRequiredReviewFlag(
     eqePercent: measurement.eqe_percent,
     eqeFrequencyHz: measurement.eqe_frequency_hz,
   });
+  if (
+    frequencyStatus === "not_established" &&
+    hasCuratorGreenApproval(measurement)
+  ) {
+    return "green";
+  }
   return frequencyStatus === "not_established" ? "unverified" : "green";
 }
 

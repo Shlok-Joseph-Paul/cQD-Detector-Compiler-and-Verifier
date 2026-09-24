@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "dataset_version": "1.31.2",
+  "dataset_version": "1.31.3",
   "generated_at": "2026-09-23T00:00:00.000Z",
   "papers": [
     {
@@ -3472,7 +3472,7 @@
       "publication_url": "https://doi.org/10.1021/jacs.6c03275",
       "publication_type": "journal_article",
       "peer_reviewed": true,
-      "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point."
+      "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point. Curator decision 2026-09-23 selects results-section D*=1e9 Jones over the conclusion value and confirms all three temporal pixel assignments."
     },
     {
       "paper_id": "wang-2026-pbse-reactivity",
@@ -3494,7 +3494,7 @@
       "publication_url": "https://doi.org/10.1002/lpor.71459",
       "publication_type": "journal_article",
       "peer_reviewed": true,
-      "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+      "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
     },
     {
       "paper_id": "chang-2024-pbse-etched",
@@ -3557,7 +3557,7 @@
       "publication_url": "https://doi.org/10.1021/acsanm.9b00911",
       "publication_type": "journal_article",
       "peer_reviewed": true,
-      "notes": "2 (2019), 4974-4982. SI inaccessible. Main-text design and experimental section disagree on electrode materials. Reported D* uses a shot-noise approximation despite separately measured noise spectra. Figure 4c,d rise/fall times of 7.24/14.47 us at -1 V are retained in device notes because the timing wavelength is unspecified; thresholds are 10-90% and 90-10%. The SR830 measured a corroborating noise spectrum, while D* uses the Eq. 5 shot-noise model."
+      "notes": "2 (2019), 4974-4982. SI inaccessible. Curator review 2026-09-23 selects the ITO/Al design over conflicting FTO/Au fabrication wording. Reported D* uses a shot-noise approximation despite separately measured SR830 noise spectra. Fig.4c,d rise/fall 7.24/14.47 us at -1 V uses white light per curator; retained in device notes without a single wavelength. Timing thresholds are 10-90% and 90-10%."
     },
     {
       "paper_id": "shen-2016-mapbi3-ultrafast",
@@ -3579,7 +3579,7 @@
       "publication_url": "https://doi.org/10.1002/adma.201603573",
       "publication_type": "journal_article",
       "peer_reviewed": true,
-      "notes": "28 (2016), 10794-10800. SI unavailable. Textual noise value 18 pA Hz^-1/2 conflicts with Figure 1G inset scale around 1e-14 A Hz^-1/2. Keep published D* unchanged and pending review. Fastest measured response is instrument-limited; oscilloscope bandwidth is not detector bandwidth. All ten extracted area/thickness timing results are retained in the corresponding device notes. The two possible excitation sources (400 nm and 337 nm) are not mapped to each reported decay time, so no numerical timing row is assigned an invented wavelength. The 0.04 mm2 device gave 0.95 ns at zero bias, qualified as instrument-limited by the later discussion."
+      "notes": "28 (2016), 10794-10800. SI unavailable. Textual noise value 18 pA Hz^-1/2 conflicts with Figure 1G inset scale around 1e-14 A Hz^-1/2. Curator decision 2026-09-23 selects the approximately 1e-14 A Hz^-1/2 plot scale and approves the published D* unchanged. Signal/noise frequency match remains unknown. Fastest measured response is instrument-limited; oscilloscope bandwidth is not detector bandwidth. All ten extracted area/thickness timing results are retained in the corresponding device notes. The two possible excitation sources (400 nm and 337 nm) are not mapped to each reported decay time, so no numerical timing row is assigned an invented wavelength. The 0.04 mm2 device gave 0.95 ns at zero bias, qualified as instrument-limited by the later discussion."
     },
     {
       "paper_id": "liu-2023-tah-mixed-sn-pb",
@@ -8792,7 +8792,7 @@
       "material_family": "CH3NH3PbIxBr3-x",
       "material_composition": "MAPbIxBr3-x with 1 wt% semiconducting (6,5) single-walled carbon nanotubes",
       "device_architecture": "Vertical p-i-n photodiode",
-      "device_stack": "Glass / ITO (design) or FTO (methods) / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al (design) or Au (methods; 80 nm)",
+      "device_stack": "Glass / ITO / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al",
       "active_area_cm2": null,
       "ligand_exchange_status": "not_applicable",
       "ligand_exchange_type": null,
@@ -8801,7 +8801,7 @@
       "ligand_exchange_target": null,
       "ligand_exchange_conditions": null,
       "ligand_exchange_source_location": null,
-      "device_notes": "an9b00911 (1).pdf p. 2 Figure 1 and design text specify ITO/Al; p. 7 fabrication specifies FTO/Au, while characterization again names ITO/Al. Electrode identity unresolved. Active area not established. Two-step vapor-assisted solution preparation; composition optimized at 1 wt% nanotubes.  Approved source result, retained outside wavelength-based measurement tables: rise 7.24e-06 s, fall 1.447e-05 s. Rise 10-90% and decay/fall 90-10% of peak photocurrent. Classification: measured. Bias -1 V. Exact illumination wavelength is not securely assigned; no wavelength was guessed. Source: an9b00911 (1).pdf p. 6 Figure 4c,d and text. Chopper-generated pulses; stated pulse gap 1 s. Exact wavelength and intensity not specified for Figure 4c,d. The gap is not a -3 dB bandwidth or a securely defined repetition frequency. us multiplied by 1e-6 gives seconds."
+      "device_notes": "Curator selected ITO design on 2026-09-23: Fig.1 and characterization identify ITO/Al; conflicting fabrication text says FTO/Au. Al thickness is not inferred from the Au fabrication description. Active area unknown. Two-step vapor-assisted solution preparation; 1 wt% nanotubes. Curator confirms white-light temporal illumination: rise 7.24 us (10-90%) and fall 14.47 us (90-10%), measured at -1 V; source an9b00911 (1).pdf p.6 Fig.4c,d. Broadband white light has no single wavelength, so timing is preserved here rather than assigned to 550 or 1080 nm. Chopper pulse gap 1 s is not detector bandwidth or an established repetition frequency."
     },
     {
       "device_id": "shen-2016-mapbi3-ultrafast-spectral",
@@ -28312,13 +28312,13 @@
       "noise_instrument_source": "Main PDF p.6, detectivity paragraph",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Main PDF p.6, detectivity paragraph",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Resolve D* discrepancy: results p.6 explicitly reports 1e9 Jones at +1 V; conclusion reports approximately 1.4e9. Fig.4b caption explicitly says forward bias; retain +1 V. Noise instrument and frequency absent. Δf=1 Hz is electrical bandwidth, not noise evaluation frequency.",
+      "curator_notes": "Curator review on 2026-09-23: use results-section D*=1e9 Jones at 1520 nm, +1 V forward bias. The approximately 1.4e9 Jones conclusion claim is not a separate operating point and is not selected. Noise hardware and evaluation frequency remain unknown; unverified status retained.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "ban-2026-short-chain-inas-025mm2-1500nm-0v",
@@ -28367,13 +28367,13 @@
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Fall-time assignment follows Fig.4c inset versus pixel area. Approximately 240 ns stated in main p.6; assigned to smallest pixel by inset. Temporal test is 1500 nm, not 1520 nm EQE wavelength. No bandwidth derived.",
+      "curator_notes": "Curator review on 2026-09-23: timing-to-pixel-area assignments confirmed: 240 ns for 0.25 mm2, approximately 250 ns for 1 mm2, approximately 330 ns for 4.9 mm2. Temporal excitation 1500 nm at 0 V; not the 1520 nm spectral measurement. Graphical precision and original extraction methods retained; no bandwidth derived.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "ban-2026-short-chain-inas-1mm2-1500nm-0v",
@@ -28422,13 +28422,13 @@
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Fall-time assignment follows Fig.4c inset versus pixel area. Approximate graphical inset value, about +/-10 ns; confirm against underlying data. Temporal test is 1500 nm, not 1520 nm EQE wavelength. No bandwidth derived.",
+      "curator_notes": "Curator review on 2026-09-23: timing-to-pixel-area assignments confirmed: 240 ns for 0.25 mm2, approximately 250 ns for 1 mm2, approximately 330 ns for 4.9 mm2. Temporal excitation 1500 nm at 0 V; not the 1520 nm spectral measurement. Graphical precision and original extraction methods retained; no bandwidth derived.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "ban-2026-short-chain-inas-49mm2-1500nm-0v",
@@ -28477,13 +28477,13 @@
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Fall-time assignment follows Fig.4c inset versus pixel area. Approximate graphical inset value, about +/-10 ns; confirm against underlying data. Temporal test is 1500 nm, not 1520 nm EQE wavelength. No bandwidth derived.",
+      "curator_notes": "Curator review on 2026-09-23: timing-to-pixel-area assignments confirmed: 240 ns for 0.25 mm2, approximately 250 ns for 1 mm2, approximately 330 ns for 4.9 mm2. Temporal excitation 1500 nm at 0 V; not the 1520 nm spectral measurement. Graphical precision and original extraction methods retained; no bandwidth derived.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-1200-large-dstar",
@@ -28534,15 +28534,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-1200-medium-dstar",
@@ -28593,15 +28593,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-1200-small-dstar",
@@ -28652,15 +28652,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-1550-large-dstar",
@@ -28711,15 +28711,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-1550-medium-dstar",
@@ -28770,15 +28770,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-1550-small-dstar",
@@ -28829,15 +28829,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-2000-large-dstar",
@@ -28888,15 +28888,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-2000-medium-dstar",
@@ -28947,15 +28947,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-2000-small-dstar",
@@ -29006,15 +29006,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-2400-large-dstar",
@@ -29065,15 +29065,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-2400-medium-dstar",
@@ -29124,15 +29124,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-2400-small-dstar",
@@ -29183,15 +29183,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "PDF p. 7 Figure 4h",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-edt-2000-large-dstar",
@@ -29242,15 +29242,15 @@
       "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "PDF p. 6 comparison paragraph citing Figure S12",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-      "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+      "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "wang-2026-pbse-reactivity-tbai-2000-area-unspecified-timing-1900-pos3",
@@ -29851,15 +29851,15 @@
       "noise_instrument_source": "an9b00911 (1).pdf p. 6 Figure 4a and Eq. 5; p. 7 Characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "an9b00911 (1).pdf p. 6 Figure 4b and adjacent text",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "Authors approximate noise by sqrt(2qJdark) after comparing a separately measured SR830 noise spectrum with a shot-noise limit. D* is a modeled-noise estimate.",
-      "curator_notes": "Pending review: electrode conflict ITO/Al versus FTO/Au. Published D* preserved. SR830 is genuinely used for noise, but schema requires not_applicable for the modeled denominator; no extra lock-in-only flag is applied to this D* model. Area and numerical temperature unknown.",
+      "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown. Published D* is retained with amber shot-noise classification; corroborating SR830 noise measurements do not change the modeled denominator.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "li-2019-perovskite-swnt-composite-dstar-1080",
@@ -29910,15 +29910,15 @@
       "noise_instrument_source": "an9b00911 (1).pdf p. 6 Figure 4a and Eq. 5; p. 7 Characterization",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "an9b00911 (1).pdf p. 6 Figure 4b and adjacent text",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "Authors approximate noise by sqrt(2qJdark) after comparing a separately measured SR830 noise spectrum with a shot-noise limit. D* is a modeled-noise estimate.",
-      "curator_notes": "Pending review: electrode conflict ITO/Al versus FTO/Au. Published D* preserved. SR830 is genuinely used for noise, but schema requires not_applicable for the modeled denominator; no extra lock-in-only flag is applied to this D* model. Area and numerical temperature unknown.",
+      "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown. Published D* is retained with amber shot-noise classification; corroborating SR830 noise measurements do not change the modeled denominator.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "li-2019-perovskite-swnt-composite-r-550",
@@ -29967,13 +29967,13 @@
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Pending review: resolve electrode materials. Measurement frequency and numerical temperature unavailable.",
+      "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "li-2019-perovskite-swnt-composite-r-1080",
@@ -30022,13 +30022,13 @@
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Pending review: resolve electrode materials. Measurement frequency and numerical temperature unavailable.",
+      "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "shen-2016-mapbi3-ultrafast-spectral-dstar700-r680-ldr",
@@ -30075,17 +30075,17 @@
       "noise_instruments": [
         "spectrum_analyzer"
       ],
-      "noise_instrument_details": "FFT signal analyzer with current preamplifier; models unreported. Paper text says 18 pA Hz^-1/2; Figure 1G inset instead has noise near 1e-14 A Hz^-1/2. Do not silently correct or recalculate D*. Keithley 2400 and 4200 handle I-V and pulse bias respectively, not noise acquisition.",
+      "noise_instrument_details": "FFT signal analyzer with current preamplifier; models unreported. Curator selects the approximately 1e-14 A Hz^-1/2 level shown in Fig.1G (2026-09-23). The prose instead prints 18 pA Hz^-1/2; discrepancy documented and plot scale preferred. Reported D* not recalculated. Keithley 2400 and 4200 handle I-V and pulse bias, not noise acquisition.",
       "noise_instrument_source": "Shen 2016 PDF p. 3 noise discussion; p. 2 Figure 1G inset; pp. 4 and 6 instrument purposes",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "Shen 2016 PDF p. 3 peak D* text; p. 2 Figure 1G and caption",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Pending review: resolve approximately 1000-fold prose/plot noise discrepancy (pA versus apparent fA scale). Preserve reported D* 7.8e12 Jones; neither noise value is used to generate a replacement. Spectral active area unknown. LDR 93 dB is an explicit annotation, not graph digitization.",
+      "curator_notes": "Curator review on 2026-09-23: use the approximately 1e-14 A Hz^-1/2 noise level from Fig.1G, rather than the conflicting 18 pA Hz^-1/2 prose value. Retain author-reported D*=7.8e12 Jones at 700 nm, -0.1 V without recalculation. The plot-scale noise choice is a curator decision, not an independent measurement. Signal/noise frequency matching remains unknown, so unverified status is retained. Spectral area remains unknown. Timing-source assignments remain unresolved separately.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "liu-2023-tah-mixed-sn-pb-rigid-tah-840",
@@ -65777,7 +65777,7 @@
         "publication_url": "https://doi.org/10.1021/jacs.6c03275",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point."
+        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point. Curator decision 2026-09-23 selects results-section D*=1e9 Jones over the conclusion value and confirms all three temporal pixel assignments."
       },
       "device": {
         "device_id": "ban-2026-short-chain-inas-spectral",
@@ -65847,13 +65847,13 @@
         "noise_instrument_source": "Main PDF p.6, detectivity paragraph",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Main PDF p.6, detectivity paragraph",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Resolve D* discrepancy: results p.6 explicitly reports 1e9 Jones at +1 V; conclusion reports approximately 1.4e9. Fig.4b caption explicitly says forward bias; retain +1 V. Noise instrument and frequency absent. Δf=1 Hz is electrical bandwidth, not noise evaluation frequency.",
+        "curator_notes": "Curator review on 2026-09-23: use results-section D*=1e9 Jones at 1520 nm, +1 V forward bias. The approximately 1.4e9 Jones conclusion claim is not a separate operating point and is not selected. Noise hardware and evaluation frequency remain unknown; unverified status retained.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -65881,7 +65881,7 @@
         "publication_url": "https://doi.org/10.1021/jacs.6c03275",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point."
+        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point. Curator decision 2026-09-23 selects results-section D*=1e9 Jones over the conclusion value and confirms all three temporal pixel assignments."
       },
       "device": {
         "device_id": "ban-2026-short-chain-inas-025mm2",
@@ -65949,13 +65949,13 @@
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Fall-time assignment follows Fig.4c inset versus pixel area. Approximately 240 ns stated in main p.6; assigned to smallest pixel by inset. Temporal test is 1500 nm, not 1520 nm EQE wavelength. No bandwidth derived.",
+        "curator_notes": "Curator review on 2026-09-23: timing-to-pixel-area assignments confirmed: 240 ns for 0.25 mm2, approximately 250 ns for 1 mm2, approximately 330 ns for 4.9 mm2. Temporal excitation 1500 nm at 0 V; not the 1520 nm spectral measurement. Graphical precision and original extraction methods retained; no bandwidth derived.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -65983,7 +65983,7 @@
         "publication_url": "https://doi.org/10.1021/jacs.6c03275",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point."
+        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point. Curator decision 2026-09-23 selects results-section D*=1e9 Jones over the conclusion value and confirms all three temporal pixel assignments."
       },
       "device": {
         "device_id": "ban-2026-short-chain-inas-1mm2",
@@ -66051,13 +66051,13 @@
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Fall-time assignment follows Fig.4c inset versus pixel area. Approximate graphical inset value, about +/-10 ns; confirm against underlying data. Temporal test is 1500 nm, not 1520 nm EQE wavelength. No bandwidth derived.",
+        "curator_notes": "Curator review on 2026-09-23: timing-to-pixel-area assignments confirmed: 240 ns for 0.25 mm2, approximately 250 ns for 1 mm2, approximately 330 ns for 4.9 mm2. Temporal excitation 1500 nm at 0 V; not the 1520 nm spectral measurement. Graphical precision and original extraction methods retained; no bandwidth derived.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66085,7 +66085,7 @@
         "publication_url": "https://doi.org/10.1021/jacs.6c03275",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point."
+        "notes": "Source: ja6c03275.pdf. Results D*=1e9 Jones conflicts with conclusion approximately 1.4e9 Jones; main results retained pending review. 1800 nm absorption is synthesis evidence, not a measured detector point. Curator decision 2026-09-23 selects results-section D*=1e9 Jones over the conclusion value and confirms all three temporal pixel assignments."
       },
       "device": {
         "device_id": "ban-2026-short-chain-inas-49mm2",
@@ -66153,13 +66153,13 @@
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Fall-time assignment follows Fig.4c inset versus pixel area. Approximate graphical inset value, about +/-10 ns; confirm against underlying data. Temporal test is 1500 nm, not 1520 nm EQE wavelength. No bandwidth derived.",
+        "curator_notes": "Curator review on 2026-09-23: timing-to-pixel-area assignments confirmed: 240 ns for 0.25 mm2, approximately 250 ns for 1 mm2, approximately 330 ns for 4.9 mm2. Temporal excitation 1500 nm at 0 V; not the 1520 nm spectral measurement. Graphical precision and original extraction methods retained; no bandwidth derived.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66183,7 +66183,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-1200-large",
@@ -66253,15 +66253,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66285,7 +66285,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-1200-medium",
@@ -66355,15 +66355,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66387,7 +66387,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-1200-small",
@@ -66457,15 +66457,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66489,7 +66489,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-1550-large",
@@ -66559,15 +66559,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66591,7 +66591,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-1550-medium",
@@ -66661,15 +66661,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66693,7 +66693,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-1550-small",
@@ -66763,15 +66763,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66795,7 +66795,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-2000-large",
@@ -66865,15 +66865,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66897,7 +66897,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-2000-medium",
@@ -66967,15 +66967,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -66999,7 +66999,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-2000-small",
@@ -67069,15 +67069,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -67101,7 +67101,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-2400-large",
@@ -67171,15 +67171,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 6 results paragraph and p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -67203,7 +67203,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-2400-medium",
@@ -67273,15 +67273,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -67305,7 +67305,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-2400-small",
@@ -67375,15 +67375,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "PDF p. 7 Figure 4h",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. Approximate manual log-axis bar reading with about 15% graphical uncertainty; replace with source values when available.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. Approximate log-axis bar extraction from Fig.4h retains about 15% graphical reading uncertainty.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -67407,7 +67407,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-edt-2000-large",
@@ -67477,15 +67477,15 @@
         "noise_instrument_source": "PDF p. 6 Eq. 2; pp. 9-10 Section 4.7",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "PDF p. 6 comparison paragraph citing Figure S12",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses a dark-current shot-noise approximation rather than a measured total-noise spectrum.",
-        "curator_notes": "User approved provisional publication on 2026-09-22. Pending review: printed Eq. 2 appears to invert area/noise normalization; source values are transcribed, not recalculated. D* bias and frequency are not explicitly established; numeric kelvin temperature is unspecified. D* directly reported in the main article.",
+        "curator_notes": "Curator review on 2026-09-23: printed Eq.2 normalization is a typographical error, as confirmed by the curator. Retain the reported standalone-device D* values without recalculation. Shot-noise approximation remains amber. Bias, frequency and numeric operating temperature remain unknown. D* value is directly reported in the main article.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -67509,7 +67509,7 @@
         "publication_url": "https://doi.org/10.1002/lpor.71459",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence."
+        "notes": "User-approved provisional publication on 2026-09-22. Standalone photoconductor D* values retain shot-noise amber classification and a public pending-review normalization question. Main article reviewed; SI unavailable. Photovoltaic and FPA claims withheld pending metric-wavelength and normalization evidence. Curator decision 2026-09-23 identifies Eq.2 normalization as a typographical error and approves the standalone D* records without recalculation. Array normalization and temporal area attribution remain separate unresolved issues."
       },
       "device": {
         "device_id": "wang-2026-pbse-reactivity-tbai-2000-area-unspecified",
@@ -68507,7 +68507,7 @@
         "publication_url": "https://doi.org/10.1021/acsanm.9b00911",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "2 (2019), 4974-4982. SI inaccessible. Main-text design and experimental section disagree on electrode materials. Reported D* uses a shot-noise approximation despite separately measured noise spectra. Figure 4c,d rise/fall times of 7.24/14.47 us at -1 V are retained in device notes because the timing wavelength is unspecified; thresholds are 10-90% and 90-10%. The SR830 measured a corroborating noise spectrum, while D* uses the Eq. 5 shot-noise model."
+        "notes": "2 (2019), 4974-4982. SI inaccessible. Curator review 2026-09-23 selects the ITO/Al design over conflicting FTO/Au fabrication wording. Reported D* uses a shot-noise approximation despite separately measured SR830 noise spectra. Fig.4c,d rise/fall 7.24/14.47 us at -1 V uses white light per curator; retained in device notes without a single wavelength. Timing thresholds are 10-90% and 90-10%."
       },
       "device": {
         "device_id": "li-2019-perovskite-swnt-composite",
@@ -68517,7 +68517,7 @@
         "material_family": "CH3NH3PbIxBr3-x",
         "material_composition": "MAPbIxBr3-x with 1 wt% semiconducting (6,5) single-walled carbon nanotubes",
         "device_architecture": "Vertical p-i-n photodiode",
-        "device_stack": "Glass / ITO (design) or FTO (methods) / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al (design) or Au (methods; 80 nm)",
+        "device_stack": "Glass / ITO / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al",
         "active_area_cm2": null,
         "ligand_exchange_status": "not_applicable",
         "ligand_exchange_type": null,
@@ -68526,7 +68526,7 @@
         "ligand_exchange_target": null,
         "ligand_exchange_conditions": null,
         "ligand_exchange_source_location": null,
-        "device_notes": "an9b00911 (1).pdf p. 2 Figure 1 and design text specify ITO/Al; p. 7 fabrication specifies FTO/Au, while characterization again names ITO/Al. Electrode identity unresolved. Active area not established. Two-step vapor-assisted solution preparation; composition optimized at 1 wt% nanotubes.  Approved source result, retained outside wavelength-based measurement tables: rise 7.24e-06 s, fall 1.447e-05 s. Rise 10-90% and decay/fall 90-10% of peak photocurrent. Classification: measured. Bias -1 V. Exact illumination wavelength is not securely assigned; no wavelength was guessed. Source: an9b00911 (1).pdf p. 6 Figure 4c,d and text. Chopper-generated pulses; stated pulse gap 1 s. Exact wavelength and intensity not specified for Figure 4c,d. The gap is not a -3 dB bandwidth or a securely defined repetition frequency. us multiplied by 1e-6 gives seconds."
+        "device_notes": "Curator selected ITO design on 2026-09-23: Fig.1 and characterization identify ITO/Al; conflicting fabrication text says FTO/Au. Al thickness is not inferred from the Au fabrication description. Active area unknown. Two-step vapor-assisted solution preparation; 1 wt% nanotubes. Curator confirms white-light temporal illumination: rise 7.24 us (10-90%) and fall 14.47 us (90-10%), measured at -1 V; source an9b00911 (1).pdf p.6 Fig.4c,d. Broadband white light has no single wavelength, so timing is preserved here rather than assigned to 550 or 1080 nm. Chopper pulse gap 1 s is not detector bandwidth or an established repetition frequency."
       },
       "measurement": {
         "measurement_id": "li-2019-perovskite-swnt-composite-dstar-550",
@@ -68577,15 +68577,15 @@
         "noise_instrument_source": "an9b00911 (1).pdf p. 6 Figure 4a and Eq. 5; p. 7 Characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "an9b00911 (1).pdf p. 6 Figure 4b and adjacent text",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "Authors approximate noise by sqrt(2qJdark) after comparing a separately measured SR830 noise spectrum with a shot-noise limit. D* is a modeled-noise estimate.",
-        "curator_notes": "Pending review: electrode conflict ITO/Al versus FTO/Au. Published D* preserved. SR830 is genuinely used for noise, but schema requires not_applicable for the modeled denominator; no extra lock-in-only flag is applied to this D* model. Area and numerical temperature unknown.",
+        "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown. Published D* is retained with amber shot-noise classification; corroborating SR830 noise measurements do not change the modeled denominator.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -68605,7 +68605,7 @@
         "publication_url": "https://doi.org/10.1021/acsanm.9b00911",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "2 (2019), 4974-4982. SI inaccessible. Main-text design and experimental section disagree on electrode materials. Reported D* uses a shot-noise approximation despite separately measured noise spectra. Figure 4c,d rise/fall times of 7.24/14.47 us at -1 V are retained in device notes because the timing wavelength is unspecified; thresholds are 10-90% and 90-10%. The SR830 measured a corroborating noise spectrum, while D* uses the Eq. 5 shot-noise model."
+        "notes": "2 (2019), 4974-4982. SI inaccessible. Curator review 2026-09-23 selects the ITO/Al design over conflicting FTO/Au fabrication wording. Reported D* uses a shot-noise approximation despite separately measured SR830 noise spectra. Fig.4c,d rise/fall 7.24/14.47 us at -1 V uses white light per curator; retained in device notes without a single wavelength. Timing thresholds are 10-90% and 90-10%."
       },
       "device": {
         "device_id": "li-2019-perovskite-swnt-composite",
@@ -68615,7 +68615,7 @@
         "material_family": "CH3NH3PbIxBr3-x",
         "material_composition": "MAPbIxBr3-x with 1 wt% semiconducting (6,5) single-walled carbon nanotubes",
         "device_architecture": "Vertical p-i-n photodiode",
-        "device_stack": "Glass / ITO (design) or FTO (methods) / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al (design) or Au (methods; 80 nm)",
+        "device_stack": "Glass / ITO / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al",
         "active_area_cm2": null,
         "ligand_exchange_status": "not_applicable",
         "ligand_exchange_type": null,
@@ -68624,7 +68624,7 @@
         "ligand_exchange_target": null,
         "ligand_exchange_conditions": null,
         "ligand_exchange_source_location": null,
-        "device_notes": "an9b00911 (1).pdf p. 2 Figure 1 and design text specify ITO/Al; p. 7 fabrication specifies FTO/Au, while characterization again names ITO/Al. Electrode identity unresolved. Active area not established. Two-step vapor-assisted solution preparation; composition optimized at 1 wt% nanotubes.  Approved source result, retained outside wavelength-based measurement tables: rise 7.24e-06 s, fall 1.447e-05 s. Rise 10-90% and decay/fall 90-10% of peak photocurrent. Classification: measured. Bias -1 V. Exact illumination wavelength is not securely assigned; no wavelength was guessed. Source: an9b00911 (1).pdf p. 6 Figure 4c,d and text. Chopper-generated pulses; stated pulse gap 1 s. Exact wavelength and intensity not specified for Figure 4c,d. The gap is not a -3 dB bandwidth or a securely defined repetition frequency. us multiplied by 1e-6 gives seconds."
+        "device_notes": "Curator selected ITO design on 2026-09-23: Fig.1 and characterization identify ITO/Al; conflicting fabrication text says FTO/Au. Al thickness is not inferred from the Au fabrication description. Active area unknown. Two-step vapor-assisted solution preparation; 1 wt% nanotubes. Curator confirms white-light temporal illumination: rise 7.24 us (10-90%) and fall 14.47 us (90-10%), measured at -1 V; source an9b00911 (1).pdf p.6 Fig.4c,d. Broadband white light has no single wavelength, so timing is preserved here rather than assigned to 550 or 1080 nm. Chopper pulse gap 1 s is not detector bandwidth or an established repetition frequency."
       },
       "measurement": {
         "measurement_id": "li-2019-perovskite-swnt-composite-dstar-1080",
@@ -68675,15 +68675,15 @@
         "noise_instrument_source": "an9b00911 (1).pdf p. 6 Figure 4a and Eq. 5; p. 7 Characterization",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "an9b00911 (1).pdf p. 6 Figure 4b and adjacent text",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "Authors approximate noise by sqrt(2qJdark) after comparing a separately measured SR830 noise spectrum with a shot-noise limit. D* is a modeled-noise estimate.",
-        "curator_notes": "Pending review: electrode conflict ITO/Al versus FTO/Au. Published D* preserved. SR830 is genuinely used for noise, but schema requires not_applicable for the modeled denominator; no extra lock-in-only flag is applied to this D* model. Area and numerical temperature unknown.",
+        "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown. Published D* is retained with amber shot-noise classification; corroborating SR830 noise measurements do not change the modeled denominator.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -68703,7 +68703,7 @@
         "publication_url": "https://doi.org/10.1021/acsanm.9b00911",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "2 (2019), 4974-4982. SI inaccessible. Main-text design and experimental section disagree on electrode materials. Reported D* uses a shot-noise approximation despite separately measured noise spectra. Figure 4c,d rise/fall times of 7.24/14.47 us at -1 V are retained in device notes because the timing wavelength is unspecified; thresholds are 10-90% and 90-10%. The SR830 measured a corroborating noise spectrum, while D* uses the Eq. 5 shot-noise model."
+        "notes": "2 (2019), 4974-4982. SI inaccessible. Curator review 2026-09-23 selects the ITO/Al design over conflicting FTO/Au fabrication wording. Reported D* uses a shot-noise approximation despite separately measured SR830 noise spectra. Fig.4c,d rise/fall 7.24/14.47 us at -1 V uses white light per curator; retained in device notes without a single wavelength. Timing thresholds are 10-90% and 90-10%."
       },
       "device": {
         "device_id": "li-2019-perovskite-swnt-composite",
@@ -68713,7 +68713,7 @@
         "material_family": "CH3NH3PbIxBr3-x",
         "material_composition": "MAPbIxBr3-x with 1 wt% semiconducting (6,5) single-walled carbon nanotubes",
         "device_architecture": "Vertical p-i-n photodiode",
-        "device_stack": "Glass / ITO (design) or FTO (methods) / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al (design) or Au (methods; 80 nm)",
+        "device_stack": "Glass / ITO / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al",
         "active_area_cm2": null,
         "ligand_exchange_status": "not_applicable",
         "ligand_exchange_type": null,
@@ -68722,7 +68722,7 @@
         "ligand_exchange_target": null,
         "ligand_exchange_conditions": null,
         "ligand_exchange_source_location": null,
-        "device_notes": "an9b00911 (1).pdf p. 2 Figure 1 and design text specify ITO/Al; p. 7 fabrication specifies FTO/Au, while characterization again names ITO/Al. Electrode identity unresolved. Active area not established. Two-step vapor-assisted solution preparation; composition optimized at 1 wt% nanotubes.  Approved source result, retained outside wavelength-based measurement tables: rise 7.24e-06 s, fall 1.447e-05 s. Rise 10-90% and decay/fall 90-10% of peak photocurrent. Classification: measured. Bias -1 V. Exact illumination wavelength is not securely assigned; no wavelength was guessed. Source: an9b00911 (1).pdf p. 6 Figure 4c,d and text. Chopper-generated pulses; stated pulse gap 1 s. Exact wavelength and intensity not specified for Figure 4c,d. The gap is not a -3 dB bandwidth or a securely defined repetition frequency. us multiplied by 1e-6 gives seconds."
+        "device_notes": "Curator selected ITO design on 2026-09-23: Fig.1 and characterization identify ITO/Al; conflicting fabrication text says FTO/Au. Al thickness is not inferred from the Au fabrication description. Active area unknown. Two-step vapor-assisted solution preparation; 1 wt% nanotubes. Curator confirms white-light temporal illumination: rise 7.24 us (10-90%) and fall 14.47 us (90-10%), measured at -1 V; source an9b00911 (1).pdf p.6 Fig.4c,d. Broadband white light has no single wavelength, so timing is preserved here rather than assigned to 550 or 1080 nm. Chopper pulse gap 1 s is not detector bandwidth or an established repetition frequency."
       },
       "measurement": {
         "measurement_id": "li-2019-perovskite-swnt-composite-r-550",
@@ -68771,13 +68771,13 @@
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Pending review: resolve electrode materials. Measurement frequency and numerical temperature unavailable.",
+        "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -68797,7 +68797,7 @@
         "publication_url": "https://doi.org/10.1021/acsanm.9b00911",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "2 (2019), 4974-4982. SI inaccessible. Main-text design and experimental section disagree on electrode materials. Reported D* uses a shot-noise approximation despite separately measured noise spectra. Figure 4c,d rise/fall times of 7.24/14.47 us at -1 V are retained in device notes because the timing wavelength is unspecified; thresholds are 10-90% and 90-10%. The SR830 measured a corroborating noise spectrum, while D* uses the Eq. 5 shot-noise model."
+        "notes": "2 (2019), 4974-4982. SI inaccessible. Curator review 2026-09-23 selects the ITO/Al design over conflicting FTO/Au fabrication wording. Reported D* uses a shot-noise approximation despite separately measured SR830 noise spectra. Fig.4c,d rise/fall 7.24/14.47 us at -1 V uses white light per curator; retained in device notes without a single wavelength. Timing thresholds are 10-90% and 90-10%."
       },
       "device": {
         "device_id": "li-2019-perovskite-swnt-composite",
@@ -68807,7 +68807,7 @@
         "material_family": "CH3NH3PbIxBr3-x",
         "material_composition": "MAPbIxBr3-x with 1 wt% semiconducting (6,5) single-walled carbon nanotubes",
         "device_architecture": "Vertical p-i-n photodiode",
-        "device_stack": "Glass / ITO (design) or FTO (methods) / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al (design) or Au (methods; 80 nm)",
+        "device_stack": "Glass / ITO / PEDOT:PSS (20 nm) / perovskite:SWNT (210 nm) / PCBM (30 nm) / Al",
         "active_area_cm2": null,
         "ligand_exchange_status": "not_applicable",
         "ligand_exchange_type": null,
@@ -68816,7 +68816,7 @@
         "ligand_exchange_target": null,
         "ligand_exchange_conditions": null,
         "ligand_exchange_source_location": null,
-        "device_notes": "an9b00911 (1).pdf p. 2 Figure 1 and design text specify ITO/Al; p. 7 fabrication specifies FTO/Au, while characterization again names ITO/Al. Electrode identity unresolved. Active area not established. Two-step vapor-assisted solution preparation; composition optimized at 1 wt% nanotubes.  Approved source result, retained outside wavelength-based measurement tables: rise 7.24e-06 s, fall 1.447e-05 s. Rise 10-90% and decay/fall 90-10% of peak photocurrent. Classification: measured. Bias -1 V. Exact illumination wavelength is not securely assigned; no wavelength was guessed. Source: an9b00911 (1).pdf p. 6 Figure 4c,d and text. Chopper-generated pulses; stated pulse gap 1 s. Exact wavelength and intensity not specified for Figure 4c,d. The gap is not a -3 dB bandwidth or a securely defined repetition frequency. us multiplied by 1e-6 gives seconds."
+        "device_notes": "Curator selected ITO design on 2026-09-23: Fig.1 and characterization identify ITO/Al; conflicting fabrication text says FTO/Au. Al thickness is not inferred from the Au fabrication description. Active area unknown. Two-step vapor-assisted solution preparation; 1 wt% nanotubes. Curator confirms white-light temporal illumination: rise 7.24 us (10-90%) and fall 14.47 us (90-10%), measured at -1 V; source an9b00911 (1).pdf p.6 Fig.4c,d. Broadband white light has no single wavelength, so timing is preserved here rather than assigned to 550 or 1080 nm. Chopper pulse gap 1 s is not detector bandwidth or an established repetition frequency."
       },
       "measurement": {
         "measurement_id": "li-2019-perovskite-swnt-composite-r-1080",
@@ -68865,13 +68865,13 @@
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Pending review: resolve electrode materials. Measurement frequency and numerical temperature unavailable.",
+        "curator_notes": "Curator review on 2026-09-23: follow the ITO design, using the ITO/Al stack in Fig.1 and the characterization description rather than the conflicting FTO/Au fabrication text. Spectral records approved. Temporal illumination confirmed as broadband white light: rise/fall 7.24/14.47 us at -1 V retained in device notes and the held timing record, without assigning a monochromatic wavelength. Area and numeric temperature remain unknown.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -68895,7 +68895,7 @@
         "publication_url": "https://doi.org/10.1002/adma.201603573",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "28 (2016), 10794-10800. SI unavailable. Textual noise value 18 pA Hz^-1/2 conflicts with Figure 1G inset scale around 1e-14 A Hz^-1/2. Keep published D* unchanged and pending review. Fastest measured response is instrument-limited; oscilloscope bandwidth is not detector bandwidth. All ten extracted area/thickness timing results are retained in the corresponding device notes. The two possible excitation sources (400 nm and 337 nm) are not mapped to each reported decay time, so no numerical timing row is assigned an invented wavelength. The 0.04 mm2 device gave 0.95 ns at zero bias, qualified as instrument-limited by the later discussion."
+        "notes": "28 (2016), 10794-10800. SI unavailable. Textual noise value 18 pA Hz^-1/2 conflicts with Figure 1G inset scale around 1e-14 A Hz^-1/2. Curator decision 2026-09-23 selects the approximately 1e-14 A Hz^-1/2 plot scale and approves the published D* unchanged. Signal/noise frequency match remains unknown. Fastest measured response is instrument-limited; oscilloscope bandwidth is not detector bandwidth. All ten extracted area/thickness timing results are retained in the corresponding device notes. The two possible excitation sources (400 nm and 337 nm) are not mapped to each reported decay time, so no numerical timing row is assigned an invented wavelength. The 0.04 mm2 device gave 0.95 ns at zero bias, qualified as instrument-limited by the later discussion."
       },
       "device": {
         "device_id": "shen-2016-mapbi3-ultrafast-spectral",
@@ -68961,17 +68961,17 @@
         "noise_instruments": [
           "spectrum_analyzer"
         ],
-        "noise_instrument_details": "FFT signal analyzer with current preamplifier; models unreported. Paper text says 18 pA Hz^-1/2; Figure 1G inset instead has noise near 1e-14 A Hz^-1/2. Do not silently correct or recalculate D*. Keithley 2400 and 4200 handle I-V and pulse bias respectively, not noise acquisition.",
+        "noise_instrument_details": "FFT signal analyzer with current preamplifier; models unreported. Curator selects the approximately 1e-14 A Hz^-1/2 level shown in Fig.1G (2026-09-23). The prose instead prints 18 pA Hz^-1/2; discrepancy documented and plot scale preferred. Reported D* not recalculated. Keithley 2400 and 4200 handle I-V and pulse bias, not noise acquisition.",
         "noise_instrument_source": "Shen 2016 PDF p. 3 noise discussion; p. 2 Figure 1G inset; pp. 4 and 6 instrument purposes",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "Shen 2016 PDF p. 3 peak D* text; p. 2 Figure 1G and caption",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Pending review: resolve approximately 1000-fold prose/plot noise discrepancy (pA versus apparent fA scale). Preserve reported D* 7.8e12 Jones; neither noise value is used to generate a replacement. Spectral active area unknown. LDR 93 dB is an explicit annotation, not graph digitization.",
+        "curator_notes": "Curator review on 2026-09-23: use the approximately 1e-14 A Hz^-1/2 noise level from Fig.1G, rather than the conflicting 18 pA Hz^-1/2 prose value. Retain author-reported D*=7.8e12 Jones at 700 nm, -0.1 V without recalculation. The plot-scale noise choice is a curator decision, not an independent measurement. Signal/noise frequency matching remains unknown, so unverified status is retained. Spectral area remains unknown. Timing-source assignments remain unresolved separately.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {

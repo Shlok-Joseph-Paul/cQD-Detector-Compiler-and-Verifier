@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.31.2";
+export const DATASET_VERSION = "1.31.3";
 export const DATASET_RELEASE_DATE = "2026-09-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Reviewed InAs, PbSe and perovskite results",
+    summary:
+      "Applies curator decisions for Ban 2026, Wang 2026 PbSe, Li 2019 and Shen 2016, enabling 22 existing measurements in performance graphs.",
+    changes: [
+      "Selected Ban's 1e9-Jones result and confirmed the 240/250/330 ns temporal pixel assignments.",
+      "Recorded Wang's printed equation as a curator-confirmed typo; retained 13 reported standalone D* values and amber shot-noise classification without recalculation. Array and unassigned-area timing results remain held.",
+      "Selected Li's ITO/Al design and confirmed broadband white-light timing. Spectral records are reviewed; timing remains in device notes without an invented monochromatic coordinate.",
+      "Selected Shen's approximately 1e-14 A/sqrt(Hz) plot noise scale over conflicting prose, retaining reported D* and unknown frequency matching.",
+      "Dataset remains 160 papers, 309 devices and 404 measurements; unrelated reviews remain pending.",
+    ],
+  },
+  {
+    version: "1.31.2",
+    date: "2026-09-23",
     title: "Curator review of seven CQD detector papers",
     summary:
       "Enables 21 reviewed measurements from Ka, Ma, Zeng, Xia, Chen, Yuan, and Sharma in performance graphs, with documented source corrections and supplementary evidence.",

@@ -22,6 +22,7 @@ export const DATASET_RELEASES: readonly DatasetRelease[] = [
       "Selected Li's ITO/Al design and confirmed broadband white-light timing. Spectral records are reviewed; timing remains in device notes without an invented monochromatic coordinate.",
       "Selected Shen's approximately 1e-14 A/sqrt(Hz) plot noise scale over conflicting prose, retaining reported D* and unknown frequency matching.",
       "Dataset remains 160 papers, 309 devices and 404 measurements; unrelated reviews remain pending.",
+      "The Releases chart now compares total papers with monthly GitHub main-branch commits using separate axes, dated source snapshots, and a shared tooltip.",
     ],
   },
   {

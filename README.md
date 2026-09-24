@@ -346,6 +346,14 @@ validation before merging a change.
 
 ## Deployment
 
+The Releases chart combines paper totals with monthly commits from GitHub's
+`main` branch. Run `pnpm run refresh-github-commits` before publishing to refresh
+`data/generated/github-commits.json`. The command reads the actual GitHub
+history, including merge commits, and groups unique commits by UTC committer
+date. It does not count the separate Sites publication history. The chart shows
+the snapshot date; production rendering does not call GitHub. A failed refresh
+leaves the previous snapshot intact.
+
 1. Run `pnpm run check-data`, `pnpm test`, `pnpm run lint`, and
    `pnpm run build`.
 2. Confirm that no secrets, copyrighted full text, or unintended synthetic data

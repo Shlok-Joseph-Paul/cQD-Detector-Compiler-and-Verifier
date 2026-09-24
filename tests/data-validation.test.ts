@@ -100,32 +100,32 @@ test("the checked-in CSV dataset passes validation and joins every measurement",
   assert.equal(atlas.dataset_version, DATASET_VERSION);
   assert.equal(atlas.measurements.length, 404);
   assert.equal(atlas.records.length, atlas.measurements.length);
-  const pendingImportPaperIds = new Set([
+  const reviewedImportPaperIds = new Set([
     "ma-2026-pbs-homogeneous-energy",
     "zeng-2025-pbs-cellulose",
     "xia-2026-pbs-monomer",
     "chen-2020-pbs-spray",
   ]);
-  const pendingImport = atlas.records.filter(({ paper: source }) =>
-    pendingImportPaperIds.has(source.paper_id),
+  const reviewedImport = atlas.records.filter(({ paper: source }) =>
+    reviewedImportPaperIds.has(source.paper_id),
   );
-  assert.equal(pendingImport.length, 10);
+  assert.equal(reviewedImport.length, 10);
   assert.equal(
-    new Set(pendingImport.map(({ device }) => device.device_id)).size,
+    new Set(reviewedImport.map(({ device }) => device.device_id)).size,
     8,
   );
   assert.ok(
-    pendingImport.every(
+    reviewedImport.every(
       ({ measurement: point }) =>
-        point.curator_status === "pending_review" && point.curator_notes,
+        point.curator_status === "reviewed" && point.curator_notes,
     ),
   );
   assert.equal(
-    pendingImport.filter(({ measurement: point }) => point.flag === "amber")
+    reviewedImport.filter(({ measurement: point }) => point.flag === "amber")
       .length,
     5,
   );
-  const sprayStudy = pendingImport.filter(
+  const sprayStudy = reviewedImport.filter(
     ({ paper: source }) => source.paper_id === "chen-2020-pbs-spray",
   );
   assert.equal(sprayStudy.length, 4);

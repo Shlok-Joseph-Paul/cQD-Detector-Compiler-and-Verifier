@@ -1,6 +1,6 @@
 {
   "schema_version": 8,
-  "dataset_version": "1.31.1",
+  "dataset_version": "1.31.2",
   "generated_at": "2026-09-23T00:00:00.000Z",
   "papers": [
     {
@@ -3378,7 +3378,7 @@
       "publication_url": "https://doi.org/10.1016/j.nanoen.2025.111091",
       "publication_type": "journal_article",
       "peer_reviewed": true,
-      "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions."
+      "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions. Supporting Information 1-s2.0-S2211285525004501-mmc1.docx supplied and inspected 2026-09-23, including S6-S9. Current source-coverage update supersedes earlier unavailable-SI notes."
     },
     {
       "paper_id": "skorotetcky-2025-hydrosilane-inas",
@@ -7927,7 +7927,7 @@
       "ligand_exchange_target": "Hybrid-halide-exchanged absorber ink; four EDT-treated PbS HTL layers",
       "ligand_exchange_conditions": "Absorber ink prepared using hybrid halide ligand strategy; exact salts and recipe deferred to unavailable SI. Four EDT-treated layers deposited layer-by-layer.",
       "ligand_exchange_source_location": "am4c18862.pdf, PDF p.2 (5487), section 2.4",
-      "device_notes": "Stack follows fabrication section 2.4 and Fig.6 energy diagram; Fig.5a reverses the PbS absorber and PbS-EDT labels. Resolve before fully reviewed publication. AC-9 substrate choice: PDF p.6; area: PDF p.7 eqs.3-4 discussion. EDT is the only chemically identified exchange ligand in the available main-article process description; halide list is incomplete."
+      "device_notes": "Stack follows fabrication section 2.4 and Fig.6 energy diagram; Fig.5a reverses the PbS absorber and PbS-EDT labels. Resolve before fully reviewed publication. AC-9 substrate choice: PDF p.6; area: PDF p.7 eqs.3-4 discussion. EDT is the only chemically identified exchange ligand in the available main-article process description; halide list is incomplete. Curator decision 2026-09-23: follow fabrication Section 2.4 and Fig.6 for layer order; Fig.5a label reversal does not change this stack."
     },
     {
       "device_id": "xia-2026-pbs-control-1700",
@@ -8079,7 +8079,7 @@
       "ligand_exchange_target": "Ag2Te CQD absorber",
       "ligand_exchange_conditions": "Five layer-by-layer depositions; 0.2% v/v EDT in acetonitrile, 20 s per layer; two acetonitrile rinses and one toluene rinse; anneal 100 C in air for 10 min.",
       "ligand_exchange_source_location": "1-s2.0-S2211285525003854-main.pdf, pp. 5, 7, SSLE paragraph and Section 4.4",
-      "device_notes": "Distinct smaller CQDs identified by 1310 nm absorption peak; performance at 1350 nm. Main p. 6 cites Fig. S23. Common device preparation assigned from Section 4.4; confirm variant-specific stack, area, thickness and bias in SI before treating as fully reviewed."
+      "device_notes": "Distinct smaller CQDs identified by 1310 nm absorption peak; performance at 1350 nm. Main p. 6 cites Fig. S23. Common device preparation assigned from Section 4.4; Curator accepted the existing main-article assignment on 2026-09-23; variant-specific SI remains unavailable and bias remains unknown."
     },
     {
       "device_id": "sharma-2025-ag2te-surface-tailoring-edt-4layer",
@@ -8098,7 +8098,7 @@
       "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
       "ligand_exchange_conditions": "0.5% v/v EDT in ethyl acetate; layer-by-layer ligand solution rinse; ethyl acetate wash and final octane rinse; anneal 100 C for 5 min.",
       "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-      "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+      "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
     },
     {
       "device_id": "sharma-2025-ag2te-surface-tailoring-mpa-4layer",
@@ -8117,7 +8117,7 @@
       "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
       "ligand_exchange_conditions": "0.5% v/v MPA in ethyl acetate; layer-by-layer ligand solution rinse; ethyl acetate wash and final octane rinse; anneal 100 C for 5 min.",
       "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-      "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+      "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
     },
     {
       "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-3layer",
@@ -8136,7 +8136,7 @@
       "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
       "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
       "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-      "device_notes": "3 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+      "device_notes": "3 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
     },
     {
       "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-4layer",
@@ -8155,7 +8155,7 @@
       "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
       "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
       "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-      "device_notes": "4 layer-by-layer deposition cycles. CQD thickness 159 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+      "device_notes": "4 layer-by-layer deposition cycles. CQD thickness 159 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
     },
     {
       "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-5layer",
@@ -8174,7 +8174,7 @@
       "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
       "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
       "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-      "device_notes": "5 layer-by-layer deposition cycles. CQD thickness 196 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+      "device_notes": "5 layer-by-layer deposition cycles. CQD thickness 196 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
     },
     {
       "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-6layer",
@@ -8193,7 +8193,7 @@
       "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
       "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
       "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-      "device_notes": "6 layer-by-layer deposition cycles. CQD thickness 233 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+      "device_notes": "6 layer-by-layer deposition cycles. CQD thickness 233 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
     },
     {
       "device_id": "skorotetcky-2025-hydrosilane-inas-920nm",
@@ -16109,7 +16109,7 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": "ambiguous",
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
@@ -16124,7 +16124,7 @@
       "linear_dynamic_range_extraction_method": "ambiguous",
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-08-14",
-      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 780 nm while D* is reported at 800 nm; responsivity bias is not stated.",
+      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 780 nm while D* is reported at 800 nm; responsivity bias is not stated. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": "shot_noise_approximation",
       "noise_instruments": [
         "not_applicable"
@@ -16168,7 +16168,7 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": "ambiguous",
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
@@ -16183,7 +16183,7 @@
       "linear_dynamic_range_extraction_method": "ambiguous",
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-08-14",
-      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 900 nm while D* is reported at 1000 nm; responsivity bias is not stated.",
+      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 900 nm while D* is reported at 1000 nm; responsivity bias is not stated. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": "shot_noise_approximation",
       "noise_instruments": [
         "not_applicable"
@@ -16286,7 +16286,7 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": "ambiguous",
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
@@ -16301,7 +16301,7 @@
       "linear_dynamic_range_extraction_method": "ambiguous",
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-08-14",
-      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias.",
+      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": "shot_noise_approximation",
       "noise_instruments": [
         "not_applicable"
@@ -16404,7 +16404,7 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": "ambiguous",
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
@@ -16419,7 +16419,7 @@
       "linear_dynamic_range_extraction_method": "ambiguous",
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-08-14",
-      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias.",
+      "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": "shot_noise_approximation",
       "noise_instruments": [
         "not_applicable"
@@ -26101,15 +26101,15 @@
       "noise_instrument_source": "ph0c00491.pdf, PDF p. 5 (1632), detectivity formula; PDF p. 6 (1633), Photocurrent Spectrum Measurements",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "ph0c00491.pdf, PDF p. 5 (1632), NIR detectivity paragraph and Fig. 5b; wavelength context from preceding responsivity paragraph (around 1250 nm)",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "Dark-current shot-noise approximation rather than measured total noise. The lock-in is used only for optical photocurrent and does not trigger lock-in-only noise classification.",
-      "curator_notes": "Curator approved publication with this unresolved attribution retained as pending review on 2026-09-21. PENDING REVIEW: the source prose assigns 5e10 Jones to CuSCN/Ag, whereas Fig. 5b plots CuSCN/Ag above CuSCN/Au in the NIR. Preserve the prose claim without silently swapping electrodes or substituting an estimate from the plot. 1250 nm is an approximate NIR-peak assignment from adjacent text/figure context, not an explicitly wavelength-tabulated D* value; curator must approve this association. Resolve or explicitly approve both the electrode attribution and approximate wavelength before ranking. D* is transcribed, not recalculated. Temperature, EQE, NEP and measured-noise frequency remain blank.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the prose attribution: CuSCN/Ag 5e10 Jones and CuSCN/Au 7e10 Jones at approximately 1250 nm, -1 V. Fig.5b reverses the ordering; prose values retained by explicit decision. Approximate wavelength provenance and amber shot-noise classification retained. Unassigned temporal results remain outside the numerical records.",
       "date_added": "2026-09-21",
-      "date_updated": "2026-09-21"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "ka-2020-pbs-cuscn-cuscn-au-nir-1250nm-neg1v-prose",
@@ -26160,15 +26160,15 @@
       "noise_instrument_source": "ph0c00491.pdf, PDF p. 5 (1632), detectivity formula; PDF p. 6 (1633), Photocurrent Spectrum Measurements",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "ph0c00491.pdf, PDF p. 5 (1632), NIR detectivity paragraph and Fig. 5b; wavelength context from preceding responsivity paragraph (around 1250 nm)",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "Dark-current shot-noise approximation rather than measured total noise. The lock-in is used only for optical photocurrent and does not trigger lock-in-only noise classification.",
-      "curator_notes": "Curator approved publication with this unresolved attribution retained as pending review on 2026-09-21. PENDING REVIEW: the source prose assigns 7e10 Jones to CuSCN/Au, whereas Fig. 5b plots CuSCN/Ag above CuSCN/Au in the NIR. Preserve the prose claim without silently swapping electrodes or substituting an estimate from the plot. 1250 nm is an approximate NIR-peak assignment from adjacent text/figure context, not an explicitly wavelength-tabulated D* value; curator must approve this association. Resolve or explicitly approve both the electrode attribution and approximate wavelength before ranking. D* is transcribed, not recalculated. Temperature, EQE, NEP and measured-noise frequency remain blank.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the prose attribution: CuSCN/Ag 5e10 Jones and CuSCN/Au 7e10 Jones at approximately 1250 nm, -1 V. Fig.5b reverses the ordering; prose values retained by explicit decision. Approximate wavelength provenance and amber shot-noise classification retained. Unassigned temporal results remain outside the numerical records.",
       "date_added": "2026-09-21",
-      "date_updated": "2026-09-21"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "manders-2014-pbs-nio-zno-double-heterojunction-600nm-neg1v",
@@ -26509,12 +26509,12 @@
       "device_id": "ma-2026-pbs-control-acn",
       "wavelength_nm": 1413,
       "detectivity_jones": 88500000000,
-      "responsivity_a_w": 0.35,
+      "responsivity_a_w": 0.25,
       "responsivity_wavelength_nm": 1413,
       "responsivity_bias_v": -0.3,
       "responsivity_temperature_k": null,
-      "responsivity_source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4a and adjacent text",
-      "responsivity_extraction_method": "directly_reported",
+      "responsivity_source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4a; 0.25 A/W confirmed by curator on 2026-09-23",
+      "responsivity_extraction_method": "graphically_extracted",
       "responsivity_frequency_hz": null,
       "eqe_percent": 30.7,
       "eqe_frequency_hz": null,
@@ -26553,13 +26553,13 @@
       "noise_instrument_source": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b and noise discussion; PDF p.7 SI inventory",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b-c, eq.3 and adjacent text",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Resolve control responsivity conflict: text explicitly reports 0.35 A/W and 30.7% EQE, while Fig.4a control point is approximately 0.25 A/W at 1413 nm. Preserve text claim pending correction; do not substitute graphical value.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator corrects control responsivity to 0.25 A/W at 1413 nm, -0.3 V, following Fig.4a rather than the 0.35 A/W prose claim. Author-reported EQE 30.7% and D* 8.85e10 Jones retained without recalculation; the R/EQE inconsistency remains documented. Noise hardware and optical modulation frequency remain unknown; frequency status stays unverified.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "ma-2026-target-btn-1413nm-m0p3v",
@@ -26610,13 +26610,13 @@
       "noise_instrument_source": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b and noise discussion; PDF p.7 SI inventory",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b-c, eq.3 and adjacent text",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Confirm noise instrument and signal-frequency provenance from SI before fully reviewed release. D* and responsivity at -0.3 V; temporal response at zero bias.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Target values accepted with metric-specific conditions: D*/R at -0.3 V; temporal response at 0 V. Noise hardware and optical modulation frequency remain unknown; frequency status stays unverified.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "zeng-2025-cellulose-1305nm-0v",
@@ -26667,15 +26667,15 @@
       "noise_instrument_source": "am4c18862.pdf, PDF p.2 section 2.5 and p.7 eq.4",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "am4c18862.pdf, PDF pp.6-7 Fig.5e, eq.4 and text; p.8 Table 1, this-work row",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "shot_noise_approximation"
       ],
       "amber_explanation": "D* uses modeled shot noise sqrt(2 q Id) in eq.4 rather than a measured total-noise spectrum. SMU use for electrical characterization does not establish SMU noise acquisition.",
-      "curator_notes": "Resolve layer-order conflict between section 2.4/Fig.6 and Fig.5a. Reported 40/24 ms rise/decay labels are retained as authored. Fig.6c spectral maximum is near 1400 nm despite caption referring to 1305 nm; this row uses the explicit 1305 nm LED measurement in text/Table 1.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the fabrication-description layer order (Section 2.4 and Fig.6), overriding the reversed labels in Fig.5a. Retain explicit 1305 nm LED D*/R values; the arbitrary-unit spectral peak near 1400 nm is a different observation. Amber shot-noise classification retained.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "xia-2026-control-1700-1650nm-0v",
@@ -26726,13 +26726,13 @@
       "noise_instrument_source": "ph6c00366.pdf, PDF p.9 (2299), Photodetector Device Fabrication and Measurements",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "ph6c00366.pdf, PDF p.1 Abstract; p.4 Fig.3c,g-h; pp.5-6 text and eq.3",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Confirm EQE modulation frequency and temporal-test conditions from unavailable SI. Zero bias follows Fig.3c,g for EQE/noise; -0.5 V dark current is a different operating point.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the long-cutoff device D*=2.57e11 Jones and EQE=15% belong to the 2280 nm feature, not the nominal 2330 nm cutoff or the global EQE maximum. The 1650 nm comparison records retain their source values. Optical modulation frequency and unavailable SI timing conditions remain unknown; measured-noise status stays unverified.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "xia-2026-mle-1700-1650nm-0v",
@@ -26783,13 +26783,13 @@
       "noise_instrument_source": "ph6c00366.pdf, PDF p.9 (2299), Photodetector Device Fabrication and Measurements",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "ph6c00366.pdf, PDF p.1 Abstract; p.4 Fig.3c,g-h; pp.5-6 text and eq.3",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Confirm EQE modulation frequency and temporal-test conditions from unavailable SI. Zero bias follows Fig.3c,g for EQE/noise; -0.5 V dark current is a different operating point.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the long-cutoff device D*=2.57e11 Jones and EQE=15% belong to the 2280 nm feature, not the nominal 2330 nm cutoff or the global EQE maximum. The 1650 nm comparison records retain their source values. Optical modulation frequency and unavailable SI timing conditions remain unknown; measured-noise status stays unverified.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "xia-2026-mle-2330-2280nm-0v",
@@ -26840,13 +26840,13 @@
       "noise_instrument_source": "ph6c00366.pdf, PDF p.9 (2299), Photodetector Device Fabrication and Measurements",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "ph6c00366.pdf, PDF p.6 (2296), Fig.4b-d and text; p.8 Conclusions identifies 2280 nm",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Confirm assignment of the reported 2.57e11 Jones and 15% EQE to the 2280 nm local SWIR peak. Conclusions locate >2.5e11 Jones at 2280 nm; Fig.4 also has other spectral peaks, so the 15% EQE is not a global spectral maximum.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the long-cutoff device D*=2.57e11 Jones and EQE=15% belong to the 2280 nm feature, not the nominal 2330 nm cutoff or the global EQE maximum. The 1650 nm comparison records retain their source values. Optical modulation frequency and unavailable SI timing conditions remain unknown; measured-noise status stays unverified.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "chen-2020-pbs-spray-spray-1250nm-63p5uw",
@@ -26855,15 +26855,15 @@
       "detectivity_jones": 1400000000000,
       "responsivity_a_w": 365.1,
       "responsivity_wavelength_nm": 1250,
-      "responsivity_bias_v": null,
+      "responsivity_bias_v": 10,
       "responsivity_temperature_k": null,
-      "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W",
+      "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W; bias confirmed as 10 V by curator on 2026-09-23",
       "responsivity_extraction_method": "directly_reported",
       "responsivity_frequency_hz": null,
       "eqe_percent": null,
       "eqe_frequency_hz": null,
       "temperature_k": null,
-      "bias_v": null,
+      "bias_v": 10,
       "measurement_frequency_hz": null,
       "response_time_s": null,
       "rise_time_s": null,
@@ -26888,7 +26888,7 @@
       "linear_dynamic_range_extraction_method": null,
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. Main text does not explicitly assign bias to Fig.5c or the low-intensity Fig.S8c values; do not copy the 10 V spectral/switching condition. R=365.1 A/W directly reported. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
+      "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. The main article did not explicitly assign this bias; 10 V is confirmed by curator review on 2026-09-23. R=365.1 A/W directly reported. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
       "noise_method": "measured_noise",
       "noise_instruments": [
         "lock_in_amplifier"
@@ -26896,16 +26896,16 @@
       "noise_instrument_details": "SR570 low-noise current preamplifier with SR830 lock-in amplifier explicitly used to measure device noise current. Keithley 4200 with SOFN7-SCF06A/B probe station is cited for general photodetector characterization, not explicitly noise acquisition. SR540 chopper is used for frequency response.",
       "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
       "detectivity_extraction_method": "directly_reported",
-      "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*",
-      "curator_status": "pending_review",
+      "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*; bias confirmed as 10 V by curator on 2026-09-23",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "lock_in_only_noise_measurement"
       ],
       "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-      "curator_notes": "Confirm bias and noise/signal-frequency conditions using Fig.S8/SI; main-article 10 V caption applies explicitly to switching and spectral tests.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "chen-2020-pbs-spray-spray-1260nm-430uw",
@@ -26956,15 +26956,15 @@
       "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "main (8).pdf, PDF p.6 Fig.5f and caption, approximate 1260 nm marker",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "lock_in_only_noise_measurement"
       ],
       "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-      "curator_notes": "Confirm graphical D*/responsivity readings and spectral coordinate before fully reviewed inclusion. This higher-intensity operating point is distinct from the 63.5 uW/cm2 headline result. Noise/signal-frequency match remains unknown.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "chen-2020-pbs-spray-spin-1250nm-63p5uw",
@@ -26973,15 +26973,15 @@
       "detectivity_jones": 1100000000000,
       "responsivity_a_w": 320,
       "responsivity_wavelength_nm": 1250,
-      "responsivity_bias_v": null,
+      "responsivity_bias_v": 10,
       "responsivity_temperature_k": null,
-      "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W",
+      "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W; bias confirmed as 10 V by curator on 2026-09-23",
       "responsivity_extraction_method": "graphically_extracted",
       "responsivity_frequency_hz": null,
       "eqe_percent": null,
       "eqe_frequency_hz": null,
       "temperature_k": null,
-      "bias_v": null,
+      "bias_v": 10,
       "measurement_frequency_hz": null,
       "response_time_s": null,
       "rise_time_s": null,
@@ -27006,7 +27006,7 @@
       "linear_dynamic_range_extraction_method": null,
       "extended_metrics_review_status": "source_unavailable",
       "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. Main text does not explicitly assign bias to Fig.5c or the low-intensity Fig.S8c values; do not copy the 10 V spectral/switching condition. R approximately 320 A/W from first blue marker in Fig.5c; rounded to two significant figures, estimated reading uncertainty about 5%. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
+      "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. The main article did not explicitly assign this bias; 10 V is confirmed by curator review on 2026-09-23. R approximately 320 A/W from first blue marker in Fig.5c; rounded to two significant figures, estimated reading uncertainty about 5%. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
       "noise_method": "measured_noise",
       "noise_instruments": [
         "lock_in_amplifier"
@@ -27014,16 +27014,16 @@
       "noise_instrument_details": "SR570 low-noise current preamplifier with SR830 lock-in amplifier explicitly used to measure device noise current. Keithley 4200 with SOFN7-SCF06A/B probe station is cited for general photodetector characterization, not explicitly noise acquisition. SR540 chopper is used for frequency response.",
       "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
       "detectivity_extraction_method": "directly_reported",
-      "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*",
-      "curator_status": "pending_review",
+      "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*; bias confirmed as 10 V by curator on 2026-09-23",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "lock_in_only_noise_measurement"
       ],
       "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-      "curator_notes": "Confirm bias and noise/signal-frequency conditions using Fig.S8/SI; main-article 10 V caption applies explicitly to switching and spectral tests. Confirm graphical control responsivity before fully reviewed inclusion.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "chen-2020-pbs-spray-spin-1260nm-430uw",
@@ -27074,15 +27074,15 @@
       "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "main (8).pdf, PDF p.6 Fig.5f and caption, approximate 1260 nm marker",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "lock_in_only_noise_measurement"
       ],
       "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-      "curator_notes": "Confirm graphical D*/responsivity readings and spectral coordinate before fully reviewed inclusion. This higher-intensity operating point is distinct from the 63.5 uW/cm2 headline result. Noise/signal-frequency match remains unknown.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "yuan-2025-ag2te-zinc-halide-zni2-1550-1550nm-neg0p3v",
@@ -27104,12 +27104,12 @@
       "response_time_s": null,
       "rise_time_s": 0.000097,
       "fall_time_s": 0.000196,
-      "response_time_definition": "Rise 10-90% and fall 90-10% of maximum photocurrent; figure annotations conflict with prose.",
+      "response_time_definition": "10-90% rise and 90-10% fall; Fig.4i annotations accepted by curator over conflicting prose.",
       "response_time_wavelength_nm": null,
       "response_time_bias_v": null,
       "response_time_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(i), p. 6 response-time paragraph",
       "response_time_limit": "measured",
-      "response_time_extraction_method": "ambiguous",
+      "response_time_extraction_method": "directly_reported",
       "bandwidth_hz": 18500,
       "bandwidth_bias_v": 0,
       "bandwidth_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(h), p. 6 and p. 7 Section 4.5",
@@ -27133,13 +27133,13 @@
       "noise_instrument_source": "1-s2.0-S2211285525003854-main.pdf, pp. 6-7, Section 4.5 and Fig. S24 reference",
       "detectivity_extraction_method": "directly_reported",
       "source_location": "1-s2.0-S2211285525003854-main.pdf, p. 6 D* value; p. 5 Fig. 4(e) supplies ~1550 nm peak, -0.3 V, 10 Hz",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Confirm conflicting temporal assignments: Fig. 4(i) labels ZnI2 rise/fall 97/196 us and AgI 737/834 us, whereas p. 6 prose gives incompatible pairings. Proposed values follow figure annotations and remain ambiguous/pending. D*=1.4e8 is directly stated; wavelength identified from peak in Fig. 4(e), approximately 1550 nm. R/EQE modulation frequency is absent, so frequency match is not established. Bandwidth measured with 532 nm light; LDR at 1064 nm; transients use white LED. Their conditions must not be presented as all 1550 nm/-0.3 V. Exact noise-chain confirmation at -0.3 V awaits Fig. S24. Room temperature is stated without numeric K.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the existing values and directs use of Fig.4i labels: ZnI2 rise/fall 97/196 us; AgI 737/834 us. The conflicting prose is retained as a source discrepancy, not an unresolved assignment. AgI D* approximately 5.8e6 Jones uses the right-hand axis of Fig.4e. Metric-specific illumination and bias remain separate; missing frequencies and smaller-dot variant conditions are not inferred.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "yuan-2025-ag2te-zinc-halide-agi-control-1550-1550nm-neg0p3v",
@@ -27161,12 +27161,12 @@
       "response_time_s": null,
       "rise_time_s": 0.000737,
       "fall_time_s": 0.000834,
-      "response_time_definition": "Rise 10-90% and fall 90-10% of maximum photocurrent; figure annotations conflict with prose.",
+      "response_time_definition": "10-90% rise and 90-10% fall; Fig.4i annotations accepted by curator over conflicting prose.",
       "response_time_wavelength_nm": null,
       "response_time_bias_v": null,
       "response_time_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(i), p. 6 response-time paragraph",
       "response_time_limit": "measured",
-      "response_time_extraction_method": "ambiguous",
+      "response_time_extraction_method": "directly_reported",
       "bandwidth_hz": 10800,
       "bandwidth_bias_v": 0,
       "bandwidth_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(h), p. 6 and p. 7 Section 4.5",
@@ -27190,13 +27190,13 @@
       "noise_instrument_source": "1-s2.0-S2211285525003854-main.pdf, pp. 6-7, Section 4.5 and Fig. S24 reference",
       "detectivity_extraction_method": "graphically_extracted",
       "source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(e), blue AgI trace at 1550 nm; RIGHT axis in 1e6 Jones",
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": "unverified",
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Confirm approximate graphical D* (about 5.8e6 Jones; display precision no better than roughly 10%) against the blue RIGHT-hand axis, which differs from the ZnI2 axis. Figure-assigned rise/fall 737/834 us conflict with p. 6 prose and remain ambiguous/pending. R modulation frequency is absent. Bandwidth at 532 nm and 0 V, LDR at 1064 nm and 0 V, temporal response under white LED; response-time bias not explicit. Do not transfer values from ZnI2 device.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the existing values and directs use of Fig.4i labels: ZnI2 rise/fall 97/196 us; AgI 737/834 us. The conflicting prose is retained as a source discrepancy, not an unresolved assignment. AgI D* approximately 5.8e6 Jones uses the right-hand axis of Fig.4e. Metric-specific illumination and bias remain separate; missing frequencies and smaller-dot variant conditions are not inferred.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "yuan-2025-ag2te-zinc-halide-zni2-1310-1350nm-responsivity",
@@ -27245,13 +27245,13 @@
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Performance-only proposal. R=0.25 A/W and EQE=23% at 1350 nm are directly stated in the main article. Confirm variant-specific stack and conditions in Fig. S23; bias and optical frequency are not explicitly assigned in the supplied text. Do not confuse 1310 nm absorption peak with 1350 nm measurement wavelength.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the existing values and directs use of Fig.4i labels: ZnI2 rise/fall 97/196 us; AgI 737/834 us. The conflicting prose is retained as a source discrepancy, not an unresolved assignment. AgI D* approximately 5.8e6 Jones uses the right-hand axis of Fig.4e. Metric-specific illumination and bias remain separate; missing frequencies and smaller-dot variant conditions are not inferred.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "sharma-2025-ag2te-surface-tailoring-edt-4layer-1550nm-responsivity",
@@ -27278,35 +27278,35 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": null,
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
       "bandwidth_limit": null,
-      "bandwidth_extraction_method": null,
+      "bandwidth_extraction_method": "not_reported",
       "linear_dynamic_range_db": null,
       "linear_dynamic_range_min": null,
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": null,
       "linear_dynamic_range_source_location": null,
-      "linear_dynamic_range_extraction_method": null,
-      "extended_metrics_review_status": "source_unavailable",
-      "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+      "linear_dynamic_range_extraction_method": "not_reported",
+      "extended_metrics_review_status": "checked",
+      "extended_metrics_review_date": "2026-09-23",
+      "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": null,
       "noise_instruments": [],
       "noise_instrument_details": null,
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Performance-only proposal; reported ensemble responsivity 0.0029 +/- 0.0006 A/W (original mA/W values divided by 1000; statistical meaning of +/- not specified in main article). 1550 nm, 10 mW/cm2, 100 Hz, -0.2 V. Confirm four-layer assignment of ligand-comparison devices; main text identifies the device configuration as four layers (~159 nm), but ligand-specific thickness is not separately established. No D* assigned to these control/thickness points; do not reuse the optimized five-layer D*.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "sharma-2025-ag2te-surface-tailoring-mpa-4layer-1550nm-responsivity",
@@ -27333,35 +27333,35 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": null,
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
       "bandwidth_limit": null,
-      "bandwidth_extraction_method": null,
+      "bandwidth_extraction_method": "not_reported",
       "linear_dynamic_range_db": null,
       "linear_dynamic_range_min": null,
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": null,
       "linear_dynamic_range_source_location": null,
-      "linear_dynamic_range_extraction_method": null,
-      "extended_metrics_review_status": "source_unavailable",
-      "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+      "linear_dynamic_range_extraction_method": "not_reported",
+      "extended_metrics_review_status": "checked",
+      "extended_metrics_review_date": "2026-09-23",
+      "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": null,
       "noise_instruments": [],
       "noise_instrument_details": null,
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Performance-only proposal; reported ensemble responsivity 0.0064 +/- 0.0014 A/W (original mA/W values divided by 1000; statistical meaning of +/- not specified in main article). 1550 nm, 10 mW/cm2, 100 Hz, -0.2 V. Confirm four-layer assignment of ligand-comparison devices; main text identifies the device configuration as four layers (~159 nm), but ligand-specific thickness is not separately established. No D* assigned to these control/thickness points; do not reuse the optimized five-layer D*.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-4layer-1550nm-responsivity",
@@ -27388,35 +27388,35 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": null,
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
       "bandwidth_limit": null,
-      "bandwidth_extraction_method": null,
+      "bandwidth_extraction_method": "not_reported",
       "linear_dynamic_range_db": null,
       "linear_dynamic_range_min": null,
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": null,
       "linear_dynamic_range_source_location": null,
-      "linear_dynamic_range_extraction_method": null,
-      "extended_metrics_review_status": "source_unavailable",
-      "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+      "linear_dynamic_range_extraction_method": "not_reported",
+      "extended_metrics_review_status": "checked",
+      "extended_metrics_review_date": "2026-09-23",
+      "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": null,
       "noise_instruments": [],
       "noise_instrument_details": null,
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Performance-only proposal; reported ensemble responsivity 0.014 +/- 0.0017 A/W (original mA/W values divided by 1000; statistical meaning of +/- not specified in main article). 1550 nm, 10 mW/cm2, 100 Hz, -0.2 V. Confirm four-layer assignment of ligand-comparison devices; main text identifies the device configuration as four layers (~159 nm), but ligand-specific thickness is not separately established. No D* assigned to these control/thickness points; do not reuse the optimized five-layer D*.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-3layer-1550nm-responsivity",
@@ -27443,35 +27443,35 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": null,
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
       "bandwidth_limit": null,
-      "bandwidth_extraction_method": null,
+      "bandwidth_extraction_method": "not_reported",
       "linear_dynamic_range_db": null,
       "linear_dynamic_range_min": null,
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": null,
       "linear_dynamic_range_source_location": null,
-      "linear_dynamic_range_extraction_method": null,
-      "extended_metrics_review_status": "source_unavailable",
-      "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+      "linear_dynamic_range_extraction_method": "not_reported",
+      "extended_metrics_review_status": "checked",
+      "extended_metrics_review_date": "2026-09-23",
+      "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": null,
       "noise_instruments": [],
       "noise_instrument_details": null,
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Performance-only proposal; approximate three-layer point R~9 mA/W = 0.009 A/W read from Fig. 4(f), uncertainty at least about 1 mA/W from graphical extraction; plotted statistical error bars are separate and not digitized. Layer identity follows ordered three-to-six-layer series in Fig. 4(e,f). Confirm exact thickness with Fig. S7; do not infer an exact nm value. Bias for thickness series is not explicitly repeated in caption and remains blank. 100 Hz follows Section 4.7 laser modulation.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-5layer-1550nm-detectivity",
@@ -27488,49 +27488,49 @@
       "eqe_percent": null,
       "eqe_frequency_hz": null,
       "temperature_k": null,
-      "bias_v": null,
+      "bias_v": -0.2,
       "measurement_frequency_hz": null,
       "response_time_s": null,
       "rise_time_s": 0.0000294,
       "fall_time_s": 0.0000495,
-      "response_time_definition": null,
-      "response_time_wavelength_nm": null,
-      "response_time_bias_v": null,
-      "response_time_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 optimized 196 nm device paragraph citing Fig. S8",
+      "response_time_definition": "10-90% rise and 90-10% fall indicated by dashed 0.1/0.9 levels in SI Fig.S8; 1550 nm, 10 mW/cm2, 100 Hz repetition rate.",
+      "response_time_wavelength_nm": 1550,
+      "response_time_bias_v": -0.2,
+      "response_time_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 optimized 196 nm device paragraph citing Fig. S8; 1-s2.0-S2211285525004501-mmc1.docx, Fig.S8 caption and panel b",
       "response_time_limit": "measured",
       "response_time_extraction_method": "directly_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
       "bandwidth_limit": null,
-      "bandwidth_extraction_method": null,
+      "bandwidth_extraction_method": "not_reported",
       "linear_dynamic_range_db": null,
       "linear_dynamic_range_min": null,
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": null,
       "linear_dynamic_range_source_location": null,
-      "linear_dynamic_range_extraction_method": null,
-      "extended_metrics_review_status": "source_unavailable",
-      "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+      "linear_dynamic_range_extraction_method": "not_reported",
+      "extended_metrics_review_status": "checked",
+      "extended_metrics_review_date": "2026-09-23",
+      "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows.",
       "noise_method": "measured_noise",
       "noise_instruments": [
         "lock_in_amplifier"
       ],
       "noise_instrument_details": "Stanford Research SR570 current preamplifier with SR830 lock-in amplifier explicitly used for noise. Keithley B2910BL used for J-V; Keithley 4200-SCS used for FET electrical testing. DSOX6002A used for temporal photoresponse, not identified for noise FFT.",
-      "noise_instrument_source": "1-s2.0-S2211285525004501-main.pdf, p. 7 Sections 4.7-4.8",
+      "noise_instrument_source": "1-s2.0-S2211285525004501-main.pdf, p. 7 Sections 4.7-4.8; 1-s2.0-S2211285525004501-mmc1.docx, Fig.S9 caption (-0.2 V)",
       "detectivity_extraction_method": "directly_reported",
-      "source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 final device-performance paragraph citing Fig. S9",
-      "curator_status": "pending_review",
+      "source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 final device-performance paragraph citing Fig. S9; 1-s2.0-S2211285525004501-mmc1.docx, Fig.S9 caption confirms noise/D* bias -0.2 V",
+      "curator_status": "reviewed",
       "flag": "amber",
       "amber_reasons": [
         "lock_in_only_noise_measurement"
       ],
       "amber_explanation": "SR830 lock-in amplifier is the sole identified noise-acquisition class, preceded by an SR570 current preamplifier.",
-      "curator_notes": "Main text assigns D*=1.3e9 Jones at 1550 nm and 29.4/49.5 us rise/fall to the optimized TBAI 196 nm device. Confirm D* bias/noise frequency and transient threshold/wavelength/bias in unavailable Figs. S8-S9; keep those numeric fields blank. R=0.0276 +/- 0.0020 A/W; +/- meaning not specified. Responsivity modulation 100 Hz differs from EQE setup 55 Hz, but noise frequency is absent so no proven frequency-mismatch flag is assigned. Responsivity bias for thickness series is not explicitly repeated and remains blank. No automatic SMU amber reason: neither Keithley is identified as acquiring noise.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated. Optimized 196 nm device retains reported D*=1.3e9 Jones at 1550 nm; SI S9 establishes noise bias -0.2 V. SI S8 confirms rise/fall 29.4/49.5 us at 1550 nm, -0.2 V. Noise evaluation frequency remains unknown despite the plotted spectrum; amber lock-in noise classification retained. No frequency inferred from D*, area and R.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-6layer-1550nm-responsivity",
@@ -27557,35 +27557,35 @@
       "response_time_bias_v": null,
       "response_time_source_location": null,
       "response_time_limit": null,
-      "response_time_extraction_method": null,
+      "response_time_extraction_method": "not_reported",
       "bandwidth_hz": null,
       "bandwidth_bias_v": null,
       "bandwidth_source_location": null,
       "bandwidth_limit": null,
-      "bandwidth_extraction_method": null,
+      "bandwidth_extraction_method": "not_reported",
       "linear_dynamic_range_db": null,
       "linear_dynamic_range_min": null,
       "linear_dynamic_range_max": null,
       "linear_dynamic_range_units": null,
       "linear_dynamic_range_definition": null,
       "linear_dynamic_range_source_location": null,
-      "linear_dynamic_range_extraction_method": null,
-      "extended_metrics_review_status": "source_unavailable",
-      "extended_metrics_review_date": "2026-09-22",
-      "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+      "linear_dynamic_range_extraction_method": "not_reported",
+      "extended_metrics_review_status": "checked",
+      "extended_metrics_review_date": "2026-09-23",
+      "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
       "noise_method": null,
       "noise_instruments": [],
       "noise_instrument_details": null,
       "noise_instrument_source": null,
       "detectivity_extraction_method": null,
       "source_location": null,
-      "curator_status": "pending_review",
+      "curator_status": "reviewed",
       "flag": null,
       "amber_reasons": [],
       "amber_explanation": null,
-      "curator_notes": "Performance-only proposal; R=16.4 +/- 1.8 mA/W = 0.0164 +/- 0.0018 A/W for 233 nm six-layer TBAI device. Confirm layer/thickness assignment against Fig. S7 and thickness-series bias; latter remains blank. Do not copy optimized five-layer D* or speed values here.",
+      "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
       "date_added": "2026-09-22",
-      "date_updated": "2026-09-22"
+      "date_updated": "2026-09-23"
     },
     {
       "measurement_id": "skorotetcky-2025-hydrosilane-inas-920nm-900nm-m1v",
@@ -44485,7 +44485,7 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": "ambiguous",
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
@@ -44500,7 +44500,7 @@
         "linear_dynamic_range_extraction_method": "ambiguous",
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-08-14",
-        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 780 nm while D* is reported at 800 nm; responsivity bias is not stated.",
+        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 780 nm while D* is reported at 800 nm; responsivity bias is not stated. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": "shot_noise_approximation",
         "noise_instruments": [
           "not_applicable"
@@ -44592,7 +44592,7 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": "ambiguous",
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
@@ -44607,7 +44607,7 @@
         "linear_dynamic_range_extraction_method": "ambiguous",
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-08-14",
-        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 900 nm while D* is reported at 1000 nm; responsivity bias is not stated.",
+        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Responsivity is reported at 900 nm while D* is reported at 1000 nm; responsivity bias is not stated. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": "shot_noise_approximation",
         "noise_instruments": [
           "not_applicable"
@@ -44806,7 +44806,7 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": "ambiguous",
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
@@ -44821,7 +44821,7 @@
         "linear_dynamic_range_extraction_method": "ambiguous",
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-08-14",
-        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias.",
+        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": "shot_noise_approximation",
         "noise_instruments": [
           "not_applicable"
@@ -45020,7 +45020,7 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": "ambiguous",
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
@@ -45035,7 +45035,7 @@
         "linear_dynamic_range_extraction_method": "ambiguous",
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-08-14",
-        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias.",
+        "extended_metrics_notes": "Main article reviewed; Supporting Information was referenced but not supplied. No linear dynamic range was established. Scalar intensity-dependent responsivity ranges from the unavailable Supporting Information tables are not assigned. Device-level timing and bandwidth are retained on the -1 V row, matching the explicitly reported transient bias. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": "shot_noise_approximation",
         "noise_instruments": [
           "not_applicable"
@@ -61912,15 +61912,15 @@
         "noise_instrument_source": "ph0c00491.pdf, PDF p. 5 (1632), detectivity formula; PDF p. 6 (1633), Photocurrent Spectrum Measurements",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "ph0c00491.pdf, PDF p. 5 (1632), NIR detectivity paragraph and Fig. 5b; wavelength context from preceding responsivity paragraph (around 1250 nm)",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "Dark-current shot-noise approximation rather than measured total noise. The lock-in is used only for optical photocurrent and does not trigger lock-in-only noise classification.",
-        "curator_notes": "Curator approved publication with this unresolved attribution retained as pending review on 2026-09-21. PENDING REVIEW: the source prose assigns 5e10 Jones to CuSCN/Ag, whereas Fig. 5b plots CuSCN/Ag above CuSCN/Au in the NIR. Preserve the prose claim without silently swapping electrodes or substituting an estimate from the plot. 1250 nm is an approximate NIR-peak assignment from adjacent text/figure context, not an explicitly wavelength-tabulated D* value; curator must approve this association. Resolve or explicitly approve both the electrode attribution and approximate wavelength before ranking. D* is transcribed, not recalculated. Temperature, EQE, NEP and measured-noise frequency remain blank.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the prose attribution: CuSCN/Ag 5e10 Jones and CuSCN/Au 7e10 Jones at approximately 1250 nm, -1 V. Fig.5b reverses the ordering; prose values retained by explicit decision. Approximate wavelength provenance and amber shot-noise classification retained. Unassigned temporal results remain outside the numerical records.",
         "date_added": "2026-09-21",
-        "date_updated": "2026-09-21"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -62015,15 +62015,15 @@
         "noise_instrument_source": "ph0c00491.pdf, PDF p. 5 (1632), detectivity formula; PDF p. 6 (1633), Photocurrent Spectrum Measurements",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "ph0c00491.pdf, PDF p. 5 (1632), NIR detectivity paragraph and Fig. 5b; wavelength context from preceding responsivity paragraph (around 1250 nm)",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "Dark-current shot-noise approximation rather than measured total noise. The lock-in is used only for optical photocurrent and does not trigger lock-in-only noise classification.",
-        "curator_notes": "Curator approved publication with this unresolved attribution retained as pending review on 2026-09-21. PENDING REVIEW: the source prose assigns 7e10 Jones to CuSCN/Au, whereas Fig. 5b plots CuSCN/Ag above CuSCN/Au in the NIR. Preserve the prose claim without silently swapping electrodes or substituting an estimate from the plot. 1250 nm is an approximate NIR-peak assignment from adjacent text/figure context, not an explicitly wavelength-tabulated D* value; curator must approve this association. Resolve or explicitly approve both the electrode attribution and approximate wavelength before ranking. D* is transcribed, not recalculated. Temperature, EQE, NEP and measured-noise frequency remain blank.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the prose attribution: CuSCN/Ag 5e10 Jones and CuSCN/Au 7e10 Jones at approximately 1250 nm, -1 V. Fig.5b reverses the ordering; prose values retained by explicit decision. Approximate wavelength provenance and amber shot-noise classification retained. Unassigned temporal results remain outside the numerical records.",
         "date_added": "2026-09-21",
-        "date_updated": "2026-09-21"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -62673,12 +62673,12 @@
         "device_id": "ma-2026-pbs-control-acn",
         "wavelength_nm": 1413,
         "detectivity_jones": 88500000000,
-        "responsivity_a_w": 0.35,
+        "responsivity_a_w": 0.25,
         "responsivity_wavelength_nm": 1413,
         "responsivity_bias_v": -0.3,
         "responsivity_temperature_k": null,
-        "responsivity_source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4a and adjacent text",
-        "responsivity_extraction_method": "directly_reported",
+        "responsivity_source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4a; 0.25 A/W confirmed by curator on 2026-09-23",
+        "responsivity_extraction_method": "graphically_extracted",
         "responsivity_frequency_hz": null,
         "eqe_percent": 30.7,
         "eqe_frequency_hz": null,
@@ -62717,13 +62717,13 @@
         "noise_instrument_source": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b and noise discussion; PDF p.7 SI inventory",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b-c, eq.3 and adjacent text",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Resolve control responsivity conflict: text explicitly reports 0.35 A/W and 30.7% EQE, while Fig.4a control point is approximately 0.25 A/W at 1413 nm. Preserve text claim pending correction; do not substitute graphical value.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator corrects control responsivity to 0.25 A/W at 1413 nm, -0.3 V, following Fig.4a rather than the 0.35 A/W prose claim. Author-reported EQE 30.7% and D* 8.85e10 Jones retained without recalculation; the R/EQE inconsistency remains documented. Noise hardware and optical modulation frequency remain unknown; frequency status stays unverified.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -62820,13 +62820,13 @@
         "noise_instrument_source": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b and noise discussion; PDF p.7 SI inventory",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "nl6c00907.pdf, PDF p.6 (6139), Fig.4b-c, eq.3 and adjacent text",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Confirm noise instrument and signal-frequency provenance from SI before fully reviewed release. D* and responsivity at -0.3 V; temporal response at zero bias.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Target values accepted with metric-specific conditions: D*/R at -0.3 V; temporal response at 0 V. Noise hardware and optical modulation frequency remain unknown; frequency status stays unverified.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -62875,7 +62875,7 @@
         "ligand_exchange_target": "Hybrid-halide-exchanged absorber ink; four EDT-treated PbS HTL layers",
         "ligand_exchange_conditions": "Absorber ink prepared using hybrid halide ligand strategy; exact salts and recipe deferred to unavailable SI. Four EDT-treated layers deposited layer-by-layer.",
         "ligand_exchange_source_location": "am4c18862.pdf, PDF p.2 (5487), section 2.4",
-        "device_notes": "Stack follows fabrication section 2.4 and Fig.6 energy diagram; Fig.5a reverses the PbS absorber and PbS-EDT labels. Resolve before fully reviewed publication. AC-9 substrate choice: PDF p.6; area: PDF p.7 eqs.3-4 discussion. EDT is the only chemically identified exchange ligand in the available main-article process description; halide list is incomplete."
+        "device_notes": "Stack follows fabrication section 2.4 and Fig.6 energy diagram; Fig.5a reverses the PbS absorber and PbS-EDT labels. Resolve before fully reviewed publication. AC-9 substrate choice: PDF p.6; area: PDF p.7 eqs.3-4 discussion. EDT is the only chemically identified exchange ligand in the available main-article process description; halide list is incomplete. Curator decision 2026-09-23: follow fabrication Section 2.4 and Fig.6 for layer order; Fig.5a label reversal does not change this stack."
       },
       "measurement": {
         "measurement_id": "zeng-2025-cellulose-1305nm-0v",
@@ -62926,15 +62926,15 @@
         "noise_instrument_source": "am4c18862.pdf, PDF p.2 section 2.5 and p.7 eq.4",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "am4c18862.pdf, PDF pp.6-7 Fig.5e, eq.4 and text; p.8 Table 1, this-work row",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "shot_noise_approximation"
         ],
         "amber_explanation": "D* uses modeled shot noise sqrt(2 q Id) in eq.4 rather than a measured total-noise spectrum. SMU use for electrical characterization does not establish SMU noise acquisition.",
-        "curator_notes": "Resolve layer-order conflict between section 2.4/Fig.6 and Fig.5a. Reported 40/24 ms rise/decay labels are retained as authored. Fig.6c spectral maximum is near 1400 nm despite caption referring to 1305 nm; this row uses the explicit 1305 nm LED measurement in text/Table 1.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the fabrication-description layer order (Section 2.4 and Fig.6), overriding the reversed labels in Fig.5a. Retain explicit 1305 nm LED D*/R values; the arbitrary-unit spectral peak near 1400 nm is a different observation. Amber shot-noise classification retained.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63025,13 +63025,13 @@
         "noise_instrument_source": "ph6c00366.pdf, PDF p.9 (2299), Photodetector Device Fabrication and Measurements",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "ph6c00366.pdf, PDF p.1 Abstract; p.4 Fig.3c,g-h; pp.5-6 text and eq.3",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Confirm EQE modulation frequency and temporal-test conditions from unavailable SI. Zero bias follows Fig.3c,g for EQE/noise; -0.5 V dark current is a different operating point.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the long-cutoff device D*=2.57e11 Jones and EQE=15% belong to the 2280 nm feature, not the nominal 2330 nm cutoff or the global EQE maximum. The 1650 nm comparison records retain their source values. Optical modulation frequency and unavailable SI timing conditions remain unknown; measured-noise status stays unverified.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63122,13 +63122,13 @@
         "noise_instrument_source": "ph6c00366.pdf, PDF p.9 (2299), Photodetector Device Fabrication and Measurements",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "ph6c00366.pdf, PDF p.1 Abstract; p.4 Fig.3c,g-h; pp.5-6 text and eq.3",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Confirm EQE modulation frequency and temporal-test conditions from unavailable SI. Zero bias follows Fig.3c,g for EQE/noise; -0.5 V dark current is a different operating point.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the long-cutoff device D*=2.57e11 Jones and EQE=15% belong to the 2280 nm feature, not the nominal 2330 nm cutoff or the global EQE maximum. The 1650 nm comparison records retain their source values. Optical modulation frequency and unavailable SI timing conditions remain unknown; measured-noise status stays unverified.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63219,13 +63219,13 @@
         "noise_instrument_source": "ph6c00366.pdf, PDF p.9 (2299), Photodetector Device Fabrication and Measurements",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "ph6c00366.pdf, PDF p.6 (2296), Fig.4b-d and text; p.8 Conclusions identifies 2280 nm",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Confirm assignment of the reported 2.57e11 Jones and 15% EQE to the 2280 nm local SWIR peak. Conclusions locate >2.5e11 Jones at 2280 nm; Fig.4 also has other spectral peaks, so the 15% EQE is not a global spectral maximum.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the long-cutoff device D*=2.57e11 Jones and EQE=15% belong to the 2280 nm feature, not the nominal 2330 nm cutoff or the global EQE maximum. The 1650 nm comparison records retain their source values. Optical modulation frequency and unavailable SI timing conditions remain unknown; measured-noise status stays unverified.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63283,15 +63283,15 @@
         "detectivity_jones": 1400000000000,
         "responsivity_a_w": 365.1,
         "responsivity_wavelength_nm": 1250,
-        "responsivity_bias_v": null,
+        "responsivity_bias_v": 10,
         "responsivity_temperature_k": null,
-        "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W",
+        "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W; bias confirmed as 10 V by curator on 2026-09-23",
         "responsivity_extraction_method": "directly_reported",
         "responsivity_frequency_hz": null,
         "eqe_percent": null,
         "eqe_frequency_hz": null,
         "temperature_k": null,
-        "bias_v": null,
+        "bias_v": 10,
         "measurement_frequency_hz": null,
         "response_time_s": null,
         "rise_time_s": null,
@@ -63316,7 +63316,7 @@
         "linear_dynamic_range_extraction_method": null,
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. Main text does not explicitly assign bias to Fig.5c or the low-intensity Fig.S8c values; do not copy the 10 V spectral/switching condition. R=365.1 A/W directly reported. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
+        "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. The main article did not explicitly assign this bias; 10 V is confirmed by curator review on 2026-09-23. R=365.1 A/W directly reported. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
         "noise_method": "measured_noise",
         "noise_instruments": [
           "lock_in_amplifier"
@@ -63324,16 +63324,16 @@
         "noise_instrument_details": "SR570 low-noise current preamplifier with SR830 lock-in amplifier explicitly used to measure device noise current. Keithley 4200 with SOFN7-SCF06A/B probe station is cited for general photodetector characterization, not explicitly noise acquisition. SR540 chopper is used for frequency response.",
         "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
         "detectivity_extraction_method": "directly_reported",
-        "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*",
-        "curator_status": "pending_review",
+        "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*; bias confirmed as 10 V by curator on 2026-09-23",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "lock_in_only_noise_measurement"
         ],
         "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-        "curator_notes": "Confirm bias and noise/signal-frequency conditions using Fig.S8/SI; main-article 10 V caption applies explicitly to switching and spectral tests.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63433,15 +63433,15 @@
         "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "main (8).pdf, PDF p.6 Fig.5f and caption, approximate 1260 nm marker",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "lock_in_only_noise_measurement"
         ],
         "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-        "curator_notes": "Confirm graphical D*/responsivity readings and spectral coordinate before fully reviewed inclusion. This higher-intensity operating point is distinct from the 63.5 uW/cm2 headline result. Noise/signal-frequency match remains unknown.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63499,15 +63499,15 @@
         "detectivity_jones": 1100000000000,
         "responsivity_a_w": 320,
         "responsivity_wavelength_nm": 1250,
-        "responsivity_bias_v": null,
+        "responsivity_bias_v": 10,
         "responsivity_temperature_k": null,
-        "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W",
+        "responsivity_source_location": "main (8).pdf, PDF p.6 Fig.5c and adjacent text; Abstract for spray 365.1 A/W; bias confirmed as 10 V by curator on 2026-09-23",
         "responsivity_extraction_method": "graphically_extracted",
         "responsivity_frequency_hz": null,
         "eqe_percent": null,
         "eqe_frequency_hz": null,
         "temperature_k": null,
-        "bias_v": null,
+        "bias_v": 10,
         "measurement_frequency_hz": null,
         "response_time_s": null,
         "rise_time_s": null,
@@ -63532,7 +63532,7 @@
         "linear_dynamic_range_extraction_method": null,
         "extended_metrics_review_status": "source_unavailable",
         "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. Main text does not explicitly assign bias to Fig.5c or the low-intensity Fig.S8c values; do not copy the 10 V spectral/switching condition. R approximately 320 A/W from first blue marker in Fig.5c; rounded to two significant figures, estimated reading uncertainty about 5%. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
+        "extended_metrics_notes": "R and D* at 63.5 uW/cm2 and 1250 nm. The main article did not explicitly assign this bias; 10 V is confirmed by curator review on 2026-09-23. R approximately 320 A/W from first blue marker in Fig.5c; rounded to two significant figures, estimated reading uncertainty about 5%. Noise evaluation and responsivity modulation frequencies are not reported in available text; delta f=1 Hz in eq.4 is bandwidth, not evaluation frequency. Operating temperature unavailable. Rise/off behavior referenced in unavailable Fig.S9; no numerical rise/fall time or LDR extracted. PL lifetime is not detector response time. Explicit measured/fitted -3 dB cutoff at 70.7% normalized current amplitude; bandwidth bias and optical intensity not explicitly given. Bandwidth is device-specific and not assumed acquired at the headline illumination intensity.",
         "noise_method": "measured_noise",
         "noise_instruments": [
           "lock_in_amplifier"
@@ -63540,16 +63540,16 @@
         "noise_instrument_details": "SR570 low-noise current preamplifier with SR830 lock-in amplifier explicitly used to measure device noise current. Keithley 4200 with SOFN7-SCF06A/B probe station is cited for general photodetector characterization, not explicitly noise acquisition. SR540 chopper is used for frequency response.",
         "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
         "detectivity_extraction_method": "directly_reported",
-        "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*",
-        "curator_status": "pending_review",
+        "source_location": "main (8).pdf, PDF p.7 opening paragraph citing Fig.S8c; p.6 eq.4 and noise discussion; Abstract for spray D*; bias confirmed as 10 V by curator on 2026-09-23",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "lock_in_only_noise_measurement"
         ],
         "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-        "curator_notes": "Confirm bias and noise/signal-frequency conditions using Fig.S8/SI; main-article 10 V caption applies explicitly to switching and spectral tests. Confirm graphical control responsivity before fully reviewed inclusion.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63649,15 +63649,15 @@
         "noise_instrument_source": "main (8).pdf, PDF p.8 section 4.7 Photodetector characterization",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "main (8).pdf, PDF p.6 Fig.5f and caption, approximate 1260 nm marker",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "lock_in_only_noise_measurement"
         ],
         "amber_explanation": "The SR830 lock-in amplifier is the sole explicitly identified noise-acquisition class; SR570 is its current preamplifier. The paper reports measured noise, not a shot-noise approximation. Keithley 4200 characterization does not establish SMU noise acquisition.",
-        "curator_notes": "Confirm graphical D*/responsivity readings and spectral coordinate before fully reviewed inclusion. This higher-intensity operating point is distinct from the 63.5 uW/cm2 headline result. Noise/signal-frequency match remains unknown.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms 10 V for the 1250 nm, 63.5 uW/cm2 headline D*/R operating points. Separate approximately 1260 nm, 430 uW/cm2 points remain at the caption-reported 10 V. Graphical values retain their extraction labels and approximate uncertainties. Noise/signal frequencies remain unknown; photoconductor class and existing amber noise classification retained.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63730,12 +63730,12 @@
         "response_time_s": null,
         "rise_time_s": 0.000097,
         "fall_time_s": 0.000196,
-        "response_time_definition": "Rise 10-90% and fall 90-10% of maximum photocurrent; figure annotations conflict with prose.",
+        "response_time_definition": "10-90% rise and 90-10% fall; Fig.4i annotations accepted by curator over conflicting prose.",
         "response_time_wavelength_nm": null,
         "response_time_bias_v": null,
         "response_time_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(i), p. 6 response-time paragraph",
         "response_time_limit": "measured",
-        "response_time_extraction_method": "ambiguous",
+        "response_time_extraction_method": "directly_reported",
         "bandwidth_hz": 18500,
         "bandwidth_bias_v": 0,
         "bandwidth_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(h), p. 6 and p. 7 Section 4.5",
@@ -63759,13 +63759,13 @@
         "noise_instrument_source": "1-s2.0-S2211285525003854-main.pdf, pp. 6-7, Section 4.5 and Fig. S24 reference",
         "detectivity_extraction_method": "directly_reported",
         "source_location": "1-s2.0-S2211285525003854-main.pdf, p. 6 D* value; p. 5 Fig. 4(e) supplies ~1550 nm peak, -0.3 V, 10 Hz",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Confirm conflicting temporal assignments: Fig. 4(i) labels ZnI2 rise/fall 97/196 us and AgI 737/834 us, whereas p. 6 prose gives incompatible pairings. Proposed values follow figure annotations and remain ambiguous/pending. D*=1.4e8 is directly stated; wavelength identified from peak in Fig. 4(e), approximately 1550 nm. R/EQE modulation frequency is absent, so frequency match is not established. Bandwidth measured with 532 nm light; LDR at 1064 nm; transients use white LED. Their conditions must not be presented as all 1550 nm/-0.3 V. Exact noise-chain confirmation at -0.3 V awaits Fig. S24. Room temperature is stated without numeric K.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the existing values and directs use of Fig.4i labels: ZnI2 rise/fall 97/196 us; AgI 737/834 us. The conflicting prose is retained as a source discrepancy, not an unresolved assignment. AgI D* approximately 5.8e6 Jones uses the right-hand axis of Fig.4e. Metric-specific illumination and bias remain separate; missing frequencies and smaller-dot variant conditions are not inferred.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63838,12 +63838,12 @@
         "response_time_s": null,
         "rise_time_s": 0.000737,
         "fall_time_s": 0.000834,
-        "response_time_definition": "Rise 10-90% and fall 90-10% of maximum photocurrent; figure annotations conflict with prose.",
+        "response_time_definition": "10-90% rise and 90-10% fall; Fig.4i annotations accepted by curator over conflicting prose.",
         "response_time_wavelength_nm": null,
         "response_time_bias_v": null,
         "response_time_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(i), p. 6 response-time paragraph",
         "response_time_limit": "measured",
-        "response_time_extraction_method": "ambiguous",
+        "response_time_extraction_method": "directly_reported",
         "bandwidth_hz": 10800,
         "bandwidth_bias_v": 0,
         "bandwidth_source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(h), p. 6 and p. 7 Section 4.5",
@@ -63867,13 +63867,13 @@
         "noise_instrument_source": "1-s2.0-S2211285525003854-main.pdf, pp. 6-7, Section 4.5 and Fig. S24 reference",
         "detectivity_extraction_method": "graphically_extracted",
         "source_location": "1-s2.0-S2211285525003854-main.pdf, p. 5 Fig. 4(e), blue AgI trace at 1550 nm; RIGHT axis in 1e6 Jones",
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": "unverified",
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Confirm approximate graphical D* (about 5.8e6 Jones; display precision no better than roughly 10%) against the blue RIGHT-hand axis, which differs from the ZnI2 axis. Figure-assigned rise/fall 737/834 us conflict with p. 6 prose and remain ambiguous/pending. R modulation frequency is absent. Bandwidth at 532 nm and 0 V, LDR at 1064 nm and 0 V, temporal response under white LED; response-time bias not explicit. Do not transfer values from ZnI2 device.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the existing values and directs use of Fig.4i labels: ZnI2 rise/fall 97/196 us; AgI 737/834 us. The conflicting prose is retained as a source discrepancy, not an unresolved assignment. AgI D* approximately 5.8e6 Jones uses the right-hand axis of Fig.4e. Metric-specific illumination and bias remain separate; missing frequencies and smaller-dot variant conditions are not inferred.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63924,7 +63924,7 @@
         "ligand_exchange_target": "Ag2Te CQD absorber",
         "ligand_exchange_conditions": "Five layer-by-layer depositions; 0.2% v/v EDT in acetonitrile, 20 s per layer; two acetonitrile rinses and one toluene rinse; anneal 100 C in air for 10 min.",
         "ligand_exchange_source_location": "1-s2.0-S2211285525003854-main.pdf, pp. 5, 7, SSLE paragraph and Section 4.4",
-        "device_notes": "Distinct smaller CQDs identified by 1310 nm absorption peak; performance at 1350 nm. Main p. 6 cites Fig. S23. Common device preparation assigned from Section 4.4; confirm variant-specific stack, area, thickness and bias in SI before treating as fully reviewed."
+        "device_notes": "Distinct smaller CQDs identified by 1310 nm absorption peak; performance at 1350 nm. Main p. 6 cites Fig. S23. Common device preparation assigned from Section 4.4; Curator accepted the existing main-article assignment on 2026-09-23; variant-specific SI remains unavailable and bias remains unknown."
       },
       "measurement": {
         "measurement_id": "yuan-2025-ag2te-zinc-halide-zni2-1310-1350nm-responsivity",
@@ -63973,13 +63973,13 @@
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Performance-only proposal. R=0.25 A/W and EQE=23% at 1350 nm are directly stated in the main article. Confirm variant-specific stack and conditions in Fig. S23; bias and optical frequency are not explicitly assigned in the supplied text. Do not confuse 1310 nm absorption peak with 1350 nm measurement wavelength.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Curator confirms the existing values and directs use of Fig.4i labels: ZnI2 rise/fall 97/196 us; AgI 737/834 us. The conflicting prose is retained as a source discrepancy, not an unresolved assignment. AgI D* approximately 5.8e6 Jones uses the right-hand axis of Fig.4e. Metric-specific illumination and bias remain separate; missing frequencies and smaller-dot variant conditions are not inferred.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -63999,7 +63999,7 @@
         "publication_url": "https://doi.org/10.1016/j.nanoen.2025.111091",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions."
+        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions. Supporting Information 1-s2.0-S2211285525004501-mmc1.docx supplied and inspected 2026-09-23, including S6-S9. Current source-coverage update supersedes earlier unavailable-SI notes."
       },
       "device": {
         "device_id": "sharma-2025-ag2te-surface-tailoring-edt-4layer",
@@ -64018,7 +64018,7 @@
         "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
         "ligand_exchange_conditions": "0.5% v/v EDT in ethyl acetate; layer-by-layer ligand solution rinse; ethyl acetate wash and final octane rinse; anneal 100 C for 5 min.",
         "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-        "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+        "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
       },
       "measurement": {
         "measurement_id": "sharma-2025-ag2te-surface-tailoring-edt-4layer-1550nm-responsivity",
@@ -64045,35 +64045,35 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": null,
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
         "bandwidth_limit": null,
-        "bandwidth_extraction_method": null,
+        "bandwidth_extraction_method": "not_reported",
         "linear_dynamic_range_db": null,
         "linear_dynamic_range_min": null,
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": null,
         "linear_dynamic_range_source_location": null,
-        "linear_dynamic_range_extraction_method": null,
-        "extended_metrics_review_status": "source_unavailable",
-        "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+        "linear_dynamic_range_extraction_method": "not_reported",
+        "extended_metrics_review_status": "checked",
+        "extended_metrics_review_date": "2026-09-23",
+        "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": null,
         "noise_instruments": [],
         "noise_instrument_details": null,
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Performance-only proposal; reported ensemble responsivity 0.0029 +/- 0.0006 A/W (original mA/W values divided by 1000; statistical meaning of +/- not specified in main article). 1550 nm, 10 mW/cm2, 100 Hz, -0.2 V. Confirm four-layer assignment of ligand-comparison devices; main text identifies the device configuration as four layers (~159 nm), but ligand-specific thickness is not separately established. No D* assigned to these control/thickness points; do not reuse the optimized five-layer D*.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -64093,7 +64093,7 @@
         "publication_url": "https://doi.org/10.1016/j.nanoen.2025.111091",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions."
+        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions. Supporting Information 1-s2.0-S2211285525004501-mmc1.docx supplied and inspected 2026-09-23, including S6-S9. Current source-coverage update supersedes earlier unavailable-SI notes."
       },
       "device": {
         "device_id": "sharma-2025-ag2te-surface-tailoring-mpa-4layer",
@@ -64112,7 +64112,7 @@
         "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
         "ligand_exchange_conditions": "0.5% v/v MPA in ethyl acetate; layer-by-layer ligand solution rinse; ethyl acetate wash and final octane rinse; anneal 100 C for 5 min.",
         "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-        "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+        "device_notes": "4 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
       },
       "measurement": {
         "measurement_id": "sharma-2025-ag2te-surface-tailoring-mpa-4layer-1550nm-responsivity",
@@ -64139,35 +64139,35 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": null,
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
         "bandwidth_limit": null,
-        "bandwidth_extraction_method": null,
+        "bandwidth_extraction_method": "not_reported",
         "linear_dynamic_range_db": null,
         "linear_dynamic_range_min": null,
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": null,
         "linear_dynamic_range_source_location": null,
-        "linear_dynamic_range_extraction_method": null,
-        "extended_metrics_review_status": "source_unavailable",
-        "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+        "linear_dynamic_range_extraction_method": "not_reported",
+        "extended_metrics_review_status": "checked",
+        "extended_metrics_review_date": "2026-09-23",
+        "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": null,
         "noise_instruments": [],
         "noise_instrument_details": null,
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Performance-only proposal; reported ensemble responsivity 0.0064 +/- 0.0014 A/W (original mA/W values divided by 1000; statistical meaning of +/- not specified in main article). 1550 nm, 10 mW/cm2, 100 Hz, -0.2 V. Confirm four-layer assignment of ligand-comparison devices; main text identifies the device configuration as four layers (~159 nm), but ligand-specific thickness is not separately established. No D* assigned to these control/thickness points; do not reuse the optimized five-layer D*.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -64187,7 +64187,7 @@
         "publication_url": "https://doi.org/10.1016/j.nanoen.2025.111091",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions."
+        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions. Supporting Information 1-s2.0-S2211285525004501-mmc1.docx supplied and inspected 2026-09-23, including S6-S9. Current source-coverage update supersedes earlier unavailable-SI notes."
       },
       "device": {
         "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-4layer",
@@ -64206,7 +64206,7 @@
         "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
         "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
         "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-        "device_notes": "4 layer-by-layer deposition cycles. CQD thickness 159 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+        "device_notes": "4 layer-by-layer deposition cycles. CQD thickness 159 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
       },
       "measurement": {
         "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-4layer-1550nm-responsivity",
@@ -64233,35 +64233,35 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": null,
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
         "bandwidth_limit": null,
-        "bandwidth_extraction_method": null,
+        "bandwidth_extraction_method": "not_reported",
         "linear_dynamic_range_db": null,
         "linear_dynamic_range_min": null,
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": null,
         "linear_dynamic_range_source_location": null,
-        "linear_dynamic_range_extraction_method": null,
-        "extended_metrics_review_status": "source_unavailable",
-        "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+        "linear_dynamic_range_extraction_method": "not_reported",
+        "extended_metrics_review_status": "checked",
+        "extended_metrics_review_date": "2026-09-23",
+        "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": null,
         "noise_instruments": [],
         "noise_instrument_details": null,
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Performance-only proposal; reported ensemble responsivity 0.014 +/- 0.0017 A/W (original mA/W values divided by 1000; statistical meaning of +/- not specified in main article). 1550 nm, 10 mW/cm2, 100 Hz, -0.2 V. Confirm four-layer assignment of ligand-comparison devices; main text identifies the device configuration as four layers (~159 nm), but ligand-specific thickness is not separately established. No D* assigned to these control/thickness points; do not reuse the optimized five-layer D*.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -64281,7 +64281,7 @@
         "publication_url": "https://doi.org/10.1016/j.nanoen.2025.111091",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions."
+        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions. Supporting Information 1-s2.0-S2211285525004501-mmc1.docx supplied and inspected 2026-09-23, including S6-S9. Current source-coverage update supersedes earlier unavailable-SI notes."
       },
       "device": {
         "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-3layer",
@@ -64300,7 +64300,7 @@
         "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
         "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
         "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-        "device_notes": "3 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+        "device_notes": "3 layer-by-layer deposition cycles. Exact ligand-specific CQD thickness not assigned from the main text. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
       },
       "measurement": {
         "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-3layer-1550nm-responsivity",
@@ -64327,35 +64327,35 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": null,
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
         "bandwidth_limit": null,
-        "bandwidth_extraction_method": null,
+        "bandwidth_extraction_method": "not_reported",
         "linear_dynamic_range_db": null,
         "linear_dynamic_range_min": null,
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": null,
         "linear_dynamic_range_source_location": null,
-        "linear_dynamic_range_extraction_method": null,
-        "extended_metrics_review_status": "source_unavailable",
-        "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+        "linear_dynamic_range_extraction_method": "not_reported",
+        "extended_metrics_review_status": "checked",
+        "extended_metrics_review_date": "2026-09-23",
+        "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": null,
         "noise_instruments": [],
         "noise_instrument_details": null,
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Performance-only proposal; approximate three-layer point R~9 mA/W = 0.009 A/W read from Fig. 4(f), uncertainty at least about 1 mA/W from graphical extraction; plotted statistical error bars are separate and not digitized. Layer identity follows ordered three-to-six-layer series in Fig. 4(e,f). Confirm exact thickness with Fig. S7; do not infer an exact nm value. Bias for thickness series is not explicitly repeated in caption and remains blank. 100 Hz follows Section 4.7 laser modulation.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -64375,7 +64375,7 @@
         "publication_url": "https://doi.org/10.1016/j.nanoen.2025.111091",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions."
+        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions. Supporting Information 1-s2.0-S2211285525004501-mmc1.docx supplied and inspected 2026-09-23, including S6-S9. Current source-coverage update supersedes earlier unavailable-SI notes."
       },
       "device": {
         "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-5layer",
@@ -64394,7 +64394,7 @@
         "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
         "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
         "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-        "device_notes": "5 layer-by-layer deposition cycles. CQD thickness 196 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+        "device_notes": "5 layer-by-layer deposition cycles. CQD thickness 196 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
       },
       "measurement": {
         "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-5layer-1550nm-detectivity",
@@ -64411,49 +64411,49 @@
         "eqe_percent": null,
         "eqe_frequency_hz": null,
         "temperature_k": null,
-        "bias_v": null,
+        "bias_v": -0.2,
         "measurement_frequency_hz": null,
         "response_time_s": null,
         "rise_time_s": 0.0000294,
         "fall_time_s": 0.0000495,
-        "response_time_definition": null,
-        "response_time_wavelength_nm": null,
-        "response_time_bias_v": null,
-        "response_time_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 optimized 196 nm device paragraph citing Fig. S8",
+        "response_time_definition": "10-90% rise and 90-10% fall indicated by dashed 0.1/0.9 levels in SI Fig.S8; 1550 nm, 10 mW/cm2, 100 Hz repetition rate.",
+        "response_time_wavelength_nm": 1550,
+        "response_time_bias_v": -0.2,
+        "response_time_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 optimized 196 nm device paragraph citing Fig. S8; 1-s2.0-S2211285525004501-mmc1.docx, Fig.S8 caption and panel b",
         "response_time_limit": "measured",
         "response_time_extraction_method": "directly_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
         "bandwidth_limit": null,
-        "bandwidth_extraction_method": null,
+        "bandwidth_extraction_method": "not_reported",
         "linear_dynamic_range_db": null,
         "linear_dynamic_range_min": null,
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": null,
         "linear_dynamic_range_source_location": null,
-        "linear_dynamic_range_extraction_method": null,
-        "extended_metrics_review_status": "source_unavailable",
-        "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+        "linear_dynamic_range_extraction_method": "not_reported",
+        "extended_metrics_review_status": "checked",
+        "extended_metrics_review_date": "2026-09-23",
+        "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows.",
         "noise_method": "measured_noise",
         "noise_instruments": [
           "lock_in_amplifier"
         ],
         "noise_instrument_details": "Stanford Research SR570 current preamplifier with SR830 lock-in amplifier explicitly used for noise. Keithley B2910BL used for J-V; Keithley 4200-SCS used for FET electrical testing. DSOX6002A used for temporal photoresponse, not identified for noise FFT.",
-        "noise_instrument_source": "1-s2.0-S2211285525004501-main.pdf, p. 7 Sections 4.7-4.8",
+        "noise_instrument_source": "1-s2.0-S2211285525004501-main.pdf, p. 7 Sections 4.7-4.8; 1-s2.0-S2211285525004501-mmc1.docx, Fig.S9 caption (-0.2 V)",
         "detectivity_extraction_method": "directly_reported",
-        "source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 final device-performance paragraph citing Fig. S9",
-        "curator_status": "pending_review",
+        "source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 final device-performance paragraph citing Fig. S9; 1-s2.0-S2211285525004501-mmc1.docx, Fig.S9 caption confirms noise/D* bias -0.2 V",
+        "curator_status": "reviewed",
         "flag": "amber",
         "amber_reasons": [
           "lock_in_only_noise_measurement"
         ],
         "amber_explanation": "SR830 lock-in amplifier is the sole identified noise-acquisition class, preceded by an SR570 current preamplifier.",
-        "curator_notes": "Main text assigns D*=1.3e9 Jones at 1550 nm and 29.4/49.5 us rise/fall to the optimized TBAI 196 nm device. Confirm D* bias/noise frequency and transient threshold/wavelength/bias in unavailable Figs. S8-S9; keep those numeric fields blank. R=0.0276 +/- 0.0020 A/W; +/- meaning not specified. Responsivity modulation 100 Hz differs from EQE setup 55 Hz, but noise frequency is absent so no proven frequency-mismatch flag is assigned. Responsivity bias for thickness series is not explicitly repeated and remains blank. No automatic SMU amber reason: neither Keithley is identified as acquiring noise.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated. Optimized 196 nm device retains reported D*=1.3e9 Jones at 1550 nm; SI S9 establishes noise bias -0.2 V. SI S8 confirms rise/fall 29.4/49.5 us at 1550 nm, -0.2 V. Noise evaluation frequency remains unknown despite the plotted spectrum; amber lock-in noise classification retained. No frequency inferred from D*, area and R.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {
@@ -64473,7 +64473,7 @@
         "publication_url": "https://doi.org/10.1016/j.nanoen.2025.111091",
         "publication_type": "journal_article",
         "peer_reviewed": true,
-        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions."
+        "notes": "User-approved provisional import on 2026-09-22. Main article supplied; supporting information not supplied. Measurements retain pending_review and explicit source questions. Supporting Information 1-s2.0-S2211285525004501-mmc1.docx supplied and inspected 2026-09-23, including S6-S9. Current source-coverage update supersedes earlier unavailable-SI notes."
       },
       "device": {
         "device_id": "sharma-2025-ag2te-surface-tailoring-tbai-6layer",
@@ -64492,7 +64492,7 @@
         "ligand_exchange_target": "Co-ligand Ag2Te CQD absorber",
         "ligand_exchange_conditions": "0.5 M TBAI in ethyl alcohol; 50 s soak per layer; alcohol wash and final octane rinse; anneal 100 C for 5 min.",
         "ligand_exchange_source_location": "1-s2.0-S2211285525004501-main.pdf, p. 3 and p. 6 Section 4.4",
-        "device_notes": "6 layer-by-layer deposition cycles. CQD thickness 233 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded."
+        "device_notes": "6 layer-by-layer deposition cycles. CQD thickness 233 nm. Main pp. 3, 6-7, Fig. 4 and Section 4.4. Area 2.83 mm2 = 0.0283 cm2. Separate mobility-test FETs excluded. Supplied SI 1-s2.0-S2211285525004501-mmc1.docx checked 2026-09-23: S7 identifies three/five/six-cycle SEM images; exact ligand-specific thicknesses not inferred from scale bars."
       },
       "measurement": {
         "measurement_id": "sharma-2025-ag2te-surface-tailoring-tbai-6layer-1550nm-responsivity",
@@ -64519,35 +64519,35 @@
         "response_time_bias_v": null,
         "response_time_source_location": null,
         "response_time_limit": null,
-        "response_time_extraction_method": null,
+        "response_time_extraction_method": "not_reported",
         "bandwidth_hz": null,
         "bandwidth_bias_v": null,
         "bandwidth_source_location": null,
         "bandwidth_limit": null,
-        "bandwidth_extraction_method": null,
+        "bandwidth_extraction_method": "not_reported",
         "linear_dynamic_range_db": null,
         "linear_dynamic_range_min": null,
         "linear_dynamic_range_max": null,
         "linear_dynamic_range_units": null,
         "linear_dynamic_range_definition": null,
         "linear_dynamic_range_source_location": null,
-        "linear_dynamic_range_extraction_method": null,
-        "extended_metrics_review_status": "source_unavailable",
-        "extended_metrics_review_date": "2026-09-22",
-        "extended_metrics_notes": "Main article checked; SI not supplied. Missing metric fields remain unassessed for the complete source set, not not_reported. No bandwidth derived from transient response.",
+        "linear_dynamic_range_extraction_method": "not_reported",
+        "extended_metrics_review_status": "checked",
+        "extended_metrics_review_date": "2026-09-23",
+        "extended_metrics_notes": "Main article and supplied SI DOCX checked. SI S6 EQE is a separate -1.5 V test and is not combined with -0.2 V responsivity. SI S7 confirms three/five/six-cycle SEM assignments; no exact three-layer thickness inferred from image scale. SI S8 confirms optimized-device timing; S9 noise is at -0.2 V but does not identify the frequency selected for reported D*. No explicit detector -3 dB bandwidth or LDR found in the supplied source set. No bandwidth derived from timing. Continuous SI EQE curves are not arbitrarily sampled into new rows. No numerical response time reported for this specific control/thickness variant; optimized-device timing is not copied here.",
         "noise_method": null,
         "noise_instruments": [],
         "noise_instrument_details": null,
         "noise_instrument_source": null,
         "detectivity_extraction_method": null,
         "source_location": null,
-        "curator_status": "pending_review",
+        "curator_status": "reviewed",
         "flag": null,
         "amber_reasons": [],
         "amber_explanation": null,
-        "curator_notes": "Performance-only proposal; R=16.4 +/- 1.8 mA/W = 0.0164 +/- 0.0018 A/W for 233 nm six-layer TBAI device. Confirm layer/thickness assignment against Fig. S7 and thickness-series bias; latter remains blank. Do not copy optimized five-layer D* or speed values here.",
+        "curator_notes": "Reviewed and approved for graph inclusion by Shlok on 2026-09-23. Main-text device assignments checked against supplied SI S6-S9. Four-layer ligand cohort follows main p.3; ligand-specific thickness remains unknown. Three/five/six-layer identities follow SI S7. Responsivity uncertainty and graphical extraction labels retained; thickness-series responsivity bias remains blank where not independently stated.",
         "date_added": "2026-09-22",
-        "date_updated": "2026-09-22"
+        "date_updated": "2026-09-23"
       }
     },
     {

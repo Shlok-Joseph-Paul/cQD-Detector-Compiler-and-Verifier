@@ -6,13 +6,26 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.31.1";
+export const DATASET_VERSION = "1.31.2";
 export const DATASET_RELEASE_DATE = "2026-09-23";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Curator review of seven CQD detector papers",
+    summary:
+      "Enables 21 reviewed measurements from Ka, Ma, Zeng, Xia, Chen, Yuan, and Sharma in performance graphs, with documented source corrections and supplementary evidence.",
+    changes: [
+      "Accepted Ka prose electrode assignments; corrected Ma control responsivity to 0.25 A/W without recalculating reported EQE or D*; accepted Zeng fabrication layer order and Xia 2280 nm assignment.",
+      "Confirmed Chen headline bias as 10 V and Yuan figure-labeled rise/fall times. Chen remains a photoconductor and appears under that device filter.",
+      "Inspected Sharma SI S6-S9: recorded -0.2 V noise bias and 1550 nm, -0.2 V timing conditions with 29.4/49.5 us rise/fall; retained unknown D* noise frequency and amber lock-in classification.",
+      "Preserved source-specific amber/unverified cautions and all unrelated pending reviews. Dataset remains 160 papers, 309 devices, and 404 measurements.",
+    ],
+  },
+  {
+    version: "1.31.1",
+    date: "2026-09-23",
     title: "Curator review of Li, Ji, and Perini photodiodes",
     summary:
       "Applies the curator's wavelength, timing, noise-status, and lower-detectivity decisions so the three papers enter the performance graph.",

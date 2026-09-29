@@ -150,6 +150,14 @@
     "verified_on": "2026-08-23"
   },
   {
+    "journal": "International Journal of Energy Research",
+    "impact_factor": null,
+    "impact_factor_year": null,
+    "source_url": "https://onlinelibrary.wiley.com/journal/1099114X",
+    "verified_on": "2026-09-29",
+    "note": "Publisher display gives a Journal Impact Factor without establishing its metric year. The year-specific 2025 value remains unreported."
+  },
+  {
     "journal": "Journal of Materials Chemistry C",
     "impact_factor": 5.1,
     "impact_factor_year": 2025,
@@ -176,6 +184,14 @@
     "impact_factor_year": 2025,
     "source_url": "https://www.nature.com/lsa/journal-information",
     "verified_on": "2026-08-23"
+  },
+  {
+    "journal": "Materials & Design",
+    "impact_factor": null,
+    "impact_factor_year": null,
+    "source_url": "https://www.sciencedirect.com/journal/materials-and-design/vol/185/suppl/C",
+    "verified_on": "2026-09-29",
+    "note": "Publisher display gives an impact factor without establishing its metric year. The year-specific 2025 value remains unreported."
   },
   {
     "journal": "Materials Horizons",

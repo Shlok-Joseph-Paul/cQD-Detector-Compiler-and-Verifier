@@ -6,13 +6,27 @@ export interface DatasetRelease {
   changes: readonly string[];
 }
 
-export const DATASET_VERSION = "1.31.3";
-export const DATASET_RELEASE_DATE = "2026-09-23";
+export const DATASET_VERSION = "1.32.0";
+export const DATASET_RELEASE_DATE = "2026-09-29";
 
 export const DATASET_RELEASES: readonly DatasetRelease[] = [
   {
     version: DATASET_VERSION,
     date: DATASET_RELEASE_DATE,
+    title: "Five reviewed PbS detector papers",
+    summary:
+      "Adds curator-approved Yu, Xu, Lee, Kim, and Tang results to the atlas graphs with device-specific operating conditions and noise evidence.",
+    changes: [
+      "Added five papers, eight devices, and 41 reviewed measurements: 40 detectivity records and one optical-performance-only control.",
+      "Preserved 37 shot-noise, one Johnson-noise, and two lock-in-only amber detectivity records; human approval does not remove methodological cautions.",
+      "Included Lee's metal and graphene MSM photoconductors, Kim's paired hole-transport layers, and Tang's approximate bias series and original control.",
+      "Retained Yu's wavelength conflict and unavailable supplement, Xu's white-light timing, Kim's spectral assignment caveats, and Tang's different optical intensities for responsivity and timing.",
+      "The published dataset now contains 165 papers, 317 devices, and 445 measurement records. Held and excluded extraction candidates remain outside the atlas.",
+    ],
+  },
+  {
+    version: "1.31.3",
+    date: "2026-09-23",
     title: "Reviewed InAs, PbSe and perovskite results",
     summary:
       "Applies curator decisions for Ban 2026, Wang 2026 PbSe, Li 2019 and Shen 2016, enabling 22 existing measurements in performance graphs.",

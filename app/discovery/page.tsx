@@ -7,9 +7,9 @@ import { filterPublicDiscoveryProposals } from "@/lib/discovery/public-queue";
 import type { ProposalRegistry } from "@/lib/discovery/proposal-types";
 
 export const metadata: Metadata = {
-  title: "Discovery Queue",
+  title: "Photodiode Discovery",
   description:
-    "A reproducible, human-screened candidate-paper registry for the Photodiode Atlas.",
+    "Discover CQD and perovskite photodiode papers by material, publication year, and review status.",
 };
 
 export default function DiscoveryPage() {
@@ -23,19 +23,18 @@ export default function DiscoveryPage() {
         <header className="discovery-hero">
           <div>
             <p className="eyebrow">Literature discovery</p>
-            <h1>Discovery Queue</h1>
+            <h1>Discover photodiode papers.</h1>
             <p>
-              Candidate CQD and perovskite photodetector papers found through
-              reproducible keyword and citation-graph searches, ranked for human
-              review.
+              Explore CQD and perovskite photodiode research. Find your next
+              paper by material, year, or relevance.
             </p>
           </div>
           <aside>
-            <strong>Screening is not publication.</strong>
+            <strong>Photodiodes only</strong>
             <p>
-              Candidates remain separate from the curated atlas. Inclusion
-              requires a human decision and the evidence-linked paper importer
-              workflow.
+              Papers need explicit photodiode evidence in their title or
+              abstract. Full-text review is still required before atlas
+              inclusion.
             </p>
           </aside>
         </header>

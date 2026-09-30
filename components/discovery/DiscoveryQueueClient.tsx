@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import {
+  filterQueueCandidates,
+  yearRangeError,
+} from "@/lib/discovery/queue-filters";
 import { formatDetectorClass } from "@/lib/atlas/format";
 import type {
   DiscoveryCandidate,
@@ -24,6 +28,18 @@ interface LocalProposalDecision {
 
 const STORAGE_KEY = "cqd-atlas-discovery-decisions-v1";
 const PROPOSAL_STORAGE_KEY = "cqd-atlas-proposal-decisions-v1";
+const statusLabels: Record<ScreeningStatus, string> = {
+  unreviewed: "To review",
+  include: "Included",
+  exclude: "Excluded",
+  uncertain: "Needs a closer look",
+};
+const PAGE_SIZE = 20;
+
+function plainText(value: string): string {
+  return value.replace(/<[^>]+>/g, "");
+}
+
 const statuses: ScreeningStatus[] = [
   "unreviewed",
   "include",
@@ -55,6 +71,8 @@ export function DiscoveryQueueClient({
   const [loadAttempt, setLoadAttempt] = useState(0);
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
+    setLoadError(false);
     fetch("/api/discovery", { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Discovery unavailable");
@@ -72,11 +90,16 @@ export function DiscoveryQueueClient({
       });
     return () => controller.abort();
   }, [loadAttempt]);
+  const [view, setView] = useState<"papers" | "proposals" | "overview">(
+    "papers",
+  );
+  const [afterYear, setAfterYear] = useState("");
+  const [beforeYear, setBeforeYear] = useState("");
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<ScreeningStatus | "all">("all");
   const [material, setMaterial] = useState("all");
   const [sort, setSort] = useState("score-desc");
-  const [visibleCount, setVisibleCount] = useState(25);
+  const [page, setPage] = useState(1);
   const [decisions, setDecisions] = useState<Record<string, LocalDecision>>(
     () => {
       if (typeof window === "undefined") return {};
@@ -131,42 +154,44 @@ export function DiscoveryQueueClient({
       ].sort(),
     [candidates],
   );
-  const filtered = useMemo(() => {
-    const query = search.trim().toLowerCase();
-    return effective
-      .filter(
-        (candidate) => status === "all" || candidate.screeningStatus === status,
-      )
-      .filter(
-        (candidate) =>
-          material === "all" ||
-          candidate.candidateMaterialClasses.includes(material),
-      )
-      .filter(
-        (candidate) =>
-          !query ||
-          [
-            candidate.title,
-            candidate.doi,
-            candidate.journal,
-            candidate.authors.join(" "),
-            candidate.abstract,
-          ]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase()
-            .includes(query),
-      )
-      .sort((left, right) => {
-        if (sort === "score-asc")
-          return left.relevanceScore - right.relevanceScore;
-        if (sort === "year-desc")
-          return (right.publicationYear ?? 0) - (left.publicationYear ?? 0);
-        if (sort === "year-asc")
-          return (left.publicationYear ?? 0) - (right.publicationYear ?? 0);
-        return right.relevanceScore - left.relevanceScore;
-      });
-  }, [effective, material, search, sort, status]);
+  const filtered = useMemo(
+    () =>
+      filterQueueCandidates(effective, {
+        search,
+        status,
+        material,
+        afterYear,
+        beforeYear,
+        sort,
+      }),
+    [effective, material, search, sort, status, afterYear, beforeYear],
+  );
+  const rangeError = yearRangeError(afterYear, beforeYear);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const firstResult = (currentPage - 1) * PAGE_SIZE;
+  const hasFilters = Boolean(
+    search || material !== "all" || status !== "all" || afterYear || beforeYear,
+  );
+
+  function clearFilters() {
+    setSearch("");
+    setMaterial("all");
+    setStatus("all");
+    setAfterYear("");
+    setBeforeYear("");
+    setPage(1);
+  }
+
+  function changePage(next: number) {
+    setPage(next);
+    document
+      .getElementById("discovery-results")
+      ?.scrollIntoView({ block: "start" });
+    document
+      .getElementById("discovery-results")
+      ?.focus({ preventScroll: true });
+  }
   const statusCounts = Object.fromEntries(
     statuses.map((value) => [
       value,
@@ -225,7 +250,7 @@ export function DiscoveryQueueClient({
       "pdf_status",
       "import_status",
     ];
-    const rows = effective.map((candidate) => [
+    const rows = filtered.map((candidate) => [
       candidate.candidateId,
       candidate.doi,
       candidate.title,
@@ -299,583 +324,847 @@ export function DiscoveryQueueClient({
 
   return (
     <>
-      <section className="discovery-workspace proposal-workspace">
-        <header className="discovery-toolbar">
-          <div>
-            <p className="section-kicker">Extracted data approval</p>
-            <h2>Staged import proposals</h2>
-            <p>{effectiveProposals.length} proposals awaiting curator action</p>
-          </div>
-          <div className="discovery-toolbar__actions">
-            <button
-              className="primary-button"
-              type="button"
-              onClick={exportProposalDecisions}
-              disabled={!effectiveProposals.length}
-            >
-              Export proposal decisions
-            </button>
-          </div>
-        </header>
-        <p className="discovery-local-note">
-          <strong>Two explicit gates.</strong> Review the extracted evidence,
-          export this CSV, then import it with the CLI. Proposals can be
-          approved as reviewed records or provisionally approved for visible
-          human follow-up; viewing or exporting never changes the published
-          atlas.
-        </p>
-        <div className="proposal-list">
-          {effectiveProposals.map((proposal) => {
-            const canApprove =
-              proposal.scopeStatus === "in-scope" &&
-              proposal.proposedMeasurements.length > 0 &&
-              proposal.proposedDevices.every((device) => device.detector_class);
-            return (
-              <article className="proposal-card" key={proposal.proposalId}>
-                <header className="proposal-card__header">
-                  <div>
-                    <div className="discovery-card__meta">
-                      <span className="discovery-chip">
-                        {proposal.scopeStatus}
-                      </span>
-                      <span>{proposal.status}</span>
-                      <span>{proposal.source.pageCount} PDF pages</span>
+      <nav className="discovery-view-nav" aria-label="Discovery views">
+        {(
+          [
+            ["papers", "Papers", loading ? "…" : effective.length],
+            ["proposals", "Import proposals", effectiveProposals.length],
+            ["overview", "Overview", null],
+          ] as const
+        ).map(([key, label, count]) => (
+          <button
+            type="button"
+            key={key}
+            aria-pressed={view === key}
+            onClick={() => setView(key)}
+          >
+            {label}
+            {count !== null && <span>{count}</span>}
+          </button>
+        ))}
+      </nav>
+      {view === "proposals" && (
+        <section
+          className="discovery-workspace proposal-workspace"
+          aria-label="Import proposals"
+        >
+          <header className="discovery-toolbar">
+            <div>
+              <p className="section-kicker">Extracted data approval</p>
+              <h2>Review extracted data</h2>
+              <p>{effectiveProposals.length} photodiode proposals</p>
+            </div>
+            <div className="discovery-toolbar__actions">
+              <button
+                className="primary-button"
+                type="button"
+                onClick={exportProposalDecisions}
+                disabled={!effectiveProposals.length}
+              >
+                Export proposal decisions
+              </button>
+            </div>
+          </header>
+          <p className="discovery-local-note">
+            Review the source evidence before approving a proposal. Decisions
+            stay in this browser until exported and imported by a curator.
+          </p>
+          <div className="proposal-list">
+            {effectiveProposals.map((proposal) => {
+              const canApprove =
+                proposal.scopeStatus === "in-scope" &&
+                proposal.proposedMeasurements.length > 0 &&
+                proposal.proposedDevices.every(
+                  (device) => device.detector_class,
+                );
+              return (
+                <article className="proposal-card" key={proposal.proposalId}>
+                  <header className="proposal-card__header">
+                    <div>
+                      <div className="discovery-card__meta">
+                        <span className="discovery-chip">
+                          {proposal.scopeStatus}
+                        </span>
+                        <span>{proposal.status}</span>
+                        <span>{proposal.source.pageCount} PDF pages</span>
+                      </div>
+                      <h3>{plainText(proposal.proposedPaper.title)}</h3>
+                      <p>
+                        {proposal.proposedPaper.first_author} ·{" "}
+                        {proposal.proposedPaper.journal ??
+                          "Journal not reported"}{" "}
+                        ·{" "}
+                        {proposal.proposedPaper.publication_year ??
+                          "Year not reported"}
+                      </p>
                     </div>
-                    <h3>{proposal.proposedPaper.title}</h3>
-                    <p>
-                      {proposal.proposedPaper.first_author} ·{" "}
-                      {proposal.proposedPaper.journal ?? "Journal not reported"}{" "}
-                      ·{" "}
-                      {proposal.proposedPaper.publication_year ??
-                        "Year not reported"}
-                    </p>
+                    <a
+                      href={proposal.source.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Source PDF
+                    </a>
+                  </header>
+
+                  <div className="proposal-scope">
+                    <strong>Scope assessment</strong>
+                    <ul>
+                      {proposal.scopeReasons.map((reason) => (
+                        <li key={reason}>{reason}</li>
+                      ))}
+                    </ul>
                   </div>
-                  <a
-                    href={proposal.source.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Source PDF ↗
-                  </a>
-                </header>
 
-                <div className="proposal-scope">
-                  <strong>Scope assessment</strong>
-                  <ul>
-                    {proposal.scopeReasons.map((reason) => (
-                      <li key={reason}>{reason}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="proposal-records">
-                  <section>
-                    <h4>Paper</h4>
-                    <dl>
-                      <div>
-                        <dt>DOI</dt>
-                        <dd>{proposal.proposedPaper.doi ?? "Not reported"}</dd>
-                      </div>
-                      <div>
-                        <dt>Authors</dt>
-                        <dd>
-                          {proposal.proposedPaper.authors.join(", ") ||
-                            "Not reported"}
-                        </dd>
-                      </div>
-                    </dl>
-                  </section>
-                  <section>
-                    <h4>Device</h4>
-                    {proposal.proposedDevices.map((device) => (
-                      <dl key={device.device_id}>
+                  <div className="proposal-records">
+                    <section>
+                      <h4>Paper</h4>
+                      <dl>
                         <div>
-                          <dt>Detector class</dt>
+                          <dt>DOI</dt>
                           <dd>
-                            {device.detector_class
-                              ? formatDetectorClass(device.detector_class)
-                              : "Needs curator correction"}
+                            {proposal.proposedPaper.doi ?? "Not reported"}
                           </dd>
                         </div>
                         <div>
-                          <dt>Material</dt>
-                          <dd>{device.material_composition}</dd>
-                        </div>
-                        <div>
-                          <dt>Architecture</dt>
-                          <dd>{device.device_architecture}</dd>
-                        </div>
-                        <div>
-                          <dt>Stack</dt>
-                          <dd>{device.device_stack ?? "Not reported"}</dd>
-                        </div>
-                        <div>
-                          <dt>Ligand exchange</dt>
+                          <dt>Authors</dt>
                           <dd>
-                            {device.ligand_exchange_status ?? "Not checked"}
-                            {device.ligand_exchange_chemicals
-                              ? `: ${device.ligand_exchange_chemicals}`
-                              : ""}
-                          </dd>
-                        </div>
-                        <div>
-                          <dt>Ligand source</dt>
-                          <dd>
-                            {device.ligand_exchange_source_location ??
+                            {proposal.proposedPaper.authors.join(", ") ||
                               "Not reported"}
                           </dd>
                         </div>
                       </dl>
-                    ))}
-                  </section>
-                  <section>
-                    <h4>Measurements</h4>
-                    {proposal.proposedMeasurements.length ? (
-                      <div className="proposal-measurements">
-                        {proposal.proposedMeasurements.map((measurement) => (
-                          <div key={measurement.measurement_id}>
-                            <strong>{measurement.wavelength_nm} nm</strong>
-                            <span>
-                              D*{" "}
-                              {measurement.detectivity_jones == null
-                                ? "Not reported"
-                                : `${measurement.detectivity_jones.toExponential(2)} Jones`}
-                            </span>
-                            <span>
-                              {measurement.flag} · {measurement.noise_method}
-                            </span>
-                            <span>
-                              {measurement.bias_v == null
-                                ? "bias not reported"
-                                : `${measurement.bias_v} V`}
-                            </span>
+                    </section>
+                    <section>
+                      <h4>Device</h4>
+                      {proposal.proposedDevices.map((device) => (
+                        <dl key={device.device_id}>
+                          <div>
+                            <dt>Detector class</dt>
+                            <dd>
+                              {device.detector_class
+                                ? formatDetectorClass(device.detector_class)
+                                : "Needs curator correction"}
+                            </dd>
                           </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p>
-                        No qualifying detectivity measurement was extracted.
+                          <div>
+                            <dt>Material</dt>
+                            <dd>{device.material_composition}</dd>
+                          </div>
+                          <div>
+                            <dt>Architecture</dt>
+                            <dd>{device.device_architecture}</dd>
+                          </div>
+                          <div>
+                            <dt>Stack</dt>
+                            <dd>{device.device_stack ?? "Not reported"}</dd>
+                          </div>
+                          <div>
+                            <dt>Ligand exchange</dt>
+                            <dd>
+                              {device.ligand_exchange_status ?? "Not checked"}
+                              {device.ligand_exchange_chemicals
+                                ? `: ${device.ligand_exchange_chemicals}`
+                                : ""}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Ligand source</dt>
+                            <dd>
+                              {device.ligand_exchange_source_location ??
+                                "Not reported"}
+                            </dd>
+                          </div>
+                        </dl>
+                      ))}
+                    </section>
+                    <section>
+                      <h4>Measurements</h4>
+                      {proposal.proposedMeasurements.length ? (
+                        <div className="proposal-measurements">
+                          {proposal.proposedMeasurements.map((measurement) => (
+                            <div key={measurement.measurement_id}>
+                              <strong>{measurement.wavelength_nm} nm</strong>
+                              <span>
+                                D*{" "}
+                                {measurement.detectivity_jones?.toExponential(
+                                  2,
+                                ) ?? "Not reported"}{" "}
+                                Jones
+                              </span>
+                              <span>
+                                {measurement.flag} · {measurement.noise_method}
+                              </span>
+                              <span>
+                                {measurement.bias_v == null
+                                  ? "bias not reported"
+                                  : `${measurement.bias_v} V`}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p>
+                          No qualifying detectivity measurement was extracted.
+                        </p>
+                      )}
+                    </section>
+                  </div>
+
+                  <details className="proposal-evidence">
+                    <summary>Evidence and extraction notes</summary>
+                    <ul>
+                      {proposal.evidence.map((item) => (
+                        <li key={`${item.field}-${item.page}-${item.location}`}>
+                          <strong>{item.field}</strong> · page {item.page} ·{" "}
+                          {Math.round(item.confidence * 100)}% —{" "}
+                          {item.conciseEvidence}
+                        </li>
+                      ))}
+                    </ul>
+                    {!!proposal.warnings.length && (
+                      <p className="discovery-warning">
+                        <strong>Warnings:</strong>{" "}
+                        {proposal.warnings.join(" · ")}
                       </p>
                     )}
-                  </section>
-                </div>
+                    {!!proposal.missingFields.length && (
+                      <p>
+                        <strong>Not extracted:</strong>{" "}
+                        {proposal.missingFields.join(", ")}
+                      </p>
+                    )}
+                  </details>
 
-                <details className="proposal-evidence">
-                  <summary>Evidence and extraction notes</summary>
-                  <ul>
-                    {proposal.evidence.map((item) => (
-                      <li key={`${item.field}-${item.page}-${item.location}`}>
-                        <strong>{item.field}</strong> · page {item.page} ·{" "}
-                        {Math.round(item.confidence * 100)}% —{" "}
-                        {item.conciseEvidence}
-                      </li>
-                    ))}
-                  </ul>
-                  {!!proposal.warnings.length && (
-                    <p className="discovery-warning">
-                      <strong>Warnings:</strong> {proposal.warnings.join(" · ")}
-                    </p>
-                  )}
-                  {!!proposal.missingFields.length && (
-                    <p>
-                      <strong>Not extracted:</strong>{" "}
-                      {proposal.missingFields.join(", ")}
-                    </p>
-                  )}
-                </details>
-
-                <div className="proposal-review discovery-review">
-                  <label>
-                    Approval decision
-                    <select
-                      value={proposal.status}
-                      disabled={proposal.status === "applied"}
-                      onChange={(event) =>
-                        updateProposalDecision(proposal, {
-                          status: event.target.value as ProposalStatus,
-                        })
-                      }
-                    >
-                      <option value="awaiting-approval">
-                        awaiting-approval
-                      </option>
-                      <option value="approved" disabled={!canApprove}>
-                        approved
-                      </option>
-                      <option
-                        value="approved-provisional"
-                        disabled={!canApprove}
+                  <div className="proposal-review discovery-review">
+                    <label>
+                      Approval decision
+                      <select
+                        value={proposal.status}
+                        disabled={proposal.status === "applied"}
+                        onChange={(event) =>
+                          updateProposalDecision(proposal, {
+                            status: event.target.value as ProposalStatus,
+                          })
+                        }
                       >
-                        approved-provisional
-                      </option>
-                      <option value="needs-correction">needs-correction</option>
-                      <option value="rejected">rejected</option>
-                      {proposal.status === "applied" && (
-                        <option value="applied">applied</option>
-                      )}
-                    </select>
-                  </label>
-                  <label className="discovery-review__notes">
-                    Decision notes
-                    <input
-                      value={proposal.decisionNotes ?? ""}
-                      disabled={proposal.status === "applied"}
-                      onChange={(event) =>
-                        updateProposalDecision(proposal, {
-                          decisionNotes: event.target.value,
-                        })
-                      }
-                      placeholder="Required public explanation for provisional approval"
-                    />
-                  </label>
-                </div>
-              </article>
-            );
-          })}
-          {!effectiveProposals.length && (
-            <div className="discovery-empty">
-              <h3>No extracted proposals yet.</h3>
-              <p>
-                Acquire and parse an open-access candidate to stage it here.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <section
-        className="discovery-stat-grid"
-        aria-label="Candidate screening totals"
-      >
-        <article>
-          <span>Total candidates</span>
-          <strong>{effective.length}</strong>
-          <small>separate from the published atlas</small>
-        </article>
-        {statuses.map((value) => (
-          <article key={value}>
-            <span>{value}</span>
-            <strong>{statusCounts[value]}</strong>
-            <small>
-              {value === "unreviewed"
-                ? "awaiting human screening"
-                : "local or committed decisions"}
-            </small>
-          </article>
-        ))}
-      </section>
-
-      <div className="discovery-overview">
-        <section className="discovery-panel">
-          <p className="section-kicker">Material profile</p>
-          <h2>Candidates by material</h2>
-          <div className="discovery-mini-bars">
-            {materialCounts.length ? (
-              materialCounts.map(([label, count]) => (
-                <div key={label}>
-                  <span>{label}</span>
-                  <i>
-                    <b style={{ width: `${(count / maxMaterial) * 100}%` }} />
-                  </i>
-                  <strong>{count}</strong>
-                </div>
-              ))
-            ) : (
-              <p>No candidates have been discovered yet.</p>
-            )}
-          </div>
-        </section>
-        <section className="discovery-panel">
-          <p className="section-kicker">Publication timeline</p>
-          <h2>Candidates by year</h2>
-          <div className="discovery-year-bars">
-            {yearCounts.length ? (
-              yearCounts.map(([label, count]) => (
-                <div key={label}>
-                  <strong>{count}</strong>
-                  <i style={{ height: `${18 + (count / maxYear) * 70}px` }} />
-                  <span>{label}</span>
-                </div>
-              ))
-            ) : (
-              <p>No candidate years are available.</p>
-            )}
-          </div>
-        </section>
-      </div>
-
-      <section className="discovery-workspace">
-        <header className="discovery-toolbar">
-          <div>
-            <p className="section-kicker">Human screening</p>
-            <h2>Candidate registry</h2>
-            <p>
-              {Math.min(visibleCount, filtered.length)} of {filtered.length}{" "}
-              matching candidates shown
-            </p>
-          </div>
-          <div className="discovery-toolbar__actions">
-            <button
-              className="primary-button"
-              type="button"
-              onClick={exportDecisions}
-              disabled={loading || loadError}
-            >
-              Export screening CSV
-            </button>
-          </div>
-        </header>
-        <p className="discovery-local-note">
-          <strong>Local review only.</strong> Decisions made here stay in this
-          browser until you export the CSV and commit an imported registry
-          update. They never publish a paper to the atlas.
-        </p>
-        <div className="discovery-filters">
-          <label>
-            Search
-            <input
-              type="search"
-              value={search}
-              onChange={(event) => {
-                setSearch(event.target.value);
-                setVisibleCount(25);
-              }}
-              placeholder="Title, DOI, author, abstract…"
-            />
-          </label>
-          <label>
-            Status
-            <select
-              value={status}
-              onChange={(event) => {
-                setStatus(event.target.value as typeof status);
-                setVisibleCount(25);
-              }}
-            >
-              <option value="all">All statuses</option>
-              {statuses.map((value) => (
-                <option value={value} key={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Material
-            <select
-              value={material}
-              onChange={(event) => {
-                setMaterial(event.target.value);
-                setVisibleCount(25);
-              }}
-            >
-              <option value="all">All materials</option>
-              {materials.map((value) => (
-                <option value={value} key={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Sort
-            <select
-              value={sort}
-              onChange={(event) => {
-                setSort(event.target.value);
-                setVisibleCount(25);
-              }}
-            >
-              <option value="score-desc">Score, high to low</option>
-              <option value="score-asc">Score, low to high</option>
-              <option value="year-desc">Newest first</option>
-              <option value="year-asc">Oldest first</option>
-            </select>
-          </label>
-        </div>
-        <div className="discovery-cards">
-          {filtered.slice(0, visibleCount).map((candidate) => (
-            <article className="discovery-card" key={candidate.candidateId}>
-              <div className="discovery-card__score">
-                <strong>{candidate.relevanceScore}</strong>
-                <span>relevance</span>
-              </div>
-              <div className="discovery-card__body">
-                <div className="discovery-card__meta">
-                  <span>
-                    {candidate.publicationYear ?? "Year not reported"}
-                  </span>
-                  <span>{candidate.journal ?? "Source not reported"}</span>
-                  {candidate.candidateMaterialClasses.map((value) => (
-                    <span className="discovery-chip" key={value}>
-                      {value}
-                    </span>
-                  ))}
-                </div>
-                <h3>{candidate.title}</h3>
-                <p className="discovery-authors">
-                  {candidate.authors.length
-                    ? candidate.authors.join(", ")
-                    : "Authors not reported"}
-                </p>
-                <div className="discovery-links">
-                  {candidate.publicationUrl && (
-                    <a
-                      href={candidate.publicationUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Publication ↗
-                    </a>
-                  )}
-                  {candidate.doi && (
-                    <a
-                      href={`https://doi.org/${candidate.normalizedDoi}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      DOI ↗
-                    </a>
-                  )}
-                  {candidate.openAccessPdfUrl && (
-                    <a
-                      href={candidate.openAccessPdfUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Open-access PDF ↗
-                    </a>
-                  )}
-                </div>
-                <div className="discovery-reasons">
-                  <strong>Why it ranked here</strong>
-                  <ul>
-                    {candidate.relevanceReasons.map((reason) => (
-                      <li key={reason}>{reason}</li>
-                    ))}
-                  </ul>
-                </div>
-                {candidate.duplicateRelationships.length > 0 && (
-                  <p className="discovery-warning">
-                    <strong>Possible duplicate:</strong>{" "}
-                    {candidate.duplicateRelationships
-                      .map(
-                        (item) =>
-                          `${item.candidateId} (${item.type}${item.similarity ? `, ${Math.round(item.similarity * 100)}%` : ""})`,
-                      )
-                      .join(", ")}
-                  </p>
-                )}
-                <dl className="discovery-details">
-                  <div>
-                    <dt>Discovery</dt>
-                    <dd>
-                      {candidate.discoveryMethods.join(", ")} ·{" "}
-                      {candidate.discoverySources.join(", ")}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Query / seed</dt>
-                    <dd>
-                      {[
-                        ...candidate.discoveryQueries,
-                        ...candidate.seedPaperIds,
-                      ].join(" · ") || "Not recorded"}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>PDF</dt>
-                    <dd>{candidate.pdfStatus}</dd>
-                  </div>
-                  <div>
-                    <dt>Import</dt>
-                    <dd>{candidate.importStatus}</dd>
-                  </div>
-                </dl>
-                <div className="discovery-review">
-                  <label>
-                    Decision
-                    <select
-                      value={candidate.screeningStatus}
-                      onChange={(event) =>
-                        updateDecision(candidate, {
-                          screeningStatus: event.target
-                            .value as ScreeningStatus,
-                        })
-                      }
-                    >
-                      {statuses.map((value) => (
-                        <option value={value} key={value}>
-                          {value}
+                        <option value="awaiting-approval">
+                          awaiting-approval
                         </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label>
-                    Exclusion reason
-                    <input
-                      value={candidate.exclusionReason ?? ""}
-                      onChange={(event) =>
-                        updateDecision(candidate, {
-                          exclusionReason: event.target.value,
-                        })
-                      }
-                      placeholder="Required when excluded"
-                    />
-                  </label>
-                  <label className="discovery-review__notes">
-                    Screening notes
-                    <input
-                      value={candidate.screeningNotes ?? ""}
-                      onChange={(event) =>
-                        updateDecision(candidate, {
-                          screeningNotes: event.target.value,
-                        })
-                      }
-                      placeholder="Evidence, questions, or next action"
-                    />
-                  </label>
-                </div>
+                        <option value="approved" disabled={!canApprove}>
+                          approved
+                        </option>
+                        <option
+                          value="approved-provisional"
+                          disabled={!canApprove}
+                        >
+                          approved-provisional
+                        </option>
+                        <option value="needs-correction">
+                          needs-correction
+                        </option>
+                        <option value="rejected">rejected</option>
+                        {proposal.status === "applied" && (
+                          <option value="applied">applied</option>
+                        )}
+                      </select>
+                    </label>
+                    <label className="discovery-review__notes">
+                      Decision notes
+                      <input
+                        value={proposal.decisionNotes ?? ""}
+                        disabled={proposal.status === "applied"}
+                        onChange={(event) =>
+                          updateProposalDecision(proposal, {
+                            decisionNotes: event.target.value,
+                          })
+                        }
+                        placeholder="Required public explanation for provisional approval"
+                      />
+                    </label>
+                  </div>
+                </article>
+              );
+            })}
+            {!effectiveProposals.length && (
+              <div className="discovery-empty">
+                <h3>No photodiode proposals to review.</h3>
+                <p>
+                  Photodiode papers with extracted data will appear here for
+                  review.
+                </p>
               </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {view === "overview" && (
+        <div aria-label="Discovery overview">
+          <section
+            className="discovery-stat-grid"
+            aria-label="Candidate screening totals"
+          >
+            <article>
+              <span>Photodiode papers</span>
+              <strong>{loading ? "…" : effective.length}</strong>
+              <small>separate from the published atlas</small>
             </article>
-          ))}
-          {loading && <p role="status">Loading discovery candidates…</p>}
-          {loadError && (
-            <div role="alert">
-              <p>Discovery candidates could not be loaded.</p>
+            {statuses.map((value) => (
+              <article key={value}>
+                <span>{statusLabels[value]}</span>
+                <strong>{statusCounts[value]}</strong>
+                <small>
+                  {value === "unreviewed"
+                    ? "awaiting human screening"
+                    : "saved screening decisions"}
+                </small>
+              </article>
+            ))}
+          </section>
+
+          <div className="discovery-overview">
+            <section className="discovery-panel">
+              <p className="section-kicker">Material profile</p>
+              <h2>Papers by material</h2>
+              <div className="discovery-mini-bars">
+                {materialCounts.length ? (
+                  materialCounts.map(([label, count]) => (
+                    <div key={label}>
+                      <span>{label}</span>
+                      <i>
+                        <b
+                          style={{ width: `${(count / maxMaterial) * 100}%` }}
+                        />
+                      </i>
+                      <strong>{count}</strong>
+                    </div>
+                  ))
+                ) : (
+                  <p>No candidates have been discovered yet.</p>
+                )}
+              </div>
+            </section>
+            <section className="discovery-panel">
+              <p className="section-kicker">Publication timeline</p>
+              <h2>Papers by year</h2>
+              <div className="discovery-year-bars">
+                {yearCounts.length ? (
+                  yearCounts.map(([label, count]) => (
+                    <div key={label}>
+                      <strong>{count}</strong>
+                      <i
+                        style={{ height: `${18 + (count / maxYear) * 70}px` }}
+                      />
+                      <span>{label}</span>
+                    </div>
+                  ))
+                ) : (
+                  <p>No candidate years are available.</p>
+                )}
+              </div>
+            </section>
+          </div>
+        </div>
+      )}
+
+      {view === "papers" && (
+        <div className="discovery-browser">
+          <aside className="discovery-filter-panel" aria-label="Filter papers">
+            <div className="discovery-filter-heading">
+              <h2>Find papers</h2>
               <button
                 type="button"
-                className="secondary-button"
-                onClick={() => {
-                  setLoading(true);
-                  setLoadError(false);
-                  setLoadAttempt((attempt) => attempt + 1);
-                }}
+                className="discovery-text-button"
+                onClick={clearFilters}
+                disabled={!hasFilters}
               >
-                Try again
+                Reset
               </button>
             </div>
-          )}
-          {!loading && !loadError && !filtered.length && (
-            <div className="discovery-empty">
-              <h3>No candidates match these filters.</h3>
+            <div className="discovery-filters">
+              <label>
+                Search papers
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(event) => {
+                    setSearch(event.target.value);
+                    setPage(1);
+                  }}
+                  placeholder="Title, author, DOI…"
+                />
+              </label>
+              <label>
+                Material
+                <select
+                  value={material}
+                  onChange={(event) => {
+                    setMaterial(event.target.value);
+                    setPage(1);
+                  }}
+                >
+                  <option value="all">All materials</option>
+                  {materials.map((value) => (
+                    <option value={value} key={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <fieldset className="discovery-year-filter">
+                <legend>Publication year</legend>
+                <div className="discovery-year-inputs">
+                  <label>
+                    Published after
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      min="1000"
+                      max="9999"
+                      step="1"
+                      placeholder="e.g. 2018"
+                      value={afterYear}
+                      aria-invalid={Boolean(rangeError)}
+                      aria-describedby="discovery-year-help"
+                      onChange={(event) => {
+                        setAfterYear(event.target.value);
+                        setPage(1);
+                      }}
+                    />
+                  </label>
+                  <label>
+                    Published before
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      min="1000"
+                      max="9999"
+                      step="1"
+                      placeholder="e.g. 2026"
+                      value={beforeYear}
+                      aria-invalid={Boolean(rangeError)}
+                      aria-describedby="discovery-year-help"
+                      onChange={(event) => {
+                        setBeforeYear(event.target.value);
+                        setPage(1);
+                      }}
+                    />
+                  </label>
+                </div>
+                <p
+                  id="discovery-year-help"
+                  className={
+                    rangeError
+                      ? "discovery-filter-error"
+                      : "discovery-filter-help"
+                  }
+                  role={rangeError ? "alert" : undefined}
+                >
+                  {rangeError ??
+                    "Exclusive limits. Leave blank for any year. Undated papers are hidden when a year limit is set."}
+                </p>
+              </fieldset>
+            </div>
+            <div className="discovery-scope-note">
+              <strong>A focused reading list</strong>
               <p>
-                Clear a filter or run a discovery command to populate the
-                registry.
+                Photodiode candidates only. Papers already in the atlas and
+                general reviews are hidden.
               </p>
             </div>
-          )}
-        </div>
-        {visibleCount < filtered.length && (
-          <button
-            className="secondary-button"
-            type="button"
-            onClick={() => setVisibleCount((count) => count + 25)}
+          </aside>
+          <section
+            className="discovery-workspace discovery-results"
+            id="discovery-results"
+            tabIndex={-1}
+            aria-label="Photodiode papers"
           >
-            Show more candidates
-          </button>
-        )}
-      </section>
+            <header className="discovery-toolbar">
+              <div>
+                <h2>Photodiode papers</h2>
+                <p role="status" aria-live="polite">
+                  {loading
+                    ? "Loading papers…"
+                    : loadError
+                      ? "Papers unavailable"
+                      : filtered.length
+                        ? `${firstResult + 1}–${Math.min(firstResult + PAGE_SIZE, filtered.length)} of ${filtered.length} papers`
+                        : "0 matching papers"}
+                  {!loading &&
+                    !loadError &&
+                    hasFilters &&
+                    ` · ${effective.length} in total`}
+                </p>
+              </div>
+              <div className="discovery-toolbar__actions">
+                <label className="discovery-sort">
+                  Sort by
+                  <select
+                    value={sort}
+                    onChange={(event) => {
+                      setSort(event.target.value);
+                      setPage(1);
+                    }}
+                  >
+                    <option value="score-desc">Most relevant</option>
+                    <option value="score-asc">Least relevant</option>
+                    <option value="year-desc">Newest first</option>
+                    <option value="year-asc">Oldest first</option>
+                  </select>
+                </label>
+                <button
+                  className="secondary-button"
+                  type="button"
+                  onClick={exportDecisions}
+                  disabled={loading || loadError || !filtered.length}
+                >
+                  Export results
+                </button>
+              </div>
+            </header>
+            <div
+              className="discovery-status-filters"
+              role="group"
+              aria-label="Review status"
+            >
+              {(["all", ...statuses] as const).map((value) => (
+                <button
+                  type="button"
+                  key={value}
+                  aria-pressed={status === value}
+                  onClick={() => {
+                    setStatus(value);
+                    setPage(1);
+                  }}
+                >
+                  {value === "all" ? "All papers" : statusLabels[value]}
+                  <span>
+                    {loading
+                      ? "…"
+                      : value === "all"
+                        ? effective.length
+                        : statusCounts[value]}
+                  </span>
+                </button>
+              ))}
+            </div>
+            {hasFilters && (
+              <div
+                className="discovery-active-filters"
+                aria-label="Active filters"
+              >
+                {search && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearch("");
+                      setPage(1);
+                    }}
+                    aria-label="Remove search filter"
+                  >
+                    “{search}” <span aria-hidden="true">×</span>
+                  </button>
+                )}
+                {material !== "all" && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMaterial("all");
+                      setPage(1);
+                    }}
+                    aria-label="Remove material filter"
+                  >
+                    {material} <span aria-hidden="true">×</span>
+                  </button>
+                )}
+                {afterYear && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAfterYear("");
+                      setPage(1);
+                    }}
+                    aria-label="Remove after year filter"
+                  >
+                    After {afterYear} <span aria-hidden="true">×</span>
+                  </button>
+                )}
+                {beforeYear && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setBeforeYear("");
+                      setPage(1);
+                    }}
+                    aria-label="Remove before year filter"
+                  >
+                    Before {beforeYear} <span aria-hidden="true">×</span>
+                  </button>
+                )}
+                {status !== "all" && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setStatus("all");
+                      setPage(1);
+                    }}
+                    aria-label="Remove review status filter"
+                  >
+                    {statusLabels[status]} <span aria-hidden="true">×</span>
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="discovery-text-button"
+                  onClick={clearFilters}
+                >
+                  Clear all
+                </button>
+              </div>
+            )}
+            <div className="discovery-cards">
+              {filtered
+                .slice(firstResult, firstResult + PAGE_SIZE)
+                .map((candidate) => (
+                  <article
+                    className="discovery-card"
+                    key={candidate.candidateId}
+                  >
+                    <div className="discovery-card__score">
+                      <strong>{candidate.relevanceScore}</strong>
+                      <span>relevance</span>
+                    </div>
+                    <div className="discovery-card__body">
+                      <div className="discovery-card__meta">
+                        <span>
+                          {candidate.publicationYear ?? "Year not reported"}
+                        </span>
+                        <span>
+                          {plainText(
+                            candidate.journal ?? "Source not reported",
+                          )}
+                        </span>
+                        {candidate.candidateMaterialClasses.map((value) => (
+                          <span className="discovery-chip" key={value}>
+                            {value}
+                          </span>
+                        ))}
+                      </div>
+                      <h3>{plainText(candidate.title)}</h3>
+                      <span
+                        className={`discovery-review-state discovery-review-state--${candidate.screeningStatus}`}
+                      >
+                        {statusLabels[candidate.screeningStatus]}
+                      </span>
+                      <p className="discovery-authors">
+                        {candidate.authors.length
+                          ? candidate.authors.join(", ")
+                          : "Authors not reported"}
+                      </p>
+                      <div className="discovery-links">
+                        {candidate.publicationUrl && (
+                          <a
+                            href={candidate.publicationUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Publication
+                          </a>
+                        )}
+                        {candidate.doi && (
+                          <a
+                            href={`https://doi.org/${candidate.normalizedDoi}`}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            DOI
+                          </a>
+                        )}
+                        {candidate.openAccessPdfUrl && (
+                          <a
+                            href={candidate.openAccessPdfUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Open-access PDF
+                          </a>
+                        )}
+                      </div>
+                      <details className="discovery-paper-details">
+                        <summary>Abstract, evidence & review</summary>
+                        <div className="discovery-abstract">
+                          <h4>Abstract</h4>
+                          <p>
+                            {candidate.abstract
+                              ? plainText(candidate.abstract)
+                              : "No abstract available. Open the publication to review the paper."}
+                          </p>
+                        </div>
+                        <div className="discovery-reasons">
+                          <strong>Why it ranked here</strong>
+                          <ul>
+                            {candidate.relevanceReasons.map((reason) => (
+                              <li key={reason}>{reason}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        {candidate.duplicateRelationships.length > 0 && (
+                          <p className="discovery-warning">
+                            <strong>Possible duplicate:</strong>{" "}
+                            {candidate.duplicateRelationships
+                              .map(
+                                (item) =>
+                                  `${item.candidateId} (${item.type}${item.similarity ? `, ${Math.round(item.similarity * 100)}%` : ""})`,
+                              )
+                              .join(", ")}
+                          </p>
+                        )}
+                        <dl className="discovery-details">
+                          <div>
+                            <dt>Discovery</dt>
+                            <dd>
+                              {candidate.discoveryMethods.join(", ")} ·{" "}
+                              {candidate.discoverySources.join(", ")}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Query / seed</dt>
+                            <dd>
+                              {[
+                                ...candidate.discoveryQueries,
+                                ...candidate.seedPaperIds,
+                              ].join(" · ") || "Not recorded"}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>PDF</dt>
+                            <dd>{candidate.pdfStatus}</dd>
+                          </div>
+                          <div>
+                            <dt>Import</dt>
+                            <dd>{candidate.importStatus}</dd>
+                          </div>
+                        </dl>
+                        <div className="discovery-review">
+                          <label>
+                            Decision
+                            <select
+                              value={candidate.screeningStatus}
+                              onChange={(event) =>
+                                updateDecision(candidate, {
+                                  screeningStatus: event.target
+                                    .value as ScreeningStatus,
+                                })
+                              }
+                            >
+                              {statuses.map((value) => (
+                                <option value={value} key={value}>
+                                  {statusLabels[value]}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <label>
+                            Exclusion reason
+                            <input
+                              value={candidate.exclusionReason ?? ""}
+                              onChange={(event) =>
+                                updateDecision(candidate, {
+                                  exclusionReason: event.target.value,
+                                })
+                              }
+                              placeholder="Required when excluded"
+                            />
+                          </label>
+                          <label className="discovery-review__notes">
+                            Screening notes
+                            <input
+                              value={candidate.screeningNotes ?? ""}
+                              onChange={(event) =>
+                                updateDecision(candidate, {
+                                  screeningNotes: event.target.value,
+                                })
+                              }
+                              placeholder="Evidence, questions, or next action"
+                            />
+                          </label>
+                        </div>
+                      </details>
+                    </div>
+                  </article>
+                ))}
+              {loading && <p role="status">Loading discovery candidates…</p>}
+              {loadError && (
+                <div role="alert">
+                  <p>Discovery candidates could not be loaded.</p>
+                  <button
+                    type="button"
+                    className="secondary-button"
+                    onClick={() => setLoadAttempt((attempt) => attempt + 1)}
+                  >
+                    Try again
+                  </button>
+                </div>
+              )}
+              {!loading && !loadError && !filtered.length && (
+                <div className="discovery-empty">
+                  <h3>
+                    {rangeError
+                      ? "Check your year range."
+                      : "No papers match these filters."}
+                  </h3>
+                  <p>
+                    {rangeError ??
+                      "Try a wider year range, a different material, or a shorter search."}
+                  </p>
+                  {hasFilters && (
+                    <button
+                      type="button"
+                      className="secondary-button"
+                      onClick={clearFilters}
+                    >
+                      Clear filters
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+            {!loading && !loadError && filtered.length > 0 && (
+              <nav
+                className="discovery-pagination"
+                aria-label="Paper results pages"
+              >
+                <span>
+                  Page {currentPage} of {pageCount}
+                </span>
+                <div>
+                  <button
+                    type="button"
+                    className="secondary-button"
+                    disabled={currentPage === 1}
+                    onClick={() => changePage(currentPage - 1)}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    type="button"
+                    className="secondary-button"
+                    disabled={currentPage === pageCount}
+                    onClick={() => changePage(currentPage + 1)}
+                  >
+                    Next
+                  </button>
+                </div>
+              </nav>
+            )}
+            <p className="discovery-local-note">
+              Review decisions are saved in this browser. Export results to
+              share your screening; atlas publication requires curator review.
+            </p>
+          </section>
+        </div>
+      )}
     </>
   );
 }

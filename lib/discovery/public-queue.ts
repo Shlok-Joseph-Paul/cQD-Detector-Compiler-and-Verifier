@@ -2,6 +2,29 @@ import type { Paper } from "../data/types.ts";
 import { normalizeDoi, normalizeTitle } from "./normalize.ts";
 import type { StagedPaperProposal } from "./proposal-types.ts";
 import type { DiscoveryCandidate } from "./types.ts";
+import { looksLikeNonPrimaryCandidate } from "./shortlist.ts";
+
+const PHOTODIODE = /\bphoto[\s-]?diodes?\b|\bphotovoltaic detectors?\b/i;
+const OTHER_DETECTOR =
+  /\bphotoconductors?\b|\bphotoresistors?\b|\b(?:photo)?transistors?\b|\bphoto[ -]?fets?\b/i;
+
+function evidenceText(value: string): string {
+  return value.replace(/<[^>]+>/g, "").replace(/[‐‑–—−]/g, "-");
+}
+
+/** Keep the public queue conservative; discovery keywords alone are not evidence. */
+export function isPhotodiodeCandidate(candidate: DiscoveryCandidate): boolean {
+  if (looksLikeNonPrimaryCandidate(candidate)) return false;
+  const title = evidenceText(candidate.title);
+  if (/\b(?:thesis|dissertation|correction|erratum|retraction)\b/i.test(title))
+    return false;
+  if (PHOTODIODE.test(title)) return true;
+  if (OTHER_DETECTOR.test(title)) return false;
+  if (OTHER_DETECTOR.test(candidate.candidateDeviceType ?? "")) return false;
+  const abstract = evidenceText(candidate.abstract ?? "");
+  // Ambiguous abstracts that discuss multiple device classes need full-text review.
+  return PHOTODIODE.test(abstract) && !OTHER_DETECTOR.test(abstract);
+}
 
 // These records are retained in the versioned discovery registry for auditability,
 // but are not useful screening candidates for the photodiode atlas.
@@ -48,6 +71,7 @@ export function filterPublicDiscoveryCandidates(
 ): DiscoveryCandidate[] {
   const existing = atlasKeys(papers);
   return candidates.filter((candidate) => {
+    if (!isPhotodiodeCandidate(candidate)) return false;
     if (candidate.importStatus === "published") return false;
     if (candidate.screeningStatus === "exclude") return false;
     if (PUBLIC_QUEUE_EXCLUSIONS[candidate.candidateId]) return false;
@@ -64,6 +88,22 @@ export function filterPublicDiscoveryProposals(
   const existing = atlasKeys(papers);
   return proposals.filter((proposal) => {
     if (proposal.status === "applied") return false;
+    if (proposal.scopeStatus === "out-of-scope") return false;
+    if (PUBLIC_QUEUE_EXCLUSIONS[proposal.candidateId]) return false;
+    const hasPhotodiode = proposal.proposedDevices.some(
+      (device) => device.detector_class === "photodiode",
+    );
+    const hasClassifiedDevice = proposal.proposedDevices.some((device) =>
+      Boolean(device.detector_class),
+    );
+    // Older proposals may predate detector_class; explicit title evidence is enough
+    // to list the paper, but does not make its extracted data approvable.
+    if (
+      !hasPhotodiode &&
+      (hasClassifiedDevice ||
+        !PHOTODIODE.test(evidenceText(proposal.proposedPaper.title)))
+    )
+      return false;
     const doi = normalizeDoi(proposal.proposedPaper.doi);
     if (doi && existing.dois.has(doi)) return false;
     return !existing.titles.has(normalizeTitle(proposal.proposedPaper.title));

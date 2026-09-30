@@ -5,6 +5,11 @@ import path from "node:path";
 import test from "node:test";
 import configJson from "../data/discovery/config.json" with { type: "json" };
 import {
+  filterQueueCandidates,
+  yearRangeError,
+  type QueueFilters,
+} from "../lib/discovery/queue-filters.ts";
+import {
   DiscoveryPipeline,
   OpenAlexClient,
   acquireOpenAccessPdf,
@@ -443,6 +448,193 @@ test("public discovery queue omits atlas papers, applied proposals, and unrelate
   assert.deepEqual(
     filterPublicDiscoveryProposals([proposal], [atlasPaper]),
     [],
+  );
+});
+
+test("public discovery requires paper evidence and rejects generic or conflicting detector classes", () => {
+  const records = [
+    candidate({
+      candidateId: "title",
+      title: "Infrared photo‐diodes",
+      abstract: null,
+    }),
+    candidate({
+      candidateId: "abstract",
+      title: "Fast infrared detectors",
+      abstract: "We demonstrate PbS photodiodes with low dark current.",
+      candidateDeviceType: "photodetector",
+    }),
+    candidate({
+      candidateId: "generic",
+      title: "High performance photodetectors",
+      abstract: "A detector with high detectivity.",
+      candidateDeviceType: "photodetector",
+    }),
+    candidate({
+      candidateId: "keyword-only",
+      title: "Quantum dot synthesis",
+      abstract: null,
+      candidateDeviceType: "photodiode",
+      discoveryQueries: ["photodiode"],
+    }),
+    candidate({
+      candidateId: "transistor",
+      title: "Carbon nanotube transistor with photosensitive gate",
+      abstract: "Compared to photodiodes, our transistor has high gain.",
+    }),
+    candidate({
+      candidateId: "conflicting",
+      title: "Quantum dot infrared detectors",
+      abstract:
+        "Photodiodes and photoconductors provide competing architectures.",
+    }),
+    candidate({
+      candidateId: "review",
+      title: "A review of quantum dot photodiodes",
+    }),
+    candidate({ candidateId: "thesis", title: "Thesis: infrared photodiodes" }),
+    candidate({ candidateId: "excluded", screeningStatus: "exclude" }),
+    candidate({ candidateId: "published", importStatus: "published" }),
+  ];
+  assert.deepEqual(
+    filterPublicDiscoveryCandidates(records, []).map(
+      (item) => item.candidateId,
+    ),
+    ["title", "abstract"],
+  );
+});
+
+test("public proposals omit other device classes and retain explicit legacy photodiodes", () => {
+  const base = extractStagedProposal(
+    candidate(),
+    proposalSource,
+    "We demonstrate a colloidal quantum dot photodiode with measured detectivity.",
+  );
+  const diode = {
+    ...base,
+    proposalId: "diode",
+    scopeStatus: "uncertain" as const,
+    proposedPaper: { ...base.proposedPaper, title: "Infrared photodetector" },
+    proposedDevices: [
+      { ...base.proposedDevices[0], detector_class: "photodiode" as const },
+    ],
+  };
+  const conductor = {
+    ...diode,
+    proposalId: "conductor",
+    proposedDevices: [
+      {
+        ...diode.proposedDevices[0],
+        detector_class: "photoconductor" as const,
+      },
+    ],
+  };
+  const legacy = {
+    ...diode,
+    proposalId: "legacy",
+    proposedPaper: { ...diode.proposedPaper, title: "Infrared photodiodes" },
+    proposedDevices: [{ ...diode.proposedDevices[0], detector_class: null }],
+  };
+  const unknown = { ...diode, proposalId: "unknown", proposedDevices: [] };
+  assert.deepEqual(
+    filterPublicDiscoveryProposals(
+      [
+        diode,
+        conductor,
+        legacy,
+        unknown,
+        { ...diode, proposalId: "out-of-scope", scopeStatus: "out-of-scope" },
+      ],
+      [],
+    ).map((item) => item.proposalId),
+    ["diode", "legacy"],
+  );
+});
+
+const queueDefaults: QueueFilters = {
+  search: "",
+  status: "all",
+  material: "all",
+  afterYear: "",
+  beforeYear: "",
+  sort: "score-desc",
+};
+
+test("publication-year bounds are exclusive, independently optional, and omit unknown years", () => {
+  const records = [2020, 2021, 2024, 2025, null].map((year) =>
+    candidate({ candidateId: String(year), publicationYear: year }),
+  );
+  const years = (filters: Partial<QueueFilters>) =>
+    filterQueueCandidates(records, {
+      ...queueDefaults,
+      sort: "year-asc",
+      ...filters,
+    }).map((item) => item.publicationYear);
+  assert.deepEqual(
+    years({ afterYear: "2020", beforeYear: "2025" }),
+    [2021, 2024],
+  );
+  assert.deepEqual(years({ afterYear: "2024" }), [2025]);
+  assert.deepEqual(years({ beforeYear: "2021" }), [2020]);
+  assert.deepEqual(years({}), [2020, 2021, 2024, 2025, null]);
+  assert.deepEqual(years({ sort: "year-desc" }), [
+    2025,
+    2024,
+    2021,
+    2020,
+    null,
+  ]);
+});
+
+test("year validation rejects invalid and reversed bounds without returning unfiltered papers", () => {
+  for (const [afterYear, beforeYear] of [
+    ["2025", "2020"],
+    ["2020", "2020"],
+    ["20", ""],
+    ["", "abcd"],
+    ["2020.5", ""],
+    ["0000", ""],
+  ]) {
+    assert.ok(yearRangeError(afterYear, beforeYear));
+    assert.deepEqual(
+      filterQueueCandidates([candidate()], {
+        ...queueDefaults,
+        afterYear,
+        beforeYear,
+      }),
+      [],
+    );
+  }
+  assert.equal(yearRangeError("", ""), null);
+  assert.equal(yearRangeError("2020", "2025"), null);
+});
+
+test("year limits combine with material, search, and review status without mutating the queue", () => {
+  const matching = candidate({
+    candidateId: "match",
+    publicationYear: 2022,
+    candidateMaterialClasses: ["InSb"],
+    screeningStatus: "uncertain",
+  });
+  const records = [
+    matching,
+    candidate({ candidateId: "different-status", publicationYear: 2022 }),
+    candidate({ candidateId: "older", publicationYear: 2019 }),
+  ];
+  assert.deepEqual(
+    filterQueueCandidates(records, {
+      ...queueDefaults,
+      search: "RESEARCHER",
+      material: "InSb",
+      status: "uncertain",
+      afterYear: "2020",
+      beforeYear: "2024",
+    }).map((item) => item.candidateId),
+    ["match"],
+  );
+  assert.deepEqual(
+    records.map((item) => item.candidateId),
+    ["match", "different-status", "older"],
   );
 });
 
